@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('user.master.section.default.page_default');
+    return view('user.superadmin_ukm.master.section.registered.registered');
 });
