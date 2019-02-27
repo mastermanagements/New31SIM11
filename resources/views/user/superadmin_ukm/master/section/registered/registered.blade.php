@@ -18,34 +18,12 @@
 
     <div class="container">
         <form method="POST" class="appointment-form" id="appointment-form">
-            <h2>education appointment form</h2>
+            <h2>
+                Form to get an account on the master management application</h2>
             <div class="form-group-1">
                 <input type="text" name="title" id="title" placeholder="Title" required />
                 <input type="text" name="name" id="name" placeholder="Your Name" required />
                 <input type="email" name="email" id="email" placeholder="Email" required />
-                <input type="number" name="phone_number" id="phone_number" placeholder="Phone number" required />
-                <div class="select-list">
-                    <select name="course_type" id="course_type">
-                        <option slected value="">Course Type</option>
-                        <option value="society">Society</option>
-                        <option value="language">Language</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group-2">
-                <h3>How would you like to bo located ?</h3>
-                <div class="select-list">
-                    <select name="confirm_type" id="confirm_type">
-                        <option seleected value="">By phone</option>
-                        <option value="by_email">By email</option>
-                    </select>
-                </div>
-                <div class="select-list">
-                    <select name="hour_appointment" id="hour_appointment">
-                        <option seleected value="">Hours : 8am 10pm</option>
-                        <option value="9h-11h">Hours : 9am 11pm</option>
-                    </select>
-                </div>
             </div>
             <div class="form-check">
                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
