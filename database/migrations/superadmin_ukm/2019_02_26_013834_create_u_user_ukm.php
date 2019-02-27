@@ -18,12 +18,6 @@ class CreateUUserUkm extends Migration
             $table->string('nama');
             $table->string('email',100)->unique();
             $table->string('password');
-            $table->string('telp')->nullable();
-            $table->string('hp');
-            $table->string('wa');
-            $table->string('telegram')->nullable();
-            $table->integer('provinsi_id')->unsigned();
-            $table->integer('kab_id')->unsigned();
             $table->enum('status_verifikasi',['0','1'])->default('0');
             $table->timestamps();
         });
