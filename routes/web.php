@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('registerApp', function () {
     return view('user.superadmin_ukm.master.section.registered.registered');
 });
+
+
+Route::post('registered','Superadmin_ukm\LoginAndRegisterController@registered');
