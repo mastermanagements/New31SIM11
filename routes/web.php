@@ -15,5 +15,13 @@ Route::get('registerApp', function () {
     return view('user.superadmin_ukm.master.section.registered.registered');
 });
 
+Route::get('login-page', function () {
+    return view('user.superadmin_ukm.master.section.registered.login');
+});
+
 
 Route::post('registered','Superadmin_ukm\LoginAndRegisterController@registered');
+
+Route::post('login-page','Superadmin_ukm\LoginAndRegisterController@login');
+
+Route::get('dashboard','Superadmin_ukm\DashboardSuperadminUkmController@index');

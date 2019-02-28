@@ -8,6 +8,6 @@ class U_user_ukm extends Model
 {
 
     protected $table="u_user_ukm";
-    protected $fillable = ['nama','email','password'];
+    protected $fillable = ['nama','email','password','status_verifikasi'];
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Superadmin_ukm;
 
+use Illuminate\Support\Facades\Hash;
 use Session;
 use Mail;
 use Illuminate\Http\Request;
@@ -12,6 +13,24 @@ use App\Mail\superadminUkm_Mail as verification_superadmin_ukm;
 class LoginAndRegisterController extends Controller
 {
     //
+
+    public function login(Request $req)
+    {
+        $alamat_email = $req->alamat_email;
+        $password = $req->kata_kunci;
+        $model = user_admin_ukm::where('email', $alamat_email)->first();
+       if($model->status_verifikasi==0){
+            return redirect('login-page')->with('message_fail','Maaf, Anda harus belum melakukan verifikasi ulang');
+        }else{
+           if(Hash::check($password, $model->password))
+            {
+               $req->session()->put('id_superadmin_ukm', $model->id);
+               return redirect('dashboard')->with('message_success','Selamat datang '. $model->nama.' !!');
+            }else{
+               return redirect('login-page')->with('message_fail','email atau password anda salah...!');
+           }
+        }
+    }
 
     public function registered(Request $req)
     {
@@ -24,13 +43,14 @@ class LoginAndRegisterController extends Controller
         //inisialisasi variable
         $nama = $req->nama;
         $alamat_email = $req->alamat_email;
-        $kata_kunci = bcrypt($req->alamat_email);
+        $kata_kunci = $req->kata_kunci;
         //call model
         $model = new user_admin_ukm();
         //adding value to field
         $model->nama = $nama;
         $model->email = $alamat_email;
         $model->password = bcrypt($kata_kunci);
+        $model->status_verifikasi = '1';
         // if success save data then email will sending
         if($model->save())
         {
