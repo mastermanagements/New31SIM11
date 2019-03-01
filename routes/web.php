@@ -24,4 +24,12 @@ Route::post('registered','Superadmin_ukm\LoginAndRegisterController@registered')
 
 Route::post('login-page','Superadmin_ukm\LoginAndRegisterController@login');
 
-Route::get('dashboard','Superadmin_ukm\DashboardSuperadminUkmController@index');
+Route::get('dashboard','Superadmin_ukm\Superadmin_UKM@index');
+
+Route::get('verification/{id}','Superadmin_ukm\LoginAndRegisterController@verification_');
+
+Route::get('editprofile','Superadmin_ukm\Superadmin_UKM@editProfileSuperadminUkm');
+
+Route::get('getKabupaten/{id_provinsi}','Superadmin_ukm\Superadmin_UKM@ResponseKabupaten');
+
+Route::put('updateProfile/{id_superadmin_ukm}','Superadmin_ukm\Superadmin_UKM@updateProfile');

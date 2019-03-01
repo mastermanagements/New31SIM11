@@ -1,4 +1,4 @@
-@extends('user.master.master_user')
+@extends('user.superadmin_ukm.master.master_user')
 
 @section('master_content')
 <div class="content-wrapper">

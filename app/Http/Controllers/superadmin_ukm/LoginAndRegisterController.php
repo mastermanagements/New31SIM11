@@ -50,7 +50,7 @@ class LoginAndRegisterController extends Controller
         $model->nama = $nama;
         $model->email = $alamat_email;
         $model->password = bcrypt($kata_kunci);
-        $model->status_verifikasi = '1';
+        $model->status_verifikasi = '0';
         // if success save data then email will sending
         if($model->save())
         {
@@ -58,5 +58,17 @@ class LoginAndRegisterController extends Controller
             return redirect('registerApp')->with('message_success','Pesan konfirmasi anda telah dikirim, lakukan konfirmasi via email anda');
         }
         return redirect('registerApp')->with('message_fail','Anda belum berhasil mendaftar');
+    }
+
+    public function verification_($id)
+    {
+        $id_superadmin_ukm = $id;
+        $model = user_admin_ukm::findOrFail($id_superadmin_ukm);
+        $model->status_verifikasi = '1';
+        if($model->save())
+        {
+            return redirect('login-page')->with('message_success','Anda telah berhasil melakukan verifikasi akun, login untuk masuk kedalam aplikasi');
+        }
+        return redirect('login-page')->with('message_fail','Maaf, telah terjadi kesalahan');
     }
 }
