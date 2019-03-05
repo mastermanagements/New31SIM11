@@ -17,7 +17,7 @@ class CreateAMisiP extends Migration
             $table->increments('id');
             $table->text('misi');
             $table->integer('id_perusahaan')->unsigned();
-            $table->integer('id_karyawan')->unsigned();
+            $table->integer('id_user_ukm')->unsigned();
             $table->timestamps();
         });
     }

@@ -20,10 +20,10 @@ class CreateUPerusahaan extends Migration
             $table->integer('id_prov')->unsigned();
             $table->integer('id_kab')->unsigned();
             $table->string('kode_pos');
-            $table->string('telp');
-            $table->string('hp');
-            $table->string('wa');
-            $table->string('teleg');
+            $table->string('telp')->nullable();
+            $table->string('hp')->nullable();
+            $table->string('wa')->nullable();
+            $table->string('teleg')->nullable();
             $table->string('email');
             $table->string('jenis_usaha',255);
             $table->string('logo');

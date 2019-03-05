@@ -10,6 +10,9 @@ use App\Model\Superadmin_ukm\U_user_ukm as superadmin_ukms;
 use App\Model\Superadmin_ukm\U_profil_ukm as profil_user_ukm;
 use App\Model\Superadmin_sim\U_provinsi as provinsi;
 use App\Model\Superadmin_sim\U_kabupaten as kabupaten;
+use App\Model\Superadmin_ukm\U_usaha as perusahaan;
+use App\Model\Superadmin_ukm\A_visi_p as visi_p;
+use App\Model\Superadmin_ukm\A_misi_p as misi_p;
 
 class Superadmin_UKM extends Controller
 {
@@ -30,8 +33,10 @@ class Superadmin_UKM extends Controller
     public function index()
     {
         $pass_data = [
-            'data_user'=> $this->getDataSuperadmin(),
-            'profil_user_ukm' => $this->getDataPerusahaan()
+            'data_user'=> $this->getFavoriteData()['data_user'],
+            'profil_user_ukm'=> $this->getFavoriteData()['profil_user_ukm'],
+            'content_menu'=> 'profil',
+            'usaha'=> $this->getFavoriteData()['data_usaha']
         ];
         return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
     }
@@ -40,8 +45,7 @@ class Superadmin_UKM extends Controller
     {
         $pass_data = [
             'menu'=>'edit',
-            'data_user'=> $this->getDataSuperadmin(),
-            'profil_user_ukm' => $this->getDataPerusahaan(),
+            $this->getFavoriteData(),
             'provinsi'=>$this->getProvinsi(),
             'kabupaten' => $this->getKabupaten()
         ];
@@ -50,7 +54,77 @@ class Superadmin_UKM extends Controller
 
     public function updateProfile(Request $req, $id)
     {
-        dd($req->all());
+        $this->validate($req, [
+            'foto'=>'required|image|mimes:jpeg,png,gif,jpg|max:2048',
+            'nama'=>'required',
+            'email'=>'required',
+            'id_provinsi'=>'required',
+            'id_kabupaten'=>'required',
+            'telp'=>'required',
+            'hp'=>'required',
+            'wa'=>'required',
+        ]);
+
+
+        $foto = $req->foto;
+        $nama = $req->nama;
+        $email= $req->email;
+        $id_provinsi = $req->id_provinsi;
+        $id_kabupaten = $req->id_kabupaten;
+        $telp =  $req->telp;
+        $hp = $req->hp;
+        $wa = $req->wa;
+        $tegram = $req->telegram;
+
+        $image_name = time().'.'.$foto->getClientOriginalExtension();
+        $model_user_ukm = superadmin_ukms::find($id);
+        if(!empty($req->password))
+        {
+            $password = bcrypt($req->password);
+        }
+        else
+        {
+            $password = $model_user_ukm->password;
+        }
+        $model_user_ukm->nama =$nama;
+        $model_user_ukm->email =$email;
+        $model_user_ukm->password =$password;
+        if($model_user_ukm->save())
+        {
+            $profil_user_ukm = profil_user_ukm::updateOrCreate([
+                'id_user_ukm'=>$model_user_ukm->id
+            ],[
+                'telp'=>$telp,
+                'hp'=>$hp,
+                'wa'=>$wa,
+                'telegram'=>$tegram,
+                'provinsi_id'=>$id_provinsi,
+                'kab_id'=>$id_kabupaten,
+                'foto'=>$image_name
+            ]);
+
+            if($profil_user_ukm->save()){
+                if ($foto->move(public_path('image_superadmin_ukm'), $image_name)) {
+                    return redirect('dashboard')->with('message_success','Profil anda berhasil diperbarui');
+                }else{
+                    return redirect('dashboard')->with('message_error','Profil anda berhasil diperbarui namun foto gagal diupload');
+                }
+            }
+        }
+
+        return redirect('editprofile')->with('message_error','Data tidak boleh kosong');
+
+    }
+
+    public function getFavoriteData(){
+        $data = [
+            'data_user'=> $this->getDataSuperadmin(),
+            'profil_user_ukm' => $this->getDataPerusahaan(),
+            'data_usaha'=> perusahaan::where('id_user_ukm', $this->id_superadmin)->paginate(6),
+            'visi' => visi_p::where('id_user_ukm', $this->id_superadmin)->paginate(6),
+            'misi' => misi_p::where('id_user_ukm', $this->id_superadmin)->paginate(6)
+        ];
+        return $data;
     }
 
     private function getDataSuperadmin()
@@ -81,5 +155,34 @@ class Superadmin_UKM extends Controller
         return response()->json($this->getKabupaten($id_kabupaten));
     }
 
+    public function profil_perusahaan(){
+        $pass_data=[
+            'data_user'=> $this->getFavoriteData()['data_user'],
+            'profil_user_ukm'=> $this->getFavoriteData()['profil_user_ukm'],
+            'content_menu'=>'profil',
+            'usaha'=> $this->getFavoriteData()['data_usaha']
+        ];
+        return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
+    }
 
+    public function visi(){
+        $pass_data=[
+            'data_user'=> $this->getFavoriteData()['data_user'],
+            'profil_user_ukm'=> $this->getFavoriteData()['profil_user_ukm'],
+            'visi' => $this->getFavoriteData()['visi'],
+            'content_menu'=>'visi'
+        ];
+        return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
+    }
+
+    public function misi()
+    {
+        $pass_data=[
+            'data_user'=> $this->getFavoriteData()['data_user'],
+            'profil_user_ukm'=> $this->getFavoriteData()['profil_user_ukm'],
+            'misi' => $this->getFavoriteData()['misi'],
+            'content_menu'=>'misi'
+        ];
+        return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
+    }
 }

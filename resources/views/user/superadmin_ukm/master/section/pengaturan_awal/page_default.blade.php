@@ -28,22 +28,37 @@
             <div class="col-md-9">
                <div class="nav-tabs-custom">
                    <ul class="nav nav-tabs">
-                       <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
-                       <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-                       <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                       <li @if($content_menu=="profil") class="active" @endif><a href="{{ url('profil-perusahaan') }}">Profil Usaha</a></li>
+                       <li @if($content_menu=="visi") class="active" @endif><a href="{{ url('visi') }}" >Visi</a></li>
+                       <li @if($content_menu=="misi") class="active" @endif><a href="{{ url('misi') }}">Misi</a></li>
+                       <li @if($content_menu=="akta") class="active" @endif><a href="#akta" data-toggle="tab">Akta</a></li>
+                       <li  @if($content_menu=="isi_usaha") class="active" @endif><a href="#isi_usaha" data-toggle="tab">Konten Usaha</a></li>
                    </ul>
                    <div class="tab-content">
-                       <div class="active tab-pane" id="activity">
-
-                       </div>
-                       <!-- /.tab-pane -->
-                       <div class="tab-pane" id="timeline">
-
-                       </div>
-                       <!-- /.tab-pane -->
-
-                       <div class="tab-pane" id="settings">
-
+                       <div class="active tab-pane"
+                            @if($content_menu=="profil")
+                            id="profil"
+                            @elseif($content_menu=="visi")
+                            id="visi"
+                            @elseif($content_menu=="misi")
+                            id="misi"
+                            @elseif($content_menu=="akta")
+                            id="akta"
+                            @elseif($content_menu=="isi_usaha")
+                            id="isi_usaha"
+                            @endif
+                       >
+                           @if($content_menu=="profil")
+                               @include('user.superadmin_ukm.master.section.profil_perusahaan.include.profil_content')
+                           @elseif($content_menu=="visi")
+                               @include('user.superadmin_ukm.master.section.visi_perusahaan.include.visi_content')
+                           @elseif($content_menu=="misi")
+                               @include('user.superadmin_ukm.master.section.misi_perusahaan.include.misi_content')
+                           @elseif($content_menu=="akta")
+                               id="akta"
+                           @elseif($content_menu=="isi_usaha")
+                               id="isi_usaha"
+                           @endif
                        </div>
                        <!-- /.tab-pane -->
                    </div>
