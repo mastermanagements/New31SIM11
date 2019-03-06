@@ -31,8 +31,8 @@
                        <li @if($content_menu=="profil") class="active" @endif><a href="{{ url('profil-perusahaan') }}">Profil Usaha</a></li>
                        <li @if($content_menu=="visi") class="active" @endif><a href="{{ url('visi') }}" >Visi</a></li>
                        <li @if($content_menu=="misi") class="active" @endif><a href="{{ url('misi') }}">Misi</a></li>
-                       <li @if($content_menu=="akta") class="active" @endif><a href="#akta" data-toggle="tab">Akta</a></li>
-                       <li  @if($content_menu=="isi_usaha") class="active" @endif><a href="#isi_usaha" data-toggle="tab">Konten Usaha</a></li>
+                       <li @if($content_menu=="akta") class="active" @endif><a href="{{ url('akta') }}" >Akta</a></li>
+                       <li  @if($content_menu=="isi_usaha") class="active" @endif><a href="{{ url('izin-usaha') }}" >Izin Usaha</a></li>
                    </ul>
                    <div class="tab-content">
                        <div class="active tab-pane"
@@ -55,9 +55,9 @@
                            @elseif($content_menu=="misi")
                                @include('user.superadmin_ukm.master.section.misi_perusahaan.include.misi_content')
                            @elseif($content_menu=="akta")
-                               id="akta"
+                               @include('user.superadmin_ukm.master.section.akta_perusahaan.include.akta_content')
                            @elseif($content_menu=="isi_usaha")
-                               id="isi_usaha"
+                               @include('user.superadmin_ukm.master.section.isin_usaha_perusahaan.include.isin_content')
                            @endif
                        </div>
                        <!-- /.tab-pane -->

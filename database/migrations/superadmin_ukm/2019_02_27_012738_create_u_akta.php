@@ -22,7 +22,7 @@ class CreateUAkta extends Migration
             $table->string('no_rak')->nullable();
             $table->string('file_akta');
             $table->integer('id_perusahaan')->unsigned();
-            $table->integer('id_karyawan')->unsigned();
+            $table->integer('id_user_ukm')->unsigned();
             $table->timestamps();
         });
     }

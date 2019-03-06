@@ -58,3 +58,16 @@ Route::get('membuat-misi','Superadmin_ukm\Misi@create');
 
 Route::post('store-misi','Superadmin_ukm\Misi@store');
 
+Route::get('akta','Superadmin_ukm\Superadmin_UKM@akta');
+
+Route::get('unggah-akta','Superadmin_ukm\Akta@create');
+
+Route::post('akta-visi','Superadmin_ukm\Akta@store');
+
+Route::get('izin-usaha','Superadmin_ukm\Superadmin_UKM@izin_usaha');
+
+Route::get('unggah-ijin','Superadmin_ukm\Ijin_usaha@create');
+
+Route::post('ijin-usaha','Superadmin_ukm\Ijin_usaha@store');
+
+Route::get('unggah-ijin/{id}','Superadmin_ukm\Ijin_usaha@edit');

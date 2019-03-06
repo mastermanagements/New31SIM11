@@ -13,6 +13,8 @@ use App\Model\Superadmin_sim\U_kabupaten as kabupaten;
 use App\Model\Superadmin_ukm\U_usaha as perusahaan;
 use App\Model\Superadmin_ukm\A_visi_p as visi_p;
 use App\Model\Superadmin_ukm\A_misi_p as misi_p;
+use App\Model\Superadmin_ukm\U_Akta as akta_p;
+use App\Model\Superadmin_ukm\U_ijin_usaha as ijin;
 
 class Superadmin_UKM extends Controller
 {
@@ -122,7 +124,9 @@ class Superadmin_UKM extends Controller
             'profil_user_ukm' => $this->getDataPerusahaan(),
             'data_usaha'=> perusahaan::where('id_user_ukm', $this->id_superadmin)->paginate(6),
             'visi' => visi_p::where('id_user_ukm', $this->id_superadmin)->paginate(6),
-            'misi' => misi_p::where('id_user_ukm', $this->id_superadmin)->paginate(6)
+            'misi' => misi_p::where('id_user_ukm', $this->id_superadmin)->paginate(6),
+            'akta' => akta_p::where('id_user_ukm', $this->id_superadmin)->paginate(6),
+            'ijin' => ijin::all()->where('id_user_ukm', $this->id_superadmin),
         ];
         return $data;
     }
@@ -182,6 +186,27 @@ class Superadmin_UKM extends Controller
             'profil_user_ukm'=> $this->getFavoriteData()['profil_user_ukm'],
             'misi' => $this->getFavoriteData()['misi'],
             'content_menu'=>'misi'
+        ];
+        return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
+    }
+    public function akta()
+    {
+        $pass_data=[
+            'data_user'=> $this->getFavoriteData()['data_user'],
+            'profil_user_ukm'=> $this->getFavoriteData()['profil_user_ukm'],
+            'akta'=> $this->getFavoriteData()['akta'],
+            'content_menu'=>'akta'
+        ];
+        return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
+    }
+
+    public function izin_usaha()
+    {
+        $pass_data=[
+            'data_user'=> $this->getFavoriteData()['data_user'],
+            'profil_user_ukm'=> $this->getFavoriteData()['profil_user_ukm'],
+            'ijin'=> $this->getFavoriteData()['ijin'],
+            'content_menu'=>'isi_usaha'
         ];
         return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
     }
