@@ -15,7 +15,7 @@ use App\Model\Superadmin_ukm\A_visi_p as visi_p;
 use App\Model\Superadmin_ukm\A_misi_p as misi_p;
 use App\Model\Superadmin_ukm\U_Akta as akta_p;
 use App\Model\Superadmin_ukm\U_ijin_usaha as ijin;
-
+use App\Model\Superadmin_ukm\U_jabatan_p as jabatans;
 class Superadmin_UKM extends Controller
 {
     //
@@ -209,5 +209,29 @@ class Superadmin_UKM extends Controller
             'content_menu'=>'isi_usaha'
         ];
         return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
+    }
+
+    public function jabatan_perusahaan(){
+        $pass_data=[
+            'data_user'=> $this->getFavoriteData()['data_user'],
+            'profil_user_ukm'=> $this->getFavoriteData()['profil_user_ukm'],
+            'content_menu'=>'jabatan',
+            'usaha'=> $this->getFavoriteData()['data_usaha']
+        ];
+        return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
+    }
+
+    public function jabatan_di_perusahaan($id){
+        if(empty($data_perusahaan= perusahaan::where('id',$id)->where('id_user_ukm', $this->id_superadmin)->first())){
+            return abort(404);
+        }
+        $pass_data=[
+            'data_user'=> $this->getFavoriteData()['data_user'],
+            'profil_user_ukm'=> $this->getFavoriteData()['profil_user_ukm'],
+            'content_menu'=>'jabatan',
+            'usaha'=> $data_perusahaan,
+            'jabatan'=> jabatans::all()->where('id_perusahaan', $id)
+        ];
+        return view('user.superadmin_ukm.master.section.jabatan_perusahaan.include.jabatan_content', $pass_data);
     }
 }

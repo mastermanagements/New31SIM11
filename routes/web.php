@@ -71,3 +71,23 @@ Route::get('unggah-ijin','Superadmin_ukm\Ijin_usaha@create');
 Route::post('ijin-usaha','Superadmin_ukm\Ijin_usaha@store');
 
 Route::get('unggah-ijin/{id}','Superadmin_ukm\Ijin_usaha@edit');
+
+Route::put('ijin-usaha-update/{id}','Superadmin_ukm\Ijin_usaha@update');
+
+Route::put('unggah-ijin-delete/{id}','Superadmin_ukm\Ijin_usaha@delete');
+
+Route::get('jabatan','Superadmin_ukm\Superadmin_UKM@jabatan_perusahaan');
+
+Route::get('pilih-usaha/{id}','Superadmin_ukm\Superadmin_UKM@jabatan_di_perusahaan');
+
+Route::get('pilih-usaha/{id}/daftar-jabatan','Superadmin_ukm\Superadmin_UKM@jabatan_di_perusahaan');
+
+Route::get('tambah-jabatan/{id_perusahaan}','Superadmin_ukm\Jabatan@create');
+
+Route::post('store-jabatan','Superadmin_ukm\Jabatan@store');
+
+Route::get('ubah-jabatan/{id_perusahaan}/{id_jabatan}','Superadmin_ukm\Jabatan@edit');
+
+Route::put('update-jabatan/{id_jabatan}','Superadmin_ukm\Jabatan@update');
+
+Route::put('jabatan-delete/{id_jabatan}','Superadmin_ukm\Jabatan@delete');

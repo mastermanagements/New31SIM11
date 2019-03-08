@@ -37,7 +37,7 @@
                     <td>{{ $value->klasifikasi }}</td>
                     <td>{{ $value->file_iu }}</td>
                     <td>
-                        <form action="#" method="post">
+                        <form action="{{ url('unggah-ijin-delete/'.$value->id) }}" method="post">
                             <a href="{{ url('unggah-ijin/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
                             <p></p>
                             {{ csrf_field() }}

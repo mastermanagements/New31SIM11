@@ -19,7 +19,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">LIST MENU</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-gears"></i> <span>Pengaturan Awal</span></a></li>
+            <li class="active"><a href="{{ url('dashboard') }}"><i class="fa fa-gears"></i> <span>Pengaturan Awal</span></a></li>
             <li><a href="#"><i class="fa fa-group"></i> <span>Pengguna Karyawan</span></a></li>
             <li><a href="#"><i class="fa fa-chain"></i> <span>Pengaturan Menu</span></a></li>
         </ul>

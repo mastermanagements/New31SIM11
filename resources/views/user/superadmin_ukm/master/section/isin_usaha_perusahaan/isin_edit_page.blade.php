@@ -30,7 +30,7 @@
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
-                   <form role="form" method="post" action="{{ url('ijin-usaha') }}" enctype="multipart/form-data">
+                   <form role="form" method="post" action="{{ url('ijin-usaha-update/'.$ijin->id) }}" enctype="multipart/form-data">
                        <div class="box-body">
                            @if(!empty(session('message_success')))
                                <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
@@ -95,12 +95,13 @@
                                <div class="form-group">
                                   <label for="exampleInputFile">File UI</label>
                                    <input type="file" id="exampleInputFile" name="file_iu" required>
+                                   <input type="hidden" id="exampleInputFile" name="file_iu_old" value="{{ $ijin->file_iu }}">
                                    <img src="{{ asset('ijinUsaha/'.$ijin->file_iu) }}" style="width: 100px; height: 100px; margin: 10px">
-
                                    <p class="help-block" style="color:red">*Format file yang disarankan .jpg, .png dan .gif</p>
                                </div>
                                <div class="box-footer">
-                           {{csrf_field()}}
+                                   <input type="hidden" name="_method" value="put">
+                                   {{ csrf_field() }}
                            <button type="submit" class="btn btn-primary">Submit</button>
                        </div>
                        </div>

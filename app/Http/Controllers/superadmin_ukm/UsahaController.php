@@ -90,9 +90,13 @@ class UsahaController extends Controller
 
     public function edit($id)
     {
+       if(empty($data_usaha = perusahaan::where('id', $id)->where('id_user_ukm', $this->id_superadmin)->first() ))
+       {
+            return abort(404);
+       }
         $data_pass = [
             'provinsi'=>provinsi::all(),
-            'usaha'=>perusahaan::find($id)
+            'usaha'=>$data_usaha
         ];
         return view('user.superadmin_ukm.master.section.profil_perusahaan.edit_page',$data_pass);
     }
