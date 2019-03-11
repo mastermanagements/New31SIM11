@@ -28,6 +28,7 @@ class Superadmin_UKM extends Controller
                 return redirect('login-page')->with('message_fail','Waktu masuk anda telah habis, Silahkan login Ulang..!');
             }
             $this->id_superadmin = Session::get('id_superadmin_ukm');
+            Session::put('main_menu','pengaturan_awal-data_perusahaan');
             return $next($req);
         });
     }
@@ -47,9 +48,10 @@ class Superadmin_UKM extends Controller
     {
         $pass_data = [
             'menu'=>'edit',
-            $this->getFavoriteData(),
+            'data_user'=>$this->getFavoriteData()['data_user'],
             'provinsi'=>$this->getProvinsi(),
-            'kabupaten' => $this->getKabupaten()
+            'kabupaten' => $this->getKabupaten(),
+            'content_menu' => 'profil'
         ];
         return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
     }

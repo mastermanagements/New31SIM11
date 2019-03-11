@@ -91,3 +91,15 @@ Route::get('ubah-jabatan/{id_perusahaan}/{id_jabatan}','Superadmin_ukm\Jabatan@e
 Route::put('update-jabatan/{id_jabatan}','Superadmin_ukm\Jabatan@update');
 
 Route::put('jabatan-delete/{id_jabatan}','Superadmin_ukm\Jabatan@delete');
+
+//=========================== Pengguna Karyawan ========================================================================
+
+Route::get('pengguna-karyawan','Superadmin_ukm\PenggunaKaryawan@karyawan');
+
+Route::get('daftar-karyawan/{id_usaha}','Superadmin_ukm\Karyawan@data_karyawan');
+
+Route::get('daftarkan-karyawan/{id_usaha}','Superadmin_ukm\Karyawan@create');
+
+Route::post('store-karyawan','Superadmin_ukm\Karyawan@store');
+
+Route::get('ubah-karyawan/{id_usaha}/{id_karyawan}','Superadmin_ukm\Karyawan@edit');

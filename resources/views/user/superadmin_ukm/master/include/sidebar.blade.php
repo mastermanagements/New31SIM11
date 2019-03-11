@@ -19,9 +19,24 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">LIST MENU</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="{{ url('dashboard') }}"><i class="fa fa-gears"></i> <span>Pengaturan Awal</span></a></li>
-            <li><a href="#"><i class="fa fa-group"></i> <span>Pengguna Karyawan</span></a></li>
-            <li><a href="#"><i class="fa fa-chain"></i> <span>Pengaturan Menu</span></a></li>
+            @if(!empty($main_menu=Session::get('main_menu')))
+                @php($explode = explode('-', $main_menu))
+            @else
+                @php($explode = null)
+            @endif
+
+            <li class="treeview @if($explode[0]=="pengaturan_awal") active menu-open @endif" >
+                <a href="#">
+                    <i class="fa fa-gears"></i> <span>Pengaturan Awal</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@if($explode[1]=="data_perusahaan") active @endif"><a href="{{ url('dashboard') }}" ><i class="fa fa-building"></i> <span>Data Perusahaan</span></a></li>
+                    <li class="@if($explode[1]=="pengguna_karyawan") active @endif"><a href="{{ url('pengguna-karyawan') }}" ><i class="fa fa-users"></i> <span>Pengguna Karyawan</span></a></li>
+                </ul>
+            </li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>
