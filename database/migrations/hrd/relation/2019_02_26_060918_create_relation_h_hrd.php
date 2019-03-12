@@ -16,6 +16,7 @@ class CreateRelationHHrd extends Migration
         Schema::table('h_karyawan', function (Blueprint $table) {
             //
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_user_ukm')->references('id')->on('u_user_ukm');
         });
     }
 

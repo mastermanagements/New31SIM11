@@ -23,6 +23,7 @@
                             <span class="progress-description">{{ $perusahaan->email }}</span>
                             <span class="progress-description">
                             <a href="{{ url('daftar-karyawan/'. $perusahaan->id ) }}" class="btn btn-xs btn-danger"><i class="fa fa-group"></i> Daftar Karyawan</a>
+                            <a href="{{ url('daftar-investor/'. $perusahaan->id ) }}" class="btn btn-xs btn-warning"><i class="fa fa-suitcase"></i> Daftar Investor</a>
                       </span>
                         </div>
                         <!-- /.info-box-content -->

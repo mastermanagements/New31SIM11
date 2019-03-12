@@ -103,3 +103,25 @@ Route::get('daftarkan-karyawan/{id_usaha}','Superadmin_ukm\Karyawan@create');
 Route::post('store-karyawan','Superadmin_ukm\Karyawan@store');
 
 Route::get('ubah-karyawan/{id_usaha}/{id_karyawan}','Superadmin_ukm\Karyawan@edit');
+
+Route::put('update-karyawan/{id_karyawan}','Superadmin_ukm\Karyawan@update');
+
+Route::get('detail-karyawan/{id_karyawan}','Superadmin_ukm\Karyawan@detail');
+
+Route::put('karyawan-delete/{id_karyawan}','Superadmin_ukm\Karyawan@delete');
+
+//=============================== Investor =============================================================================
+
+Route::get('daftar-investor/{id_perusahaa}','Superadmin_ukm\Investor@daftar_inverstor');
+
+Route::get('daftarkan-investor/{id_perusahaan}','Superadmin_ukm\Investor@tambah_investor');
+
+Route::post('store-investor', 'Superadmin_ukm\Investor@store');
+
+Route::get('ubah-investor/{id_perusahaan}/{id_investor}','Superadmin_ukm\Investor@edit_investor');
+
+Route::put('update-investor/{id_investor}','Superadmin_ukm\Investor@update');
+
+Route::put('delete-investor/{id_investor}','Superadmin_ukm\Investor@delete');
+
+Route::get('detail-investor/{id_perusahaan}/{id_investor}','Superadmin_ukm\Investor@detail_investor');

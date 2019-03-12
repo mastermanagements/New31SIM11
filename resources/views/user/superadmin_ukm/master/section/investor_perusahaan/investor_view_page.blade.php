@@ -14,7 +14,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-           Halaman Daftar Karyawan
+           Halaman Daftar Investor
         </h1>
     </section>
 
@@ -26,46 +26,41 @@
                <!-- general form elements -->
                <div class="box box-primary">
                    <div class="box-header with-border">
-                       <h3 class="box-title">Tabel Karyawan</h3>
+                       <h3 class="box-title">Tabel Investor</h3>
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
 
                    <div class="box-body">
-                       <a href="{{ url('daftarkan-karyawan/'. $id_usaha ) }}" class="btn btn-block btn-info"><i class="fa fa-user-plus"></i> Daftarkan Karyawan Anda</a>
+                       <a href="{{ url('daftarkan-investor/'. $id_usaha ) }}" class="btn btn-block btn-info"><i class="fa fa-user-plus"></i> Daftarkan Investor Anda</a>
                        <p></p>
                        <table id="example1" class="table table-bordered table-striped">
                            <thead>
                            <tr>
                                <th>No.</th>
-                               <th>Nik</th>
+                               <th>No. KTP</th>
                                <th>Nama</th>
-                               <th>Status Kerja</th>
+                               <th>Jumlah Saham</th>
                                <th>Aksi</th>
                            </tr>
                            </thead>
                            <tbody>
                            @php($i=1)
-                           @foreach($data_karyawan as $value)
+                           @foreach($data_investor as $value)
                                <tr>
                                    <td>{{ $i++ }}</td>
-                                   <td>{{ $value->nik }}</td>
-                                   <td>{{ $value->nama_ky }}</td>
+                                   <td>{{ $value->no_ktp }}</td>
+                                   <td>{{ $value->nm_investor }}</td>
                                    <td>
-                                       @if($value->status_kerja==0)
-                                           Aktif
-                                       @else
-                                           Tidak Aktif
-                                       @endif
+                                      {{ $value->jum_saham }}
                                    </td>
-
                                    <td>
-                                       <form action="{{ url('karyawan-delete/'.$value->id) }}" method="post">
-                                           <a href="{{ url('detail-karyawan/'.$value->id) }}" class="btn btn-primary" title="Detail"><i class="fa  fa-sticky-note-o"></i></a>
-                                           <a href="{{ url('ubah-karyawan/'.$id_usaha.'/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                       <form action="{{ url('delete-investor/'.$value->id) }}" method="post">
+                                           <a href="{{ url('detail-investor/'.$id_usaha.'/'.$value->id) }}" class="btn btn-primary" title="Detail"><i class="fa  fa-sticky-note-o"></i></a>
+                                           <a href="{{ url('ubah-investor/'.$id_usaha.'/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
                                            {{ csrf_field() }}
                                            <input type="hidden" name="_method" value="put"/>
-                                           <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data karyawan ini ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+                                           <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data investor ini ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
                                        </form>
                                    </td>
                                </tr>

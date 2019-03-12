@@ -14,7 +14,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-           Halaman Karyawan
+           Halaman Tambah Karyawan
         </h1>
     </section>
 

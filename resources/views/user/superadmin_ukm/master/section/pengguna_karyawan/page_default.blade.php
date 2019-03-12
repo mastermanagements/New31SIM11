@@ -9,7 +9,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Pengguna Karyawan
+            Pengguna Karyawan Dan Investor
         </h1>
     </section>
 
@@ -23,21 +23,16 @@
             <div class="col-md-12">
                <div class="nav-tabs-custom">
                    <ul class="nav nav-tabs">
-                       <li @if($content_menu=="karyawan") class="active" @endif><a href="{{ url('profil-perusahaan') }}">Karyawan</a></li>
-                       <li @if($content_menu=="investor") class="active" @endif><a href="{{ url('visi') }}" >Investor</a></li>
+                       <li @if($content_menu=="karyawan") class="active" @endif><a href="{{ url('profil-perusahaan') }}">Daftar Usaha</a></li>
                    </ul>
                    <div class="tab-content">
                        <div class="active tab-pane"
                             @if($content_menu=="karyawan")
                             id="profil"
-                            @elseif($content_menu=="investor")
-                            id="visi"
                             @endif
                        >
                            @if($content_menu=="karyawan")
                                @include('user.superadmin_ukm.master.section.karyawan_perusahaan.include.karyawan_content')
-                           @elseif($content_menu=="investor")
-                               {{--@include('user.superadmin_ukm.master.section.visi_perusahaan.include.visi_content')--}}
                            @endif
                        </div>
                        <!-- /.tab-pane -->

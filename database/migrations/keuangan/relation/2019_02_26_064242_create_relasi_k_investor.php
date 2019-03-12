@@ -18,6 +18,7 @@ class CreateRelasiKInvestor extends Migration
             $table->foreign('id_prov')->references('id')->on('u_provinsi');
             $table->foreign('id_kab')->references('id')->on('u_kabupaten');
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_user_ukm')->references('id')->on('u_user_ukm');
         });
     }
 

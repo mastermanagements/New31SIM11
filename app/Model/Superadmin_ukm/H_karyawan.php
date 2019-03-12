@@ -30,6 +30,7 @@ class H_karyawan extends Model
         'program_studi',
         'pt',
         'id_perusahaan',
+        'id_user_ukm',
         'tgl_masuk',
     ];
 
