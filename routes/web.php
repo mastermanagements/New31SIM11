@@ -125,3 +125,9 @@ Route::put('update-investor/{id_investor}','Superadmin_ukm\Investor@update');
 Route::put('delete-investor/{id_investor}','Superadmin_ukm\Investor@delete');
 
 Route::get('detail-investor/{id_perusahaan}/{id_investor}','Superadmin_ukm\Investor@detail_investor');
+
+//=============================== Menu Perusahaan ======================================================================
+
+Route::get('menu-perusahaan','Superadmin_ukm\Menu_perusahaan@daftar_perusahaan');
+
+Route::get('pengaturan-menu/{id}','Superadmin_ukm\Menu_perusahaan@daftar_menu');

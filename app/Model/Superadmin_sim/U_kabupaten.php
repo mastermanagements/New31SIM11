@@ -13,6 +13,6 @@ class U_kabupaten extends Model
 
     public function getProvinsi()
     {
-        return $this->belongsTo('App/Model/Superadmin_sim/U_provinsi','id_provinsi');
+        return $this->belongsTo('App\Model\Superadmin_sim\U_provinsi','id_provinsi');
     }
 }
