@@ -34,8 +34,8 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="@if($explode[1]=="data_perusahaan") active @endif"><a href="{{ url('dashboard') }}" ><i class="fa fa-building"></i> <span>Data Perusahaan</span></a></li>
+                    <li class="@if($explode[1]=="menu_perusahaan") active @endif"><a href="{{ url('menu-perusahaan') }}" ><i class="fa fa-list"></i> <span>Menu Aktif Perusahaan</span></a></li>
                     <li class="@if($explode[1]=="pengguna_karyawan") active @endif"><a href="{{ url('pengguna-karyawan') }}" ><i class="fa fa-users"></i> <span>Pengguna Karyawan</span></a></li>
-                    <li class="@if($explode[1]=="menu_perusahaan") active @endif"><a href="{{ url('menu-perusahaan') }}" ><i class="fa fa-users"></i> <span>Menu Aktif Perusahaan</span></a></li>
                 </ul>
             </li>
         </ul>

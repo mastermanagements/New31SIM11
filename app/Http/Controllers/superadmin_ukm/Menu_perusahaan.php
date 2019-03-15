@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Superadmin_ukm\U_usaha as usaha;
 use App\Model\Superadmin_sim\U_master_menu as menu;
+use App\Model\Superadmin_sim\U_master_sub_menu as s_menu;
 
+use App\Model\Superadmin_ukm\U_menu_ukm as ukm_menu;
+use App\Model\Superadmin_ukm\U_submenu_ukm as s_ukm_menu;
 
 class Menu_perusahaan extends Controller
 {
@@ -47,8 +50,56 @@ class Menu_perusahaan extends Controller
             'content_menu'=>"daftar-perusahaan",
             'usaha'=> $data_usaha,
             'menu'=> menu::all(),
+            'menu_perusahaan'=>  s_ukm_menu::all()->where('id_perusahaan', $id)
         ];
         return view('user.superadmin_ukm.master.section.menu_perusahaan.menu_create_page', $data_pass);
     }
 
+
+    public function store_menu(Request $req)
+    {
+        $this->validate($req,[
+           'sub_menu_id' => 'required',
+            'id_usaha' => 'required'
+        ]);
+
+        $pk_sub_menu = $req->sub_menu_id;
+        $id_perusahaan = $req->id_usaha;
+        $sub_master_menu_mode_l = s_menu::findOrFail($pk_sub_menu);
+        $master_menu_model = menu::findOrFail($sub_master_menu_mode_l->id_master_menu);
+        $model_menu_ukm=ukm_menu::firstOrCreate(['id_master_menu'=>$master_menu_model->id,'id_perusahaan'=> $id_perusahaan]);
+        if($model_menu_ukm->save())
+        {
+            $master_SubMenu_model = new s_ukm_menu;
+            $master_SubMenu_model->id_menu_ukm = $model_menu_ukm->id;
+            $master_SubMenu_model->id_master_submenu = $sub_master_menu_mode_l->id;
+            $master_SubMenu_model->id_perusahaan = $id_perusahaan;
+
+            if($master_SubMenu_model->save())
+            {
+                $response = [
+                  'Message'=> 'Menu berhasil diaktifkan'
+                ];
+
+                return response()->json($response);
+            }
+        }
+
+        return response()->json(array('Message'=> 'Terjadi Kesalahan..!'));
+    }
+
+    public function delete_menu(Request $req)
+    {
+        $this->validate($req,[
+            'sub_menu_id' => 'required',
+            'id_usaha' => 'required'
+        ]);
+
+        $model = s_ukm_menu::where('id_master_submenu', $req->sub_menu_id)->where('id_perusahaan', $req->id_usaha)->first();
+        if($model->delete())
+        {
+            return response()->json(array('Message'=> 'Anda Telah Menon Aktifkan menu ini..!'));
+        }
+        return response()->json(array('Message'=> 'Terjadi Kesalahan..!'));
+    }
 }

@@ -131,3 +131,9 @@ Route::get('detail-investor/{id_perusahaan}/{id_investor}','Superadmin_ukm\Inves
 Route::get('menu-perusahaan','Superadmin_ukm\Menu_perusahaan@daftar_perusahaan');
 
 Route::get('pengaturan-menu/{id}','Superadmin_ukm\Menu_perusahaan@daftar_menu');
+
+Route::post('store_request_menu','Superadmin_ukm\Menu_perusahaan@store_menu');
+
+Route::post('delete_request_menu','Superadmin_ukm\Menu_perusahaan@delete_menu');
+
+Route::get('hak-akses-karyawan/{id_karyawan}','Superadmin_ukm\Hak_akses@daftar_hak_akses');

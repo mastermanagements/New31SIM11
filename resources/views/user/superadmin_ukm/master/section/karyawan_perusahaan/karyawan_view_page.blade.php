@@ -62,10 +62,11 @@
                                    <td>
                                        <form action="{{ url('karyawan-delete/'.$value->id) }}" method="post">
                                            <a href="{{ url('detail-karyawan/'.$value->id) }}" class="btn btn-primary" title="Detail"><i class="fa  fa-sticky-note-o"></i></a>
-                                           <a href="{{ url('ubah-karyawan/'.$id_usaha.'/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                           <a href="{{ url('ubah-karyawan/'.$id_usaha.'/'.$value->id) }}" class="btn btn-warning" title="Ubah"><i class="fa fa-edit"></i></a>
                                            {{ csrf_field() }}
                                            <input type="hidden" name="_method" value="put"/>
                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data karyawan ini ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+                                           <a href="{{ url('hak-akses-karyawan/'.$value->id) }}" class="btn btn-default" title="Hak Akses"><i class="fa fa-edit"></i> Hak Akses</a>
                                        </form>
                                    </td>
                                </tr>

@@ -45,20 +45,13 @@
                                         @foreach($submenu as $sKey => $sum_menu)
                                            <div class="form-group" style="padding-left: 5%;">
                                                <input type="checkbox" class="minimal menu_sub_{{ $key }}" value="{{ $sum_menu->id }}" id="menus_{{ $key }}"
-                                               @if(!empty($menu_perusahaan))
-                                                    @foreach($menu_perusahaan as $menu_perusahaans)
-                                                        @if($menu_perusahaans->id_master_submenu == $sum_menu->id)
-                                                            checked
-                                                                @endif
-                                                    @endforeach
-                                               @endif
                                                > <label > {{ $sum_menu->nm_submenu }}
                                                </label>
                                            </div>
                                         @endforeach
                                   @endif
                                @endforeach
-                               <input type="hidden" name="id_perusahaan" value="{{ $usaha->id }}">
+                               <input type="hidden" name="id_perusahaan" value="{{ $karyawan->id_perusahaan }}">
                        </div>
                        <div class="box-footer">
 
