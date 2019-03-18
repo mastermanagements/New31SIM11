@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-           Halaman Pengaturan Menu Karyawan
+           Halaman Pengaturan Menu Investor
         </h1>
     </section>
 
@@ -45,20 +45,22 @@
                                         @foreach($submenu as $sKey => $sum_menu)
                                            <div class="form-group" style="padding-left: 5%;">
                                                <input type="checkbox" class="minimal menu_sub_{{ $key }}" value="{{ $sum_menu->getMasterSubMenuUKM->id }}" id="menus_{{ $key }}"
-                                               @if(!empty($daftar_menu_karyawan))
-                                                    @foreach($daftar_menu_karyawan as $daftar_menu)
-                                                            @if($sum_menu->getMasterSubMenuUKM->id == $daftar_menu->getSubMenuPerusahaan->id_master_submenu)
-                                                                checked
-                                                                @endif
-                                                            @endforeach
+
+                                                      @if(!empty($daftar_menu_investor))
+                                                          @foreach($daftar_menu_investor as $daftar_menu)
+                                                              @if($sum_menu->getMasterSubMenuUKM->id == $daftar_menu->getSubMenuPerusahaan->id_master_submenu)
+                                                                 checked
+                                                               @endif
+                                                           @endforeach
                                                        @endif
+
                                                > <label > {{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}
                                                </label>
                                            </div>
                                         @endforeach
                                   @endif
                                @endforeach
-                               <input type="hidden" name="id_perusahaan" value="{{ $karyawan->id_perusahaan }}">
+                               <input type="hidden" name="id_perusahaan" value="{{ $investor->id_perusahaan }}">
                        </div>
                        <div class="box-footer">
 
@@ -109,7 +111,7 @@
                  //  $('#menu_'+index).iCheck('check')
                   // alert(""+ $(this).val());
                    $.ajax({
-                       url:"{{ url('store_request_menu_karyawan') }}/{{ $karyawan->id }}",
+                       url:"{{ url('store_request_menu_investor') }}/{{ $investor->id }}",
                        type: "post",
                        data :{
                            'id_master_submenu': $(this).val(),
@@ -126,7 +128,7 @@
 
                $('.menu_sub_'+index).on('ifUnchecked', function (event) {
                    $.ajax({
-                       url:"{{ url('delete_request_menu_karyawan') }}/{{ $karyawan->id }}",
+                       url:"{{ url('delete_request_menu_investor') }}/{{ $investor->id }}",
                        type: "post",
                        data :{
                            'id_master_submenu': $(this).val(),

@@ -15,4 +15,10 @@ class U_menu_ukm extends Model
     {
         return $this->belongsTo('App\Model\Superadmin_sim\U_master_menu','id_master_menu');
     }
+
+    public function getSubMenu()
+    {
+        return $this->hasMany('App\Model\Superadmin_ukm\U_submenu_ukm','id_menu_ukm');
+    }
+
 }

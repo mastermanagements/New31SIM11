@@ -61,6 +61,8 @@
                                            {{ csrf_field() }}
                                            <input type="hidden" name="_method" value="put"/>
                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data investor ini ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+                                           <a href="{{ url('hak-akses-investor/'.$value->id) }}" class="btn btn-default" title="Hak Akses"><i class="fa fa-edit"></i> Hak Akses</a>
+
                                        </form>
                                    </td>
                                </tr>

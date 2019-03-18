@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('registerApp', function () {
     return view('user.superadmin_ukm.master.section.registered.registered');
 });
@@ -20,11 +21,23 @@ Route::get('login-page', function () {
 });
 
 
+Route::get('dashboard', function (){
+    if(empty($model_superadmin = App\Model\Superadmin_ukm\U_usaha::where("id_user_ukm",Session::get('id_superadmin_ukm'))->first()))
+    {
+        return abort(404);
+    }
+    $data_perusahaan = App\Model\superadmin_ukm\U_usaha::all()->where('id_user_ukm',Session::get('id_superadmin_ukm'));
+    $data=[
+        'data_perusahaan'=>$data_perusahaan
+    ];
+    return view('user.superadmin_ukm.master.section.default.page_default', $data);
+});
+
 Route::post('registered','Superadmin_ukm\LoginAndRegisterController@registered');
 
 Route::post('login-page','Superadmin_ukm\LoginAndRegisterController@login');
 
-Route::get('dashboard','Superadmin_ukm\Superadmin_UKM@index');
+Route::get('pengaturan-perusahaan','Superadmin_ukm\Superadmin_UKM@index');
 
 Route::get('verification/{id}','Superadmin_ukm\LoginAndRegisterController@verification_');
 
@@ -136,4 +149,19 @@ Route::post('store_request_menu','Superadmin_ukm\Menu_perusahaan@store_menu');
 
 Route::post('delete_request_menu','Superadmin_ukm\Menu_perusahaan@delete_menu');
 
+//============================= Menu Karyawan  ========================================================================
+
 Route::get('hak-akses-karyawan/{id_karyawan}','Superadmin_ukm\Hak_akses@daftar_hak_akses');
+
+Route::put('store_request_menu_karyawan/{id}','Superadmin_ukm\Hak_akses@store_menu');
+
+Route::put('delete_request_menu_karyawan/{id}','Superadmin_ukm\Hak_akses@delete_menu');
+
+//============================ Menu Investor ===========================================================================
+
+Route::get('hak-akses-investor/{id_investor}','Superadmin_ukm\Hak_akses_investor@daftar_hak_akses');
+
+Route::put('store_request_menu_investor/{id}','Superadmin_ukm\Hak_akses_investor@store_menu');
+
+Route::put('delete_request_menu_investor/{id}','Superadmin_ukm\Hak_akses_investor@delete_menu');
+
