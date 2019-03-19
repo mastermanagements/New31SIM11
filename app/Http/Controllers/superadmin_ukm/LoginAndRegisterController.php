@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Superadmin_ukm;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use Mail;
@@ -13,7 +14,6 @@ use App\Mail\superadminUkm_Mail as verification_superadmin_ukm;
 class LoginAndRegisterController extends Controller
 {
     //
-
     public function login(Request $req)
     {
         $alamat_email = $req->alamat_email;
@@ -21,7 +21,7 @@ class LoginAndRegisterController extends Controller
         $model = user_admin_ukm::where('email', $alamat_email)->first();
        if($model->status_verifikasi==0){
             return redirect('login-page')->with('message_fail','Maaf, Anda harus belum melakukan verifikasi ulang');
-        }else{
+       }else{
            if(Hash::check($password, $model->password))
             {
                $req->session()->put('id_superadmin_ukm', $model->id);
@@ -29,7 +29,7 @@ class LoginAndRegisterController extends Controller
             }else{
                return redirect('login-page')->with('message_fail','email atau password anda salah...!');
            }
-        }
+       }
     }
 
     public function registered(Request $req)
@@ -71,4 +71,13 @@ class LoginAndRegisterController extends Controller
         }
         return redirect('login-page')->with('message_fail','Maaf, telah terjadi kesalahan');
     }
+
+    public function signOut()
+    {
+        Auth::logout();
+        Session::flush();
+        return redirect('login-page');
+    }
+
+
 }

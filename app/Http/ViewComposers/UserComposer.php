@@ -8,19 +8,19 @@ use Session;
 
 class UserComposer
 {
-    private $id_superadmin;
+    private $id_perusahaan;
 
     public function __construct(){
-            if(empty(Session::get('id_superadmin_ukm')))
+            if(empty(Session::get('id_superadmin_karyawan')))
             {
                 return redirect('login-page')->with('message_fail','Waktu masuk anda telah habis, Silahkan login Ulang..!');
             }
-            $this->id_superadmin = Session::get('id_superadmin_ukm');
+            $this->id_perusahaan = Session::get('id_perusahaan_karyawan');
     }
 
     public function compose(View $view)
     {
-        $model_data = menu_ukm::where('id_user_ukm',$this->id_superadmin);
+        $model_data = menu_ukm::all()->where('id_perusahaan',$this->id_perusahaan);
         $view->with('daftar_menu', $model_data);
     }
 }

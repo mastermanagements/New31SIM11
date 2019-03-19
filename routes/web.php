@@ -1,16 +1,7 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+use App\Model\Superadmin_ukm\U_menu_ukm as menu_ukm;
+use Illuminate\Routing\Router;
 
 Route::get('registerApp', function () {
     return view('user.superadmin_ukm.master.section.registered.registered');
@@ -19,6 +10,8 @@ Route::get('registerApp', function () {
 Route::get('login-page', function () {
     return view('user.superadmin_ukm.master.section.registered.login');
 });
+
+Route::get('sign-out', 'Superadmin_ukm\LoginAndRegisterController@signOut');
 
 
 Route::get('dashboard', function (){
@@ -165,3 +158,37 @@ Route::put('store_request_menu_investor/{id}','Superadmin_ukm\Hak_akses_investor
 
 Route::put('delete_request_menu_investor/{id}','Superadmin_ukm\Hak_akses_investor@delete_menu');
 
+
+
+//////////////////////////////////////// Karyawan //////////////////////////////////////////////////////////////////////
+
+Route::get('login-karyawan','Karyawan\LoginController@Login');
+
+Route::post('cek-karyawan','Karyawan\LoginController@cek_login');
+
+Route::get('welcome-page','Karyawan\Dashboard@index');
+
+Route::get('Swot','Karyawan\SWOT@index');
+
+Route::get('buat-swot','Karyawan\SWOT@create');
+
+
+//if(!empty(Session::get('id_perusahaan_karyawan')))
+//{
+//    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+//    foreach ($daftar_menu as $menus)
+//    {
+//        if(!empty($subMenu = $menus->getSubMenu))
+//        {
+//            foreach ($subMenu as $sum_menu)
+//            {
+//                if(!empty($menuKaryawan= $sum_menu->getMenuKaryawan->where('id_karyawan', Session::get('id_karyawan') ))){
+//                    foreach ($menuKaryawan as $menu_karyawan)
+//                    {
+//                        Route::get('{ $sum_menu->getMasterSubMenuUKM->url }','');
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}

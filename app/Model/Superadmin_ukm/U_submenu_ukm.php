@@ -16,4 +16,8 @@ class U_submenu_ukm extends Model
         return $this->belongsTo('App\Model\Superadmin_sim\U_master_sub_menu','id_master_submenu');
     }
 
+    public function getMenuKaryawan()
+    {
+        return $this->hasMany('App\Model\Superadmin_ukm\U_menu_karyawan','id_submenu_ukm');
+    }
 }
