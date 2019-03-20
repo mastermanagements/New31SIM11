@@ -27,7 +27,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
-                        @if(!empty($submenu=$menus->getSubMenu))
+                        @if(!empty($submenu=$menus->getSubMenu->sortBy('id_master_submenu')))
                             <ul class="treeview-menu">
                             @foreach($submenu as $sKey => $sum_menu)
                                 @if(!empty($Menu_karyawan = $sum_menu->getMenuKaryawan->where('id_karyawan', Session::get('id_karyawan'))))

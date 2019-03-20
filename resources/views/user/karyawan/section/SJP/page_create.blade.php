@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            SWOT (Strength, Weakness, Opportunitie, Threats)
+            Strategi Jangka Pendek
         </h1>
     </section>
 
@@ -23,38 +23,26 @@
         <!--------------------------
           | Your Page Content Here |
           -------------------------->
-        <a href="{{ url('buat-swot') }}" class="btn btn-primary">Buat SWOT anda</a>
+        <a href="{{ url('buat-strategi-jangka-panjang') }}" class="btn btn-primary">Buat Strategi Anda</a>
         <p></p>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir SWOT</h3>
+                        <h3 class="box-title">Formulir Strategi</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-swot') }}" method="post">
+                    <form role="form" action="{{ url('store-sjp') }}" method="post">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tahun</label>
-                                <input type="number" min="1992" max="2099" name="tahun_swot" class="form-control" id="exampleInputEmail1" placeholder="Contoh: 2019" required>
+                                <label for="exampleInputEmail1">Periode</label>
+                                <input type="number" min="1" max="50" name="periode" class="form-control" id="exampleInputEmail1" placeholder="Contoh: 5 tahun, 10 tahun, dll" required>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Jenis SWOT</label>
                                 <div class="form-group">
-                                    @foreach($jenis_swot as $value)
-                                        <label>
-                                            <input type="radio"  name="kategori_swot" class="minimal" value="{{ $value}}" required>
-                                            {{ $value}}
-                                        </label>
-                                    @endforeach
-                                    <p></p>
-                                    <small style="color: red">* Tidak Boleh Kosong</small>
-                             </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Isi (SWOT) anda</label>
-                                    <textarea class="form-control" placeholder="Masukan SWOT usaha anda" name="Isi" id="Isi" required>
+                                    <label for="exampleInputEmail1">Masukan Strategi Jangka Panjang Anda</label>
+                                    <textarea class="form-control" placeholder="Masukan Strategi Anda" name="isi_sjpg" id="isi_sjpg" required>
 
                                     </textarea>
                                     <small style="color: red">* Tidak boleh kosong</small>
@@ -84,20 +72,20 @@
     <script>
 
         window.onload = function() {
-            CKEDITOR.replace( 'Isi',{
+            CKEDITOR.replace( 'isi_sjpg',{
                 height: 600
             } );
         };
 
         //Initialize Select2 Elements
-        $(function () {
-
-            //iCheck for checkbox and radio inputs
-            $('input[type="radio"].minimal').iCheck({
-                checkboxClass: 'icheckbox_minimal-blue',
-                radioClass   : 'iradio_minimal-blue'
-            })
-
-        })
+//        $(function () {
+//
+//            //iCheck for checkbox and radio inputs
+//            $('input[type="radio"].minimal').iCheck({
+//                checkboxClass: 'icheckbox_minimal-blue',
+//                radioClass   : 'iradio_minimal-blue'
+//            })
+//
+//        })
     </script>
 @stop

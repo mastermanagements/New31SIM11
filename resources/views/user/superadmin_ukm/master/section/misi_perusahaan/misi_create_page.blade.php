@@ -49,9 +49,10 @@
                                    <p></p>
                                <small style="color: red">* Tidak Boleh Kosong</small>
                            </div>
-                               <label for="exampleInputEmail1">Masukan Misi Anda</label>
+
                                <div class="form-group">
-                                   <textarea class="form-control" placeholder="Masukan Visi usaha anda" name="misi" id="misi" required>
+                                   <label for="exampleInputEmail1">Masukan Misi Anda</label>
+                                   <textarea class="form-control" placeholder="Masukan Misi usaha anda" name="misi" id="misi" required>
 
                                    </textarea>
                                    <small style="color: red">* Tidak boleh kosong</small>

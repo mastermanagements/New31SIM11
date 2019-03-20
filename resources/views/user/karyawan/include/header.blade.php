@@ -151,7 +151,7 @@
                                 <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{ url('sign-out') }}" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="{{ url('logout-karyawan') }}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>

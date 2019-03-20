@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\karyawan;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Session;
@@ -50,6 +51,12 @@ class LoginController extends Controller
             return redirect('login-karyawan')->with('fail_login','Nama karyawan atau password anda salah...!');
         }
         return redirect('login-karyawan')->with('fail_login','Anda Belum Terdaftar diperusahaan manapun...!');
+    }
 
+    public function logOut()
+    {
+        Auth::logout();
+        Session::flush();
+        return redirect('login-karyawan');
     }
 }

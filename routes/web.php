@@ -166,12 +166,33 @@ Route::get('login-karyawan','Karyawan\LoginController@Login');
 
 Route::post('cek-karyawan','Karyawan\LoginController@cek_login');
 
+Route::get('logout-karyawan','Karyawan\LoginController@logOut');
+
 Route::get('welcome-page','Karyawan\Dashboard@index');
 
 Route::get('Swot','Karyawan\SWOT@index');
 
 Route::get('buat-swot','Karyawan\SWOT@create');
 
+Route::post('store-swot','Karyawan\SWOT@store');
+
+Route::get('Strategi-Jangka-Panjang','Karyawan\SJP@index');
+
+Route::get('buat-strategi-jangka-panjang','Karyawan\SJP@create');
+
+Route::post('store-sjp','Karyawan\SJP@store');
+
+Route::get('ubah-strategi-jangka-panjang-ini/{id_sjp}','Karyawan\SJP@edit');
+
+Route::put('ubah-sjp/{id_sjp}','Karyawan\SJP@update');
+
+Route::put('hapus-sjp/{id_sjp}','Karyawan\SJP@delete');
+
+Route::get('Bagian', 'Karyawan\Bagian@index');
+
+Route::get('dataBagian','Karyawan\Bagian@DataBagian');
+
+Route::post('store-bagian','Karyawan\Bagian@store');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
