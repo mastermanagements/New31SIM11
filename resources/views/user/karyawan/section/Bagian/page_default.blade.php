@@ -66,7 +66,7 @@
 @section('plugins')
     <script>
         $(document).ready(function () {
-
+            var ids;
             var table_bagian = $('#example1').DataTable({
                 data:[],
                 column:[
@@ -119,6 +119,55 @@
                     })
                 }
             });
+
+            edits = function(id)
+            {
+                $.ajax({
+                   url : "{{ url('dataBagian') }}/"+id,
+                   dataType: "json",
+                   success: function (result) {
+                       $('[name="nm_bagian_ubah"]').val(result.bagian.nm_bagian);
+                       ids = result.bagian.id;
+                       $('#modal-ubah-bagian').modal('show');
+                   }
+                });
+            };
+            
+            $('#submitUbahBagian').click(function () {
+                 $.ajax({
+                    url: "{{ url('update-bagian') }}",
+                    type: "post",
+                    data : {
+                        'nm_bagian': $('[name="nm_bagian_ubah"]').val(),
+                        'id' : ids,
+                        '_token': '{{ csrf_token() }}',
+                    },
+                    success: function (result) {
+                        call_data();
+                        $('#modal-ubah-bagian').modal('hide');
+                        alert(result.message);
+                    }
+                })
+            });
+
+            deletes = function(id)
+            {
+                if(confirm('Apakah anda mehapus bagian ini, ini akan berdampak pada data defisi yang berhubungan dengan data ini ... ?')== true){
+                    $.ajax({
+                        url : "{{ url('hapus-bagian') }}/"+id,
+                        type: "post",
+                        data :{
+                            '_token': '{{ csrf_token() }}',
+                        },
+                        success: function (result) {
+                            call_data();
+                            alert(result.message);
+                        }
+                    });
+                }else{
+                    alert('Bagian ini tidak jadi dihapus');
+                }
+            }
         })
     </script>
 @stop

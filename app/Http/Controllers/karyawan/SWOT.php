@@ -31,11 +31,11 @@ class SWOT extends Controller
     public function index()
     {
         $data_SWOT = [
-          'data_swot' => swots::all()->where('id_perusahaan', $this->id_perusahaan)->where('id_karyawan', $this->id_karyawan)->sortBy('tahun_swot'),
+          'data_swot' => swots::all()->where('id_perusahaan', $this->id_perusahaan)->sortBy('tahun_swot'),
             'tahun_swot'=> swots::select('tahun_swot')->where('id_perusahaan', $this->id_perusahaan)
-                ->where('id_karyawan', $this->id_karyawan)->groupBy('tahun_swot')->orderBy('tahun_swot', 'DESC')->paginate(6)
+               ->groupBy('tahun_swot')->orderBy('tahun_swot', 'DESC')->paginate(6)
         ];
-        return view('user.karyawan.section.swot.page_default', $data_SWOT);
+        return view('user.karyawan.section.Swot.page_default', $data_SWOT);
     }
 
     public function create()
@@ -43,7 +43,7 @@ class SWOT extends Controller
         $data_pass=[
           'jenis_swot'=> $this->jenis_swot
         ];
-        return view('user.karyawan.section.swot.page_create', $data_pass);
+        return view('user.karyawan.section.Swot.page_create', $data_pass);
     }
 
     public function store(Request $req)

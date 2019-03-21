@@ -34,7 +34,7 @@ class Bagian extends Controller
 
     public function DataBagian()
     {
-        if(empty($bagian = bagians::all()->where('id_perusahaan', $this->id_perusahaan)->where('id_karyawan', $this->id_karyawan))){
+        if(empty($bagian = bagians::all()->where('id_perusahaan', $this->id_perusahaan))){
             return abort(404);
         }
 
@@ -45,8 +45,8 @@ class Bagian extends Controller
             $row = array();
             $row[] = $no++;
             $row[] = $value->nm_bagian;
-            $row[] = "<a href='#' onclick='edit(".$value->id.")' class='btn btn-warning'>ubah</a>
-                      <button type='button' onclick='delete(".$value->id.")' class='btn btn-danger'>hapus</button>";
+            $row[] = "<a href='#' onclick='edits(".$value->id.")' class='btn btn-warning'>ubah</a>
+                      <button type='button' onclick='deletes(".$value->id.")' class='btn btn-danger'>hapus</button>";
             $column [] = $row;
         }
         $output = array('data'=> $column);
@@ -68,13 +68,81 @@ class Bagian extends Controller
         if($model->save())
         {
             $data=[
-                'message_success'=> 'Bagian telah berhasil ditabahkan',
+                'message_success'=> 'Bagian telah berhasil ditambahkan',
                 'status'=> true
             ];
             return response()->json($data);
         }else{
             $data=[
                 'message_fail'=> 'terkadi kesalahan, Silahkan tambahkan ulang',
+                'status'=> false
+            ];
+            return response()->json($data);
+        }
+    }
+
+    public function RequestDataBagian($id)
+    {
+        if(empty($bagian = bagians::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+
+        $data=[
+            'bagian'=> $bagian
+        ];
+
+        return response()->json($data);
+    }
+
+
+    public function update(Request $req)
+    {
+        $this->validate($req,[
+            'nm_bagian'=> 'required',
+            'id' => 'required'
+        ]);
+
+        $nm_bagian=$req->nm_bagian;
+        if(empty($model = bagians::where('id',$req->id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+        $model->nm_bagian = $nm_bagian;
+        $model->id_perusahaan = $this->id_perusahaan;
+        $model->id_karyawan = $this->id_karyawan;
+
+        if($model->save())
+        {
+            $data=[
+                'message'=> 'Bagian telah berhasil ditambahkan',
+                'status'=> true
+            ];
+            return response()->json($data);
+        }else{
+            $data=[
+                'message'=> 'terkadi kesalahan, Silahkan tambahkan ulang',
+                'status'=> false
+            ];
+            return response()->json($data);
+        }
+    }
+
+
+    public function delete($id)
+    {
+        if(empty($model = bagians::where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+
+        if($model->delete())
+        {
+            $data=[
+                'message'=> 'Bagian telah berhasil dihapus',
+                'status'=> true
+            ];
+            return response()->json($data);
+        }else{
+            $data=[
+                'message'=> 'terkadi kesalahan, Silahkan hapus ulang',
                 'status'=> false
             ];
             return response()->json($data);

@@ -30,14 +30,14 @@ class SJP extends Controller
     public function index()
     {
         $data_pass= [
-          'data_strategi'=> sjps::where('id_perusahaan', $this->id_perusahaan)->where('id_karyawan',$this->id_karyawan )->orderBy('created_at','desc')->paginate(12)
+          'data_strategi'=> sjps::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate(12)
         ];
-        return view('user.karyawan.section.sjp.page_default', $data_pass);
+        return view('user.karyawan.section.SJP.page_default', $data_pass);
     }
 
     public function create()
     {
-        return view('user.karyawan.section.sjp.page_create');
+        return view('user.karyawan.section.SJP.page_create');
     }
 
     public function store(Request $req)
@@ -65,13 +65,13 @@ class SJP extends Controller
 
     public function edit($id)
     {
-        if(empty($data_sjp = sjps::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->where('id_karyawan', $this->id_karyawan)->first())){
+        if(empty($data_sjp = sjps::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
         $data_pass = [
           'data_strategi'=> $data_sjp
         ];
-        return view('user.karyawan.section.sjp.page_edit', $data_pass);
+        return view('user.karyawan.section.SJP.page_edit', $data_pass);
     }
 
     public function update(Request $req, $id)

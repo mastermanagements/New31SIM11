@@ -194,6 +194,22 @@ Route::get('dataBagian','Karyawan\Bagian@DataBagian');
 
 Route::post('store-bagian','Karyawan\Bagian@store');
 
+Route::get('dataBagian/{id}','Karyawan\Bagian@RequestDataBagian');
+
+Route::post('update-bagian','Karyawan\Bagian@update');
+
+Route::post('hapus-bagian/{id}','Karyawan\Bagian@delete');
+
+Route::get('Divisi','Karyawan\Devisi@index');
+
+Route::post('store-divisi','Karyawan\Devisi@store');
+
+Route::get('Divisi/{id_divisi}','Karyawan\Devisi@edit');
+
+Route::post('update-divisi','Karyawan\Devisi@update');
+
+Route::put('hapusDivisi/{id_divisi}','Karyawan\Devisi@delete');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
