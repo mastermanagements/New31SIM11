@@ -1,6 +1,8 @@
 @extends('user.karyawan.master_user')
 
 @section('skin')
+    <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+
    <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
 
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
@@ -13,7 +15,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Strategi Jangka Panjang
+            Strategi Jangka Pendek
         </h1>
     </section>
 
@@ -23,9 +25,7 @@
         <!--------------------------
           | Your Page Content Here |
           -------------------------->
-        <a href="{{ url('buat-strategi-jangka-panjang') }}" class="btn btn-primary">Buat Strategi Anda</a>
-        <p></p>
-        <div class="row">
+       <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
@@ -33,19 +33,33 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-sjp') }}" method="post">
+                    <form role="form" action="{{ url('store-sjpk') }}" method="post">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Periode</label>
-                                <input type="number" min="1" max="50" name="periode" class="form-control" id="exampleInputEmail1" placeholder="Contoh: 5 tahun, 10 tahun, dll" required>
+                                <input type="number" min="1990" max="3000" name="periode" class="form-control" id="exampleInputEmail1" placeholder="Contoh: 2017,2018,2019, dll" required>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Pilih nama bagian dan divisi</label>
+                                <select class="form-control select2" style="width: 100%;" name="id_divisi" required>
+                                    @foreach($data_bagian as $value)
+                                        <optgroup label="{{ $value->nm_bagian }}" name="id_bagian" value="{{ $value->id }}">
+                                            @foreach($value->getDevisi as $divisi)
+                                                <option value="{{ $divisi->id }}">{{ $divisi->nm_devisi }}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    @endforeach
+                                </select>
+                                <small style="color: red" id="notify"></small>
+                            </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukan Strategi Jangka Panjang Anda</label>
-                                    <textarea class="form-control" placeholder="Masukan Strategi Anda" name="isi_sjpg" id="isi_sjpg" required>
+                                    <label for="exampleInputEmail1">Masukan Strategi Jangka Pendek Anda</label>
+                                    <textarea class="form-control" placeholder="Masukan Strategi Anda" name="isi_spjd" id="isi_spjd" required>
 
                                     </textarea>
                                     <small style="color: red">* Tidak boleh kosong</small>
+                                    <input type="hidden" name="id_sjpk" value="{{ $sjp }}">
                                 </div>
                         </div>
                         <!-- /.box-body -->
@@ -65,14 +79,17 @@
 
 
 @section('plugins')
+    <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
      <!-- iCheck 1.0.1 -->
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     <!-- SlimScroll -->
     <script src="{{ asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script>
-
+        $(function () {
+            $('.select2').select2();
+        });
         window.onload = function() {
-            CKEDITOR.replace( 'isi_sjpg',{
+            CKEDITOR.replace( 'isi_spjd',{
                 height: 600
             } );
         };

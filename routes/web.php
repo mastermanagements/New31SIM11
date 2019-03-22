@@ -162,53 +162,78 @@ Route::put('delete_request_menu_investor/{id}','Superadmin_ukm\Hak_akses_investo
 
 //////////////////////////////////////// Karyawan //////////////////////////////////////////////////////////////////////
 
-Route::get('login-karyawan','Karyawan\LoginController@Login');
+Route::get('login-karyawan','karyawan\LoginController@Login');
 
-Route::post('cek-karyawan','Karyawan\LoginController@cek_login');
+Route::post('cek-karyawan','karyawan\LoginController@cek_login');
 
-Route::get('logout-karyawan','Karyawan\LoginController@logOut');
+Route::get('logout-karyawan','karyawan\LoginController@logOut');
 
-Route::get('welcome-page','Karyawan\Dashboard@index');
+Route::get('welcome-page','karyawan\Dashboard@index');
 
-Route::get('Swot','Karyawan\SWOT@index');
+Route::get('Swot','karyawan\SWOT@index');
 
-Route::get('buat-swot','Karyawan\SWOT@create');
+Route::get('buat-swot','karyawan\SWOT@create');
 
-Route::post('store-swot','Karyawan\SWOT@store');
+Route::post('store-swot','karyawan\SWOT@store');
 
-Route::get('Strategi-Jangka-Panjang','Karyawan\SJP@index');
+Route::get('Strategi-Jangka-Panjang','karyawan\SJP@index');
 
-Route::get('buat-strategi-jangka-panjang','Karyawan\SJP@create');
+Route::get('buat-strategi-jangka-panjang','karyawan\SJP@create');
 
-Route::post('store-sjp','Karyawan\SJP@store');
+Route::post('store-sjp','karyawan\SJP@store');
 
-Route::get('ubah-strategi-jangka-panjang-ini/{id_sjp}','Karyawan\SJP@edit');
+Route::get('ubah-strategi-jangka-panjang-ini/{id_sjp}','karyawan\SJP@edit');
 
-Route::put('ubah-sjp/{id_sjp}','Karyawan\SJP@update');
+Route::put('ubah-sjp/{id_sjp}','karyawan\SJP@update');
 
-Route::put('hapus-sjp/{id_sjp}','Karyawan\SJP@delete');
+Route::put('hapus-sjp/{id_sjp}','karyawan\SJP@delete');
 
-Route::get('Bagian', 'Karyawan\Bagian@index');
+Route::get('Bagian', 'karyawan\Bagian@index');
 
-Route::get('dataBagian','Karyawan\Bagian@DataBagian');
+Route::get('dataBagian','karyawan\Bagian@DataBagian');
 
-Route::post('store-bagian','Karyawan\Bagian@store');
+Route::post('store-bagian','karyawan\Bagian@store');
 
-Route::get('dataBagian/{id}','Karyawan\Bagian@RequestDataBagian');
+Route::get('dataBagian/{id}','karyawan\Bagian@RequestDataBagian');
 
-Route::post('update-bagian','Karyawan\Bagian@update');
+Route::post('update-bagian','karyawan\Bagian@update');
 
-Route::post('hapus-bagian/{id}','Karyawan\Bagian@delete');
+Route::post('hapus-bagian/{id}','karyawan\Bagian@delete');
 
-Route::get('Divisi','Karyawan\Devisi@index');
+Route::get('Divisi','karyawan\Devisi@index');
 
-Route::post('store-divisi','Karyawan\Devisi@store');
+Route::post('store-divisi','karyawan\Devisi@store');
 
-Route::get('Divisi/{id_divisi}','Karyawan\Devisi@edit');
+Route::get('Divisi/{id_divisi}','karyawan\Devisi@edit');
 
-Route::post('update-divisi','Karyawan\Devisi@update');
+Route::post('update-divisi','karyawan\Devisi@update');
 
-Route::put('hapusDivisi/{id_divisi}','Karyawan\Devisi@delete');
+Route::put('hapusDivisi/{id_divisi}','karyawan\Devisi@delete');
+
+Route::get('Strategi-Jangka-Pendek','karyawan\SJPK@index');
+
+Route::get('buat-strategi-jangka-pendek','karyawan\SJPK@create');
+
+Route::post('store-sjpk','karyawan\SJPK@store');
+
+Route::get('ubah-strategi-jangka-pendek','karyawan\SJPK@edit');
+
+Route::put('update-sjpk/{id}','karyawan\SJPK@update');
+
+Route::get('delete-sjpk/{id}','karyawan\SJPK@delete');
+
+Route::get('Model-Bisnis','karyawan\ModelBisnis@index');
+
+Route::get('buat-model-bisnis','karyawan\ModelBisnis@create');
+
+Route::post('store-mb','karyawan\ModelBisnis@store');
+
+Route::get('ubah-model-bisnis/{id}','karyawan\ModelBisnis@edit');
+
+Route::put('ubah-mb/{id}','karyawan\ModelBisnis@update');
+
+Route::put('hapus-model-bisnis/{id}','karyawan\ModelBisnis@delete');
+//Route::get('Model-Bisnis','karyawan\');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

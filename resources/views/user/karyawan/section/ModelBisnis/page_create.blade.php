@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Strategi Jangka Panjang
+            Model Bisnis
         </h1>
     </section>
 
@@ -23,26 +23,24 @@
         <!--------------------------
           | Your Page Content Here |
           -------------------------->
-        <a href="{{ url('buat-strategi-jangka-panjang') }}" class="btn btn-primary">Buat Strategi Anda</a>
-        <p></p>
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Strategi</h3>
+                        <h3 class="box-title">Formulir Model Bisnis</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-sjp') }}" method="post">
+                    <form role="form" action="{{ url('store-mb') }}" method="post">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Periode</label>
-                                <input type="number" min="1" max="50" name="periode" class="form-control" id="exampleInputEmail1" placeholder="Contoh: 5 tahun, 10 tahun, dll" required>
+                                <label for="exampleInputEmail1">Nama Model Bisnis</label>
+                                <input type="text" name="nm_mb" class="form-control" id="exampleInputEmail1" required>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukan Strategi Jangka Panjang Anda</label>
-                                    <textarea class="form-control" placeholder="Masukan Strategi Anda" name="isi_sjpg" id="isi_sjpg" required>
+                                    <label for="exampleInputEmail1">Sasaran</label>
+                                    <textarea class="form-control" placeholder="Masukan sasaran Anda" name="sasaran" id="sasaran" required>
 
                                     </textarea>
                                     <small style="color: red">* Tidak boleh kosong</small>
@@ -72,7 +70,7 @@
     <script>
 
         window.onload = function() {
-            CKEDITOR.replace( 'isi_sjpg',{
+            CKEDITOR.replace( 'sasaran',{
                 height: 600
             } );
         };
