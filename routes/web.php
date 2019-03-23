@@ -233,7 +233,16 @@ Route::get('ubah-model-bisnis/{id}','karyawan\ModelBisnis@edit');
 Route::put('ubah-mb/{id}','karyawan\ModelBisnis@update');
 
 Route::put('hapus-model-bisnis/{id}','karyawan\ModelBisnis@delete');
-//Route::get('Model-Bisnis','karyawan\');
+
+Route::get('Struktur-Perusahaan','karyawan\StruturPerusahaan@index');
+
+Route::post('store-bagan','karyawan\StruturPerusahaan@store');
+
+Route::get('getRequestStrukturPerusahaan','karyawan\StruturPerusahaan@getRequestStrukturPerusahaan');
+
+Route::get('ubah-struktur/{id}','karyawan\StruturPerusahaan@getRequest');
+
+
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

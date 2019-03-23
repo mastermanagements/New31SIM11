@@ -17,7 +17,7 @@ class CreateRelationMenuInvestor extends Migration
             //
             $table->foreign('id_menu_ukm')->references('id')->on('u_menu_ukm');
             $table->foreign('id_submenu_ukm')->references('id')->on('u_submenu_ukm');
-            $table->foreign('u_user_ukm')->references('id')->on('u_submenu_ukm');
+            $table->foreign('id_user_ukm')->references('id')->on('u_user_ukm');
             $table->foreign('id_investor')->references('id')->on('k_investor');
         });
     }
