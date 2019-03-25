@@ -111,7 +111,7 @@ class StruturPerusahaan extends Controller
 
     public function getRequest($id)
     {
-        if(empty($bagan = bagan::all()->where('id',$id)->where('id_perusahaan', $this->id_perusahaan))){
+        if(empty($bagan = bagan::all()->where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
 
@@ -121,5 +121,66 @@ class StruturPerusahaan extends Controller
 
         return response()->json($data);
     }
+
+    public function update(Request $req, $id)
+    {
+        $this->validate($req,[
+            'parentId'=> 'required',
+            'id_karyawan'=> 'required',
+            'id_jabatan'=> 'required'
+        ]);
+
+        if(empty($bagan = bagan::all()->where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+
+        $parentID = $req->parentId;
+        $id_karyawan =  $req->id_karyawan;
+        $id_jabatan =  $req->id_jabatan;
+
+        $bagan->parentId = $parentID;
+        $bagan->id_karyawan = $id_karyawan;
+        $bagan->id_jabatan = $id_jabatan;
+        $bagan->id_perusahaan = $this->id_perusahaan;
+
+        if($bagan->save())
+        {
+            $data = [
+                'message' => 'Berhasil mengubah bagan',
+                'status'=> 'true'
+            ];
+            return response()->json($data);
+        }else
+        {
+            $data = [
+                'message' => 'Gagal mengubah bagan',
+                'status'=> 'false'
+            ];
+            return response()->json($data);
+        }
+    }
+
+    public function delete(Request $req, $id)
+    {
+        if(empty($bagan = bagan::all()->where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+        if($bagan->delete())
+        {
+            $data = [
+                'message' => 'Berhasil mengubah bagan',
+                'status'=> 'true'
+            ];
+            return response()->json($data);
+        }else
+        {
+            $data = [
+                'message' => 'Gagal mengubah bagan',
+                'status'=> 'false'
+            ];
+            return response()->json($data);
+        }
+    }
+
 
 }

@@ -16,7 +16,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function register()
     {
         //
-        View::composer('user.karyawan.include.sidebar','App\Http\ViewComposers\UserComposer');
+        View::composer(['user.karyawan.include.sidebar','user.karyawan.include.header'],'App\Http\ViewComposers\UserComposer');
     }
 
     /**

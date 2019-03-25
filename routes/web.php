@@ -242,7 +242,23 @@ Route::get('getRequestStrukturPerusahaan','karyawan\StruturPerusahaan@getRequest
 
 Route::get('ubah-struktur/{id}','karyawan\StruturPerusahaan@getRequest');
 
+Route::put('update-struktur/{id}','karyawan\StruturPerusahaan@update');
 
+Route::put('delete-struktur/{id}','karyawan\StruturPerusahaan@delete');
+
+Route::get('Job-Desc','karyawan\JobDecs@index');
+
+Route::get('tambah-job-decs','karyawan\JobDecs@create');
+
+Route::post('store-JD','karyawan\JobDecs@store');
+
+Route::get('ubah-job-decs/{id}','karyawan\JobDecs@edit');
+
+Route::put('update-JD/{id}','karyawan\JobDecs@update');
+
+Route::put('hapus-JD/{id}','karyawan\JobDecs@delete');
+
+Route::get('profil','karyawan\Karyawan@index');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

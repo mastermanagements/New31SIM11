@@ -116,39 +116,31 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{{ @asset('component/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+                        @if(!empty($daftar_menu['karyawan']))
+                             <img src="{{ asset('filePFoto/'.$daftar_menu['karyawan']->pas_foto ) }}" class="user-image" alt="User Image">
+                        @else
+                            <img src="{{ asset('image_superadmin_ukm/default.png') }}" class="user-image" alt="User Image">
+                        @endif
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">{{ $daftar_menu['karyawan']->nama_ky }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{{ @asset('component/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-
+                            @if(!empty($daftar_menu['karyawan']))
+                                 <img src="{{ asset('filePFoto/'.$daftar_menu['karyawan']->pas_foto ) }}" class="img-circle" alt="User Image">
+                                @else
+                                 <img src="{{ asset('image_superadmin_ukm/default.png') }}"  class="img-circle" alt="User Image">
+                                @endif
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                {{ $daftar_menu['karyawan']->nama_ky }}
+                                <small>Tanggal Masuk {{ date('d-M-Y', strtotime($daftar_menu['karyawan']->tgl_masuk)) }}</small>
                             </p>
-                        </li>
-                        <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="row">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
-                            </div>
-                            <!-- /.row -->
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="{{ url('profil') }}" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{{ url('logout-karyawan') }}" class="btn btn-default btn-flat">Sign out</a>
