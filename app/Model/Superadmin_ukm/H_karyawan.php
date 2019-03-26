@@ -38,4 +38,14 @@ class H_karyawan extends Model
     {
         return $this->belongsTo('App\Model\Superadmin_ukm\U_usaha', 'id_perusahaan');
     }
+
+    public function getAlamatAsal()
+    {
+        return $this->hasOne('App\Model\Hrd\H_alamat_asal','id_ky');
+    }
+
+    public function getAlamatSek()
+    {
+        return $this->hasOne('App\Model\Hrd\H_alamat_sekarang','id_ky');
+    }
 }

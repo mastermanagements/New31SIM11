@@ -260,6 +260,17 @@ Route::put('hapus-JD/{id}','karyawan\JobDecs@delete');
 
 Route::get('profil','karyawan\Karyawan@index');
 
+Route::post('proses-pendidikan','karyawan\Karyawan@proses_pendidikan');
+
+Route::get('getDataPendidikan', 'karyawan\Karyawan@data_pendidikan');
+
+Route::get('getDataAlamatAsal', 'karyawan\Karyawan@data_alamat');
+
+Route::post('store-alamat-asal', 'karyawan\Karyawan@store_alamat');
+
+Route::get('getDataAlamatSek', 'karyawan\Karyawan@data_alamat_sek');
+
+Route::post('store-alamat-sek', 'karyawan\Karyawan@store_alamat_sek');
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
@@ -279,3 +290,6 @@ Route::get('profil','karyawan\Karyawan@index');
 //        }
 //    }
 //}
+
+//================================= Global Route ======================================================================
+Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
