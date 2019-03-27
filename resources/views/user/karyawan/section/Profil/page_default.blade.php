@@ -2,6 +2,8 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
 @stop
 
 @section('master_content')
@@ -161,7 +163,81 @@
                 </div>
                 <!-- /.box -->
             </div>
+            <div class="col-md-4">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><i class="fa fa-group margin-r-5"></i> Data Keluarga</h3>
+                        <button id="btnEditDataKeluarga" data-toggle="modal" data-target="#modal-ubah-keluarga" class="btn btn-xs btn-primary pull-right"><i class="fa fa-pencil"></i></button>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        @if(empty($data_karyawan->getDataKeluarga))
+                            <p class="text-muted" style="margin-bottom: 2px">
+                                Data Keluarga anda belum dimasukan
+                            </p>
+                            <hr style="margin: 1px">
+                        @else
+                        <p class="text-muted" style="margin-bottom: 2px">
+                            Nama Ayah : <br>
+                            <label style="font-weight: bold; padding-left: 5px">{{ $data_karyawan->getDataKeluarga->nm_ayah }}</label>
+                            @if($data_karyawan->getDataKeluarga->status_a==0)
+                                <label class="pull-right" style="font-weight: bold; color: green;padding-left: 5px">Masih Hidup</label>
+                            @else
+                                <label class="pull-right" style="font-weight: bold; color: yellow; padding-left: 5px">Meninggal Dunia</label>
+                            @endif
+                        </p>
+                        <hr style="margin: 1px">
+                        <p class="text-muted" style="margin-bottom: 2px">
+                            Nama Ibu : <br>
+                            <label style="font-weight: bold; padding-left: 5px">{{ $data_karyawan->getDataKeluarga->nm_ibu }}</label>
+                            @if($data_karyawan->getDataKeluarga->status_i==0)
+                                <label class="pull-right" style="font-weight: bold; color: green;padding-left: 5px">Masih Hidup</label>
+                            @else
+                                <label class="pull-right" style="font-weight: bold; color: yellow; padding-left: 5px">Meninggal Dunia</label>
+                            @endif
+                        </p>
+                        <hr style="margin: 1px">
+                        <p class="text-muted" style="margin-bottom: 2px">
+                            Jumlah Saudara : <br>
+                            <label style="font-weight: bold; padding-left: 5px">{{ $data_karyawan->getDataKeluarga->jum_saudara }}</label>
+                        </p>
+                        <hr style="margin: 1px">
+                        <p class="text-muted" style="margin-bottom: 2px">
+                            Anak Ke : <br>
+                            <label style="font-weight: bold; padding-left: 5px">{{ $data_karyawan->getDataKeluarga->anak_ke }}</label>
+                        </p>
+                        <hr style="margin: 1px">
+                        <p class="text-muted" style="margin-bottom: 2px">
+                            Kontak Person Darurat : <br>
+                            <label style="font-weight: bold; padding-left: 5px">{{ $data_karyawan->getDataKeluarga->cp_darurat }}</label>
+                        </p>
+                        <hr style="margin: 1px">
+                        <p class="text-muted" style="margin-bottom: 2px">
+                                Telepon Darurat : <br>
+                                <label style="font-weight: bold; padding-left: 5px">{{ $data_karyawan->getDataKeluarga->telp_darurat }}</label>
+                        </p>
+                        <hr style="margin: 1px">
+                        @if(!empty($data_karyawan->getDataKeluarga->file_kk))
+                                <p class="text-muted" style="margin-bottom: 2px">  <button data-toggle="modal" data-target="#modal-ubah-keluarga-file" class="btn btn-xs btn-primary pull-right"><i class="fa fa-upload"></i></button>
+                                </p>
+                                    File Scan KK : <br>
+                                    <label style="font-weight: bold; padding-left: 5px">{{ $data_karyawan->getDataKeluarga->file_kk }}</label>
+                                </p>
+                                <hr style="margin: 1px">
+                        @else
+                            <p class="text-muted" style="margin-bottom: 2px">
+                                Maaf, file scan kartu keluarga anda belum tersedia <button data-toggle="modal" data-target="#modal-ubah-keluarga-file" class="btn btn-xs btn-primary pull-right"><i class="fa fa-upload"></i></button>
+                            </p>
+                            <hr style="margin: 1px">
+                        @endif
+                        @endif
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
         </div>
+
+
     </section>
     <!-- /.content -->
 </div>
@@ -169,9 +245,13 @@
 @include('user.karyawan.section.Profil.include.modal_alamat')
 @include('user.karyawan.section.Profil.include.modal_alamat_sek')
 @include('user.karyawan.section.Profil.include.modal_pendidikan')
+@include('user.karyawan.section.Profil.include.modal_keluarga')
+
 @stop
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
+
     @include('user.karyawan.section.Profil.include.JS')
 @stop
 

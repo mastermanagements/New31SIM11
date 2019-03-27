@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Superadmin_ukm\H_karyawan as karyawans;
 use App\Model\Hrd\H_alamat_asal as asal;
 use App\Model\Hrd\H_alamat_sekarang as sekarang;
+use App\Model\Hrd\H_keluarga_ky as keluarga;
 use App\Model\Superadmin_sim\U_provinsi as provinsi;
 use Session;
 
@@ -16,6 +17,7 @@ class Karyawan extends Controller
 
     private $id_karyawan;
     private $id_perusahaan;
+    private $status = ['0'=>'Masih Hidup','1'=>'Meninggal Dunia'];
 
     public function __construct()
     {
@@ -36,7 +38,8 @@ class Karyawan extends Controller
     {
         $data =[
             'data_karyawan' => karyawans::where('id', $this->id_karyawan)->where('id_perusahaan', $this->id_perusahaan)->first(),
-            'provinsi'=> provinsi::all()
+            'provinsi'=> provinsi::all(),
+            'status'=> $this->status
         ];
         return view('user.karyawan.section.Profil.page_default', $data);
     }
@@ -157,6 +160,95 @@ class Karyawan extends Controller
                 'status'=> false
             ];
             return response()->json($feedback);
+        }
+    }
+
+    public function data_keluarga()
+    {
+        if(empty($data_keluarga = karyawans::where('id',$this->id_karyawan)->first()->getDataKeluarga)){
+            return abort(404);
+        }
+        $data_pass = [
+            'data' => $data_keluarga
+        ];
+        return response()->json($data_pass);
+    }
+
+    public function update_keluarga(Request $req)
+    {
+        $this->validate($req,[
+            'nm_ayah' => 'required',
+            'status_a' => 'required',
+            'nm_ibu' => 'required',
+            'status_i' =>'required',
+            'jum_saudara' => 'required',
+            'anak_ke' => 'required',
+            'cp_darurat' => 'required',
+            'telp_darurat' => 'required',
+        ]);
+
+        $nm_ayah = $req->nm_ayah;
+        $status_a = $req->status_a;
+        $nm_ibu = $req->nm_ibu;
+        $status_i = $req->status_i;
+        $jum_saudara = $req->jum_saudara;
+        $anak_ke = $req->anak_ke;
+        $cp_darurat = $req->cp_darurat;
+        $telp_darurat = $req->telp_darurat;
+
+        $model = keluarga::updateOrCreate(['id_perusahaan'=>$this->id_perusahaan,'id_ky'=>$this->id_karyawan],
+            [
+                'nm_ayah'=> $nm_ayah,
+                'status_a'=> $status_a,
+                'nm_ibu'=> $nm_ibu,
+                'status_i'=> $status_i,
+                'jum_saudara'=> $jum_saudara,
+                'anak_ke'=> $anak_ke,
+                'cp_darurat'=> $cp_darurat,
+                'telp_darurat'=> $telp_darurat,
+                'id_perusahaan'=> $this->id_perusahaan,
+                'id_karyawan'=> $this->id_karyawan,
+            ]);
+        if($model->save())
+        {
+            return redirect('profil')->with('message_success', 'Anda telah mengubah data keluarga anda');
+        }else{
+            return redirect('profil')->with('message_fail', 'Maaf, Telah terjadi kesalahan. silahkan coba lagi');
+        }
+    }
+
+    public function update_upload_kk_keluarga(Request $req)
+    {
+
+
+        $this->validate($req,[
+            'file_kk'=> 'required|image|mimes:jpg,png,gif,jpeg'
+        ]);
+
+        $file_kk= $req->file_kk;
+        $name_file = time().'_SKK.'.$file_kk->getClientOriginalExtension();
+        $model = keluarga::where('id_perusahaan',$this->id_perusahaan)->where('id_ky',$this->id_karyawan)->first();
+        $model->file_kk = $name_file;
+
+        if(!empty($model->file_kk))
+        {
+            $file_path =public_path('FileScanKK').'/' . $model->file_kk;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+
+        if($model->save())
+        {
+            if($file_kk->move(public_path('FileScanKK'), $name_file))
+            {
+                return redirect('profil')->with('message_success', 'Anda telah mengubah data keluarga anda');
+            }
+            else
+            {
+                return redirect('profil')->with('message_fail', 'Gagal, Mengunggah File KK');
+            }
+            return redirect('profil')->with('message_success', 'Anda telah mengubah data keluarga anda');
         }
     }
 }

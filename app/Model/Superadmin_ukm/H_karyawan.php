@@ -48,4 +48,9 @@ class H_karyawan extends Model
     {
         return $this->hasOne('App\Model\Hrd\H_alamat_sekarang','id_ky');
     }
+
+    public function getDataKeluarga()
+    {
+        return $this->hasOne('App\Model\Hrd\H_keluarga_ky','id_ky');
+    }
 }

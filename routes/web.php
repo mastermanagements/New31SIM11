@@ -271,6 +271,12 @@ Route::post('store-alamat-asal', 'karyawan\Karyawan@store_alamat');
 Route::get('getDataAlamatSek', 'karyawan\Karyawan@data_alamat_sek');
 
 Route::post('store-alamat-sek', 'karyawan\Karyawan@store_alamat_sek');
+
+Route::get('getDataKeluarga', 'karyawan\Karyawan@data_keluarga');
+
+Route::post('update-keluarga-ky', 'karyawan\Karyawan@update_keluarga');
+
+Route::post('update-keluarga-ky-file', 'karyawan\Karyawan@update_upload_kk_keluarga');
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
