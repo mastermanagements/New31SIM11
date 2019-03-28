@@ -104,16 +104,20 @@
                                     </a>
                                 </li>
                         </ul>
-                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                        <a href="#" onclick="alert('masih dibuat')" class="btn btn-primary btn-block"><b>Ubah</b></a>
                     </div>
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
 
+            </div>
+
+            <div class="col-md-4">
+
                 <!-- About Me Box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tentang Saya</h3>
+                        <h3 class="box-title"><i class="fa fa-user margin-r-5"></i>Tentang Saya</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -122,27 +126,28 @@
                         <p class="text-muted">
                             @if(empty($data_karyawan->pend_akhir))
                                 data pendidikan anda masih kosong <button id="buttonEditPendidikan" class="btn btn-xs btn-primary pull-right"><i class="fa fa-edit"></i></button>
-                            @else
+                        @else
                             <p><button id="buttonEditPendidikan" class="btn btn-xs btn-primary pull-right"><i class="fa fa-edit"></i></button></p>
-                              Pendidikan Terakhir:  {{ $data_karyawan->pend_akhir  }}<br>
-                              Program Studi:  {{ $data_karyawan->program_studi }} <br>
-                              Perguruan Tinggi  {{ $data_karyawan->pt }} <br>
+                            Pendidikan Terakhir:  {{ $data_karyawan->pend_akhir  }}<br>
+                            Program Studi:  {{ $data_karyawan->program_studi }} <br>
+                            Perguruan Tinggi  {{ $data_karyawan->pt }} <br>
                             @endif
-                        </p>
+                            </p>
 
-                        <hr>
+                            <hr>
 
-                        <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
+                            <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
 
-                        <p class="text-muted">
-                            @if(empty($data_karyawan->getAlamatAsal))
-                                Alamat asal masih kosong <button id="buttonEditAlamat" class="btn btn-xs btn-primary pull-right"><i class="fa fa-edit"></i></button>
+                            <p class="text-muted">
+                                @if(empty($data_karyawan->getAlamatAsal))
+                                    Alamat asal masih kosong <button id="buttonEditAlamat" class="btn btn-xs btn-primary pull-right"><i class="fa fa-edit"></i></button>
                             @else
                                 <p> <button id="buttonEditAlamat" class="btn btn-xs btn-primary pull-right"><i class="fa fa-edit"></i></button></p>
 
                                 Alamat Asal:  {{ $data_karyawan->getAlamatAsal->alamat_asal }} <br>
                                 Kabupaten :{{ $data_karyawan->getAlamatAsal->getKabupaten->nama_kabupaten }}
                                 Provinsi :{{ $data_karyawan->getAlamatAsal->getProvinsi->nama_provinsi }}
+
                             @endif
                             <br>
                             @if(empty($data_karyawan->getAlamatSek))
@@ -152,17 +157,57 @@
                                 Alamat Sekarang:  {{ $data_karyawan->getAlamatSek->alamat_sek}} <br>
                                 Kabupaten :{{ $data_karyawan->getAlamatSek->getKabupaten->nama_kabupaten }}
                                 Provinsi :{{ $data_karyawan->getAlamatSek->getProvinsi->nama_provinsi }}
+                                @endif
+                                </p>
+
+                                <hr>
+                            <strong><i class="fa fa-envelope margin-r-5"></i> Email
+                                <button data-toggle="modal" data-target="#modal-tambah-email" class="btn btn-xs btn-primary pull-right"><i class="fa fa-plus"></i></button>
+                            </strong>
+                                <p></p>
+                             @if(empty($data_karyawan->getAlamatEmailKy))
+                            <p class="text-muted">
+                                email anda belum dimasukan  <button data-toggle="modal" data-target="#modal-tambah-email" class="btn btn-xs btn-primary pull-right"><i class="fa fa-plus"></i></button>
+                            </p>
+
+                            @else
+                                @foreach($data_karyawan->getAlamatEmailKy as $value)
+                                    <form action="{{ url('hapus-email-ky/'. $value->id) }}" method="post">
+                                        <p class="text-muted">
+                                            <input type="hidden" name="_method" value="put">
+                                            {{ csrf_field() }}
+                                            {{ $value->nm_email }} <button type="submit" class="btn btn-xs btn-primary pull-right" onclick="return confirm('Apakah anda serius akan manghapus email ini')"><i class="fa fa-trash"></i></button>
+                                        </p>
+                                    </form>
+                                   @endforeach
                             @endif
-                        </p>
-
-                        <hr>
-
-
+                            <hr>
+                                <strong><i class="fa fa-tty margin-r-5"></i> No.Handphone
+                                    <button data-toggle="modal" data-target="#modal-tambah-handphone" class="btn btn-xs btn-primary pull-right"><i class="fa fa-plus"></i></button>
+                                </strong>
+                                <p></p>
+                                @if(empty($data_karyawan->getHpKy))
+                                    <p class="text-muted">
+                                        No.Handphone anda belum dimasukan  <button data-toggle="modal" data-target="#modal-tambah-no-handphone" class="btn btn-xs btn-primary pull-right"><i class="fa fa-plus"></i></button>
+                                    </p>
+                                @else
+                                    @foreach($data_karyawan->getHpKy as $value)
+                                        <form action="{{ url('hapus-hp-ky/'. $value->id) }}" method="post">
+                                            <p class="text-muted">
+                                                <input type="hidden" name="_method" value="put">
+                                                {{ csrf_field() }}
+                                                {{ $value->hp }}
+                                                <small>{{ $value->status_hp }}</small><button type="submit" class="btn btn-xs btn-primary pull-right" onclick="return confirm('Apakah anda serius akan manghapus no.handphone ini')"><i class="fa fa-trash"></i></button>
+                                            </p>
+                                        </form>
+                                    @endforeach
+                                @endif
                     </div>
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
             </div>
+
             <div class="col-md-4">
                 <div class="box box-primary">
                     <div class="box-header with-border">
@@ -222,6 +267,7 @@
                                 </p>
                                     File Scan KK : <br>
                                     <label style="font-weight: bold; padding-left: 5px">{{ $data_karyawan->getDataKeluarga->file_kk }}</label>
+                                    <img src="{{ asset('FileScanKK/'. $data_karyawan->getDataKeluarga->file_kk) }}" style="width: 100%;height: 50%"/>
                                 </p>
                                 <hr style="margin: 1px">
                         @else
@@ -246,6 +292,8 @@
 @include('user.karyawan.section.Profil.include.modal_alamat_sek')
 @include('user.karyawan.section.Profil.include.modal_pendidikan')
 @include('user.karyawan.section.Profil.include.modal_keluarga')
+@include('user.karyawan.section.Profil.include.modal_email')
+@include('user.karyawan.section.Profil.include.modal_hp_ky')
 
 @stop
 @section('plugins')

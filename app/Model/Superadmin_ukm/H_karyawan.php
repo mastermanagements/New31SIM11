@@ -53,4 +53,14 @@ class H_karyawan extends Model
     {
         return $this->hasOne('App\Model\Hrd\H_keluarga_ky','id_ky');
     }
+
+    public function getAlamatEmailKy()
+    {
+        return $this->hasMany('App\Model\Hrd\H_Email_ky','id_ky');
+    }
+
+    public function getHpKy()
+    {
+        return $this->hasMany('App\Model\Hrd\H_hp_ky','id_ky');
+    }
 }

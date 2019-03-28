@@ -9,6 +9,8 @@ use App\Model\Hrd\H_alamat_asal as asal;
 use App\Model\Hrd\H_alamat_sekarang as sekarang;
 use App\Model\Hrd\H_keluarga_ky as keluarga;
 use App\Model\Superadmin_sim\U_provinsi as provinsi;
+use App\Model\Hrd\H_Email_ky as email_ky;
+use App\Model\Hrd\H_hp_ky as hp_ky;
 use Session;
 
 class Karyawan extends Controller
@@ -251,4 +253,88 @@ class Karyawan extends Controller
             return redirect('profil')->with('message_success', 'Anda telah mengubah data keluarga anda');
         }
     }
+
+    public function store_email(Request $request)
+    {
+        $this->validate($request, [
+           'nm_email'=> 'required'
+        ]);
+
+        $nm_email = $request->nm_email;
+        $model = new email_ky;
+        $model->id_ky = $this->id_karyawan;
+        $model->nm_email = $nm_email;
+        $model->id_karyawan = $this->id_karyawan;
+        $model->id_perusahaan = $this->id_perusahaan;
+
+        if ($model->save())
+        {
+            return redirect('profil')->with('message_success', 'Anda telah menambahkan email baru');
+        }else
+        {
+            return redirect('profil')->with('message_fail', 'Gagal, memasukan email. silahkan tambahkan ulan email anda');
+        }
+
+    }
+
+    public function delete_email(Request $request,$id)
+    {
+        if(empty($data_model = email_ky::where('id', $id)->where('id_ky', $this->id_karyawan)->where('id_perusahaan', $this->id_perusahaan)->first()))
+        {
+            return abort(404);
+        }
+
+        if ($data_model->delete())
+        {
+            return redirect('profil')->with('message_success', 'Anda telah menghapus email ');
+        }else
+        {
+            return redirect('profil')->with('message_fail', 'Gagal, menghapus email. silahkan menghapus ulang email anda');
+        }
+    }
+
+
+    public function store_hp(Request $request)
+    {
+        $this->validate($request,[
+            'hp' => 'required',
+            'status_hp' => 'required'
+        ]);
+
+        $hp = $request->hp;
+        $status_hp = $request->status_hp;
+
+        $model = new hp_ky;
+        $model->id_ky = $this->id_karyawan;
+        $model->hp = $hp;
+        $model->status_hp = $status_hp;
+        $model->id_karyawan = $this->id_karyawan;
+        $model->id_perusahaan = $this->id_perusahaan;
+        if($model->save())
+        {
+            return redirect('profil')->with('message_success', 'Anda telah menambah no. handphone baru');
+        }
+        else
+        {
+            return redirect('profil')->with('message_fail',  'Gagal, memasukan email. silahkan memasukan ulang no.handphone anda');
+        }
+
+    }
+
+    public function delete_hp(Request $request,$id)
+    {
+        if(empty($data_model = hp_ky::where('id', $id)->where('id_ky', $this->id_karyawan)->where('id_perusahaan', $this->id_perusahaan)->first()))
+        {
+            return abort(404);
+        }
+
+        if ($data_model->delete())
+        {
+            return redirect('profil')->with('message_success', 'Anda telah menghapus no.handphone ');
+        }else
+        {
+            return redirect('profil')->with('message_fail', 'Gagal, menghapus no.handphone. silahkan menghapus ulang no.handphone anda');
+        }
+    }
+
 }

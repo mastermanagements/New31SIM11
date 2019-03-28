@@ -277,6 +277,15 @@ Route::get('getDataKeluarga', 'karyawan\Karyawan@data_keluarga');
 Route::post('update-keluarga-ky', 'karyawan\Karyawan@update_keluarga');
 
 Route::post('update-keluarga-ky-file', 'karyawan\Karyawan@update_upload_kk_keluarga');
+
+Route::post('tambah-alamat-email-ky','karyawan\Karyawan@store_email');
+
+Route::put('hapus-email-ky/{id}','karyawan\Karyawan@delete_email');
+
+Route::post('tambah-alamat-handphone-ky','karyawan\Karyawan@store_hp');
+
+Route::put('hapus-hp-ky/{id}','karyawan\Karyawan@delete_hp');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
