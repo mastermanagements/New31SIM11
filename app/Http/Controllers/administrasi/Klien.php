@@ -39,7 +39,7 @@ class Klien extends Controller
     {
         $nama_klie = $request->nm_klien;
         $data_klien = [
-            'data_klien' => kliens::where('nm_klien', 'LIKE', "%{$nama_klie}%") ->where('id_perusahaan', $this->id_perusahaan)->paginate(25)
+            'data_klien' => kliens::where('nm_klien', 'LIKE', "%{$nama_klie}%") ->where('id_perusahaan', $this->id_perusahaan)->paginate(10)
         ];
         return view('user.administrasi.section.klien.page_default', $data_klien);
     }

@@ -302,6 +302,8 @@ Route::get('hapus-klien/{id}','administrasi\Klien@delete');
 
 Route::post('cari-klien','administrasi\Klien@cari_klien');
 
+Route::get('Surat','administrasi\Surat@index');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

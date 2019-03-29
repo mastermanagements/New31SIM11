@@ -69,6 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
     $(function () {
         $('#example1').DataTable();
+        $('#example3').DataTable();
         $('#example2').DataTable({
             'paging'      : true,
             'lengthChange': false,
