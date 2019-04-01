@@ -15,7 +15,7 @@ class CreateSubmenuUkm extends Migration
     {
         Schema::create('u_submenu_ukm', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_menu')->unsigned();
+            $table->integer('id_menu_ukm')->unsigned();
             $table->integer('id_master_submenu')->unsigned();
             $table->integer('id_perusahaan')->unsigned();
             $table->timestamps();

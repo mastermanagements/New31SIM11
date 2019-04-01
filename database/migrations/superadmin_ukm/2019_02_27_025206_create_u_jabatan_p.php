@@ -17,7 +17,7 @@ class CreateUJabatanP extends Migration
             $table->increments('id');
             $table->string('nm_jabatan');
             $table->integer('id_perusahaan')->unsigned();
-            $table->integer('id_karyawan')->unsigned();
+            $table->integer('id_user_ukm')->unsigned();
             $table->integer('level_jabatan');
             $table->timestamps();
         });

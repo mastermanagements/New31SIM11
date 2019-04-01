@@ -17,6 +17,7 @@ class CreateUSwot extends Migration
             $table->increments('id');
             $table->year('tahun_swot');
             $table->enum('kategori_swot', ['strenght','weakness','opportunity','threat']);
+            $table->text('isi');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();

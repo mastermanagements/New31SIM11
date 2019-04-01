@@ -34,6 +34,7 @@ class CreateHKaryawan extends Migration
             $table->string('program_studi')->nullable();
             $table->string('pt')->nullable();
             $table->integer('id_perusahaan')->unsigned();
+            $table->integer('id_user_ukm')->unsigned();
             $table->date('tgl_masuk');
             $table->timestamps();
         });

@@ -15,7 +15,7 @@ class CreateRelationUAkta extends Migration
     {
         Schema::table('u_akta', function (Blueprint $table) {
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
-            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
+            $table->foreign('id_user_ukm')->references('id')->on('u_user_ukm');
         });
     }
 

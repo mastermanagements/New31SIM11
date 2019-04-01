@@ -29,6 +29,7 @@ class CreateKInvestor extends Migration
             $table->string('no_hp_aw');
             $table->string('alamat_aw',255);
             $table->integer('id_perusahaan')->unsigned();
+            $table->integer('id_user_ukm')->unsigned();
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class CreateRelasiAVisiP extends Migration
         Schema::table('a_visi_p', function (Blueprint $table) {
             //
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
-            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
+            $table->foreign('id_user_ukm')->references('id')->on('u_user_ukm');
         });
     }
 

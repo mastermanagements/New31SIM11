@@ -20,6 +20,7 @@ class CreateUProfilUser extends Migration
             $table->string('hp');
             $table->string('wa');
             $table->string('telegram')->nullable();
+            $table->string('foto')->nullable();
             $table->integer('provinsi_id')->unsigned();
             $table->integer('kab_id')->unsigned();
             $table->timestamps();
