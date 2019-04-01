@@ -131,6 +131,16 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'nama' => [
+            'required'=> 'Nama tidak boleh kosong'
+        ],
+        'alamat_email' => [
+            'required'=> 'Email tidak boleh kosong',
+        ],
+        'kata_kunci' => [
+            'required'=> 'Kata Kunci tidak boleh kosong',
+            'min.string' => ':attribute minimal :min karakter.'
+        ],
     ],
 
     /*
