@@ -286,6 +286,24 @@ Route::post('tambah-alamat-handphone-ky','karyawan\Karyawan@store_hp');
 
 Route::put('hapus-hp-ky/{id}','karyawan\Karyawan@delete_hp');
 
+//======================================== Administrasi ================================================================
+
+Route::get('Klien', 'administrasi\Klien@index');
+
+Route::get('tambah-klien','administrasi\Klien@create');
+
+Route::post('store-klien','administrasi\Klien@store');
+
+Route::get('ubah-klien/{id}','administrasi\Klien@edit');
+
+Route::put('update-klien/{id}','administrasi\Klien@update');
+
+Route::get('hapus-klien/{id}','administrasi\Klien@delete');
+
+Route::post('cari-klien','administrasi\Klien@cari_klien');
+
+Route::get('Surat','administrasi\Surat@index');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
