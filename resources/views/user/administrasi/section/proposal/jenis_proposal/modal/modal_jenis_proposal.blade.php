@@ -1,16 +1,16 @@
-<div class="modal fade" id="modal-tambah-jenis-surat">
+<div class="modal fade" id="modal-tambah-jenis-proposal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{ url('store-jenis-barang') }}" method="post">
+            <form action="{{ url('store-jenis-proposal') }}" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulir Jenis Surat</h4>
+                    <h4 class="modal-title">Formulir Jenis Proposal</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Jenis Surat</label>
-                        <textarea class="form-control" name="jenis_surat_keluar"></textarea>
+                        <label for="exampleInputEmail1">Jenis Proposal</label>
+                        <textarea class="form-control" name="jenis_proposal" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -15,10 +15,11 @@ Route::get('sign-out', 'Superadmin_ukm\LoginAndRegisterController@signOut');
 
 
 Route::get('dashboard', function (){
-    if(empty($model_superadmin = App\Model\Superadmin_ukm\U_usaha::where("id_user_ukm",Session::get('id_superadmin_ukm'))->first()))
-    {
-        return abort(404);
-    }
+//    dd(Session::get('id_superadmin_ukm'));
+//    if(empty($model_superadmin = App\Model\Superadmin_ukm\U_usaha::where("id_user_ukm",Session::get('id_superadmin_ukm'))->first()))
+//    {
+//        return abort(404);
+//    }
     $data_perusahaan = App\Model\superadmin_ukm\U_usaha::all()->where('id_user_ukm',Session::get('id_superadmin_ukm'));
     $data=[
         'data_perusahaan'=>$data_perusahaan
@@ -339,6 +340,11 @@ Route::get('ambilDataSuratKeluar/{id}','administrasi\Surat@ambil_surat_keluar');
 Route::post('upload-surat-keluar','administrasi\Surat@upload_surat_keluar');
 
 Route::post('upload-status-surat-keluar','administrasi\Surat@upload_status_surat_keluar');
+
+Route::get('Proposal','administrasi\Proposal@index');
+
+Route::post('store-jenis-proposal','administrasi\JenisProposal@store');
+
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

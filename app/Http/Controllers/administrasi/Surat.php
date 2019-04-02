@@ -17,18 +17,18 @@ class Surat extends Controller
     private $id_perusahaan;
 
     public function __construct()
-    {
-        $this->middleware(function($req, $next){
-            if(empty(Session::get('id_karyawan')) && empty(Session::get('id_perusahaan_karyawan')))
-            {
-                Session::flush();
-                return redirect('login-karyawan')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
-            }
-            $this->id_karyawan = Session::get('id_karyawan');
-            $this->id_perusahaan = Session::get('id_perusahaan_karyawan');
-            return $next($req);
-        });
-    }
+{
+    $this->middleware(function($req, $next){
+        if(empty(Session::get('id_karyawan')) && empty(Session::get('id_perusahaan_karyawan')))
+        {
+            Session::flush();
+            return redirect('login-karyawan')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
+        }
+        $this->id_karyawan = Session::get('id_karyawan');
+        $this->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        return $next($req);
+    });
+}
 
 
     public function index()
@@ -291,7 +291,6 @@ class Surat extends Controller
 
     public function upload_status_surat_keluar(Request $req)
     {
-
         $this->validate($req,[
             'id_ubah' => 'required',
             'status_surat'=>'required'
@@ -302,11 +301,11 @@ class Surat extends Controller
         $model->status_surat = $status_surat;
         if($model->save())
         {
-               return redirect('Surat')->with('message_success','Anda baru saja meng-unggah file surat keluar');
+           return redirect('Surat')->with('message_success','Anda baru saja meng-unggah file surat keluar');
         }
         else
-            {
-                return redirect('Surat')->with('message_fail','Terjadi kesalahan, gagal untuk ubah status surat');
-            }
+        {
+           return redirect('Surat')->with('message_fail','Terjadi kesalahan, gagal untuk ubah status surat');
+        }
     }
 }

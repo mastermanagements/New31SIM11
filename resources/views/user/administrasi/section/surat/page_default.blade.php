@@ -160,7 +160,7 @@
     <!-- /.content -->
 </div>
 @include('user.administrasi.section.surat.modal.modal_upload_file_surat_keluar')
-@include('user.administrasi.section.surat.jenis_surat.modal.modal_alamat')
+@include('user.administrasi.section.surat.jenis_surat.modal.modal_jenis_surat')
 @stop
 
 @section('plugins')
