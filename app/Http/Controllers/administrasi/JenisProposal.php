@@ -61,7 +61,7 @@ class JenisProposal extends Controller
         }
         else
         {
-            return redirect('Proposal')->with('message_fail','Terjadi kesalahan, silahkan coba lagi ..!');
+            return redirect('Proposal')->with('message_fail','Terjadi kesalahan, silahkan coba lagi');
         }
     }
 
