@@ -304,6 +304,36 @@ Route::post('cari-klien','administrasi\Klien@cari_klien');
 
 Route::get('Surat','administrasi\Surat@index');
 
+Route::post('store-jenis-barang','administrasi\JenisSurat@store');
+
+Route::get('tampilkan-jenis-barang','administrasi\JenisSurat@index');
+
+Route::get('tampilkan-jenis-barang/{id}','administrasi\JenisSurat@edit');
+
+Route::post('ubah-jenis-surat','administrasi\JenisSurat@update');
+
+Route::post('hapus-jenis-barang/{id}','administrasi\JenisSurat@delete');
+
+Route::get('tambah-surat-masuk','administrasi\Surat@create_surat_masuk');
+
+Route::post('store-surat-masuk','administrasi\Surat@store_surat_masuk');
+
+Route::get('ubah-surat-masuk/{id}','administrasi\Surat@ubah_surat_masuk');
+
+Route::put('update-surat-masuk/{id}','administrasi\Surat@update_surat_masuk');
+
+Route::put('hapus-surat-masuk/{id}','administrasi\Surat@delete_surat_masuk');
+
+Route::get('tambah-surat-keluar','administrasi\Surat@create_surat_keluar');
+
+Route::post('store-surat-keluar','administrasi\Surat@store_surat_keluar');
+
+Route::get('ubah-surat-keluar/{id}','administrasi\Surat@edit_surat_keluar');
+
+Route::put('update-surat-keluar/{id}','administrasi\Surat@update_surat_keluar');
+
+Route::put('hapus-surat-keluar/{id}','administrasi\Surat@delete_surat_keluar');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
