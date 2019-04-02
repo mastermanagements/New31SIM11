@@ -248,4 +248,65 @@ class Surat extends Controller
             return redirect('Surat')->with('message_fail','Terjadi kesalahan, silahkan coba ..!!');
         }
     }
+
+    public function ambil_surat_keluar($id)
+    {
+        if(empty($data_surat_keluar = surat_keluar::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+
+        $data_pass = [
+            'data'=> $data_surat_keluar
+        ];
+        return response()->json($data_pass);
+    }
+
+    public function upload_surat_keluar(Request $req)
+    {
+        $this->validate($req,[
+            'id' => 'required',
+            'file_surat' => 'required|image|mimes:jpeg,png,gif',
+       ]);
+        $file_surat = $req->file_surat;
+        $id= $req->id;
+        $name_file =   time().'_surat_masuk.'.$file_surat->getClientOriginalExtension();
+        $model = surat_keluar::findOrFail($id);
+        if(!empty($model->scan_file))
+        {
+            $file_path =public_path('fileSuratKeluar').'/'. $model->scan_file;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+        $model->scan_file = $name_file;
+        if($model->save())
+        {
+            if ($file_surat->move(public_path('fileSuratKeluar'), $name_file)) {
+                return redirect('Surat')->with('message_success','Anda baru saja meng-unggah file surat keluar');
+            }else{
+                return redirect('Surat')->with('message_fail','Terjadi kesalahan, file surat keluar gagal untuk di-unggah');
+            }
+        }
+    }
+
+    public function upload_status_surat_keluar(Request $req)
+    {
+
+        $this->validate($req,[
+            'id_ubah' => 'required',
+            'status_surat'=>'required'
+        ]);
+        $id= $req->id_ubah;
+        $status_surat= $req->status_surat;
+        $model = surat_keluar::findOrFail($id);
+        $model->status_surat = $status_surat;
+        if($model->save())
+        {
+               return redirect('Surat')->with('message_success','Anda baru saja meng-unggah file surat keluar');
+        }
+        else
+            {
+                return redirect('Surat')->with('message_fail','Terjadi kesalahan, gagal untuk ubah status surat');
+            }
+    }
 }

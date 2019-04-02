@@ -100,7 +100,7 @@
                                         <td>{{ $value->getJenisSurat->jenis_surat_keluar }}</td>
                                         <td>{!! $value->isi_surat !!}</td>
                                         <td>
-                                            <a href="#" onclick="return alert('bsk dibuat')">
+                                            <a href="#" onclick="ubahStatusSurat('{{ $value->id }}')">
                                                 @if($value->status_surat==0)
                                                 <span class="badge bg-red">Belum Terkirim</span>
                                                 @else
@@ -108,11 +108,14 @@
                                                 @endif
                                             </a>
                                         </td>
-                                        <td>
+                                        <td style="width: 5%;">
                                             @if(empty($value->scan_file))
-                                                <button class="btn btn-primary"><i class="fa fa-upload"></i> file belum tersedia</button>
+                                                <button class="btn btn-primary" onclick="uploadSurat('{{ $value->id }}');"><i class="fa fa-upload"></i> file belum tersedia</button>
                                             @else
-                                                <button class="btn btn-primary"><i class="fa fa-upload"></i> file belum tersedia</button>
+                                                <p >
+                                                    <a href="{{ asset('fileSuratKeluar/'.$value->scan_file) }}"><img src="{{ asset('fileSuratKeluar/'.$value->scan_file) }}" style="width: 20%"></a>
+                                                </p>
+                                                <button class="btn btn-primary" onclick="uploadSurat('{{ $value->id }}');"><i class="fa fa-upload"></i> Ganti file surat keluar</button>
                                             @endif
                                         </td>
                                         <td>
@@ -156,6 +159,7 @@
     </section>
     <!-- /.content -->
 </div>
+@include('user.administrasi.section.surat.modal.modal_upload_file_surat_keluar')
 @include('user.administrasi.section.surat.jenis_surat.modal.modal_alamat')
 @stop
 
@@ -163,4 +167,5 @@
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     @include('user.administrasi.section.surat.jenis_surat.modal.JS')
+    @include('user.administrasi.section.surat.modal.JS')
 @stop

@@ -334,6 +334,12 @@ Route::put('update-surat-keluar/{id}','administrasi\Surat@update_surat_keluar');
 
 Route::put('hapus-surat-keluar/{id}','administrasi\Surat@delete_surat_keluar');
 
+Route::get('ambilDataSuratKeluar/{id}','administrasi\Surat@ambil_surat_keluar');
+
+Route::post('upload-surat-keluar','administrasi\Surat@upload_surat_keluar');
+
+Route::post('upload-status-surat-keluar','administrasi\Surat@upload_status_surat_keluar');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

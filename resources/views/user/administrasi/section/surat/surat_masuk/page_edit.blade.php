@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">File scan surat</label>
-                                    <input type="file" id="exampleInputFile" name="file_surat">
+                                    <input type="file" id="exampleInputFile" name="file_surat" required>
                                     <small>Nama File Surat Masuk Sekarang adalah : {{ $data_surat->file_surat }}</small>
                                     <p class="help-block" style="color:red">*Format file yang disarankan .jpg, .png, .gif</p>
                                 </div>
