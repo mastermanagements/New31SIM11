@@ -31,28 +31,77 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Proposal</a></li>
-                        <li class="pull-right"><a href="#tab_2" data-toggle="tab"><i class="fa fa-reorder"></i> Jenis Surat</a></li>
+                        <li class="pull-right"><a href="#tab_2" data-toggle="tab"><i class="fa fa-reorder"></i> Jenis Proposal</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
-                            <a href="{{ url('tambah-surat-masuk') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah surat masuk </a>
+                            <div class="row">
+                                <div class="col-md-3" style="margin: 0">
+                                    <a href="{{ url('tambah-proposal') }}" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah Proposal </a>
+                                </div>
+                                <div class="col-md-9" >
+                                    <form action="{{ url('cari-klien') }}" method="post" style="width: 100%">
+                                        <div class="input-group input-group-md" >
+                                            {{ csrf_field() }}
+                                            <input type="text" name="nm_klien" class="form-control" placeholder="cari berdasarkan judul proposal" required>
+                                            <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                             <p></p>
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Tanggal Surat</th>
-                                    <th>Perihal</th>
-                                    <th>Dari</th>
-                                    <th>Ditujukan</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @php($i=1)
+                            <div class="row">
+                                @if(empty($data_proposal))
+                                    <h4>Anda belum menambahkan proposal</h4>
+                                @else
+                                    @foreach($data_proposal as $value)
+                                        <div class="col-md-3">
+                                            <div class="box box-warning box-solid">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title" title="{{ $value->judul_prop }}">{{ str_limit($value->judul_prop,10,"...") }}</h3>
 
-                                </tbody>
-                            </table>
+                                                    <div class="box-tools pull-right">
+                                                        <form action="{{ url('delete-proposal/'.$value->id) }}" method="post">
+                                                            <a href="{{ url('ubah-proposal/'.$value->id) }}" type="button" class="btn btn-box-tool" title="ubah proposal"><i class="fa fa-pencil"></i>
+                                                            </a>
+                                                            {{ csrf_field() }}
+                                                            <input type="hidden" name="_method" value="put">
+                                                            <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data ini ... ?')" class="btn btn-box-tool" title="hapus proposal"><i class="fa fa-eraser"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                    <!-- /.box-tools -->
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <div class="box-body">
+                                                   <div class="col-md-12">
+                                                       Tanggal Proposal: {{ date('d-m-Y', strtotime($value->tgl_prop)) }}
+                                                   </div>
+                                                   <div class="col-md-12">
+                                                       Ditujukan : {{ $value->ditujukan }}
+                                                   </div>
+                                                    <div class="col-md-12">
+                                                        @if(empty($value->cover_prop))
+                                                            <img src="{{ asset('coverDirectori/default.png') }}" style="width: 200px; height: 200px;">
+                                                            <button class="btn btn-primary"><i class="fa fa-upload"></i> Unggah sampul proposal</button>
+                                                        @else
+                                                            <img src="{{ asset('coverDirectori/'.$value->cover_prop) }}" style="width: 200px; height: 200px;">
+                                                            <button class="btn btn-primary"><i class="fa fa-upload"></i> Ganti sampul proposal</button>
+                                                        @endif
+                                                   </div>
+                                                </div>
+                                                <!-- /.box-body -->
+                                            </div>
+                                            <!-- /.box -->
+                                        </div>
+                                    @endforeach
+                                    {{ $data_proposal->links() }}
+                                @endif
+                            </div>
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_2">
