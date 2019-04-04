@@ -353,6 +353,8 @@ Route::put('update-proposal/{id}','administrasi\Proposal@update');
 
 Route::put('delete-proposal/{id}','administrasi\Proposal@delete');
 
+Route::post('upload-cover-proposal','administrasi\Proposal@uploadCoverProposal');
+
 Route::post('store-jenis-proposal','administrasi\JenisProposal@store');
 
 Route::get('jenis-proposal','administrasi\JenisProposal@index');

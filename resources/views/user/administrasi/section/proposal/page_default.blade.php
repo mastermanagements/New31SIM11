@@ -86,10 +86,12 @@
                                                    </div>
                                                     <div class="col-md-12">
                                                         @if(empty($value->cover_prop))
-                                                            <img src="{{ asset('coverDirectori/default.png') }}" style="width: 200px; height: 200px;">
-                                                            <button class="btn btn-primary"><i class="fa fa-upload"></i> Unggah sampul proposal</button>
+                                                            <a href="{{ asset('coverDirectori/default.png') }}"> <img src="{{ asset('coverDirectori/default.png') }}" style="width: 200px; height: 200px;"> </a>
+                                                            <button class="btn btn-primary"  style="margin-left: 5px" onclick="uploadCoverProposal('{{ $value->id }}')"><i class="fa fa-upload"></i> Unggah sampul proposal</button>
+                                                        <p></p>
+                                                            <button class="btn btn-primary" onclick="uploadDocProposal('{{ $value->id }}')"><i class="fa fa-upload"></i> Unggah dokumen proposal</button>
                                                         @else
-                                                            <img src="{{ asset('coverDirectori/'.$value->cover_prop) }}" style="width: 200px; height: 200px;">
+                                                            <a href="{{ asset('coverDirectori/'.$value->cover_prop) }}"><img src="{{ asset('coverDirectori/'.$value->cover_prop) }}" style="width: 200px; height: 200px;"></a>
                                                             <button class="btn btn-primary"><i class="fa fa-upload"></i> Ganti sampul proposal</button>
                                                         @endif
                                                    </div>
@@ -123,17 +125,19 @@
                 </div>
                 <!-- nav-tabs-custom -->
             </div>
-
         </div>
     </section>
     <!-- /.content -->
 </div>
+
 @include('user.administrasi.section.proposal.jenis_proposal.modal.modal_jenis_proposal')
-{{--@include('user.administrasi.section.surat.jenis_surat.modal.modal_alamat')--}}
+@include('user.administrasi.section.proposal.Modal.modal_upload_file_cover_proposal')
+
 @stop
 
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     @include('user.administrasi.section.proposal.jenis_proposal.modal.JS')
+    @include('user.administrasi.section.proposal.Modal.JS')
 @stop

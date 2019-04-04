@@ -130,4 +130,21 @@ class Proposal extends Controller
         }
     }
 
+    public function uploadCoverProposal(Request $req)
+    {
+        dd($req->all());
+
+        $this->validate($req, [
+            'id_cover_proposal' => 'required',
+            'cover_prop' => 'required|image|mimes:jpg,png,gif'
+        ]);
+
+        $id = $req->id_cover_proposal;
+
+        $data_proposal = proposals::find($id);
+
+
+
+    }
+
 }
