@@ -28,51 +28,51 @@
                 retrieve: true
             });
 
-            {{--call_jenis_surat = function () {--}}
-                {{--$.ajax({--}}
-                    {{--url: '{{ url('tampilkan-jenis-barang') }}',--}}
-                    {{--dataType : 'json',--}}
-                {{--}).done(function (result) {--}}
-                    {{--console.log(result);--}}
-                    {{--table_jenis_surat.clear().draw();--}}
-                    {{--table_jenis_surat.rows.add(result.data).draw();--}}
-                {{--}).fail(function(jqXHR, textStatus,errorThrown){--}}
+            call_jenis_proposal = function () {
+                $.ajax({
+                    url: '{{ url('jenis-proposal') }}',
+                    dataType : 'json',
+                }).done(function (result) {
+                    console.log(result);
+                    table_jenis_surat.clear().draw();
+                    table_jenis_surat.rows.add(result.data).draw();
+                }).fail(function(jqXHR, textStatus,errorThrown){
 
-                {{--})--}}
-            {{--}--}}
+                })
+            }
 
-            {{--call_jenis_surat()--}}
+            call_jenis_proposal()
 
-            {{--ubahJenisBarang= function (id) {--}}
-                {{--$.ajax({--}}
-                    {{--url: '{{ url('tampilkan-jenis-barang') }}/'+id,--}}
-                    {{--dataType : 'json',--}}
-                    {{--success : function (result) {--}}
-                        {{--$('[name="jenis_surat_keluar_ubah"]').val(result.data.jenis_surat_keluar)--}}
-                        {{--$('[name="id"]').val(result.data.id)--}}
-                        {{--$('#modal-ubah-jenis-surat').modal('show')--}}
-                    {{--}--}}
-                {{--})--}}
-            {{--}--}}
+            UbahJenisProposal= function (id) {
+                $.ajax({
+                    url: '{{ url('jenis-proposal') }}/'+id,
+                    dataType : 'json',
+                    success : function (result) {
+                        $('[name="jenis_proposal_ubah"]').val(result.jenis_proposal)
+                        $('[name="id"]').val(result.id)
+                        $('#modal-ubah-jenis-proposal').modal('show')
+                    }
+                })
+            }
 
-            {{--hapusJenisBarang= function (id) {--}}
-                {{--if(confirm('Apakah anda yakin akan menghapus data ini ...?') == true){--}}
-                    {{--$.ajax({--}}
-                        {{--url: '{{ url('hapus-jenis-barang') }}/'+id,--}}
-                        {{--type : 'post',--}}
-                        {{--data : {--}}
-                            {{--'_token' : '{{ csrf_token() }}',--}}
-                            {{--'id' : id--}}
-                        {{--},--}}
-                        {{--success : function (result) {--}}
-                           {{--window.location.reload()--}}
-                        {{--}--}}
-                    {{--})--}}
-                {{--}else--}}
-                    {{--{--}}
-                        {{--alert('proses hapus dibatalkan')--}}
-                    {{--}--}}
-            {{--}--}}
+            HapusJenisProposal= function (id) {
+                if(confirm('Apakah anda yakin akan menghapus data ini ...?') == true){
+                    $.ajax({
+                        url: '{{ url('delete-jenis-proposal')}} ',
+                        type : 'post',
+                        data : {
+                            '_token' : '{{ csrf_token() }}',
+                            'id' : id
+                        },
+                        success : function (result) {
+                           window.location.reload()
+                        }
+                    })
+                }else
+                    {
+                        alert('proses hapus dibatalkan')
+                    }
+            }
         });
 
     </script>

@@ -343,7 +343,27 @@ Route::post('upload-status-surat-keluar','administrasi\Surat@upload_status_surat
 
 Route::get('Proposal','administrasi\Proposal@index');
 
+Route::get('tambah-proposal','administrasi\Proposal@create');
+
+Route::post('store-proposal','administrasi\Proposal@store');
+
+Route::get('ubah-proposal/{id}','administrasi\Proposal@edit');
+
+Route::put('update-proposal/{id}','administrasi\Proposal@update');
+
+Route::put('delete-proposal/{id}','administrasi\Proposal@delete');
+
+Route::post('upload-cover-proposal','administrasi\Proposal@uploadCoverProposal');
+
 Route::post('store-jenis-proposal','administrasi\JenisProposal@store');
+
+Route::get('jenis-proposal','administrasi\JenisProposal@index');
+
+Route::get('jenis-proposal/{id}','administrasi\JenisProposal@edit');
+
+Route::post('ubah-jenis-proposal','administrasi\JenisProposal@update');
+
+Route::post('delete-jenis-proposal','administrasi\JenisProposal@delete');
 
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))

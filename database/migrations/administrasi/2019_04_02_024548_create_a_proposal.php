@@ -19,8 +19,8 @@ class CreateAProposal extends Migration
             $table->string('judul_prop');
             $table->date('tgl_prop');
             $table->string('ditujukan');
-            $table->string('file_prop');
-            $table->string('cover_prop');
+            $table->string('file_prop')->nullable();
+            $table->string('cover_prop')->nullable();
             $table->enum('status_prop',['0','1'])->default(0);
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
