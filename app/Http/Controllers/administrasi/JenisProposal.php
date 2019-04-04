@@ -65,4 +65,53 @@ class JenisProposal extends Controller
         }
     }
 
+    public function edit($id)
+    {
+        if(empty($data_jenis_proposal = jenis_proposal::where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first()))
+        {
+            return abort(404);
+        }
+        $data = $data_jenis_proposal;
+        return response()->json($data);
+    }
+
+    public function update(Request $req)
+    {
+        $this->validate($req,[
+            'jenis_proposal_ubah' => 'required',
+            'id'=> 'required'
+        ]);
+        $jenis_proposal = $req->jenis_proposal_ubah;
+        $id = $req->id;
+        $model = jenis_proposal::find($id);
+        $model->jenis_proposal = $jenis_proposal;
+        $model->id_perusahaan = $this->id_perusahaan;
+        $model->id_karyawan = $this->id_karyawan;
+        if($model->save())
+        {
+            return redirect('Proposal')->with('message_success','Anda telah mengubah jenis proposal');
+        }
+        else
+        {
+            return redirect('Proposal')->with('message_fail','Terjadi kesalahan, silahkan coba lagi');
+        }
+    }
+
+    public function delete(Request $req)
+    {
+        $this->validate($req,[
+            'id'=> 'required'
+        ]);
+        $id = $req->id;
+        $model = jenis_proposal::find($id);
+        if($model->delete())
+        {
+            return redirect('Proposal')->with('message_success','Anda telah menghapus jenis proposal');
+        }
+        else
+        {
+            return redirect('Proposal')->with('message_fail','Terjadi kesalahan, silahkan coba lagi');
+        }
+    }
+
 }

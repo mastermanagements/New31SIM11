@@ -5,6 +5,7 @@ namespace App\Http\Controllers\administrasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
+use App\Model\Administrasi\A_Jenis_Proposal as jenis_proposal;
 
 class Proposal extends Controller
 {

@@ -345,6 +345,14 @@ Route::get('Proposal','administrasi\Proposal@index');
 
 Route::post('store-jenis-proposal','administrasi\JenisProposal@store');
 
+Route::get('jenis-proposal','administrasi\JenisProposal@index');
+
+Route::get('jenis-proposal/{id}','administrasi\JenisProposal@edit');
+
+Route::post('ubah-jenis-proposal','administrasi\JenisProposal@update');
+
+Route::post('delete-jenis-proposal','administrasi\JenisProposal@delete');
+
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

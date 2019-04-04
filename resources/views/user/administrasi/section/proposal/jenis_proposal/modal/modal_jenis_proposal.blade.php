@@ -27,10 +27,10 @@
 <!-- /.modal -->
 
 
-<div class="modal fade" id="modal-ubah-jenis-surat">
+<div class="modal fade" id="modal-ubah-jenis-proposal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{ url('ubah-jenis-surat') }}" method="post">
+            <form action="{{ url('ubah-jenis-proposal') }}" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
@@ -39,7 +39,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Jenis Surat</label>
-                        <textarea class="form-control" name="jenis_surat_keluar_ubah"></textarea>
+                        <textarea class="form-control" name="jenis_proposal_ubah"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

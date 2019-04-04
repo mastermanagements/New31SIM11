@@ -62,17 +62,10 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Tanggal Surat</th>
-                                    <th>Perihal</th>
-                                    <th>Dari</th>
-                                    <th>Ditujukan</th>
+                                    <th>Jenis Proposal</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                @php($i=1)
-
-                                </tbody>
                             </table>
                         </div>
 
