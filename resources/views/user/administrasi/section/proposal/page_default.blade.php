@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
 @stop
 
 @section('master_content')
@@ -40,10 +43,10 @@
                                     <a href="{{ url('tambah-proposal') }}" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah Proposal </a>
                                 </div>
                                 <div class="col-md-9" >
-                                    <form action="{{ url('cari-klien') }}" method="post" style="width: 100%">
+                                    <form action="{{ url('cari-proposal') }}" method="post" style="width: 100%">
                                         <div class="input-group input-group-md" >
                                             {{ csrf_field() }}
-                                            <input type="text" name="nm_klien" class="form-control" placeholder="cari berdasarkan judul proposal" required>
+                                            <input type="text" name="judul_proposal" class="form-control" placeholder="cari berdasarkan judul proposal" required>
                                             <span class="input-group-btn">
                                             <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
                                             </span>
@@ -79,22 +82,51 @@
                                                 <!-- /.box-header -->
                                                 <div class="box-body">
                                                    <div class="col-md-12">
-                                                       Tanggal Proposal: {{ date('d-m-Y', strtotime($value->tgl_prop)) }}
+                                                       Tanggal Proposal: <label style="font-weight: bold">{{ date('d-m-Y', strtotime($value->tgl_prop)) }}</label>
                                                    </div>
                                                    <div class="col-md-12">
-                                                       Ditujukan : {{ $value->ditujukan }}
+                                                       Ditujukan : <label style="font-weight: bold">{{ $value->ditujukan }}</label>
                                                    </div>
+                                                    {{--@if(!empty($value->file_prop))--}}
+                                                    {{--<div class="col-md-12">--}}
+                                                       {{--Nama dokumen proposal : <br> <label style="font-weight: bold">{{ $value->file_prop }}</label>--}}
+                                                    {{--</div>--}}
+                                                    {{--@endif--}}
+                                                    <div class="col-md-12">
+                                                        Status Proposal :
+                                                        <input type="checkbox" name="status_proposal" onchange="ubahStatusProposal({{ $value->id }})" @if($value->status_prop==1) checked value="1" @else value="0" @endif data-toggle="toggle" data-size="mini" data-width="100" data-on="Sudah Dikirim" data-off="Belum Dikirm">
+                                                        <p></p>
+                                                    </div>
+
                                                     <div class="col-md-12">
                                                         @if(empty($value->cover_prop))
-                                                            <a href="{{ asset('coverDirectori/default.png') }}"> <img src="{{ asset('coverDirectori/default.png') }}" style="width: 200px; height: 200px;"> </a>
+                                                            <a href="{{ asset('coverDirectori/default.png') }}"> <img src="{{ asset('coverDirectori/default.png') }}" style="width: 200px; height: 300px;"> </a>
+                                                            <p></p>
                                                             <button class="btn btn-primary"  style="margin-left: 5px" onclick="uploadCoverProposal('{{ $value->id }}')"><i class="fa fa-upload"></i> Unggah sampul proposal</button>
-                                                        <p></p>
+                                                        @else
+                                                            <a href="{{ asset('coverDirectori/'.$value->cover_prop) }}" ><img src="{{ asset('coverDirectori/'.$value->cover_prop) }}" style="width: 200px; height: 300px;"></a>
+                                                            <p></p>
+                                                            <button class="btn btn-primary" style="margin-left: 5px" onclick="uploadCoverProposal('{{ $value->id }}')"><i class="fa fa-upload"></i> Ganti sampul proposal</button>
+                                                         @endif
+
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        @if(empty($value->file_prop))
+                                                            <p></p>
                                                             <button class="btn btn-primary" onclick="uploadDocProposal('{{ $value->id }}')"><i class="fa fa-upload"></i> Unggah dokumen proposal</button>
                                                         @else
-                                                            <a href="{{ asset('coverDirectori/'.$value->cover_prop) }}"><img src="{{ asset('coverDirectori/'.$value->cover_prop) }}" style="width: 200px; height: 200px;"></a>
-                                                            <button class="btn btn-primary"><i class="fa fa-upload"></i> Ganti sampul proposal</button>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <p></p>
+                                                                    <a href="{{ asset('documentDirectori/'. $value->file_prop) }}" class="btn btn-danger" ><i class="fa fa-download"></i> Download</a>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p></p>
+                                                                    <button class="btn btn-success" onclick="uploadDocProposal('{{ $value->id }}')"><i class="fa fa-upload"></i> Unggah</button>
+                                                                </div>
+                                                            </div>
                                                         @endif
-                                                   </div>
+                                                    </div>
                                                 </div>
                                                 <!-- /.box-body -->
                                             </div>
@@ -138,6 +170,7 @@
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     @include('user.administrasi.section.proposal.jenis_proposal.modal.JS')
     @include('user.administrasi.section.proposal.Modal.JS')
 @stop

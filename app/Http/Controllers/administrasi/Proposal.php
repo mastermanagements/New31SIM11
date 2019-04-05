@@ -35,6 +35,18 @@ class Proposal extends Controller
         return view('user.administrasi.section.proposal.page_default', $data);
     }
 
+    public function cari(Request $req)
+    {
+        $this->validate($req,[
+           'judul_proposal' => 'required'
+        ]);
+        $judul_proposal = $req->judul_proposal;
+        $data=[
+            'data_proposal'=> proposals::where('judul_prop','LIKE', "%{$judul_proposal}%")->where('id_perusahaan', $this->id_perusahaan)->paginate(20)
+        ];
+        return view('user.administrasi.section.proposal.page_default', $data);
+    }
+
     public function create()
     {
         $data_pass = [
@@ -132,19 +144,97 @@ class Proposal extends Controller
 
     public function uploadCoverProposal(Request $req)
     {
-        dd($req->all());
 
         $this->validate($req, [
             'id_cover_proposal' => 'required',
-            'cover_prop' => 'required|image|mimes:jpg,png,gif'
+            'cover_prop' => 'required|image|mimes:jpeg,jpg,png,gif'
         ]);
 
         $id = $req->id_cover_proposal;
+        $cover_proposal = $req->cover_prop;
+        $name_file =  time().'_coverProposal.'.$cover_proposal->getClientOriginalExtension();
 
-        $data_proposal = proposals::find($id);
+        $model = proposals::findOrFail($id);
+        if(!empty($model->cover_prop)){
+            $file_path = public_path('coverDirectori').'/'.$model->cover_prop;
+            if(file_exists($file_path))
+            {
+                @unlink($file_path);
+            }
+        }
 
+        $model->cover_prop = $name_file;
 
+        if($model->save())
+        {
+            if ($cover_proposal->move(public_path('coverDirectori'), $name_file)) {
+                return redirect('Proposal')->with('message_success','Berhasil cover proposal telah berhasil diunggah');
+            }else{
+                return redirect('Proposal')->with('message_error','Gagal meng-unggul cover proposal');
+            }
+        }
 
     }
 
+
+    public function uploadDocProposal(Request $req)
+    {
+       $this->validate($req, [
+            'id_doc_proposal' => 'required',
+            'doc_prop' => 'required|file|mimes:rar,zip'
+        ]);
+
+        $id = $req->id_doc_proposal;
+        $doc_proposal = $req->doc_prop;
+        $name_file =  uniqid().time().'.'. $doc_proposal->getClientOriginalExtension();
+
+        $model = proposals::findOrFail($id);
+        if(!empty($model->file_prop)){
+            $file_path = public_path('documentDirectori').'/'.$model->file_prop;
+            if(file_exists($file_path))
+            {
+                @unlink($file_path);
+            }
+        }
+
+        $model->file_prop = $name_file;
+
+        if($model->save())
+        {
+            if ($doc_proposal->move(public_path('documentDirectori'), $name_file)) {
+                return redirect('Proposal')->with('message_success','Berhasil cover proposal telah berhasil diunggah');
+            }else{
+                return redirect('Proposal')->with('message_error','Gagal meng-unggul cover proposal');
+            }
+        }
+    }
+
+    public function ubah_status_proposal(Request $req, $id)
+    {
+        if(empty($data_proposal = proposals::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first()))
+        {
+            return abort(404);
+        }
+        $status_proposal = $data_proposal->status_prop;
+        if($status_proposal == '0'){
+            $status_proposal = '1';
+        }else{
+            $status_proposal = '0';
+        }
+        $data_proposal->status_prop = $status_proposal;
+        if($data_proposal->save())
+        {
+            $data = [
+                'message'=> 'Anda telah mengubah data status proposal',
+                'status' => 'true'
+            ];
+            return response()->json($data);
+        }else{
+            $data = [
+                'message'=> 'Status Proposal tidak bisa diubah',
+                'status' => 'false'
+            ];
+            return response()->json($data);
+        }
+    }
 }
