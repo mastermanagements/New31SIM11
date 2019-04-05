@@ -64,8 +64,8 @@
                            </div>
                            <div class="form-group">
                                <label for="exampleInputEmail1">Kode Pos</label>
-                               <input type="text" class="form-control" placeholder="Masukan Kode pos" name="kd_pos" required>
-                               <small style="color: red">* Tidak boleh kosong</small>
+                               <input type="text" class="form-control" placeholder="Masukan Kode pos" name="kd_pos">
+                                <small style="color: orange">* Isi Jika Ada</small>
                            </div>
                            <div class="form-group">
                                <label for="exampleInputEmail1">Nomor Telepon</label>
@@ -73,13 +73,14 @@
                                <small style="color: orange">* Isi Jika Ada</small>
                            </div>
                            <div class="form-group">
-                               <label for="exampleInputEmail1">Nomor Handphose</label>
-                               <input type="text" class="form-control" name="hp" placeholder="Masukan Nomor Handphone Anda">
-                               <small style="color: orange">* Isi Jika Ada</small>
+                               <label for="exampleInputEmail1">Nomor Handphone</label>
+                               <input type="text" class="form-control" name="hp" placeholder="Masukan Nomor Handphone Anda" required>
+                               <small style="color: red">* Tidak boleh kosong</small>
+							   
                            </div> <div class="form-group">
-                               <label for="exampleInputEmail1">Nomor Whatshap</label>
-                               <input type="text" class="form-control" name="wa" placeholder="Masukan Nomor Whatshap Anda">
-                               <small style="color: orange">* Isi Jika Ada</small>
+                               <label for="exampleInputEmail1">Nomor Whatshapp</label>
+                               <input type="text" class="form-control" name="wa" placeholder="Masukan Nomor Whatshap Anda" required>
+								<small style="color: red">* Tidak boleh kosong</small>
                            </div>
                            <div class="form-group">
                                <label for="exampleInputEmail1">Nomor Telegram</label>
@@ -110,26 +111,30 @@
                                        <input type="radio" name="jenis_usaha" class="minimal" value="4">
                                        Pertanian
                                    </label>
+								   <label>
+                                       <input type="radio" name="jenis_usaha" class="minimal" value="5">
+                                       Kuliner
+                                   </label>
                                </div>
                                <small style="color: red">* Tidak Boleh Kosong</small>
                            </div>
 
                            <div class="form-group">
                                <label for="exampleInputEmail1">Email</label>
-                               <input type="email" class="form-control" name="email" placeholder="Masukan email Anda">
-                               <small style="color: orange">* Isi Jika Ada</small>
+                               <input type="email" class="form-control" name="email" placeholder="Masukan email Anda" required>
+                               <small style="color: red">* Tidak Boleh Kosong</small>
                            </div>
 
                        <div class="form-group">
                            <label for="exampleInputEmail1">Website</label>
-                           <input type="text" class="form-control" name="web" placeholder="Masukan Nama Website anda" required>
+                           <input type="text" class="form-control" name="web" placeholder="Masukan Nama Website anda">
                            <small style="color: orange">* isi jika ada</small>
                        </div>
                        <!-- /.box-body -->
                        <div class="form-group">
                            <label for="exampleInputFile">Logo Usaha</label>
                            <input type="file" id="exampleInputFile" name="logo" required>
-                           <p class="help-block" style="color:orange">* isi jika ada</p>
+                           <p class="help-block" style="color:red">* Tidak Boleh Kosong</p>
                        </div>
 
                        </div>
