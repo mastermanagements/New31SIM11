@@ -3,6 +3,7 @@
     <div class="box box-primary">
         <div class="box-body box-profile">
             <form action="{{ url('updateProfile/'.$data_user->id) }}" method="post" enctype="multipart/form-data">
+			
             <img class="profile-user-img img-responsive img-circle" src="
                             @if(empty($profil_user_ukm->foto))
             {{ asset('image_superadmin_ukm/default.png') }}
@@ -61,11 +62,11 @@
                 </li>
                 <li class="list-group-item">
                         @if(empty($profil_user_ukm))
-                            <a ><input type="text" class="form-control input-sm"  style="width:100%" name="telp"  placeholder="No.Telepon" required></a>
+                            <a ><input type="text" class="form-control input-sm"  style="width:100%" name="telp"  placeholder="No.Telepon"></a>
                         @else
-                            <a ><input type="text" class="form-control input-sm" style="width:100%" name="telp" value="{{ $profil_user_ukm->telp }}" required></a>
-                        @endif
-                            <small style="color:red;">* Tidak boleh kosong</small>
+                            <a ><input type="text" class="form-control input-sm" style="width:100%" name="telp" value="{{ $profil_user_ukm->telp }}"></a>
+                        @endif 
+							<small style="color:orange;">* Isi Jika ada</small>
                 </li>
                 <li class="list-group-item">
                        @if(empty($profil_user_ukm))
@@ -86,9 +87,9 @@
                 </li>
                 <li class="list-group-item">
                        @if(empty($profil_user_ukm))
-                            <a ><input type="text" class="form-control input-sm" name="telegram" placeholder="No.Telegram" required></a>
+                            <a ><input type="text" class="form-control input-sm" name="telegram" placeholder="No.Telegram"></a>
                         @else
-                            <a ><input type="text" class="form-control input-sm" name="telegram" value="{{ $profil_user_ukm->telegram }}" required></a>
+                            <a ><input type="text" class="form-control input-sm" name="telegram" value="{{ $profil_user_ukm->telegram }}"></a>
                         @endif
                            <small style="color:orange;">* Isi Jika ada</small>
                 </li>

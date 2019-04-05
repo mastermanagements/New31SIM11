@@ -40,7 +40,7 @@ class UsahaController extends Controller
             'alamat'=>'required',
             'id_provinsi'=>'required',
             'id_kabupaten' => 'required',
-            'kd_pos'=> 'required',
+			'email'=> 'required',
             'jenis_usaha'=>'required',
             'logo'=>'required|image|mimes:jpeg,png,gif,jpg|max:2048',
         ]);
@@ -75,6 +75,7 @@ class UsahaController extends Controller
         $model->jenis_usaha =  $jenis_usaha;
         $model->email =  $email;
         $model->web =  $web;
+		$model->logo = $image_name;
         $model->id_user_ukm =  $this->id_superadmin;
 
         if($model->save())

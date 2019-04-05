@@ -16,6 +16,7 @@ use App\Model\Superadmin_ukm\A_misi_p as misi_p;
 use App\Model\Superadmin_ukm\U_Akta as akta_p;
 use App\Model\Superadmin_ukm\U_ijin_usaha as ijin;
 use App\Model\Superadmin_ukm\U_jabatan_p as jabatans;
+
 class Superadmin_UKM extends Controller
 {
     //
@@ -49,6 +50,7 @@ class Superadmin_UKM extends Controller
         $pass_data = [
             'menu'=>'edit',
             'data_user'=>$this->getFavoriteData()['data_user'],
+			'profil_user_ukm'=>$this->getFavoriteData()['profil_user_ukm'],
             'provinsi'=>$this->getProvinsi(),
             'kabupaten' => $this->getKabupaten(),
             'content_menu' => 'profil'
@@ -64,7 +66,6 @@ class Superadmin_UKM extends Controller
             'email'=>'required',
             'id_provinsi'=>'required',
             'id_kabupaten'=>'required',
-            'telp'=>'required',
             'hp'=>'required',
             'wa'=>'required',
         ]);
@@ -109,9 +110,9 @@ class Superadmin_UKM extends Controller
 
             if($profil_user_ukm->save()){
                 if ($foto->move(public_path('image_superadmin_ukm'), $image_name)) {
-                    return redirect('dashboard')->with('message_success','Profil anda berhasil diperbarui');
+                    return redirect('pengaturan-perusahaan')->with('message_success','Profil anda berhasil diperbarui');
                 }else{
-                    return redirect('dashboard')->with('message_error','Profil anda berhasil diperbarui namun foto gagal diupload');
+                    return redirect('pengaturan-perusahaan')->with('message_error','Profil anda berhasil diperbarui namun foto gagal diupload');
                 }
             }
         }
