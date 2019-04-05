@@ -12,5 +12,10 @@
             $('[name="id_cover_proposal"]').val(id);
             $('#modal-tambah-file-cover-proposal').modal('show')
         }
+
+        uploadDocProposal = function (id) {
+            $('[name="id_doc_proposal"]').val(id);
+            $('#modal-tambah-file-doc-proposal').modal('show')
+        }
    });
 </script>
