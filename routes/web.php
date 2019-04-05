@@ -357,6 +357,10 @@ Route::post('upload-cover-proposal','administrasi\Proposal@uploadCoverProposal')
 
 Route::post('upload-doc-proposal','administrasi\Proposal@uploadDocProposal');
 
+Route::post('cari-proposal','administrasi\Proposal@cari');
+
+Route::put('ubah-status-proposal/{id}','administrasi\Proposal@ubah_status_proposal');
+
 Route::post('store-jenis-proposal','administrasi\JenisProposal@store');
 
 Route::get('jenis-proposal','administrasi\JenisProposal@index');

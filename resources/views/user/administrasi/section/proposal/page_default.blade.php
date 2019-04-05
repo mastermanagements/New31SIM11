@@ -43,10 +43,10 @@
                                     <a href="{{ url('tambah-proposal') }}" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah Proposal </a>
                                 </div>
                                 <div class="col-md-9" >
-                                    <form action="{{ url('cari-klien') }}" method="post" style="width: 100%">
+                                    <form action="{{ url('cari-proposal') }}" method="post" style="width: 100%">
                                         <div class="input-group input-group-md" >
                                             {{ csrf_field() }}
-                                            <input type="text" name="nm_klien" class="form-control" placeholder="cari berdasarkan judul proposal" required>
+                                            <input type="text" name="judul_proposal" class="form-control" placeholder="cari berdasarkan judul proposal" required>
                                             <span class="input-group-btn">
                                             <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
                                             </span>
@@ -94,7 +94,7 @@
                                                     {{--@endif--}}
                                                     <div class="col-md-12">
                                                         Status Proposal :
-                                                        <input type="checkbox"  @if($value->status_prop==1) checked value="1" @else value="0" @endif data-toggle="toggle" data-size="mini" data-width="100" data-on="Sudah Dikirim" data-off="Belum Dikirm">
+                                                        <input type="checkbox" name="status_proposal" onchange="ubahStatusProposal({{ $value->id }})" @if($value->status_prop==1) checked value="1" @else value="0" @endif data-toggle="toggle" data-size="mini" data-width="100" data-on="Sudah Dikirim" data-off="Belum Dikirm">
                                                         <p></p>
                                                     </div>
 
