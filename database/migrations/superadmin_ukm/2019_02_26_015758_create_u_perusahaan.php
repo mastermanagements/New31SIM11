@@ -40,5 +40,6 @@ class CreateUPerusahaan extends Migration
     public function down()
     {
         Schema::dropIfExists('u_perusahaan');
+		
     }
 }
