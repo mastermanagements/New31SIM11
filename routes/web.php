@@ -371,6 +371,28 @@ Route::post('ubah-jenis-proposal','administrasi\JenisProposal@update');
 
 Route::post('delete-jenis-proposal','administrasi\JenisProposal@delete');
 
+Route::get('Arsip','administrasi\Arsip@index');
+
+Route::get('ambil-jenis-arsip', 'administrasi\JenisArsip@index');
+
+Route::post('store-jenis-arsip','administrasi\JenisArsip@store');
+
+Route::post('ubah-jenis-arsip','administrasi\JenisArsip@update');
+
+Route::post('hapus-jenis-arsip','administrasi\JenisArsip@delete');
+
+Route::get('ambil-jenis-arsip/{id}','administrasi\JenisArsip@edit');
+
+Route::get('tambah-arsip','administrasi\Arsip@create');
+
+Route::post('store-arsip','administrasi\Arsip@store');
+
+Route::get('ubah-arsip/{id}','administrasi\Arsip@edit');
+
+Route::put('update-arsip/{id}','administrasi\Arsip@update');
+
+Route::put('hapus-arsip/{id}','administrasi\Arsip@delete');
+
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

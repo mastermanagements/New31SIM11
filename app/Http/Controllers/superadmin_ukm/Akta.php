@@ -78,7 +78,7 @@ class Akta extends Controller
             }else{
                 return redirect('akta')->with('message_error','Gagal menyimpan akta file akta');
             }
-            return redirect('akta')->with('message_success','Berhasil mengubah Data Usaha');
+            return redirect('akta')->with('message_success','Berhasil mengubah akta');
         }
 
     }
