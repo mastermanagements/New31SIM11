@@ -38,6 +38,19 @@ class Arsip extends Controller
         return view('user.administrasi.section.arsip.page_default', $data);
     }
 
+    public function cari(Request $req)
+    {
+        $this->validate($req,[
+            'ket' => 'required'
+        ]);
+        $ket =$req->ket;
+        $data = [
+            'data_arsip'=> arsips::where('ket', 'LIKE',"{$ket}")->where('id_perusahaan', $this->id_perusahaan)->paginate(30),
+            'jenis_arsip' => jenis_arsip::all()->where('id_perusahaan', $this->id_perusahaan)
+        ];
+        return view('user.administrasi.section.arsip.page_default', $data);
+    }
+
     public function create()
     {
         $data = [

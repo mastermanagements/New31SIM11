@@ -393,6 +393,7 @@ Route::put('update-arsip/{id}','administrasi\Arsip@update');
 
 Route::put('hapus-arsip/{id}','administrasi\Arsip@delete');
 
+Route::get('cari-arsip','administrasi\Arsip@cari');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
