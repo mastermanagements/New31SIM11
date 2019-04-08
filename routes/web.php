@@ -395,6 +395,24 @@ Route::put('hapus-arsip/{id}','administrasi\Arsip@delete');
 
 Route::get('cari-arsip','administrasi\Arsip@cari');
 
+Route::get('SPK-Kontrak','administrasi\SPKKontrak@index');
+
+Route::get('tambah-spk','administrasi\SPKKontrak@create');
+
+Route::post('store-spk','administrasi\SPKKontrak@store');
+
+Route::get('ubah-spk/{id}','administrasi\SPKKontrak@edit');
+
+Route::put('update-spk/{id}','administrasi\SPKKontrak@update');
+
+Route::put('hapus-spk/{id}','administrasi\SPKKontrak@delete');
+
+Route::post('upload-file-spk','administrasi\SPKKontrak@uploadFileKontrak');
+
+Route::post('upload-scan-spk','administrasi\SPKKontrak@uploadFileScanSPK');
+
+Route::post('cari-spk','administrasi\SPKKontrak@cari');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
