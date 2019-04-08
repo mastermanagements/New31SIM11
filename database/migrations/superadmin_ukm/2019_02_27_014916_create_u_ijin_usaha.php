@@ -24,7 +24,7 @@ class CreateUIjinUsaha extends Migration
             $table->string('file_iu');
             $table->string('no_rak')->nullable();
             $table->integer('id_perusahaan')->unsigned();
-            $table->integer('id_karyawan')->unsigned();
+            $table->integer('id_user_ukm')->unsigned();
             $table->timestamps();
         });
     }

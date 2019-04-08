@@ -45,12 +45,22 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
+<<<<<<< Updated upstream
 	{
 		//exception untuk membatasi maksimum file size yg di upload
     if ($exception instanceof \Symfony\Component\HttpFoundation\File\Exception\FileException) {
+=======
+    {
+        //exception untuk membatasi maksimum file size yg di upload
+		if ($exception instanceof \Symfony\Component\HttpFoundation\File\Exception\FileException) {
+>>>>>>> Stashed changes
         // create a validator and validate to throw a new ValidationException
         return Validator::make($request->all(), [
             'file_akta' => 'required|file|size:5000',
         ])->validate();
+<<<<<<< Updated upstream
+=======
+    }
+>>>>>>> Stashed changes
     }
 }
