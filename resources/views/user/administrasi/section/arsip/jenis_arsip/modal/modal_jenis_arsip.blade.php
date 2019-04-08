@@ -1,16 +1,16 @@
-<div class="modal fade" id="modal-tambah-jenis-proposal">
+<div class="modal fade" id="modal-tambah-jenis-arsip">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{ url('store-jenis-proposal') }}" method="post">
+            <form action="{{ url('store-jenis-arsip') }}" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulir Jenis Proposal</h4>
+                    <h4 class="modal-title">Formulir Jenis Arsip</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Jenis Proposal</label>
-                        <textarea class="form-control" name="jenis_proposal" required></textarea>
+                        <label for="exampleInputEmail1">Jenis Arsip</label>
+                        <textarea class="form-control" name="jenis_arsip" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -27,19 +27,19 @@
 <!-- /.modal -->
 
 
-<div class="modal fade" id="modal-ubah-jenis-proposal">
+<div class="modal fade" id="modal-ubah-jenis-arsip">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{ url('ubah-jenis-proposal') }}" method="post">
+            <form action="{{ url('ubah-jenis-arsip') }}" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulir Jenis Proposal</h4>
+                    <h4 class="modal-title">Formulir Jenis Arsip</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Jenis Proposal</label>
-                        <textarea class="form-control" name="jenis_proposal_ubah"></textarea>
+                        <label for="exampleInputEmail1">Jenis Arsip</label>
+                        <textarea class="form-control" name="jenis_arsip_ubah"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
