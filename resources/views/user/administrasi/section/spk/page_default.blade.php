@@ -96,6 +96,15 @@
                                                             <p>Alamat: {{ $value->alamat }}, Provinsi {{ $value->getProvinsi->nama_provinsi }}, Kabupaten {{ $value->getKabupaten->nama_kabupaten }}</p>
                                                             <p>Tanggal Mulai Kontrak : {{ date('d M Y', strtotime($value->tgl_mulai)) }}</p>
                                                             <p>Tanggal Selesai Kontrak : {{ date('d M Y', strtotime($value->tgl_selesai)) }}</p>
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <form action="{{ url('Ba-Pemeriksaan') }}" method="get">
+                                                                        <input type="hidden" name="id" value="{{ $value->id }}">
+                                                                        {{ csrf_field() }}
+                                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-file"></i> Ba. Pemeriksaan </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
