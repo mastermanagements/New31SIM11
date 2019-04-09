@@ -413,6 +413,10 @@ Route::post('upload-scan-spk','administrasi\SPKKontrak@uploadFileScanSPK');
 
 Route::post('cari-spk','administrasi\SPKKontrak@cari');
 
+Route::get('Ba-Pemeriksaan','administrasi\BApemeriksaan@form');
+
+Route::post('Proses-BApem','administrasi\BApemeriksaan@proses');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

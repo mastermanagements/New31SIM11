@@ -42,9 +42,7 @@
                             </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Masukan Strategi Jangka Panjang Anda</label>
-                                    <textarea class="form-control" placeholder="Masukan Strategi Anda" name="isi_sjpg" id="isi_sjpg" required>
-
-                                    </textarea>
+                                    <textarea class="form-control" placeholder="Masukan Strategi Anda" name="isi_sjpg" id="isi_sjpg" required></textarea>
                                     <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
                         </div>
