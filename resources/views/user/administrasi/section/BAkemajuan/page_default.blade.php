@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            BA. Pemeriksaan untuk SPK : {{ $spk->no_spk }}
+            BA. Kemajuan untuk SPK : {{ $spk->no_spk }}
         </h1>
     </section>
 
@@ -25,17 +25,17 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Daftar BA. Pemeriksaan</a></li>
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Daftar BA. Kemajuan</a></li>
                   </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <div class="row">
                                 <div class="col-md-3" style="margin: 0">
-                                    <form action="{{ url('Ba-Pemeriksaan') }}" method="get">
+                                    <form action="{{ url('BA-Kemajuan') }}" method="get">
                                         <input type="hidden" name="id" value="{{ $spk->id }}">
                                         <input type="hidden" name="callForm" value="save">
                                         {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah BA. Pemeriksaan </button>
+                                        <button type="submit" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah BA. Kemajuan </button>
                                     </form>
                                 </div>
                                 <div class="col-md-9" >
@@ -59,7 +59,7 @@
                                     @include('user.administrasi.section.BApemeriksaan.form.BApemeriksaanUpdate')
                                 @endif
                                 @if(empty($data_bapem))
-                                    <div class="col-md-12"> <h4 align="center">Anda belum menambahkan BA. Pemeriksaan untuk SPK: {{ $spk->no_spk }}</h4></div>
+                                    <div class="col-md-12"> <h4 align="center">Anda belum menambahkan BA. Kemajuan untuk SPK: {{ $spk->no_spk }}</h4></div>
                                 @else
                                     @foreach($data_bapem as $value)
                                             <div class="col-md-6">
@@ -68,10 +68,10 @@
                                                     <div class="box-body">
                                                         <div class="row">
                                                             <div class="col-md-3">
-                                                                @if(empty($value->file_bapem))
+                                                                @if(empty($value->file_bakem))
                                                                     <img src="{{ asset('coverDirectori/default.png') }}" width="130" height="180">
                                                                 @else
-                                                                   <a href="{{ asset('fileBApem/'.$value->file_bapem) }}"><img src="{{ asset('fileBApem/default.png') }}" width="130" height="180"></a>
+                                                                   <a href="{{ asset('fileBApem/'.$value->file_bakem) }}"><img src="{{ asset('fileBApem/default.png') }}" width="130" height="180"></a>
                                                                 @endif
                                                             </div>
                                                             <div class="col-md-3">
@@ -84,7 +84,7 @@
                                                             <div class="col-md-3">
                                                                 <div class="row">
                                                                     <div class="col-md-12">
-                                                                        {!! $value->isi_bapem !!}
+                                                                        {!! $value->isi_bak	 !!}
                                                                     </div>
                                                                    <div class="col-md-12 ">
                                                                        <div class="row">

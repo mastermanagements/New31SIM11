@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateABaPemeriksaan extends Migration
+class CreateABaKemajuan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateABaPemeriksaan extends Migration
      */
     public function up()
     {
-        Schema::create('a_ba_pemeriksaan', function (Blueprint $table) {
+        Schema::create('a_ba_kemajuan', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_spk')->unsigned();
-            $table->text('isi_bapem')->nullable();
-            $table->string('file_bapem');
+            $table->text('isi_bak');
+            $table->string('file_bakem');
             $table->string('scan_file');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
@@ -32,6 +32,6 @@ class CreateABaPemeriksaan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('a_ba_pemeriksaan');
+        Schema::dropIfExists('a_ba_kemajuan');
     }
 }

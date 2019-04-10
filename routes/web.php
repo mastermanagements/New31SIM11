@@ -423,6 +423,19 @@ Route::put('Proses-BApem/{id}/hapus','administrasi\BApemeriksaan@proses_delete')
 
 Route::post('cari-bapem','administrasi\BApemeriksaan@cari_bapem');
 
+Route::get('BA-Kemajuan','administrasi\BAkemajuan@form');
+
+Route::post('BA-Kemajuan','administrasi\BAkemajuan@proses');
+//
+//Route::put('Proses-BApem/{id}','administrasi\BApemeriksaan@proses_Update');
+//
+//Route::put('Proses-BApem/{id}/hapus','administrasi\BApemeriksaan@proses_delete');
+//
+//Route::post('cari-bapem','administrasi\BApemeriksaan@cari_bapem');
+
+
+
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
