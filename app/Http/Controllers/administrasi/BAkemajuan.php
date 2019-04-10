@@ -5,13 +5,11 @@ namespace App\Http\Controllers\administrasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Administrasi\SPKKontrak as spk;
-use App\Model\Administrasi\BApemeriksaan as bapem;
+use App\Model\Administrasi\BAkemajuan as bapem;
 use Session;
 
-class BApemeriksaan extends Controller
+class BAkemajuan extends Controller
 {
-    //
-
     private $id_karyawan;
     private $id_perusahaan;
 
@@ -32,14 +30,14 @@ class BApemeriksaan extends Controller
     public function form(Request $req)
     {
         $this->validate($req,[
-           '_token'=> 'required'
+            '_token'=> 'required'
         ]);
 
         if(empty($data_spk=spk::where('id', $req->id)->where('id_perusahaan', $this->id_perusahaan)->first()))
         {
             return abort(404);
         }else{
-           $data_bapem = bapem::where('id_spk', $data_spk->id)->where('id_perusahaan', $this->id_perusahaan)->paginate();
+            $data_bapem = bapem::where('id_spk', $data_spk->id)->where('id_perusahaan', $this->id_perusahaan)->paginate();
         }
 
         if(!empty($req->id_bapem) && !empty($data_bapem_get=bapem::where('id', $req->id_bapem)->where('id_perusahaan', $this->id_perusahaan)->first()))
@@ -59,21 +57,21 @@ class BApemeriksaan extends Controller
             'data_bapem'=> $data_bapem,
             'dataBapemById'=> $dataBapems
         ];
-         return view('user.administrasi.section.BApemeriksaan.page_default', $data_pass);
+        return view('user.administrasi.section.BAkemajuan.page_default', $data_pass);
     }
 
     public function cari_bapem(Request $req)
     {
         $this->validate($req,[
             'isi_bapems'=>'required',
-           '_token'=> 'required'
+            '_token'=> 'required'
         ]);
 
         if(empty($data_spk=spk::where('id', $req->id)->where('id_perusahaan', $this->id_perusahaan)->first()))
         {
             return abort(404);
         }else{
-           $data_bapem = bapem::where('id_spk', $data_spk->id)->where('isi_bapem','LIKE',"%{$req->isi_bapems}%")->where('id_perusahaan', $this->id_perusahaan)->paginate();
+            $data_bapem = bapem::where('id_spk', $data_spk->id)->where('isi_bapem','LIKE',"%{$req->isi_bapems}%")->where('id_perusahaan', $this->id_perusahaan)->paginate();
         }
 
 
@@ -82,24 +80,25 @@ class BApemeriksaan extends Controller
             'save'=> $req->callForm,
             'data_bapem'=> $data_bapem,
         ];
-         return view('user.administrasi.section.BApemeriksaan.page_default', $data_pass);
+        return view('user.administrasi.section.BApemeriksaan.page_default', $data_pass);
     }
 
     public function proses(Request $req)
     {
+        dd('asda');
         $this->validate($req,[
-            'isi_bapem'=> 'required',
+            'isi_bakem'=> 'required',
             'id_spk'=> 'required'
         ]);
 
         $id_spk = $req->id_spk;
-        $isi_bapem = $req->isi_bapem;
+        $isi_bapem = $req->isi_bakem;
 
-        if($req->hasFile('file_bapem'))
+        if($req->hasFile('file_bakem'))
         {
             $file_bapem = $req->file_bapem;
             $name_files = uniqid().time().'.'.$file_bapem->getClientOriginalExtension();
-            $file_bapem->move(public_path('fileBApem'), $name_files);
+            $file_bapem->move(public_path('file_bakem'), $name_files);
         }else{
             $name_files = "";
         }
@@ -108,23 +107,23 @@ class BApemeriksaan extends Controller
         {
             $file_scan_bapem = $req->scan_file;
             $name_files_scan = uniqid().time().'.'.$file_scan_bapem->getClientOriginalExtension();
-            $file_scan_bapem->move(public_path('fileScanBApem'), $name_files_scan);
+            $file_scan_bapem->move(public_path('fileScanBAkem'), $name_files_scan);
         }else{
             $name_files_scan = "";
         }
 
         $model = new bapem;
         $model->id_spk= $id_spk;
-        $model->isi_bapem= $isi_bapem;
-        $model->file_bapem= $name_files;
+        $model->isi_bak	= $isi_bapem;
+        $model->file_bakem= $name_files;
         $model->scan_file= $name_files_scan;
         $model->id_perusahaan= $this->id_perusahaan;
         $model->id_karyawan= $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAP');
+            return redirect('BA-Kemajuan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAK');
         }else{
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('BA-Kemajuan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }
     }
 
@@ -157,20 +156,10 @@ class BApemeriksaan extends Controller
             $name_files = "";
         }
 
-        if($req->hasFile('scan_file'))
-        {
-            $file_scan_bapem = $req->scan_file;
-            $name_files_scan = uniqid().time().'.'.$file_scan_bapem->getClientOriginalExtension();
-            $file_scan_bapem->move(public_path('fileScanBApem'), $name_files_scan);
-        }else{
-            $name_files_scan = "";
-        }
-
 
         $model->id_spk= $id_spk;
         $model->isi_bapem= $isi_bapem;
-        $model->file_bapem= $name_files;
-        $model->scan_file= $name_files_scan;
+        $model->scan_file= $name_files;
         $model->id_perusahaan= $this->id_perusahaan;
         $model->id_karyawan= $this->id_karyawan;
         if($model->save())
@@ -204,5 +193,4 @@ class BApemeriksaan extends Controller
             return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }
     }
-
 }

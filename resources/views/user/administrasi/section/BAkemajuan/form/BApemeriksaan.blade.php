@@ -4,12 +4,12 @@
 
 
 
-<form action="{{ url('Proses-BApem') }}" method="post" enctype="multipart/form-data">
+<form action="{{ url('BA-Kemajuan') }}" method="post" enctype="multipart/form-data">
 <div class="col-md-8">
     <div class="box-body">
       <div class="form-group">
-           <label for="exampleInputEmail1">Isi Berita Acara Pemeriksaan</label>
-           <textarea class="form-control" placeholder="Masukan Strategi Anda" name="isi_bapem" id="isi_bapem" required></textarea>
+           <label for="exampleInputEmail1">Isi Berita Acara Kemajuan</label>
+           <textarea class="form-control" placeholder="Masukan Strategi Anda" name="isi_bakem" id="isi_bakem" required></textarea>
            <small style="color: red">* Tidak boleh kosong</small>
       </div>
     </div>
@@ -21,7 +21,7 @@
                  <span class="btn btn-default btn-file" >
                     <img src="{{ asset('component/icon_plus.png') }}" style="width: 20%; height: 20%;">
                     <p style="color: red"> Format file yang disarankan *rar dan zip</p>
-                    <label>Unggah File BA. Pemeriksaan</label><input type="file" name="file_bapem"><br>
+                    <label>Unggah File BA. Kemajuan</label><input type="file" name="file_bakem"><br>
                     <small style="color: blue">* Unggah file bisa dilakukan kapan saja.</small>
                 </span>
             </div>
@@ -30,7 +30,7 @@
                  <span class="btn btn-default btn-file" >
                     <img src="{{ asset('component/icon_plus.png') }}" style="width: 20%; height: 20%;">
                     <p style="color: red"> Format file yang disarankan *rar dan zip</p>
-                    <label>Unggah Scan File BA. Pemeriksaan</label><input type="file" name="scan_file"><br>
+                    <label>Unggah Scan File BA. Kemajuan</label><input type="file" name="scan_file"><br>
                     <small style="color: blue">* Unggah file bisa dilakukan kapan saja.</small>
                 </span>
             </div>
@@ -48,7 +48,7 @@
     <script src="{{ asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script>
         window.onload = function() {
-            CKEDITOR.replace( 'isi_bapem',{
+            CKEDITOR.replace( 'isi_bakem',{
                 height: 255
             } );
         };

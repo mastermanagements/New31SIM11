@@ -104,6 +104,13 @@
                                                                         <button type="submit" class="btn btn-primary"><i class="fa fa-file"></i> Ba. Pemeriksaan </button>
                                                                     </form>
                                                                 </div>
+                                                                <div class="col-md-3">
+                                                                    <form action="{{ url('BA-Kemajuan') }}" method="get">
+                                                                        <input type="hidden" name="id" value="{{ $value->id }}">
+                                                                        {{ csrf_field() }}
+                                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-file"></i> Ba. Pemeriksaan </button>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

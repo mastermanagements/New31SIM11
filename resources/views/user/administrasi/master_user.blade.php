@@ -19,7 +19,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ @asset('component/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
   {{--<script src="{{ @asset('js/jQuery-2.2.0.min.js') }}"></script>--}}
 @yield('skin')
-  <!-- Theme style -->
+
+    <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+
+
+<!-- Theme style -->
   <link rel="stylesheet" href="{{ @asset('component/dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
@@ -63,6 +67,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="{{ asset('component/dist/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('component/dist/js/demo.js') }}"></script>
+<script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+<script>
+    $(function () {
+        $('.select2').select2()
+    });
+</script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
