@@ -1,3 +1,9 @@
+@section('skin')
+    <script src="https://cdn.ckeditor.com/4.11.3/basic/ckeditor.js"></script>
+@stop
+
+
+
 <form action="{{ url('Proses-BApem') }}" method="post" enctype="multipart/form-data">
 <div class="col-md-8">
     <div class="box-body">
@@ -29,3 +35,15 @@
        </div>
 </div>
 </form>
+
+
+@section('plugins')
+    <script src="{{ asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script>
+        window.onload = function() {
+            CKEDITOR.replace( 'isi_bapem',{
+                height: 150
+            } );
+        };
+    </script>
+@stop

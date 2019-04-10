@@ -4,6 +4,7 @@ namespace App\Http\ViewComposers;
 use Illuminate\View\View;
 use App\Model\Superadmin_ukm\U_menu_ukm as menu_ukm;
 use App\Model\Superadmin_ukm\H_karyawan as karyawan;
+use App\Model\Administrasi\SPKKontrak as spk;
 use App\Http\Middleware;
 use Session;
 
@@ -26,9 +27,11 @@ class UserComposer
     {
         $model_data = menu_ukm::all()->where('id_perusahaan',$this->id_perusahaan);
         $karyawan = karyawan::where('id', $this->id_karyawan)->where('id_perusahaan',$this->id_perusahaan)->first();
+        $spk = spk::all()->where('id_perusahaan', $this->id_perusahaan);
         $data_pass = [
           'karyawan' => $karyawan,
-          'daftar_menu' => $model_data
+          'daftar_menu' => $model_data,
+          'spk'=> $spk
         ];
         $view->with('daftar_menu', $data_pass);
     }
