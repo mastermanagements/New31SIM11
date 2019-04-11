@@ -108,7 +108,7 @@
                                                                     <form action="{{ url('BA-Kemajuan') }}" method="get">
                                                                         <input type="hidden" name="id" value="{{ $value->id }}">
                                                                         {{ csrf_field() }}
-                                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-file"></i> Ba. Pemeriksaan </button>
+                                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-file"></i> Ba. Kemajuan </button>
                                                                     </form>
                                                                 </div>
                                                             </div>
