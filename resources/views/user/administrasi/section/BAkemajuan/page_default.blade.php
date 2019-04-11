@@ -54,9 +54,9 @@
                             <p></p>
                             <div class="row">
                                 @if(!empty($save) && $save=="save")
-                                   @include('user.administrasi.section.BApemeriksaan.form.BApemeriksaan')
+                                   @include('user.administrasi.section.BAkemajuan.form.BApemeriksaan')
                                 @elseif(!empty($save) && $save=="update")
-                                    @include('user.administrasi.section.BApemeriksaan.form.BApemeriksaanUpdate')
+                                    @include('user.administrasi.section.BAkemajuan.form.BApemeriksaanUpdate')
                                 @endif
                                 @if(empty($data_bapem))
                                     <div class="col-md-12"> <h4 align="center">Anda belum menambahkan BA. Kemajuan untuk SPK: {{ $spk->no_spk }}</h4></div>
@@ -71,14 +71,14 @@
                                                                 @if(empty($value->file_bakem))
                                                                     <img src="{{ asset('coverDirectori/default.png') }}" width="130" height="180">
                                                                 @else
-                                                                   <a href="{{ asset('fileBApem/'.$value->file_bakem) }}"><img src="{{ asset('fileBApem/default.png') }}" width="130" height="180"></a>
+                                                                   <a href="{{ asset('fileBAkem/'.$value->file_bakem) }}"><img src="{{ asset('fileBApem/default.png') }}" width="130" height="180"></a>
                                                                 @endif
                                                             </div>
                                                             <div class="col-md-3">
                                                                 @if(empty($value->scan_file))
                                                                     <img src="{{ asset('coverDirectori/default.png') }}" width="130" height="180">
                                                                 @else
-                                                                   <a href="{{ asset('fileScanBApem/'.$value->scan_file) }}"><img src="{{ asset('fileBApem/default.png') }}" width="130" height="180"></a>
+                                                                   <a href="{{ asset('fileScanBAkem/'.$value->scan_file) }}"><img src="{{ asset('fileBApem/default.png') }}" width="130" height="180"></a>
                                                                 @endif
                                                             </div>
                                                             <div class="col-md-3">
@@ -89,17 +89,16 @@
                                                                    <div class="col-md-12 ">
                                                                        <div class="row">
                                                                            <div class="col-md-6 ">
-                                                                            <form action="{{ url('Ba-Pemeriksaan') }}" method="get">
+                                                                            <form action="{{ url('BA-Kemajuan') }}" method="get">
+                                                                                <input type="hidden" name="id_bakem" value="{{ $value->id }}">
                                                                                 <input type="hidden" name="id" value="{{ $value->id_spk }}">
-                                                                                <input type="hidden" name="id_bapem" value="{{ $value->id }}">
                                                                                 <input type="hidden" name="callForm" value="update">
                                                                                 {{ csrf_field() }}
                                                                                 <button type="submit" class="btn btn-warning">ubah</button>
                                                                             </form>
                                                                            </div>
                                                                            <div class="col-md-6">
-                                                                             <form action="{{ url('Proses-BApem/'.$value->id.'/hapus') }}" method="post">
-                                                                                 <input type="hidden" name="callForm" value="update">
+                                                                             <form action="{{ url('Proses-BAkem/'.$value->id.'/hapus') }}" method="post">
                                                                                  <input type="hidden" name="id_spk" value="{{ $value->id_spk }}">
                                                                                  <input type="hidden" name="_method" value="put">
                                                                                  {{ csrf_field() }}

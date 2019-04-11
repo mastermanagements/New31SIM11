@@ -85,7 +85,6 @@ class BAkemajuan extends Controller
 
     public function proses(Request $req)
     {
-        dd('asda');
         $this->validate($req,[
             'isi_bakem'=> 'required',
             'id_spk'=> 'required'
@@ -96,9 +95,9 @@ class BAkemajuan extends Controller
 
         if($req->hasFile('file_bakem'))
         {
-            $file_bapem = $req->file_bapem;
-            $name_files = uniqid().time().'.'.$file_bapem->getClientOriginalExtension();
-            $file_bapem->move(public_path('file_bakem'), $name_files);
+            $file_bakem = $req->file_bakem;
+            $name_files = uniqid().time().'.'.$file_bakem->getClientOriginalExtension();
+            $file_bakem->move(public_path('fileBakem'), $name_files);
         }else{
             $name_files = "";
         }
@@ -121,57 +120,77 @@ class BAkemajuan extends Controller
         $model->id_karyawan= $this->id_karyawan;
         if($model->save())
         {
-            return redirect('BA-Kemajuan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAK');
+            return redirect('BA-Kemajuan?id='.$id_spk.'&callForm=')->with('message_success','Anda Baru saja menambahkan BAK');
         }else{
-            return redirect('BA-Kemajuan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('BA-Kemajuan?id='.$id_spk.'&callForm=')->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }
     }
 
     public function proses_Update(Request $req, $id)
     {
+
         $this->validate($req,[
-            'isi_bapem'=> 'required',
+            'isi_bakem'=> 'required',
             'id_spk'=> 'required'
         ]);
 
         $id_spk = $req->id_spk;
-        $isi_bapem = $req->isi_bapem;
+        $isi_bapem = $req->isi_bakem;
 
         $model = bapem::find($id);
 
-        if(!empty($model->scan_file))
+        if(!empty($model->file_bakem))
         {
-            $file_path =public_path('fileBApem').'/' . $model->scan_file;
+            $file_path =public_path('fileBakem').'/' . $model->file_bakem;
             if (file_exists($file_path)) {
                 @unlink($file_path);
             }
         }
 
-        if($req->hasFile('file_bapem'))
+        if(!empty($model->scan_file))
         {
-            $file_bapem = $req->file_bapem;
+            $file_path =public_path('fileScanBAkem').'/' . $model->scan_file;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+
+        if($req->hasFile('file_bakem'))
+        {
+            $file_bapem = $req->file_bakem;
             $name_files = uniqid().time().'.'.$file_bapem->getClientOriginalExtension();
-            $file_bapem->move(public_path('fileBApem'), $name_files);
+            $file_bapem->move(public_path('fileBakem'), $name_files);
         }else{
             $name_files = "";
         }
 
+        if($req->hasFile('scan_file'))
+        {
+            $file_bapem = $req->scan_file;
+            $name_files_scan = uniqid().time().'.'.$file_bapem->getClientOriginalExtension();
+            $file_bapem->move(public_path('fileScanBAkem'), $name_files_scan);
+        }else{
+            $name_files_scan = "";
+        }
+
 
         $model->id_spk= $id_spk;
-        $model->isi_bapem= $isi_bapem;
-        $model->scan_file= $name_files;
+        $model->isi_bak= $isi_bapem;
+        $model->file_bakem= $name_files;
+        $model->scan_file= $name_files_scan;
         $model->id_perusahaan= $this->id_perusahaan;
         $model->id_karyawan= $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAP');
+            return redirect('BA-Kemajuan?id='.$id_spk."&callForm=")->with('message_success','Anda Baru saja menambahkan BAK');
         }else{
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('BA-Kemajuan?id='.$id_spk.'&callForm=')->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }
     }
 
     public function proses_delete(Request $req, $id)
     {
+      //  dd($req->all());
 
         if(empty($model = bapem::where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(400);
@@ -179,18 +198,27 @@ class BAkemajuan extends Controller
 
         $id_spk = $req->id_spk;
 
-        if(!empty($model->scan_file))
+        if(!empty($model->file_bakem))
         {
-            $file_path =public_path('fileBApem').'/' . $model->scan_file;
+            $file_path =public_path('fileBakem').'/' . $model->file_bakem;
             if (file_exists($file_path)) {
                 @unlink($file_path);
             }
         }
+
+        if(!empty($model->scan_file))
+        {
+            $file_path =public_path('fileScanBAkem').'/' . $model->scan_file;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+
         if($model->delete())
         {
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAP');
+            return redirect('Ba-Kemajuan?id='.$id_spk.'&_token='.csrf_token())->with('message_success','Anda Baru saja Menghapus BAP');
         }else{
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('Ba-Kemajuan?id='.$id_spk.'&_token='.csrf_token())->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }
     }
 }

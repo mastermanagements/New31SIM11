@@ -3,12 +3,12 @@
 @stop
 
 
-<form action="{{ url('Proses-BApem/'.$dataBapemById->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ url('Proses-BAkem/'.$dataBapemById->id) }}" method="post" enctype="multipart/form-data">
 <div class="col-md-8">
     <div class="box-body">
       <div class="form-group">
-           <label for="exampleInputEmail1">Isi Berita Acara Pemeriksaan</label>
-           <textarea class="form-control" placeholder="Masukan Strategi Anda" name="isi_bapem" id="isi_bapem" required>{!! $dataBapemById->isi_bapem !!}</textarea>
+           <label for="exampleInputEmail1">Isi Berita Acara Kemajuan</label>
+           <textarea class="form-control" placeholder="Masukan Isi Berita Acara Kemajuan" name="isi_bakem" id="isi_bakem" required>{!! $dataBapemById->isi_bak !!}</textarea>
            <small style="color: red">* Tidak boleh kosong</small>
       </div>
     </div>
@@ -20,7 +20,7 @@
                 <span class="btn btn-default btn-file">
                     <img src="{{ asset('component/icon_plus.png') }}" style="width: 20%; height: 20%;">
                     <p style="color: red"> Format file yang disarankan *rar dan zip</p>
-                    <label>@if(empty($dataBapemById->scan_file)) Unggah File @else Nama File Sudah tersimpan :{{ $dataBapemById->scan_file }} @endif </label><input type="file" name="file_bapem"><br>
+                    <label>@if(empty($dataBapemById->file_bakem)) Unggah File @else Nama File Sudah tersimpan :{{ str_limit($dataBapemById->file_bakem,5) }} @endif </label><input type="file" name="file_bakem"><br>
                     <small style="color: blue">* Unggah file bisa dilakukan kapan saja.</small>
                 </span>
             </div>
@@ -29,7 +29,7 @@
                <span class="btn btn-default btn-file" >
                     <img src="{{ asset('component/icon_plus.png') }}" style="width: 20%; height: 20%;">
                     <p style="color: red"> Format file yang disarankan *rar dan zip</p>
-                    <label>@if(empty($dataBapemById->scan_file)) Unggah File @else Nama File Sudah tersimpan :{{ $dataBapemById->file_bapem }} @endif </label></label><input type="file" name="scan_file"><br>
+                    <label>@if(empty($dataBapemById->scan_file)) Unggah File @else Nama File Sudah tersimpan :{{ str_limit($dataBapemById->scan_file,5) }} @endif </label></label><input type="file" name="scan_file"><br>
                     <small style="color: blue">* Unggah file bisa dilakukan kapan saja.</small>
                 </span>
            </div>
@@ -49,7 +49,7 @@
     <script src="{{ asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script>
         window.onload = function() {
-            CKEDITOR.replace( 'isi_bapem',{
+            CKEDITOR.replace( 'isi_bakem',{
                 height: 255
             } );
         };

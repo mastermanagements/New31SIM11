@@ -427,9 +427,9 @@ Route::get('BA-Kemajuan','administrasi\BAkemajuan@form');
 
 Route::post('BA-Kemajuan','administrasi\BAkemajuan@proses');
 //
-//Route::put('Proses-BApem/{id}','administrasi\BApemeriksaan@proses_Update');
+Route::put('Proses-BAkem/{id}','administrasi\BAkemajuan@proses_Update');
 //
-//Route::put('Proses-BApem/{id}/hapus','administrasi\BApemeriksaan@proses_delete');
+Route::put('Proses-BAkem/{id}/hapus','administrasi\BAkemajuan@proses_delete');
 //
 //Route::post('cari-bapem','administrasi\BApemeriksaan@cari_bapem');
 
