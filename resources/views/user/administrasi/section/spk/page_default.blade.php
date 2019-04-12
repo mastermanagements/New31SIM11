@@ -98,17 +98,25 @@
                                                             <p>Tanggal Selesai Kontrak : {{ date('d M Y', strtotime($value->tgl_selesai)) }}</p>
                                                             <div class="row">
                                                                 <div class="col-md-3">
+                                                                    <div class="form-group">
                                                                     <form action="{{ url('Ba-Pemeriksaan') }}" method="get">
                                                                         <input type="hidden" name="id" value="{{ $value->id }}">
                                                                         {{ csrf_field() }}
                                                                         <button type="submit" class="btn btn-primary"><i class="fa fa-file"></i> Ba. Pemeriksaan </button>
                                                                     </form>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <form action="{{ url('BA-Kemajuan') }}" method="get">
                                                                         <input type="hidden" name="id" value="{{ $value->id }}">
                                                                         {{ csrf_field() }}
                                                                         <button type="submit" class="btn btn-primary"><i class="fa fa-file"></i> Ba. Kemajuan </button>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <form action="{{ url('BA-Penyelesaian/'.$value->id) }}" method="get">
+                                                                        {{ csrf_field() }}
+                                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-file"></i> Ba. Penyelesaian </button>
                                                                     </form>
                                                                 </div>
                                                             </div>

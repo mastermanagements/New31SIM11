@@ -60,10 +60,10 @@ class BAkemajuan extends Controller
         return view('user.administrasi.section.BAkemajuan.page_default', $data_pass);
     }
 
-    public function cari_bapem(Request $req)
+    public function cari_bakem(Request $req)
     {
         $this->validate($req,[
-            'isi_bapems'=>'required',
+            'isi_bakems'=>'required',
             '_token'=> 'required'
         ]);
 
@@ -71,7 +71,7 @@ class BAkemajuan extends Controller
         {
             return abort(404);
         }else{
-            $data_bapem = bapem::where('id_spk', $data_spk->id)->where('isi_bapem','LIKE',"%{$req->isi_bapems}%")->where('id_perusahaan', $this->id_perusahaan)->paginate();
+            $data_bapem = bapem::where('id_spk', $data_spk->id)->where('isi_bak','LIKE',"%{$req->isi_bakems}%")->where('id_perusahaan', $this->id_perusahaan)->paginate();
         }
 
 
@@ -80,7 +80,7 @@ class BAkemajuan extends Controller
             'save'=> $req->callForm,
             'data_bapem'=> $data_bapem,
         ];
-        return view('user.administrasi.section.BApemeriksaan.page_default', $data_pass);
+        return view('user.administrasi.section.BAkemajuan.page_default', $data_pass);
     }
 
     public function proses(Request $req)

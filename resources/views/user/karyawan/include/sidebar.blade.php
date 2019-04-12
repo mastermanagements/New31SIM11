@@ -48,6 +48,9 @@
                                                     @if($sum_menu->getMasterSubMenuUKM->url=="BA-Pemeriksaan")
                                                     href="#"
                                                     data-toggle="modal" data-target="#modal-menu-ba-pemeriksaan"
+                                                    @elseif($sum_menu->getMasterSubMenuUKM->url=="BA-Kemajuan")
+                                                    href="#"
+                                                    data-toggle="modal" data-target="#modal-menu-ba-kemajuan"
                                                     @else
                                                     href="{{ url($sum_menu->getMasterSubMenuUKM->url) }}"
                                                     @endif
@@ -72,6 +75,43 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="{{ url('Ba-Pemeriksaan') }}" method="get">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Pilihan SPK</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Pilih SPK</label>
+                        <select class="form-control select2" style="width: 100%;" name="id" required>
+                            @if(empty($daftar_menu['spk']))
+                                <option>SPK Belum Tersedia</option>
+                            @else
+                                @foreach($daftar_menu['spk'] as $value)
+                                    <option value="{{ $value->id }}">{{ $value->nm_spk }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ csrf_field() }}
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
+                    <button type="submit"  class="btn btn-primary">Pergi</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+<div class="modal fade" id="modal-menu-ba-kemajuan">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{ url('BA-Kemajuan') }}" method="get">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
