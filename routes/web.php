@@ -427,13 +427,23 @@ Route::get('BA-Kemajuan','administrasi\BAkemajuan@form');
 
 Route::post('BA-Kemajuan','administrasi\BAkemajuan@proses');
 //
-//Route::put('Proses-BApem/{id}','administrasi\BApemeriksaan@proses_Update');
+Route::put('Proses-BAkem/{id}','administrasi\BAkemajuan@proses_Update');
 //
-//Route::put('Proses-BApem/{id}/hapus','administrasi\BApemeriksaan@proses_delete');
-//
-//Route::post('cari-bapem','administrasi\BApemeriksaan@cari_bapem');
+Route::put('Proses-BAkem/{id}/hapus','administrasi\BAkemajuan@proses_delete');
 
+Route::post('cari-bakem','administrasi\BAkemajuan@cari_bakem');
 
+Route::get('BA-Penyelesaian/{id}','administrasi\BApenyelesaian@index');
+
+Route::get('BA-penyelesian-tambah/{id}','administrasi\BApenyelesaian@create');
+
+Route::post('BA-penyelesian-store','administrasi\BApenyelesaian@store');
+
+Route::get('BA-Penyelesaian-ubah/{id}/{id_spk}','administrasi\BApenyelesaian@edit');
+
+Route::put('BA-Penyelesaian-update/{id}','administrasi\BApenyelesaian@update');
+
+Route::put('BA-Penyelesaian-delete/{id}','administrasi\BApenyelesaian@delete');
 
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))

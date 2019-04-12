@@ -148,6 +148,14 @@ class BApemeriksaan extends Controller
             }
         }
 
+        if(!empty($model->file_bapem))
+        {
+            $file_path =public_path('fileScanBApem').'/' . $model->file_bapem;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+
         if($req->hasFile('file_bapem'))
         {
             $file_bapem = $req->file_bapem;
@@ -197,9 +205,20 @@ class BApemeriksaan extends Controller
                 @unlink($file_path);
             }
         }
+
+
+        if(!empty($model->file_bapem))
+        {
+            $file_path =public_path('fileScanBApem').'/' . $model->file_bapem;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+
+
         if($model->delete())
         {
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAP');
+            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja Menghapus BAP');
         }else{
             return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }

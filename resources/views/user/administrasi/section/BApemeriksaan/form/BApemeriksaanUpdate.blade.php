@@ -20,7 +20,7 @@
                 <span class="btn btn-default btn-file">
                     <img src="{{ asset('component/icon_plus.png') }}" style="width: 20%; height: 20%;">
                     <p style="color: red"> Format file yang disarankan *rar dan zip</p>
-                    <label>@if(empty($dataBapemById->scan_file)) Unggah File @else Nama File Sudah tersimpan :{{ $dataBapemById->scan_file }} @endif </label><input type="file" name="file_bapem"><br>
+                    <label>@if(empty($dataBapemById->scan_file)) Unggah File @else Nama File Sudah tersimpan :{{ str_limit($dataBapemById->file_bapem,5) }} @endif </label><input type="file" name="file_bapem"><br>
                     <small style="color: blue">* Unggah file bisa dilakukan kapan saja.</small>
                 </span>
             </div>
@@ -29,7 +29,7 @@
                <span class="btn btn-default btn-file" >
                     <img src="{{ asset('component/icon_plus.png') }}" style="width: 20%; height: 20%;">
                     <p style="color: red"> Format file yang disarankan *rar dan zip</p>
-                    <label>@if(empty($dataBapemById->scan_file)) Unggah File @else Nama File Sudah tersimpan :{{ $dataBapemById->file_bapem }} @endif </label></label><input type="file" name="scan_file"><br>
+                    <label>@if(empty($dataBapemById->scan_file)) Unggah File @else Nama File Sudah tersimpan :{{ str_limit($dataBapemById->scan_file,5)  }} @endif </label></label><input type="file" name="scan_file"><br>
                     <small style="color: blue">* Unggah file bisa dilakukan kapan saja.</small>
                 </span>
            </div>
