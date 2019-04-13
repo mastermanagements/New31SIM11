@@ -48,5 +48,6 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         //exception untuk membatasi maksimum file size yg di upload
+        return parent::render($request, $exception);
     }
 }
