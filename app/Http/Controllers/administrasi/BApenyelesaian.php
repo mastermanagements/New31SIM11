@@ -51,6 +51,29 @@ class BApenyelesaian extends Controller
         return view('user.administrasi.section.BApenyelesaian.page_default', $data);
     }
 
+    public function cari_penye(Request $req)
+    {
+        $idspk = $req->id_spk;
+        $isi = $req->isi_bapeny;
+        $data=[
+            'dataPenye'=> $this->ambilDataBApenyelesaianByIDspk($idspk)->where('isi_bapeny','LIKE',"%{$isi}%")->paginate(30),
+            'spk'=> $this->ambilDataSPKById($idspk)->first()
+        ];
+        return view('user.administrasi.section.BApenyelesaian.page_default', $data);
+    }
+
+    public function menu_modal(Request $req)
+    {
+        $idspk  = $req->id;
+        $data=[
+          'dataPenye'=> $this->ambilDataBApenyelesaianByIDspk($idspk)->paginate(30),
+          'spk'=> $this->ambilDataSPKById($idspk)->first()
+        ];
+        return view('user.administrasi.section.BApenyelesaian.page_default', $data);
+    }
+
+
+
 
     public function create($idSpk)
     {
@@ -214,6 +237,7 @@ class BApenyelesaian extends Controller
         if(empty($model = bapenye::find($id))){
             return abort(404);
         }
+
 
         if(!empty($model->file_bapeny))
         {
