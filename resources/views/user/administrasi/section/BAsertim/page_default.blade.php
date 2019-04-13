@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            BA. Penyelesaian untuk SPK : {{ $spk->no_spk }}
+            BA. Serah Terima untuk SPK : {{ $spk->no_spk }}
         </h1>
     </section>
 
@@ -25,23 +25,23 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Daftar BA. Penyelesaian</a></li>
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Daftar BA. Serah Terima</a></li>
                   </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <div class="row">
                                 <div class="col-md-3" style="margin: 0">
-                                    <form action="{{ url('BA-penyelesian-tambah/'.$spk->id) }}" method="get">
+                                    <form action="{{ url('BA-Sertim-tambah/'.$spk->id) }}" method="get">
                                         {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah BA. Penyelesaian </button>
+                                        <button type="submit" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah BA. Serah Terima </button>
                                     </form>
                                 </div>
                                 <div class="col-md-9" >
-                                    <form action="{{ url('cari-Penyelesaian') }}" method="post" style="width: 100%">
+                                    <form action="{{ url('cari-Sertim') }}" method="post" style="width: 100%">
                                         <div class="input-group input-group-md" >
                                             {{ csrf_field() }}
                                             <input type="hidden" name="id_spk" value="{{ $spk->id }}">
-                                            <input type="text" name="isi_bapeny" class="form-control" placeholder="cari berdasarkan isi penyelesaian" required>
+                                            <input type="text" name="isi_sertim" class="form-control" placeholder="cari berdasarkan isi serah terima" required>
                                             <span class="input-group-btn">
                                             <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
                                             </span>
@@ -52,14 +52,14 @@
                             <p></p>
                             <div class="row">
                                 @if(!empty($save) && $save=="save")
-                                   @include('user.administrasi.section.BApenyelesaian.form.BApenyelesaian')
+                                   @include('user.administrasi.section.BAsertim.form.BAsertim')
                                 @elseif(!empty($save) && $save=="update")
-                                    @include('user.administrasi.section.BApenyelesaian.form.BApenyelesaianUpdate')
+                                    @include('user.administrasi.section.BAsertim.form.BAsertimUpdate')
                                 @endif
-                                @if(empty($dataPenye))
-                                    <div class="col-md-12"> <h4 align="center">Anda belum menambahkan BA. Penyelesaian untuk SPK: {{ $spk->no_spk }}</h4></div>
+                                @if(empty($dataSertim))
+                                    <div class="col-md-12"> <h4 align="center">Anda belum menambahkan BA. Serah Terima untuk SPK: {{ $spk->no_spk }}</h4></div>
                                 @else
-                                    @foreach($dataPenye as $value)
+                                    @foreach($dataSertim as $value)
                                             <div class="col-md-6">
                                                 <div class="box box-solid">
                                                     <!-- /.box-header -->
@@ -69,31 +69,31 @@
                                                                 @if(empty($value->file_bapeny))
                                                                     <img src="{{ asset('coverDirectori/default.png') }}" width="130" height="180">
                                                                 @else
-                                                                   <a href="{{ asset('fileBapey/'.$value->file_bapeny) }}"><img src="{{ asset('fileBApem/default.png') }}" width="130" height="180"></a>
+                                                                   <a href="{{ asset('fileBaSertim/'.$value->file_basertim) }}"><img src="{{ asset('fileBApem/default.png') }}" width="130" height="180"></a>
                                                                 @endif
                                                             </div>
                                                             <div class="col-md-3">
                                                                 @if(empty($value->scan_file))
                                                                     <img src="{{ asset('coverDirectori/default.png') }}" width="130" height="180">
                                                                 @else
-                                                                   <a href="{{ asset('fileScanBapey/'.$value->scan_file) }}"><img src="{{ asset('fileBApem/default.png') }}" width="130" height="180"></a>
+                                                                   <a href="{{ asset('fileBaSertimScan/'.$value->scan_file) }}"><img src="{{ asset('fileBApem/default.png') }}" width="130" height="180"></a>
                                                                 @endif
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <div class="row">
                                                                     <div class="col-md-12">
-                                                                        {!! $value->isi_bapeny	 !!}
+                                                                        {!! $value->isi_basertim	 !!}
                                                                     </div>
                                                                    <div class="col-md-12 ">
                                                                        <div class="row">
                                                                            <div class="col-md-6 ">
-                                                                            <form action="{{ url('BA-Penyelesaian-ubah/'.$value->id.'/'.$value->id_spk ) }}" method="get">
+                                                                            <form action="{{ url('BA-Sertim-ubah/'.$value->id.'/'.$value->id_spk ) }}" method="get">
                                                                                 {{ csrf_field() }}
                                                                                 <button type="submit" class="btn btn-warning">ubah</button>
                                                                             </form>
                                                                            </div>
                                                                            <div class="col-md-6">
-                                                                             <form action="{{ url('BA-Penyelesaian-delete/'.$value->id) }}" method="post">
+                                                                             <form action="{{ url('BA-Sertim-delete/'.$value->id) }}" method="post">
                                                                                  {{ csrf_field() }}
                                                                                  <input type="hidden" name="_method" value="put">
                                                                                  <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data ini..?')" class="btn btn-danger">hapus</button>
@@ -110,7 +110,7 @@
                                                 <!-- /.box -->
                                             </div>
                                     @endforeach
-                                    {{ $dataPenye->links() }}
+                                    {{ $dataSertim->links() }}
                                 @endif
                             </div>
                         <div class="tab-pane" id="tab_2">
