@@ -81,10 +81,15 @@ class BAsertim extends Controller
      */
     public function create($idSpk)
     {
+
+        if(empty($data_spk = $this->ambilDataSPKById($idSpk)->first())){
+            return abort(404);
+        }
+
         $data = [
             'save'=> 'save',
             'dataSertim'=> $this->ambilDataBAsertimByIDspk($idSpk)->paginate(30),
-            'spk'=> $this->ambilDataSPKById($idSpk)->first()
+            'spk'=> $data_spk
         ];
         return view('user.administrasi.section.BAsertim.page_default', $data);
     }
