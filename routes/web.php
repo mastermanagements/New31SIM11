@@ -465,6 +465,23 @@ Route::put('BA-Sertim-delete/{id}','administrasi\BAsertim@destroy');
 
 Route::post('cari-Sertim','administrasi\BAsertim@cari_sertim');
 
+Route::get('BA-Serah-Terima-Operasional/{id}','administrasi\BAserop@index');
+
+Route::get('BA-Serops-tambah/{id}','administrasi\BAserop@create');
+
+Route::post('BA-Serops-store','administrasi\BAserop@store');
+
+Route::get('BA-Serops-ubah/{id}/{id_spk}','administrasi\BAserop@edit');
+
+Route::put('BA-Serops-update/{id}','administrasi\BAserop@update');
+
+Route::put('BA-Serops-delete/{id}','administrasi\BAserop@delete');
+
+Route::post('cari-serops','administrasi\BAserop@cari');
+
+Route::post('BA-Serah-Terima-Operasional','administrasi\BAserop@MenuIndex');
+
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

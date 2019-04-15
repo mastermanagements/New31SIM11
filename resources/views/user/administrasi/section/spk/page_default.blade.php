@@ -125,6 +125,12 @@
                                                                         <button type="submit" class="btn btn-primary"><i class="fa fa-file"></i> Ba. Serah Terima </button>
                                                                     </form>
                                                                 </div>
+                                                                <div class="col-md-3" style="padding-top: 20px">
+                                                                    <form action="{{ url('BA-Serah-Terima-Operasional/'.$value->id) }}" method="get">
+                                                                        {{ csrf_field() }}
+                                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-file"></i> Ba. SerahTerima Operasional </button>
+                                                                    </form>
+                                                                </div>
 
                                                             </div>
                                                         </div>
