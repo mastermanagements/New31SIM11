@@ -32,10 +32,10 @@
                                     <a href="{{ url('tambah-peralatan') }}" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah Peralatan </a>
                                 </div>
                                 <div class="col-md-9" >
-                                    <form action="{{ url('cari-peralatan') }}" method="post" style="width: 100%">
+                                    <form action="{{ url('cari-arsip') }}" method="post" style="width: 100%">
                                         <div class="input-group input-group-md" >
                                             {{ csrf_field() }}
-                                            <input type="text" name="nm_alat" class="form-control" placeholder="Cari berdasarkan nama peralatan" required>
+                                            <input type="text" name="ket" class="form-control" placeholder="cari berdasarkan ketarangan nama alat" required>
                                             <span class="input-group-btn">
                                             <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
                                             </span>

@@ -183,17 +183,5 @@ class Peralatan extends Controller
 		}
 			
 	}
-	//cari
-	public function cari(Request $req)
-    {
-        $this->validate($req,[
-           'nm_alat' => 'required'
-        ]);
-        $nm_alat = $req->nm_alat;
-        $data=[
-            'data_alat'=> alat::where('nm_alat','LIKE', "%{$nm_alat}%")->where('id_perusahaan', $this->id_perusahaan)->paginate(20)
-        ];
-        return view('user.administrasi.section.peralatan.page_default', $data);
-    }
 	  
 }

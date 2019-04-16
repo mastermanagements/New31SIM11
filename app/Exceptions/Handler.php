@@ -1,8 +1,11 @@
 <?php
+
 namespace App\Exceptions;
+
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Validator;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -13,6 +16,7 @@ class Handler extends ExceptionHandler
     protected $dontReport = [
         //
     ];
+
     /**
      * A list of the inputs that are never flashed for validation exceptions.
      *
@@ -22,6 +26,7 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
+
     /**
      * Report or log an exception.
      *
@@ -32,6 +37,7 @@ class Handler extends ExceptionHandler
     {
         parent::report($exception);
     }
+
     /**
      * Render an exception into an HTTP response.
      *
@@ -42,12 +48,6 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
 	public function render($request, Exception $exception)
 	{
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-		return parent::render($request, $exception);
-		
->>>>>>> Stashed changes
 		//exception untuk membatasi maksimum file size yg di upload
     if ($exception instanceof \Symfony\Component\HttpFoundation\File\Exception\FileException) {
         // create a validator and validate to throw a new ValidationException
@@ -58,8 +58,3 @@ class Handler extends ExceptionHandler
 	}
 
 }
-=======
-	return parent::render($request, $exception);
-	}
-}
->>>>>>> Stashed changes
