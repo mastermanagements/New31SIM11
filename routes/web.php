@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors',true);
 
 use App\Model\Superadmin_ukm\U_menu_ukm as menu_ukm;
 use Illuminate\Routing\Router;
@@ -481,6 +482,17 @@ Route::post('cari-serops','administrasi\BAserop@cari');
 
 Route::post('BA-Serah-Terima-Operasional','administrasi\BAserop@MenuIndex');
 
+Route::get('Peralatan','administrasi\Peralatan@index');
+
+Route::get('tambah-peralatan','administrasi\Peralatan@create');
+
+Route::post('store-peralatan','administrasi\Peralatan@store');
+
+Route::get('ubah-peralatan/{id}','administrasi\Peralatan@edit');
+
+Route::put('update-peralatan/{id}','administrasi\Peralatan@update');
+
+Route::put('delete-peralatan/{id}','administrasi\Peralatan@delete');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
