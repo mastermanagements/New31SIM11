@@ -436,6 +436,8 @@ Route::post('cari-bakem','administrasi\BAkemajuan@cari_bakem');
 
 Route::get('BA-Penyelesaian/{id}','administrasi\BApenyelesaian@index');
 
+Route::post('BA-Penyelesaian','administrasi\BApenyelesaian@menu_modal');
+
 Route::get('BA-penyelesian-tambah/{id}','administrasi\BApenyelesaian@create');
 
 Route::post('BA-penyelesian-store','administrasi\BApenyelesaian@store');
@@ -444,7 +446,41 @@ Route::get('BA-Penyelesaian-ubah/{id}/{id_spk}','administrasi\BApenyelesaian@edi
 
 Route::put('BA-Penyelesaian-update/{id}','administrasi\BApenyelesaian@update');
 
-Route::put('BA-Penyelesaian-delete/{id}','administrasi\BApenyelesaian@delete');
+Route::put('BA-Penyelesaian-delete/{id}','administrasi\BApenyelesaian@destroy');
+
+Route::post('cari-Penyelesaian','administrasi\BApenyelesaian@cari_penye');
+
+Route::post('BA-Sertim','administrasi\BAsertim@IndexMenu');
+
+Route::get('BA-Serah-Terima/{id}','administrasi\BAsertim@index');
+
+Route::get('BA-Sertim-tambah/{id}','administrasi\BAsertim@create');
+
+Route::post('BA-Sertim-store','administrasi\BAsertim@store');
+
+Route::get('BA-Sertim-ubah/{id}/{id_spk}','administrasi\BAsertim@edit');
+
+Route::put('BA-Sertim-update/{id}','administrasi\BAsertim@update');
+
+Route::put('BA-Sertim-delete/{id}','administrasi\BAsertim@destroy');
+
+Route::post('cari-Sertim','administrasi\BAsertim@cari_sertim');
+
+Route::get('BA-Serah-Terima-Operasional/{id}','administrasi\BAserop@index');
+
+Route::get('BA-Serops-tambah/{id}','administrasi\BAserop@create');
+
+Route::post('BA-Serops-store','administrasi\BAserop@store');
+
+Route::get('BA-Serops-ubah/{id}/{id_spk}','administrasi\BAserop@edit');
+
+Route::put('BA-Serops-update/{id}','administrasi\BAserop@update');
+
+Route::put('BA-Serops-delete/{id}','administrasi\BAserop@delete');
+
+Route::post('cari-serops','administrasi\BAserop@cari');
+
+Route::post('BA-Serah-Terima-Operasional','administrasi\BAserop@MenuIndex');
 
 Route::get('Peralatan','administrasi\Peralatan@index');
 
