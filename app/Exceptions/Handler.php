@@ -46,7 +46,6 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
-	public function render($request, Exception $exception)
 	{
 		//exception untuk membatasi maksimum file size yg di upload
     if ($exception instanceof \Symfony\Component\HttpFoundation\File\Exception\FileException) {
