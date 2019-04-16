@@ -458,6 +458,22 @@ Route::put('update-peralatan/{id}','administrasi\Peralatan@update');
 
 Route::put('delete-peralatan/{id}','administrasi\Peralatan@delete');
 
+Route::get('Pengumuman','administrasi\Pengumuman@index');
+
+Route::get('tambah-pengumuman','administrasi\Pengumuman@create');
+
+Route::post('store-pengumuman','administrasi\Pengumuman@store');
+
+Route::get('ubah-pengumuman/{id}','administrasi\Pengumuman@edit');
+
+Route::put('update-pengumuman/{id}','administrasi\Pengumuman@update');
+
+Route::put('delete-pengumuman/{id}','administrasi\Pengumuman@delete');
+
+Route::get('cari-pengumuman','administrasi\Pengumuman@cari');
+
+Route::get('cari-pengumuman','administrasi\Pengumuman@cari');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
