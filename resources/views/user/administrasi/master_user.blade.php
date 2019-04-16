@@ -68,6 +68,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('component/dist/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('component/dist/js/demo.js') }}"></script>
 <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+
+
 <script>
     $(function () {
         $('.select2').select2()
