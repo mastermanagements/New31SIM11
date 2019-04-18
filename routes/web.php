@@ -470,9 +470,6 @@ Route::put('update-pengumuman/{id}','administrasi\Pengumuman@update');
 
 Route::put('delete-pengumuman/{id}','administrasi\Pengumuman@delete');
 
-Route::get('cari-pengumuman','administrasi\Pengumuman@cari');
-
-Route::get('cari-pengumuman','administrasi\Pengumuman@cari');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
