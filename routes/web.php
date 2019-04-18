@@ -489,6 +489,8 @@ Route::post('lihat-usulan-brifing-by-tgl', 'administrasi\Brifing@ambilEventBrifi
 
 Route::post('store-brifing','administrasi\Brifing@store');
 
+Route::put('delete-brifing/{id}','administrasi\Brifing@destroy');
+
 Route::get('Peralatan','administrasi\Peralatan@index');
 
 Route::get('tambah-peralatan','administrasi\Peralatan@create');
