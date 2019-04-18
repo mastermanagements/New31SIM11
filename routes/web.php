@@ -489,6 +489,17 @@ Route::post('lihat-usulan-brifing-by-tgl', 'administrasi\Brifing@ambilEventBrifi
 
 Route::post('store-brifing','administrasi\Brifing@store');
 
+Route::get('Peralatan','administrasi\Peralatan@index');
+
+Route::get('tambah-peralatan','administrasi\Peralatan@create');
+
+Route::post('store-peralatan','administrasi\Peralatan@store');
+
+Route::get('ubah-peralatan/{id}','administrasi\Peralatan@edit');
+
+Route::put('update-peralatan/{id}','administrasi\Peralatan@update');
+
+Route::put('delete-peralatan/{id}','administrasi\Peralatan@delete');
 
 Route::get('Pengumuman','administrasi\Pengumuman@index');
 
