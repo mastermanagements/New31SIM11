@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors',true);
 
 use App\Model\Superadmin_ukm\U_menu_ukm as menu_ukm;
 use Illuminate\Routing\Router;
@@ -436,6 +435,8 @@ Route::post('cari-bakem','administrasi\BAkemajuan@cari_bakem');
 
 Route::get('BA-Penyelesaian/{id}','administrasi\BApenyelesaian@index');
 
+Route::post('BA-Penyelesaian','administrasi\BApenyelesaian@menu_modal');
+
 Route::get('BA-penyelesian-tambah/{id}','administrasi\BApenyelesaian@create');
 
 Route::post('BA-penyelesian-store','administrasi\BApenyelesaian@store');
@@ -444,19 +445,50 @@ Route::get('BA-Penyelesaian-ubah/{id}/{id_spk}','administrasi\BApenyelesaian@edi
 
 Route::put('BA-Penyelesaian-update/{id}','administrasi\BApenyelesaian@update');
 
-Route::put('BA-Penyelesaian-delete/{id}','administrasi\BApenyelesaian@delete');
+Route::put('BA-Penyelesaian-delete/{id}','administrasi\BApenyelesaian@destroy');
 
-Route::get('Peralatan','administrasi\Peralatan@index');
+Route::post('cari-Penyelesaian','administrasi\BApenyelesaian@cari_penye');
 
-Route::get('tambah-peralatan','administrasi\Peralatan@create');
+Route::post('BA-Sertim','administrasi\BAsertim@IndexMenu');
 
-Route::post('store-peralatan','administrasi\Peralatan@store');
+Route::get('BA-Serah-Terima/{id}','administrasi\BAsertim@index');
 
-Route::get('ubah-peralatan/{id}','administrasi\Peralatan@edit');
+Route::get('BA-Sertim-tambah/{id}','administrasi\BAsertim@create');
 
-Route::put('update-peralatan/{id}','administrasi\Peralatan@update');
+Route::post('BA-Sertim-store','administrasi\BAsertim@store');
 
-Route::put('delete-peralatan/{id}','administrasi\Peralatan@delete');
+Route::get('BA-Sertim-ubah/{id}/{id_spk}','administrasi\BAsertim@edit');
+
+Route::put('BA-Sertim-update/{id}','administrasi\BAsertim@update');
+
+Route::put('BA-Sertim-delete/{id}','administrasi\BAsertim@destroy');
+
+Route::post('cari-Sertim','administrasi\BAsertim@cari_sertim');
+
+Route::get('BA-Serah-Terima-Operasional/{id}','administrasi\BAserop@index');
+
+Route::get('BA-Serops-tambah/{id}','administrasi\BAserop@create');
+
+Route::post('BA-Serops-store','administrasi\BAserop@store');
+
+Route::get('BA-Serops-ubah/{id}/{id_spk}','administrasi\BAserop@edit');
+
+Route::put('BA-Serops-update/{id}','administrasi\BAserop@update');
+
+Route::put('BA-Serops-delete/{id}','administrasi\BAserop@delete');
+
+Route::post('cari-serops','administrasi\BAserop@cari');
+
+Route::post('BA-Serah-Terima-Operasional','administrasi\BAserop@MenuIndex');
+
+Route::get('Brifing','administrasi\Brifing@index');
+
+Route::get('lihat-usulan-brifing', 'administrasi\Brifing@ambilEventBrifing');
+
+Route::post('lihat-usulan-brifing-by-tgl', 'administrasi\Brifing@ambilEventBrifingByTanggal');
+
+Route::post('store-brifing','administrasi\Brifing@store');
+
 
 Route::get('Pengumuman','administrasi\Pengumuman@index');
 
