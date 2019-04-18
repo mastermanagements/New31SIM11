@@ -483,11 +483,13 @@ Route::post('BA-Serah-Terima-Operasional','administrasi\BAserop@MenuIndex');
 
 Route::get('Brifing','administrasi\Brifing@index');
 
-Route::get('lihat-usulan-brifing', 'administrasi\Brifing@ambilEventBrifing');
+Route::get('lihat-usulan-brifing/{id}', 'administrasi\Brifing@ambilEventBrifing');
 
 Route::post('lihat-usulan-brifing-by-tgl', 'administrasi\Brifing@ambilEventBrifingByTanggal');
 
 Route::post('store-brifing','administrasi\Brifing@store');
+
+Route::put('delete-brifing/{id}','administrasi\Brifing@destroy');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

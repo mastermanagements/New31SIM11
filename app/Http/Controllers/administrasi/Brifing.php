@@ -5,6 +5,7 @@ namespace App\Http\Controllers\administrasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
+use App\Model\Karyawan\Bagian as bagians;
 use App\Model\Administrasi\UsulanBrifing as brifings;
 class Brifing extends Controller
 {
@@ -26,9 +27,9 @@ class Brifing extends Controller
         });
     }
 
-    public function ambilEventBrifing($id_devisi=0)
+    public function ambilEventBrifing($id_devisi)
     {
-        if($id_devisi !=0) {
+        if(!empty($id_devisi)) {
             $data_brifing = brifings::where('id_perusahaan', $this->id_perusahaan)->where('id_divisi', $id_devisi)->groupBy('tgl_usulan_brif')->get();
         }
         else {
@@ -48,28 +49,48 @@ class Brifing extends Controller
     public function ambilEventBrifingByTanggal(Request $req)
     {
         $tanggal = date('Y-m-d', strtotime($req->tgl_usulan_brif));
-        $data_brifing = brifings::all()->where('tgl_usulan_brif', $tanggal)->where('id_perusahaan', $this->id_perusahaan)->where('id_divisi', 2);
-        return response()->json($data_brifing);
+        $id_divisi = $req->id_divisi;
+        $data_brifing = brifings::all()->where('tgl_usulan_brif', $tanggal)->where('id_perusahaan', $this->id_perusahaan)->where('id_divisi', $id_divisi);
+        $column = array();
+        foreach ($data_brifing as $key)
+        {
+            $row=array();
+            $row['id']= $key->id;
+            $row['materi']= $key->materi;
+            $row['tgl_usulan_brif']= $key->tgl_usulan_brif;
+            $row['nama_ky']= $key->getKaryawan->nama_ky;
+            $row['pas_foto']= $key->getKaryawan->pas_foto;
+            $row['id_ky_login']= $this->id_karyawan;
+            $row['id_ky_usulan']= $key->id_karyawan;
+
+            $column[] = $row;
+        }
+        return response()->json($column);
     }
 
     public function index()
     {
-        return view('user.administrasi.section.Brifing.page_default');
+        $data = [
+            'data_bagian_devisi'=> bagians::all()->where('id_perusahaan', $this->id_perusahaan)
+        ];
+        return view('user.administrasi.section.Brifing.page_default', $data);
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
             'materi'=> 'required',
-            'tgl_usulan_brif'=> 'required'
+            'tgl_usulan_brif'=> 'required',
+            'id_divisi'=>'required'
         ]);
         $tgl_usulan_brif =  date('Y-m-d', strtotime($request->tgl_usulan_brif));
         $materi =$request->materi;
+        $id_divisi =$request->id_divisi;
 
         $model = new brifings;
         $model->materi = $materi;
         $model->tgl_usulan_brif = $tgl_usulan_brif;
-        $model->id_divisi= 2;
+        $model->id_divisi= $id_divisi;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
         if($model->save())
@@ -88,27 +109,24 @@ class Brifing extends Controller
         return response()->json($data);
     }
 
-
-    public function show($id)
+    public function destroy(Request $req, $id)
     {
-        //
-    }
+        if(empty($model = brifings::where('id', $req->id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+        if($model->delete())
+        {
+            $data = [
+                'message'=> 'Anda telah menghapus usulan brifing',
+                'status'=>true
+            ];
+            return response()->json($data);
+        }
 
-
-    public function edit($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
+        $data = [
+            'message'=> 'Gagal menghapus usulan brifing',
+            'status'=>false
+        ];
+        return response()->json($data);
     }
 }
