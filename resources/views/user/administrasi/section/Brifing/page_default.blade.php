@@ -1,8 +1,6 @@
 @extends('user.administrasi.master_user')
 
 @section('skin')
-    <!-- select2 -->
-    <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
     <!-- fullCalendar -->
     <link rel="stylesheet" href="{{ @asset('component/bower_components/fullcalendar/dist/fullcalendar.min.css')}}">
     <link rel="stylesheet" href="{{ @asset('component/bower_components/fullcalendar/dist/fullcalendar.print.min.css') }}" media="print">
@@ -23,6 +21,7 @@
         <!--------------------------
           | Your Page Content Here |
           -------------------------->
+        <p></p>
         <div class="row">
             <div class="col-md-12">
                <div class="box box-success box-solid">
@@ -31,38 +30,17 @@
                    </div>
                    <!-- /.box-header -->
                    <div class="box-body">
-                       <div class="row">
-                           <div class="col-md-12">
-                               <div class="form-group">
-                                   <label for="exampleInputEmail1">Nama Bagian Perusahaan</label>
-                                   <select class="form-control select2" style="width: 100%;" name="id_devisi">
-                                       @foreach($data_bagian_devisi as $value)
-                                       <optgroup label="{{ $value->nm_bagian }}">
-                                           @if(!empty($value->getDevisi))
-                                               @foreach($value->getDevisi as $value2)
-                                                <option value="{{ $value2->id }}">{{ $value2->nm_devisi }}</option>
-                                               @endforeach
-                                            @endif
-                                       </optgroup>
-                                       @endforeach
-                                   </select>
-                                   <small style="color: red" id="notify"></small>
-                               </div>
-                           </div>
-                           <div class="col-md-12">
-                               <div class="box-body no-padding">
-                                   <!-- THE CALENDAR -->
-                               <div id="calendar"></div>
-                               </div>
-                           </div>
-                       </div>
+                       <div class="box-body no-padding">
+                           <!-- THE CALENDAR -->
+                           <div id="tests">Coba clik</div>
+                           <div id="calendar"></div>
                        </div>
                    </div>
                         <!-- /.box-body -->
                </div>
                     <!-- /.box -->
             </div>
-
+        </div>
     </section>
     <!-- /.content -->
 </div>
@@ -70,8 +48,6 @@
 @stop
 
 @section('plugins')
-    <!-- select2 -->
-    <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- fullCalendar -->
     <script src="{{ @asset('component/bower_components/moment/moment.js') }}"></script>
     <script src="{{ @asset('component/bower_components/fullcalendar/dist/fullcalendar.min.js') }}"></script>
@@ -80,61 +56,48 @@
     <script>
         $(function() {
 
-            var selectValue =0;
-            $('.select2').select2();
-
-            calenderRender = function(divisi_id){
-                var id_devisi = divisi_id;
-                $('#calendar').fullCalendar({
-                    selectable: true,
-                    header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
-                    },
-                    buttonText: {
-                        today: 'today',
-                        month: 'month',
-                        week: 'week',
-                        day: 'day'
-                    },
-                    dayClick: function(date, jsEvent, view) {
-                        $('#modal-brifing').modal('show')
-                        $("#title_modal").text(moment(date).format('DD-MMMM-YYYY'));
-                        $("#dateText").val(moment(date).format('DD-MM-YYYY'));
-                        getDataBrifing(moment(date).format('DD-MM-YYYY'), id_devisi)
-                    },
-                    eventSources: [
-                        {
-                            url : "{{ url('lihat-usulan-brifing') }}/"+ id_devisi,
-                            type: 'get',
-                            success:function (result) {
-                                console.log(id_devisi)
-                            },
+            $('#calendar').fullCalendar({
+                selectable: true,
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                buttonText: {
+                    today: 'today',
+                    month: 'month',
+                    week: 'week',
+                    day: 'day'
+                },
+                dayClick: function(date, jsEvent, view) {
+                    $('#modal-brifing').modal('show')
+                    $("#title_modal").text(moment(date).format('MMMM Do YYYY, h:mm:ss a'));
+                    $("#dateText").val(moment(date).format('DD-MM-YYYY'));
+                    getDataBrifing(moment(date).format('DD-MM-YYYY'))
+                },
+                eventSources: [
+                    {
+                        url : "{{ url('lihat-usulan-brifing') }}",
+                        type: 'get',
+                        success:function (result) {
+                            console.log(result)
                         },
-                    ],
-                    eventRender: function (event, element) {
-                        element.attr('href', 'javascript:void(0);');
-                        element.click(function() {
+                    },
+                ],
+                eventRender: function (event, element) {
+                    element.attr('href', 'javascript:void(0);');
+                    element.click(function() {
 
-                            $("#title_modal").text(moment(event.start).format('DD-MMMM-YYYY'));
-                            $("#dateText").val(moment(event.start).format('DD-MM-YYYY'));
-                            $('#loading').hide();
-                            getDataBrifing(moment(event.start).format('DD-MM-YYYY'), id_devisi)
-                        });
-                    }
+                        $("#title_modal").text(moment(event.start).format('MMMM Do YYYY, h:mm:ss a'));
+                        $("#dateText").val(moment(event.start).format('DD-MM-YYYY'));
+                        $('#loading').hide();
+                        getDataBrifing(moment(event.start).format('DD-MM-YYYY'))
+                    });
+                }
 
-                });
-            }
+            });
 
-            calenderRender($('[name="id_devisi"]').val())
-
-            $('[name="id_devisi"]').change(function () {
-                $('#calendar').fullCalendar( 'destroy');
-                calenderRender($(this).val())
-             })
-
-            getDataBrifing = function(date, id_divisi)
+            getDataBrifing = function(date)
             {
                 $('#loading').show();
                 $.ajax({
@@ -142,28 +105,16 @@
                     type : "post",
                     data :{
                         '_token': '{{ csrf_token() }}',
-                        'tgl_usulan_brif': date,
-                        'id_divisi': id_divisi
+                        'tgl_usulan_brif': date
                     },
                     success: function (result) {
-                        console.log(id_divisi)
                         var msg = "";
-                        var btn_hapus = "";
                         console.log(result)
                         $.each(result, function (index, value) {
-
-                            if(value.id_ky_login == value.id_ky_usulan){
-                                btn_hapus = "<a href=\"#\" onclick=\"deleteUsulan("+value.id+")\" class='pull-right'><i class=\"fa fa-close\"></i></a>";
-                            }else{
-                                btn_hapus = ""
-                            }
-                            msg+="<div class=\"direct-chat-msg\" >"+
-                                "<div class=\"direct-chat-info clearfix\">\n" +
-                                "<span class=\"direct-chat-name pull-left\">"+value.nama_ky+"</span>\n" +
-                                "</div>"+
-                                "<img class=\"direct-chat-img\" src=\"{{ asset('filePFoto') }}/"+value.pas_foto + "\"\"+value.pas_foto + \"\\\" \"  alt=\"Message User Image\"><!-- /.direct-chat-img -->\n" +
+                            msg+=" <div class=\"direct-chat-msg\" >"+
+                                "<img class=\"direct-chat-img\" src=\"{{ asset('component/icon_plus.png') }}\" alt=\"Message User Image\"><!-- /.direct-chat-img -->\n" +
                                 "<div class=\"direct-chat-text\">\n" +
-                                " "+value.materi + btn_hapus+
+                                "   "+value.materi +
                                 "</div>\n"+
                                 "</div>";
                         })
@@ -182,9 +133,6 @@
             }
 
             $('#saveBtn').click(function (){
-                if($('[name="id_devisi"]').val() ==null){
-                    return alert("Silahkan masukan divisi anda...!");
-                }
                 $.ajax({
                     url: "{{ url('store-brifing') }}",
                     type : 'post',
@@ -192,35 +140,13 @@
                         'tgl_usulan_brif': $('#dateText').val(),
                         'materi': $('#materi').val(),
                         '_token': '{{ csrf_token() }}',
-                        'id_divisi': $('[name="id_devisi"]').val()
                     },
                     success:function (result) {
-                        $('#calendar').fullCalendar( 'refetchEvents');
-                        getDataBrifing($('#dateText').val(), $('[name="id_devisi"]').val())
+                         getDataBrifing($('#dateText').val())
+                        $('#calendar').fullCalendar( 'refetchEvents' );
                     }
                 })
             })
-
-            deleteUsulan = function (id) {
-               if(confirm("Apakah anda akan menghapus usulan brifing ini..?")==true){
-                   $.ajax({
-                       url: "{{ url('delete-brifing') }}/"+id,
-                       type : 'post',
-                       data :{
-                           'id': id,
-                           '_token': '{{ csrf_token() }}',
-                           '_method': 'put'
-                       },
-                       success:function (result) {
-                           getDataBrifing($('#dateText').val(),$('[name="id_devisi"]').val())
-                           $('#calendar').fullCalendar( 'refetchEvents');
-                           alert("Usulan brifing telah terhapus");
-                       }
-                   })
-               }else{
-                   alert("Hapus usulan brifing dibatalkan");
-               }
-            }
         });
     </script>
 @stop
