@@ -12,4 +12,5 @@ class Klien extends Model
 
     protected $fillable = ['nm_klien','alamat','pekerjaan','hp','wa','email','teleg','ig','fb','twiter','nm_perusahaan',
         'alamat_perusahaan','telp_perusahaan','jabatan','id_perusahaan','id_karyawan'];
+
 }

@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors',true);
 
 use App\Model\Superadmin_ukm\U_menu_ukm as menu_ukm;
 use Illuminate\Routing\Router;
@@ -482,6 +481,16 @@ Route::post('cari-serops','administrasi\BAserop@cari');
 
 Route::post('BA-Serah-Terima-Operasional','administrasi\BAserop@MenuIndex');
 
+Route::get('Brifing','administrasi\Brifing@index');
+
+Route::get('lihat-usulan-brifing', 'administrasi\Brifing@ambilEventBrifing');
+
+Route::post('lihat-usulan-brifing-by-tgl', 'administrasi\Brifing@ambilEventBrifingByTanggal');
+
+Route::post('store-brifing','administrasi\Brifing@store');
+
+Route::put('delete-brifing/{id}','administrasi\Brifing@destroy');
+
 Route::get('Peralatan','administrasi\Peralatan@index');
 
 Route::get('tambah-peralatan','administrasi\Peralatan@create');
@@ -508,7 +517,6 @@ Route::put('update-pengumuman/{id}','administrasi\Pengumuman@update');
 
 Route::put('delete-pengumuman/{id}','administrasi\Pengumuman@delete');
 
-Route::get('cari-pengumuman','administrasi\Pengumuman@cari');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

@@ -15,4 +15,9 @@ class UsulanBrifing extends Model
     {
         return $this->belongsTo('App\Model\Karyawan\Devisi','id_divisi');
     }
+
+    public function getKaryawan()
+    {
+        return $this->belongsTo('App\Model\Superadmin_ukm\H_karyawan','id_karyawan');
+    }
 }
