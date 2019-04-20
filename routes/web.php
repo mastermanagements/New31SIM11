@@ -483,7 +483,7 @@ Route::post('BA-Serah-Terima-Operasional','administrasi\BAserop@MenuIndex');
 
 Route::get('Brifing','administrasi\Brifing@index');
 
-Route::get('lihat-usulan-brifing', 'administrasi\Brifing@ambilEventBrifing');
+Route::get('lihat-usulan-brifing/{id}', 'administrasi\Brifing@ambilEventBrifing');
 
 Route::post('lihat-usulan-brifing-by-tgl', 'administrasi\Brifing@ambilEventBrifingByTanggal');
 
@@ -515,6 +515,15 @@ Route::put('update-pengumuman/{id}','administrasi\Pengumuman@update');
 
 Route::put('delete-pengumuman/{id}','administrasi\Pengumuman@delete');
 
+Route::get('Pengaturan-rapat','administrasi\JenisRapat@index');
+
+Route::post('store-jenis-rapat','administrasi\JenisRapat@store');
+
+Route::get('edit-jenis-rapat/{id}','administrasi\JenisRapat@edit');
+
+Route::put('update-jenis-rapat','administrasi\JenisRapat@update');
+
+Route::put('delete-jenis-rapat/{id}','administrasi\JenisRapat@delete');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
