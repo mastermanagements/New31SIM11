@@ -4,9 +4,7 @@
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
-
 @stop
-
 @section('master_content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
