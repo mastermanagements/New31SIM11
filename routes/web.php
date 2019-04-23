@@ -525,6 +525,10 @@ Route::put('update-jenis-rapat','administrasi\JenisRapat@update');
 
 Route::put('delete-jenis-rapat/{id}','administrasi\JenisRapat@delete');
 
+Route::post('reply-brifing', 'administrasi\Brifing@store_brifing');
+
+Route::put('delete-reply/{id}','administrasi\Brifing@delete_brifing');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
