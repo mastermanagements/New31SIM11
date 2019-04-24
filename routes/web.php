@@ -529,6 +529,20 @@ Route::post('reply-brifing', 'administrasi\Brifing@store_brifing');
 
 Route::put('delete-reply/{id}','administrasi\Brifing@delete_brifing');
 
+Route::get('Jasa', 'produksi\Jasa@index');
+
+Route::get('tambah-jasa', 'produksi\Jasa@create');
+
+Route::post('store-jasa', 'produksi\Jasa@store');
+
+Route::get('ubah-jasa/{id}', 'produksi\Jasa@edit');
+
+Route::put('update-jasa/{id}', 'produksi\Jasa@update');
+
+Route::put('delete-jasa/{id}', 'produksi\Jasa@destroy');
+
+Route::post('cari-jasa', 'produksi\Jasa@Cari_jasa');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
@@ -551,3 +565,7 @@ Route::put('delete-reply/{id}','administrasi\Brifing@delete_brifing');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
+
+Route::post('GlobalSubKategori', 'globals\KategoriJasa@getSubKategori');
+
+Route::post('GlobalSubSubKategori', 'globals\KategoriJasa@getSubSubKategori');
