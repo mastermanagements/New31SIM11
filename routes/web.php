@@ -529,6 +529,9 @@ Route::post('reply-brifing', 'administrasi\Brifing@store_brifing');
 
 Route::put('delete-reply/{id}','administrasi\Brifing@delete_brifing');
 
+
+//============================================ Produksi ================================================================
+
 Route::get('Jasa', 'produksi\Jasa@index');
 
 Route::get('tambah-jasa', 'produksi\Jasa@create');
@@ -542,6 +545,8 @@ Route::put('update-jasa/{id}', 'produksi\Jasa@update');
 Route::put('delete-jasa/{id}', 'produksi\Jasa@destroy');
 
 Route::post('cari-jasa', 'produksi\Jasa@Cari_jasa');
+
+Route::get('Barang','produksi\Barang@index');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
