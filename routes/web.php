@@ -560,6 +560,17 @@ Route::put('delete-barang/{id}','produksi\Barang@destroy');
 
 Route::post('cari-barang','produksi\Barang@show');
 
+Route::get('Supplier','produksi\Supplier@index');
+
+Route::get('tambah-supplier','produksi\Supplier@create');
+
+Route::post('store-supplier','produksi\Supplier@store');
+
+Route::get('ubah-supplier/{id}','produksi\Supplier@edit');
+
+Route::put('update-supplier/{id}','produksi\Supplier@update');
+
+Route::put('hapus-supplier/{id}','produksi\Supplier@delete');
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
