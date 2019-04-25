@@ -9,7 +9,7 @@
             },
             success: function (result) {
                 console.log(result);
-                var option= "<option>pilih kategori jasa diatas terlebih dahulu</option> ";
+                var option= "<option value='0'>pilih kategori jasa diatas terlebih dahulu</option> ";
                 $.each(result.data, function (index, value) {
                     option +="<option value="+value.id+"> "+ value.nm_subkategori_produk+" </p>";
                 });
@@ -28,7 +28,7 @@
             },
             success: function (result) {
                 console.log(result);
-                var option= "<option>pilih sub kategori jasa diatas terlebih dahulu</option> ";
+                var option= "<option value='0'>pilih sub kategori jasa diatas terlebih dahulu</option> ";
                 $.each(result.data, function (index, value) {
                     option +="<option value="+value.id+"> "+ value.nm_subsub_kategori_produk+" </p>";
                 });

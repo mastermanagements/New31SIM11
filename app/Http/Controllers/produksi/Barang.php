@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Produksi\Barang as barangs;
-use function Sodium\crypto_box_keypair_from_secretkey_and_publickey;
+use App\Model\Superadmin_sim\P_kategori_produk as kategori_produk;
 
 class Barang extends Controller
 {
@@ -37,7 +37,7 @@ class Barang extends Controller
     public function index()
     {
         $data=[
-            'data_barang'=> barangs::all()->where('id_perusahaan', $this->id_perusahaan)
+            'data_barang'=> barangs::where('id_perusahaan', $this->id_perusahaan)->paginate()
         ];
         return view('user.produksi.section.barang.page_default', $data);
     }
@@ -49,7 +49,10 @@ class Barang extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'kategori_jasa'=> kategori_produk::all()
+        ];
+        return view('user.produksi.section.barang.page_create', $data);
     }
 
     /**
@@ -60,18 +63,55 @@ class Barang extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request,[
+            'id_kategori' => 'required',
+            'nm_barang' => 'required',
+            'spec_barang' => 'required',
+            'desc_barang' => 'required',
+            'stok_barang' => 'required',
+            'harga_jual' => 'required',
+        ]);
+
+         $id_kategori = $request->id_kategori;
+         $id_subkategori = $request->id_subkategori_produk;
+         $id_subsubkategori = $request->id_subsubkategori_produk;
+         $nm_barang = $request->nm_barang;
+         $spec_barang= $request->spec_barang;
+         $desc_barang= $request->desc_barang;
+         $expired_date= date('Y-m-d', strtotime($request->expired_date));
+         $stok_barang= $request->stok_barang;
+         $diskon= $request->stok_barang;
+         $harga_jual= $request->harga_jual;
+
+         $model =new barangs;
+         $model->id_kategori_produk = $id_kategori;
+         $model->id_subkategori_produk = $id_subkategori;
+         $model->id_subsubkategori_produk= $id_subsubkategori;
+         $model->nm_barang= $nm_barang;
+         $model->spec_barang= $spec_barang;
+         $model->desc_barang= $desc_barang;
+         $model->expired_date= $expired_date;
+         $model->stok_barang= $stok_barang;
+         $model->diskon= $diskon;
+         $model->harga_jual= $harga_jual;
+         $model->id_perusahaan= $this->id_perusahaan;
+         $model->id_karyawan= $this->id_karyawan;
+
+         if($model->save()){
+             return redirect('Barang')->with('message_success', 'Anda telah menambahkan data Barang Baru');
+         }else{
+             return redirect('Barang')->with('message_fail', 'Maaf terjadi kesalahan, coba lagi menambah data barang');
+         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show(Request $req)
     {
-        //
+        $barang_yang_dicari = $req->nm_barang;
+        $data=[
+            'data_barang'=> barangs::where('id_perusahaan', $this->id_perusahaan)->where('nm_barang','Like',"%{$barang_yang_dicari}%")->paginate()
+        ];
+        return view('user.produksi.section.barang.page_default', $data);
     }
 
     /**
@@ -82,7 +122,15 @@ class Barang extends Controller
      */
     public function edit($id)
     {
-        //
+        if(empty($data_barang = barangs::where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+
+        $data = [
+            'kategori_jasa'=> kategori_produk::all(),
+            'data_barang' => $data_barang
+        ];
+        return view('user.produksi.section.barang.page_edit', $data);
     }
 
     /**
@@ -94,7 +142,45 @@ class Barang extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'id_kategori' => 'required',
+            'nm_barang' => 'required',
+            'spec_barang' => 'required',
+            'desc_barang' => 'required',
+            'stok_barang' => 'required',
+            'harga_jual' => 'required',
+        ]);
+
+        $id_kategori = $request->id_kategori;
+        $id_subkategori = $request->id_subkategori_produk;
+        $id_subsubkategori = $request->id_subsubkategori_produk;
+        $nm_barang = $request->nm_barang;
+        $spec_barang= $request->spec_barang;
+        $desc_barang= $request->desc_barang;
+        $expired_date= date('Y-m-d', strtotime($request->expired_date));
+        $stok_barang= $request->stok_barang;
+        $diskon= $request->stok_barang;
+        $harga_jual= $request->harga_jual;
+
+        $model =barangs::find($id);
+        $model->id_kategori_produk = $id_kategori;
+        $model->id_subkategori_produk = $id_subkategori;
+        $model->id_subsubkategori_produk= $id_subsubkategori;
+        $model->nm_barang= $nm_barang;
+        $model->spec_barang= $spec_barang;
+        $model->desc_barang= $desc_barang;
+        $model->expired_date= $expired_date;
+        $model->stok_barang= $stok_barang;
+        $model->diskon= $diskon;
+        $model->harga_jual= $harga_jual;
+        $model->id_perusahaan= $this->id_perusahaan;
+        $model->id_karyawan= $this->id_karyawan;
+
+        if($model->save()){
+            return redirect('Barang')->with('message_success', 'Anda telah mengubah data darang ');
+        }else{
+            return redirect('Barang')->with('message_fail', 'Maaf terjadi kesalahan, coba lagi mengubah data barang');
+        }
     }
 
     /**
@@ -105,6 +191,14 @@ class Barang extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(empty($model =barangs::where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+
+        if($model->delete()){
+            return redirect('Barang')->with('message_success', 'Anda telah menghapus data barang');
+        }else{
+            return redirect('Barang')->with('message_fail', 'Maaf terjadi kesalahan, coba lagi mengubah data barang');
+        }
     }
 }

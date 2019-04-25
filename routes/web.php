@@ -548,6 +548,18 @@ Route::post('cari-jasa', 'produksi\Jasa@Cari_jasa');
 
 Route::get('Barang','produksi\Barang@index');
 
+Route::get('tambah-barang','produksi\Barang@create');
+
+Route::post('store-barang','produksi\Barang@store');
+
+Route::get('ubah-barang/{id}','produksi\Barang@edit');
+
+Route::put('update-barang/{id}','produksi\Barang@update');
+
+Route::put('delete-barang/{id}','produksi\Barang@destroy');
+
+Route::post('cari-barang','produksi\Barang@show');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

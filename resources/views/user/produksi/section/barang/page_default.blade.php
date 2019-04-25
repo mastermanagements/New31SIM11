@@ -35,13 +35,13 @@
                         <div class="tab-pane active" id="tab_1">
                             <div class="row">
                                 <div class="col-md-3" style="margin: 0">
-                                    <a href="{{ url('tambah-jasa') }}" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah Barang </a>
+                                    <a href="{{ url('tambah-barang') }}" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah Barang </a>
                                 </div>
                                 <div class="col-md-9" >
-                                    <form action="{{ url('cari-jasa') }}" method="post" style="width: 100%">
+                                    <form action="{{ url('cari-barang') }}" method="post" style="width: 100%">
                                         <div class="input-group input-group-md" >
                                             {{ csrf_field() }}
-                                            <input type="text" name="nm_jasa" class="form-control" placeholder="cari berdasarkan Nama Jasa" required>
+                                            <input type="text" name="nm_barang" class="form-control" placeholder="cari berdasarkan nama barang" required>
                                             <span class="input-group-btn">
                                             <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
                                             </span>
@@ -51,22 +51,21 @@
                             </div>
                             <p></p>
                             <div class="row">
-                                @if(empty($data_jasa))
+                                @if(empty($data_barang))
                                     <div class="col-md-12"> <h4 align="center">Anda belum menambahkan Barang </h4></div>
                                 @else
-                                    @foreach($data_jasa as $value)
+                                    @foreach($data_barang as $value)
                                         <div class="col-md-12">
                                         <div class="box box-success box-solid">
                                             <div class="box-header with-border">
                                                 <h3 class="box-title">Tanggal Buat : {{ date('d-m-Y H:i:s', strtotime($value->created_at)) }}</h3>
-
                                                 <div class="box-tools pull-right">
-                                                    <form action="{{ url('delete-jasa/'.$value->id) }}" method="post">
-                                                        <a href="{{ url('ubah-jasa/'.$value->id) }}" type="button" class="btn btn-box-tool" title="ubah jasa"><i class="fa fa-pencil"></i>
+                                                    <form action="{{ url('delete-barang/'.$value->id) }}" method="post">
+                                                        <a href="{{ url('ubah-barang/'.$value->id) }}" type="button" class="btn btn-box-tool" title="ubah jasa"><i class="fa fa-pencil"></i>
                                                         </a>
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="_method" value="put">
-                                                        <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data jasa ini ... ?')" class="btn btn-box-tool" title="hapus proposal"><i class="fa fa-eraser"></i>
+                                                        <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data barang ini ... ?')" class="btn btn-box-tool" title="hapus proposal"><i class="fa fa-eraser"></i>
                                                         </button>
                                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                                         </button>
@@ -77,15 +76,17 @@
                                             <!-- /.box-header -->
                                             <div class="box-body">
                                                 <div class="row">
-                                                    <div class="col-md-8">
-                                                        <h3 style="color: #0b93d5; margin-top: 0px"><u>{{ $value->nm_jasa }}</u></h3>
+                                                    <div class="col-md-12">
+                                                        <h3 style="color: #0b93d5; margin-top: 0px"><u>{{ $value->nm_barang }}</u> @if(!empty($value->expired_date) and $value->expired_date != '1970-01-01')<small> {{ date('d-m-Y', strtotime($value->expired_date)) }}</small>@endif</h3>
                                                         <div class="row">
-                                                            <div class="col-md-12">
-
-                                                            <h4 >Rincian Jasa :</h4>
-                                                            <p>Harga Jasa :Rp. {{ $value->harga_jasa }}</p>
+                                                            <div class="col-md-3">
+                                                            <h4 style="font-weight: bold">Rincian Barang :</h4>
+                                                            <p>Harga Jasa :Rp. {{ $value->harga_jual }}</p>
+                                                                <p> <b>Diskon :</b> <br>
+                                                                <ul>{{ $value->diskon }}%</ul>
+                                                                </p>
                                                             <p>
-                                                                <b>Kategori</b>
+                                                                <b>Kategori :</b>
                                                                 <ul>
                                                                      {{ $value->getkategori->nm_kategori_p }}
                                                                     @if(!empty($value->getsubkategori->nm_subkategori_produk))
@@ -102,7 +103,11 @@
                                                                     @endif
                                                                 </ul>
                                                             </p>
-                                                            <p>{!!  $value->rincian_jasa  !!}</p>
+
+                                                            </div>
+                                                            <div class="col-md-9" style="width:73%;height: 255px; overflow-y: scroll; ">
+                                                                <p><h5 style="font-weight: bold">Spesifikasi :</h5> {!!  $value->spec_barang  !!} </p>
+                                                                <p><h5 style="font-weight: bold">Deskripsi Barang :</h5> {!!  $value->desc_barang  !!}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -113,7 +118,7 @@
                                         <!-- /.box -->
                                     </div>
                                     @endforeach
-                                    {{ $data_jasa->links() }}
+                                    {{ $data_barang->links() }}
                                 @endif
                             </div>
                         </div>

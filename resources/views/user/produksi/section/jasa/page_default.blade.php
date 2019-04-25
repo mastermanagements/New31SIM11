@@ -81,10 +81,10 @@
                                             <!-- /.box-header -->
                                             <div class="box-body">
                                                 <div class="row">
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-12">
                                                         <h3 style="color: #0b93d5; margin-top: 0px"><u>{{ $value->nm_jasa }}</u></h3>
                                                         <div class="row">
-                                                            <div class="col-md-12">
+                                                            <div class="col-md-3">
 
                                                             <h4 >Rincian Jasa :</h4>
                                                             <p>Harga Jasa :Rp. {{ $value->harga_jasa }}</p>
@@ -106,8 +106,12 @@
                                                                     @endif
                                                                 </ul>
                                                             </p>
-                                                            <p>{!!  $value->rincian_jasa  !!}</p>
+
                                                             </div>
+                                                            <div class="col-md-9" style="width:73%;height: 255px; overflow-y: scroll; ">
+                                                                <p>{!!  $value->rincian_jasa  !!}</p>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>

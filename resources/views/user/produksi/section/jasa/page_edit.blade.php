@@ -50,7 +50,6 @@
                                     <label for="exampleInputEmail1">Sub Ketegori Jasa</label>
                                     <select class="form-control select2" style="width: 100%;" name="id_subkategori_produk" required>
                                         <option value="0">Kategori Belum dipilih</option>
-                                        <option value="{{ $data_jasa->getsubkategori->id }}" selected >{{ $data_jasa->getsubkategori->nm_subkategori_produk }}</option>
                                     </select>
                                     <small style="color: orange">* Isi Jika Perlu</small>
                                 </div>
@@ -58,8 +57,7 @@
                                     <label for="exampleInputEmail1">Sub Sub Ketegori Jasa</label>
                                     <select class="form-control select2" style="width: 100%;" name="id_subsubkategori_produk" required>
                                         <option value="0">Sub Kategori Belum dipilih</option>
-                                        <option value="{{ $data_jasa->getsubsubkategori->id }}" selected >{{ $data_jasa->getsubsubkategori->nm_subsub_kategori_produk }}</option>
-                                    </select>
+                                   </select>
                                     <small style="color: orange">* Isi Jika Perlu</small>
                                 </div>
                                 <div class="form-group">
