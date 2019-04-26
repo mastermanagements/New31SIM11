@@ -1,4 +1,4 @@
-@extends('user.administrasi.master_user')
+@extends('user.produksi.master_user')
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">

@@ -108,7 +108,6 @@ class Supplier extends Controller
 
     public function delete(Request $request, $id)
     {
-
         if(empty($model=suppries::where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
