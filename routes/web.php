@@ -585,6 +585,20 @@ Route::put('update-jual-jasa/{id}','produksi\Jualjasa@update');
 Route::put('delete-jual-jasa/{id}','produksi\Jualjasa@delete');
 
 Route::post('cari-jual-jasa','produksi\Jualjasa@cari_jual_jasa');
+
+Route::get('Pembelian', 'produksi\BeliBarang@index');
+
+Route::get('tambah-pembelian', 'produksi\BeliBarang@create');
+
+Route::post('store-beli-barang', 'produksi\BeliBarang@store');
+
+Route::get('ubah-pembelian/{id}', 'produksi\BeliBarang@edit');
+
+Route::put('update-beli-barang/{id}', 'produksi\BeliBarang@update');
+
+Route::put('hapus-pembelian/{id}', 'produksi\BeliBarang@delete');
+
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
