@@ -56,7 +56,7 @@
                                                 <a href="{{ url('ubah-penjualan/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="put"/>
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus pembelian ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus penjualan ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
                                             </form>
                                         </td>
                                         </tr>
