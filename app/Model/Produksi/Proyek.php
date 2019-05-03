@@ -16,4 +16,8 @@ class Proyek extends Model
         return $this->belongsTo('App\Model\Administrasi\SPKKontrak','id_spk');
     }
 
+    public function timProyek(){
+        return $this->hasMany('App\Model\Produksi\TimProyek', 'id_proyek');
+    }
+
 }

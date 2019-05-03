@@ -624,8 +624,14 @@ Route::put('delete-proyek/{id}', 'produksi\Proyek@delete');
 
 Route::post('cari-proyek', 'produksi\Proyek@cari');
 
+//Tim Proyek = Tim Produksi
+Route::get('Tim-Produksi','produksi\TimProyek@index');
 
+Route::post('store-tim-project','produksi\TimProyek@store');
 
+Route::put('delete-tim-proyek/{id}','produksi\TimProyek@destroy');
+
+Route::post('cari-tim-proyek', 'produksi\TimProyek@cari');
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
