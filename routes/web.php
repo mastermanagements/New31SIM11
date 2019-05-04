@@ -632,6 +632,32 @@ Route::post('store-tim-project','produksi\TimProyek@store');
 Route::put('delete-tim-proyek/{id}','produksi\TimProyek@destroy');
 
 Route::post('cari-tim-proyek', 'produksi\TimProyek@cari');
+
+Route::get('Jadwal-Proyek','produksi\JadwalProyek@index');
+
+//Route::get('ambil-data-proyek','');
+
+
+Route::get('tambah-taskproyek','produksi\TaskProyek@create');
+
+Route::post('store-taksproyek','produksi\TaskProyek@store');
+
+Route::get('ubah-taksproyek/{id}','produksi\TaskProyek@edit');
+
+Route::put('update-taksproyek/{id}','produksi\TaskProyek@update');
+
+Route::put('hapus-taksproyek/{id}','produksi\TaskProyek@destroy');
+
+Route::get('tambah-rincian-tugas','produksi\RincianTugas@create');
+
+Route::post('store-rincian-tugas','produksi\RincianTugas@store');
+
+Route::get('ubah-rincian-tugas/{id}','produksi\RincianTugas@edit');
+
+Route::put('update-rincian-tugas/{id}','produksi\RincianTugas@update');
+
+Route::put('hapus-rincian-tugas/{id}','produksi\RincianTugas@destroy');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
