@@ -1,5 +1,9 @@
 @extends('user.produksi.master_user')
 
+@section('skin')
+    <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+@stop
+
 @section('master_content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -31,6 +35,20 @@
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Proyek</label>
+                                        <select class="form-control select2" style="width: 100%;" name="id_proyek" required>
+                                            @if(empty($proyek))
+                                                <option>Anda Belum Memasukan data proyek </option>
+                                            @else
+                                                  @foreach($proyek as $value)
+                                                     <option value="{{ $value->id }}"> {{ $value->spk->nm_spk}}</option>
+                                                  @endforeach
+                                            @endif
+                                        </select>
+                                        <small style="color: red">* Tidak Boleh Kosong</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -47,4 +65,15 @@
     </section>
     <!-- /.content -->
 </div>
+@stop
+
+@section('plugins')
+    <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            $('.select2').select2();
+        });
+    </script>
+
 @stop

@@ -49,9 +49,13 @@ class JadwalProyek extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($requireed)
+    public function create()
     {
+        $data=[
+            'task_proyek'=> taks_proyek::all()->where('id_perusahaan', $this->id_perusahaan)
+        ];
 
+        return view('user.produksi.section.jadwalProyek.page_create', $data);
     }
 
     /**

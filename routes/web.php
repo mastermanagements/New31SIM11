@@ -635,7 +635,7 @@ Route::post('cari-tim-proyek', 'produksi\TimProyek@cari');
 
 Route::get('Jadwal-Proyek','produksi\JadwalProyek@index');
 
-//Route::get('ambil-data-proyek','');
+Route::get('tambah-jadwal-proyek','produksi\JadwalProyek@create');
 
 
 Route::get('tambah-taskproyek','produksi\TaskProyek@create');

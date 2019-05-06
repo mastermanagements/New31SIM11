@@ -5,6 +5,7 @@ namespace App\Http\Controllers\produksi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Produksi\TaskProyek as taskProyeks;
+use App\Model\Produksi\Proyek as proyek;
 use Session;
 
 class TaskProyek extends Controller
@@ -34,7 +35,10 @@ class TaskProyek extends Controller
      */
     public function create()
     {
-        return view('user.produksi.section.jadwalProyek.taksProyek.page_create');
+        $data=[
+            'proyek' => proyek::all()->where('id_perusahaan', $this->id_perusahaan)
+        ];
+        return view('user.produksi.section.jadwalProyek.taksProyek.page_create', $data);
     }
 
     /**
@@ -46,12 +50,16 @@ class TaskProyek extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-           'nama_tugas'=> 'required'
+           'nama_tugas'=> 'required',
+            'id_proyek'=> 'required'
         ]);
 
         $nama_tugas = $request->nama_tugas;
+        $id_proyek = $request->id_proyek;
+
         $model = new taskProyeks;
         $model->nama_tugas= $nama_tugas;
+        $model->id_proyek= $id_proyek;
         $model->id_perusahaan= $this->id_perusahaan;
         $model->id_karyawan= $this->id_karyawan;
 
@@ -76,7 +84,8 @@ class TaskProyek extends Controller
         }
 
         $data=[
-          'data' => $model
+          'data' => $model,
+            'proyek' => proyek::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.produksi.section.jadwalProyek.taksProyek.page_edit', $data);
     }
@@ -91,11 +100,14 @@ class TaskProyek extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama_tugas'=> 'required'
+            'nama_tugas'=> 'required',
+            'id_proyek'=> 'required'
         ]);
 
         $nama_tugas = $request->nama_tugas;
+        $id_proyek = $request->id_proyek;
         $model = taskProyeks::find($id);
+        $model->id_proyek= $id_proyek;
         $model->nama_tugas= $nama_tugas;
         $model->id_perusahaan= $this->id_perusahaan;
         $model->id_karyawan= $this->id_karyawan;

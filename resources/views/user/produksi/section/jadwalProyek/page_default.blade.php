@@ -30,19 +30,13 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Jadwal Proyek</a></li>
+                        <li class="pull-right"><a href="#tab_3" data-toggle="tab"><i class="fa fa-list"></i> Rincian Tugas</a></li>
                         <li class="pull-right"><a href="#tab_2" data-toggle="tab"><i class="fa fa-list"></i> Task Proyek</a></li>
-                        <li class="pull-right"><a href="#tab_3" data-toggle="tab"><i class="fa fa-list"></i> Tincian Tugas</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <!-- THE CALENDAR -->
                             <div class="row">
-                                @if(!empty(session('message_success')))
-                                    <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
-                                @elseif(!empty(session('message_fail')))
-                                    <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
-                                @endif
-                                <p></p>
 
                                 <div class="col-md-12">
                                     <!-- Custom Tabs -->
@@ -66,8 +60,8 @@
                                                                     {{--@endif--}}
                                                                 </select>
                                                                 <span class="input-group-btn">
-                                            <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
-                                            </span>
+                                                                    <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
+                                                                </span>
                                                             </div>
                                                         </form>
                                                     </div>

@@ -10,5 +10,13 @@ class TaskProyek extends Model
 
     protected $table="p_task_proyek";
 
-    protected $fillable=['nama_tugas','id_perusahaan','id_karyawan'];
+    protected $fillable=['id_proyek','nama_tugas','id_perusahaan','id_karyawan'];
+
+    public function rincian_tugas(){
+        return $this->hasMany('App\Model\Produksi\RincianTugas','id_task_p');
+    }
+
+    public function proyek(){
+        $this->belongsTo('App\Model\Produksi','id_proyek');
+    }
 }
