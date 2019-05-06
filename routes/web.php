@@ -637,6 +637,10 @@ Route::get('Jadwal-Proyek','produksi\JadwalProyek@index');
 
 Route::get('tambah-jadwal-proyek','produksi\JadwalProyek@create');
 
+Route::post('store-jadwal-proyek','produksi\JadwalProyek@store');
+
+Route::get('get_liftOfProyek/{id_proyek}', 'produksi\JadwalProyek@ambilDaftarJadwalProyek');
+
 
 Route::get('tambah-taskproyek','produksi\TaskProyek@create');
 

@@ -30,7 +30,7 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-penjualan') }}" method="post" enctype="multipart/form-data">
+                    <form role="form" action="{{ url('store-jadwal-proyek') }}" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="row">
 
@@ -42,7 +42,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa  fa-sort-numeric-asc"></i>
                                             </div>
-                                            <input type="number" min="0" class="form-control pull-right" id="rangeBarang" placeholder="Masukan banyak barang anda" >
+                                            <input type="number" min="0" class="form-control pull-right" id="rangeBarang" name="durasi" placeholder="Masukan durasi pengerjaan proyek" >
                                         </div>
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
@@ -54,7 +54,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="reservation">
+                                            <input type="text" class="form-control pull-right" name="tglMulai_tglAkhir" id="reservation">
                                         </div>
                                         <small style="color: red">* Tidak Boleh Kosong</small>
                                         <!-- /.input group -->

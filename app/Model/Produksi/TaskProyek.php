@@ -17,6 +17,10 @@ class TaskProyek extends Model
     }
 
     public function proyek(){
-        $this->belongsTo('App\Model\Produksi','id_proyek');
+        return $this->belongsTo('App\Model\Produksi','id_proyek');
+    }
+
+    public function jadwal_proyek(){
+        return $this->hasMany('App\Model\Produksi\JadwalProyek', 'id_task_p');
     }
 }
