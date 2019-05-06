@@ -68,10 +68,10 @@
                                                 </div>
                                                 <p></p>
                                                 <div class="row">
-                                                    @if(empty($data_jadwal))
+                                                    @if(empty($proyek))
                                                         <div class="col-md-12"> <h4 align="center">Anda belum menambahkan data jadwal proyek </h4></div>
                                                     @else
-                                                        @foreach($data_jadwal as $value)
+                                                        @foreach($proyek as $value)
                                                             <div class="col-md-12">
                                                                 <div class="box box-success box-solid">
                                                                     <div class="box-header with-border">
@@ -94,45 +94,49 @@
                                                                     <div class="box-body">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
-                                                                                <h3 style="color: #0b93d5; margin-top: 0px"><u>{{ $value->spk->getKlien->nm_klien }}</u> </h3>
+                                                                                <h3 style="color: #0b93d5; margin-top: 0px"><u></u> </h3>
                                                                                 <div class="row">
                                                                                     <div class="col-md-3">
-                                                                                        <h4 style="font-weight: bold">Rincian Klien</h4>
-                                                                                        <p>Perusahaan : {{ $value->spk->getKlien->nm_perusahaan }}</p>
-                                                                                        <p>Alamat : {{ $value->spk->getKlien->alamat }}</p>
-                                                                                        <p>No. Handphone : {{ $value->spk->getKlien->hp}}</p>
-                                                                                        <p style="font-weight: bold">No. SPK : {{ $value->spk->no_spk }} </p>
-                                                                                        <p>Nama SP K: {{ $value->spk->nm_spk }} </p>
-                                                                                        <p>Jangka Waktu : {{ $value->jangka_waktu }} Hari</p>
+                                                                                        <h4 style="font-weight: bold">Rincian Proyek</h4>
+                                                                                        <p></p>
                                                                                     </div>
                                                                                     <div class="col-md-9" style="width:73%;height: 255px; overflow-y: scroll; ">
-                                                                                        <p><h5 style="font-weight: bold">Tim Produksi :  <button class="btn btn-xs btn-primary pull-right btnAddTim" value="{{ $value->id }}"><i class="fa fa-plus"></i> Tambah Tim</button> </h5>
+                                                                                        <p><h5 style="font-weight: bold">Jadwal Proyek :</h5>
                                                                                         <table class="table table-striped example2">
                                                                                             <tbody><tr>
                                                                                                 <th style="width: 10px">#</th>
-                                                                                                <th>Nama Karyawan</th>
-                                                                                                <th>Jabatan</th>
+                                                                                                <th>Gugus Tugas</th>
+                                                                                                <th>Durasi</th>
+                                                                                                <th>Mulai</th>
+                                                                                                <th>Selesai</th>
                                                                                                 <th style="width: 40px">Aksi</th>
                                                                                             </tr>
-                                                                                            @php($i=1)
-                                                                                            @if(!empty($value->timProyek))
-                                                                                                @foreach($value->timProyek as $value)
+
+                                                                                            @if(!empty($value->taks_proyek))
+                                                                                                @php($i=1)
+                                                                                                    @foreach($value->taks_proyek as $value2)
+
                                                                                                     <tr>
                                                                                                         <td>{{ $i++ }}</td>
-                                                                                                        <td>{{ $value->karyawan->nama_ky }}</td>
-                                                                                                        <td>
-                                                                                                            {{ $value->jabatan_proyek }}
-                                                                                                        </td>
-                                                                                                        <td>
-
-                                                                                                            <form action="{{ url('delete-tim-proyek/'.$value->id) }}" method="post">
-                                                                                                                {{ csrf_field() }}
-                                                                                                                <input type="hidden" name="_method" value="put">
-                                                                                                                <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data barang ini ... ?')" class="badge bg-red" title="hapus tim proyek"><i class="fa fa-eraser"></i>
-                                                                                                                </button>
-                                                                                                            </form>
-                                                                                                        </td>
+                                                                                                        <td> {{ $value2->nama_tugas }} </td>
+                                                                                                        <td></td>
+                                                                                                        <td></td>
+                                                                                                        <td></td>
+                                                                                                        <td></td>
                                                                                                     </tr>
+                                                                                                    @if(!empty($value2->rincian_tugas))
+                                                                                                        @php($j=1)
+                                                                                                        @foreach($value2->rincian_tugas as $key=> $rincian_tugas)
+                                                                                                            <tr>
+                                                                                                                <td>{{ $i++.'.'.$j++ }}</td>
+                                                                                                                <td>{{ $rincian_tugas->rincian_tugas }}</td>
+                                                                                                                <td>{{ $value2->jadwal_proyek[$key]->durasi }}</td>
+                                                                                                                <td>{{ date('d-m-Y', strtotime($value2->jadwal_proyek[$key]->tgl_mulai)) }}</td>
+                                                                                                                <td>{{ date('d-m-Y', strtotime($value2->jadwal_proyek[$key]->tgl_selesai)) }}</td>
+                                                                                                                <td></td>
+                                                                                                            </tr>
+                                                                                                        @endforeach
+                                                                                                    @endif
                                                                                                 @endforeach
                                                                                             @else
                                                                                                 <tr>
@@ -152,7 +156,7 @@
                                                                 <!-- /.box -->
                                                             </div>
                                                         @endforeach
-                                                        {{ $data_jadwal->links() }}
+                                                        {{--{{ $data_jadwal->links() }}--}}
                                                     @endif
                                                 </div>
                                             </div>

@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Produksi\TaskProyek as taks_proyek;
 use App\Model\Produksi\RincianTugas as rincian_Tugas;
-use App\Model\Produksi\JadwalProyek as jadwalProyeks;
-
+use App\Model\Produksi\Proyek as proyek;
 use Session;
 
 class JadwalProyek extends Controller
@@ -37,7 +36,7 @@ class JadwalProyek extends Controller
     public function index()
     {
         $data=[
-          'data_jadwal'=>jadwalProyeks::where('id_perusahaan', $this->id_perusahaan)->paginate(15),
+          'proyek'=>proyek::where('id_perusahaan', $this->id_perusahaan)->paginate(15),
           'data_taks_proyek' => taks_proyek::all()->where('id_perusahaan', $this->id_perusahaan),
           'data_rincian_proyek' => rincian_Tugas::all()->where('id_perusahaan', $this->id_perusahaan),
         ];
