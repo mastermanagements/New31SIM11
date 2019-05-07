@@ -44,20 +44,20 @@
                                             <div class="tab-pane active" id="tab_1">
                                                 <div class="row">
                                                     <div class="col-md-3" style="margin: 0">
-                                                        <a href="{{ url('tambah-jadwal-proyek') }}" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah Jadwal Proyek </a>
+                                                        <a href="{{ url('tambah-jadwal-proyek') }}" class="btn btn-primary" style="width: 100%" ><i class="fa fa-plus"></i> Tambah Jadwal Proyek </a>
                                                     </div>
                                                     <div class="col-md-9" >
-                                                        <form action="{{ url('cari-tim-proyek') }}" method="post" style="width: 100%">
+                                                        <form action="{{ url('cari-jadwal-proyek') }}" method="post" style="width: 100%">
                                                             <div class="input-group input-group-md" >
                                                                 {{ csrf_field() }}
                                                                 <select class="form-control select2" style="width: 100%;" name="id_spk" required>
-                                                                    {{--@if(empty($spk))--}}
-                                                                        {{--<option>Spk masih kosong</option>--}}
-                                                                    {{--@else--}}
-                                                                        {{--@foreach($spk as $value)--}}
-                                                                            {{--<option value="{{ $value->id }}">{{ $value->nm_spk }}</option>--}}
-                                                                        {{--@endforeach--}}
-                                                                    {{--@endif--}}
+                                                                    @if(empty($Listproyek))
+                                                                        <option>Proyek masih kosong</option>
+                                                                    @else
+                                                                        @foreach($Listproyek as $value)
+                                                                            <option value="{{ $value->id }}">{{ $value->nm_spk }}</option>
+                                                                        @endforeach
+                                                                    @endif
                                                                 </select>
                                                                 <span class="input-group-btn">
                                                                     <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
@@ -97,11 +97,18 @@
                                                                                 <h3 style="color: #0b93d5; margin-top: 0px"><u></u> </h3>
                                                                                 <div class="row">
                                                                                     <div class="col-md-3">
-                                                                                        <h4 style="font-weight: bold">Rincian Proyek</h4>
-                                                                                        <p></p>
+                                                                                        <h4 style="font-weight: bold">Rincian Proyek
+                                                                                        </h4>
+                                                                                        <p>Nama Proyek : {{ $value->spk->nm_spk }}</p>
+                                                                                        <p>No. SPK : {{ $value->spk->no_spk }}</p>
+                                                                                        <hr>
+                                                                                        <p>Klien : {{ $value->spk->getKlien->nm_klien }}</p>
+                                                                                        <p>Nama Perusahaan : {{ $value->spk->getKlien->nm_perusahaan }}</p>
+                                                                                        <p>Alamat : {{ $value->spk->getKlien->alamat }}</p>
+                                                                                        <p>No.Hp : {{ $value->spk->getKlien->hp }}</p>
                                                                                     </div>
                                                                                     <div class="col-md-9" style="width:73%;height: 255px; overflow-y: scroll; ">
-                                                                                        <p><h5 style="font-weight: bold">Jadwal Proyek :</h5>
+                                                                                        <p><h5 style="font-weight: bold">Jadwal Proyek :   </h5>
                                                                                         <table class="table table-striped example2">
                                                                                             <tbody><tr>
                                                                                                 <th style="width: 10px">#</th>
@@ -114,30 +121,46 @@
 
                                                                                             @if(!empty($value->taks_proyek))
                                                                                                 @php($i=1)
-                                                                                                    @foreach($value->taks_proyek as $value2)
+                                                                                                    @foreach($value->taks_proyek as $keys=> $value2)
 
                                                                                                     <tr>
-                                                                                                        <td>{{ $i++ }}</td>
+                                                                                                        <td>{{ $i }}</td>
                                                                                                         <td> {{ $value2->nama_tugas }} </td>
-                                                                                                        <td></td>
-                                                                                                        <td></td>
-                                                                                                        <td></td>
+                                                                                                        <td>{{ $value2->jadwal_proyek->sum('durasi') }}</td>
+                                                                                                        <td>{{ date('d-m-Y', strtotime($value2->jadwal_proyek->sortBy('tgl_mulai')->groupBy('id_task_p')->take(1)->first()[0]['tgl_mulai'])) }}</td>
+                                                                                                        <td>{{ date('d-m-Y', strtotime($value2->jadwal_proyek->sortByDesc('tgl_selesai')->groupBy('id_task_p')->take(1)->first()[0]['tgl_selesai'])) }}</td>
                                                                                                         <td></td>
                                                                                                     </tr>
                                                                                                     @if(!empty($value2->rincian_tugas))
                                                                                                         @php($j=1)
-                                                                                                        @foreach($value2->rincian_tugas as $key=> $rincian_tugas)
+                                                                                                        @foreach($value2->rincian_tugas as $key => $rincian_tugas)
                                                                                                             <tr>
                                                                                                                 <td>{{ $i++.'.'.$j++ }}</td>
-                                                                                                                <td>{{ $rincian_tugas->rincian_tugas }}</td>
+                                                                                                                <td>{{ $rincian_tugas->rincian_tugas }} </td>
+                                                                                                               @if(!empty($value2->jadwal_proyek[$key]))
                                                                                                                 <td>{{ $value2->jadwal_proyek[$key]->durasi }}</td>
                                                                                                                 <td>{{ date('d-m-Y', strtotime($value2->jadwal_proyek[$key]->tgl_mulai)) }}</td>
                                                                                                                 <td>{{ date('d-m-Y', strtotime($value2->jadwal_proyek[$key]->tgl_selesai)) }}</td>
-                                                                                                                <td></td>
+                                                                                                                <td>
+                                                                                                                   <form action="{{ url('delete-jadwal-proyek/'.$value2->jadwal_proyek[$key]->id) }}" method="post">
+                                                                                                                       {{ csrf_field() }}
+                                                                                                                       <a href="{{ url('ubah-jadwal-proyek/'.$value2->jadwal_proyek[$key]->id) }}" class="btn btn-xs btn-warning"><i class=" fa fa-edit"></i> </a>
+                                                                                                                       <input type="hidden" name="_method" value="put">
+                                                                                                                       <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda akan menghapus Jadwal ini')"><i class="fa fa-eraser"></i></button>
+                                                                                                                   </form>
+                                                                                                                </td>
+                                                                                                                @else
+                                                                                                                    <td><p style="color: red">Belum Dimasukan</p></td>
+                                                                                                                    <td><p style="color: red">Belum Dimasukan</p></td>
+                                                                                                                    <td><p style="color: red">Belum Dimasukan</p></td>
+                                                                                                                    <td><p style="color: red">Belum Dimasukan</p></td>
+                                                                                                                @endif
+
                                                                                                             </tr>
                                                                                                         @endforeach
                                                                                                     @endif
                                                                                                 @endforeach
+                                                                                                {{ $proyek->links() }}
                                                                                             @else
                                                                                                 <tr>
                                                                                                     <td colspan="2">Tim Belum dimasukan</td>

@@ -29,9 +29,15 @@
                         <h3 class="box-title">Formulir Jadwal Proyek</h3>
                     </div>
                     <!-- /.box-header -->
+                    @if(!empty(session('message_success')))
+                        <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+                    @elseif(!empty(session('message_fail')))
+                        <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+                    @endif
                     <!-- form start -->
                     <form role="form" action="{{ url('store-jadwal-proyek') }}" method="post" enctype="multipart/form-data">
                         <div class="box-body">
+
                             <div class="row">
 
                                 <div class="col-md-12">
@@ -68,7 +74,7 @@
                                                         <option>Ada Belum Memasukan Task Proyek dan Rincian Proyek Anda</option>
                                                     @else
                                                         @foreach($task_proyek as $taks)
-                                                        <optgroup label="{{ $taks->nama_tugas }}">
+                                                        <optgroup label="{{ $taks->nama_tugas }} - {{ $taks->proyek->spk->nm_spk }}">
                                                             @if(!empty($taks->rincian_tugas))
                                                                 @foreach($taks->rincian_tugas as $rincian_tugas)
                                                                     <option value="{{ $taks->id }}-{{ $rincian_tugas->id }}"> {{ $rincian_tugas->rincian_tugas }}</option>

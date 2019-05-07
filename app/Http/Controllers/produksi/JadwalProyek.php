@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Model\Produksi\TaskProyek as taks_proyek;
 use App\Model\Produksi\RincianTugas as rincian_Tugas;
 use App\Model\Produksi\Proyek as proyek;
+use App\Model\Produksi\JadwalProyek as jadwalProyeks;
+use App\Model\Administrasi\SPKKontrak as spk;
 use Session;
 
 class JadwalProyek extends Controller
@@ -37,6 +39,7 @@ class JadwalProyek extends Controller
     {
         $data=[
           'proyek'=>proyek::where('id_perusahaan', $this->id_perusahaan)->paginate(15),
+          'Listproyek'=>spk::all()->where('id_perusahaan', $this->id_perusahaan),
           'data_taks_proyek' => taks_proyek::all()->where('id_perusahaan', $this->id_perusahaan),
           'data_rincian_proyek' => rincian_Tugas::all()->where('id_perusahaan', $this->id_perusahaan),
         ];
@@ -52,7 +55,7 @@ class JadwalProyek extends Controller
     public function create()
     {
         $data=[
-            'task_proyek'=> taks_proyek::all()->where('id_perusahaan', $this->id_perusahaan)
+            'task_proyek'=> taks_proyek::all()->where('id_perusahaan', $this->id_perusahaan),
         ];
         return view('user.produksi.section.jadwalProyek.page_create', $data);
     }
@@ -92,45 +95,14 @@ class JadwalProyek extends Controller
 
         if($model->save())
         {
-            return redirect('tambah-jadwal-proyek')->with('message_success',"Jadwal Proyek telah ditambahkan");
+            return redirect('Jadwal-Proyek')->with('message_success',"Jadwal Proyek telah ditambahkan");
         }
         else{
-            return redirect('tambah-jadwal-proyek')->with('message_fail',"Maaf, telah terjadi kesalahan silahkan coba lagi");
+            return redirect('Jadwal-Proyek')->with('message_fail',"Maaf, telah terjadi kesalahan silahkan coba lagi");
         }
 
     }
 
-    public function ambilDaftarJadwalProyek($id_proyek)
-    {
-        $model = taks_proyek::all()->where('id_proyek', $id_proyek)->where('id_perusahaan', $this->id_perusahaan);
-        $column = array();
-        foreach ($model as $task_proyek)
-        {
-            $row = array();
-            $subcolumn = array();
-            $suSubbcolumn = array();
-            $row[] = $task_proyek->nama_tugas;
-            foreach ($task_proyek->rincian_tugas as $rincian_tugas)
-            {
-                $row_subRow =array();
-                $row_subRow[] = $rincian_tugas->rincian_tugas;
-                $subcolumn[] = $row_subRow;
-            }
-            $row[] = $subcolumn;
-
-            foreach ($task_proyek->jadwal_proyek as $data_jadwal){
-                $row_subRow1 =array();
-                $row_subRow1[] = $data_jadwal->durasi;
-                $row_subRow1[] = $data_jadwal->tgl_mulai;
-                $row_subRow1[] = $data_jadwal->tgl_selesai;
-                $row_subRow1[] =  '<button type="button" onclick="hapus_jadwal('.$data_jadwal->id.')">hapus</button>';
-                $suSubbcolumn[] = $row_subRow1;
-            }
-            $row[] = $suSubbcolumn;
-            $column[] = $row;
-        }
-        return response()->json($column);
-    }
 
     /**
      * Display the specified resource.
@@ -138,9 +110,16 @@ class JadwalProyek extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $req)
     {
-        //
+        $id_spk = $req->id_spk;
+        $data=[
+            'proyek'=>proyek::where('id_spk',$id_spk)->where('id_perusahaan', $this->id_perusahaan)->paginate(15),
+            'Listproyek'=>spk::all()->where('id_perusahaan', $this->id_perusahaan),
+            'data_taks_proyek' => taks_proyek::all()->where('id_perusahaan', $this->id_perusahaan),
+            'data_rincian_proyek' => rincian_Tugas::all()->where('id_perusahaan', $this->id_perusahaan),
+        ];
+        return view('user.produksi.section.jadwalProyek.page_default', $data);
     }
 
     /**
@@ -151,7 +130,15 @@ class JadwalProyek extends Controller
      */
     public function edit($id)
     {
-        //
+        if(empty($mode=jadwalProyeks::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+           return  abort(404);
+        }
+
+        $data=[
+            'task_proyek'=> taks_proyek::all()->where('id_perusahaan', $this->id_perusahaan),
+            'data_jadwal'=> $mode
+        ];
+        return view('user.produksi.section.jadwalProyek.page_edit', $data);
     }
 
     /**
@@ -163,7 +150,39 @@ class JadwalProyek extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+            'durasi'=> 'required',
+            'tglMulai_tglAkhir' => 'required',
+            'id_taksAndId_rincian' => 'required'
+        ]);
+
+        $durasi = $request->durasi;
+        $split_tgl = explode(' - ', $request->tglMulai_tglAkhir);
+        $split_id_task_dan_rincian = explode('-', $request->id_taksAndId_rincian);
+
+        $tgl_mulai = date('Y-m-d', strtotime(str_replace('/','-',$split_tgl[0])));
+        $tgl_akhir =  date('Y-m-d', strtotime(str_replace('/','-',$split_tgl[1])));
+        $id_task = $split_id_task_dan_rincian[0];
+        $id_rincian = $split_id_task_dan_rincian[1];
+
+        $model = jadwalProyeks::find($id);
+        $model->id_task_p=$id_task;
+        $model->id_rincian_p=$id_rincian;
+        $model->durasi=$durasi;
+        $model->tgl_mulai=$tgl_mulai;
+        $model->tgl_selesai=$tgl_akhir;
+        $model->id_perusahaan=$this->id_perusahaan;
+        $model->id_karyawan=$this->id_karyawan;
+
+        if($model->save())
+        {
+            return redirect('Jadwal-Proyek')->with('message_success',"Jadwal Proyek telah diubah");
+        }
+        else{
+            return redirect('Jadwal-Proyek')->with('message_fail',"Maaf, telah terjadi kesalahan silahkan coba lagi");
+        }
+
     }
 
     /**
@@ -172,8 +191,16 @@ class JadwalProyek extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $req, $id)
     {
-        //
+        $model = jadwalProyeks::find($id);
+
+        if($model->delete())
+        {
+            return redirect('Jadwal-Proyek')->with('message_success',"Jadwal Proyek telah dihapus");
+        }
+        else{
+            return redirect('Jadwal-Proyek')->with('message_fail',"Maaf, telah terjadi kesalahan silahkan coba lagi");
+        }
     }
 }

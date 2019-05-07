@@ -641,6 +641,14 @@ Route::post('store-jadwal-proyek','produksi\JadwalProyek@store');
 
 Route::get('get_liftOfProyek/{id_proyek}', 'produksi\JadwalProyek@ambilDaftarJadwalProyek');
 
+Route::get('ubah-jadwal-proyek/{id_proyek}','produksi\JadwalProyek@edit');
+
+Route::put('update-jadwal-proyek/{id}','produksi\JadwalProyek@update');
+
+Route::put('delete-jadwal-proyek/{id}','produksi\JadwalProyek@destroy');
+
+Route::post('cari-jadwal-proyek','produksi\JadwalProyek@show');
+
 
 Route::get('tambah-taskproyek','produksi\TaskProyek@create');
 
