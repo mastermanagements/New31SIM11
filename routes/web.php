@@ -670,6 +670,18 @@ Route::put('update-rincian-tugas/{id}','produksi\RincianTugas@update');
 
 Route::put('hapus-rincian-tugas/{id}','produksi\RincianTugas@destroy');
 
+Route::get('Progress-Proyek','produksi\ProgressProyek@index');
+
+Route::get('Daftar-progress/{id_jadwal_proyek}','produksi\ProgressProyek@listOfProgress');
+
+Route::post('store-progress-proyek','produksi\ProgressProyek@store');
+
+Route::get('ubah-progress-jadwal/{id_progress_proyek}','produksi\ProgressProyek@edit');
+
+Route::post('update-progress-proyek','produksi\ProgressProyek@update');
+
+Route::put('hapus-progress-jadwal/{id}','produksi\ProgressProyek@destroy');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
