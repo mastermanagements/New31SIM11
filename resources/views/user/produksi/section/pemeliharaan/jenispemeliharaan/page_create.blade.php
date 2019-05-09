@@ -9,7 +9,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Tambah Taks Proyek
+            Tambah Jenis Pemeliharaan
         </h1>
     </section>
 
@@ -21,32 +21,18 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Taks Proyek</h3>
+                        <h3 class="box-title">Formulir Jenis Pemeliharaan</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-taksproyek') }}" method="post" enctype="multipart/form-data">
+                    <form role="form" action="{{ url('store-jenis-pemeliharaan') }}" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Nama Tugas </label>
-                                        <input type="text" class="form-control" name="nama_tugas" required>
+                                        <label>Nama Jenis Pemeliharaan </label>
+                                        <input type="text" class="form-control" name="jenis_pem" required>
                                         <!-- /.input group -->
-                                        <small style="color: red">* Tidak Boleh Kosong</small>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Proyek</label>
-                                        <select class="form-control select2" style="width: 100%;" name="id_proyek" required>
-                                            @if(empty($proyek))
-                                                <option>Anda Belum Memasukan data proyek </option>
-                                            @else
-                                                  @foreach($proyek as $value)
-                                                     <option value="{{ $value->id }}"> {{ $value->spk->nm_spk}}</option>
-                                                  @endforeach
-                                            @endif
-                                        </select>
                                         <small style="color: red">* Tidak Boleh Kosong</small>
                                     </div>
                                 </div>

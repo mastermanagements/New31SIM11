@@ -37,7 +37,7 @@ class Barang extends Controller
     public function index()
     {
         $data=[
-            'data_barang'=> barangs::where('id_perusahaan', $this->id_perusahaan)->paginate()
+            'data_barang'=> barangs::where('id_perusahaan', $this->id_perusahaan)->paginate(15)
         ];
         return view('user.produksi.section.barang.page_default', $data);
     }
@@ -109,7 +109,7 @@ class Barang extends Controller
     {
         $barang_yang_dicari = $req->nm_barang;
         $data=[
-            'data_barang'=> barangs::where('id_perusahaan', $this->id_perusahaan)->where('nm_barang','Like',"%{$barang_yang_dicari}%")->paginate()
+            'data_barang'=> barangs::where('id_perusahaan', $this->id_perusahaan)->where('nm_barang','Like',"%{$barang_yang_dicari}%")->paginate(15)
         ];
         return view('user.produksi.section.barang.page_default', $data);
     }

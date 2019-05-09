@@ -682,6 +682,32 @@ Route::post('update-progress-proyek','produksi\ProgressProyek@update');
 
 Route::put('hapus-progress-jadwal/{id}','produksi\ProgressProyek@destroy');
 
+Route::get('Pemeliharaan', 'produksi\Pemeliharaan@index');
+
+Route::get('tambah-pemeliharaan','produksi\Pemeliharaan@create');
+
+Route::post('store-pemeliharaan','produksi\Pemeliharaan@store');
+
+Route::get('ubah-pemeliharaan/{id}','produksi\Pemeliharaan@edit');
+
+Route::put('update-pemeliharaan/{id}','produksi\Pemeliharaan@update');
+
+Route::put('delete-pemeliharaan/{id}','produksi\Pemeliharaan@delete');
+
+Route::post('cari-pemeliharaan','produksi\Pemeliharaan@show');
+
+
+
+Route::get('tambah-jenis-proyek','produksi\JenisPemeliharaan@create');
+
+Route::post('store-jenis-pemeliharaan', 'produksi\JenisPemeliharaan@store');
+
+Route::get('ubah-jenis-pemeliharaan/{id}','produksi\JenisPemeliharaan@edit');
+
+Route::put('update-jenis-pemeliharaan/{id}', 'produksi\JenisPemeliharaan@update');
+
+Route::put('hapus-jenis-pemeliharaan/{id}', 'produksi\JenisPemeliharaan@delete');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
