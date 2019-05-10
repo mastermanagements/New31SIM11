@@ -41,7 +41,7 @@ class ProgressProyek extends Controller
     {
         $data=[
             'id_jadwal_proyek'=> $id,
-            'data_progress' => progress_proyek::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->get()
+            'data_progress' => progress_proyek::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate(30)
         ];
         return view('user.produksi.section.progressProyek.crud.page_create', $data);
     }

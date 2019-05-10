@@ -9,7 +9,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          Jadwal Proyek
+          Progress Pemeliharaan
         </h1>
     </section>
 
@@ -25,7 +25,7 @@
              <div class="col-md-12">
                  <div class="row">
                  <div class="col-md-12" style="padding-bottom: 15px">
-                     <a href="#" data-toggle="modal" data-target="#modal-tambah-progress-proyek"  class="btn btn-primary pull-left"><i class="fa fa-plus"></i> Tambah Progress</a>
+                     <a href="#" data-toggle="modal" data-target="#modal-tambah-progress-pemeliharaan"  class="btn btn-primary pull-left"><i class="fa fa-plus"></i> Tambah Progress</a>
                  </div>
                      <div class="col-md-12">
                          <ul class="timeline">
@@ -54,6 +54,10 @@
                                                         Rincian Pengerjaan :<br>
                                                         {!! $value->rincian_pekerjaan !!}
                                                         <hr>
+                                                        @if(!empty($value->key))
+                                                        Rincian Pengerjaan :<br>
+                                                        {!! $value->rincian_pekerjaan !!}
+                                                        @endif
 
                                                      </p>
                                                  </div>
@@ -78,7 +82,7 @@
         </div>
     </section>
 
-    @include('user.produksi.section.progressProyek.crud.modal.modal')
+    @include('user.produksi.section.progrespPemeliharaan.crud.modal.modal')
 
 </div>
 
@@ -113,7 +117,11 @@
                 height: 200
             } );
 
-            var editor_masalah=CKEDITOR.replace( 'masalah_ubah',{
+            CKEDITOR.replace( 'ket',{
+                height: 200
+            } );
+
+            CKEDITOR.replace( 'masalah_ubah',{
                 height: 200
             } );
             CKEDITOR.replace( 'solusi_ubah',{
@@ -122,19 +130,24 @@
             CKEDITOR.replace( 'rincian_pekerjaan_ubah',{
                 height: 200
             } );
+            CKEDITOR.replace( 'ket_ubah',{
+                height: 200
+            } );
+
         };
 
         $('#ubah').click(function () {
            $.ajax({
-               url: '{{ url('ubah-progress-jadwal') }}/'+$(this).val(),
+               url: '{{ url('ubah-progress-pemeliharaan') }}/'+$(this).val(),
                dataType: 'json',
                success:function (result) {
                    CKEDITOR.instances.masalah_ubah.setData(result.masalah);
                    CKEDITOR.instances.solusi_ubah.setData(result.solusi);
                    CKEDITOR.instances.rincian_pekerjaan_ubah.setData(result.rincian_pekerjaan);
+                   CKEDITOR.instances.ket_ubah.setData(result.ket);
                    $('[name="tgl_dikerjakan_ubah"]').val(moment(result.tgl_dikerjakan).format('DD-MM-YYYY'));
-                   $('[name="id_progress_proyek"]').val(result.id);
-                   $('#modal-ubah-progress-proyek').modal('show')
+                   $('[name="id_progress_pemeliharaan"]').val(result.id);
+                   $('#modal-ubah-progress-pemeliharaan').modal('show')
                }
            });
         })
@@ -143,7 +156,7 @@
 
            if(confirm('Apakah Anda yakin akan menghapus data ini ... ?')==true){
            $.ajax({
-               url: '{{ url('hapus-progress-jadwal') }}/'+$(this).val(),
+               url: '{{ url('hapus-progress-pemeliharaan') }}/'+$(this).val(),
                type: 'post',
                data:{
                    '_method':'put',

@@ -696,8 +696,6 @@ Route::put('delete-pemeliharaan/{id}','produksi\Pemeliharaan@delete');
 
 Route::post('cari-pemeliharaan','produksi\Pemeliharaan@show');
 
-
-
 Route::get('tambah-jenis-proyek','produksi\JenisPemeliharaan@create');
 
 Route::post('store-jenis-pemeliharaan', 'produksi\JenisPemeliharaan@store');
@@ -707,6 +705,19 @@ Route::get('ubah-jenis-pemeliharaan/{id}','produksi\JenisPemeliharaan@edit');
 Route::put('update-jenis-pemeliharaan/{id}', 'produksi\JenisPemeliharaan@update');
 
 Route::put('hapus-jenis-pemeliharaan/{id}', 'produksi\JenisPemeliharaan@delete');
+
+Route::get('Progres-Pemeliharaan', 'produksi\ProgressPemeliharaan@index');
+
+Route::get('lihat-progress/{id_pemeliharaan}','produksi\ProgressPemeliharaan@daftar_progress_pemeliharaan');
+
+Route::post('store-progress-pemeliharaan','produksi\ProgressPemeliharaan@store');
+
+Route::get('ubah-progress-pemeliharaan/{id}','produksi\ProgressPemeliharaan@edit');
+
+Route::post('update-progress-pemeliharaan','produksi\ProgressPemeliharaan@update');
+
+Route::put('hapus-progress-pemeliharaan/{id}','produksi\ProgressPemeliharaan@delete');
+
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
