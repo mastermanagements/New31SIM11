@@ -30,7 +30,7 @@ class JualBarang extends Controller
     public function index()
     {
         $data=[
-            'penjualan' => jualBarangs::where('id_perusahaan', $this->id_perusahaan)->paginate()
+            'penjualan' => jualBarangs::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate()
         ];
         return view('user.produksi.section.jualbarang.page_default', $data);
     }
@@ -58,11 +58,14 @@ class JualBarang extends Controller
         $id_barang = $req->id_barang;
         $jumlah_barang = $req->jumlah_barang;
 
+        $perusahaan = jualBarangs::where('id_perusahaan', $this->id_perusahaan)->first()->perusahaan->singkatan_usaha;
 
         foreach ($id_barang as $key => $value)
         {
             $tgl_beli = date('Y-m-d', strtotime($req->tgl_jual));
+            $no_urut = jualBarangs::where('id_perusahaan', $this->id_perusahaan)->count()+1;
             $model = new jualBarangs;
+            $model->no_invoice = date('dmY', strtotime($req->tgl_jual)).'/'.$perusahaan.'/'.$no_urut;
             $model->tgl_jual = $tgl_beli;
             $model->id_klien = $id_klien;
             $model->id_perusahaan = $this->id_perusahaan;

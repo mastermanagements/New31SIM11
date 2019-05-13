@@ -60,12 +60,8 @@
 
                                     <div class="form-group">
                                         <label>Banyak Penjualan</label>
-                                        <div class="input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="number" min="0" class="form-control pull-right" id="rangeBarang" placeholder="Masukan banyak barang anda" >
-                                        </div>
+                                        <input type="number" min="0" class="form-control pull-right" id="rangeBarang" placeholder="Masukan banyak barang anda" >
+
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
                                     </div>

@@ -28,6 +28,11 @@
                         <!-- form start -->
                         <form role="form" action="{{ url('update-beli-barang/'.$data->id) }}" method="post" enctype="multipart/form-data">
                             <div class="box-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">No. Faktur</label>
+                                    <input type="text" name="no_faktur" class="form-control" placeholder="No. Faktur" value="{{ $data->no_faktur }}" />
+                                    <small style="color: orange">* Isi jika perlu</small>
+                                </div>
 
                                 <div class="form-group">
                                     <label>Tanggal Beli </label>

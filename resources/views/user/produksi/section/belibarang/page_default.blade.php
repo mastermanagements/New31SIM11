@@ -35,6 +35,8 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
+                                    <th>No. Order</th>
+                                    <th>No. Faktur</th>
                                     <th>Tanggal Beli</th>
                                     <th>Barang</th>
                                     <th>Supplier</th>
@@ -49,6 +51,8 @@
                                 @foreach($data_pembelian as $value)
                                     <tr>
                                         <td>{{ $i++ }}</td>
+                                        <td>{{ $value->no_order  }}</td>
+                                        <td>{{ $value->no_faktur  }}</td>
                                         <td>{{ date('d-m-Y', strtotime($value->tgl_beli)) }}</td>
                                         <td>{{ $value->getBarang->nm_barang }}</td>
                                         <td>{{ $value->getSupplier->nama_suplier }}</td>

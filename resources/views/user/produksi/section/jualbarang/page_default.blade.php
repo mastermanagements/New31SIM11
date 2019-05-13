@@ -35,6 +35,7 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
+                                    <th>No. Invoice</th>
                                     <th>Tanggal Jual</th>
                                     <th>Klien</th>
                                     <th>Barang</th>
@@ -47,6 +48,7 @@
                                 @foreach($penjualan as $value)
                                     <tr>
                                         <td>{{ $i++ }}</td>
+                                        <td>{{ $value->no_invoice }}</td>
                                         <td>{{ date('d-m-Y', strtotime($value->tgl_jual)) }}</td>
                                         <td>{{ $value->klien->nm_klien }}</td>
                                         <td>{{ $value->barang->nm_barang }}</td>

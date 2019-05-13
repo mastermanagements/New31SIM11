@@ -31,7 +31,7 @@ class BeliBarang extends Controller
 
     public function index(){
         $data=[
-            'data_pembelian'=> beliBarangs::all()->where('id_perusahaan', $this->id_perusahaan)
+            'data_pembelian'=> beliBarangs::all()->where('id_perusahaan', $this->id_perusahaan)->sortByDesc('created_at')
         ];
         return view('user.produksi.section.belibarang.page_default', $data);
     }
@@ -61,8 +61,14 @@ class BeliBarang extends Controller
         $id_supplier= $req->id_suplier;
         $jumlah_barang= $req->jumlah_barang;
         $harga_beli= $req->harga_beli;
+        $no_faktur= $req->no_faktur;
+
+        $nama_supplier = suppliers::find($id_supplier)->nama_suplier;
+        $no_urut = beliBarangs::where('id_perusahaan', $this->id_perusahaan)->count()+1;
 
         $model = new beliBarangs;
+        $model->no_order = date('dmY', strtotime($tgl_beli))."/".$nama_supplier."/".$no_urut;
+        $model->no_faktur = $no_faktur;
         $model->tgl_beli = $tgl_beli;
         $model->id_barang = $id_barang;
         $model->id_suplier = $id_supplier;
@@ -106,13 +112,16 @@ class BeliBarang extends Controller
         ]);
 
         $tgl_beli = date('Y-m-d', strtotime($req->tgl_beli));
+
         $id_barang = $req->id_barang;
         $id_supplier= $req->id_suplier;
         $jumlah_barang= $req->jumlah_barang;
         $harga_beli= $req->harga_beli;
+        $no_faktur= $req->no_faktur;
 
         $model = beliBarangs::find($id);
         $model->tgl_beli = $tgl_beli;
+        $model->no_faktur = $no_faktur;
         $model->id_barang = $id_barang;
         $model->id_suplier = $id_supplier;
         $model->jumlah_barang = $jumlah_barang;

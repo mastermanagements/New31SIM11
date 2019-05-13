@@ -15,6 +15,8 @@ class CreatePBeliBarang extends Migration
     {
         Schema::create('p_beli_barang', function (Blueprint $table) {
             $table->increments('id');
+            $table->string("no_order");
+            $table->string("no_faktur")->nullable();
             $table->date('tgl_beli');
             $table->integer('id_barang')->unsigned();
             $table->integer('id_suplier')->unsigned();

@@ -35,7 +35,7 @@ class Proyek extends Controller
 
     public function index(){
         $data = [
-          'proyeks'=> proyeks::where('id_perusahaan', $this->id_perusahaan)->paginate(),
+          'proyeks'=> proyeks::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate(),
           'spk'=> spk::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.produksi.section.proyek.page_default', $data);

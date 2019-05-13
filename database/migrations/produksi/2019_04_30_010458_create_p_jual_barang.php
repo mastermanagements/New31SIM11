@@ -15,6 +15,7 @@ class CreatePJualBarang extends Migration
     {
         Schema::create('p_jual_barang', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('no_invoice');
             $table->date('tgl_jual');
             $table->integer('id_barang')->unsigned();
             $table->integer('id_klien')->unsigned();

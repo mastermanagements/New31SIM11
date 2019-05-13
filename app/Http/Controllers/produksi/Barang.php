@@ -37,7 +37,7 @@ class Barang extends Controller
     public function index()
     {
         $data=[
-            'data_barang'=> barangs::where('id_perusahaan', $this->id_perusahaan)->paginate(15)
+            'data_barang'=> barangs::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at')->paginate(15)
         ];
         return view('user.produksi.section.barang.page_default', $data);
     }

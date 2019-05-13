@@ -33,7 +33,7 @@ class Jualjasa extends Controller
     {
         $data = [
             'data_klien'=>klien::all()->where('id_perusahaan', $this->id_perusahaan),
-            'data_jasa'=>jualJasas::where('id_perusahaan', $this->id_perusahaan)->paginate(30)
+            'data_jasa'=>jualJasas::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate(30)
         ];
         return view('user.produksi.section.jualjasa.page_default', $data);
     }

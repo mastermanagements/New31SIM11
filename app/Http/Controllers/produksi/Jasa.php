@@ -30,7 +30,7 @@ class Jasa extends Controller
 
     public function index(){
         $data = [
-          'data_jasa'=> jasas::where('id_perusahaan', $this->id_perusahaan)->paginate(30)
+          'data_jasa'=> jasas::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate(30)
         ];
         return view('user.produksi.section.jasa.page_default', $data);
     }

@@ -53,6 +53,7 @@ class Superadmin_UKM extends Controller
 			'profil_user_ukm'=>$this->getFavoriteData()['profil_user_ukm'],
             'provinsi'=>$this->getProvinsi(),
             'kabupaten' => $this->getKabupaten(),
+            'usaha'=> $this->getFavoriteData()['data_usaha'],
             'content_menu' => 'profil'
         ];
         return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);

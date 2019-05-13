@@ -31,7 +31,7 @@ class Supplier extends Controller
 
     public function index(){
         $data=[
-            'data_supplier'=> suppries::all()->where('id_perusahaan', $this->id_perusahaan)
+            'data_supplier'=> suppries::all()->where('id_perusahaan', $this->id_perusahaan)->sortByDesc('created_at')
         ];
         return view('user.produksi.section.supplier.page_default', $data);
     }
