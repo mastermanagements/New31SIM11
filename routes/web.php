@@ -117,6 +117,8 @@ Route::get('detail-karyawan/{id_karyawan}','Superadmin_ukm\Karyawan@detail');
 
 Route::put('karyawan-delete/{id_karyawan}','Superadmin_ukm\Karyawan@delete');
 
+Router::get('daftar-karyawan','Superadmin_ukm\Karyawan@data_karyawan');
+
 //=============================== Investor =============================================================================
 
 Route::get('daftar-investor/{id_perusahaa}','Superadmin_ukm\Investor@daftar_inverstor');
@@ -258,6 +260,9 @@ Route::get('ubah-job-decs/{id}','karyawan\JobDecs@edit');
 Route::put('update-JD/{id}','karyawan\JobDecs@update');
 
 Route::put('hapus-JD/{id}','karyawan\JobDecs@delete');
+
+
+//=================================================== HRD ==========================================================
 
 Route::get('profil','karyawan\Karyawan@index');
 
@@ -718,6 +723,33 @@ Route::post('update-progress-pemeliharaan','produksi\ProgressPemeliharaan@update
 
 Route::put('hapus-progress-pemeliharaan/{id}','produksi\ProgressPemeliharaan@delete');
 
+//================================================ HRD ===========================================================
+
+Route::get('Karyawan','hrd\Karyawan@index');
+
+Route::get('tambah-karyawan','hrd\Karyawan@tambah_karyawan');
+
+Route::post('store-karyawan/hrd','hrd\Karyawan@store');
+
+Route::get('ubah-karyawan/{id}','hrd\Karyawan@edit_karyawan');
+
+Route::put('update-hrd-karyawan/{id}','hrd\Karyawan@update');
+
+Route::get('hapus-karyawan/{id}','hrd\Karyawan@delete');
+
+Route::post('cari-karyawan','hrd\Karyawan@cari');
+
+Route::get('Rekruitmen','hrd\Loker@index');
+
+Route::get('tambah-rekrutment','hrd\Loker@create');
+
+Route::post('store-rekruitmen','hrd\Loker@store');
+
+Route::get('ubah-rekruitmen/{id}','hrd\Loker@edit');
+
+Route::put('update-rekruitmen/{id}','hrd\Loker@update');
+
+Route::get('hapus-rekruitmen/{id}','hrd\Loker@delete');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
