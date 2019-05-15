@@ -22,7 +22,7 @@
                         <div class="box-header with-border">
                             <h3 class="box-title">Pencarian</h3>
                             <div class="box-tools pull-right">
-                                <a href="{{ url('tambah-rekrutment') }}" class="btn btn-box-tool" ><i class="fa fa-user-plus"></i>
+                                <a href="{{ url('tambah-rekrutment') }}" class="btn btn-box-tool" ><i class="fa fa-plus"></i>
                                 </a>
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                 </button>
@@ -31,10 +31,10 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body" style="">
-                            <form action="{{ url('cari-karyawan') }}" method="post">
+                            <form action="{{ url('cari-rekruitmen') }}" method="post">
                                 <div class="input-group input-group-sm">
                                     {{ csrf_field() }}
-                                    <input type="text" name="nm_ky" class="form-control" placeholder="cari berdasarkan nama klien" required>
+                                    <input type="text" name="nm_loker" class="form-control" placeholder="cari berdasarkan nama rekruitmen" required>
                                     <span class="input-group-btn">
                                     <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
                                 </span>
@@ -53,47 +53,55 @@
                 @endif
                 <p></p>
 
-                @if(empty($data_karyawan))
-                    <div class="col-md-4">
+                @if(empty($loker))
+                    <div class="col-md-12">
                         <h5>Data Rekruitmen belum tersedia</h5>
                     </div>
                 @else
-                    @foreach($data_karyawan as $value)
-                        <div class="col-md-4">
-                            <!-- Widget: user widget style 1 -->
-                            <div class="box box-widget widget-user-2">
-                                <!-- Add the bg color to the header using any of the bg-* classes -->
-                                <div class="widget-user-header bg-primary">
-                                    <div class="widget-user-image">
-                                        <img class="img-circle" src="@if(empty($value->pas_foto)) {{ asset('image_superadmin_ukm/default.png') }}  @else {{ asset('filePFoto/'.$value->pas_foto) }} @endif" alt="User Avatar">
+                    @foreach($loker as $value)
+                        <div class="col-md-3">
+                            <div class="box box-primary">
+                                <div class="box-header ">
+                                    <h3 class="box-title">{{ str_limit($value->nm_loker,20,'...') }}</h3>
+                                    <div class="box-tools pull-right">
+                                        <a href="{{ url('ubah-rekruitmen/'. $value->id) }}" class="btn btn-box-tool"><i class="fa fa-pencil"></i></a>
+                                        <a href="{{ url('hapus-rekruitmen/'. $value->id) }}" class="btn btn-box-tool" onclick="return confirm('apakah anda akan menghapus data ini')"><i class="fa fa-trash"></i></a>
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                        </button>
                                     </div>
-                                    <h3 class="widget-user-username">{{ $value->nama_ky }}</h3>
-                                    <h5 class="widget-user-desc">Nik {{ $value->nik }}</h5>
+                                    <!-- /.box-tools -->
                                 </div>
-                                <div class="box-footer no-padding">
-                                    <ul class="nav nav-stacked">
-                                        <li><a href="#">Nama <span class="pull-right">{{ $value->nama_ky }}</span></a></li>
-                                        <li><a href="#">Nik <span class="pull-right ">{{ $value->nik }}</span></a></li>
-                                        <li><a href="#">Tempat Lahir<span class="pull-right ">{{ $value->tmp_lahir }}, {{ date('d-m-Y', strtotime($value->tgl_lahir)) }}</span></a></li>
-                                        <li><a href="#">Alamat Sekarang<span class="pull-right ">@if(empty($value->getAlamatSek->tmp_lahir)) Alamat belum dimasukan @else {{ $value->getAlamatSek->tmp_lahir }} @endif</span></a></li>
-                                        <li>
-                                            <form style="padding: 10px 15px ">
-                                                Aksi
-                                                <a href="{{ url('hapus-karyawan/'. $value->id) }}" onclick="return confirm('Apakah anda akan menghapus karyawan ini...?')"><span class="pull-right badge bg-orange"><i class="fa fa-trash"></i></span></a>
-                                                <a href="{{ url('ubah-karyawan/'. $value->id) }}"><span class="pull-right badge bg-red"><i class="fa fa-pencil"></i></span></a>
-                                            </form>
-                                        </li>
-                                    </ul>
+                                <!-- /.box-header -->
+                                <div class="box-body" style="">
+                                    <div class="col-md-12 text-center">
+                                    @if(empty($value->file_loker))
+                                       <a href="#" onclick="setID({{ $value->id }})" data-toggle="modal" data-target="#modal-upload-rekruimen" ><img src="{{ asset('component/icon_file_not_found.png') }}" class="mx-auto d-block" style="width: 50%;height: 60%"></a>
+                                    @else
+                                       <a href="#" onclick="setID({{ $value->id }})" data-toggle="modal" data-target="#modal-upload-rekruimen" ><img src="{{ asset('fileLoker/'.$value->file_loker) }}" class="mx-auto d-block" style="width: 100%;height: 260px"></a>
+                                    @endif
+                                    </div>
+                                    <div>
+                                        <a href="{{ url('detail-rekruitmen/'. $value->id) }}"><h4 class="text-center" style="padding-top: 20px">{{ $value->nm_loker }}</h4></a>
+                                    </div>
                                 </div>
+                                <!-- /.box-body -->
                             </div>
-                            <!-- /.widget-user -->
                         </div>
                     @endforeach
-                    {{ $data_karyawan->links() }}
+                    {{ $loker->links() }}
                 @endif
             </div>
 
         </section>
         <!-- /.content -->
     </div>
+    @include('user.hrd.section.loker.include.modal')
+@stop
+
+@section('plugins')
+    <script>
+        setID = function(id){
+            $('[name="idLoker"]').val(id);
+        }
+    </script>
 @stop

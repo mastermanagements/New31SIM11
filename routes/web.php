@@ -751,6 +751,12 @@ Route::put('update-rekruitmen/{id}','hrd\Loker@update');
 
 Route::get('hapus-rekruitmen/{id}','hrd\Loker@delete');
 
+Route::post('upload-loker','hrd\Loker@upload_image');
+
+Route::get('detail-rekruitmen/{id}','hrd\Loker@show');
+
+Route::post('cari-rekruitmen','hrd\Loker@search');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
