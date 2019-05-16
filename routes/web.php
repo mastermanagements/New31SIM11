@@ -757,6 +757,24 @@ Route::get('detail-rekruitmen/{id}','hrd\Loker@show');
 
 Route::post('cari-rekruitmen','hrd\Loker@search');
 
+Route::get('Lamaran-Pekerjaan','hrd\LamaranPek@index');
+
+Route::get('tambah-lamaran','hrd\LamaranPek@create');
+
+Route::post('store-lamaran','hrd\LamaranPek@store');
+
+Route::get('ubah-lamaran/{id}','hrd\LamaranPek@edit');
+
+Route::put('update-lamaran/{id}','hrd\LamaranPek@update');
+
+Route::put('hapus-lamaran/{id}','hrd\LamaranPek@delete');
+
+Route::get('Seleksi','hrd\SeleksiBerkas@index');
+
+Route::get('daftar-pelamar/{id}', 'hrd\SeleksiBerkas@show');
+
+Route::get('Seleksi-pesarta/{id_peserta}','hrd\SeleksiBerkas@show_peserta');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

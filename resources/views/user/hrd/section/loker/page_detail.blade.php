@@ -27,9 +27,9 @@
                             </div>
                             <div class="col-md-6">
                                 @if(empty($model->file_loker))
-                                    <a href="#" onclick="setID({{ $model->id }})" data-toggle="modal" data-target="#modal-upload-rekruimen" ><img src="{{ asset('component/icon_file_not_found.png') }}" class="mx-auto d-block" style="width: 50%;height: 60%"></a>
+                                    <img src="{{ asset('component/icon_file_not_found.png') }}" class="mx-auto d-block" style="width: 50%;height: 60%">
                                 @else
-                                    <a href="#" onclick="setID({{ $model->id }})" data-toggle="modal" data-target="#modal-upload-rekruimen" ><img src="{{ asset('fileLoker/'.$model->file_loker) }}" class="mx-auto d-block" style="width: 100%;height: 560px"></a>
+                                   <img src="{{ asset('fileLoker/'.$model->file_loker) }}" class="mx-auto d-block" style="width: 100%;height: 560px">
                                 @endif
                             </div>
                             <div class="col-md-6" style="width: 49%;height: 80%; overflow-y: scroll;">
