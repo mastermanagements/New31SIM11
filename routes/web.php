@@ -775,6 +775,10 @@ Route::get('daftar-pelamar/{id}', 'hrd\SeleksiBerkas@show');
 
 Route::get('Seleksi-pesarta/{id_peserta}','hrd\SeleksiBerkas@show_peserta');
 
+Route::put('simpan-seleksi/{id_peserta}','hrd\SeleksiBerkas@save');
+
+//Route::get('tes', );
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

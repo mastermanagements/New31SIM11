@@ -6,12 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Hrd\H_loker as lokers;
+use App\Model\Hrd\H_seleksi_berkas as selek_berkas;
+use App\Model\Hrd\H_lamaran_pek as lamaran_pek ;
 
 class SeleksiBerkas extends Controller
 {
     //
     private $id_karyawan;
     private $id_perusahaan;
+    private $hasil =  [
+        0=> 'Tidak Lulus',
+        1=> 'Lulus'
+    ];
 
     public function __construct()
     {
@@ -47,6 +53,34 @@ class SeleksiBerkas extends Controller
 
     public function show_peserta($id_peserta)
     {
+        if(empty($model = lamaran_pek::where('id',$id_peserta)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+        $data = [
+          'data_peserta'=> $model,
+          'hasil'=> $this->hasil
+        ];
 
+        return view('user.hrd.section.seleksiberkas.page_create', $data);
+    }
+
+    public function save(Request $request, $id)
+    {
+        $this->validate($request,[
+            'hasil' => 'required',
+            'ket'=> 'required'
+        ]);
+
+        $hasil = $request->hasil;
+        $ket = $request->ket;
+
+        $model = selek_berkas::updateOrCreate(['id_lamaran_p'=> $id,'id_perusahaan'=> $this->id_perusahaan,'id_karyawan'=>$this->id_karyawan],[
+            'hasil'=> $hasil, 'ket'=>$ket,
+        ]);
+
+        if($model->save()){
+            return redirect('daftar-pelamar/'.$model->pelamar->id_loker)->with('message_success','Anda telah menambah data seleksi berkas baru');
+        }
+        return redirect('Seleksi')->with('message_fail','telah terjadi kesalahan, silahkan coba lagi');
     }
 }

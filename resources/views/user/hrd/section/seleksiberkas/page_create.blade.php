@@ -1,11 +1,8 @@
 @extends('user.karyawan.master_user')
 
 @section('skin')
-   <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
    <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
-
-
-   <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 @stop
 
 
@@ -15,7 +12,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Rekruitmen
+            Seleksi
         </h1>
     </section>
 
@@ -29,71 +26,38 @@
             <div class="col-md-8">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Pelamar</h3>
+                        <h3 class="box-title">Formulir Seleksi Berkas</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-lamaran') }}" method="post" enctype="multipart/form-data">
+                    <form role="form" action="{{ url('simpan-seleksi/'.$data_peserta->id) }}" method="post" enctype="multipart/form-data">
                         <div class="box-body">
+
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Rekrutmen</label>
-                                <select class="form-control select2" style="width: 100%;" name="id_loker" required>
-                                    @if(empty($loker))
-                                        <option>Rekrutmen Masih Kosong</option>
-                                    @else
-                                        @foreach($loker as $value)
-                                            <option value="{{ $value->id }}">{{ $value->nm_loker }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Nama Pelamar</label>
-                                <input type="text" name="nm_pel" class="form-control" id="exampleInputEmail1" placeholder="Nama Pelamar" required>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Posisi Pelamar</label>
-                                <input type="text" name="posisi" class="form-control" id="exampleInputEmail1" placeholder="Nama Pelamar" required>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Jenis Lamaran</label>
+                                <label for="exampleInputEmail1">Hasil</label>
                                 <div class="form-group">
-                                    @foreach($jenis_lamaran as $key=>$value)
+                                    @foreach($hasil as $key=>$value)
                                         <label>
-                                            <input type="radio"  name="jenis_lamaran" class="minimal" value="{{ $key}}" required>
-                                            {{ $value}}
+                                            <input type="radio"  name="hasil" class="minimal" value="{{ $key}}" @if(!empty($data_peserta->seleksi_berkas->hasil))  @if($data_peserta->seleksi_berkas->hasil==$key) checked @endif @endif required>
+                                            {{ $value }}
                                         </label>
                                         <br>
                                     @endforeach
                                     <p></p>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
-                             </div>
-
+                            </div>
+                            </div>
                             <div class="form-group">
-                                <label>Tanggal Masuk </label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal berkas lamaran masuk" name="tgl_masuk" >
-                                </div>
-                                <!-- /.input group -->
+                                <label for="exampleInputEmail1">Keterangan</label>
+                                <textarea name="ket" class="form-control" id="exampleInputEmail1" placeholder="Nama Pelamar" required>@if(!empty( $data_peserta->seleksi_berkas->ket )) {{ $data_peserta->seleksi_berkas->ket }} @endif</textarea>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
-                            </div>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Berkas lamaran</label>
-                                <input class="form-control" type="file" name="berkas_lamaran" id="berkas_lamaran" required>
-                                <small style="color: red">* Tidak boleh kosong</small>
                             </div>
                         </div>
                         <!-- /.box-body -->
 
                         <div class="box-footer">
                             {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="put">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
@@ -107,29 +71,24 @@
 
 
 @section('plugins')
-    <!-- Select2 -->
-    <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 
     <!-- iCheck 1.0.1 -->
+    <!-- iCheck 1.0.1 -->
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
-    <!-- SlimScroll -->
-     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script>
-
-        $('#datepicker').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy'
-        });
-
+  <script>
         //Initialize Select2 Elements
+
+
         $(function () {
             //iCheck for checkbox and radio inputs
             $('input[type="radio"].minimal').iCheck({
                 checkboxClass: 'icheckbox_minimal-blue',
                 radioClass   : 'iradio_minimal-blue'
             });
+            CKEDITOR.replace( 'ket',{
+                height: 600
+            } );
 
-            $('.select2').select2()
 
         })
     </script>

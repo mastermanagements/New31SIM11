@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Seleksi
+            Seleksi Berkas
         </h1>
     </section>
 

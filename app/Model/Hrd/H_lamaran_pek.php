@@ -14,4 +14,8 @@ class H_lamaran_pek extends Model
     public function loker(){
        return $this->belongsTo('App\Model\Hrd\H_loker','id_loker');
     }
+
+    public function seleksi_berkas(){
+        return $this->hasOne('App\Model\Hrd\H_seleksi_berkas','id_lamaran_p');
+    }
 }

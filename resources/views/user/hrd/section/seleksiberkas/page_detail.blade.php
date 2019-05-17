@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Seleksi
+            Seleksi Berkas
         </h1>
     </section>
 
@@ -30,7 +30,8 @@
                                         <tbody>
                                         <tr>
                                             <th style="width: 10px">#</th>
-                                            <th>Peserta nama pelamar</th>
+                                            <th>Peserta pelamar</th>
+                                            <th>Hasil</th>
                                         </tr>
                                         @php($i=1 )
                                         @if(empty($data_pelamar))
@@ -42,6 +43,17 @@
                                                 <tr>
                                                     <td>{{ $i++ }}</td>
                                                     <td><a href="{{ url('Seleksi-pesarta/'.$data->id) }}">{{ $data->nm_pel }}</a></td>
+                                                    <td>
+                                                        @if(!empty($data->seleksi_berkas))
+                                                            @if($data->seleksi_berkas->hasil=="1")
+                                                                <span class=" badge bg-green">Lulus</span>
+                                                            @else
+                                                                <span class=" badge bg-red">Tidak Lulus</span>
+                                                            @endif
+                                                        @else
+                                                            <span class=" badge bg-orange">Belum Dinilai</span>
+                                                        @endif
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         @endif
