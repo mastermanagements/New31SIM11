@@ -777,7 +777,22 @@ Route::get('Seleksi-pesarta/{id_peserta}','hrd\SeleksiBerkas@show_peserta');
 
 Route::put('simpan-seleksi/{id_peserta}','hrd\SeleksiBerkas@save');
 
-//Route::get('tes', );
+Route::get('Tes', 'hrd\Tes@psikotes');
+
+Route::get('jenis-psikotes', 'hrd\JenisPsikotes@index');
+
+Route::post('store-jenis-psikotes', 'hrd\JenisPsikotes@store');
+
+Route::get('ubah-jenis-psikotes/{id}', 'hrd\JenisPsikotes@edit');
+
+Route::post('update-jenis-psikotes', 'hrd\JenisPsikotes@update');
+
+Route::put('hapus-jenis-psikotes/{id}', 'hrd\JenisPsikotes@delete');
+
+Route::get('Keahlian', 'hrd\Tes@keahlian');
+
+Route::get('Wawancara', 'hrd\Tes@wawancara');
+
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
