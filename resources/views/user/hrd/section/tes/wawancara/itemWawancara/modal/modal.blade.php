@@ -1,17 +1,17 @@
 
-<div class="modal fade" id="modal-tambah-jenis-psikotes">
+<div class="modal fade" id="modal-tambah-item-wawancara">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir Jenis Psikotes</h4>
+                <h4 class="modal-title">Formulir Item Wawancara</h4>
             </div>
-            <form action="{{ url('store-jenis-psikotes') }}" method="post">
+            <form action="{{ url('store-item-wawancara') }}" method="post">
             <div class="modal-body" id="content_modal">
                 <div class="form-group">
-                    <label>Jenis Psikotes</label>
-                    <input type="text" class="form-control pull-right" placeholder="Jenis Proyek" name="jenis_psikotes" >
+                    <label>Nama Item Wawancara</label>
+                    <input type="text" class="form-control pull-right" placeholder="Item Wawancara" name="item_wawancara" >
                     <!-- /.input group -->
                     <small style="color: red"> *Tidak Boleh Kosong</small>
                 </div>
@@ -30,25 +30,25 @@
 <!-- /.modal -->
 
 
-<div class="modal fade" id="modal-ubah-jenis-psikotes">
+<div class="modal fade" id="modal-ubah-item-wawancara">
     <div class="modal-dialog" >
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir Ubah Jenis Psikotes</h4>
+                <h4 class="modal-title">Formulir Ubah Item Wawancara</h4>
             </div>
-            <form action="{{ url('update-jenis-psikotes') }}" method="post">
+            <form action="{{ url('update-item-wawancara') }}" method="post">
                 <div class="modal-body" id="content_modal">
                     <div class="form-group">
-                        <label>Jenis Psikotes</label>
-                        <input type="text" class="form-control pull-right" placeholder="Jenis Proyek" name="jenis_psikotes_ubah" >
+                        <label>Nama Item Wawancara</label>
+                        <input type="text" class="form-control pull-right" placeholder="Nama Item Wawancara" name="item_wawancara_ubah" >
                         <!-- /.input group -->
                         <small style="color: red"> *Tidak Boleh Kosong</small>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" name="id_jenis_psikotes" >
+                    <input type="hidden" name="id_item_wawancara" >
                     {{ csrf_field() }}
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
                     <button type="submit" id="submitBagian" class="btn btn-primary">Simpan</button>

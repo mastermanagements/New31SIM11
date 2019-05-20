@@ -30,8 +30,8 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li @if(Session::get('menu_tes')=='psikotes')  class="active" @endif><a href="{{ url('Tes') }}" ><i class="fa fa-book"></i> Psikotes </a></li>
-                        <li @if(Session::get('menu_tes')=='keahlian')  class="active" @endif><a href="{{ url('Keahlian') }}" ><i class="fa fa-book"></i> Keahlian </a></li>
                         <li @if(Session::get('menu_tes')=='wawancara')  class="active" @endif><a href="{{ url('Wawancara') }}" ><i class="fa fa-book"></i> Wawancara </a></li>
+                        <li @if(Session::get('menu_tes')=='keahlian')  class="active" @endif><a href="{{ url('Keahlian') }}" ><i class="fa fa-book"></i> Keahlian </a></li>
                     </ul>
                     <div class="tab-content">
                         @if(Session::get('menu_tes')=='psikotes')
