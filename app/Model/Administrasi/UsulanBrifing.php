@@ -20,4 +20,8 @@ class UsulanBrifing extends Model
     {
         return $this->belongsTo('App\Model\Superadmin_ukm\H_karyawan','id_karyawan');
     }
+
+    public function getRapat(){
+        return $this->hasMany('App\Model\Administrasi\Rapat','id_ub');
+    }
 }

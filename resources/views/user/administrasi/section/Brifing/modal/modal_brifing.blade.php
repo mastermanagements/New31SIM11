@@ -20,27 +20,33 @@
                                     <h3 class="box-title">Daftar Usulan Brifing</h3>
                                 </div>
                                 <div class="box-body">
-                                    <div class="direct-chat-messages" id="container_msg" style="overflow-y: scroll; ">
-                                    </div>
                                     <div class="form-group">
                                         <label>Materi</label>
                                         <textarea class="form-control" style="height: 80px" id="materi"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Jenis Rapat</label>
+                                        <div class="form-group">
+                                            @foreach($data_jenis_brifing as $value)
+                                                <p><label>
+                                                    <input type="radio"  name="jenis_rapat" class="minimal" value="{{ $value->id }}" required>
+                                                    {{ $value->jenis_rapat}}
+                                                </label></p>
+                                            @endforeach
+                                            <p></p>
+                                            <small style="color: red">* Tidak Boleh Kosong</small>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <button id="saveBtn" type="button" class="btn btn-default bg-green pull-right">Simpan</button>
                                     </div>
                                 </div>
                                 <!-- /.box-body -->
-                                <!-- Loading (remove the following to stop the loading)-->
-                                <div class="overlay" id="loading">
-                                    <i class="fa fa-refresh fa-spin"></i>
-                                </div>
-                                <!-- end loading -->
                             </div>
                             <!-- /.box -->
                         </div>
-                        <div class="col-md-4">
-                            <div class="box box-success box-solid">
+                        <div class="col-md-8">
+                            <div class="box box-success box-solid" >
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Time Line</h3>
                                     <div class="box-tools pull-right">
@@ -50,323 +56,36 @@
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body" >
-                                    <ul class="timeline"  style="height: 350px; overflow-y: scroll; ">
-                                            <!-- timeline time label -->
-                                            <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                            </li>
-                                            <!-- /.timeline-label -->
+                                    <ul class="timeline"  style="height: 455px; overflow-y: scroll; " >
 
-                                            <!-- timeline item -->
-                                            <li>
-                                                <!-- timeline icon -->
-                                                <i class="fa fa-envelope bg-blue"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                    <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                    <div class="timeline-body">
-                                                        ...
-                                                        Content goes here
-                                                    </div>
-
-                                                    <div class="timeline-footer">
-                                                        <a class="btn btn-primary btn-xs">...</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <!-- END timeline item -->
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                <div class="timeline-body">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                <div class="timeline-body">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                <div class="timeline-body">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                <div class="timeline-body">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                <div class="timeline-body">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                <div class="timeline-body">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                <div class="timeline-body">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                <div class="timeline-body">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                <div class="timeline-body">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                <div class="timeline-body">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
-                                                <div class="timeline-body">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
                                     </ul>
-
+                                    <div class="col-md-12" id="reply-form">
+                                        <div class="form-group">
+                                            <label>Keterangan</label>
+                                            <textarea class="form-control" style="height: 80px" id="keterangan"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Jenis Keterangan</label>
+                                            <div class="form-group">
+                                                @foreach($jenis_keterangan as $value)
+                                                    <p><label>
+                                                            <input type="radio"  name="pilihan_rapat" class="minimal" value="{{ $value }}" required>
+                                                            {{ $value}}
+                                                        </label></p>
+                                                @endforeach
+                                                <p></p>
+                                                <small style="color: red">* Tidak Boleh Kosong</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" name="idUsulanBrifing">
+                                            <button id="saveKrm" type="button" class="btn btn-default bg-green pull-right">Kirim</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="overlay" id="loading">
+                                    <i class="fa fa-refresh fa-spin"></i>
+                                    <i ><br><p id="pesan_loading" style="text-align:  center; padding-top: 25%;"> </p></i>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
@@ -384,3 +103,4 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+
