@@ -38,6 +38,7 @@ class UsahaController extends Controller
         $this->validate($req,[
             'nm_usaha'=>'required',
             'alamat'=>'required',
+            'singkatan_usaha'=>'required',
             'id_provinsi'=>'required',
             'id_kabupaten' => 'required',
 			'email'=> 'required',
@@ -46,6 +47,7 @@ class UsahaController extends Controller
         ]);
 
         $nama_usaha = $req->nm_usaha;
+        $singkatan_usaha = $req->singkatan_usaha;
         $alamat = $req->alamat;
         $id_provinsi = $req->id_provinsi;
         $id_kabupaten = $req->id_kabupaten;
@@ -63,6 +65,7 @@ class UsahaController extends Controller
 
         $model = new perusahaan;
         $model->nm_usaha =  $nama_usaha;
+        $model->singkatan_usaha =  $singkatan_usaha;
         $model->alamat =  $alamat;
         $model->id_prov =  $id_provinsi;
         $model->id_prov =  $id_provinsi;
@@ -107,6 +110,7 @@ class UsahaController extends Controller
         $this->validate($req,[
             'nm_usaha'=>'required',
             'alamat'=>'required',
+            'singkatan_usaha'=>'required',
             'id_provinsi'=>'required',
             'id_kabupaten' => 'required',
             'kd_pos'=> 'required',
@@ -115,6 +119,7 @@ class UsahaController extends Controller
         ]);
 
         $nama_usaha = $req->nm_usaha;
+        $singkatan_usaha = $req->singkatan_usaha;
         $alamat = $req->alamat;
         $id_provinsi = $req->id_provinsi;
         $id_kabupaten = $req->id_kabupaten;
@@ -136,6 +141,7 @@ class UsahaController extends Controller
 
         $model = perusahaan::find($id);
         $model->nm_usaha =  $nama_usaha;
+        $model->singkatan_usaha =  $singkatan_usaha;
         $model->alamat =  $alamat;
         $model->id_prov =  $id_provinsi;
         $model->id_prov =  $id_provinsi;
