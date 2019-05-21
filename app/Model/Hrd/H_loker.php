@@ -14,4 +14,8 @@ class H_loker extends Model
     public function lamaran_pek(){
         return $this->hasMany('App\Model\Hrd\H_lamaran_pek','id_loker');
     }
+
+    public function tes_psikotes(){
+        return $this->hasMany('App\Model\Hrd\H_psikotes','id_lamaran_p');
+    }
 }

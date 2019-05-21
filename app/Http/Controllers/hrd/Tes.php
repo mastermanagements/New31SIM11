@@ -5,6 +5,7 @@ namespace App\Http\Controllers\hrd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
+use App\Model\Hrd\H_loker as loker;
 
 class Tes extends Controller
 {
@@ -27,8 +28,11 @@ class Tes extends Controller
 
     public function psikotes()
     {
+        $data = [
+            'loker'=> loker::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at', 'desc')->paginate(15)
+        ];
         Session::put('menu_tes', 'psikotes');
-        return view('user.hrd.section.tes.page_default');
+        return view('user.hrd.section.tes.page_default', $data);
     }
 
     public function keahlian(){
