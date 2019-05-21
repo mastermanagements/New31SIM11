@@ -14,4 +14,8 @@ class U_jabatan_p extends Model
     {
         return $this->belongsTo('App\Model\Superadmin_ukm\U_usaha', 'id_perusahaan');
     }
+
+    public function item_keahlian(){
+        return $this->hasMany('App\Model\Hrd\H_item_keahlian','id_jabatan_p');
+    }
 }

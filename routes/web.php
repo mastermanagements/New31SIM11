@@ -803,7 +803,15 @@ Route::put('hapus-item-wawancara/{id}', 'hrd\ItemWawancara@delete');
 
 Route::get('Keahlian', 'hrd\Tes@keahlian');
 
+Route::get('item-keahlian','hrd\ItemKeahlian@index');
 
+Route::post('store-item-keahlian','hrd\ItemKeahlian@store');
+
+Route::get('ubah-item-keahlian/{id_item_keahlian}','hrd\ItemKeahlian@edit');
+
+Route::post('update-item-keahlian','hrd\ItemKeahlian@update');
+
+Route::post('hapus-item-keahlian','hrd\ItemKeahlian@delete');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
