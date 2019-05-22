@@ -789,6 +789,10 @@ Route::post('update-jenis-psikotes', 'hrd\JenisPsikotes@update');
 
 Route::put('hapus-jenis-psikotes/{id}', 'hrd\JenisPsikotes@delete');
 
+Route::post('simpan-psikotes','hrd\Psikotes@store');
+
+Route::post('cari-loker-psikotes','hrd\Tes@search_psikotes');
+
 Route::get('Wawancara', 'hrd\Tes@wawancara'); //Wawancara
 
 Route::get('item-wawancara', 'hrd\ItemWawancara@index');
@@ -812,6 +816,7 @@ Route::get('ubah-item-keahlian/{id_item_keahlian}','hrd\ItemKeahlian@edit');
 Route::post('update-item-keahlian','hrd\ItemKeahlian@update');
 
 Route::post('hapus-item-keahlian','hrd\ItemKeahlian@delete');
+
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

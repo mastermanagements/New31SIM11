@@ -18,4 +18,8 @@ class H_lamaran_pek extends Model
     public function seleksi_berkas(){
         return $this->hasOne('App\Model\Hrd\H_seleksi_berkas','id_lamaran_p');
     }
+
+    public function psikotes(){
+        return $this->hasOne('App\Model\Hrd\H_psikotes','id_lamaran_p');
+    }
 }
