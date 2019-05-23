@@ -6,11 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class SJP extends Model
 {
-   protected $table="u_strategi_jpg";
-   protected $fillable = ['periode','isi_sjpg','id_perusahaan','id_karyawan'];
+   protected $table="u_strategi_jp";
+   protected $fillable = ['id_tjp','isi_sjp','id_perusahaan','id_karyawan'];
 
-   public function getStrategiJangkaPendek()
+	public function getTJP()
    {
-       return $this->hasMany('App\Model\Karyawan\SJPK','id_sjpg');
+		return $this->belongsTo('App\Model\Karyawan\TJP','id_tjp');
    }
+   /* public function getStrategiTahunan()
+   {
+       return $this->hasMany('App\Model\Karyawan\StrategiTahunan','id_sjpg');
+   } */
+   
 }
