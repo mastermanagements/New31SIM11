@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUMasterSubmenu extends Migration
+class CreateUStrategiBulanan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateUMasterSubmenu extends Migration
      */
     public function up()
     {
-        Schema::create('u_master_submenu', function (Blueprint $table) {
+        Schema::create('u_strategi_bulanan', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_master_menu')->unsigned();
-            $table->string('nm_submenu');
-			$table->string('url');
+			$table->integer('id_stahunan')->unsigned();
+			$table->integer('id_target_bulanan')->unsigned();
+            $table->text('isi_sbulanan');
+            $table->integer('id_perusahaan')->unsigned();
+            $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateUMasterSubmenu extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('u_master_submenu');
+        Schema::dropIfExists('u_strategi_bulanan');
     }
 }
