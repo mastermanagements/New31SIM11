@@ -33,7 +33,7 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Jenis Psikotes</th>
+                                    <th>Jenis Wawancara</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>

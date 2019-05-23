@@ -805,6 +805,20 @@ Route::post('update-item-wawancara', 'hrd\ItemWawancara@update');
 
 Route::put('hapus-item-wawancara/{id}', 'hrd\ItemWawancara@delete');
 
+Route::get('mulai-wawancara/{id}','hrd\Wawancara@index');
+
+Route::get('tambah-penilaian-wawancara/{id}', 'hrd\Wawancara@create');
+
+Route::put('store-penilaian-wawancara/{id}', 'hrd\Wawancara@store');
+
+Route::get('ubah-hasil-wawancara/{id}', 'hrd\Wawancara@edit');
+
+Route::put('update-penilaian-wawancara/{id}', 'hrd\Wawancara@update');
+
+Route::put('hapus-hasil-wawancara/{id}', 'hrd\Wawancara@delete');
+
+Route::post('cari-loker-wawancara', 'hrd\Tes@show_wawancara');
+
 Route::get('Keahlian', 'hrd\Tes@keahlian'); //Keahlian
 
 Route::get('item-keahlian','hrd\ItemKeahlian@index');

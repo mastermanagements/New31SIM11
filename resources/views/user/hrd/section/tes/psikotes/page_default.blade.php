@@ -9,10 +9,10 @@
                 <div class="input-group input-group-md" >
                     {{ csrf_field() }}
                     <select class="form-control select2" style="width: 100%;" name="id_loker" required>
-                        @if(empty($loker))
+                        @if(empty($lokers))
                             <option>Lowongan Kerjad masih kosong</option>
                         @else
-                            @foreach($loker as $value)
+                            @foreach($lokers as $value)
                                 <option value="{{ $value->id }}">
                                     {{ $value->nm_loker}}
                                 </option>

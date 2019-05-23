@@ -31,6 +31,7 @@ class Tes extends Controller
     {
         $data = [
             'loker'=> loker::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at', 'desc')->paginate(15),
+            'lokers'=> loker::all()->where('id_perusahaan', $this->id_perusahaan),
             'jenis_psikotes'=> jenis_psikotes::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         Session::put('menu_tes', 'psikotes');
@@ -40,19 +41,35 @@ class Tes extends Controller
     public function search_psikotes(Request $req){
         $data = [
             'loker'=> loker::where('id_perusahaan', $this->id_perusahaan)->where('id', $req->id_loker)->orderBy('created_at', 'desc')->paginate(15),
+            'lokers'=> loker::all()->where('id_perusahaan', $this->id_perusahaan),
             'jenis_psikotes'=> jenis_psikotes::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         Session::put('menu_tes', 'psikotes');
         return view('user.hrd.section.tes.page_default', $data);
     }
 
-    public function keahlian(){
-        Session::put('menu_tes', 'keahlian');
-        return view('user.hrd.section.tes.page_default');
+    public function wawancara(){
+        $data = [
+            'loker'=> loker::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at', 'desc')->paginate(15),
+            'lokers'=> loker::all()->where('id_perusahaan', $this->id_perusahaan),
+            'jenis_psikotes'=> jenis_psikotes::all()->where('id_perusahaan', $this->id_perusahaan)
+        ];
+        Session::put('menu_tes', 'wawancara');
+        return view('user.hrd.section.tes.page_default', $data);
     }
 
-    public function wawancara(){
+    public function show_wawancara(Request $req){
+        $data = [
+            'loker'=> loker::where('id_perusahaan', $this->id_perusahaan)->where('id', $req->id_loker)->orderBy('created_at', 'desc')->paginate(15),
+            'lokers'=> loker::all()->where('id_perusahaan', $this->id_perusahaan),
+            'jenis_psikotes'=> jenis_psikotes::all()->where('id_perusahaan', $this->id_perusahaan)
+        ];
         Session::put('menu_tes', 'wawancara');
+        return view('user.hrd.section.tes.page_default', $data);
+    }
+
+    public function keahlian(){
+        Session::put('menu_tes', 'keahlian');
         return view('user.hrd.section.tes.page_default');
     }
 }
