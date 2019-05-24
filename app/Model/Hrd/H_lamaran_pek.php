@@ -26,4 +26,8 @@ class H_lamaran_pek extends Model
     public function tes_wawancara(){
         return $this->hasMany('App\Model\Hrd\H_Wawancara','id_lamaran_p');
     }
+
+    public function tes_keahlian(){
+        return $this->hasMany('App\Model\Hrd\H_tes_keahlian', 'id_lamaran_p');
+    }
 }

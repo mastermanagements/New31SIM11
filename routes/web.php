@@ -831,6 +831,19 @@ Route::post('update-item-keahlian','hrd\ItemKeahlian@update');
 
 Route::post('hapus-item-keahlian','hrd\ItemKeahlian@delete');
 
+Route::get('mulai-tes-keahlian/{id}','hrd\TesKeahlian@index');
+
+Route::get('tambah-penilaian-keahlian/{id}','hrd\TesKeahlian@create');
+
+Route::put('store-penilaian-keahlian/{id}','hrd\TesKeahlian@store');
+
+Route::get('ubah-hasil-keahlian/{id}','hrd\TesKeahlian@edit');
+
+Route::put('update-penilaian-keahlian/{id}','hrd\TesKeahlian@update');
+
+Route::put('hapus-hasil-keahlian/{id}','hrd\TesKeahlian@delete');
+
+Route::post('cari-loker-keahlian','hrd\Tes@show');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
