@@ -54,5 +54,29 @@
         unreaload=function(key){
             $('#loading'+key).attr('class', 'fa fa-save')
         }
+
+        inforPelamar = function (id) {
+            $.ajax({
+                url: '{{ url('lihat-keterangan') }}/'+id,
+                dataType: 'json',
+                success: function (result) {
+                    if(isEmpty(result.ket)){
+                        var data = "<p> Informasi belum dimasukan </p>"
+                    }else{
+                        var data = result.ket;
+                    }
+                    $('#contents').html(data);
+                    $('#modal-lihat-keterangan').modal('show');
+                }
+            })
+        }
+
+        function isEmpty(obj) {
+            for(var key in obj) {
+                if(obj.hasOwnProperty(key))
+                    return false;
+            }
+            return true;
+        }
     })
 </script>

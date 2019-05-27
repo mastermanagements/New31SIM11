@@ -845,6 +845,14 @@ Route::put('hapus-hasil-keahlian/{id}','hrd\TesKeahlian@delete');
 
 Route::post('cari-loker-keahlian','hrd\Tes@show');
 
+Route::get('Hasil-tes','hrd\Tes@hasil_tes');
+
+Route::get('keterangan-tambahan/{id_pelamar}', 'hrd\HasilTes@index');
+
+Route::put('store-keterangan/{id_pelamaar}', 'hrd\HasilTes@save');
+
+Route::get('lihat-keterangan/{id_pelamaar}', 'hrd\HasilTes@show');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

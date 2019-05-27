@@ -88,4 +88,14 @@ class Tes extends Controller
         Session::put('menu_tes', 'keahlian');
         return view('user.hrd.section.tes.page_default', $data);
     }
+
+    public function hasil_tes(){
+        $data = [
+            'loker'=> loker::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at', 'desc')->paginate(15),
+            'lokers'=> loker::all()->where('id_perusahaan', $this->id_perusahaan),
+            'jenis_psikotes'=> jenis_psikotes::all()->where('id_perusahaan', $this->id_perusahaan)
+        ];
+        Session::put('menu_tes', 'hasil');
+        return view('user.hrd.section.tes.page_default', $data);
+    }
 }
