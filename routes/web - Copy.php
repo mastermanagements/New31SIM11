@@ -117,6 +117,8 @@ Route::get('detail-karyawan/{id_karyawan}','Superadmin_ukm\Karyawan@detail');
 
 Route::put('karyawan-delete/{id_karyawan}','Superadmin_ukm\Karyawan@delete');
 
+Router::get('daftar-karyawan','Superadmin_ukm\Karyawan@data_karyawan');
+
 //=============================== Investor =============================================================================
 
 Route::get('daftar-investor/{id_perusahaa}','Superadmin_ukm\Investor@daftar_inverstor');
@@ -177,89 +179,17 @@ Route::get('buat-swot','karyawan\SWOT@create');
 
 Route::post('store-swot','karyawan\SWOT@store');
 
-Route::get('ubah-swot/{id}','karyawan\SWOT@edit');
+Route::get('Strategi-Jangka-Panjang','karyawan\SJP@index');
 
-Route::put('update-swot/{id}','karyawan\SWOT@update');
+Route::get('buat-strategi-jangka-panjang','karyawan\SJP@create');
 
-Route::put('delete-swot/{id}','karyawan\SWOT@delete');
+Route::post('store-sjp','karyawan\SJP@store');
 
-//target perusahaan di gabung : target jangka panjang-target tahunan - target bulanan 
+Route::get('ubah-strategi-jangka-panjang-ini/{id_sjp}','karyawan\SJP@edit');
 
-Route::get('Target-Perusahaan','karyawan\TargetPerusahaan@index');
+Route::put('ubah-sjp/{id_sjp}','karyawan\SJP@update');
 
-//TJP
-Route::get('buat-tjp','karyawan\TargetPerusahaan@create');
-
-Route::post('store-tjp','karyawan\TargetPerusahaan@store');
-
-Route::get('ubah-tjp/{id_tjp}','karyawan\TargetPerusahaan@edit');
-
-Route::post('update-tjp','karyawan\TargetPerusahaan@update');
-
-Route::put('hapusTJP/{id_tjp}','karyawan\TargetPerusahaan@delete');
-
-Route::get('getTJP/{id_tjps}','karyawan\TargetPerusahaan@ResponseTJP');
-
-//Target Tahunan
-Route::post('store-target-tahunan','karyawan\TargetPerusahaan@storeTtahunan');
-
-Route::get('ubah-Ttahunan/{id_tt}','karyawan\TargetPerusahaan@editTtahunan');
-
-Route::post('update-Ttahunan','karyawan\TargetPerusahaan@updateTtahunan');
-
-Route::put('hapusTtahunan/{id_tt}','karyawan\TargetPerusahaan@deleteTtahunan');
-
-Route::get('getTtahunan/{id_tt}','karyawan\TargetPerusahaan@ResponseTtahunan');
-
-//Target Bulanan
-Route::post('store-target-bulanan','karyawan\TargetPerusahaan@storeTbulanan');
-
-Route::get('ubah-Tbulanan/{id_tb}','karyawan\TargetPerusahaan@editTbulanan');
-
-Route::post('update-Tbulanan','karyawan\TargetPerusahaan@updateTbulanan');
-
-Route::put('hapusTbulanan/{id_tb}','karyawan\TargetPerusahaan@deleteTbulanan');
-
-Route::get('getTbulanan/{id_tb}','karyawan\TargetPerusahaan@ResponseTbulanan');
-
-//strategi perusahaan di gabung menjadi satu : strategi jp-strategi tahunan-strategi bulanan
-
-Route::get('Strategi-Perusahaan','karyawan\StrategiPerusahaan@index');
-
-//SJP
-
-Route::post('store-sjp','karyawan\StrategiPerusahaan@storeSJP');
-
-Route::get('ubah-sjp/{id_sjp}','karyawan\StrategiPerusahaan@editSJP');
-
-Route::post('update-sjp','karyawan\StrategiPerusahaan@updateSJP');
-
-Route::put('hapusSJP/{id_sjp}','karyawan\StrategiPerusahaan@deleteSJP');
-
-Route::get('getSJP/{id_sjp}','karyawan\StrategiPerusahaan@ResponseSJP');
-
-//Stahunan
-Route::post('store-stahunan','karyawan\StrategiPerusahaan@storeStahunan');
-
-Route::get('ubah-stahunan/{id_stahunan}','karyawan\StrategiPerusahaan@editStahunan');
-
-Route::post('update-stahunan','karyawan\StrategiPerusahaan@updateStahunan');
-
-Route::put('hapusStahunan/{id_stahunan}','karyawan\StrategiPerusahaan@deleteStahunan');
-
-Route::get('getStahunan/{id_st}','karyawan\StrategiPerusahaan@ResponseStahunan');
-
-//Sbulanan
-Route::post('store-sbulanan','karyawan\StrategiPerusahaan@storeSbulanan');
-
-Route::get('ubah-sbulanan/{id_sbulanan}','karyawan\StrategiPerusahaan@editSbulanan');
-
-Route::post('update-sbulanan','karyawan\StrategiPerusahaan@updateSbulanan');
-
-Route::put('hapusSbulanan/{id_sbulanan}','karyawan\StrategiPerusahaan@deleteSbulanan');
-
-Route::get('getSbulanan/{id_sb}','karyawan\StrategiPerusahaan@ResponseSbulanan');
-
+Route::put('hapus-sjp/{id_sjp}','karyawan\SJP@delete');
 
 Route::get('Bagian', 'karyawan\Bagian@index');
 
@@ -282,8 +212,6 @@ Route::get('Divisi/{id_divisi}','karyawan\Devisi@edit');
 Route::post('update-divisi','karyawan\Devisi@update');
 
 Route::put('hapusDivisi/{id_divisi}','karyawan\Devisi@delete');
-
-Route::get('getDivisi/{id_bagian_p}','karyawan\Devisi@ResponseDivisi');
 
 Route::get('Strategi-Jangka-Pendek','karyawan\SJPK@index');
 
@@ -332,6 +260,9 @@ Route::get('ubah-job-decs/{id}','karyawan\JobDecs@edit');
 Route::put('update-JD/{id}','karyawan\JobDecs@update');
 
 Route::put('hapus-JD/{id}','karyawan\JobDecs@delete');
+
+
+//=================================================== HRD ==========================================================
 
 Route::get('profil','karyawan\Karyawan@index');
 
@@ -487,7 +418,7 @@ Route::post('upload-scan-spk','administrasi\SPKKontrak@uploadFileScanSPK');
 
 Route::post('cari-spk','administrasi\SPKKontrak@cari');
 
-Route::get('BA-Pemeriksaan','administrasi\BApemeriksaan@form');
+Route::get('Ba-Pemeriksaan','administrasi\BApemeriksaan@form');
 
 Route::post('Proses-BApem','administrasi\BApemeriksaan@proses');
 
@@ -557,7 +488,7 @@ Route::post('BA-Serah-Terima-Operasional','administrasi\BAserop@MenuIndex');
 
 Route::get('Brifing','administrasi\Brifing@index');
 
-Route::get('lihat-usulan-brifing', 'administrasi\Brifing@ambilEventBrifing');
+Route::get('lihat-usulan-brifing/{id}', 'administrasi\Brifing@ambilEventBrifing');
 
 Route::post('lihat-usulan-brifing-by-tgl', 'administrasi\Brifing@ambilEventBrifingByTanggal');
 
@@ -591,15 +522,298 @@ Route::put('update-pengumuman/{id}','administrasi\Pengumuman@update');
 
 Route::put('delete-pengumuman/{id}','administrasi\Pengumuman@delete');
 
-Route::get('Agenda-Harian','administrasi\AgendaHarian@index');
+Route::get('Pengaturan-rapat','administrasi\JenisRapat@index');
 
-Route::get('lihat-usulan-brifing', 'administrasi\AgendaHarian@ambilEventBrifing');
+Route::post('store-jenis-rapat','administrasi\JenisRapat@store');
 
-Route::post('lihat-usulan-brifing-by-tgl', 'administrasi\AgendaHarian@ambilEventBrifingByTanggal');
+Route::get('edit-jenis-rapat/{id}','administrasi\JenisRapat@edit');
 
-Route::post('store-agenda','administrasi\AgendaHarian@store');
+Route::put('update-jenis-rapat','administrasi\JenisRapat@update');
 
-Route::put('delete-agenda/{id}','administrasi\AgendaHarian@destroy');
+Route::put('delete-jenis-rapat/{id}','administrasi\JenisRapat@delete');
+
+Route::post('reply-brifing', 'administrasi\Brifing@store_brifing');
+
+Route::put('delete-reply/{id}','administrasi\Brifing@delete_brifing');
+
+
+//============================================ Produksi ================================================================
+
+Route::get('Jasa', 'produksi\Jasa@index');
+
+Route::get('tambah-jasa', 'produksi\Jasa@create');
+
+Route::post('store-jasa', 'produksi\Jasa@store');
+
+Route::get('ubah-jasa/{id}', 'produksi\Jasa@edit');
+
+Route::put('update-jasa/{id}', 'produksi\Jasa@update');
+
+Route::put('delete-jasa/{id}', 'produksi\Jasa@destroy');
+
+Route::post('cari-jasa', 'produksi\Jasa@Cari_jasa');
+
+Route::get('Barang','produksi\Barang@index');
+
+Route::get('tambah-barang','produksi\Barang@create');
+
+Route::post('store-barang','produksi\Barang@store');
+
+Route::get('ubah-barang/{id}','produksi\Barang@edit');
+
+Route::put('update-barang/{id}','produksi\Barang@update');
+
+Route::put('delete-barang/{id}','produksi\Barang@destroy');
+
+Route::post('cari-barang','produksi\Barang@show');
+
+Route::get('Supplier','produksi\Supplier@index');
+
+Route::get('tambah-supplier','produksi\Supplier@create');
+
+Route::post('store-supplier','produksi\Supplier@store');
+
+Route::get('ubah-supplier/{id}','produksi\Supplier@edit');
+
+Route::put('update-supplier/{id}','produksi\Supplier@update');
+
+Route::put('hapus-supplier/{id}','produksi\Supplier@delete');
+
+Route::get('Jual-Jasa','produksi\Jualjasa@index');
+
+Route::get('tambah-jual-jasa','produksi\Jualjasa@create');
+
+Route::post('store-jual-jasa','produksi\Jualjasa@store');
+
+Route::get('ubah-jual-jasa/{id}','produksi\Jualjasa@edit');
+
+Route::put('update-jual-jasa/{id}','produksi\Jualjasa@update');
+
+Route::put('delete-jual-jasa/{id}','produksi\Jualjasa@delete');
+
+Route::post('cari-jual-jasa','produksi\Jualjasa@cari_jual_jasa');
+
+Route::get('Pembelian', 'produksi\BeliBarang@index');
+
+Route::get('tambah-pembelian', 'produksi\BeliBarang@create');
+
+Route::post('store-beli-barang', 'produksi\BeliBarang@store');
+
+Route::get('ubah-pembelian/{id}', 'produksi\BeliBarang@edit');
+
+Route::put('update-beli-barang/{id}', 'produksi\BeliBarang@update');
+
+Route::put('hapus-pembelian/{id}', 'produksi\BeliBarang@delete');
+
+Route::get('Penjualan','produksi\JualBarang@index');
+
+Route::get('tambah-penjualan','produksi\JualBarang@create');
+
+Route::post('store-penjualan','produksi\JualBarang@store');
+
+Route::get('ubah-penjualan/{id}','produksi\JualBarang@edit');
+
+Route::put('update-penjualan/{id}','produksi\JualBarang@update');
+
+Route::put('hapus-penjualan/{id}','produksi\JualBarang@destory');
+
+Route::get('Proyek','produksi\Proyek@index');
+
+Route::get('tambah-proyek', 'produksi\Proyek@create');
+
+Route::post('store-proyek', 'produksi\Proyek@store');
+
+Route::get('ubah-proyek/{id}', 'produksi\Proyek@edit');
+
+Route::put('update-proyek/{id}', 'produksi\Proyek@update');
+
+Route::put('delete-proyek/{id}', 'produksi\Proyek@delete');
+
+Route::post('cari-proyek', 'produksi\Proyek@cari');
+
+//Tim Proyek = Tim Produksi
+Route::get('Tim-Produksi','produksi\TimProyek@index');
+
+Route::post('store-tim-project','produksi\TimProyek@store');
+
+Route::put('delete-tim-proyek/{id}','produksi\TimProyek@destroy');
+
+Route::post('cari-tim-proyek', 'produksi\TimProyek@cari');
+
+Route::get('Jadwal-Proyek','produksi\JadwalProyek@index');
+
+Route::get('tambah-jadwal-proyek','produksi\JadwalProyek@create');
+
+Route::post('store-jadwal-proyek','produksi\JadwalProyek@store');
+
+Route::get('get_liftOfProyek/{id_proyek}', 'produksi\JadwalProyek@ambilDaftarJadwalProyek');
+
+Route::get('ubah-jadwal-proyek/{id_proyek}','produksi\JadwalProyek@edit');
+
+Route::put('update-jadwal-proyek/{id}','produksi\JadwalProyek@update');
+
+Route::put('delete-jadwal-proyek/{id}','produksi\JadwalProyek@destroy');
+
+Route::post('cari-jadwal-proyek','produksi\JadwalProyek@show');
+
+
+Route::get('tambah-taskproyek','produksi\TaskProyek@create');
+
+Route::post('store-taksproyek','produksi\TaskProyek@store');
+
+Route::get('ubah-taksproyek/{id}','produksi\TaskProyek@edit');
+
+Route::put('update-taksproyek/{id}','produksi\TaskProyek@update');
+
+Route::put('hapus-taksproyek/{id}','produksi\TaskProyek@destroy');
+
+Route::get('tambah-rincian-tugas','produksi\RincianTugas@create');
+
+Route::post('store-rincian-tugas','produksi\RincianTugas@store');
+
+Route::get('ubah-rincian-tugas/{id}','produksi\RincianTugas@edit');
+
+Route::put('update-rincian-tugas/{id}','produksi\RincianTugas@update');
+
+Route::put('hapus-rincian-tugas/{id}','produksi\RincianTugas@destroy');
+
+Route::get('Progress-Proyek','produksi\ProgressProyek@index');
+
+Route::get('Daftar-progress/{id_jadwal_proyek}','produksi\ProgressProyek@listOfProgress');
+
+Route::post('store-progress-proyek','produksi\ProgressProyek@store');
+
+Route::get('ubah-progress-jadwal/{id_progress_proyek}','produksi\ProgressProyek@edit');
+
+Route::post('update-progress-proyek','produksi\ProgressProyek@update');
+
+Route::put('hapus-progress-jadwal/{id}','produksi\ProgressProyek@destroy');
+
+Route::get('Pemeliharaan', 'produksi\Pemeliharaan@index');
+
+Route::get('tambah-pemeliharaan','produksi\Pemeliharaan@create');
+
+Route::post('store-pemeliharaan','produksi\Pemeliharaan@store');
+
+Route::get('ubah-pemeliharaan/{id}','produksi\Pemeliharaan@edit');
+
+Route::put('update-pemeliharaan/{id}','produksi\Pemeliharaan@update');
+
+Route::put('delete-pemeliharaan/{id}','produksi\Pemeliharaan@delete');
+
+Route::post('cari-pemeliharaan','produksi\Pemeliharaan@show');
+
+Route::get('tambah-jenis-proyek','produksi\JenisPemeliharaan@create');
+
+Route::post('store-jenis-pemeliharaan', 'produksi\JenisPemeliharaan@store');
+
+Route::get('ubah-jenis-pemeliharaan/{id}','produksi\JenisPemeliharaan@edit');
+
+Route::put('update-jenis-pemeliharaan/{id}', 'produksi\JenisPemeliharaan@update');
+
+Route::put('hapus-jenis-pemeliharaan/{id}', 'produksi\JenisPemeliharaan@delete');
+
+Route::get('Progres-Pemeliharaan', 'produksi\ProgressPemeliharaan@index');
+
+Route::get('lihat-progress/{id_pemeliharaan}','produksi\ProgressPemeliharaan@daftar_progress_pemeliharaan');
+
+Route::post('store-progress-pemeliharaan','produksi\ProgressPemeliharaan@store');
+
+Route::get('ubah-progress-pemeliharaan/{id}','produksi\ProgressPemeliharaan@edit');
+
+Route::post('update-progress-pemeliharaan','produksi\ProgressPemeliharaan@update');
+
+Route::put('hapus-progress-pemeliharaan/{id}','produksi\ProgressPemeliharaan@delete');
+
+//================================================ HRD ===========================================================
+
+Route::get('Karyawan','hrd\Karyawan@index');
+
+Route::get('tambah-karyawan','hrd\Karyawan@tambah_karyawan');
+
+Route::post('store-karyawan/hrd','hrd\Karyawan@store');
+
+Route::get('ubah-karyawan/{id}','hrd\Karyawan@edit_karyawan');
+
+Route::put('update-hrd-karyawan/{id}','hrd\Karyawan@update');
+
+Route::get('hapus-karyawan/{id}','hrd\Karyawan@delete');
+
+Route::post('cari-karyawan','hrd\Karyawan@cari');
+
+Route::get('Rekruitmen','hrd\Loker@index');
+
+Route::get('tambah-rekrutment','hrd\Loker@create');
+
+Route::post('store-rekruitmen','hrd\Loker@store');
+
+Route::get('ubah-rekruitmen/{id}','hrd\Loker@edit');
+
+Route::put('update-rekruitmen/{id}','hrd\Loker@update');
+
+Route::get('hapus-rekruitmen/{id}','hrd\Loker@delete');
+
+Route::post('upload-loker','hrd\Loker@upload_image');
+
+Route::get('detail-rekruitmen/{id}','hrd\Loker@show');
+
+Route::post('cari-rekruitmen','hrd\Loker@search');
+
+Route::get('Lamaran-Pekerjaan','hrd\LamaranPek@index');
+
+Route::get('tambah-lamaran','hrd\LamaranPek@create');
+
+Route::post('store-lamaran','hrd\LamaranPek@store');
+
+Route::get('ubah-lamaran/{id}','hrd\LamaranPek@edit');
+
+Route::put('update-lamaran/{id}','hrd\LamaranPek@update');
+
+Route::put('hapus-lamaran/{id}','hrd\LamaranPek@delete');
+
+Route::get('Seleksi','hrd\SeleksiBerkas@index');
+
+Route::get('daftar-pelamar/{id}', 'hrd\SeleksiBerkas@show');
+
+Route::get('Seleksi-pesarta/{id_peserta}','hrd\SeleksiBerkas@show_peserta');
+
+Route::put('simpan-seleksi/{id_peserta}','hrd\SeleksiBerkas@save');
+
+Route::get('Tes', 'hrd\Tes@psikotes'); // Psikotes
+
+Route::get('jenis-psikotes', 'hrd\JenisPsikotes@index');
+
+Route::post('store-jenis-psikotes', 'hrd\JenisPsikotes@store');
+
+Route::get('ubah-jenis-psikotes/{id}', 'hrd\JenisPsikotes@edit');
+
+Route::post('update-jenis-psikotes', 'hrd\JenisPsikotes@update');
+
+Route::put('hapus-jenis-psikotes/{id}', 'hrd\JenisPsikotes@delete');
+
+Route::get('Wawancara', 'hrd\Tes@wawancara'); //Wawancara
+
+Route::get('item-wawancara', 'hrd\ItemWawancara@index');
+
+Route::post('store-item-wawancara', 'hrd\ItemWawancara@store');
+
+Route::get('ubah-item-wawancara/{id}', 'hrd\ItemWawancara@edit');
+
+Route::post('update-item-wawancara', 'hrd\ItemWawancara@update');
+
+Route::put('hapus-item-wawancara/{id}', 'hrd\ItemWawancara@delete');
+
+Route::get('Keahlian', 'hrd\Tes@keahlian'); //Keahlian
+
+Route::get('item-keahlian','hrd\ItemKeahlian@index');
+
+Route::post('store-item-keahlian','hrd\ItemKeahlian@store');
+
+Route::get('ubah-item-keahlian/{id_item_keahlian}','hrd\ItemKeahlian@edit');
+
+Route::post('update-item-keahlian','hrd\ItemKeahlian@update');
+
+Route::post('hapus-item-keahlian','hrd\ItemKeahlian@delete');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
@@ -623,3 +837,7 @@ Route::put('delete-agenda/{id}','administrasi\AgendaHarian@destroy');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
+
+Route::post('GlobalSubKategori', 'globals\KategoriJasa@getSubKategori');
+
+Route::post('GlobalSubSubKategori', 'globals\KategoriJasa@getSubSubKategori');
