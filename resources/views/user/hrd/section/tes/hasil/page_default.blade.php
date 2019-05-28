@@ -4,7 +4,7 @@
             <label style="font-size: 23px">Hasil Tes</label>
         </div>
         <div class="col-md-12" style="padding-top: 5px">
-            <form action="{{ url('cari-loker-keahlian') }}" method="post" style="width: 100%">
+            <form action="{{ url('cari-hasil-loker') }}" method="post" style="width: 100%">
                 <div class="input-group input-group-md" >
                     {{ csrf_field() }}
                     <select class="form-control select2" style="width: 100%;" name="id_loker" required>
@@ -47,6 +47,7 @@
                                 <th >Psikotes</th>
                                 <th >Wawancara</th>
                                 <th >Keahlian</th>
+                                <th >Total</th>
                                 <th ></th>
                                 <th style="width: 40px"></th>
                             </tr>
@@ -68,10 +69,11 @@
                                             </td>
                                             <td>
                                                 @if($data_lamaran_pek->tes_keahlian->sum('nilai_akhir') !=0 && $data_lamaran_pek->tes_keahlian->count('nilai_akhir')!=0)
-                                                    @php($hasil=$data_lamaran_pek->tes_keahlian->sum('nilai_akhir')/$data_lamaran_pek->tes_keahlian->count('nilai_akhir'))
+                                                    @php($hasil2=$data_lamaran_pek->tes_keahlian->sum('nilai_akhir')/$data_lamaran_pek->tes_keahlian->count('nilai_akhir'))
                                                 @endif
-                                                {{ $hasil }}
+                                                {{ $hasil2 }}
                                             </td>
+                                            <td>{{ $data_lamaran_pek->psikotes['nilai_akhir']+$hasil+$hasil2 }}</td>
                                             <td><a href="#" onclick="inforPelamar('{{ $data_lamaran_pek->id }}')"><i class="fa  fa-info-circle"></i></a> </td>
                                             <td><a href="{{ url('keterangan-tambahan/'.$data_lamaran_pek->id) }}" class="btn bg-green" ><i class="fa fa-file-text" ></i> Tambah Keterangan </a></td>
                                         </tr>

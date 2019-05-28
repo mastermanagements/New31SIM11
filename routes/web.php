@@ -853,6 +853,12 @@ Route::put('store-keterangan/{id_pelamaar}', 'hrd\HasilTes@save');
 
 Route::get('lihat-keterangan/{id_pelamaar}', 'hrd\HasilTes@show');
 
+Route::post('cari-hasil-loker', 'hrd\Tes@cari_hasil');
+
+Route::get('Kontrak-Kerja','hrd\KontrakKerja@index');
+
+Route::get('jenis-kontrak-kerja', 'hrd\KontrakKerja@jenis_kontrak');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
