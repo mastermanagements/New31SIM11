@@ -12,7 +12,7 @@ class SWOT extends Controller
 
     private $id_karyawan;
     private $id_perusahaan;
-    private $jenis_swot = ['strenght','weakness','opportunity','threats'];
+    private $jenis_swot = ['Strenght','Weakness','Opportunity','Threats'];
 
     public function __construct()
     {
@@ -32,8 +32,8 @@ class SWOT extends Controller
     {
         $data_SWOT = [
           'data_swot' => swots::all()->where('id_perusahaan', $this->id_perusahaan)->sortBy('tahun_swot'),
-            'tahun_swot'=> swots::select('tahun_swot')->where('id_perusahaan', $this->id_perusahaan)
-               ->groupBy('tahun_swot')->orderBy('tahun_swot', 'DESC')->paginate(6)
+          'tahun_swot'=> swots::select('tahun_swot')->where('id_perusahaan', $this->id_perusahaan)
+           ->groupBy('tahun_swot')->orderBy('tahun_swot', 'DESC')->paginate(6)
         ];
         return view('user.karyawan.section.Swot.page_default', $data_SWOT);
     }
@@ -51,19 +51,20 @@ class SWOT extends Controller
         $this->validate($req,[
            'tahun_swot' => 'required|numeric',
             'kategori_swot' => 'required',
-            'Isi' => 'required'
+            'isi' => 'required'
         ]);
 
         $tahun_anggaran = $req->tahun_swot;
         $kategori_swot = $req->kategori_swot;
-        $isi = $req->Isi;
+        $isi = $req->isi;
 
         $model = swots::updateOrCreate([
-            'id_perusahaan'=>$this->id_perusahaan,
-            'id_karyawan'=>$this->id_karyawan,
+			'tahun_swot'=>$tahun_anggaran,
             'kategori_swot'=>$kategori_swot,
-            'tahun_swot'=>$tahun_anggaran
-        ],['Isi'=> $isi]);
+			'isi'=>$isi,
+			'id_perusahaan'=>$this->id_perusahaan,
+            'id_karyawan'=>$this->id_karyawan
+        ]);
 
         if($model->save())
         {
@@ -72,5 +73,27 @@ class SWOT extends Controller
             return redirect('Swot')->with('message_fail','Terjadi kesalahan, silahkan coba lagi untuk '.$kategori_swot);
         }
 
+    }
+	public function edit($id)
+    {
+        if(empty($data_swot = swots::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+		  $data_pass = [
+		  'jenis_swot'=> $this->jenis_swot,
+		  'tahun_swot'=> swots::select('tahun_swot')->where('id_perusahaan', $this->id_perusahaan),
+		  'data_swot'=>$data_swot
+        ];
+        return view('user.karyawan.section.Swot.page_edit', $data_pass);
+    }
+	
+	public function delete(Request $req, $id)
+    {
+        $model = swots::find($id);
+        if($model->delete()){
+            return redirect('Swot')->with('message_success', 'Ada telah menghapus data SWOT');    
+        }else{
+            return redirect('Swot')->with('message_fail', 'Terjadi Kesalahan, Silahkan ulangi');
+        }
     }
 }

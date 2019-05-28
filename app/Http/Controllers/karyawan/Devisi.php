@@ -61,7 +61,7 @@ class Devisi extends Controller
     }
 
     public function edit($id)
-    {
+    { 
         if(empty($data_divisi = devisis::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
@@ -121,6 +121,21 @@ class Devisi extends Controller
             ];
             return response()->json($res);
         }
+    }
+	public function getBagian()
+    {
+        $model = bagians::all();
+        return $model;
+    }
+
+    public function getDivisi($id=1)
+    {
+        $model = devisis::all()->where('id_bagian_p', $id);
+        return $model;
+    }
+
+    public function ResponseDivisi($id_divisi_p){
+        return response()->json($this->getDivisi($id_divisi_p));
     }
 
 }
