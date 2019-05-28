@@ -14,4 +14,8 @@ class U_jabatan_p extends Model
     {
         return $this->belongsTo('App\Model\Superadmin_ukm\U_usaha', 'id_perusahaan');
     }
+	 public function getJobdesc()
+    {
+        return $this->hasMany('App\Model\Karyawan\JobDecs', 'id_jabatan_p');
+    }
 }
