@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUMasterSubmenu extends Migration
+class CreateRelationPJasa extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateUMasterSubmenu extends Migration
      */
     public function up()
     {
-        Schema::create('u_master_submenu', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('id_master_menu')->unsigned();
-            $table->string('nm_submenu');
-			$table->string('url');
-            $table->timestamps();
+        Schema::table('p_jasa', function (Blueprint $table) {
+            //
+            $table->foreign('id_kategori_produk')->references('id')->on('p_kategori_produk');
         });
     }
 
@@ -29,6 +26,8 @@ class CreateUMasterSubmenu extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('u_master_submenu');
+        Schema::table('p_jasa', function (Blueprint $table) {
+            //
+        });
     }
 }

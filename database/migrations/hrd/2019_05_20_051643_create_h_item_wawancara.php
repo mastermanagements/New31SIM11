@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAJenisArsip extends Migration
+class CreateHItemWawancara extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateAJenisArsip extends Migration
      */
     public function up()
     {
-        Schema::create('a_jenis_arsip', function (Blueprint $table) {
+        Schema::create('h_item_wawancara', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('item_wawancara');
+            $table->integer('id_perusahaan')->unsigned();
+            $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateAJenisArsip extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('a_jenis_arsip');
+        Schema::dropIfExists('h_item_wawancara');
     }
 }

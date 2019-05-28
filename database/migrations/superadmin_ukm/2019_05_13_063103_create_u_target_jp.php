@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUStrategiJpg extends Migration
+class CreateUTargetJp extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateUStrategiJpg extends Migration
      */
     public function up()
     {
-        Schema::create('u_strategi_jpg', function (Blueprint $table) {
+        Schema::create('u_target_jp', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_tjp')->unsigned();
-            $table->text('isi_sjp');
-            $table->integer('id_perusahaan')->unsigned();
-            $table->integer('id_karyawan')->unsigned();
+			$table->string('nm_tjp');
+			$table->integer('periode');
+			$table->year('thn_mulai', 4);
+			$table->year('thn_selesai', 4);
+			$table->text('isi_tjp');
+			$table->integer('id_perusahaan')->unsigned();
+			$table->integer('id_karyawan')->unsigned();
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateUStrategiJpg extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('u_strategi_jpg');
+        Schema::dropIfExists('u_target_jp');
     }
 }

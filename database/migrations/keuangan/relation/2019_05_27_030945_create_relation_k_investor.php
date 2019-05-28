@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelasiKInvestor extends Migration
+class CreateRelationKInvestor extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,10 @@ class CreateRelasiKInvestor extends Migration
     public function up()
     {
         Schema::table('k_investor', function (Blueprint $table) {
-            //
-			//$table->engine = 'InnoDB';
             $table->foreign('id_prov')->references('id')->on('u_provinsi');
             $table->foreign('id_kab')->references('id')->on('u_kabupaten');
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_user_ukm')->references('id')->on('u_user_ukm');
-			
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelasiKInvestor extends Migration
+class CreateRelasiStrategiTahunan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateRelasiKInvestor extends Migration
      */
     public function up()
     {
-        Schema::table('k_investor', function (Blueprint $table) {
+        Schema::table('u_strategi_tahunan', function (Blueprint $table) {
             //
-			//$table->engine = 'InnoDB';
-            $table->foreign('id_prov')->references('id')->on('u_provinsi');
-            $table->foreign('id_kab')->references('id')->on('u_kabupaten');
+			$table->foreign('id_sjp')->references('id')->on('u_strategi_jp');
+			$table->foreign('id_target_tahunan')->references('id')->on('u_target_tahunan');
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
-            $table->foreign('id_user_ukm')->references('id')->on('u_user_ukm');
-			
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
+
         });
     }
 
@@ -31,7 +30,7 @@ class CreateRelasiKInvestor extends Migration
      */
     public function down()
     {
-        Schema::table('k_investor', function (Blueprint $table) {
+        Schema::table('u_strategi_tahunan', function (Blueprint $table) {
             //
         });
     }
