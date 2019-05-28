@@ -39,7 +39,8 @@
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" onclick="tambahDevisi({{ $bagians->id }})" title="tambah"><i class="fa fa-plus"></i></button>
                                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                </div>
+								</div>
+								
                                 <!-- /.box-tools -->
                             </div>
                             <!-- /.box-header -->
@@ -47,7 +48,9 @@
                                 <ul>
                                     @if(!empty($divisi= $bagians->getDevisi))
                                         @foreach($divisi as $daftar_divisi)
-                                            <li>{{ $daftar_divisi->nm_devisi }} <a href="#" onclick="hapus({{ $daftar_divisi->id }})" class="pull-right" title="hapus" style="padding-left: 1%"><i class="fa fa-trash"></i></a> <a href="#" onclick="ubah({{ $daftar_divisi->id }})" class="pull-right" title="ubah"><i class="fa fa-pencil"></i>  </a> </li>
+                                            <li>{{ $daftar_divisi->nm_devisi }} 
+											<a href="#" onclick="hapus({{ $daftar_divisi->id }})" class="pull-right" title="hapus" style="padding-left: 1%"><i class="fa fa-trash"></i></a> 
+											<a href="#" onclick="ubah({{ $daftar_divisi->id }})" class="pull-right" title="ubah"><i class="fa fa-pencil"></i>  </a> </li>
                                         @endforeach
                                     @endif
                                 </ul>
@@ -87,6 +90,7 @@
                     url: '{{ url('Divisi') }}/'+id,
                     dataType : 'json',
                     success:function (result) {
+						
                         $('[name="nm_divisi_ubah"]').val(result.data_devisi.nm_devisi);
                         $('[name="id_bagian_ubah"]').val(result.data_devisi.id_bagian_p).trigger('selected');
                         $('[name="id_devisi"]').val(result.data_devisi.id);

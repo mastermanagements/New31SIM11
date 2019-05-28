@@ -38,9 +38,9 @@
                 @foreach($data_swot as $value)
                     @if($value_tahun->tahun_swot == $value->tahun_swot)
                         <div class="col-md-6">
-                            <div class="box @if($value->kategori_swot=="strenght") box-primary @elseif($value->kategori_swot=="weakness") box-warning @elseif($value->kategori_swot=="opportunity") box-success @else  box-danger  @endif collapsed-box">
+                            <div class="box @if($value->kategori_swot=="Strenght") box-primary @elseif($value->kategori_swot=="Weakness") box-warning @elseif($value->kategori_swot=="Opportunity") box-success @else  box-danger  @endif collapsed-box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">{{ $value->kategori_swot }}</h3>
+                                    <h3 class="box-title"><b>{{ $value->kategori_swot }}</b></h3>
 
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
@@ -49,10 +49,20 @@
                                     <!-- /.box-tools -->
                                 </div>
                                 <!-- /.box-header -->
+								<div class="box-body">
+									<form action="{{ url('delete-swot/'. $value->id) }}" method="post">
+                                            <input type="hidden" name="_method" value="put">
+                                            {{ csrf_field() }}
+                                            <button type="submit" onclick="return confirm('apakah anda akan menghapus target tahunan ini .. ?')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                            <a href="{{ url('ubah-swot/'. $value->id) }}" class="btn btn-xs btn-primary pull-right"><i class="fa fa-pencil"></i></a>
+									</form>
+                                    
+									</div>
+									<!-- /.box-body 1-->
                                 <div class="box-body" style="display: none;">
-                                    {!! $value->Isi !!}
+                                    {!! $value->isi !!}
                                 </div>
-                                <!-- /.box-body -->
+                                <!-- /.box-body 2-->
                             </div>
                             <!-- /.box -->
                         </div>

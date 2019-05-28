@@ -27,32 +27,37 @@
             @endif
             <p></p>
 
-            @if(!empty($data_jd))
-                @foreach($data_jd as $data)
-                        <div class="col-md-12">
-                            <div class="box box-success box-solid">
-                                <!-- /.box-header -->
-                                <div class="box-body">
-                                    <p>
-                                        <form action="{{ url('hapus-JD/'. $data->id) }}" method="post">
-                                            <input type="hidden" name="_method" value="put">
-                                            {{ csrf_field() }}
-                                            <button type="submit" onclick="return confirm('apakah anda akan menghapus job decs ini .. ?')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
-                                            <a href="{{ url('ubah-job-decs/'. $data->id) }}" class="btn btn-xs btn-primary pull-right"><i class="fa fa-pencil"></i></a>
-                                        </form>
-                                        <hr>
-                                    </p>
-                                    {!! $data->job_desc !!}
-                                </div>
-                                <!-- /.box-body -->
+            @foreach($data_jabatan as $jabatan)
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"> {{ $jabatan->nm_jabatan }}</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" onclick="tambahDevisi({{ $jabatan->id }})" title="tambah"><i class="fa fa-plus"></i></button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+								</div>
+								
+                                <!-- /.box-tools -->
                             </div>
-                            <!-- /.box -->
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <ul>
+                                    @if(!empty($jobdesc= $jabatan->getJobdesc))
+                                        @foreach($jobdesc as $daftar_jobdesc)
+                                            <li>{{ $daftar_jobdesc->job_desc }} 
+											<a href="#" onclick="hapus({{ $daftar_jobdesc->id }})" class="pull-right" title="hapus" style="padding-left: 1%"><i class="fa fa-trash"></i></a> 
+											<a href="#" onclick="ubah({{ $daftar_jobdesc->id }})" class="pull-right" title="ubah"><i class="fa fa-pencil"></i>  </a> </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
+                            <!-- /.box-body -->
                         </div>
-                    {{ $data_jd->links() }}
-                    @endforeach
-                @else
-                <h3>Job decs belum ditambahkan</h3>
-             @endif
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+            @endforeach
         </div>
     </section>
     <!-- /.content -->

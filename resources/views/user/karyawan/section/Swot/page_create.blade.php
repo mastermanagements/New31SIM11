@@ -29,7 +29,7 @@
             <div class="col-md-8">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir SWOT</h3>
+                        <h3 class="box-title">Formulir Tambah SWOT</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -54,7 +54,7 @@
                              </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Isi (SWOT) anda</label>
-                                    <textarea class="form-control" placeholder="Masukan SWOT usaha anda" name="Isi" id="Isi" required>
+                                    <textarea class="form-control" placeholder="Masukan SWOT usaha anda" name="isi" id="isi" required>
 
                                     </textarea>
                                     <small style="color: red">* Tidak boleh kosong</small>
@@ -84,7 +84,7 @@
     <script>
 
         window.onload = function() {
-            CKEDITOR.replace( 'Isi',{
+            CKEDITOR.replace( 'isi',{
                 height: 600
             } );
         };

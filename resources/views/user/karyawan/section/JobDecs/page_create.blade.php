@@ -36,7 +36,8 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Pilih Jabatan</label>
                                 <select class="form-control select2" style="width: 100%;" name="id_jabatan_p" required>
-                                            @foreach($jabatan as $value)
+                                             <option>Pilih Jabatan</option>
+											@foreach($jabatan as $value)
                                                 <option value="{{ $value->id }}">{{ $value->nm_jabatan }}</option>
                                             @endforeach
                                 </select>
