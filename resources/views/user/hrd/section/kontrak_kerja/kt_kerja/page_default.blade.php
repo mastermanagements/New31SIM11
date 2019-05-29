@@ -1,8 +1,8 @@
 <div class="tab-pane active" id="tab_1">
     <div class="row">
         <div class="col-md-12">
-            <label style="font-size: 23px">Psikotes</label>
-            <a href="{{ url('jenis-psikotes') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Jenis Psikotes</a>
+            <label style="font-size: 23px">Daftar Kontrak Kerja</label>
+            <a href="{{ url('tambah-kontrak') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah Kontrak</a>
         </div>
         <div class="col-md-12" style="padding-top: 5px">
             <form action="{{ url('cari-loker-psikotes') }}" method="post" style="width: 100%">
@@ -28,77 +28,49 @@
         </div>
 
         <div class="col-md-12" style="padding-top: 12px">
-            {{--@foreach($loker as $lokers)--}}
-                {{--@php($i=1)--}}
-            {{--<div class="box">--}}
-                {{--<div class="box-header">--}}
-                    {{--<h3 class="box-title" style="color: #0b93d5">{{ $lokers->nm_loker }}</h3>--}}
-                {{--</div>--}}
-                {{--<!-- /.box-header -->--}}
-                {{--<div class="col-md-12">--}}
-                    {{--<p>Daftar nama pelamar yang telah lulus seleksi berkas</p>--}}
-                {{--</div>--}}
-                {{--<div class="box-body no-padding">--}}
+            @if(!empty(session('message_success')))
+                <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+            @elseif(!empty(session('message_fail')))
+                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+            @endif
+            <p></p>
 
-                    {{--<table class="table table-striped">--}}
-
-                        {{--<tbody>--}}
-                        {{--<tr>--}}
-                            {{--<th style="width: 10px">#</th>--}}
-                            {{--<th>Nama Pelamar</th>--}}
-                            {{--<th>Posisi</th>--}}
-                            {{--<th>Tanggal Tes</th>--}}
-                            {{--<th>Jenis Tes</th>--}}
-                            {{--<th style="width: 40px">Hasil</th>--}}
-                            {{--<th style="width: 40px">Proses</th>--}}
-                        {{--</tr>--}}
-                        {{--@if(!empty($data_lamaran_pek=$lokers->lamaran_pek))--}}
-
-                            {{--@foreach($data_lamaran_pek as $key=> $data_lamaran_pek)--}}
-                                {{--@if($data_lamaran_pek->seleksi_berkas['hasil']==1)--}}
-                                    {{--<tr>--}}
-                                        {{--<td class="no_index">{{ $i++ }}</td>--}}
-                                        {{--<td>{{ $data_lamaran_pek->nm_pel }}</td>--}}
-                                        {{--<td>{{ $data_lamaran_pek->posisi }}</td>--}}
-                                        {{--<td>--}}
-                                            {{--<div class="input-group date">--}}
-                                                {{--<div class="input-group-addon">--}}
-                                                    {{--<i class="fa fa-calendar"></i>--}}
-                                                {{--</div>--}}
-                                                {{--<input type="text" class="form-control eventDate" name="tgl_tes" @if(!empty($tgl_tes=$data_lamaran_pek->psikotes['tgl_tes'])) value="{{ date('d-m-Y', strtotime($tgl_tes)) }}" @endif placeholder="Klik untuk mengisinya">--}}
-                                                {{--<input type="hidden" id="id_oel{{ $key }}" value="{{ $data_lamaran_pek->id }}">--}}
-                                            {{--</div>--}}
-                                        {{--</td>--}}
-                                        {{--<td>--}}
-                                            {{--<select class="form-control select2" style="width: 100%;" name="id_jenis_psikotes" id="idTes{{ $key }}" required>--}}
-                                                {{--@if(empty($jenis_psikotes))--}}
-                                                    {{--<option>Jenis Psikotes masih kosong</option>--}}
-                                                {{--@else--}}
-                                                    {{--@foreach($jenis_psikotes as $value)--}}
-                                                        {{--<option value="{{ $value->id }}"--}}
-                                                            {{--@if(!empty($id_jenis_psikotes=$data_lamaran_pek->psikotes['id_jenis_psikotes']))--}}
-                                                                {{--@if($id_jenis_psikotes==$value->id)--}}
-                                                                    {{--selected--}}
-                                                                {{--@endif--}}
-                                                            {{--@endif  >{{ $value->jenis_psikotes}}--}}
-                                                        {{--</option>--}}
-                                                    {{--@endforeach--}}
-                                                {{--@endif--}}
-                                            {{--</select>--}}
-                                        {{--</td>--}}
-                                        {{--<td><input type="number" min="0" max="100" id="hasil{{ $key }}" class="form-control" style="width: 80px" value="{{ $data_lamaran_pek->psikotes['nilai_akhir'] }}"/></td>--}}
-                                        {{--<td><button class="btn bg-green" onclick="simpan('{{ $data_lamaran_pek->id }}', '{{ $key }}')"><i class="fa fa-save" id="loading{{ $key }}"></i> Simpan</button></td>--}}
-                                    {{--</tr>--}}
-                                {{--@endif--}}
-                            {{--@endforeach--}}
-                        {{--@endif--}}
-                        {{--</tbody>--}}
-                    {{--</table>--}}
-                {{--</div>--}}
-                {{--<!-- /.box-body -->--}}
-            {{--</div>--}}
-            {{--@endforeach--}}
-            {{--{{ $loker->links() }}--}}
+            @if(empty($kontrak_kerja))
+                <div class="col-md-4"> <h5>Data Kontra belum tersedia</h5></div>
+            @else
+                @foreach($kontrak_kerja as $value)
+                    <div class="col-md-4">
+                        <!-- Widget: user widget style 1 -->
+                        <div class="box box-widget widget-user-2">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-primary">
+                                <div class="widget-user-image">
+                                    <img class="img-circle" src="@if(empty($value->karyawan->pas_foto)) {{ asset('image_superadmin_ukm/default.png') }}  @else {{ asset('filePFoto/'.$value->karyawan->pas_foto) }} @endif" alt="User Avatar">
+                                </div>
+                                <h3 class="widget-user-username">{{ $value->karyawan->nama_ky }}</h3>
+                                <h5 class="widget-user-desc">Nik {{ $value->karyawan->nik }}</h5>
+                            </div>
+                            <div class="box-footer no-padding">
+                                <ul class="nav nav-stacked">
+                                    <li><a href="#">Nama <span class="pull-right">{{ $value->karyawan->nama_ky }}</span></a></li>
+                                    <li><a href="#">Nik <span class="pull-right ">{{ $value->karyawan->nik }}</span></a></li>
+                                    <li><a href="#">No. Kontrak<span class="pull-right ">{{ $value->no_kontrak }}</span></a></li>
+                                    <li><a href="#">Jenis Kontrak<span class="pull-right ">{{ $value->jenis_kontrak->jenis_kontrak }}</span></a></li>
+                                    <li>
+                                        <form style="padding: 10px 15px ">
+                                            Aksi Kontrak
+                                            <a href="{{ url('hapus-kontrak/'. $value->id) }}" onclick="return confirm('Apakah anda akan menghapus kontrak ini...?')"><span class="pull-right badge bg-orange"><i class="fa fa-trash"></i></span></a>
+                                            <a href="{{ url('ubah-kontrak/'. $value->id) }}"><span class="pull-right badge bg-red"><i class="fa fa-pencil"></i></span></a>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.widget-user -->
+                    </div>
+                @endforeach
+                {{ $kontrak_kerja->links() }}
+            @endif
         </div>
     </div>
 </div>

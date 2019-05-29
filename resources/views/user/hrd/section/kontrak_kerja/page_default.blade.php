@@ -31,12 +31,12 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li @if(Session::get('menu_tes')=='kontrak_kerja')  class="active" @endif><a href="{{ url('Kontrak-Kerja') }}" ><i class="fa fa-book"></i> Daftar Kontrak Kerja </a></li>
-                        <li @if(Session::get('menu_tes')=='jenis_kontrak')  class="active" @endif><a href="{{ url('jenis-kontrak-kerja') }}" ><i class="fa fa-book"></i> Jenis Kontrak kerja </a></li>
+                        <li class="@if(Session::get('menu_tes')=='jenis_kontrak') active  @endif pull-right" ><a href="{{ url('jenis-kontrak-kerja') }}" ><i class="fa fa-gear"></i> Jenis Kontrak kerja </a></li>
                     </ul>
                     <div class="tab-content">
-                        @if(Session::get('menu_')=='kontrak_kerja')
-                            @include('user.hrd.section.kontrak_kerja.page_default')
-                        @elseif(Session::get('menu_')=='jenis_kontrak')
+                        @if(Session::get('menu_tes')=='kontrak_kerja')
+                            @include('user.hrd.section.kontrak_kerja.kt_kerja.page_default')
+                        @elseif(Session::get('menu_tes')=='jenis_kontrak')
                             @include('user.hrd.section.kontrak_kerja.kt_kerja.jenispsikotes.page_default')
                         @endif
                     </div>

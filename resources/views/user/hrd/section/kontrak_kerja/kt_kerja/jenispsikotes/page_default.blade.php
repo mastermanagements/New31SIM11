@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Jenis Psikotes
+            Jenis Kontrak Kerja
         </h1>
     </section>
 
@@ -23,11 +23,11 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Daftar Jenis Psikotes</a></li>
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Daftar Jenis Kontrak Kerja</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah-jenis-psikotes"><i class="fa fa-plus"></i> Tambah Jenis Psikotes</a>
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah-jenis-psikotes"><i class="fa fa-plus"></i> Tambah Jenis Kontrak Kerja</a>
                             <p></p>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
@@ -39,12 +39,12 @@
                                 </thead>
                                 <tbody>
                                 @php($i=1)
-                                @foreach($jenis_psikotes as $value)
+                                @foreach($jenis_kontrak as $value)
                                     <tr>
                                         <td>{{ $i++ }}</td>
-                                        <td>{{ $value->jenis_psikotes }}</td>
+                                        <td>{{ $value->jenis_kontrak }}</td>
                                         <td>
-                                            <form action="{{ url('hapus-jenis-psikotes/'.$value->id) }}" method="post">
+                                            <form action="{{ url('hapus-jenis-kontrak-kerja/'.$value->id) }}" method="post">
                                                 <a href="#" onclick="ubahForm('{{ $value->id }}')" class="btn btn-warning" title="Edit">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
@@ -70,18 +70,18 @@
     </section>
     <!-- /.content -->
 </div>
-    @include('user.hrd.section.tes.psikotes.jenispsikotes.modal.modal')
+    @include('user.hrd.section.kontrak_kerja.kt_kerja.jenispsikotes.modal.modal')
 @stop
 @section('plugins')
     <script>
         $(document).ready(function () {
             ubahForm = function (id) {
                $.ajax({
-                    url: "{{ url('ubah-jenis-psikotes')  }}/"+id,
+                    url: "{{ url('ubah-jenis-kontrak-kerja')  }}/"+id,
                     dataType:"json",
                     success: function (result) {
-                        $('[name="jenis_psikotes_ubah"]').val(result.jenis_psikotes);
-                        $('[name="id_jenis_psikotes"]').val(result.id);
+                        $('[name="jenis_kontrak_kerja_ubah"]').val(result.jenis_kontrak);
+                        $('[name="id_jenis_kontrak_kerja"]').val(result.id);
                         $('#modal-ubah-jenis-psikotes').modal('show');
                     }
                 });

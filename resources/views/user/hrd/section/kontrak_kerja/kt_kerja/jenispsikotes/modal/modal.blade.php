@@ -5,13 +5,13 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir Jenis Psikotes</h4>
+                <h4 class="modal-title">Formulir Jenis Kontrak Kerja</h4>
             </div>
-            <form action="{{ url('store-jenis-psikotes') }}" method="post">
+            <form action="{{ url('store-jenis-kontrak-kerja') }}" method="post">
             <div class="modal-body" id="content_modal">
                 <div class="form-group">
-                    <label>Jenis Psikotes</label>
-                    <input type="text" class="form-control pull-right" placeholder="Jenis Proyek" name="jenis_psikotes" >
+                    <label>Jenis Kontrak Kerja</label>
+                    <input type="text" class="form-control pull-right" placeholder="Jenis Kontrak Kerja" name="jenis_kontrak_kerja" >
                     <!-- /.input group -->
                     <small style="color: red"> *Tidak Boleh Kosong</small>
                 </div>
@@ -36,19 +36,19 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir Ubah Jenis Psikotes</h4>
+                <h4 class="modal-title">Formulir Ubah Jenis Kontrak Kerja</h4>
             </div>
-            <form action="{{ url('update-jenis-psikotes') }}" method="post">
+            <form action="{{ url('update-jenis-kontrak-kerja') }}" method="post">
                 <div class="modal-body" id="content_modal">
                     <div class="form-group">
-                        <label>Jenis Psikotes</label>
-                        <input type="text" class="form-control pull-right" placeholder="Jenis Proyek" name="jenis_psikotes_ubah" >
+                        <label>Jenis Kontrak Kerja</label>
+                        <input type="text" class="form-control pull-right" placeholder="Jenis Kontrak Kerja" name="jenis_kontrak_kerja_ubah" >
                         <!-- /.input group -->
                         <small style="color: red"> *Tidak Boleh Kosong</small>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" name="id_jenis_psikotes" >
+                    <input type="hidden" name="id_jenis_kontrak_kerja" >
                     {{ csrf_field() }}
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
                     <button type="submit" id="submitBagian" class="btn btn-primary">Simpan</button>

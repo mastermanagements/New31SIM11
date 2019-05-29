@@ -14,4 +14,8 @@ class KontrakKerja extends Model
     public function karyawan(){
         return $this->belongsTo('App\Model\Superadmin_ukm\H_karyawan','id_ky');
     }
+
+    public function jenis_kontrak(){
+        return $this->belongsTo('App\Model\Hrd\H_jenis_kontrak','id_jenis_kontrak');
+    }
 }

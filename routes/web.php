@@ -857,7 +857,27 @@ Route::post('cari-hasil-loker', 'hrd\Tes@cari_hasil');
 
 Route::get('Kontrak-Kerja','hrd\KontrakKerja@index');
 
-Route::get('jenis-kontrak-kerja', 'hrd\KontrakKerja@jenis_kontrak');
+Route::get('tambah-kontrak','hrd\KontrakKerja@create');
+
+Route::post('store-kontrak-kerja','hrd\KontrakKerja@store');
+
+Route::get('ubah-kontrak/{id}', 'hrd\KontrakKerja@edit');
+
+Route::put('update-kontrak-kerja/{id}', 'hrd\KontrakKerja@update');
+
+Route::get('hapus-kontrak/{id}', 'hrd\KontrakKerja@delete');
+
+
+
+Route::get('jenis-kontrak-kerja', 'hrd\JenisKontrakKerja@index');
+
+Route::post('store-jenis-kontrak-kerja', 'hrd\JenisKontrakKerja@store');
+
+Route::get('ubah-jenis-kontrak-kerja/{id}', 'hrd\JenisKontrakKerja@edit');
+
+Route::post('update-jenis-kontrak-kerja', 'hrd\JenisKontrakKerja@update');
+
+Route::put('hapus-jenis-kontrak-kerja/{id}', 'hrd\JenisKontrakKerja@delete');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
