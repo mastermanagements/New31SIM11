@@ -884,7 +884,9 @@ Route::post('update-jenis-kontrak-kerja', 'hrd\JenisKontrakKerja@update');
 
 Route::put('hapus-jenis-kontrak-kerja/{id}', 'hrd\JenisKontrakKerja@delete');
 
+Route::get('Tenaga-ahli', 'hrd\TenagaKerja@index');
 
+Route::get('daftar-sertifikasi/{id}','hrd\TenagaKerja@daftarSertifikasi');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
