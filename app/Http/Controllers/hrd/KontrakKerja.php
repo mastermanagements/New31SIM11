@@ -31,7 +31,18 @@ class KontrakKerja extends Controller
     public function index(){
         Session::put('menu_tes','kontrak_kerja');
         $data = [
-            'kontrak_kerja'=> kontrak_kerja::where('id_perusahaan', $this->id_perusahaan)->paginate(30)
+            'kontrak_kerja'=> kontrak_kerja::where('id_perusahaan', $this->id_perusahaan)->paginate(30),
+            'karyawan'=> karyawan::all()->where('id_perusahaan', $this->id_perusahaan)
+        ];
+        return view('user.hrd.section.kontrak_kerja.page_default', $data);
+    }
+
+    public function cari(Request $req){
+        Session::put('menu_tes','kontrak_kerja');
+        $idKy = $req->id_ky;
+        $data = [
+            'kontrak_kerja'=> kontrak_kerja::where('id_ky', $idKy)->where('id_perusahaan', $this->id_perusahaan)->paginate(30),
+            'karyawan'=> karyawan::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.hrd.section.kontrak_kerja.page_default', $data);
     }
@@ -135,6 +146,73 @@ class KontrakKerja extends Controller
             return redirect('Kontrak-Kerja')->with('message_success','anda telah mengubah kontrak kerja No. '. $model->no_kontrak);
         }else{
             return redirect('Kontrak-Kerja')->with('message_fail','Maaf, telah terjadi kesalahan silahkan coba lagi');
+        }
+    }
+
+    public function upload_file(Request $req)
+    {
+
+        $this->validate($req,[
+           'idKontrak' =>'required',
+            'file_kontrak'=> 'required|file|mimes:rar,zip',
+        ]);
+
+        if(empty($model = kontrak_kerja::where('id', $req->idKontrak)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+
+
+
+        $fileKontrakKerja = $req->file_kontrak;
+
+        $name_file_ktp = time()."-kontrakKerja-.".$fileKontrakKerja->getClientOriginalExtension();
+        if(!empty($model->file_kontrak))
+        {
+            $file_path =public_path('fileKontrakKerja').'/' . $model->file_kontrak	;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+
+        $model->file_kontrak = $name_file_ktp;
+        if($model->save()){
+            $fileKontrakKerja->move(public_path('fileKontrakKerja'), $name_file_ktp);
+            return redirect('Kontrak-Kerja')->with('message_success','Anda telah meng-unggah file kontrak kerja baru');
+        }else{
+            return redirect('Kontrak-Kerja')->with('message_fail','Maaf, telah terjadi gangguan. silahkan unggah ulang file anda');
+        }
+    }
+
+    public function upload_fileTTD(Request $req)
+    {
+        $this->validate($req,[
+           'idKontrakTtd' =>'required',
+            'file_kontrakTtd'=> 'required|file|mimes:rar,zip',
+        ]);
+
+        if(empty($model = kontrak_kerja::where('id', $req->idKontrakTtd)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+
+
+
+        $fileKontrakKerja = $req->file_kontrakTtd;
+
+        $name_file_ktp = time()."-kontrakKerja-.".$fileKontrakKerja->getClientOriginalExtension();
+        if(!empty($model->scan_kontrak))
+        {
+            $file_path =public_path('fileScanKontrakkerja').'/' . $model->scan_kontrak	;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+
+        $model->scan_kontrak = $name_file_ktp;
+        if($model->save()){
+            $fileKontrakKerja->move(public_path('fileScanKontrakkerja'), $name_file_ktp);
+            return redirect('Kontrak-Kerja')->with('message_success','Anda telah meng-unggah file kontrak kerja baru');
+        }else{
+            return redirect('Kontrak-Kerja')->with('message_fail','Maaf, telah terjadi gangguan. silahkan unggah ulang file anda');
         }
     }
 }

@@ -867,6 +867,11 @@ Route::put('update-kontrak-kerja/{id}', 'hrd\KontrakKerja@update');
 
 Route::get('hapus-kontrak/{id}', 'hrd\KontrakKerja@delete');
 
+Route::post('store-updok-kontrak-kerja', 'hrd\KontrakKerja@upload_file');
+
+Route::post('store-updok-kontrak-kerja-ttd', 'hrd\KontrakKerja@upload_fileTTD');
+
+Route::post('cari-kontrak-kerja-ky', 'hrd\KontrakKerja@cari');
 
 
 Route::get('jenis-kontrak-kerja', 'hrd\JenisKontrakKerja@index');
@@ -878,6 +883,8 @@ Route::get('ubah-jenis-kontrak-kerja/{id}', 'hrd\JenisKontrakKerja@edit');
 Route::post('update-jenis-kontrak-kerja', 'hrd\JenisKontrakKerja@update');
 
 Route::put('hapus-jenis-kontrak-kerja/{id}', 'hrd\JenisKontrakKerja@delete');
+
+
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

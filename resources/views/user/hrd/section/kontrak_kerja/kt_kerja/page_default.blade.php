@@ -5,19 +5,19 @@
             <a href="{{ url('tambah-kontrak') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah Kontrak</a>
         </div>
         <div class="col-md-12" style="padding-top: 5px">
-            <form action="{{ url('cari-loker-psikotes') }}" method="post" style="width: 100%">
+            <form action="{{ url('cari-kontrak-kerja-ky') }}" method="post" style="width: 100%">
                 <div class="input-group input-group-md" >
                     {{ csrf_field() }}
-                    <select class="form-control select2" style="width: 100%;" name="id_loker" required>
-                        {{--@if(empty($lokers))--}}
-                            {{--<option>Lowongan Kerjad masih kosong</option>--}}
-                        {{--@else--}}
-                            {{--@foreach($lokers as $value)--}}
-                                {{--<option value="{{ $value->id }}">--}}
-                                    {{--{{ $value->nm_loker}}--}}
-                                {{--</option>--}}
-                            {{--@endforeach--}}
-                        {{--@endif--}}
+                    <select class="form-control select2" style="width: 100%;" name="id_ky" required>
+                        @if(empty($karyawan))
+                            <option>Karyawan masih kosong</option>
+                        @else
+                            @foreach($karyawan as $value)
+                                <option value="{{ $value->id }}">
+                                    {{ $value->nama_ky}}
+                                </option>
+                            @endforeach
+                        @endif
                     </select>
 
                       <span class="input-group-btn">
@@ -28,12 +28,6 @@
         </div>
 
         <div class="col-md-12" style="padding-top: 12px">
-            @if(!empty(session('message_success')))
-                <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
-            @elseif(!empty(session('message_fail')))
-                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
-            @endif
-            <p></p>
 
             @if(empty($kontrak_kerja))
                 <div class="col-md-4"> <h5>Data Kontra belum tersedia</h5></div>
@@ -56,9 +50,17 @@
                                     <li><a href="#">Nik <span class="pull-right ">{{ $value->karyawan->nik }}</span></a></li>
                                     <li><a href="#">No. Kontrak<span class="pull-right ">{{ $value->no_kontrak }}</span></a></li>
                                     <li><a href="#">Jenis Kontrak<span class="pull-right ">{{ $value->jenis_kontrak->jenis_kontrak }}</span></a></li>
+                                    @if(!empty($value->file_kontrak))
+                                        <li><a href="{{ asset('fileKontrakKerja/'.$value->file_kontrak) }}"> Nama Dokumen<span class="pull-right " style="color: #0b93d5">{{ $value->file_kontrak }} </span></a></li>
+                                    @endif
+                                    @if(!empty($value->scan_kontrak))
+                                        <li><a href="{{ asset('fileScanKontrakKerja/'.$value->scan_kontrak) }}">Nama Dokumen<span class="pull-right " style="color: #0b93d5">{{ $value->scan_kontrak }}</span></a></li>
+                                    @endif
                                     <li>
                                         <form style="padding: 10px 15px ">
                                             Aksi Kontrak
+                                            <a href="#" onclick="modalUnggahFileTdd('{{ $value->id }}')" title="Unggah file kontrak kerja yang telah bertanda tangan"><span class="pull-right badge bg-purple"><i class="fa fa-upload"></i></span></a>
+                                            <a href="#" onclick="modalUnggahFile('{{ $value->id }}')" title="Unggah file kontrak kerja yang belum bertanda tangan"><span class="pull-right badge bg-green"><i class="fa fa-upload"></i></span></a>
                                             <a href="{{ url('hapus-kontrak/'. $value->id) }}" onclick="return confirm('Apakah anda akan menghapus kontrak ini...?')"><span class="pull-right badge bg-orange"><i class="fa fa-trash"></i></span></a>
                                             <a href="{{ url('ubah-kontrak/'. $value->id) }}"><span class="pull-right badge bg-red"><i class="fa fa-pencil"></i></span></a>
                                         </form>
@@ -74,3 +76,5 @@
         </div>
     </div>
 </div>
+
+@include('user.hrd.section.kontrak_kerja.kt_kerja.modal.modal')

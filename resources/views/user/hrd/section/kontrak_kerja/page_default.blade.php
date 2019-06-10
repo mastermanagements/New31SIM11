@@ -55,5 +55,17 @@
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            modalUnggahFile = function(id){
+                $('input[name="idKontrak"]').val(id);
+               $('#modal-tambah-file-kontrak-kerja').modal('show');
+            }
 
+            modalUnggahFileTdd = function(id){
+                $('input[name="idKontrakTtd"]').val(id);
+               $('#modal-ubah-file-kontrak-kerja').modal('show');
+            }
+        })
+    </script>
 @stop
