@@ -50,7 +50,7 @@ class Klien extends Controller
     }
 
     public function store(Request $req)
-    {
+    { //validasi
        $this->validate($req, [
             'nm_klien' =>'required',
             'alamat' =>'required',

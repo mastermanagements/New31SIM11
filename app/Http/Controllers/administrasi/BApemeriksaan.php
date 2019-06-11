@@ -218,7 +218,7 @@ class BApemeriksaan extends Controller
 
         if($model->delete())
         {
-            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja Menghapus BAP');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja Menghapus BA Pemeriksaan');
         }else{
             return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }

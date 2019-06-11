@@ -304,6 +304,7 @@ class Surat extends Controller
             'id_ubah' => 'required',
             'status_surat'=>'required',
 			'tgl_dikirim' => 'required',
+			'tanda_terima' => 'required',
         ]);
         $id= $req->id_ubah;
         $status_surat= $req->status_surat;
