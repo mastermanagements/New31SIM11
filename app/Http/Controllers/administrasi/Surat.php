@@ -180,14 +180,23 @@ class Surat extends Controller
     {
         $this->validate($req,[
            'jenis_surat' => 'required',
+		   'no_surat_keluar' => 'required',
+		   'hal' => 'required',
+		   'ditujukan' => 'required',
            'isi_surat' => 'required',
         ]);
 
         $jenis_surat = $req->jenis_surat;
+		$no_surat_keluar = $req->no_surat_keluar;
+		$hal = $req->hal;
+		$ditujukan = $req->ditujukan;
         $isi_surat = $req->isi_surat;
 
         $model = new surat_keluar;
         $model->jenis_surat = $jenis_surat;
+		$model->no_surat_keluar = $no_surat_keluar;
+		$model->hal = $hal;
+		$model->ditujukan = $ditujukan;
         $model->isi_surat = $isi_surat;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
@@ -293,12 +302,17 @@ class Surat extends Controller
     {
         $this->validate($req,[
             'id_ubah' => 'required',
-            'status_surat'=>'required'
+            'status_surat'=>'required',
+			'tgl_dikirim' => 'required',
         ]);
         $id= $req->id_ubah;
         $status_surat= $req->status_surat;
+		$tgl_dikirim = date('Y-m-d', strtotime($req->tgl_dikirim));
+		
         $model = surat_keluar::findOrFail($id);
         $model->status_surat = $status_surat;
+		$model->tgl_dikirim = $tgl_dikirim;
+		
         if($model->save())
         {
            return redirect('Surat')->with('message_success','Anda baru saja meng-unggah file surat keluar');

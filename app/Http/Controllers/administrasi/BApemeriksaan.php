@@ -122,9 +122,9 @@ class BApemeriksaan extends Controller
         $model->id_karyawan= $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAP');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAP');
         }else{
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }
     }
 
@@ -183,9 +183,9 @@ class BApemeriksaan extends Controller
         $model->id_karyawan= $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAP');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAP');
         }else{
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }
     }
 
@@ -218,9 +218,9 @@ class BApemeriksaan extends Controller
 
         if($model->delete())
         {
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja Menghapus BAP');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja Menghapus BAP');
         }else{
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }
     }
 

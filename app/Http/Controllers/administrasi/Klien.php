@@ -55,10 +55,7 @@ class Klien extends Controller
             'nm_klien' =>'required',
             'alamat' =>'required',
             'pekerjaan' =>'required',
-            'hp' =>'required',
-            'nm_perusahaan' =>'required',
-            'alamat_perusahaan' =>'required',
-            'telp_perusahaan' =>'required',
+            'hp' =>'required'
         ]);
 
         $nm_klien = $req->nm_klien;
@@ -123,10 +120,7 @@ class Klien extends Controller
             'nm_klien' =>'required',
             'alamat' =>'required',
             'pekerjaan' =>'required',
-            'hp' =>'required',
-            'nm_perusahaan' =>'required',
-            'alamat_perusahaan' =>'required',
-            'telp_perusahaan' =>'required',
+            'hp' =>'required'
         ]);
 
         $nm_klien = $req->nm_klien;
