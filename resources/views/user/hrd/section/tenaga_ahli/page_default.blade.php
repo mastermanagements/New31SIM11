@@ -31,10 +31,10 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body" style="">
-                            <form action="{{ url('cari-karyawan') }}" method="post">
+                            <form action="{{ url('cari-sertifikasi-karyawan') }}" method="post">
                                 <div class="input-group input-group-sm">
                                     {{ csrf_field() }}
-                                    <input type="text" name="nm_ky" class="form-control" placeholder="cari berdasarkan nama klien" required>
+                                    <input type="text" name="nm_ky" class="form-control" placeholder="cari berdasarkan karyawan" required>
                                     <span class="input-group-btn">
                                     <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
                                 </span>
@@ -77,7 +77,7 @@
                                         <li>
                                             <form style="padding: 10px 15px ">
                                                 Daftar Sertifikasi
-                                                <a href="{{ url('daftar-sertifikasi/'. $value->id) }}"><span class="pull-right badge bg-red"><i class="fa fa-list"></i></span></a>
+                                                <a href="{{ url('daftar-sertifikasi/'. $value->id) }}"><span class="pull-right badge bg-red"><i class="fa fa-list"></i> {{ $value->getSertifikasi->sum('id') }} </span></a>
                                             </form>
                                         </li>
                                     </ul>

@@ -17,7 +17,7 @@
               -------------------------->
             <div class="row">
 
-                <div class="col-md-4">
+                <div class="col-md-3">
 
                     <!-- Profile Image -->
                     <div class="box box-primary">
@@ -77,12 +77,14 @@
                     <!-- /.box -->
 
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
+
+
                     <div class="box box-primary ">
                         <div class="box-header with-border">
                             <h3 class="box-title">Daftar Sertifikasi</h3>
                             <div class="box-tools pull-right">
-                                <a href="{{ url('tambah-karyawan') }}" class="btn btn-box-tool" ><i class="fa fa-user-plus"></i>
+                                <a href="{{ url('tambah-sertifikasi/'. $data_profil_karyawan->id) }}" class="btn btn-box-tool" style="color: deepskyblue"><i class="fa  fa-plus"></i>
                                 </a>
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                 </button>
@@ -90,27 +92,55 @@
                             <!-- /.box-tools -->
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body" style="">
+                        <div class="box-body" style="overflow-y: scroll; height:100%;">
+                            @if(!empty(session('message_success')))
+                                <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+                            @elseif(!empty(session('message_fail')))
+                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+                            @endif
+                            <p></p>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade</th>
+                                    <th>No</th>
+                                    <th>Lembaga Serfitikasi</th>
+                                    <th>No Sertifikasi</th>
+                                    <th>No Registrasi</th>
+                                    <th>Klasifikasi</th>
+                                    <th>Ditetapkan</th>
+                                    <th>Tanggal Penetapan</th>
+                                    <th>Masa Berlaku</th>
+                                    <th>Asosiasi</th>
+                                    <th>No Anggota</th>
+                                    <th>Posisi Proyek</th>
+                                    <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @php($i=1)
+                                @foreach($sertifikasi as $value)
                                 <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 4.0
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $value->lembaga_sertifikasi }}</td>
+                                    <td>{{ $value->no_sertifikat }}</td>
+                                    <td>{{ $value->no_registrasi }}</td>
+                                    <td>{{ $value->klasifikasi }}</td>
+                                    <td>{{ $value->ditetapkan }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($value->tgl_penetapan)) }}</td>
+                                    <td>{{ $value->masa_berlaku }}</td>
+                                    <td>{{ $value->asosiosi }}</td>
+                                    <td>{{ $value->no_anggota }}</td>
+                                    <td>{{ $value->posisi_proyek }}</td>
+                                    <td>
+                                        <form action="{{ url('hapus-sertifikasi/'.$value->id) }}" method="post">
+                                            <a href="{{ url('ubah-sertifikasi/'. $value->id) }}" class="btn btn-warning">Ubah</a>
+                                            <input type="hidden" value="put" name="_method">
+                                            {{ csrf_field() }}
+                                            <button type="submit" onclick="return confirm('apakah anda akan menghapus data ini...?')" class="btn btn-danger">Hapus</button>
+                                        </form>
                                     </td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>X</td>
                                 </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

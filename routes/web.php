@@ -886,7 +886,19 @@ Route::put('hapus-jenis-kontrak-kerja/{id}', 'hrd\JenisKontrakKerja@delete');
 
 Route::get('Tenaga-ahli', 'hrd\TenagaKerja@index');
 
+Route::post('cari-sertifikasi-karyawan', 'hrd\TenagaKerja@show');
+
 Route::get('daftar-sertifikasi/{id}','hrd\TenagaKerja@daftarSertifikasi');
+
+Route::get('tambah-sertifikasi/{id_user}','hrd\TenagaKerja@create');
+
+Route::post('store-sertifikasi','hrd\TenagaKerja@store');
+
+Route::get('ubah-sertifikasi/{id_sertifikasi}', 'hrd\TenagaKerja@edit');
+
+Route::put('update-sertifikasi/{id_sertifikasi}', 'hrd\TenagaKerja@update');
+
+Route::put('hapus-sertifikasi/{id_sertifikasi}', 'hrd\TenagaKerja@delete');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
