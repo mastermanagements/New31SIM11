@@ -129,7 +129,7 @@ class BApemeriksaan extends Controller
     }
 
     public function proses_Update(Request $req, $id)
-    {
+    { //validasi
         $this->validate($req,[
             'isi_bapem'=> 'required',
             'id_spk'=> 'required'
@@ -173,8 +173,6 @@ class BApemeriksaan extends Controller
         }else{
             $name_files_scan = "";
         }
-
-
         $model->id_spk= $id_spk;
         $model->isi_bapem= $isi_bapem;
         $model->file_bapem= $name_files;
