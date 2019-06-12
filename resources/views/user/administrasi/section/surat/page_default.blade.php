@@ -87,18 +87,24 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Jenis Surat</th>
-                                    <th>Isi Surat</th>
+                                    <th>No Surat</th>
+									<th>Perihal</th>
+									<th>Ditujukan Kepada</th>
                                     <th>Status Surat</th>
+									<th>Tanggal Dikirim</th>
                                     <th>Nama File </th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+								@php($a=1)
                                 @foreach($surat_keluar as $value)
                                     <tr>
-                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $a++ }}</td>
                                         <td>{{ $value->getJenisSurat->jenis_surat_keluar }}</td>
-                                        <td>{!! $value->isi_surat !!}</td>
+                                        <td>{{ $value->no_surat_keluar }}</td>
+										<td>{{ $value->hal }}</td>
+										<td>{{ $value->ditujukan }}</td>
                                         <td>
                                             <a href="#" onclick="ubahStatusSurat('{{ $value->id }}')">
                                                 @if($value->status_surat==0)
@@ -108,6 +114,7 @@
                                                 @endif
                                             </a>
                                         </td>
+										<td>{{ date('d-m-Y', strtotime($value->tgl_dikirim))}} </td>
                                         <td style="width: 5%;">
                                             @if(empty($value->scan_file))
                                                 <button class="btn btn-primary" onclick="uploadSurat('{{ $value->id }}');"><i class="fa fa-upload"></i> file belum tersedia</button>
