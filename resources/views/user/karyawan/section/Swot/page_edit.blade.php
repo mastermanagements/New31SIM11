@@ -34,19 +34,20 @@
                         <form role="form" action="{{ url('update-swot/'. $data_swot->id) }}" method="post">
                             <div class="box-body">
 								<div class="form-group">
-									<label for="exampleInputEmail1">Tahun</label>
-									<input type="text" min="1" max="4" name="tahun_swot" class="form-control" id="exampleInputEmail1" value="{{ $data_swot->kategori_swot}}" required>
-									<small style="color: red">* Tidak Boleh Kosong</small>
+									<label for="exampleInputEmail1">Pilih Tahun SWOT</label>
+									<select class="form-control select2" style="width: 100%;" name="tahun_swot" required>
+										<option disabled>Pilih </option>
+										@foreach(Tahun() as $tahun)
+										   <option value="{{ $tahun }}" @if($data_swot->tahun_swot == $tahun) selected @endif>
+											   {{ $tahun }}
+										   </option>
+										@endforeach
+									</select>
+									<small style="color: red" id="notify"></small>
 								</div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Pilih Kategori SWOT</label> &nbsp;
-										
-                                        <label>
-										
-                                            <input type="radio" name="kategori_swot" class="minimal" value="{{ $data_swot->kategori_swot}}" checked>
-                                        </label>
-                                    
-									
+                                    <label for="exampleInputEmail1">Kategori SWOT</label> &nbsp;
+                                        <input type="text"  name="kategori_swot" class="form-control" id="exampleInputEmail1"  disabled value="{{ $data_swot->kategori_swot }}" required>
                                     <small style="color: red" id="notify"></small>
                                 </div>
 								<div class="form-group">

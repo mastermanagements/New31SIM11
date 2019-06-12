@@ -56,7 +56,8 @@
 								@endif	
 							</ul>
 						</div>
-                </div>
+					</div>
+				</div>
 				@foreach($tjp->getTargetTahunan->groupBy('tahun') as $tahune =>$values)
 				<div class="col-md-11">
                     <div class="box box-success">
@@ -71,13 +72,16 @@
 							<div class="col-md-10">
 								<div class="box box-default collapsed-box">
 									<div class="box-header with-border">
-										  <h4 class="box-title"><b>Departemen</b> : {{ $Ttahunan->getBagian->nm_bagian }}, &nbsp; <b>Divisi</b> : {{ $Ttahunan->getDivisi->nm_devisi }}, &nbsp; <b>Jabatan</b> : {{ $Ttahunan->getJabatan->nm_jabatan }}
+										  <h4 class="box-title">
+											  <b>Departemen</b> : {{ $Ttahunan->getBagian->nm_bagian }}, &nbsp; 
+											  <b>Divisi</b> : {{ $Ttahunan->getDivisi->nm_devisi }}, &nbsp; 
+											  <b>Jabatan</b> : {{ $Ttahunan->getJabatan->nm_jabatan }}
 										  </h4>
-										@if ((!empty($Ttahunan->id)) && (!empty($tjp->getSJP->id)))
-										<div class="box-tools pull-right">
-											<button type="button" class="btn btn-box-tool" onclick="tambahStahunan('{{ $tjp->getSJP->id }}','{{ $Ttahunan->id }}' )" title="tambah Strategi Tahunan"><i class="fa fa-plus"></i></button> 	
-											<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="buka tutup isi"></i></button>   
-										</div>
+										@if ((!empty($tjp->getSJP->id)) && (!empty($Ttahunan->id)))
+											<div class="box-tools pull-right">
+												<button type="button" class="btn btn-box-tool" onclick="tambahStahunan('{{ $tjp->getSJP->id }}','{{ $Ttahunan->id }}' )" title="tambah Strategi Tahunan"><i class="fa fa-plus"></i></button> 	
+												<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="buka tutup isi"></i></button>   
+											</div>
 										@endif
 									</div>
 									<div class="box-body">
@@ -103,22 +107,26 @@
 									<h4 class="box-title">
 									{{ $bulan->bulan}}
 									</h4>
-										@if ((!empty($bulan->id)) && ($Ttahunan->getStrategiTahunan->id))
+										@if ((!empty ($Ttahunan->getStrategiTahunan->id) && ($bulan->id)))
 										<div class="box-tools pull-right">
 											<button type="button" class="btn btn-box-tool" onclick="tambahSbulanan('{{ $bulan->id }}','{{ $Ttahunan->getStrategiTahunan->id }}' )" title="tambah Strategi Bulanan"><i class="fa fa-plus"></i></button> <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="buka tutup isi"></i></button>				
 										</div>
 										@endif	
 									</div>
 									<div class="box-body">
-									<ul>
-										<a href="#" onclick="hapusSbulanan({{ $bulan->id }})" class="pull-right" title="hapus strategi bulanan" style="padding-left: 1%"><i class="fa fa-trash"></i></a> 
-										<a href="#" onclick="ubahSbulanan({{ $bulan->id }})" class="pull-right" title="ubah strategi bulanan"><i class="fa fa-pencil"></i>  </a> </li>
-										<h4 class="box-title">
-										@if(!empty($bulan->getStrategiBulanan->isi_sbulanan))
-										{!! $bulan->getStrategiBulanan->isi_sbulanan !!}
-										@endif
+										<ul>
+											<a href="#" onclick="hapusSbulanan({{ $bulan->id }})" class="pull-right" title="hapus strategi bulanan" style="padding-left: 1%">
+											<i class="fa fa-trash"></i></a> 
+										
+											<a href="#" onclick="ubahSbulanan({{ $bulan->id }})" class="pull-right" title="ubah strategi bulanan">
+											<i class="fa fa-pencil"></i>  </a> </li>
+											<h4 class="box-title">
+										
+											@if(!empty($bulan->getStrategiBulanan->isi_sbulanan))
+												{!! $bulan->getStrategiBulanan->isi_sbulanan !!}
+											@endif
 										</h4>
-									</ul>
+										</ul>
 									</div>
 								</div>
 								<!-- /.box -->
@@ -129,10 +137,12 @@
 					@endforeach
 				@endforeach
 			@endforeach
+		</div>
     </section>
+</div>
     <!-- /.content -->
 	@include('user.karyawan.section.StrategiPerusahaan.include.modal')
-</div>
+	
 @stop
 @section('plugins')
 

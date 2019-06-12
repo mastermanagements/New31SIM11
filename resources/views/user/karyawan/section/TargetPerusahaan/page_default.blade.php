@@ -59,7 +59,7 @@
 								title="Ubah target jangka panjang"><i class="fa fa-pencil"></i>  </a> </li>
 								<h4 class="box-title">
 									<p><h5><b>Mulai {{ $tjp->thn_mulai }} - {{ $tjp->thn_selesai }} </b> </h5></p>
-										{!! $tjp->isi_tjp !!}
+											{!! $tjp->isi_tjp !!}
 								</h4>	
 							</ul>
 							</div>
@@ -81,7 +81,10 @@
 							<div class="col-md-10">
 								<div class="box box-default collapsed-box">
 									<div class="box-header with-border">
-										<h4 class="box-title"><b>Departemen</b> : {{ $Ttahunan->getBagian->nm_bagian }}, &nbsp; <b>Divisi</b> : {{ $Ttahunan->getDivisi->nm_devisi }}, &nbsp; <b>Jabatan</b> : {{ $Ttahunan->getJabatan->nm_jabatan }}
+										<h4 class="box-title">
+											<b>Departemen</b> : {{ $Ttahunan->getBagian->nm_bagian }}, &nbsp; 
+											<b>Divisi</b> : {{ $Ttahunan->getDivisi->nm_devisi }}, &nbsp; 
+											<b>Jabatan</b> : {{ $Ttahunan->getJabatan->nm_jabatan }}
 										</h4>
 										<div class="box-tools pull-right">
 											<button type="button" class="btn btn-box-tool" onclick="tambahTbulanan({{ $Ttahunan->id }})" title="Tambah Target Bulanan"><i class="fa fa-plus"></i></button> 

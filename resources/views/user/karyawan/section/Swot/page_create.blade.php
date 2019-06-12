@@ -36,12 +36,18 @@
                     <form role="form" action="{{ url('store-swot') }}" method="post">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tahun</label>
-                                <input type="number" min="1992" max="2099" name="tahun_swot" class="form-control" id="exampleInputEmail1" placeholder="Contoh: 2019" required>
+                                <label for="exampleInputEmail1">Pilih Tahun</label>
+									<select class="form-control select2" style="width: 100%;" name="tahun_swot" required>
+										<option>Tahun</option>
+                                        @foreach(Tahun() as $tahun)
+                                            <option value="{{ $tahun }}">{{ $tahun }}</option>
+                                        @endforeach
+                 
+									</select>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Jenis SWOT</label>
+                                <label for="exampleInputEmail1">Kategori SWOT</label>
                                 <div class="form-group">
                                     @foreach($jenis_swot as $value)
                                         <label>
