@@ -900,6 +900,34 @@ Route::put('update-sertifikasi/{id_sertifikasi}', 'hrd\TenagaKerja@update');
 
 Route::put('hapus-sertifikasi/{id_sertifikasi}', 'hrd\TenagaKerja@delete');
 
+Route::get('Periode-Kerja','hrd\PeriodeKerja@index');
+
+Route::get('tambah-periode-kerja','hrd\PeriodeKerja@create');
+
+Route::post('store-periode-kerja','hrd\PeriodeKerja@store');
+
+Route::get('ubah-periode-kerja/{id}','hrd\PeriodeKerja@edit');
+
+Route::put('update-periode-kerja/{id}','hrd\PeriodeKerja@update');
+
+Route::put('hapus-periode-kerja/{id}','hrd\PeriodeKerja@delete');
+
+Route::get('Kelender-Kerja','hrd\KalenderKerja@index');
+
+Route::get('daftar-event-kalender', 'hrd\KalenderKerja@daftarEvent');
+
+Route::get('tambah-aktifitas', 'hrd\KalenderKerja@create');
+
+Route::post('store-kalender-kerja','hrd\KalenderKerja@store');
+
+Route::get('ubah-kalender-kerja/{id}', 'hrd\KalenderKerja@edit');
+
+Route::put('update-kalender-kerja/{id}','hrd\KalenderKerja@update');
+
+Route::put('hapus-kalender-kerja/{id}','hrd\KalenderKerja@delete');
+
+Route::get('get-event-calender','hrd\KalenderKerja@getEventKalender');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

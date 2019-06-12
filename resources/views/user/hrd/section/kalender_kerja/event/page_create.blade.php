@@ -15,7 +15,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Periode Kerja
+            Kalender Kerja
         </h1>
     </section>
 
@@ -29,52 +29,39 @@
             <div class="col-md-8">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Periode Kerja</h3>
+                        <h3 class="box-title">Formulir Kalender Kerja</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-periode-kerja') }}" method="post" enctype="multipart/form-data">
+                    <form role="form" action="{{ url('store-kalender-kerja') }}" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nama Karyawan</label>
-                                <select class="form-control select2" style="width: 100%;" name="id_ky" required>
-                                    @if(empty($data_karyawan))
-                                        <option>Data Karyawan Masih Kosong</option>
-                                    @else
-                                        @foreach($data_karyawan as $value)
-                                            <option value="{{ $value->id }}">{{ $value->nama_ky }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Tanggal Masuk </label>
+                                <label>Tanggal Mulai </label>
                                 <div class="input-group date">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal Mulai Kerja" name="mulai_kerja" required>
+                                    <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal Mulai Kerja" name="tgl_mulai" required>
                                 </div>
                                 <!-- /.input group -->
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
 
                             <div class="form-group">
-                                <label>Tanggal Selesai </label>
+                                <label>Tanggal Akhir </label>
                                 <div class="input-group date">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control pull-right" id="datepicker1" placeholder="Tanggal Selesai Kerja" name="selesai_kerja" required>
+                                    <input type="text" class="form-control pull-right" id="datepicker1" placeholder="Tanggal Selesai Kerja" name="tgl_akhir" required>
                                 </div>
                                 <!-- /.input group -->
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1"> Alasan Selesai</label>
-                                <textarea id="alasan" class="form-control" name="alasan_selesai"></textarea>
+                                <label for="exampleInputEmail1"> Even </label>
+                                <textarea id="alasan" class="form-control" name="event"></textarea>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
 
@@ -110,9 +97,7 @@
             format: 'dd-mm-yyyy'
         });
 
-        CKEDITOR.replace('alasan', {
-            height: 150
-        });
+
 
        $('#datepicker1').datepicker({
                 autoclose: true,

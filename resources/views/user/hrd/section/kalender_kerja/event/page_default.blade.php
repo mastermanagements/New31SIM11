@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Periode Kerja
+            Kalender Kerja
         </h1>
     </section>
 
@@ -15,7 +15,7 @@
         <!--------------------------
           | Your Page Content Here |
           -------------------------->
-        <a href="{{ url('tambah-periode-kerja') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Masukan Periode Kerja</a>
+        <a href="{{ url('tambah-aktifitas') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambahkan Aktifitas</a>
         <p></p>
         <div class="row">
 
@@ -23,7 +23,7 @@
                         <!-- general form elements -->
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Daftar Periode Kerja</h3>
+                                <h3 class="box-title">Daftar Aktifitas</h3>
                             </div>
 
                             <div class="box-body">
@@ -36,25 +36,23 @@
                                     <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>Nama Keryawan</th>
-                                        <th>Tanggal Mulai Kerja</th>
-                                        <th>Tanggal Selesai Kerja</th>
-                                        <th>Alasan Selesai</th>
+                                        <th>Event</th>
+                                        <th>Tanggal Mulai</th>
+                                        <th>Tanggal Berakhir</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @php($i=1)
-                                    @foreach($data_periode as $values)
+                                    @foreach($event as $values)
                                         <tr>
                                             <th>{{ $i++ }}</th>
-                                            <td>{{ $values->karyawan->nama_ky }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($values->mulai_kerja) ) }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($values->selesai_kerja) ) }}</td>
-                                            <td>{!! $values->alasan_selesai !!}</td>
+                                            <td>{{ $values->event }} </td>
+                                            <td>{{ date('d-m-Y', strtotime($values->tgl_mulai) ) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($values->tgl_akhir) ) }}</td>
                                             <td>
-                                                <form method="post" action="{{ url('hapus-periode-kerja/'.$values->id) }}">
-                                                    <a href="{{ url('ubah-periode-kerja/'.$values->id) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                <form method="post" action="{{ url('hapus-kalender-kerja/'.$values->id) }}">
+                                                    <a href="{{ url('ubah-kalender-kerja/'.$values->id) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                                                     <input type="hidden" name="_method" value="put">
                                                     {{ csrf_field() }}
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...')"><i class="fa fa-eraser"></i></button>
