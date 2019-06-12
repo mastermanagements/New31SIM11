@@ -9,7 +9,7 @@ class SuratKeluar extends Model
     //
     protected $table = "a_surat_keluar";
 
-    protected $fillable = ['jenis_surat','isi_surat','status_surat','scan_file','id_perusahaan','id_karyawan'];
+    protected $fillable = ['jenis_surat','no_surat_keluar','hal','ditujukan','isi_surat','status_surat','tgl_dikirim','scan_file','id_perusahaan','id_karyawan'];
 
     public function getJenisSurat()
     {
