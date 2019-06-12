@@ -46,7 +46,7 @@
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Sub Ketegori Jasa</label>
+                                <label for="exampleInputEmail1">Sub Ketegori Barang</label>
                                 <select class="form-control select2" style="width: 100%;" name="id_subkategori_produk" required>
                                     <option value="0">Kategori Belum dipilih</option>
                                 </select>
