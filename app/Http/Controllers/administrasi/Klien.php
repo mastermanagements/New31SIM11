@@ -57,7 +57,6 @@ class Klien extends Controller
             'pekerjaan' =>'required',
             'hp' =>'required'
         ]);
-
         $nm_klien = $req->nm_klien;
         $alamat = $req->alamat;
         $pekerjaan = $req->pekerjaan;

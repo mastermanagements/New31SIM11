@@ -299,7 +299,7 @@ class Surat extends Controller
     }
 
     public function upload_status_surat_keluar(Request $req)
-    {
+    { //validasi
         $this->validate($req,[
             'id_ubah' => 'required',
             'status_surat'=>'required',

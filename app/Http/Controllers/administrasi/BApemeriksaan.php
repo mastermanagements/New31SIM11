@@ -181,6 +181,7 @@ class BApemeriksaan extends Controller
         $model->id_karyawan= $this->id_karyawan;
         if($model->save())
         {
+			//perbaiki link redirect
             return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BA Pemeriksaan');
         }else{
             return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
