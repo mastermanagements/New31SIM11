@@ -43,7 +43,7 @@ class JobDecs extends Controller
 
         return view('user.karyawan.section.JobDecs.page_create', $data_jab);
     }
-
+	//direvisi
      public function store(Request $req)
     {
        $this->validate($req,[

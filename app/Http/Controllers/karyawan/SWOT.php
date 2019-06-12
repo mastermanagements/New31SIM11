@@ -27,7 +27,7 @@ class SWOT extends Controller
            return $next($req);
         });
     }
-
+	//di revisi
     public function index()
     {
         $data_SWOT = [
