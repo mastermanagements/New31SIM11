@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelationKRencanaPendBarang extends Migration
+class CreateRelationKRencanaPendJasa extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRelationKRencanaPendBarang extends Migration
      */
     public function up()
     {
-        Schema::table('k_rencana_pend_barang', function (Blueprint $table) {
+        Schema::table('k_rencana_pend_jasa', function (Blueprint $table) {
             $table->foreign('id_rab')->references('id')->on('k_rab');
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
@@ -27,8 +27,7 @@ class CreateRelationKRencanaPendBarang extends Migration
      */
     public function down()
     {
-            Schema::table('k_rencana_pend_barang', function (Blueprint $table) {
-            //
-        });
+        Schema::table('k_rencana_pend_jasa', function (Blueprint $table) {
+		 });
     }
 }
