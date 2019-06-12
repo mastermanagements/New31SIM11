@@ -46,7 +46,6 @@ class LoginController extends Controller
             $req->session()->put('nm_ky', $model_ky->nama_ky);
             $req->session()->put('id_perusahaan_karyawan', $model_ky->id_perusahaan);
             $req->session()->put('id_superadmin_karyawan', $model_ky->id_user_ukm);
-
             return redirect('welcome-page')->with('success_login','Selamat Datang '.$model_ky->nama_ky);
         }else{
             return redirect('login-karyawan')->with('fail_login','Nama karyawan atau password anda salah...!');

@@ -39,6 +39,11 @@
                                <input type="text" class="form-control" placeholder="Masukan Nama Usaha Anda" name="nm_usaha" required>
                                <small style="color: red">* Tidak boleh kosong</small>
                            </div>
+                               <div class="form-group">
+                               <label for="exampleInputEmail1">Singkatan Usaha</label>
+                               <input type="text" class="form-control" placeholder="Masukan Singkatan Usaha Anda" name="singkatan_usaha" required>
+                               <small style="color: red">* Tidak boleh kosong</small>
+                           </div>
                            <div class="form-group">
                                <label for="exampleInputPassword1">Alamat</label>
                                <textarea class="form-control" placeholder="Masukan alaman usaha anda" name="alamat" required></textarea>

@@ -63,6 +63,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- DataTables -->
 <script src="{{ @asset('component/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ @asset('component/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+
+<!-- SlimScroll -->
+<script src=" {{ @asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }} "></script>
 @yield('plugins')
 <!-- AdminLTE App -->
 <script src="{{ asset('component/dist/js/adminlte.min.js') }}"></script>

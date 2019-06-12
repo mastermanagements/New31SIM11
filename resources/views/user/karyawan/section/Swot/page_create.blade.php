@@ -48,10 +48,12 @@
                                             <input type="radio"  name="kategori_swot" class="minimal" value="{{ $value}}" required>
                                             {{ $value}}
                                         </label>
+                                        <br>
                                     @endforeach
                                     <p></p>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                              </div>
+                            </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Isi (SWOT) anda</label>
                                     <textarea class="form-control" placeholder="Masukan SWOT usaha anda" name="isi" id="isi" required>
