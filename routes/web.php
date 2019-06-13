@@ -928,6 +928,27 @@ Route::put('hapus-kalender-kerja/{id}','hrd\KalenderKerja@delete');
 
 Route::get('get-event-calender','hrd\KalenderKerja@getEventKalender');
 
+Route::get('Cuti', 'hrd\Cuti@index');
+
+Route::get('tambah-pengaturan-cuti','hrd\PengaturanCuti@create');
+
+Route::post('store-pengaturan-cuti','hrd\PengaturanCuti@store');
+
+Route::get('ubah-pengaturan-cuti/{id}','hrd\PengaturanCuti@edit');
+
+Route::put('update-pengaturan-cuti/{id}','hrd\PengaturanCuti@update');
+
+Route::put('hapus-pengaturan-cuti/{id}','hrd\PengaturanCuti@delete');
+
+Route::get('tambah-cuti','hrd\Cuti@create');
+
+Route::post('store-cuti','hrd\Cuti@store');
+
+Route::get('ubah-cuti/{id}','hrd\Cuti@edit');
+
+Route::put('update-cuti/{id}','hrd\Cuti@update');
+
+Route::put('hapus-cuti/{id}','hrd\Cuti@delete');
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
