@@ -33,7 +33,9 @@
                         <li @if(Session::get('menu_tes')=='psikotes')  class="active" @endif><a href="{{ url('Tes') }}" ><i class="fa fa-book"></i> Psikotes </a></li>
                         <li @if(Session::get('menu_tes')=='wawancara')  class="active" @endif><a href="{{ url('Wawancara') }}" ><i class="fa fa-book"></i> Wawancara </a></li>
                         <li @if(Session::get('menu_tes')=='keahlian')  class="active" @endif><a href="{{ url('Keahlian') }}" ><i class="fa fa-book"></i> Keahlian </a></li>
+
                         <li @if(Session::get('menu_tes')=='hasil')  class="active" @endif><a href="{{ url('Hasil-tes') }}" ><i class="fa fa-book"></i> Hasil Tes </a></li>
+
                     </ul>
                     <div class="tab-content">
                         @if(Session::get('menu_tes')=='psikotes')
@@ -42,8 +44,10 @@
                             @include('user.hrd.section.tes.keahlian.page_default')
                         @elseif(Session::get('menu_tes')=='wawancara')
                             @include('user.hrd.section.tes.wawancara.page_default')
+
                         @elseif(Session::get('menu_tes')=='hasil')
                             @include('user.hrd.section.tes.hasil.page_default')
+
                         @endif
                     </div>
                     <!-- /.tab-content -->

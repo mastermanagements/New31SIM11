@@ -68,7 +68,7 @@ class UsahaController extends Controller
         $model->singkatan_usaha =  $singkatan_usaha;
         $model->alamat =  $alamat;
         $model->id_prov =  $id_provinsi;
-        $model->id_prov =  $id_provinsi;
+        //$model->id_prov =  $id_provinsi;
         $model->id_kab =  $id_kabupaten;
         $model->kode_pos =  $kd_pos;
         $model->telp =  $telp;

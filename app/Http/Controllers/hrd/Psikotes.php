@@ -4,8 +4,10 @@ namespace App\Http\Controllers\hrd;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use Session;
 use App\Model\Hrd\H_psikotes as psikotess;
+
 class Psikotes extends Controller
 {
     private $id_karyawan;
@@ -24,6 +26,7 @@ class Psikotes extends Controller
             return $next($req);
         });
     }
+
 
     public function store(Request $req){
         $this->validate($req, [
@@ -58,4 +61,5 @@ class Psikotes extends Controller
         }
 
     }
+
 }

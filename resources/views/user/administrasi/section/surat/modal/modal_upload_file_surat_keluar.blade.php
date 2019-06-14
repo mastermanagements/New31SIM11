@@ -54,7 +54,19 @@
                             <small style="color: red">* Tidak Boleh Kosong</small>
                         </div>
                     </div>
+					<div class="form-group">
+                                <label>Tanggal surat dikirim</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal surat dikirim" name="tgl_dikirim" required>
+                                </div>
+                                <!-- /.input group -->
+                                <small style="color: red">* Tidak boleh kosong</small>
+                            </div>
                 </div>
+				
                 <div class="modal-footer">
                     {{ csrf_field() }}
                     <input type="hidden" name="id_ubah">

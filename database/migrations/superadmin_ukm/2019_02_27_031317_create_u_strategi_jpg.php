@@ -15,8 +15,8 @@ class CreateUStrategiJpg extends Migration
     {
         Schema::create('u_strategi_jpg', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('periode');
-            $table->text('isi_sjpg');
+            $table->integer('id_tjp')->unsigned();
+            $table->text('isi_sjp');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();

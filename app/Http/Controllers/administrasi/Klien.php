@@ -50,17 +50,13 @@ class Klien extends Controller
     }
 
     public function store(Request $req)
-    {
+    { //validasi
        $this->validate($req, [
             'nm_klien' =>'required',
             'alamat' =>'required',
             'pekerjaan' =>'required',
-            'hp' =>'required',
-            'nm_perusahaan' =>'required',
-            'alamat_perusahaan' =>'required',
-            'telp_perusahaan' =>'required',
+            'hp' =>'required'
         ]);
-
         $nm_klien = $req->nm_klien;
         $alamat = $req->alamat;
         $pekerjaan = $req->pekerjaan;
@@ -123,10 +119,7 @@ class Klien extends Controller
             'nm_klien' =>'required',
             'alamat' =>'required',
             'pekerjaan' =>'required',
-            'hp' =>'required',
-            'nm_perusahaan' =>'required',
-            'alamat_perusahaan' =>'required',
-            'telp_perusahaan' =>'required',
+            'hp' =>'required'
         ]);
 
         $nm_klien = $req->nm_klien;

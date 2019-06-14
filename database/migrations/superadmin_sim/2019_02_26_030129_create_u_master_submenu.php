@@ -17,6 +17,7 @@ class CreateUMasterSubmenu extends Migration
             $table->increments('id');
             $table->integer('id_master_menu')->unsigned();
             $table->string('nm_submenu');
+			$table->string('url');
             $table->timestamps();
         });
     }

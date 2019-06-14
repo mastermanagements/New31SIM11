@@ -10,5 +10,5 @@ class SWOT extends Model
 
     protected $table="u_swot";
 
-    protected $fillable=["tahun_swot","kategori_swot","Isi","id_perusahaan","id_karyawan"];
+    protected $fillable=["tahun_swot","kategori_swot","isi","id_perusahaan","id_karyawan"];
 }

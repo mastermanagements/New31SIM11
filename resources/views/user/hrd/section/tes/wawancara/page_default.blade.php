@@ -4,6 +4,7 @@
             <label style="font-size: 23px">Wawancara</label>
             <a href="{{ url('item-wawancara') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Item Wawancara</a>
         </div>
+
         <div class="col-md-12" style="padding-top: 5px">
             <form action="{{ url('cari-loker-wawancara') }}" method="post" style="width: 100%">
                 <div class="input-group input-group-md" >
@@ -78,5 +79,6 @@
             @endforeach
             {{ $loker->links() }}
         </div>
+
     </div>
 </div>

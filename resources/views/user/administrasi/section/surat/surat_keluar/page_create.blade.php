@@ -44,13 +44,26 @@
                                     @endif
                                 </select>
                             </div>
-
+							<div class="form-group">
+                                <label for="exampleInputEmail1">No Surat </label>
+                                <input type="text" name="no_surat_keluar" class="form-control" id="exampleInputEmail1" required>
+                                <small style="color: red">* Tidak Boleh Kosong</small>
+                            </div>
+							<div class="form-group">
+                                <label for="exampleInputEmail1">Hal </label>
+                                <input type="text" name="hal" class="form-control" id="exampleInputEmail1" required>
+                                <small style="color: red">* Tidak Boleh Kosong</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Ditujukan Ke </label>
+                                <input type="text" name="ditujukan" class="form-control" id="exampleInputEmail1" required>
+                                <small style="color: red">* Tidak Boleh Kosong</small>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Isi Surat </label>
                                 <textarea name="isi_surat" class="form-control" id="isi_surat" required></textarea>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
-
                         </div>
                         <!-- /.box-body -->
 

@@ -19,5 +19,4 @@ class H_loker extends Model
         return $this->hasMany('App\Model\Hrd\H_psikotes','id_lamaran_p');
     }
 
-   
 }

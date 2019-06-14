@@ -174,7 +174,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
-
+		App\Providers\BulanServiceProvider::class,
+		App\Providers\TahunServiceProvider::class,
     ],
 
     /*
@@ -223,7 +224,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+		'Bulan' => App\Http\Helpers\Bulan::class,
+		'Tahun' => App\Http\Helpers\Tahun::class,
     ],
 
 ];

@@ -4,6 +4,7 @@
             <label style="font-size: 23px">Psikotes</label>
             <a href="{{ url('jenis-psikotes') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Jenis Psikotes</a>
         </div>
+
         <div class="col-md-12" style="padding-top: 5px">
             <form action="{{ url('cari-loker-psikotes') }}" method="post" style="width: 100%">
                 <div class="input-group input-group-md" >
@@ -28,11 +29,19 @@
         </div>
 
         <div class="col-md-12" style="padding-top: 12px">
+
+        <div class="col-md-12">
+            <h4>untuk Searching</h4>
+
             @foreach($loker as $lokers)
                 @php($i=1)
             <div class="box">
                 <div class="box-header">
+
                     <h3 class="box-title" style="color: #0b93d5">{{ $lokers->nm_loker }}</h3>
+
+                    <h3 class="box-title">{{ $lokers->nm_loker }}</h3>
+
                 </div>
                 <!-- /.box-header -->
                 <div class="col-md-12">
@@ -48,6 +57,7 @@
                             <th>Nama Pelamar</th>
                             <th>Posisi</th>
                             <th>Tanggal Tes</th>
+
                             <th>Jenis Tes</th>
                             <th style="width: 40px">Hasil</th>
                             <th style="width: 40px">Proses</th>
@@ -55,12 +65,20 @@
                         @if(!empty($data_lamaran_pek=$lokers->lamaran_pek))
 
                             @foreach($data_lamaran_pek as $key=> $data_lamaran_pek)
+
+                            <th style="width: 40px">Hasil</th>
+                        </tr>
+                        @if(!empty($data_lamaran_pek=$lokers->lamaran_pek))
+
+                            @foreach($data_lamaran_pek as $data_lamaran_pek)
+
                                 @if($data_lamaran_pek->seleksi_berkas['hasil']==1)
                                     <tr>
                                         <td class="no_index">{{ $i++ }}</td>
                                         <td>{{ $data_lamaran_pek->nm_pel }}</td>
                                         <td>{{ $data_lamaran_pek->posisi }}</td>
                                         <td>
+
                                             <div class="input-group date">
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
@@ -91,6 +109,18 @@
                                     </tr>
                                 @endif
                             @endforeach
+
+                                            <span class="ubah-saat-diklik"><a href="#">Klik ini untuk isi tanggal</a></span>
+                                        </td>
+                                        <td><span class="badge bg-red">55%</span></td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="3">Tidak ada pelamar</td>
+                            </tr>
+
                         @endif
                         </tbody>
                     </table>
