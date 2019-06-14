@@ -63,4 +63,9 @@ class H_karyawan extends Model
     {
         return $this->hasMany('App\Model\Hrd\H_hp_ky','id_ky');
     }
+
+    public function getSertifikasi()
+    {
+        return $this->hasMany('App\Model\Hrd\H_tenaga_kerja','id_ky');
+    }
 }

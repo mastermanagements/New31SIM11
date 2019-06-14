@@ -33,7 +33,11 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
+
+                                    <th>Jenis Wawancara</th>
+
                                     <th>Jenis Psikotes</th>
+
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
