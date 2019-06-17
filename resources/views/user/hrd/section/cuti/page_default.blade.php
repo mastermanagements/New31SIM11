@@ -157,7 +157,9 @@
                                         <td>{{ $value->lama_request }}</td>
                                         <td> {{ $upprove[$value->upprove] }} </td>
                                         <td> {{ $value->atasans->nama_ky }} </td>
-                                        <td><a> Cooming Soon </a></td>
+                                        <td>
+                                            <button class="btn btn-primary" onclick="modelUpload({{ $value->id }})"><i class="fa fa-upload"></i> Upload Surat </button>
+                                        </td>
 
                                         <td>
                                             <form action="{{ url('hapus-permintaan-cuti/'.$value->id) }}" method="post">
@@ -184,9 +186,10 @@
     </section>
 
 </div>
-
+@include('user.hrd.section.cuti.permintaan_cuti.modal.modal');
 @stop
 
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    @include('user.hrd.section.cuti.permintaan_cuti.modal.jsPermintaanCuti');
 @stop

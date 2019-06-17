@@ -109,9 +109,6 @@ class Permintaan_cuti extends Controller
 
     public function update(Request $req, $id)
     {
-
-
-
         $this->validate($req,[
             'tgl_req' => 'required',
             'jenis_izin' => 'required',
@@ -157,11 +154,42 @@ class Permintaan_cuti extends Controller
 
         $model = R_cuti::find($id);
 
+        if(!empty($model->surat_keterangan))
+        {
+            $file_path = public_path('filePermintaanCuti/').'/'.$model->surat_keteranganj;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+
         if($model->delete()){
             return redirect('Cuti')->with('message_success', 'Anda telah menghapus Permintaan Cuti');
         }else{
             return redirect('Cuti')->with('message_fail', 'Maaf, Permintaan cuti gagal dihapus');
         }
 
+    }
+
+    public function upload(Request $req){
+        $this->validate($req,[
+           'id_permintaan_cuti' => 'required',
+           'surat_keterangan' => 'required|image|mimes:jpg,jpeg,png,gif'
+        ]);
+
+        $id_permintaan_cuti = $req->id_permintaan_cuti;
+        $surat_keterangan = $req->surat_keterangan;
+
+        $name_surat = uniqid().time().'.'.$surat_keterangan->getClientOriginalExtension();
+
+        $model = R_cuti::UpdateOrCreate(
+            ['id'=>$id_permintaan_cuti,'id_perusahaan'=>$this->id_perusahaan],
+            ['surat_keterangan'=> $name_surat]
+        );
+        if($model->save()){
+            $surat_keterangan->move(public_path('filePermintaanCuti'), $name_surat);
+            return redirect('Cuti')->with('message_success', 'Berkas telah terunggah');
+        }else{
+            return redirect('Cuti')->with('message_fail', 'Maaf, Berkas gagal terunggah');
+        }
     }
 }

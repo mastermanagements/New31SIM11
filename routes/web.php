@@ -960,6 +960,19 @@ Route::put('update-permintaan-cuti/{id}','hrd\Permintaan_cuti@update');
 
 Route::put('hapus-permintaan-cuti/{id}','hrd\Permintaan_cuti@delete');
 
+Route::post('upload-file-permintaan-cuti','hrd\Permintaan_cuti@upload');
+
+Route::get('SOP', 'hrd\Sop@index');
+
+Route::get('tambah-sop', 'hrd\Sop@create');
+
+Route::post('store-sop','hrd\Sop@store');
+
+Route::get('ubah-sop/{id}', 'hrd\Sop@edit');
+
+Route::put('update-sop/{id}','hrd\Sop@update');
+
+Route::put('hapus-sop/{id}','hrd\Sop@delete');
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

@@ -1,0 +1,1573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Fandiansyah.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/modal/jsPermintaanCuti.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/modal/modal.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_default.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/31SIM11.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/31SIM11.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/hrd/Permintaan_cuti.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/hrd/Permintaan_cuti.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/page_default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/page_default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
+    <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="master_management@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="master_management@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="master_management@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="master_management: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="master_management@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="master_management: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="h_sop: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="New31SIM11" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="974" column="41" selection-start-line="974" selection-start-column="41" selection-end-line="974" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Sop.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="105" column="9" lean-forward="true" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
+              <folding>
+                <element signature="e#44#72#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="806">
+              <caret line="51" column="62" selection-start-line="51" selection-start-column="55" selection-end-line="51" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-413">
+              <caret line="11" column="45" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_default.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="44" column="87" selection-start-line="44" selection-start-column="87" selection-end-line="44" selection-end-column="87" />
+              <folding>
+                <element signature="e#1502#1529#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>selec</find>
+      <find>ambilDataSuratKeluar</find>
+      <find>upload-status-surat-keluar</find>
+      <find>BA-Kemajuan</find>
+      <find>tgl_usulan_brif</find>
+      <find>ambilEventBrifingByTanggal</find>
+      <find>title_modal</find>
+      <find>lihat-usulan-brifing-by-tgl</find>
+      <find>pilihan_rapat</find>
+      <find>ambilEventBrifing</find>
+      <find>lihat-usulan-brifing</find>
+      <find>Jadwal-Proyek</find>
+      <find>editprofile</find>
+      <find>karyawan</find>
+      <find>data_karyawan</find>
+      <find>Karyawan</find>
+      <find>ubah-karyawan/hrd/</find>
+      <find>ubah-karyawan</find>
+      <find>m</find>
+      <find>hapus-karyawan</find>
+      <find>cari-karyawan</find>
+      <find>Spesifikasi :</find>
+      <find>icon_reloading</find>
+      <find>memory_limit</find>
+      <find>LoginController</find>
+      <find>store-updok-kontrak-kerja</find>
+      <find>divisi_id</find>
+      <find>id_devisi</find>
+      <find>calendar</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Fandiansyah &lt;lastfandiansyah@gmail.com&gt;" />
+        <option value="GenesizVitual &lt;lastfandiansyah@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="administrasi" />
+      </map>
+    </option>
+    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/templating" />
+                <branch-info repo="$PROJECT_DIR$" source="origin/migrasi" />
+                <branch-info repo="$PROJECT_DIR$" source="origin/administrasi" />
+                <branch-info repo="$PROJECT_DIR$" source="origin/login_registered" />
+                <branch-info repo="$PROJECT_DIR$" source="origin/migration_super_admin_ukm" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/database/migrations/hrd/relation/2019_06_10_032535_create_h_tenaga_ahli.php" />
+        <option value="$PROJECT_DIR$/app/Model/Hrd/H_tenaga_kerja.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/tenaga_ahli/crud/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/tenaga_ahli/crud/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/tenaga_ahli/crud/page_detail.blade.php" />
+        <option value="$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/tenaga_ahli/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/TenagaKerja.php" />
+        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_11_061057_create_h_periode_kerja.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/master_user.blade.php" />
+        <option value="$PROJECT_DIR$/app/Model/Hrd/H_periode_kerja.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/PeriodeKerja.php" />
+        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_12_050959_create_h_kalender_kerja.php" />
+        <option value="$PROJECT_DIR$/app/Model/Hrd/H_kalender_kerja.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/administrasi/section/Brifing/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/KalenderKerja.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/kalender_kerja/event/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/kalender_kerja/event/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/kalender_kerja/event/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/kalender_kerja/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/pemeliharaan/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/setting_cuti/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_13_024138_create_h_setting_cuti.php" />
+        <option value="$PROJECT_DIR$/app/Model/Hrd/H_setting_cuti.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/setting_cuti/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_13_053943_create_h_cuti.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/PengaturanCuti.php" />
+        <option value="$PROJECT_DIR$/app/Model/Hrd/Cuti.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/cuti/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_14_012942_create_h_request_cuti.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/cuti/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/Cuti.php" />
+        <option value="$PROJECT_DIR$/app/Model/Hrd/H_request_cuti.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/modal/js_permintaan_cuti.js" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/modal/jsPermintaanCuti.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/modal/modal.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/Permintaan_cuti.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
+        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_17_034616_create_h_sop.php" />
+        <option value="$PROJECT_DIR$/app/Model/Hrd/Sop.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/Sop.php" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/nexmo/client" />
+      <path value="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server" />
+      <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-diactoros" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-color" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/php-http/guzzle6-adapter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/php-http/httplug" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/php-http/promise" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/laravel/nexmo-notification-channel" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/laravel/slack-notification-channel" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="hrd" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="hrd" type="462c0819:PsiDirectoryNode" />
+              <item name="section" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="hrd" type="462c0819:PsiDirectoryNode" />
+              <item name="section" type="462c0819:PsiDirectoryNode" />
+              <item name="periode_kerja" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="hrd" type="462c0819:PsiDirectoryNode" />
+              <item name="section" type="462c0819:PsiDirectoryNode" />
+              <item name="sop" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="New31SIM11" type="cbb8eebc:String" user="New31SIM11" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="New31SIM11" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="E:\xampp173\htdocs\New31SIM11" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;FatalErrorException&#9;null&#9;null&#10;tes&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/Tes.php&#10;kar&#9;null&#9;null&#10;Superadmin_UKM&#9;null&#9;null&#10;JadwalProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JadwalProyek.php&#10;Brifing&#9;null&#9;null&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;2019_04_02_075743_create_a_jenis_arsip&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/administrasi/2019_04_02_075743_create_a_jenis_arsip.php&#10;BAsertim&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BAsertim.php&#10;BApenyelesaian&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BApenyelesaian.php&#10;app/Exceptions/Handler.php&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Exceptions/Handler.php&#10;Pro&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Proposal.php&#10;JenisProposal&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/JenisProposal.php&#10;Surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php&#10;surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/user/hrd/section/sop" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\xampp173\htdocs\New31SIM11\app\Model\Hrd" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\progressProyek\crud\modal" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\public\fileArsip" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\administrasi\section\surat\surat_masuk" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\sop" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\cuti" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\cuti\cuti" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\cuti\setting_cuti" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\kalender_kerja\event" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="" />
+      <changelist id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
+      <created>1553754587146</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553754587146</updated>
+      <workItem from="1553754589067" duration="2096000" />
+      <workItem from="1553761045399" duration="584000" />
+      <workItem from="1553820457648" duration="9483000" />
+      <workItem from="1553839082061" duration="3110000" />
+      <workItem from="1553910255579" duration="1579000" />
+      <workItem from="1553992517260" duration="470000" />
+      <workItem from="1554080601049" duration="17895000" />
+      <workItem from="1554102080202" duration="679000" />
+      <workItem from="1554104310476" duration="181000" />
+      <workItem from="1554106427259" duration="331000" />
+      <workItem from="1554114854698" duration="8569000" />
+      <workItem from="1554165794604" duration="11741000" />
+      <workItem from="1554185644413" duration="5978000" />
+      <workItem from="1554339475828" duration="16936000" />
+      <workItem from="1554424974777" duration="16029000" />
+      <workItem from="1554449804165" duration="1251000" />
+      <workItem from="1554512493441" duration="10806000" />
+      <workItem from="1554524844936" duration="319000" />
+      <workItem from="1554684337555" duration="16940000" />
+      <workItem from="1554770641582" duration="21017000" />
+      <workItem from="1554857205232" duration="14800000" />
+      <workItem from="1554882354629" duration="225000" />
+      <workItem from="1554943619213" duration="6879000" />
+      <workItem from="1554962241202" duration="3207000" />
+      <workItem from="1554966275310" duration="69000" />
+      <workItem from="1554970672408" duration="266000" />
+      <workItem from="1555031458730" duration="12273000" />
+      <workItem from="1555118210252" duration="14764000" />
+      <workItem from="1555291808626" duration="10623000" />
+      <workItem from="1555375668965" duration="20965000" />
+      <workItem from="1555549449633" duration="19837000" />
+      <workItem from="1555607106846" duration="60000" />
+      <workItem from="1555723682934" duration="17541000" />
+      <workItem from="1555893929485" duration="18664000" />
+      <workItem from="1555980303364" duration="10677000" />
+      <workItem from="1555998323663" duration="2783000" />
+      <workItem from="1556066735540" duration="11333000" />
+      <workItem from="1556084882963" duration="4155000" />
+      <workItem from="1556089651090" duration="92000" />
+      <workItem from="1556153114932" duration="9541000" />
+      <workItem from="1556171910055" duration="3563000" />
+      <workItem from="1556239037529" duration="8529000" />
+      <workItem from="1556257341102" duration="1296000" />
+      <workItem from="1556424121107" duration="591000" />
+      <workItem from="1556498787608" duration="9274000" />
+      <workItem from="1556516097599" duration="1134000" />
+      <workItem from="1556585662479" duration="11336000" />
+      <workItem from="1556602533144" duration="4402000" />
+      <workItem from="1556758961103" duration="9721000" />
+      <workItem from="1556775064993" duration="4744000" />
+      <workItem from="1556845265814" duration="8345000" />
+      <workItem from="1556934136100" duration="8282000" />
+      <workItem from="1556946234362" duration="5798000" />
+      <workItem from="1557102881236" duration="19311000" />
+      <workItem from="1557180346070" duration="30000" />
+      <workItem from="1557190308701" duration="17148000" />
+      <workItem from="1557275416400" duration="17215000" />
+      <workItem from="1557362374681" duration="13600000" />
+      <workItem from="1557406539011" duration="242000" />
+      <workItem from="1557449313702" duration="8445000" />
+      <workItem from="1557474276377" duration="191000" />
+      <workItem from="1557581193177" duration="27000" />
+      <workItem from="1557708431958" duration="7050000" />
+      <workItem from="1557723873361" duration="4306000" />
+      <workItem from="1557793457686" duration="16789000" />
+      <workItem from="1557880350473" duration="13948000" />
+      <workItem from="1557967424585" duration="13830000" />
+      <workItem from="1558054487129" duration="8456000" />
+      <workItem from="1558071218234" duration="2677000" />
+      <workItem from="1558078865864" duration="238000" />
+      <workItem from="1558311565506" duration="784000" />
+      <workItem from="1558313025915" duration="1161000" />
+      <workItem from="1558314301396" duration="15404000" />
+      <workItem from="1558335817926" duration="39000" />
+      <workItem from="1558398231493" duration="9155000" />
+      <workItem from="1558414865005" duration="8907000" />
+      <workItem from="1558487218477" duration="13643000" />
+      <workItem from="1558572758517" duration="14573000" />
+      <workItem from="1558659159818" duration="6019000" />
+      <workItem from="1558676805006" duration="1169000" />
+      <workItem from="1558784701307" duration="284000" />
+      <workItem from="1558919717239" duration="7700000" />
+      <workItem from="1558934342445" duration="2546000" />
+      <workItem from="1559004248105" duration="8043000" />
+      <workItem from="1559024506997" duration="964000" />
+      <workItem from="1559091324182" duration="1465000" />
+      <workItem from="1559093047479" duration="11463000" />
+      <workItem from="1559270456827" duration="19000" />
+      <workItem from="1559273584806" duration="957000" />
+      <workItem from="1560129021468" duration="14803000" />
+      <workItem from="1560215067490" duration="12888000" />
+      <workItem from="1560253601219" duration="1361000" />
+      <workItem from="1560299569677" duration="18570000" />
+      <workItem from="1560385715396" duration="14059000" />
+      <workItem from="1560425528023" duration="1210000" />
+      <workItem from="1560473473047" duration="8913000" />
+      <workItem from="1560489982453" duration="4456000" />
+      <workItem from="1560578367789" duration="314000" />
+      <workItem from="1560732731503" duration="773000" />
+      <workItem from="1560735379904" duration="2385000" />
+      <workItem from="1560737876641" duration="1058000" />
+      <workItem from="1560739065105" duration="1801000" />
+      <workItem from="1560740906838" duration="8698000" />
+    </task>
+    <task id="LOCAL-00026" summary="Administrasi -&gt; &#10; Persipan untuk halaman brifing CRUD, MODAL, FUllCALENDER ...&#10; Fullfeature">
+      <created>1555311616379</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1555311616379</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Administrasi -&gt; &#10; Brifing feature selesai, tambah brifing, hapus brifing pending">
+      <created>1555398303139</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1555398303139</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Administrasi -&gt; &#10;Ganti Route">
+      <created>1555400480326</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1555400480326</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Administrasi -&gt; Brifing&#10;- Penambahan tombol hapus ulasan.&#10;- penambahan filter hapus ulasan berdasarkan siapa yang membuat ulasan yang bisa menghapus ulasan tsb.&#10;- Penambahan divisi untuk menampilkan ulasan berdasarkan divisi yang pengguna masukan&#10;- Perubahan tampilan untuk menyesuaikan dengan menu brifing.">
+      <created>1555573731648</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1555573731648</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Revert &quot;Administrasi -&gt; Brifing - Penambahan tombol hapus ulasan. - penambahan filter hapus ulasan berdasarkan siapa yang membuat ulasan yang bisa menghapus ulasan tsb. - Penambahan divisi untuk menampilkan ulasan berdasarkan divisi yang pengguna masukan - Perubahan tampilan untuk menyesuaikan dengan menu brifing.&quot;&#10;&#10;This reverts commit a43fe79">
+      <created>1555726071801</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1555726071801</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Revert &quot;Administrasi -&gt; Penambahan jenis rapat pada Brifing dan melengkapi interface pada jenis brifing&#10;&#10;This reverts commit a43fe79">
+      <created>1555742409462</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1555742409462</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Administrasi -&gt; &#10;- penambahan jenis rapat.&#10;- Perubahan tampilan usulan brifing untuk menyesuaikan menu brifing.&#10;- pembuatan CRUD Rapat">
+      <created>1555988555404</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1555988555404</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Produk -&gt; Persiapan untuk produk bagian superadmin_sim">
+      <created>1555991273175</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1555991273175</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Produk -&gt; Persiapan menu barang">
+      <created>1556002936916</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1556002936916</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Produk -&gt; Jasa Fix Selesai">
+      <created>1556078505610</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1556078505610</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Produk -&gt; Crud Barang">
+      <created>1556089725104</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1556089725104</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Produk -&gt; Crud Barang Fix,&#10;Perubahan tampilan pada halaman jasa dan barang">
+      <created>1556164906581</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1556164906581</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Produk -&gt; CRUD Supplier">
+      <created>1556175997248</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1556175997248</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Produk -&gt; &#10;- Perbaikan view untuk menu barang  dan jual jasa&#10;- Crud Jual Jasa Selesai&#10;- Persiapan Jual barang">
+      <created>1556247684255</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1556247684255</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Produk -&gt; Pembelian Fix">
+      <created>1556521542445</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1556521542445</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Produk -&gt; Penjualan Fix">
+      <created>1556597000822</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1556597000822</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Produk -&gt; Proyek Fix">
+      <created>1556607823177</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1556607823177</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Produk -&gt; Perubahan pada menu proyek dan pembuatan menu Tim Proyek">
+      <created>1556776013859</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1556776013859</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Produk -&gt; &#10;- Perubahan pada menu proyek&#10;- pembuatan menu Tim Proyek&#10;- penambahan sclim scroll pada masing masing sub menu">
+      <created>1556855172828</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1556855172828</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Produk -&gt; &#10;- Menu Task Proyek&#10;- Menu Rincian Proyek&#10;- Menu Jadwal Proyek &#10;Fix">
+      <created>1556952644189</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1556952644189</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Produk -&gt; &#10;- Perubahan Menu Task Proyek&#10;- Perancangan ulang Jadwal Proyek">
+      <created>1557114144186</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1557114144186</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Produk -&gt; &#10;- Persiapan Data untuk tampilan Jadwal Proyek Selesai">
+      <created>1557126258650</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1557126258650</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Produk -&gt; &#10;- Persiapan Data untuk tampilan Jadwal Proyek Selesai">
+      <created>1557131129423</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1557131129423</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Produk -&gt; &#10;- Jadwal Proyek Full feature fix">
+      <created>1557208817437</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1557208817438</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Produk -&gt; &#10;- Progress Proyek Fix">
+      <created>1557302680456</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1557302680457</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Produk -&gt; &#10;- Jenis Pemeliharaan&#10;- Pemeliharaan Fix">
+      <created>1557381469742</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1557381469743</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Produk -&gt; &#10;- Progres Pemeliharaan Fix">
+      <created>1557474419503</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1557474419503</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Produk -&gt; &#10;- Penambahan No.Invoice dan No.faktur pada menu pembelian dan menu penjualan&#10;- penambahan script pada masing&quot; kontroller">
+      <created>1557732926787</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1557732926787</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Produk -&gt; &#10; - Rekruitmen">
+      <created>1557819527158</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1557819527159</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Produk -&gt; &#10; - Rekruitmen Fix Full Feature">
+      <created>1557887641818</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1557887641819</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Produk -&gt; &#10;  - Lamaran fix Dan Seleksi Berkas On Proses Interface">
+      <created>1557990377547</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1557990377547</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Produk -&gt; &#10;  - Lamaran Fix dan Tes tinggal interface">
+      <created>1558079041704</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1558079041704</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Produk -&gt; &#10;  - Perancangan Interface Tes dan jenis psikotes selesai">
+      <created>1558324630360</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1558324630361</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Produk -&gt; &#10;  - Item Wawancara dan item keahlian">
+      <created>1558334566842</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1558334566842</updated>
+    </task>
+    <task id="LOCAL-00060" summary="HRD&#10;- Perancangan Interface Item Kealiah dan crud Fix">
+      <created>1558406920598</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1558406920599</updated>
+    </task>
+    <task id="LOCAL-00061" summary="HRD&#10;- Perancangan Interface Form Psikotes">
+      <created>1558422413838</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1558422413840</updated>
+    </task>
+    <task id="LOCAL-00062" summary="HRD&#10;- Interface Tes Psikotes dan Crud Fix">
+      <created>1558509020615</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1558509020616</updated>
+    </task>
+    <task id="LOCAL-00063" summary="HRD&#10;- Interface Tes Wawancara dan Crud Fix">
+      <created>1558593943816</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1558593943817</updated>
+    </task>
+    <task id="LOCAL-00064" summary="HRD&#10;- Interface Tes Keahlian dan Crud Fix">
+      <created>1558668378106</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1558668378106</updated>
+    </task>
+    <task id="LOCAL-00065" summary="HRD&#10;- Interface Hasil Tes Dan Informasi Hasil tes fix">
+      <created>1558936301584</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1558936301585</updated>
+    </task>
+    <task id="LOCAL-00066" summary="HRD&#10;- Interface Kontak Kerja Fix">
+      <created>1559027212408</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1559027212408</updated>
+    </task>
+    <task id="LOCAL-00067" summary="HRD&#10;- Interface Jenis Kontrak Kerja Dan Crud Jenis Kontrak Kerja FIX,&#10;- Crud Kontrak Kerja Fix">
+      <created>1559110252796</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1559110252797</updated>
+    </task>
+    <task id="LOCAL-00068" summary="HRD&#10;- Kontrak Kerja Upload File Fix">
+      <created>1560135047471</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1560135047472</updated>
+    </task>
+    <task id="LOCAL-00069" summary="HRD&#10;- Perancangan Interface Tenaga Kerja Selesai">
+      <created>1560152315430</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1560152315431</updated>
+    </task>
+    <task id="LOCAL-00070" summary="HRD&#10;- Tenaga Kerja Crud and freature Fix">
+      <created>1560225549687</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1560225549688</updated>
+    </task>
+    <task id="LOCAL-00071" summary="HRD&#10;- Periode Kerjaan">
+      <created>1560236599829</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1560236599830</updated>
+    </task>
+    <task id="LOCAL-00072" summary="HRD&#10;- Periode Kerjaan CRUD FIX&#10;- Menu Kalender Full feature Fix">
+      <created>1560323169983</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1560323169983</updated>
+    </task>
+    <task id="LOCAL-00073" summary="HRD&#10;- Pengaturan Cuti fix&#10;- daftar cuti Fix">
+      <created>1560409713723</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1560409713725</updated>
+    </task>
+    <task id="LOCAL-00074" summary="HRD&#10;- Permintaan Cuti crud fix">
+      <created>1560493286252</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1560493286253</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="740850000" />
+  </component>
+  <component name="TodoView" selected-index="3">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49918166" visible="true" weight="0.26701966" />
+      <window_info id="Structure" order="1" weight="0.24962178" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" sideWeight="0.5008183" side_tool="true" weight="0.26701966" />
+      <window_info anchor="bottom" id="Database Console" weight="0.3289689" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.27168575" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5181543" side_tool="true" weight="0.25531915" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.48487142" weight="0.39770868" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.48184568" weight="0.25531915" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="11" weight="0.3289689" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.3290469" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="LONG_EDGES_VISIBLE" value="true" />
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="2" />
+                  <option value="1" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Produk -&gt; &#10;- Progress Proyek Fix" />
+    <MESSAGE value="Produk -&gt; &#10;- Jenis Pemeliharaan&#10;- Pemeliharaan Fix" />
+    <MESSAGE value="Produk -&gt; &#10;- Progres Pemeliharaan Fix" />
+    <MESSAGE value="Produk -&gt; &#10;- Penambahan No.Invoice dan No.faktur pada menu pembelian dan menu penjualan&#10;- penambahan script pada masing&quot; kontroller" />
+    <MESSAGE value="Produk -&gt; &#10; - Rekruitmen" />
+    <MESSAGE value="Produk -&gt; &#10; - Rekruitmen Fix Full Feature" />
+    <MESSAGE value="Produk -&gt; &#10;  - Lamaran fix Dan Seleksi Berkas On Proses Interface" />
+    <MESSAGE value="Produk -&gt; &#10;  - Lamaran Fix dan Tes tinggal interface" />
+    <MESSAGE value="Produk -&gt; &#10;  - Perancangan Interface Tes dan jenis psikotes selesai" />
+    <MESSAGE value="Produk -&gt; &#10;  - Item Wawancara dan item keahlian" />
+    <MESSAGE value="HRD&#10;- Perancangan Interface Item Kealiah dan crud Fix" />
+    <MESSAGE value="HRD&#10;- Perancangan Interface Form Psikotes" />
+    <MESSAGE value="HRD&#10;- Interface Tes Psikotes dan Crud Fix" />
+    <MESSAGE value="HRD&#10;- Interface Tes Wawancara dan Crud Fix" />
+    <MESSAGE value="HRD&#10;- Interface Tes Keahlian dan Crud Fix" />
+    <MESSAGE value="HRD&#10;- Interface Hasil Tes Dan Informasi Hasil tes fix" />
+    <MESSAGE value="HRD&#10;- Interface Kontak Kerja Fix" />
+    <MESSAGE value="HRD&#10;- Interface Jenis Kontrak Kerja Dan Crud Jenis Kontrak Kerja FIX,&#10;- Crud Kontrak Kerja Fix" />
+    <MESSAGE value="HRD&#10;- Kontrak Kerja Upload File Fix" />
+    <MESSAGE value="HRD&#10;- Perancangan Interface Tenaga Kerja Selesai" />
+    <MESSAGE value="HRD&#10;- Tenaga Kerja Crud and freature Fix" />
+    <MESSAGE value="HRD&#10;- Periode Kerjaan" />
+    <MESSAGE value="HRD&#10;- Periode Kerjaan CRUD FIX&#10;- Menu Kalender Full feature Fix" />
+    <MESSAGE value="HRD&#10;- Pengaturan Cuti fix&#10;- daftar cuti Fix" />
+    <MESSAGE value="HRD&#10;- Permintaan Cuti crud fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="HRD&#10;- Permintaan Cuti crud fix" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_kalender_kerja.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="57" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/administrasi/Brifing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-168">
+          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/KalenderKerja.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/kalender_kerja/event/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="100" column="7" selection-start-line="100" selection-start-column="7" selection-end-line="100" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/kalender_kerja/event/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="49" column="69" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/administrasi/section/Brifing/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="123" column="22" lean-forward="true" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/kalender_kerja/event/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/kalender_kerja/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="81" column="46" selection-start-line="81" selection-start-column="46" selection-end-line="81" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/HasilTes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/pemeliharaan/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="109" column="58" lean-forward="true" selection-start-line="61" selection-start-column="51" selection-end-line="109" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/hrd/2019_06_13_024138_create_h_setting_cuti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/setting_cuti/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="60" column="75" selection-start-line="60" selection-start-column="75" selection-end-line="60" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1045">
+          <caret line="87" column="27" lean-forward="true" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/hrd/2019_06_13_053943_create_h_cuti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_tenaga_kerja.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/PengaturanCuti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="116" column="99" lean-forward="true" selection-start-line="115" selection-start-column="10" selection-end-line="116" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/cuti/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="85" column="62" selection-start-line="85" selection-start-column="62" selection-end-line="85" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/PeriodeKerja.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/hrd/2019_06_14_012942_create_h_request_cuti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/setting_cuti/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="29" column="54" lean-forward="true" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/cuti/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="37" selection-start-line="37" selection-end-line="48" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/Cuti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_setting_cuti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Cuti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-192">
+          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_request_cuti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="27" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="81" column="36" lean-forward="true" selection-end-line="145" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="104" column="78" selection-start-line="104" selection-start-column="78" selection-end-line="104" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1481">
+          <caret line="77" column="27" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/modal/js_permintaan_cuti.js" />
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/loker/include/modal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="53" column="10" lean-forward="true" selection-end-line="56" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="188" column="60" selection-start-line="188" selection-start-column="60" selection-end-line="188" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/modal/modal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="12" column="74" selection-start-line="12" selection-start-column="74" selection-end-line="12" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/administrasi/Arsip.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1768">
+          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/modal/jsPermintaanCuti.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/u_master_submenu">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="c687af09-baac-43c0-891e-43fc4aba8051">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Permintaan_cuti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3692">
+          <caret line="156" column="16" selection-start-line="156" selection-start-column="16" selection-end-line="156" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Loker.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas</OriginalElement>
+          <nodes>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="316.5" y="91.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/hrd/2019_06_17_034616_create_h_sop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.SCHEMA:master_management">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>7f3da4e7-bbfb-477b-82c9-d04004bd90b0.SCHEMA:master_management</OriginalElement>
+          <nodes>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_visi_p</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.migrations</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_pemeriksaan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subkategori_produk</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_arsip</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_keluar</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_arsip</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_kontrak_kerja</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_email_k</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_barang</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_swot</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_kemajuan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_rapat</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_job_desc</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_peralatan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_loker</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.struktur_perusahaan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progress_proyek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_penyelesaian</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_surat</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_tenaga_ahli</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_ijin_usaha</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_proposal</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_menu</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_hasil_tes</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_hp_create</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_barang</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_lamaran_pek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progres_pemeliharaan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_item_keahlian</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_rapat</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_item_wawancara</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_jasa</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_sek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_periode_kerja</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_supplier</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_sertim</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_kategori_produk</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_tes_keahlian</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jadwal_proyek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_wawancara</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_proposal</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_beli_barang</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_jenis_psikotes</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_serops</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_seleksi_berkas</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_submenu</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_klien</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_pemeliharaan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_jenis_kontrak</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_request_cuti</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_misi_p</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_tim_proyek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_profil</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subsubkategori_produk</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpg</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_kalender_kerja</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_setting_cuti</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_proyek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_cuti</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_akta</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_model_bisnis</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_masuk</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_keluarga_ky</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_asal</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jasa</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_task_proyek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_psikotes</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jenis_pem</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.10292993630573248" x="3659.0" y="1952.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/karyawan/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/Sop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-413">
+          <caret line="11" column="45" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/h_sop">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="c687af09-baac-43c0-891e-43fc4aba8051">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="806">
+          <caret line="51" column="62" selection-start-line="51" selection-start-column="55" selection-end-line="51" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="44" column="87" selection-start-line="44" selection-start-column="87" selection-end-line="44" selection-end-column="87" />
+          <folding>
+            <element signature="e#1502#1529#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="974" column="41" selection-start-line="974" selection-start-column="41" selection-end-line="974" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Sop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="105" column="9" lean-forward="true" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
+          <folding>
+            <element signature="e#44#72#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
