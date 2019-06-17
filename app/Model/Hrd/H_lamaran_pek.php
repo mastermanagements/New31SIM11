@@ -19,6 +19,7 @@ class H_lamaran_pek extends Model
         return $this->hasOne('App\Model\Hrd\H_seleksi_berkas','id_lamaran_p');
     }
 
+
     public function psikotes(){
         return $this->hasOne('App\Model\Hrd\H_psikotes','id_lamaran_p');
     }
@@ -30,4 +31,5 @@ class H_lamaran_pek extends Model
     public function tes_keahlian(){
         return $this->hasMany('App\Model\Hrd\H_tes_keahlian', 'id_lamaran_p');
     }
+
 }

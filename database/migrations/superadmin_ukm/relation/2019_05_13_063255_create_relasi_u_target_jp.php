@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelasiStrategiJpg extends Migration
+class CreateRelasiUTargetJp extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateRelasiStrategiJpg extends Migration
      */
     public function up()
     {
-        Schema::table('u_strategi_jpg', function (Blueprint $table) {
-            //
+        Schema::table('u_target_jp', function (Blueprint $table) {
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
-
         });
     }
 
@@ -28,7 +26,7 @@ class CreateRelasiStrategiJpg extends Migration
      */
     public function down()
     {
-        Schema::table('u_strategi_jpg', function (Blueprint $table) {
+                Schema::table('u_target_jp', function (Blueprint $table) {
             //
         });
     }

@@ -30,7 +30,7 @@ class JobDecs extends Controller
     public function index()
     {
         $data_JD = [
-           'data_jd'=>JD::where('id_karyawan', $this->id_karyawan)->where('id_perusahaan', $this->id_perusahaan)->paginate(6)
+           'data_jabatan'=>jabatan::where('id_perusahaan', $this->id_perusahaan)->paginate(6)
         ];
         return view('user.karyawan.section.JobDecs.page_default', $data_JD);
     }
@@ -43,7 +43,7 @@ class JobDecs extends Controller
 
         return view('user.karyawan.section.JobDecs.page_create', $data_jab);
     }
-
+	//direvisi
      public function store(Request $req)
     {
        $this->validate($req,[

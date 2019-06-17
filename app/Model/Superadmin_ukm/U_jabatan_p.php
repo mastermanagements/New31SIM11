@@ -17,5 +17,10 @@ class U_jabatan_p extends Model
 
     public function item_keahlian(){
         return $this->hasMany('App\Model\Hrd\H_item_keahlian','id_jabatan_p');
+
+	 public function getJobdesc()
+    {
+        return $this->hasMany('App\Model\Karyawan\JobDecs', 'id_jabatan_p');
+
     }
 }

@@ -43,6 +43,7 @@
                                </div>
                                   @if(!empty($submenu=$menus->getSubMenu))
                                         @foreach($submenu as $sKey => $sum_menu)
+											@if(!empty($sum_menu->getMasterSubMenuUKM->id))
                                            <div class="form-group" style="padding-left: 5%;">
                                                <input type="checkbox" class="minimal menu_sub_{{ $key }}" value="{{ $sum_menu->getMasterSubMenuUKM->id }}" id="menus_{{ $key }}"
                                                @if(!empty($daftar_menu_karyawan))
@@ -55,6 +56,7 @@
                                                > <label > {{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}
                                                </label>
                                            </div>
+										   @endif
                                         @endforeach
                                   @endif
                                @endforeach

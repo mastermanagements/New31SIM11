@@ -180,8 +180,7 @@ class Peralatan extends Controller
 			return redirect('Peralatan')->with('message_success','Berhasil Menghapus data peralatan');
 		} else{
 			return redirect('Peralatan')->with('message_fail','Gagal Menghapus data peralatan');
-		}
-			
+		}	
 	}
 	  
 }

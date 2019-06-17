@@ -122,14 +122,14 @@ class BApemeriksaan extends Controller
         $model->id_karyawan= $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAP');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAP');
         }else{
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }
     }
 
     public function proses_Update(Request $req, $id)
-    {
+    { //validasi
         $this->validate($req,[
             'isi_bapem'=> 'required',
             'id_spk'=> 'required'
@@ -173,8 +173,6 @@ class BApemeriksaan extends Controller
         }else{
             $name_files_scan = "";
         }
-
-
         $model->id_spk= $id_spk;
         $model->isi_bapem= $isi_bapem;
         $model->file_bapem= $name_files;
@@ -183,9 +181,10 @@ class BApemeriksaan extends Controller
         $model->id_karyawan= $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BAP');
+			//perbaiki link redirect
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja menambahkan BA Pemeriksaan');
         }else{
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }
     }
 
@@ -218,9 +217,9 @@ class BApemeriksaan extends Controller
 
         if($model->delete())
         {
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja Menghapus BAP');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_success','Anda Baru saja Menghapus BA Pemeriksaan');
         }else{
-            return redirect('Ba-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('BA-Pemeriksaan?id='.$id_spk)->with('message_fail','Terjadi Kesalahan, Silahkan coba lagi');
         }
     }
 

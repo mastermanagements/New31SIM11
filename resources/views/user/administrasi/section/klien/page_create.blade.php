@@ -71,18 +71,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nama Perusahaan</label>
-                                <input type="text" name="nm_perusahaan"  class="form-control" id="exampleInputEmail1" required>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+                                <input type="text" name="nm_perusahaan"  class="form-control" id="exampleInputEmail1">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Alamat Perusahaan</label>
-                                <textarea class="form-control"  name="alamat_perusahaan" id="alamat_perusahaan" required></textarea>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+                                <textarea class="form-control"  name="alamat_perusahaan" id="alamat_perusahaan"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Telp Perusahaan</label>
-                                <input type="text" name="telp_perusahaan" class="form-control" id="exampleInputEmail1" required>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+                                <input type="text" name="telp_perusahaan" class="form-control" id="exampleInputEmail1">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Jabatan</label>

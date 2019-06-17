@@ -99,7 +99,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-3">
                                                                     <div class="form-group">
-                                                                    <form action="{{ url('Ba-Pemeriksaan') }}" method="get">
+                                                                    <form action="{{ url('BA-Pemeriksaan') }}" method="get">
                                                                         <input type="hidden" name="id" value="{{ $value->id }}">
                                                                         {{ csrf_field() }}
                                                                         <button type="submit" class="btn btn-primary"><i class="fa fa-file"></i> Ba. Pemeriksaan </button>

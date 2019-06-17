@@ -31,7 +31,7 @@
                         <div class="tab-pane active" id="tab_1">
                             <div class="row">
                                 <div class="col-md-3" style="margin: 0">
-                                    <form action="{{ url('Ba-Pemeriksaan') }}" method="get">
+                                    <form action="{{ url('BA-Pemeriksaan') }}" method="get">
                                         <input type="hidden" name="id" value="{{ $spk->id }}">
                                         <input type="hidden" name="callForm" value="save">
                                         {{ csrf_field() }}
@@ -89,7 +89,7 @@
                                                                    <div class="col-md-12 ">
                                                                        <div class="row">
                                                                            <div class="col-md-6 ">
-                                                                            <form action="{{ url('Ba-Pemeriksaan') }}" method="get">
+                                                                            <form action="{{ url('BA-Pemeriksaan') }}" method="get">
                                                                                 <input type="hidden" name="id" value="{{ $value->id_spk }}">
                                                                                 <input type="hidden" name="id_bapem" value="{{ $value->id }}">
                                                                                 <input type="hidden" name="callForm" value="update">

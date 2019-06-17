@@ -4,6 +4,7 @@ namespace App\Http\Controllers\karyawan;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Karyawan\TJP as TJP;
 use App\Model\Karyawan\SJP as sjps;
 use Session;
 
@@ -29,29 +30,28 @@ class SJP extends Controller
 
     public function index()
     {
-        $data_pass= [
-          'data_strategi'=> sjps::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate(12)
+        $data= [
+            'target_jpg'=>TJP::all()->where('id_perusahaan', $this->id_perusahaan),
         ];
-        return view('user.karyawan.section.SJP.page_default', $data_pass);
-    }
-
-    public function create()
-    {
-        return view('user.karyawan.section.SJP.page_create');
+		//dd($data['target_jpg_select']);
+        return view('user.karyawan.section.SJP.page_default', $data);
     }
 
     public function store(Request $req)
-    {
+    { //dd($req->all());
         $this->validate($req,[
-           'periode'=> 'required|numeric',
-            'isi_sjpg'=> 'required'
+           'id_tjpg'=> 'required',
+		   'nm_sjpg' => 'required',
+           'isi_sjpg'=> 'required'
         ]);
 
-        $periode = $req->periode;
+        $id_tjpg = $req->id_tjpg;
+		$nm_sjpg = $req->nm_sjpg;
         $isi_sjpg = $req->isi_sjpg;
 
         $model = new sjps;
-        $model->periode = $periode;
+        $model->id_tjpg = $id_tjpg;
+		$model->nm_sjpg = $nm_sjpg;
         $model->isi_sjpg = $isi_sjpg;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
@@ -68,41 +68,80 @@ class SJP extends Controller
         if(empty($data_sjp = sjps::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
-        $data_pass = [
-          'data_strategi'=> $data_sjp
+        $data = [
+          'data_sjps'=> $data_sjp
         ];
-        return view('user.karyawan.section.SJP.page_edit', $data_pass);
+        return response()->json($data);
     }
 
-    public function update(Request $req, $id)
-    {
+   public function update(Request $req)
+    { //dd($req->all());
+
         $this->validate($req,[
-            'periode'=> 'required|numeric',
-            'isi_sjpg'=> 'required'
+            'id_tjpg_ubah' => 'required',
+			'nm_sjpg_ubah'=>'required',
+            'isi_sjpg_ubah'=> 'required',
+            'id_sjps'=> 'required'
         ]);
-
-        $periode = $req->periode;
-        $isi_sjpg = $req->isi_sjpg;
-
-        $model = sjps::find($id);
-        $model->periode = $periode;
-        $model->isi_sjpg = $isi_sjpg;
+		
+		$nm_sjpg = $req->nm_sjpg_ubah;
+        $isi_sjpg = $req->isi_sjpg_ubah;
+        $id_tjpg = $req->id_tjpg_ubah;
+		
+        if(empty($model = sjps::where('id', $req->id_sjps)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+		
+        $model->id_tjpg = $id_tjpg;
+		$model->nm_sjpg =$nm_sjpg;
+        $model->isi_sjpg =$isi_sjpg;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
-        if($model->save()){
-            return redirect('Strategi-Jangka-Panjang')->with('message_success', 'Ada telah mengubah strategi anda');
-        }else{
-            return redirect('Strategi-Jangka-Panjang')->with('message_fail', 'Terjadi Kesalahan, Silahkan ubah ulang strategi anda');
+
+        if($model->save())
+        {
+            return redirect('Strategi-Jangka-Panjang')->with('message_sucess','Anda baru saja mengubah data strategi jangka panjang perusahaan');
+        }else
+        {
+            return redirect('Strategi-Jangka-Panjang')->with('message_fail','Terjadi kesalahan, Silahkan ubah ulang..!');
         }
     }
 
-    public function delete(Request $req, $id)
+     public function delete(Request $req, $id)
     {
-        $model = sjps::find($id);
-        if($model->delete()){
-            return redirect('Strategi-Jangka-Panjang')->with('message_success', 'Ada telah mengapus strategi anda');
-        }else{
-            return redirect('Strategi-Jangka-Panjang')->with('message_fail', 'Terjadi Kesalahan, Silahkan ubah ulang strategi anda');
+        if(empty($model = sjps::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
         }
+        if($model->delete())
+        {
+           $res = [
+               'message'=> 'Anda baru saja menghapus data strategi jangka panjang perusahaan',
+               'status'=> true
+           ];
+           return response()->json($res);
+        }else
+        {
+            $res = [
+                'message'=> 'Terjadi Kesalahan, Silahkan hapus ulang data  anda',
+                'status'=> true
+            ];
+            return response()->json($res);
+        }
+    }
+	
+	public function getTJPG()
+    {
+        $model = TJP::all();
+        return $model;
+    }
+
+    public function getSJP($id=1)
+    {
+        $model = sjps::all()->where('id_tjpg', $id);
+        return $model;
+    }
+
+    public function ResponseSJP($id_tjpg){
+        return response()->json($this->getSJP($id_tjpg));
     }
 }

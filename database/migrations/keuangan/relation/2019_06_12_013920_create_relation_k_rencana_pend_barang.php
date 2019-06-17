@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelatsiStategiJpd extends Migration
+class CreateRelationKRencanaPendBarang extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateRelatsiStategiJpd extends Migration
      */
     public function up()
     {
-        Schema::table('u_strategi_jpd', function (Blueprint $table) {
-            //
-            $table->foreign('id_sjpg')->references('id')->on('u_strategi_jpg');
-            $table->foreign('id_bagian_p')->references('id')->on('u_bagian_p');
-            $table->foreign('id_divisi_p')->references('id')->on('u_devisi_p');
+        Schema::table('k_rencana_pend_barang', function (Blueprint $table) {
+            $table->foreign('id_rab')->references('id')->on('k_rab');
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
-
         });
     }
 
@@ -31,7 +27,7 @@ class CreateRelatsiStategiJpd extends Migration
      */
     public function down()
     {
-        Schema::table('u_strategi_jpd', function (Blueprint $table) {
+            Schema::table('k_rencana_pend_barang', function (Blueprint $table) {
             //
         });
     }

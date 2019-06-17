@@ -56,7 +56,7 @@ class Karyawan extends Controller
         ];
         return response()->json($data_pass);
     }
-
+	//direvisi
     public function proses_pendidikan(Request $req)
     {
         $pend_akhir = $req->pend_akhir;

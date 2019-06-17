@@ -79,9 +79,9 @@ class Karyawan extends Controller
             'gol_darah' => 'required',
             'nm_bank'=> 'required',
             'no_rek'=> 'required',
-            'file_ktp'=> 'required|image|mimes:jpg,png,gif',
-            'cu_vitae'=> 'required|image|mimes:jpg,png,gif',
-            'pas_foto'=> 'required|image|mimes:jpg,png,gif',
+            'file_ktp'=> 'required|image|mimes:jpeg,jpg,png,gif',
+            'cu_vitae'=> 'required|image|mimes:jpeg,jpg,png,gif',
+            'pas_foto'=> 'required|image|mimes:jpeg,jpg,png,gif',
             'id_usaha'=> 'required|numeric'
         ]);
 
