@@ -84,6 +84,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Jabatan</label>
                                 <input type="text" name="jabatan" class="form-control" id="exampleInputEmail1">
+                                <input type="hidden" name="jenis_klien" value="0" class="form-control" id="exampleInputEmail1">
                             </div>
                         </div>
                         <!-- /.box-body -->
