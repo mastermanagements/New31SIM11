@@ -975,6 +975,10 @@ Route::get('ubah-sop/{id}', 'hrd\Sop@edit');
 Route::put('update-sop/{id}','hrd\Sop@update');
 
 Route::put('hapus-sop/{id}','hrd\Sop@delete');
+
+Route::get('Rencana-Pelatihan', 'hrd\RencanaPelatihan@index');
+
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
