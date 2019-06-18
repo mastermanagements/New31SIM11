@@ -8,6 +8,7 @@
 
 
     $(document).ready(function () {
+		
        uploadSurat = function (id) {
            $.ajax({
                url : '{{ url('ambilDataSuratKeluar') }}/'+id,
