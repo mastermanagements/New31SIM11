@@ -2,6 +2,7 @@
 
 @section('skin')
    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
+   <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 @stop
 
 @section('master_content')
@@ -9,7 +10,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            SOP (Standar Operasional Prosedur)
+            Rencana Pelatihan
         </h1>
     </section>
 
@@ -23,24 +24,47 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir SOP</h3>
+                        <h3 class="box-title">Formulir Rencana Pelatihan</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-sop') }}" method="post" enctype="multipart/form-data">
+                    <form role="form" action="{{ url('store-rencana-pelatihan') }}" method="post" enctype="multipart/form-data">
                         <div class="box-body">
 
                             <div class="form-group">
-                                <label>Nama SOP</label>
-                                <input type="text" class="form-control pull-right" name="nm_sop" required>
+                                <label>Periode </label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tahun Anggaran" name="thn_anggaran" required>
+                                </div>
                                 <!-- /.input group -->
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
 
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1"> Isi SOP</label>
-                                <textarea id="alasan" class="form-control" name="isi_sop"></textarea>
+                                <label for="exampleInputEmail1"> Tema Pelatihan</label>
+                                <textarea id="alasan" class="form-control" name="tema"></textarea>
+                                <small style="color: red">* Tidak Boleh Kosong</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tanggal Pelatihan </label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="datepicker1" placeholder="Tanggal Pelatihan" name="tgl_pelatihan" required>
+                                </div>
+                                <!-- /.input group -->
+                                <small style="color: red">* Tidak Boleh Kosong</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Biaya </label>
+                                <input type="number" min="0" class="form-control"  placeholder="Biaya Pelatihan" name="biaya" required>
+                                <!-- /.input group -->
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
 
@@ -62,12 +86,20 @@
 
 
 @section('plugins')
+    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
 
+        $('#datepicker').datepicker({
+            autoclose: true,
+            format: 'yyyy',
+            viewMode: "years",
+            minViewMode: "years"
+        });
 
-        CKEDITOR.replace('alasan', {
-            height: 600
+        $('#datepicker1').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy',
         });
 
 

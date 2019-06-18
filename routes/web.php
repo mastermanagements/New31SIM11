@@ -978,6 +978,17 @@ Route::put('hapus-sop/{id}','hrd\Sop@delete');
 
 Route::get('Rencana-Pelatihan', 'hrd\RencanaPelatihan@index');
 
+Route::get('tambah-rencana-pelatihan', 'hrd\RencanaPelatihan@create');
+
+Route::post('store-rencana-pelatihan','hrd\RencanaPelatihan@store');
+
+Route::get('ubah-rencana-pelatihan/{id}','hrd\RencanaPelatihan@edit');
+
+Route::post('update-rencana-pelatihan/{id}','hrd\RencanaPelatihan@update');
+
+Route::put('hapus-rencana-pelatihan/{id}','hrd\RencanaPelatihan@delete');
+
+Route::get('daftarkan-peserta-mengikuti-pelatihan/{id_pelatihan}', 'hrd\RencanaPelatihan@daftar_karyawan');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

@@ -15,7 +15,7 @@
         <!--------------------------
           | Your Page Content Here |
           -------------------------->
-        <a href="{{ url('tambah-sop') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambahkah Rencana Pelatihan</a>
+        <a href="{{ url('tambah-rencana-pelatihan') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambahkah Rencana Pelatihan</a>
         <p></p>
         <div class="row">
             @if(!empty(session('message_success')))
@@ -23,28 +23,39 @@
             @elseif(!empty(session('message_fail')))
                 <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
             @endif
-                @if(empty($sop))
+                @if(empty($data_pelatihan))
                     <div class="col-md-12">
                         <h5>Rencanan Pelatihan Belum Tersedia</h5>
                     </div>
                 @else
-                    @foreach($sop as $value)
+                    @foreach($data_pelatihan as $value)
                         <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="box box-primary">
 
                             <div class="box-body">
-                                <h3>{{ $value->nm_sop }}</h3>
+                                <h3>{{ $value->tema }}</h3>
+                                <span style="color: dimgrey">{{ date('d-m-Y', strtotime($value->tgl_pelatihan)) }}, Rp. {{ number_format($value->biaya,2, ',','.') }}</span>
                                 <hr>
-                                <p style="text-align: justify">
-                                    {!! $value->isi_sop !!}
-                                </p>
+                                <p style="text-align: justify">Perserta yang akan mengikuti pelatihan <a href="{{ url('daftarkan-peserta-mengikuti-pelatihan/'. $value->id) }}">Tambah karyawan</a></p>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th width="10px">No.</th>
+                                            <th>Nama Karyawan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @php($i=1)
+
+                                    </tbody>
+                                </table>
                                 <p>
-                                    <form action="{{ url('hapus-sop/'.$value->id) }}" method="post" class="pull-right">
+                                    <form action="{{ url('hapus-rencana-pelatihan/'.$value->id) }}" method="post" class="pull-right">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="put">
-                                        <a href="{{ url('ubah-sop/'.$value->id) }}" class="btn btn-warning"><i class="fa fa-pencil"></i> ubah</a>
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda akan menghapus SOP ini..?')"><i class="fa fa-pencil"></i> hapus</button>
+                                        <a href="{{ url('ubah-rencana-pelatihan/'.$value->id) }}" class="btn btn-warning"><i class="fa fa-pencil"></i> ubah rencana pelatihan</a>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda akan menghapus rencana pelatihan ini..?')"><i class="fa fa-pencil"></i> hapus rencana pelatihan</button>
                                     </form>
                                 </p>
                             </div>
@@ -52,6 +63,7 @@
                         <!-- /.box -->
                     </div>
                     @endforeach
+                    {{ $data_pelatihan->links() }}
                 @endif
         </div>
     </section>

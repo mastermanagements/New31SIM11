@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="HRD&#10;- Menu Permintaan CuTi ada penambahan Upload Document pendukung&#10;- Menu SOP Fix">
+    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="HRD&#10;- Perbaikan Error Controller test">
+      <change afterPath="$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/hrd/2019_06_18_024305_create_h_rencana_pelatihan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/hrd/Tes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/hrd/Tes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,6 +52,13 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="master_management: schema" type="ebfa3cd1:MariaImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="master_management@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="master_management: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="h_rencana_pelatihan: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -54,19 +68,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="42" column="44" lean-forward="true" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="975" lean-forward="true" selection-start-line="975" selection-end-line="975" />
+            <state relative-caret-position="355">
+              <caret line="990" column="89" lean-forward="true" selection-start-line="990" selection-start-column="89" selection-end-line="990" selection-end-column="104" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Tes.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="117" column="4" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="4" />
+            <state relative-caret-position="239">
+              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
               <folding>
                 <element signature="e#44#72#0#PHP" expanded="true" />
               </folding>
@@ -75,804 +98,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
-              <caret line="46" column="49" lean-forward="true" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="uml://DATABASE/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.SCHEMA:master_management">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>DATABASE</ID>
-              <OriginalElement>7f3da4e7-bbfb-477b-82c9-d04004bd90b0.SCHEMA:master_management</OriginalElement>
-              <nodes>
-                <node x="2981.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_periode_kerja</node>
-                <node x="55.5" y="1098.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor</node>
-                <node x="0.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas</node>
-                <node x="5947.225101858924" y="1087.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_klien</node>
-                <node x="513.1806897759088" y="1241.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm</node>
-                <node x="6309.010235230455" y="1814.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_barang</node>
-                <node x="461.0" y="3327.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_proposal</node>
-                <node x="5077.010235230455" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_sertim</node>
-                <node x="6915.611806086073" y="1803.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_pemeliharaan</node>
-                <node x="2542.305689775909" y="1858.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p</node>
-                <node x="2793.5102352304543" y="1825.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_sek</node>
-                <node x="5043.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_jenis_kontrak</node>
-                <node x="3670.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_setting_cuti</node>
-                <node x="2457.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_tes_keahlian</node>
-                <node x="2170.305689775909" y="0.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi</node>
-                <node x="6704.826672714542" y="1131.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_barang</node>
-                <node x="5685.076672714542" y="2570.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_tim_proyek</node>
-                <node x="7286.655303030303" y="1186.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_supplier</node>
-                <node x="218.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_task_proyek</node>
-                <node x="4156.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_kalender_kerja</node>
-                <node x="271.68068977590883" y="1858.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm</node>
-                <node x="4109.510235230455" y="1825.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_keluar</node>
-                <node x="4845.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_sop</node>
-                <node x="3467.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_serops</node>
-                <node x="5537.975101858924" y="1748.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk</node>
-                <node x="2432.805689775909" y="2252.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p</node>
-                <node x="2146.066010949833" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan</node>
-                <node x="963.1806897759088" y="1814.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_masuk</node>
-                <node x="704.0" y="3327.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_psikotes</node>
-                <node x="5513.010235230455" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_proyek</node>
-                <node x="64.49025337407511" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor</node>
-                <node x="281.18068977590883" y="1230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_submenu</node>
-                <node x="1885.480081805451" y="2559.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing</node>
-                <node x="4097.119104914694" y="1230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_surat</node>
-                <node x="2184.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_wawancara</node>
-                <node x="744.1806897759088" y="1230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_misi_p</node>
-                <node x="4359.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_hasil_tes</node>
-                <node x="6483.070139419406" y="602.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_kategori_produk</node>
-                <node x="5286.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_item_wawancara</node>
-                <node x="6909.611806086073" y="2208.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progres_pemeliharaan</node>
-                <node x="1400.1806897759088" y="1153.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_ijin_usaha</node>
-                <node x="7057.405303030303" y="1230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jenis_pem</node>
-                <node x="2607.1205564043785" y="2548.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd</node>
-                <node x="109.0" y="3349.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jadwal_proyek</node>
-                <node x="960.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_arsip</node>
-                <node x="101.0" y="3647.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progress_proyek</node>
-                <node x="3673.5102352304543" y="1847.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_email_k</node>
-                <node x="5529.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_rapat</node>
-                <node x="1181.1806897759088" y="1847.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.struktur_perusahaan</node>
-                <node x="2109.305689775909" y="188.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten</node>
-                <node x="5731.010235230455" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_kemajuan</node>
-                <node x="2736.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_cuti</node>
-                <node x="1698.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_lamaran_pek</node>
-                <node x="4560.510235230455" y="1836.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_swot</node>
-                <node x="5295.010235230455" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_penyelesaian</node>
-                <node x="1941.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_loker</node>
-                <node x="1828.480081805451" y="2846.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_rapat</node>
-                <node x="2074.055689775909" y="1847.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_job_desc</node>
-                <node x="4967.510235230455" y="1847.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_model_bisnis</node>
-                <node x="3224.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_pemeriksaan</node>
-                <node x="461.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_proposal</node>
-                <node x="4602.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_item_keahlian</node>
-                <node x="960.0" y="3327.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_arsip</node>
-                <node x="309.68068977590883" y="602.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_menu</node>
-                <node x="3274.2602352304543" y="1032.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan</node>
-                <node x="1457.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_request_cuti</node>
-                <node x="1353.6806897759088" y="166.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm</node>
-                <node x="6204.826672714542" y="1175.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jasa</node>
-                <node x="3229.5102352304543" y="1759.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_keluarga_ky</node>
-                <node x="3891.5102352304543" y="1847.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpg</node>
-                <node x="2133.305689775909" y="448.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan</node>
-                <node x="1115.1806897759088" y="1219.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p</node>
-                <node x="1464.1806897759088" y="525.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_profil</node>
-                <node x="2323.305689775909" y="1836.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_hp_create</node>
-                <node x="3913.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_seleksi_berkas</node>
-                <node x="1836.1806897759088" y="1230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_visi_p</node>
-                <node x="6545.861806086073" y="1869.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subsubkategori_produk</node>
-                <node x="5732.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.migrations</node>
-                <node x="5950.010235230455" y="1825.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_jasa</node>
-                <node x="1618.1806897759088" y="1175.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_akta</node>
-                <node x="6451.826672714542" y="1241.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subkategori_produk</node>
-                <node x="3448.5102352304543" y="1748.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_tenaga_ahli</node>
-                <node x="4339.510235230455" y="1759.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_peralatan</node>
-                <node x="722.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_jenis_psikotes</node>
-                <node x="7161.135235230455" y="1792.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_beli_barang</node>
-                <node x="1203.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_kontrak_kerja</node>
-                <node x="3011.5102352304543" y="1825.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_asal</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_misi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="49.5" y="-80.0" />
-                  <point x="892.6806897759088" y="932.0" />
-                  <point x="2160.868189775909" y="932.0" />
-                  <point x="-66.9375" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p">
-                  <point x="-79.19999999999982" y="-124.0" />
-                  <point x="2626.9205564043787" y="2528.0" />
-                  <point x="2581.305689775909" y="2528.0" />
-                  <point x="49.5" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="74.25" y="-212.0" />
-                  <point x="228.75" y="902.0" />
-                  <point x="2137.243189775909" y="902.0" />
-                  <point x="-90.5625" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_psikotes" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_jenis_psikotes">
-                  <point x="0.0" y="-113.0" />
-                  <point x="0.0" y="80.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_sertim" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="-66.0" y="-113.0" />
-                  <point x="5110.010235230455" y="2188.0" />
-                  <point x="3438.0102352304543" y="2188.0" />
-                  <point x="3438.0102352304543" y="1728.0" />
-                  <point x="3388.214780685" y="1728.0" />
-                  <point x="4.954545454545496" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.struktur_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="66.0" y="-91.0" />
-                  <point x="1346.1806897759088" y="1628.0" />
-                  <point x="3279.214780685" y="1628.0" />
-                  <point x="-104.0454545454545" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_ijin_usaha" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="49.5" y="-157.0" />
-                  <point x="1548.6806897759088" y="962.0" />
-                  <point x="2184.493189775909" y="962.0" />
-                  <point x="-43.3125" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="86.40000000000009" y="-113.0" />
-                  <point x="2340.4660109498327" y="2178.0" />
-                  <point x="2531.805689775909" y="2178.0" />
-                  <point x="2531.805689775909" y="1668.0" />
-                  <point x="3318.8511443213633" y="1668.0" />
-                  <point x="-64.40909090909099" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm">
-                  <point x="27.0" y="-113.0" />
-                  <point x="199.4902533740751" y="2178.0" />
-                  <point x="329.18068977590883" y="2178.0" />
-                  <point x="-57.5" y="80.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_visi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-                  <point x="-49.5" y="-80.0" />
-                  <point x="1885.6806897759088" y="398.0" />
-                  <point x="1502.0443261395449" y="398.0" />
-                  <point x="52.36363636363603" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jadwal_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_task_proyek">
-                  <point x="49.5" y="-124.0" />
-                  <point x="257.5" y="3324.0" />
-                  <point x="317.0" y="3324.0" />
-                  <point x="0.0" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_peralatan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="-50.25" y="-179.0" />
-                  <point x="4389.760235230455" y="1668.0" />
-                  <point x="3447.6693261395453" y="1668.0" />
-                  <point x="64.40909090909099" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-                  <point x="-24.75" y="-212.0" />
-                  <point x="129.2402533740751" y="388.0" />
-                  <point x="1379.8625079577268" y="388.0" />
-                  <point x="-69.81818181818198" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi">
-                  <point x="-74.25" y="-212.0" />
-                  <point x="80.25" y="1012.0" />
-                  <point x="86.86525337407511" y="1012.0" />
-                  <point x="86.86525337407511" y="141.0" />
-                  <point x="2192.555689775909" y="141.0" />
-                  <point x="-66.75" y="58.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subkategori_produk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_kategori_produk">
-                  <point x="0.0" y="-69.0" />
-                  <point x="6568.326672714542" y="1012.0" />
-                  <point x="6573.570139419406" y="1012.0" />
-                  <point x="0.0" y="58.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-                  <point x="0.0" y="-113.0" />
-                  <point x="2254.066010949833" y="2158.0" />
-                  <point x="1389.6806897759088" y="2158.0" />
-                  <point x="1389.6806897759088" y="418.0" />
-                  <point x="1432.2261443213638" y="418.0" />
-                  <point x="-17.45454545454504" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_misi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-                  <point x="-49.5" y="-80.0" />
-                  <point x="793.6806897759088" y="398.0" />
-                  <point x="1397.3170534122728" y="398.0" />
-                  <point x="-52.36363636363603" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_penyelesaian" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk">
-                  <point x="66.0" y="-113.0" />
-                  <point x="5460.010235230455" y="2178.0" />
-                  <point x="5612.225101858924" y="2178.0" />
-                  <point x="-24.75" y="190.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_submenu" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_menu">
-                  <point x="0.0" y="-80.0" />
-                  <point x="0.0" y="58.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_sek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="0.0" y="-113.0" />
-                  <point x="2892.5102352304543" y="1708.0" />
-                  <point x="3358.487507957727" y="1708.0" />
-                  <point x="-24.77272727272748" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpg" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="49.5" y="-91.0" />
-                  <point x="4040.0102352304543" y="1728.0" />
-                  <point x="4056.8691049146937" y="1728.0" />
-                  <point x="4056.8691049146937" y="982.0" />
-                  <point x="2255.368189775909" y="982.0" />
-                  <point x="27.5625" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_ijin_usaha" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-                  <point x="-49.5" y="-157.0" />
-                  <point x="0.0" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_profil" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-                  <point x="0.0" y="-135.0" />
-                  <point x="1558.6806897759088" y="418.0" />
-                  <point x="1467.1352352304539" y="418.0" />
-                  <point x="17.45454545454504" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm">
-                  <point x="-43.200000000000045" y="-113.0" />
-                  <point x="2210.866010949833" y="2168.0" />
-                  <point x="624.1806897759088" y="2168.0" />
-                  <point x="624.1806897759088" y="1728.0" />
-                  <point x="671.4306897759088" y="1728.0" />
-                  <point x="52.75" y="69.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_rapat" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing">
-                  <point x="0.0" y="-113.0" />
-                  <point x="0.0" y="113.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk">
-                  <point x="0.0" y="-113.0" />
-                  <point x="5612.010235230455" y="2188.0" />
-                  <point x="5661.725101858924" y="2188.0" />
-                  <point x="24.75" y="190.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_sertim" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="0.0" y="-113.0" />
-                  <point x="5176.010235230455" y="922.0" />
-                  <point x="2302.618189775909" y="922.0" />
-                  <point x="74.8125" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="43.200000000000045" y="-113.0" />
-                  <point x="2297.266010949833" y="2148.0" />
-                  <point x="2052.555689775909" y="2148.0" />
-                  <point x="2052.555689775909" y="1002.0" />
-                  <point x="2215.993189775909" y="1002.0" />
-                  <point x="-11.8125" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpg">
-                  <point x="39.59999999999991" y="-124.0" />
-                  <point x="2745.720556404378" y="2518.0" />
-                  <point x="3990.5102352304543" y="2518.0" />
-                  <point x="0.0" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi">
-                  <point x="39.600000000000364" y="-190.0" />
-                  <point x="5676.575101858924" y="1718.0" />
-                  <point x="5635.580303030303" y="1718.0" />
-                  <point x="5635.580303030303" y="141.0" />
-                  <point x="2326.055689775909" y="141.0" />
-                  <point x="66.75" y="58.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_asal" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="0.0" y="-113.0" />
-                  <point x="3110.5102352304543" y="1718.0" />
-                  <point x="3368.396598866818" y="1718.0" />
-                  <point x="-14.863636363636488" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_swot" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="-96.75" y="-102.0" />
-                  <point x="4657.260235230455" y="1658.0" />
-                  <point x="3457.5784170486363" y="1658.0" />
-                  <point x="74.31818181818198" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten">
-                  <point x="0.0" y="-190.0" />
-                  <point x="5636.975101858924" y="1728.0" />
-                  <point x="5624.580303030303" y="1728.0" />
-                  <point x="5624.580303030303" y="368.0" />
-                  <point x="2270.1390231092423" y="368.0" />
-                  <point x="64.33333333333348" y="69.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p">
-                  <point x="66.0" y="-113.0" />
-                  <point x="2050.480081805451" y="2528.0" />
-                  <point x="2482.305689775909" y="2528.0" />
-                  <point x="-49.5" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="49.5" y="-91.0" />
-                  <point x="1263.6806897759088" y="952.0" />
-                  <point x="2176.618189775909" y="952.0" />
-                  <point x="-51.1875" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="-49.5" y="-80.0" />
-                  <point x="2591.805689775909" y="1618.0" />
-                  <point x="2479.263257575757" y="1618.0" />
-                  <point x="2479.263257575757" y="1002.0" />
-                  <point x="2239.618189775909" y="1002.0" />
-                  <point x="11.8125" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_akta" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-                  <point x="-49.5" y="-135.0" />
-                  <point x="1667.6806897759088" y="408.0" />
-                  <point x="1484.5897806849998" y="408.0" />
-                  <point x="34.90909090909099" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpg" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="-49.5" y="-91.0" />
-                  <point x="3941.0102352304543" y="1698.0" />
-                  <point x="3417.9420534122723" y="1698.0" />
-                  <point x="34.68181818181802" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subsubkategori_produk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subkategori_produk">
-                  <point x="0.0" y="-69.0" />
-                  <point x="6674.361806086073" y="1718.0" />
-                  <point x="6568.326672714542" y="1718.0" />
-                  <point x="0.0" y="69.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jadwal_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas">
-                  <point x="-49.5" y="-124.0" />
-                  <point x="158.5" y="3324.0" />
-                  <point x="99.0" y="3324.0" />
-                  <point x="0.0" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="-66.0" y="-91.0" />
-                  <point x="2465.805689775909" y="2168.0" />
-                  <point x="2312.805689775909" y="2168.0" />
-                  <point x="2312.805689775909" y="1012.0" />
-                  <point x="2231.743189775909" y="1012.0" />
-                  <point x="3.9375" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="-79.19999999999982" y="-190.0" />
-                  <point x="5557.775101858924" y="1638.0" />
-                  <point x="3477.396598866818" y="1638.0" />
-                  <point x="94.13636363636351" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_tenaga_ahli" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="0.0" y="-190.0" />
-                  <point x="3551.0102352304543" y="1718.0" />
-                  <point x="3398.123871594091" y="1718.0" />
-                  <point x="14.863636363636488" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="0.0" y="-113.0" />
-                  <point x="1984.480081805451" y="2518.0" />
-                  <point x="2063.555689775909" y="2518.0" />
-                  <point x="2063.555689775909" y="1638.0" />
-                  <point x="3289.123871594091" y="1638.0" />
-                  <point x="-94.13636363636351" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_beli_barang" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_supplier">
-                  <point x="53.25" y="-146.0" />
-                  <point x="7320.885235230455" y="1728.0" />
-                  <point x="7385.655303030303" y="1728.0" />
-                  <point x="0.0" y="124.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_beli_barang" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_barang">
-                  <point x="-53.25" y="-146.0" />
-                  <point x="7214.385235230455" y="1698.0" />
-                  <point x="6875.076672714542" y="1698.0" />
-                  <point x="56.75" y="179.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_menu">
-                  <point x="-76.66666666666697" y="-80.0" />
-                  <point x="310.01402310924186" y="1728.0" />
-                  <point x="270.68068977590883" y="1728.0" />
-                  <point x="270.68068977590883" y="892.0" />
-                  <point x="335.34735644257535" y="892.0" />
-                  <point x="-51.333333333333485" y="58.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten">
-                  <point x="0.0" y="-212.0" />
-                  <point x="2227.805689775909" y="428.0" />
-                  <point x="2205.805689775909" y="428.0" />
-                  <point x="0.0" y="69.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_akta" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="49.5" y="-135.0" />
-                  <point x="1766.6806897759088" y="972.0" />
-                  <point x="2192.368189775909" y="972.0" />
-                  <point x="-35.4375" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-                  <point x="-63.0" y="-212.0" />
-                  <point x="2164.805689775909" y="388.0" />
-                  <point x="1519.4988715940908" y="388.0" />
-                  <point x="69.81818181818198" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_keluar" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="-66.0" y="-113.0" />
-                  <point x="4142.510235230455" y="1688.0" />
-                  <point x="3427.8511443213633" y="1688.0" />
-                  <point x="44.59090909090901" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi">
-                  <point x="63.0" y="-212.0" />
-                  <point x="2290.805689775909" y="428.0" />
-                  <point x="2312.805689775909" y="428.0" />
-                  <point x="2312.805689775909" y="141.0" />
-                  <point x="2281.555689775909" y="141.0" />
-                  <point x="22.25" y="58.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_peralatan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="50.25" y="-179.0" />
-                  <point x="4490.260235230455" y="952.0" />
-                  <point x="2278.993189775909" y="952.0" />
-                  <point x="51.1875" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progress_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jadwal_proyek">
-                  <point x="0.0" y="-124.0" />
-                  <point x="0.0" y="124.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_visi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="49.5" y="-80.0" />
-                  <point x="1984.6806897759088" y="982.0" />
-                  <point x="2200.243189775909" y="982.0" />
-                  <point x="-27.5625" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="52.75" y="-69.0" />
-                  <point x="671.4306897759088" y="922.0" />
-                  <point x="2152.993189775909" y="922.0" />
-                  <point x="-74.8125" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_jasa" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_klien">
-                  <point x="-49.5" y="-113.0" />
-                  <point x="5999.510235230455" y="1728.0" />
-                  <point x="6049.225101858924" y="1728.0" />
-                  <point x="0.0" y="223.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_email_k" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="0.0" y="-91.0" />
-                  <point x="3772.5102352304543" y="1708.0" />
-                  <point x="3408.032962503182" y="1708.0" />
-                  <point x="24.77272727272748" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_pemeliharaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jasa">
-                  <point x="-49.5" y="-135.0" />
-                  <point x="6965.111806086073" y="1708.0" />
-                  <point x="6375.076672714542" y="1708.0" />
-                  <point x="56.75" y="135.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm">
-                  <point x="81.0" y="-113.0" />
-                  <point x="253.4902533740751" y="2188.0" />
-                  <point x="613.1806897759088" y="2188.0" />
-                  <point x="613.1806897759088" y="1728.0" />
-                  <point x="565.9306897759088" y="1728.0" />
-                  <point x="-52.75" y="69.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_kemajuan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk">
-                  <point x="0.0" y="-113.0" />
-                  <point x="5830.010235230455" y="2188.0" />
-                  <point x="5711.225101858924" y="2188.0" />
-                  <point x="74.25" y="190.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="79.19999999999982" y="-124.0" />
-                  <point x="2785.3205564043783" y="2528.0" />
-                  <point x="4329.010235230455" y="2528.0" />
-                  <point x="4329.010235230455" y="962.0" />
-                  <point x="2271.118189775909" y="962.0" />
-                  <point x="43.3125" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_tim_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_proyek">
-                  <point x="-49.5" y="-102.0" />
-                  <point x="5734.576672714542" y="2528.0" />
-                  <point x="5612.010235230455" y="2528.0" />
-                  <point x="0.0" y="113.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_job_desc" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="66.0" y="-91.0" />
-                  <point x="2239.055689775909" y="1648.0" />
-                  <point x="3299.032962503182" y="1648.0" />
-                  <point x="-84.22727272727252" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_hp_create" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="0.0" y="-102.0" />
-                  <point x="2422.305689775909" y="1658.0" />
-                  <point x="3308.9420534122723" y="1658.0" />
-                  <point x="-74.31818181818198" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor">
-                  <point x="-27.0" y="-113.0" />
-                  <point x="145.4902533740751" y="2188.0" />
-                  <point x="154.5" y="2188.0" />
-                  <point x="0.0" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_swot" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="96.75" y="-102.0" />
-                  <point x="4850.760235230455" y="942.0" />
-                  <point x="2286.868189775909" y="942.0" />
-                  <point x="59.0625" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_proposal" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_proposal">
-                  <point x="0.0" y="-146.0" />
-                  <point x="0.0" y="80.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_barang" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_kategori_produk">
-                  <point x="0.0" y="-179.0" />
-                  <point x="6818.326672714542" y="1012.0" />
-                  <point x="6633.903472752739" y="1012.0" />
-                  <point x="60.33333333333303" y="58.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-                  <point x="-49.5" y="-91.0" />
-                  <point x="1164.6806897759088" y="408.0" />
-                  <point x="1414.7715988668178" y="408.0" />
-                  <point x="-34.90909090909099" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="76.66666666666652" y="-80.0" />
-                  <point x="463.34735644257535" y="1728.0" />
-                  <point x="502.68068977590883" y="1728.0" />
-                  <point x="502.68068977590883" y="912.0" />
-                  <point x="2145.118189775909" y="912.0" />
-                  <point x="-82.6875" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm">
-                  <point x="-86.40000000000009" y="-113.0" />
-                  <point x="2167.6660109498325" y="2178.0" />
-                  <point x="444.18068977590883" y="2178.0" />
-                  <point x="57.5" y="80.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_keluar" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_surat">
-                  <point x="0.0" y="-113.0" />
-                  <point x="4208.510235230455" y="1728.0" />
-                  <point x="4195.619104914694" y="1728.0" />
-                  <point x="0.0" y="80.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_job_desc" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p">
-                  <point x="-66.0" y="-91.0" />
-                  <point x="2107.055689775909" y="1608.0" />
-                  <point x="1280.1806897759088" y="1608.0" />
-                  <point x="66.0" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_arsip" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_arsip">
-                  <point x="0.0" y="-102.0" />
-                  <point x="0.0" y="80.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_menu">
-                  <point x="-52.75" y="-69.0" />
-                  <point x="565.9306897759088" y="892.0" />
-                  <point x="438.0140231092423" y="892.0" />
-                  <point x="51.33333333333337" y="58.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_keluarga_ky" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="0.0" y="-179.0" />
-                  <point x="3328.5102352304543" y="1728.0" />
-                  <point x="3378.305689775909" y="1728.0" />
-                  <point x="-4.954545454545496" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_barang" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_klien">
-                  <point x="-49.5" y="-124.0" />
-                  <point x="6358.510235230455" y="1718.0" />
-                  <point x="6117.225101858924" y="1718.0" />
-                  <point x="68.0" y="223.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_barang" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_barang">
-                  <point x="49.5" y="-124.0" />
-                  <point x="6457.510235230455" y="1728.0" />
-                  <point x="6761.576672714542" y="1728.0" />
-                  <point x="-56.75" y="179.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="-39.600000000000364" y="-190.0" />
-                  <point x="5597.375101858924" y="1628.0" />
-                  <point x="5535.00755188439" y="1628.0" />
-                  <point x="5535.00755188439" y="902.0" />
-                  <point x="2318.368189775909" y="902.0" />
-                  <point x="90.5625" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progres_pemeliharaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_pemeliharaan">
-                  <point x="0.0" y="-135.0" />
-                  <point x="0.0" y="135.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_jasa" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jasa">
-                  <point x="49.5" y="-113.0" />
-                  <point x="6098.510235230455" y="1728.0" />
-                  <point x="6261.576672714542" y="1728.0" />
-                  <point x="-56.75" y="135.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_masuk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p">
-                  <point x="0.0" y="-124.0" />
-                  <point x="1062.1806897759088" y="1728.0" />
-                  <point x="1148.1806897759088" y="1728.0" />
-                  <point x="-66.0" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_job_desc" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="0.0" y="-91.0" />
-                  <point x="2173.055689775909" y="1012.0" />
-                  <point x="2223.868189775909" y="1012.0" />
-                  <point x="-3.9375" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_model_bisnis" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="-49.5" y="-91.0" />
-                  <point x="5017.010235230455" y="1648.0" />
-                  <point x="3467.487507957727" y="1648.0" />
-                  <point x="84.22727272727252" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_klien">
-                  <point x="79.19999999999982" y="-190.0" />
-                  <point x="5716.175101858924" y="1728.0" />
-                  <point x="5981.225101858924" y="1728.0" />
-                  <point x="-68.0" y="223.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_keluar" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="66.0" y="-113.0" />
-                  <point x="4274.510235230455" y="1728.0" />
-                  <point x="4304.619104914694" y="1728.0" />
-                  <point x="4304.619104914694" y="972.0" />
-                  <point x="2263.243189775909" y="972.0" />
-                  <point x="35.4375" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_penyelesaian" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="0.0" y="-113.0" />
-                  <point x="5394.010235230455" y="912.0" />
-                  <point x="2310.493189775909" y="912.0" />
-                  <point x="82.6875" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_submenu">
-                  <point x="0.0" y="-80.0" />
-                  <point x="0.0" y="80.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.struktur_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="0.0" y="-91.0" />
-                  <point x="1280.1806897759088" y="1618.0" />
-                  <point x="2044.6806897759088" y="1618.0" />
-                  <point x="2044.6806897759088" y="992.0" />
-                  <point x="2208.118189775909" y="992.0" />
-                  <point x="-19.6875" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p">
-                  <point x="0.0" y="-91.0" />
-                  <point x="2531.805689775909" y="2188.0" />
-                  <point x="2591.805689775909" y="2188.0" />
-                  <point x="-49.5" y="80.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_tim_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="49.5" y="-102.0" />
-                  <point x="5833.576672714542" y="2528.0" />
-                  <point x="5939.510235230455" y="2528.0" />
-                  <point x="5939.510235230455" y="1618.0" />
-                  <point x="3487.305689775909" y="1618.0" />
-                  <point x="104.0454545454545" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_sertim" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk">
-                  <point x="66.0" y="-113.0" />
-                  <point x="5242.010235230455" y="2168.0" />
-                  <point x="5562.725101858924" y="2168.0" />
-                  <point x="-74.25" y="190.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-                  <point x="54.5" y="-278.0" />
-                  <point x="3437.7602352304543" y="378.0" />
-                  <point x="1536.9534170486359" y="378.0" />
-                  <point x="87.27272727272702" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_pemeliharaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jenis_pem">
-                  <point x="49.5" y="-135.0" />
-                  <point x="7064.111806086073" y="1728.0" />
-                  <point x="7156.405303030303" y="1728.0" />
-                  <point x="0.0" y="80.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="-54.5" y="-278.0" />
-                  <point x="3328.7602352304543" y="992.0" />
-                  <point x="2247.493189775909" y="992.0" />
-                  <point x="19.6875" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten">
-                  <point x="24.75" y="-212.0" />
-                  <point x="179.25" y="1012.0" />
-                  <point x="147.43068977590883" y="1012.0" />
-                  <point x="147.43068977590883" y="428.0" />
-                  <point x="2141.4723564425753" y="428.0" />
-                  <point x="-64.33333333333348" y="69.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_model_bisnis" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="49.5" y="-91.0" />
-                  <point x="5116.010235230455" y="932.0" />
-                  <point x="2294.743189775909" y="932.0" />
-                  <point x="66.9375" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi">
-                  <point x="0.0" y="-69.0" />
-                  <point x="2205.805689775909" y="141.0" />
-                  <point x="2237.055689775909" y="141.0" />
-                  <point x="-22.25" y="58.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="66.0" y="-91.0" />
-                  <point x="2597.805689775909" y="2188.0" />
-                  <point x="2750.805689775909" y="2188.0" />
-                  <point x="2750.805689775909" y="1688.0" />
-                  <point x="3338.6693261395453" y="1688.0" />
-                  <point x="-44.59090909090901" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_penyelesaian" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="-66.0" y="-113.0" />
-                  <point x="5328.010235230455" y="2158.0" />
-                  <point x="4318.010235230455" y="2158.0" />
-                  <point x="4318.010235230455" y="1678.0" />
-                  <point x="3437.7602352304543" y="1678.0" />
-                  <point x="54.5" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-                  <point x="-66.0" y="-113.0" />
-                  <point x="1918.480081805451" y="2528.0" />
-                  <point x="952.6806897759088" y="2528.0" />
-                  <point x="952.6806897759088" y="942.0" />
-                  <point x="2168.743189775909" y="942.0" />
-                  <point x="-59.0625" y="212.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="0.0" y="-124.0" />
-                  <point x="2706.1205564043785" y="2508.0" />
-                  <point x="2783.0102352304543" y="2508.0" />
-                  <point x="2783.0102352304543" y="1698.0" />
-                  <point x="3348.5784170486363" y="1698.0" />
-                  <point x="-34.68181818181802" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-                  <point x="-81.0" y="-113.0" />
-                  <point x="91.49025337407511" y="2188.0" />
-                  <point x="45.0" y="2188.0" />
-                  <point x="45.0" y="378.0" />
-                  <point x="1362.4079625031818" y="378.0" />
-                  <point x="-87.27272727272702" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jasa" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_kategori_produk">
-                  <point x="0.0" y="-135.0" />
-                  <point x="6318.326672714542" y="1012.0" />
-                  <point x="6513.236806086073" y="1012.0" />
-                  <point x="-60.33333333333303" y="58.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.struktur_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p">
-                  <point x="-66.0" y="-91.0" />
-                  <point x="0.0" y="91.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-                  <point x="49.5" y="-80.0" />
-                  <point x="2690.805689775909" y="1678.0" />
-                  <point x="3328.7602352304543" y="1678.0" />
-                  <point x="-54.5" y="278.0" />
-                </edge>
-                <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p">
-                  <point x="-39.59999999999991" y="-124.0" />
-                  <point x="2666.520556404378" y="2498.0" />
-                  <point x="2742.555689775909" y="2498.0" />
-                  <point x="2742.555689775909" y="2178.0" />
-                  <point x="2690.805689775909" y="2178.0" />
-                  <point x="49.5" y="80.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="0.0657264138025469" x="3641.5" y="1987.5" />
-              <SelectedNodes>
-                <node>7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_periode_kerja</node>
-              </SelectedNodes>
-              <Categories>
-                <Category>Key columns</Category>
-                <Category>Columns</Category>
-              </Categories>
+              <caret line="11" column="85" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="85" />
             </state>
           </provider>
         </entry>
@@ -968,15 +197,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/tenaga_ahli/crud/page_detail.blade.php" />
-        <option value="$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/tenaga_ahli/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/TenagaKerja.php" />
         <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_11_061057_create_h_periode_kerja.php" />
         <option value="$PROJECT_DIR$/resources/views/user/hrd/master_user.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/Hrd/H_periode_kerja.php" />
         <option value="$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/PeriodeKerja.php" />
         <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_12_050959_create_h_kalender_kerja.php" />
@@ -1014,11 +238,16 @@
         <option value="$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/Sop.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php" />
         <option value="$PROJECT_DIR$/app/Model/Superadmin_ukm/U_jabatan_p.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/Tes.php" />
+        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_18_024305_create_h_rencana_pelatihan.php" />
+        <option value="$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php" />
       </list>
     </option>
   </component>
@@ -1156,28 +385,47 @@
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
               <item name="hrd" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="hrd" type="462c0819:PsiDirectoryNode" />
+              <item name="section" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="hrd" type="462c0819:PsiDirectoryNode" />
+              <item name="section" type="462c0819:PsiDirectoryNode" />
+              <item name="rencana_pelatihan" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -1344,14 +592,7 @@
       <workItem from="1560739065105" duration="1801000" />
       <workItem from="1560740906838" duration="9074000" />
       <workItem from="1560818939120" duration="3859000" />
-      <workItem from="1560823838520" duration="547000" />
-    </task>
-    <task id="LOCAL-00027" summary="Administrasi -&gt; &#10; Brifing feature selesai, tambah brifing, hapus brifing pending">
-      <created>1555398303139</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1555398303139</updated>
+      <workItem from="1560823838520" duration="8234000" />
     </task>
     <task id="LOCAL-00028" summary="Administrasi -&gt; &#10;Ganti Route">
       <created>1555400480326</created>
@@ -1689,11 +930,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560758032828</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="HRD&#10;- Perbaikan Error Controller test">
+      <created>1560824672086</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1560824672086</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="745632000" />
+    <option name="totallyTimeSpent" value="753319000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1705,9 +953,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49918166" visible="true" weight="0.23524962" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49918166" visible="true" weight="0.24281392" />
       <window_info id="Structure" order="1" weight="0.24962178" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" sideWeight="0.5008183" side_tool="true" weight="0.26701966" />
@@ -1721,7 +968,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5181543" side_tool="true" weight="0.25531915" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.48487142" weight="0.39770868" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.48184568" weight="0.25531915" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.48184568" visible="true" weight="0.25531915" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -1785,7 +1032,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Produk -&gt; &#10;- Jenis Pemeliharaan&#10;- Pemeliharaan Fix" />
     <MESSAGE value="Produk -&gt; &#10;- Progres Pemeliharaan Fix" />
     <MESSAGE value="Produk -&gt; &#10;- Penambahan No.Invoice dan No.faktur pada menu pembelian dan menu penjualan&#10;- penambahan script pada masing&quot; kontroller" />
     <MESSAGE value="Produk -&gt; &#10; - Rekruitmen" />
@@ -1810,52 +1056,10 @@
     <MESSAGE value="HRD&#10;- Pengaturan Cuti fix&#10;- daftar cuti Fix" />
     <MESSAGE value="HRD&#10;- Permintaan Cuti crud fix" />
     <MESSAGE value="HRD&#10;- Menu Permintaan CuTi ada penambahan Upload Document pendukung&#10;- Menu SOP Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="HRD&#10;- Menu Permintaan CuTi ada penambahan Upload Document pendukung&#10;- Menu SOP Fix" />
+    <MESSAGE value="HRD&#10;- Perbaikan Error Controller test" />
+    <option name="LAST_COMMIT_MESSAGE" value="HRD&#10;- Perbaikan Error Controller test" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_setting_cuti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_request_cuti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="27" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="81" column="36" lean-forward="true" selection-end-line="145" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/page_edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="104" column="78" selection-start-line="104" selection-start-column="78" selection-end-line="104" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1481">
-          <caret line="77" column="27" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/modal/js_permintaan_cuti.js" />
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/loker/include/modal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="53" column="10" lean-forward="true" selection-end-line="56" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -1932,13 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
-          <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Model/Hrd/Sop.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -2012,9 +1209,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1248">
@@ -2047,13 +1241,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="1002" column="13" selection-start-line="1002" selection-start-column="13" selection-end-line="1002" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -2148,791 +1335,117 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web - Copy.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Tes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="118" column="1" lean-forward="true" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
+          <folding>
+            <element signature="e#44#72#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="uml://DATABASE/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.SCHEMA:master_management">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
           <ID>DATABASE</ID>
           <OriginalElement>7f3da4e7-bbfb-477b-82c9-d04004bd90b0.SCHEMA:master_management</OriginalElement>
           <nodes>
-            <node x="2981.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_periode_kerja</node>
-            <node x="55.5" y="1098.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor</node>
-            <node x="0.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas</node>
-            <node x="5947.225101858924" y="1087.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_klien</node>
-            <node x="513.1806897759088" y="1241.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm</node>
-            <node x="6309.010235230455" y="1814.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_barang</node>
-            <node x="461.0" y="3327.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_proposal</node>
-            <node x="5077.010235230455" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_sertim</node>
-            <node x="6915.611806086073" y="1803.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_pemeliharaan</node>
-            <node x="2542.305689775909" y="1858.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p</node>
-            <node x="2793.5102352304543" y="1825.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_sek</node>
-            <node x="5043.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_jenis_kontrak</node>
-            <node x="3670.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_setting_cuti</node>
-            <node x="2457.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_tes_keahlian</node>
-            <node x="2170.305689775909" y="0.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi</node>
-            <node x="6704.826672714542" y="1131.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_barang</node>
-            <node x="5685.076672714542" y="2570.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_tim_proyek</node>
-            <node x="7286.655303030303" y="1186.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_supplier</node>
-            <node x="218.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_task_proyek</node>
-            <node x="4156.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_kalender_kerja</node>
-            <node x="271.68068977590883" y="1858.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm</node>
-            <node x="4109.510235230455" y="1825.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_keluar</node>
-            <node x="4845.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_sop</node>
-            <node x="3467.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_serops</node>
-            <node x="5537.975101858924" y="1748.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk</node>
-            <node x="2432.805689775909" y="2252.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p</node>
-            <node x="2146.066010949833" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan</node>
-            <node x="963.1806897759088" y="1814.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_masuk</node>
-            <node x="704.0" y="3327.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_psikotes</node>
-            <node x="5513.010235230455" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_proyek</node>
-            <node x="64.49025337407511" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor</node>
-            <node x="281.18068977590883" y="1230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_submenu</node>
-            <node x="1885.480081805451" y="2559.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing</node>
-            <node x="4097.119104914694" y="1230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_surat</node>
-            <node x="2184.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_wawancara</node>
-            <node x="744.1806897759088" y="1230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_misi_p</node>
-            <node x="4359.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_hasil_tes</node>
-            <node x="6483.070139419406" y="602.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_kategori_produk</node>
-            <node x="5286.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_item_wawancara</node>
-            <node x="6909.611806086073" y="2208.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progres_pemeliharaan</node>
-            <node x="1400.1806897759088" y="1153.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_ijin_usaha</node>
-            <node x="7057.405303030303" y="1230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jenis_pem</node>
-            <node x="2607.1205564043785" y="2548.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd</node>
-            <node x="109.0" y="3349.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jadwal_proyek</node>
-            <node x="960.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_arsip</node>
-            <node x="101.0" y="3647.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progress_proyek</node>
-            <node x="3673.5102352304543" y="1847.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_email_k</node>
-            <node x="5529.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_rapat</node>
-            <node x="1181.1806897759088" y="1847.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.struktur_perusahaan</node>
-            <node x="2109.305689775909" y="188.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten</node>
-            <node x="5731.010235230455" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_kemajuan</node>
-            <node x="2736.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_cuti</node>
-            <node x="1698.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_lamaran_pek</node>
-            <node x="4560.510235230455" y="1836.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_swot</node>
-            <node x="5295.010235230455" y="2230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_penyelesaian</node>
-            <node x="1941.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_loker</node>
-            <node x="1828.480081805451" y="2846.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_rapat</node>
-            <node x="2074.055689775909" y="1847.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_job_desc</node>
-            <node x="4967.510235230455" y="1847.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_model_bisnis</node>
-            <node x="3224.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_pemeriksaan</node>
-            <node x="461.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_proposal</node>
-            <node x="4602.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_item_keahlian</node>
-            <node x="960.0" y="3327.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_arsip</node>
-            <node x="309.68068977590883" y="602.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_menu</node>
-            <node x="3274.2602352304543" y="1032.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan</node>
-            <node x="1457.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_request_cuti</node>
-            <node x="1353.6806897759088" y="166.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm</node>
-            <node x="6204.826672714542" y="1175.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jasa</node>
-            <node x="3229.5102352304543" y="1759.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_keluarga_ky</node>
-            <node x="3891.5102352304543" y="1847.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpg</node>
-            <node x="2133.305689775909" y="448.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan</node>
-            <node x="1115.1806897759088" y="1219.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p</node>
-            <node x="1464.1806897759088" y="525.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_profil</node>
-            <node x="2323.305689775909" y="1836.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_hp_create</node>
-            <node x="3913.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_seleksi_berkas</node>
-            <node x="1836.1806897759088" y="1230.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_visi_p</node>
-            <node x="6545.861806086073" y="1869.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subsubkategori_produk</node>
-            <node x="5732.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.migrations</node>
-            <node x="5950.010235230455" y="1825.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_jasa</node>
-            <node x="1618.1806897759088" y="1175.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_akta</node>
-            <node x="6451.826672714542" y="1241.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subkategori_produk</node>
-            <node x="3448.5102352304543" y="1748.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_tenaga_ahli</node>
-            <node x="4339.510235230455" y="1759.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_peralatan</node>
-            <node x="722.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_jenis_psikotes</node>
-            <node x="7161.135235230455" y="1792.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_beli_barang</node>
-            <node x="1203.0" y="3117.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_kontrak_kerja</node>
-            <node x="3011.5102352304543" y="1825.0">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_asal</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_periode_kerja</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_klien</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_barang</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_proposal</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_sertim</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_pemeliharaan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_sek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_jenis_kontrak</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_setting_cuti</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_tes_keahlian</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_barang</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_tim_proyek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_supplier</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_task_proyek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_kalender_kerja</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_keluar</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_sop</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_serops</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_masuk</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_psikotes</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_proyek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_submenu</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_surat</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_wawancara</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_misi_p</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_hasil_tes</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_kategori_produk</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_item_wawancara</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progres_pemeliharaan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_ijin_usaha</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jenis_pem</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jadwal_proyek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_arsip</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progress_proyek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_email_k</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_rapat</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.struktur_perusahaan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_kemajuan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_cuti</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_lamaran_pek</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_swot</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_penyelesaian</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_loker</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_rapat</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_job_desc</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_model_bisnis</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_pemeriksaan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_proposal</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_item_keahlian</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_arsip</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_menu</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_request_cuti</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jasa</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_keluarga_ky</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpg</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_profil</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_hp_create</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_seleksi_berkas</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_visi_p</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subsubkategori_produk</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.migrations</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_jasa</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_akta</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subkategori_produk</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_tenaga_ahli</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_peralatan</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_jenis_psikotes</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_beli_barang</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_kontrak_kerja</node>
+            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_asal</node>
           </nodes>
           <notes />
-          <edges>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_misi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="49.5" y="-80.0" />
-              <point x="892.6806897759088" y="932.0" />
-              <point x="2160.868189775909" y="932.0" />
-              <point x="-66.9375" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p">
-              <point x="-79.19999999999982" y="-124.0" />
-              <point x="2626.9205564043787" y="2528.0" />
-              <point x="2581.305689775909" y="2528.0" />
-              <point x="49.5" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="74.25" y="-212.0" />
-              <point x="228.75" y="902.0" />
-              <point x="2137.243189775909" y="902.0" />
-              <point x="-90.5625" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_psikotes" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_jenis_psikotes">
-              <point x="0.0" y="-113.0" />
-              <point x="0.0" y="80.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_sertim" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="-66.0" y="-113.0" />
-              <point x="5110.010235230455" y="2188.0" />
-              <point x="3438.0102352304543" y="2188.0" />
-              <point x="3438.0102352304543" y="1728.0" />
-              <point x="3388.214780685" y="1728.0" />
-              <point x="4.954545454545496" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.struktur_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="66.0" y="-91.0" />
-              <point x="1346.1806897759088" y="1628.0" />
-              <point x="3279.214780685" y="1628.0" />
-              <point x="-104.0454545454545" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_ijin_usaha" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="49.5" y="-157.0" />
-              <point x="1548.6806897759088" y="962.0" />
-              <point x="2184.493189775909" y="962.0" />
-              <point x="-43.3125" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="86.40000000000009" y="-113.0" />
-              <point x="2340.4660109498327" y="2178.0" />
-              <point x="2531.805689775909" y="2178.0" />
-              <point x="2531.805689775909" y="1668.0" />
-              <point x="3318.8511443213633" y="1668.0" />
-              <point x="-64.40909090909099" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm">
-              <point x="27.0" y="-113.0" />
-              <point x="199.4902533740751" y="2178.0" />
-              <point x="329.18068977590883" y="2178.0" />
-              <point x="-57.5" y="80.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_visi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-              <point x="-49.5" y="-80.0" />
-              <point x="1885.6806897759088" y="398.0" />
-              <point x="1502.0443261395449" y="398.0" />
-              <point x="52.36363636363603" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jadwal_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_task_proyek">
-              <point x="49.5" y="-124.0" />
-              <point x="257.5" y="3324.0" />
-              <point x="317.0" y="3324.0" />
-              <point x="0.0" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_peralatan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="-50.25" y="-179.0" />
-              <point x="4389.760235230455" y="1668.0" />
-              <point x="3447.6693261395453" y="1668.0" />
-              <point x="64.40909090909099" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-              <point x="-24.75" y="-212.0" />
-              <point x="129.2402533740751" y="388.0" />
-              <point x="1379.8625079577268" y="388.0" />
-              <point x="-69.81818181818198" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi">
-              <point x="-74.25" y="-212.0" />
-              <point x="80.25" y="1012.0" />
-              <point x="86.86525337407511" y="1012.0" />
-              <point x="86.86525337407511" y="141.0" />
-              <point x="2192.555689775909" y="141.0" />
-              <point x="-66.75" y="58.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subkategori_produk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_kategori_produk">
-              <point x="0.0" y="-69.0" />
-              <point x="6568.326672714542" y="1012.0" />
-              <point x="6573.570139419406" y="1012.0" />
-              <point x="0.0" y="58.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-              <point x="0.0" y="-113.0" />
-              <point x="2254.066010949833" y="2158.0" />
-              <point x="1389.6806897759088" y="2158.0" />
-              <point x="1389.6806897759088" y="418.0" />
-              <point x="1432.2261443213638" y="418.0" />
-              <point x="-17.45454545454504" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_misi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-              <point x="-49.5" y="-80.0" />
-              <point x="793.6806897759088" y="398.0" />
-              <point x="1397.3170534122728" y="398.0" />
-              <point x="-52.36363636363603" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_penyelesaian" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk">
-              <point x="66.0" y="-113.0" />
-              <point x="5460.010235230455" y="2178.0" />
-              <point x="5612.225101858924" y="2178.0" />
-              <point x="-24.75" y="190.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_submenu" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_menu">
-              <point x="0.0" y="-80.0" />
-              <point x="0.0" y="58.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_sek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="0.0" y="-113.0" />
-              <point x="2892.5102352304543" y="1708.0" />
-              <point x="3358.487507957727" y="1708.0" />
-              <point x="-24.77272727272748" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpg" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="49.5" y="-91.0" />
-              <point x="4040.0102352304543" y="1728.0" />
-              <point x="4056.8691049146937" y="1728.0" />
-              <point x="4056.8691049146937" y="982.0" />
-              <point x="2255.368189775909" y="982.0" />
-              <point x="27.5625" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_ijin_usaha" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-              <point x="-49.5" y="-157.0" />
-              <point x="0.0" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_profil" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-              <point x="0.0" y="-135.0" />
-              <point x="1558.6806897759088" y="418.0" />
-              <point x="1467.1352352304539" y="418.0" />
-              <point x="17.45454545454504" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm">
-              <point x="-43.200000000000045" y="-113.0" />
-              <point x="2210.866010949833" y="2168.0" />
-              <point x="624.1806897759088" y="2168.0" />
-              <point x="624.1806897759088" y="1728.0" />
-              <point x="671.4306897759088" y="1728.0" />
-              <point x="52.75" y="69.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_rapat" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing">
-              <point x="0.0" y="-113.0" />
-              <point x="0.0" y="113.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk">
-              <point x="0.0" y="-113.0" />
-              <point x="5612.010235230455" y="2188.0" />
-              <point x="5661.725101858924" y="2188.0" />
-              <point x="24.75" y="190.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_sertim" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="0.0" y="-113.0" />
-              <point x="5176.010235230455" y="922.0" />
-              <point x="2302.618189775909" y="922.0" />
-              <point x="74.8125" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="43.200000000000045" y="-113.0" />
-              <point x="2297.266010949833" y="2148.0" />
-              <point x="2052.555689775909" y="2148.0" />
-              <point x="2052.555689775909" y="1002.0" />
-              <point x="2215.993189775909" y="1002.0" />
-              <point x="-11.8125" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpg">
-              <point x="39.59999999999991" y="-124.0" />
-              <point x="2745.720556404378" y="2518.0" />
-              <point x="3990.5102352304543" y="2518.0" />
-              <point x="0.0" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi">
-              <point x="39.600000000000364" y="-190.0" />
-              <point x="5676.575101858924" y="1718.0" />
-              <point x="5635.580303030303" y="1718.0" />
-              <point x="5635.580303030303" y="141.0" />
-              <point x="2326.055689775909" y="141.0" />
-              <point x="66.75" y="58.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_alamat_asal" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="0.0" y="-113.0" />
-              <point x="3110.5102352304543" y="1718.0" />
-              <point x="3368.396598866818" y="1718.0" />
-              <point x="-14.863636363636488" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_swot" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="-96.75" y="-102.0" />
-              <point x="4657.260235230455" y="1658.0" />
-              <point x="3457.5784170486363" y="1658.0" />
-              <point x="74.31818181818198" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten">
-              <point x="0.0" y="-190.0" />
-              <point x="5636.975101858924" y="1728.0" />
-              <point x="5624.580303030303" y="1728.0" />
-              <point x="5624.580303030303" y="368.0" />
-              <point x="2270.1390231092423" y="368.0" />
-              <point x="64.33333333333348" y="69.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p">
-              <point x="66.0" y="-113.0" />
-              <point x="2050.480081805451" y="2528.0" />
-              <point x="2482.305689775909" y="2528.0" />
-              <point x="-49.5" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="49.5" y="-91.0" />
-              <point x="1263.6806897759088" y="952.0" />
-              <point x="2176.618189775909" y="952.0" />
-              <point x="-51.1875" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="-49.5" y="-80.0" />
-              <point x="2591.805689775909" y="1618.0" />
-              <point x="2479.263257575757" y="1618.0" />
-              <point x="2479.263257575757" y="1002.0" />
-              <point x="2239.618189775909" y="1002.0" />
-              <point x="11.8125" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_akta" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-              <point x="-49.5" y="-135.0" />
-              <point x="1667.6806897759088" y="408.0" />
-              <point x="1484.5897806849998" y="408.0" />
-              <point x="34.90909090909099" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpg" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="-49.5" y="-91.0" />
-              <point x="3941.0102352304543" y="1698.0" />
-              <point x="3417.9420534122723" y="1698.0" />
-              <point x="34.68181818181802" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subsubkategori_produk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_subkategori_produk">
-              <point x="0.0" y="-69.0" />
-              <point x="6674.361806086073" y="1718.0" />
-              <point x="6568.326672714542" y="1718.0" />
-              <point x="0.0" y="69.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jadwal_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas">
-              <point x="-49.5" y="-124.0" />
-              <point x="158.5" y="3324.0" />
-              <point x="99.0" y="3324.0" />
-              <point x="0.0" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="-66.0" y="-91.0" />
-              <point x="2465.805689775909" y="2168.0" />
-              <point x="2312.805689775909" y="2168.0" />
-              <point x="2312.805689775909" y="1012.0" />
-              <point x="2231.743189775909" y="1012.0" />
-              <point x="3.9375" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="-79.19999999999982" y="-190.0" />
-              <point x="5557.775101858924" y="1638.0" />
-              <point x="3477.396598866818" y="1638.0" />
-              <point x="94.13636363636351" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_tenaga_ahli" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="0.0" y="-190.0" />
-              <point x="3551.0102352304543" y="1718.0" />
-              <point x="3398.123871594091" y="1718.0" />
-              <point x="14.863636363636488" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="0.0" y="-113.0" />
-              <point x="1984.480081805451" y="2518.0" />
-              <point x="2063.555689775909" y="2518.0" />
-              <point x="2063.555689775909" y="1638.0" />
-              <point x="3289.123871594091" y="1638.0" />
-              <point x="-94.13636363636351" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_beli_barang" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_supplier">
-              <point x="53.25" y="-146.0" />
-              <point x="7320.885235230455" y="1728.0" />
-              <point x="7385.655303030303" y="1728.0" />
-              <point x="0.0" y="124.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_beli_barang" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_barang">
-              <point x="-53.25" y="-146.0" />
-              <point x="7214.385235230455" y="1698.0" />
-              <point x="6875.076672714542" y="1698.0" />
-              <point x="56.75" y="179.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_menu">
-              <point x="-76.66666666666697" y="-80.0" />
-              <point x="310.01402310924186" y="1728.0" />
-              <point x="270.68068977590883" y="1728.0" />
-              <point x="270.68068977590883" y="892.0" />
-              <point x="335.34735644257535" y="892.0" />
-              <point x="-51.333333333333485" y="58.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten">
-              <point x="0.0" y="-212.0" />
-              <point x="2227.805689775909" y="428.0" />
-              <point x="2205.805689775909" y="428.0" />
-              <point x="0.0" y="69.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_akta" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="49.5" y="-135.0" />
-              <point x="1766.6806897759088" y="972.0" />
-              <point x="2192.368189775909" y="972.0" />
-              <point x="-35.4375" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-              <point x="-63.0" y="-212.0" />
-              <point x="2164.805689775909" y="388.0" />
-              <point x="1519.4988715940908" y="388.0" />
-              <point x="69.81818181818198" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_keluar" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="-66.0" y="-113.0" />
-              <point x="4142.510235230455" y="1688.0" />
-              <point x="3427.8511443213633" y="1688.0" />
-              <point x="44.59090909090901" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi">
-              <point x="63.0" y="-212.0" />
-              <point x="2290.805689775909" y="428.0" />
-              <point x="2312.805689775909" y="428.0" />
-              <point x="2312.805689775909" y="141.0" />
-              <point x="2281.555689775909" y="141.0" />
-              <point x="22.25" y="58.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_peralatan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="50.25" y="-179.0" />
-              <point x="4490.260235230455" y="952.0" />
-              <point x="2278.993189775909" y="952.0" />
-              <point x="51.1875" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progress_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jadwal_proyek">
-              <point x="0.0" y="-124.0" />
-              <point x="0.0" y="124.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_visi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="49.5" y="-80.0" />
-              <point x="1984.6806897759088" y="982.0" />
-              <point x="2200.243189775909" y="982.0" />
-              <point x="-27.5625" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="52.75" y="-69.0" />
-              <point x="671.4306897759088" y="922.0" />
-              <point x="2152.993189775909" y="922.0" />
-              <point x="-74.8125" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_jasa" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_klien">
-              <point x="-49.5" y="-113.0" />
-              <point x="5999.510235230455" y="1728.0" />
-              <point x="6049.225101858924" y="1728.0" />
-              <point x="0.0" y="223.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_email_k" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="0.0" y="-91.0" />
-              <point x="3772.5102352304543" y="1708.0" />
-              <point x="3408.032962503182" y="1708.0" />
-              <point x="24.77272727272748" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_pemeliharaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jasa">
-              <point x="-49.5" y="-135.0" />
-              <point x="6965.111806086073" y="1708.0" />
-              <point x="6375.076672714542" y="1708.0" />
-              <point x="56.75" y="135.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm">
-              <point x="81.0" y="-113.0" />
-              <point x="253.4902533740751" y="2188.0" />
-              <point x="613.1806897759088" y="2188.0" />
-              <point x="613.1806897759088" y="1728.0" />
-              <point x="565.9306897759088" y="1728.0" />
-              <point x="-52.75" y="69.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_kemajuan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk">
-              <point x="0.0" y="-113.0" />
-              <point x="5830.010235230455" y="2188.0" />
-              <point x="5711.225101858924" y="2188.0" />
-              <point x="74.25" y="190.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="79.19999999999982" y="-124.0" />
-              <point x="2785.3205564043783" y="2528.0" />
-              <point x="4329.010235230455" y="2528.0" />
-              <point x="4329.010235230455" y="962.0" />
-              <point x="2271.118189775909" y="962.0" />
-              <point x="43.3125" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_tim_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_proyek">
-              <point x="-49.5" y="-102.0" />
-              <point x="5734.576672714542" y="2528.0" />
-              <point x="5612.010235230455" y="2528.0" />
-              <point x="0.0" y="113.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_job_desc" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="66.0" y="-91.0" />
-              <point x="2239.055689775909" y="1648.0" />
-              <point x="3299.032962503182" y="1648.0" />
-              <point x="-84.22727272727252" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_hp_create" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="0.0" y="-102.0" />
-              <point x="2422.305689775909" y="1658.0" />
-              <point x="3308.9420534122723" y="1658.0" />
-              <point x="-74.31818181818198" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor">
-              <point x="-27.0" y="-113.0" />
-              <point x="145.4902533740751" y="2188.0" />
-              <point x="154.5" y="2188.0" />
-              <point x="0.0" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_swot" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="96.75" y="-102.0" />
-              <point x="4850.760235230455" y="942.0" />
-              <point x="2286.868189775909" y="942.0" />
-              <point x="59.0625" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_proposal" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_proposal">
-              <point x="0.0" y="-146.0" />
-              <point x="0.0" y="80.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_barang" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_kategori_produk">
-              <point x="0.0" y="-179.0" />
-              <point x="6818.326672714542" y="1012.0" />
-              <point x="6633.903472752739" y="1012.0" />
-              <point x="60.33333333333303" y="58.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-              <point x="-49.5" y="-91.0" />
-              <point x="1164.6806897759088" y="408.0" />
-              <point x="1414.7715988668178" y="408.0" />
-              <point x="-34.90909090909099" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="76.66666666666652" y="-80.0" />
-              <point x="463.34735644257535" y="1728.0" />
-              <point x="502.68068977590883" y="1728.0" />
-              <point x="502.68068977590883" y="912.0" />
-              <point x="2145.118189775909" y="912.0" />
-              <point x="-82.6875" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm">
-              <point x="-86.40000000000009" y="-113.0" />
-              <point x="2167.6660109498325" y="2178.0" />
-              <point x="444.18068977590883" y="2178.0" />
-              <point x="57.5" y="80.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_keluar" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_surat">
-              <point x="0.0" y="-113.0" />
-              <point x="4208.510235230455" y="1728.0" />
-              <point x="4195.619104914694" y="1728.0" />
-              <point x="0.0" y="80.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_job_desc" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p">
-              <point x="-66.0" y="-91.0" />
-              <point x="2107.055689775909" y="1608.0" />
-              <point x="1280.1806897759088" y="1608.0" />
-              <point x="66.0" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_arsip" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_jenis_arsip">
-              <point x="0.0" y="-102.0" />
-              <point x="0.0" y="80.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_ukm" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_menu">
-              <point x="-52.75" y="-69.0" />
-              <point x="565.9306897759088" y="892.0" />
-              <point x="438.0140231092423" y="892.0" />
-              <point x="51.33333333333337" y="58.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_keluarga_ky" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="0.0" y="-179.0" />
-              <point x="3328.5102352304543" y="1728.0" />
-              <point x="3378.305689775909" y="1728.0" />
-              <point x="-4.954545454545496" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_barang" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_klien">
-              <point x="-49.5" y="-124.0" />
-              <point x="6358.510235230455" y="1718.0" />
-              <point x="6117.225101858924" y="1718.0" />
-              <point x="68.0" y="223.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_barang" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_barang">
-              <point x="49.5" y="-124.0" />
-              <point x="6457.510235230455" y="1728.0" />
-              <point x="6761.576672714542" y="1728.0" />
-              <point x="-56.75" y="179.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="-39.600000000000364" y="-190.0" />
-              <point x="5597.375101858924" y="1628.0" />
-              <point x="5535.00755188439" y="1628.0" />
-              <point x="5535.00755188439" y="902.0" />
-              <point x="2318.368189775909" y="902.0" />
-              <point x="90.5625" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_progres_pemeliharaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_pemeliharaan">
-              <point x="0.0" y="-135.0" />
-              <point x="0.0" y="135.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jual_jasa" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jasa">
-              <point x="49.5" y="-113.0" />
-              <point x="6098.510235230455" y="1728.0" />
-              <point x="6261.576672714542" y="1728.0" />
-              <point x="-56.75" y="135.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_masuk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p">
-              <point x="0.0" y="-124.0" />
-              <point x="1062.1806897759088" y="1728.0" />
-              <point x="1148.1806897759088" y="1728.0" />
-              <point x="-66.0" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_job_desc" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="0.0" y="-91.0" />
-              <point x="2173.055689775909" y="1012.0" />
-              <point x="2223.868189775909" y="1012.0" />
-              <point x="-3.9375" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_model_bisnis" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="-49.5" y="-91.0" />
-              <point x="5017.010235230455" y="1648.0" />
-              <point x="3467.487507957727" y="1648.0" />
-              <point x="84.22727272727252" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_klien">
-              <point x="79.19999999999982" y="-190.0" />
-              <point x="5716.175101858924" y="1728.0" />
-              <point x="5981.225101858924" y="1728.0" />
-              <point x="-68.0" y="223.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_surat_keluar" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="66.0" y="-113.0" />
-              <point x="4274.510235230455" y="1728.0" />
-              <point x="4304.619104914694" y="1728.0" />
-              <point x="4304.619104914694" y="972.0" />
-              <point x="2263.243189775909" y="972.0" />
-              <point x="35.4375" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_penyelesaian" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="0.0" y="-113.0" />
-              <point x="5394.010235230455" y="912.0" />
-              <point x="2310.493189775909" y="912.0" />
-              <point x="82.6875" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_submenu_ukm" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_master_submenu">
-              <point x="0.0" y="-80.0" />
-              <point x="0.0" y="80.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.struktur_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="0.0" y="-91.0" />
-              <point x="1280.1806897759088" y="1618.0" />
-              <point x="2044.6806897759088" y="1618.0" />
-              <point x="2044.6806897759088" y="992.0" />
-              <point x="2208.118189775909" y="992.0" />
-              <point x="-19.6875" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p">
-              <point x="0.0" y="-91.0" />
-              <point x="2531.805689775909" y="2188.0" />
-              <point x="2591.805689775909" y="2188.0" />
-              <point x="-49.5" y="80.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_tim_proyek" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="49.5" y="-102.0" />
-              <point x="5833.576672714542" y="2528.0" />
-              <point x="5939.510235230455" y="2528.0" />
-              <point x="5939.510235230455" y="1618.0" />
-              <point x="3487.305689775909" y="1618.0" />
-              <point x="104.0454545454545" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_sertim" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_spk">
-              <point x="66.0" y="-113.0" />
-              <point x="5242.010235230455" y="2168.0" />
-              <point x="5562.725101858924" y="2168.0" />
-              <point x="-74.25" y="190.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-              <point x="54.5" y="-278.0" />
-              <point x="3437.7602352304543" y="378.0" />
-              <point x="1536.9534170486359" y="378.0" />
-              <point x="87.27272727272702" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_pemeliharaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jenis_pem">
-              <point x="49.5" y="-135.0" />
-              <point x="7064.111806086073" y="1728.0" />
-              <point x="7156.405303030303" y="1728.0" />
-              <point x="0.0" y="80.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="-54.5" y="-278.0" />
-              <point x="3328.7602352304543" y="992.0" />
-              <point x="2247.493189775909" y="992.0" />
-              <point x="19.6875" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.k_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten">
-              <point x="24.75" y="-212.0" />
-              <point x="179.25" y="1012.0" />
-              <point x="147.43068977590883" y="1012.0" />
-              <point x="147.43068977590883" y="428.0" />
-              <point x="2141.4723564425753" y="428.0" />
-              <point x="-64.33333333333348" y="69.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_model_bisnis" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="49.5" y="-91.0" />
-              <point x="5116.010235230455" y="932.0" />
-              <point x="2294.743189775909" y="932.0" />
-              <point x="66.9375" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_kabupaten" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_provinsi">
-              <point x="0.0" y="-69.0" />
-              <point x="2205.805689775909" y="141.0" />
-              <point x="2237.055689775909" y="141.0" />
-              <point x="-22.25" y="58.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_devisi_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="66.0" y="-91.0" />
-              <point x="2597.805689775909" y="2188.0" />
-              <point x="2750.805689775909" y="2188.0" />
-              <point x="2750.805689775909" y="1688.0" />
-              <point x="3338.6693261395453" y="1688.0" />
-              <point x="-44.59090909090901" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_ba_penyelesaian" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="-66.0" y="-113.0" />
-              <point x="5328.010235230455" y="2158.0" />
-              <point x="4318.010235230455" y="2158.0" />
-              <point x="4318.010235230455" y="1678.0" />
-              <point x="3437.7602352304543" y="1678.0" />
-              <point x="54.5" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.a_usulan_brifing" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_perusahaan">
-              <point x="-66.0" y="-113.0" />
-              <point x="1918.480081805451" y="2528.0" />
-              <point x="952.6806897759088" y="2528.0" />
-              <point x="952.6806897759088" y="942.0" />
-              <point x="2168.743189775909" y="942.0" />
-              <point x="-59.0625" y="212.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="0.0" y="-124.0" />
-              <point x="2706.1205564043785" y="2508.0" />
-              <point x="2783.0102352304543" y="2508.0" />
-              <point x="2783.0102352304543" y="1698.0" />
-              <point x="3348.5784170486363" y="1698.0" />
-              <point x="-34.68181818181802" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_menu_investor" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_user_ukm">
-              <point x="-81.0" y="-113.0" />
-              <point x="91.49025337407511" y="2188.0" />
-              <point x="45.0" y="2188.0" />
-              <point x="45.0" y="378.0" />
-              <point x="1362.4079625031818" y="378.0" />
-              <point x="-87.27272727272702" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_jasa" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_kategori_produk">
-              <point x="0.0" y="-135.0" />
-              <point x="6318.326672714542" y="1012.0" />
-              <point x="6513.236806086073" y="1012.0" />
-              <point x="-60.33333333333303" y="58.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.struktur_perusahaan" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_jabatan_p">
-              <point x="-66.0" y="-91.0" />
-              <point x="0.0" y="91.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_karyawan">
-              <point x="49.5" y="-80.0" />
-              <point x="2690.805689775909" y="1678.0" />
-              <point x="3328.7602352304543" y="1678.0" />
-              <point x="-54.5" y="278.0" />
-            </edge>
-            <edge source="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_strategi_jpd" target="7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.u_bagian_p">
-              <point x="-39.59999999999991" y="-124.0" />
-              <point x="2666.520556404378" y="2498.0" />
-              <point x="2742.555689775909" y="2498.0" />
-              <point x="2742.555689775909" y="2178.0" />
-              <point x="2690.805689775909" y="2178.0" />
-              <point x="49.5" y="80.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.0657264138025469" x="3641.5" y="1987.5" />
-          <SelectedNodes>
-            <node>7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.h_periode_kerja</node>
-          </SelectedNodes>
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.0657264138025469" x="7680.971874999999" y="2596.083333333333" />
+          <SelectedNodes />
           <Categories>
             <Category>Key columns</Category>
             <Category>Columns</Category>
@@ -2940,27 +1453,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/cuti/page_create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="46" column="49" lean-forward="true" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
+        <state relative-caret-position="497">
+          <caret line="60" column="34" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="60" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web - Copy.php">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/hrd/2019_06_18_024305_create_h_rencana_pelatihan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="24" column="11" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/h_rencana_pelatihan">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="b6c9b332-ba10-42eb-b585-516bc88bba7b">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="65" column="40" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="65" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#1711#1731#0#HTML" expanded="true" />
+            <element signature="e#3158#3176#0#HTML" expanded="true" />
+            <element signature="e#4022#4040#0#HTML" expanded="true" />
+            <element signature="e#4451#4469#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-650">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="49" column="86" lean-forward="true" selection-end-line="107" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1031">
+          <caret line="58" column="194" selection-start-line="58" selection-start-column="194" selection-end-line="58" selection-end-column="194" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" column="85" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="85" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="975" lean-forward="true" selection-start-line="975" selection-end-line="975" />
+        <state relative-caret-position="355">
+          <caret line="990" column="89" lean-forward="true" selection-start-line="990" selection-start-column="89" selection-end-line="990" selection-end-column="104" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Tes.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="117" column="4" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="4" />
+        <state relative-caret-position="390">
+          <caret line="42" column="44" lean-forward="true" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
           <folding>
             <element signature="e#44#72#0#PHP" expanded="true" />
           </folding>
