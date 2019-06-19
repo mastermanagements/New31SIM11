@@ -46,8 +46,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @php($i=1)
-
+                                    @php($i1=1)
+                                        @if(!empty($value->karyawan_pelatihan))
+                                            @foreach($value->karyawan_pelatihan as $vas)
+                                                <tr>
+                                                    <th width="10px">{{ $i1++ }}</th>
+                                                    <th>{{ $vas->karyawan->nama_ky }}</th>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                                 <p>

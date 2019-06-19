@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="HRD&#10;- Perbaikan Error Controller test">
-      <change afterPath="$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/hrd/2019_06_18_024305_create_h_rencana_pelatihan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" afterDir="false" />
+    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="HRD&#10;- Menu Rencana Pelatihan Fix">
+      <change afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/peserta_pilihan/page_default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -52,13 +50,6 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="master_management: schema" type="ebfa3cd1:MariaImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="master_management@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="master_management: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="h_rencana_pelatihan: table" type="dbc44a63:MariaImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
@@ -70,8 +61,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="42" column="44" lean-forward="true" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+            <state relative-caret-position="312">
+              <caret line="53" column="83" selection-start-line="53" selection-start-column="83" selection-end-line="53" selection-end-column="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/u_master_menu">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="69b35f40-bbf9-417f-8a4b-f80848df31ab">
+              <filtering>
+                <filter text="" />
+              </filtering>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/u_master_submenu">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="69b35f40-bbf9-417f-8a4b-f80848df31ab">
+              <filtering>
+                <filter text="" />
+              </filtering>
             </state>
           </provider>
         </entry>
@@ -79,20 +92,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="990" column="89" lean-forward="true" selection-start-line="990" selection-start-column="89" selection-end-line="990" selection-end-column="104" />
+            <state relative-caret-position="459">
+              <caret line="994" column="76" lean-forward="true" selection-start-line="994" selection-start-column="60" selection-end-line="994" selection-end-column="76" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
-              <folding>
-                <element signature="e#44#72#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1040">
+              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -100,8 +110,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="11" column="85" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="85" />
+            <state relative-caret-position="338">
+              <caret line="13" column="38" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_Karyawan_pelatihan.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="338">
+              <caret line="13" column="28" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="6" column="16" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -197,11 +225,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_11_061057_create_h_periode_kerja.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/master_user.blade.php" />
-        <option value="$PROJECT_DIR$/app/Model/Hrd/H_periode_kerja.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/PeriodeKerja.php" />
         <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_12_050959_create_h_kalender_kerja.php" />
         <option value="$PROJECT_DIR$/app/Model/Hrd/H_kalender_kerja.php" />
@@ -237,17 +260,22 @@
         <option value="$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/hrd/section/sop/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/Sop.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/app/Model/Superadmin_ukm/U_jabatan_p.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/Tes.php" />
         <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_18_024305_create_h_rencana_pelatihan.php" />
-        <option value="$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php" />
         <option value="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_19_015242_create_h_karyawan_pelatihan.php" />
+        <option value="$PROJECT_DIR$/database/migrations/hrd/relation/2019_06_19_015529_create_relasi_h_karyawan_pelatihan.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php" />
+        <option value="$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/peserta_pilihan/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php" />
+        <option value="$PROJECT_DIR$/app/Model/Hrd/H_Karyawan_pelatihan.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
       </list>
     </option>
   </component>
@@ -385,47 +413,20 @@
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="hrd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="hrd" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="hrd" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-              <item name="rencana_pelatihan" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Superadmin_ukm" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -439,24 +440,24 @@
     <property name="SearchEverywhereHistoryKey" value="we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;FatalErrorException&#9;null&#9;null&#10;tes&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/Tes.php&#10;kar&#9;null&#9;null&#10;Superadmin_UKM&#9;null&#9;null&#10;JadwalProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JadwalProyek.php&#10;Brifing&#9;null&#9;null&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;2019_04_02_075743_create_a_jenis_arsip&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/administrasi/2019_04_02_075743_create_a_jenis_arsip.php&#10;BAsertim&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BAsertim.php&#10;BApenyelesaian&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BApenyelesaian.php&#10;app/Exceptions/Handler.php&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Exceptions/Handler.php&#10;Pro&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Proposal.php&#10;JenisProposal&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/JenisProposal.php&#10;Surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php&#10;surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/user/hrd/section" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/peserta_pilihan" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\sop" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\cuti" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\cuti\cuti" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\cuti\setting_cuti" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\xampp173\htdocs\New31SIM11\app\Model\Hrd" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\progressProyek\crud\modal" />
       <recent name="E:\xampp173\htdocs\New31SIM11\public\fileArsip" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\administrasi\section\surat\surat_masuk" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\rencana_pelatihan\peserta_pilihan" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\sop" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\cuti" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\cuti\cuti" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -592,14 +593,8 @@
       <workItem from="1560739065105" duration="1801000" />
       <workItem from="1560740906838" duration="9074000" />
       <workItem from="1560818939120" duration="3859000" />
-      <workItem from="1560823838520" duration="8234000" />
-    </task>
-    <task id="LOCAL-00028" summary="Administrasi -&gt; &#10;Ganti Route">
-      <created>1555400480326</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1555400480326</updated>
+      <workItem from="1560823838520" duration="8306000" />
+      <workItem from="1560905877747" duration="7322000" />
     </task>
     <task id="LOCAL-00029" summary="Administrasi -&gt; Brifing&#10;- Penambahan tombol hapus ulasan.&#10;- penambahan filter hapus ulasan berdasarkan siapa yang membuat ulasan yang bisa menghapus ulasan tsb.&#10;- Penambahan divisi untuk menampilkan ulasan berdasarkan divisi yang pengguna masukan&#10;- Perubahan tampilan untuk menyesuaikan dengan menu brifing.">
       <created>1555573731648</created>
@@ -937,11 +932,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560824672086</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="HRD&#10;- Menu Rencana Pelatihan Fix">
+      <created>1560845438897</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1560845438897</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="753319000" />
+    <option name="totallyTimeSpent" value="760713000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -954,7 +956,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49918166" visible="true" weight="0.24281392" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49918166" weight="0.24659607" />
       <window_info id="Structure" order="1" weight="0.24962178" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" sideWeight="0.5008183" side_tool="true" weight="0.26701966" />
@@ -968,7 +970,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5181543" side_tool="true" weight="0.25531915" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.48487142" weight="0.39770868" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.48184568" visible="true" weight="0.25531915" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.48184568" weight="0.25531915" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -976,6 +978,29 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.3290469" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49918166" visible="true" weight="0.24659607" />
+      <window_info id="Structure" order="1" weight="0.24962178" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" sideWeight="0.5008183" side_tool="true" weight="0.26701966" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.27168575" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5181543" side_tool="true" weight="0.25531915" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.48487142" weight="0.39770868" />
+      <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.48184568" weight="0.25531915" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Console" order="12" weight="0.3289689" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.3290469" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -1032,7 +1057,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Produk -&gt; &#10;- Progres Pemeliharaan Fix" />
     <MESSAGE value="Produk -&gt; &#10;- Penambahan No.Invoice dan No.faktur pada menu pembelian dan menu penjualan&#10;- penambahan script pada masing&quot; kontroller" />
     <MESSAGE value="Produk -&gt; &#10; - Rekruitmen" />
     <MESSAGE value="Produk -&gt; &#10; - Rekruitmen Fix Full Feature" />
@@ -1057,71 +1081,10 @@
     <MESSAGE value="HRD&#10;- Permintaan Cuti crud fix" />
     <MESSAGE value="HRD&#10;- Menu Permintaan CuTi ada penambahan Upload Document pendukung&#10;- Menu SOP Fix" />
     <MESSAGE value="HRD&#10;- Perbaikan Error Controller test" />
-    <option name="LAST_COMMIT_MESSAGE" value="HRD&#10;- Perbaikan Error Controller test" />
+    <MESSAGE value="HRD&#10;- Menu Rencana Pelatihan Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="HRD&#10;- Menu Rencana Pelatihan Fix" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="188" column="60" selection-start-line="188" selection-start-column="60" selection-end-line="188" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/modal/modal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="12" column="74" selection-start-line="12" selection-start-column="74" selection-end-line="12" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/administrasi/Arsip.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/cuti/permintaan_cuti/modal/jsPermintaanCuti.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Permintaan_cuti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3692">
-          <caret line="156" column="16" selection-start-line="156" selection-start-column="16" selection-end-line="156" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Loker.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas</OriginalElement>
-          <nodes>
-            <node x="" y="">7f3da4e7-bbfb-477b-82c9-d04004bd90b0.TABLE:master_management.p_rincian_tugas</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="317.0" y="91.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Key columns</Category>
-            <Category>Columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/hrd/2019_06_17_034616_create_h_sop.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -1183,15 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/u_master_submenu">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="318cc4c5-eb49-446c-8893-58b30b3434cb">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Cuti.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -1206,13 +1160,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="29" column="5" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1248">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1248,13 +1195,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/U_ijin_usaha.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1444,12 +1384,13 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.0657264138025469" x="7680.971874999999" y="2596.083333333333" />
+          <settings layout="Hierarchic Group" zoom="0.0657264138025469" x="7681.0" y="2596.0" />
           <SelectedNodes />
           <Categories>
             <Category>Key columns</Category>
             <Category>Columns</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -1473,13 +1414,6 @@
           <filtering>
             <filter text="" />
           </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="65" column="40" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="65" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1517,34 +1451,112 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/hrd/relation/2019_02_26_060918_create_relation_h_hrd.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" column="85" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="85" />
+        <state relative-caret-position="338">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/hrd/relation/2019_06_19_021237_create_relasi_h_karyawan_pelatihan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-52">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/hrd/relation/2019_06_19_015529_create_relasi_h_karyawan_pelatihan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/hrd/2019_06_19_015242_create_h_karyawan_pelatihan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/U_ijin_usaha.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="69" column="26" selection-start-line="21" selection-start-column="20" selection-end-line="69" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/peserta_pilihan/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="62" column="67" selection-start-line="62" selection-start-column="67" selection-end-line="62" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="990" column="89" lean-forward="true" selection-start-line="990" selection-start-column="89" selection-end-line="990" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="42" column="44" lean-forward="true" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+        <state relative-caret-position="459">
+          <caret line="994" column="76" lean-forward="true" selection-start-line="994" selection-start-column="60" selection-end-line="994" selection-end-column="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/RencanaPelatihan.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
-          <folding>
-            <element signature="e#44#72#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="-1040">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_rencana_pelatihan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="38" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_Karyawan_pelatihan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="53" column="83" selection-start-line="53" selection-start-column="83" selection-end-line="53" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/u_master_menu">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="69b35f40-bbf9-417f-8a4b-f80848df31ab">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/u_master_submenu">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="69b35f40-bbf9-417f-8a4b-f80848df31ab">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>

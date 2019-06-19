@@ -990,6 +990,10 @@ Route::put('hapus-rencana-pelatihan/{id}','hrd\RencanaPelatihan@delete');
 
 Route::get('daftarkan-peserta-mengikuti-pelatihan/{id_pelatihan}', 'hrd\RencanaPelatihan@daftar_karyawan');
 
+Route::post('daftarkan_peserta','hrd\RencanaPelatihan@store_pelatihan');
+
+Route::post('batal_daftarkan_peserta','hrd\RencanaPelatihan@delete_pelatihan');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
