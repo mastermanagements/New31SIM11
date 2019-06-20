@@ -994,6 +994,22 @@ Route::post('daftarkan_peserta','hrd\RencanaPelatihan@store_pelatihan');
 
 Route::post('batal_daftarkan_peserta','hrd\RencanaPelatihan@delete_pelatihan');
 
+Route::get('Buku-Penilaian', function(){
+    return view('user.hrd.section.penilaian_karyawan.page_default');
+});
+
+Route::get('Performance-Appraisal', 'hrd\BukuPenilaian@PA');
+
+Route::get('Aspek-Pa', 'hrd\AspekPenilaian@index');
+
+Route::post('store-aspek-penilaian','hrd\AspekPenilaian@store');
+
+Route::get('edit-Pa/{id}', 'hrd\AspekPenilaian@edit');
+
+Route::post('update-aspek-penilaian','hrd\AspekPenilaian@update');
+
+Route::put('hapus-PA/{id}','hrd\AspekPenilaian@deletes');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
