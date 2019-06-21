@@ -34,8 +34,9 @@
                         <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Likes</span>
-                            <span class="info-box-number">41,410</span>
+                            <a href="{{ url('Area-Kerja-Utama') }}">
+                                <span class="info-box-number">Area Kerja Utama</span>
+                            </a>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

@@ -1010,6 +1010,16 @@ Route::post('update-aspek-penilaian','hrd\AspekPenilaian@update');
 
 Route::put('hapus-PA/{id}','hrd\AspekPenilaian@deletes');
 
+Route::get('Area-Kerja-Utama','hrd\AreaKerjaUtama@index');
+
+Route::post('store-area-kerja-utama', 'hrd\AreaKerjaUtama@store');
+
+Route::get('edit-Aku/{id}', 'hrd\AreaKerjaUtama@edit');
+
+Route::post('update-area-kerja-utama', 'hrd\AreaKerjaUtama@update');
+
+Route::put('hapus-area-kerja-utama/{id}', 'hrd\AreaKerjaUtama@delete');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

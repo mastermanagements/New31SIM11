@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="HRD&#10;- pendaftaran Karyawan yang akan ikut pelatihan selesai">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/hrd/AspekPenilaian.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/hrd/BukuPenilaian.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Model/Hrd/H_aspek_pa.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/hrd/2019_06_20_015710_create_h_aspek_pa.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/AspekPenilaian/page_default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/page_default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/page_default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" afterDir="false" />
+    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="HRD&#10;- Interface Buku Penilian FIx&#10;- CRUD Aspek Penilaian FIx">
+      <change afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/AreaPelatihanKerja/page_default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/page_default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/page_default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -58,7 +52,7 @@
         <item name="master_management@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="master_management: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="h_aspek_pa: table" type="dbc44a63:MariaImplModel$Table" />
+        <item name="h_aku: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -71,35 +65,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="1010" column="54" selection-start-line="1010" selection-start-column="54" selection-end-line="1010" selection-end-column="54" />
+            <state relative-caret-position="251">
+              <caret line="1020" column="39" selection-start-line="1020" selection-start-column="39" selection-end-line="1020" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/AspekPenilaian.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/AreaKerjaUtama.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="85" column="26" selection-start-line="85" selection-start-column="26" selection-end-line="85" selection-end-column="26" />
+            <state relative-caret-position="263">
+              <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
               <folding>
-                <element signature="e#44#72#0#PHP" expanded="true" />
+                <element signature="e#44#80#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/AspekPenilaian/page_default.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_aku.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="81" column="95" selection-start-line="81" selection-start-column="95" selection-end-line="81" selection-end-column="95" />
-              <folding>
-                <element signature="e#1164#2285#0#HTML" />
-                <element signature="e#1253#2054#0#HTML" />
-                <element signature="e#1526#1544#0#HTML" expanded="true" />
-                <element signature="e#1829#1847#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="159">
+              <caret line="11" column="45" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/AreaPelatihanKerja/page_default.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3">
+              <caret line="89" column="66" lean-forward="true" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="88" />
             </state>
           </provider>
         </entry>
@@ -195,11 +192,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/kalender_kerja/event/page_edit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/kalender_kerja/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/pemeliharaan/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/setting_cuti/page_create.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_13_024138_create_h_setting_cuti.php" />
         <option value="$PROJECT_DIR$/app/Model/Hrd/H_setting_cuti.php" />
         <option value="$PROJECT_DIR$/resources/views/user/hrd/section/cuti/setting_cuti/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_13_053943_create_h_cuti.php" />
@@ -242,10 +234,15 @@
         <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_20_015710_create_h_aspek_pa.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/app/Model/Hrd/H_aspek_pa.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/page_default.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/AspekPenilaian/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/AspekPenilaian.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_06_21_022314_create_h_aku.php" />
+        <option value="$PROJECT_DIR$/app/Model/Hrd/H_aku.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/AreaPelatihanKerja/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/AreaKerjaUtama.php" />
       </list>
     </option>
   </component>
@@ -341,8 +338,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="318" />
-    <option name="y" value="-8" />
+    <option name="x" value="530" />
+    <option name="y" value="65" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
@@ -354,67 +351,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="hrd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="hrd" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="hrd" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-              <item name="periode_kerja" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -435,6 +371,35 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Superadmin_ukm" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -443,24 +408,24 @@
     <property name="SearchEverywhereHistoryKey" value="we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;FatalErrorException&#9;null&#9;null&#10;tes&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/Tes.php&#10;kar&#9;null&#9;null&#10;Superadmin_UKM&#9;null&#9;null&#10;JadwalProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JadwalProyek.php&#10;Brifing&#9;null&#9;null&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;2019_04_02_075743_create_a_jenis_arsip&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/administrasi/2019_04_02_075743_create_a_jenis_arsip.php&#10;BAsertim&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BAsertim.php&#10;BApenyelesaian&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BApenyelesaian.php&#10;app/Exceptions/Handler.php&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Exceptions/Handler.php&#10;Pro&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Proposal.php&#10;JenisProposal&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/JenisProposal.php&#10;Surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php&#10;surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/AspekPenilaian" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\penilaian_karyawan\PA\AspekPenilaian" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\penilaian_karyawan" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\penilaian_karyawan\PA" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\rencana_pelatihan\peserta_pilihan" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\xampp173\htdocs\New31SIM11\app\Model\Hrd" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\progressProyek\crud\modal" />
       <recent name="E:\xampp173\htdocs\New31SIM11\public\fileArsip" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\administrasi\section\surat\surat_masuk" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\penilaian_karyawan\PA" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\penilaian_karyawan\PA\AspekPenilaian" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\penilaian_karyawan" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section\rencana_pelatihan\peserta_pilihan" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -599,14 +564,8 @@
       <workItem from="1560823838520" duration="8306000" />
       <workItem from="1560905877747" duration="7322000" />
       <workItem from="1560931115763" duration="762000" />
-      <workItem from="1560990051142" duration="11786000" />
-    </task>
-    <task id="LOCAL-00030" summary="Revert &quot;Administrasi -&gt; Brifing - Penambahan tombol hapus ulasan. - penambahan filter hapus ulasan berdasarkan siapa yang membuat ulasan yang bisa menghapus ulasan tsb. - Penambahan divisi untuk menampilkan ulasan berdasarkan divisi yang pengguna masukan - Perubahan tampilan untuk menyesuaikan dengan menu brifing.&quot;&#10;&#10;This reverts commit a43fe79">
-      <created>1555726071801</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1555726071801</updated>
+      <workItem from="1560990051142" duration="11920000" />
+      <workItem from="1561080669189" duration="4782000" />
     </task>
     <task id="LOCAL-00031" summary="Revert &quot;Administrasi -&gt; Penambahan jenis rapat pada Brifing dan melengkapi interface pada jenis brifing&#10;&#10;This reverts commit a43fe79">
       <created>1555742409462</created>
@@ -944,11 +903,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560931275384</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="HRD&#10;- Interface Buku Penilian FIx&#10;- CRUD Aspek Penilaian FIx">
+      <created>1561019658808</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1561019658808</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="773261000" />
+    <option name="totallyTimeSpent" value="778177000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -961,7 +927,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49918166" visible="true" weight="0.25037822" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49918166" visible="true" weight="0.31770045" />
       <window_info id="Structure" order="1" weight="0.24962178" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" sideWeight="0.5008183" side_tool="true" weight="0.26701966" />
@@ -1062,7 +1028,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Produk -&gt; &#10; - Rekruitmen" />
     <MESSAGE value="Produk -&gt; &#10; - Rekruitmen Fix Full Feature" />
     <MESSAGE value="Produk -&gt; &#10;  - Lamaran fix Dan Seleksi Berkas On Proses Interface" />
     <MESSAGE value="Produk -&gt; &#10;  - Lamaran Fix dan Tes tinggal interface" />
@@ -1087,7 +1052,8 @@
     <MESSAGE value="HRD&#10;- Perbaikan Error Controller test" />
     <MESSAGE value="HRD&#10;- Menu Rencana Pelatihan Fix" />
     <MESSAGE value="HRD&#10;- pendaftaran Karyawan yang akan ikut pelatihan selesai" />
-    <option name="LAST_COMMIT_MESSAGE" value="HRD&#10;- pendaftaran Karyawan yang akan ikut pelatihan selesai" />
+    <MESSAGE value="HRD&#10;- Interface Buku Penilian FIx&#10;- CRUD Aspek Penilaian FIx" />
+    <option name="LAST_COMMIT_MESSAGE" value="HRD&#10;- Interface Buku Penilian FIx&#10;- CRUD Aspek Penilaian FIx" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1101,62 +1067,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/HasilTes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Karyawan/TargetTahunan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/U_menu_investor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_Jabatan_ky.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="59" lean-forward="true" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="1002" column="13" selection-start-line="1002" selection-start-column="13" selection-end-line="1002" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/U_jabatan_p.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Karyawan/JobDecs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Karyawan/Bagian.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Model/Karyawan/ModelBisnis.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -1375,20 +1285,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-650">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="49" column="86" lean-forward="true" selection-end-line="107" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1031">
@@ -1479,13 +1375,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-806">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1519,18 +1408,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="24" column="86" selection-start-line="24" selection-start-column="86" selection-end-line="24" selection-end-column="86" />
-          <folding>
-            <element signature="e#1185#1739#0#HTML" />
-            <element signature="e#1965#2400#0#HTML" />
-            <element signature="e#2511#3082#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_aspek_pa.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -1538,20 +1415,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/loker/page_default.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/AspekPenilaian.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="44" column="26" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="44" selection-end-column="26" />
+        <state relative-caret-position="251">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
           <folding>
-            <element signature="e#560#2123#0#HTML" />
+            <element signature="e#44#72#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="65" column="40" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="65" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1559,28 +1429,117 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="81" column="95" selection-start-line="81" selection-start-column="95" selection-end-line="81" selection-end-column="95" />
-          <folding>
-            <element signature="e#1164#2285#0#HTML" />
-            <element signature="e#1253#2054#0#HTML" />
-            <element signature="e#1526#1544#0#HTML" expanded="true" />
-            <element signature="e#1829#1847#0#HTML" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/rencana_pelatihan/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/loker/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1144">
+          <caret line="44" column="26" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="44" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1690">
+          <caret line="65" column="40" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="65" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_Jabatan_ky.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/h_jabatan_ky">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="a5ac962b-b23b-420f-b11a-654db98cf6b7">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/u_jabatan_p">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="a5ac962b-b23b-420f-b11a-654db98cf6b7">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/periode_kerja/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-373">
+          <caret line="47" column="41" lean-forward="true" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/hrd/2019_06_21_022314_create_h_aku.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="26" column="14" lean-forward="true" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/U_jabatan_p.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_aku.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="11" column="45" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/AreaPelatihanKerja/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3">
+          <caret line="89" column="66" lean-forward="true" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="88" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="1010" column="54" selection-start-line="1010" selection-start-column="54" selection-end-line="1010" selection-end-column="54" />
+        <state relative-caret-position="251">
+          <caret line="1020" column="39" selection-start-line="1020" selection-start-column="39" selection-end-line="1020" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/AspekPenilaian.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/AreaKerjaUtama.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="85" column="26" selection-start-line="85" selection-start-column="26" selection-end-line="85" selection-end-column="26" />
+        <state relative-caret-position="263">
+          <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
           <folding>
-            <element signature="e#44#72#0#PHP" expanded="true" />
+            <element signature="e#44#80#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
