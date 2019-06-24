@@ -1020,6 +1020,26 @@ Route::post('update-area-kerja-utama', 'hrd\AreaKerjaUtama@update');
 
 Route::put('hapus-area-kerja-utama/{id}', 'hrd\AreaKerjaUtama@delete');
 
+Route::get('satuan-kpi', 'hrd\SatuanKpi@index');
+
+Route::post('store-satuan-kpi','hrd\SatuanKpi@store');
+
+Route::get('edit-satuan-kpi/{id}', 'hrd\SatuanKpi@edit');
+
+Route::post('update-satuan-kpi','hrd\SatuanKpi@update');
+
+Route::put('hapus-satuan-kpi/{id}','hrd\SatuanKpi@delete');
+
+Route::get('jenis-kpi','hrd\JenisKPI@index');
+
+Route::post('store-jenis-kpi','hrd\JenisKpi@store');
+
+Route::get('edit-jenis-kpi/{id}', 'hrd\JenisKpi@edit');
+
+Route::post('update-jenis-kpi','hrd\JenisKpi@update');
+
+Route::put('hapus-jenis-kpi/{id}','hrd\JenisKpi@delete');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

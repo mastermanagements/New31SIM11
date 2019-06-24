@@ -52,8 +52,7 @@
                         <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Sales</span>
-                            <span class="info-box-number">760</span>
+                           <span class="info-box-number"><a href="{{ url('satuan-kpi') }}">Satuan KPI</a></span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -65,8 +64,7 @@
                         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">New Members</span>
-                            <span class="info-box-number">2,000</span>
+                             <span class="info-box-number"><a href="{{ url('jenis-kpi') }}">Jenis KPI</a></span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
