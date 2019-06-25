@@ -80,7 +80,7 @@
                                             <form action="{{ url('hapus-PA/'.$value->id) }}" method="post">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="put">
-                                                <button type="button" class="btn btn-warning" id="tomboh-ubah" value="{{ $value->id }}">Ubah</button>
+                                                <button type="button" class="btn btn-warning" id="tomboh-ubah" onclick="update('{{ $value->id }}')" >Ubah</button>
                                                 <button class="btn btn-danger" type="submit" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>
                                             </form>
                                         </td>
@@ -102,9 +102,9 @@
 
 @section('plugins')
     <script>
-       $('#tomboh-ubah').click(function () {
+       update=function (id) {
           $.ajax({
-              url: "{{ url('edit-Pa') }}/"+$(this).val(),
+              url: "{{ url('edit-Pa') }}/"+id,
               dataType: "json",
               success: function (result) {
                   console.log(result);
@@ -114,6 +114,6 @@
                   $('#formulir').attr('action', '{{ url('update-aspek-penilaian') }}');
               }
           })
-       })
+       }
     </script>
 @stop

@@ -90,7 +90,7 @@
                                             <form action="{{ url('hapus-area-kerja-utama/'.$value->id) }}" method="post">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="put">
-                                                <button type="button" class="btn btn-warning" id="tomboh-ubah" value="{{ $value->id }}">Ubah</button>
+                                                <button type="button" class="btn btn-warning" id="tomboh-ubah" onclick="update('{{ $value->id }}')">Ubah</button>
                                                 <button class="btn btn-danger" type="submit" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>
                                             </form>
                                         </td>
@@ -115,9 +115,9 @@
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 
     <script>
-       $('#tomboh-ubah').click(function () {
+        update=function (id) {
           $.ajax({
-              url: "{{ url('edit-Aku') }}/"+$(this).val(),
+              url: "{{ url('edit-Aku') }}/"+id,
               dataType: "json",
               success: function (result) {
                   console.log(result);
@@ -127,6 +127,6 @@
                   $('#formulir').attr('action', '{{ url('update-area-kerja-utama') }}');
               }
           })
-       })
+       }
     </script>
 @stop

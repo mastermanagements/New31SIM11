@@ -73,7 +73,7 @@
                                             <form action="{{ url('hapus-satuan-kpi/'.$value->id) }}" method="post">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="put">
-                                                <button type="button" class="btn btn-warning" id="tomboh-ubah" value="{{ $value->id }}">Ubah</button>
+                                                <button type="button" class="btn btn-warning" id="tomboh-ubah" onclick="update('{{ $value->id }}')" value="">Ubah</button>
                                                 <button class="btn btn-danger" type="submit" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>
                                             </form>
                                         </td>

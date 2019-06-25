@@ -1040,6 +1040,16 @@ Route::post('update-jenis-kpi','hrd\JenisKpi@update');
 
 Route::put('hapus-jenis-kpi/{id}','hrd\JenisKpi@delete');
 
+Route::get('Kpi','hrd\Kpi@index');
+
+Route::post('store-kpi','hrd\Kpi@store');
+
+Route::get('edit-kpi/{id}','hrd\Kpi@edit');
+
+Route::post('update-kpi','hrd\Kpi@update');
+
+Route::put('hapus-kpi/{id}','hrd\Kpi@delete');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
