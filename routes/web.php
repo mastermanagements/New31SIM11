@@ -1050,6 +1050,16 @@ Route::post('update-kpi','hrd\Kpi@update');
 
 Route::put('hapus-kpi/{id}','hrd\Kpi@delete');
 
+Route::get('Kpi-karyawan','hrd\KpiKaryawan@index');
+
+Route::post('store-kpi-karyawan','hrd\KpiKaryawan@store');
+
+Route::get('edit-kpi-ky/{id}','hrd\KpiKaryawan@edit');
+
+Route::post('update-kpi-ky','hrd\KpiKaryawan@update');
+
+Route::put('hapus-kpi-ky/{id}','hrd\KpiKaryawan@delete');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

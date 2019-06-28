@@ -1,13 +1,15 @@
 @extends('user.hrd.master_user')
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+
 @stop
 @section('master_content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                KPI
+                KPI Karyawan
             </h1>
         </section>
 
@@ -22,7 +24,7 @@
                 <div class="col-md-12">
                     <div class="box box-primary collapsed">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Daftar KPI</h3>
+                            <h3 class="box-title">Daftar KPI Karyawan</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-kpi">
                                     Tambah
@@ -37,29 +39,31 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
+                                    <th>Tahun KPI</th>
+                                    <th>Karyawan</th>
                                     <th>Area Kerja Utama</th>
-                                    <th>Nama KPI</th>
-                                    <th>Bobot KPI</th>
-                                    <th>Target KPI</th>
-                                    <th>Satuan KPI</th>
-                                    <th>Jenis KPI</th>
+                                    <th>KPI</th>
+                                    <th>Realisasi KPI</th>
+                                    <th>Skor KPI</th>
+                                    <th>Skor Akhir</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @php($i=1)
-                                @foreach($data as $value)
+                                @foreach($h_kpi as $value)
                                     <tr>
                                         <td>{{ $i++ }}</td>
+                                        <td>{{ $value->year }}</td>
+                                        <td>{{ $value->karyawan->nama_ky }}</td>
                                         <td>{{ $value->aku->nm_aku }}</td>
-                                        <td>{{ $value->nm_kpi }}</td>
-                                        <td>{{ $value->bobot_kpi }}</td>
-                                        <td>{{ $value->targat_kpi }}</td>
-                                        <td>{{ $value->satuan->satuan_kpi }}</td>
-                                        <td>{{ $value->jenis->jenis_kpi }}</td>
+                                        <td>{{ $value->kpi->nm_kpi }}</td>
+                                        <td>{{ $value->realisasi_kpi }}</td>
+                                        <td>{{ $value->skor_kpi }}</td>
+                                        <td>{{ $value->skor_akhir }}</td>
 
                                         <td>
-                                            <form action="{{ url('hapus-kpi/'.$value->id) }}" method="post">
+                                            <form action="{{ url('hapus-kpi-ky/'.$value->id) }}" method="post">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="put">
                                                 <button type="button" class="btn btn-warning"  onclick="update('{{ $value->id }}')" >Ubah</button>
@@ -79,28 +83,37 @@
         </section>
         <!-- /.content -->
     </div>
-    @include('user.hrd.section.penilaian_karyawan.PA.KPI.modal.modal')
+    @include('user.hrd.section.penilaian_karyawan.PA.KPIKaryawan.modal.modal')
 @stop
 
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
 
     <script>
+
+
+        $('#datepicker').datepicker({
+            autoclose: true,
+            format: 'yyyy',
+            viewMode: "years",
+            minViewMode: "years"
+        });
+
         update = function (id) {
           $.ajax({
-              url: "{{ url('edit-kpi') }}/"+id,
+              url: "{{ url('edit-kpi-ky') }}/"+id,
               dataType: "json",
               success: function (result) {
                   console.log(result);
                   $('[name="id_aku"]').val(result.id_aku).trigger('change');
-                  $('[name="id_satuan"]').val(result.id_satuan_kpi).trigger('change');
-                  $('[name="id_jenis_kpi"]').val(result.id_jenis_kpi).trigger('change');
-                  $('[name="nm_kpi"]').val(result.nm_kpi);
-                  $('[name="bobot_kpi"]').val(result.bobot_kpi);
-                  $('[name="target_kpi"]').val(result.targat_kpi);
+                  $('[name="id_ky"]').val(result.id_ky).trigger('change');
+                  $('[name="id_kpi"]').val(result.id_kpi).trigger('change');
+                  $('[name="realisasi_kpi"]').val(result.realisasi_kpi);
+                  $('[name="thn_kpi"]').val(result.year);
                   $('[name="id"]').val(result.id);
-                  $('#formulir').attr('action', '{{ url('update-kpi') }}');
+                  $('#formulir').attr('action', '{{ url('update-kpi-ky') }}');
                   $('#modal-kpi').modal('show');
               }
           })

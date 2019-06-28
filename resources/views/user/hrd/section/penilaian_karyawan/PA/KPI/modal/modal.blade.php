@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Target KPI</label>
-                    <input type="text" name="target_kpi" class="form-control" required>
+                    <input type="number" name="target_kpi" class="form-control" required>
                     <small style="color: red" >* Tidak Boleh Kosong</small>
                 </div>
                 <div class="form-group">

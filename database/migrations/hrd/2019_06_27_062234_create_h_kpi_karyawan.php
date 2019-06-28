@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHKpi extends Migration
+class CreateHKpiKaryawan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateHKpi extends Migration
      */
     public function up()
     {
-        Schema::create('h_kpi', function (Blueprint $table) {
+        Schema::create('h_kpi_karyawan', function (Blueprint $table) {
             $table->increments('id');
+            $table->year('year');
+            $table->integer('id_ky')->unsigned();
             $table->integer('id_aku')->unsigned();
-            $table->string('nm_kpi');
-            $table->integer('bobot_kpi');
-            $table->integer('targat_kpi');
-            $table->integer('id_satuan_kpi')->unsigned();
-            $table->integer('id_jenis_kpi')->unsigned();
+            $table->integer('id_kpi')->unsigned();
+            $table->integer('realisasi_kpi');
+            $table->integer('skor_kpi');
+            $table->integer('skor_akhir');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
@@ -34,6 +35,6 @@ class CreateHKpi extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('h_kpi');
+        Schema::dropIfExists('h_kpi_karyawan');
     }
 }
