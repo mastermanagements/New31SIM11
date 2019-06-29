@@ -312,7 +312,6 @@ Route::get('hapus-klien/{id}','administrasi\Klien@delete');
 
 Route::post('cari-klien','administrasi\Klien@cari_klien');
 
-<<<<<<< HEAD
 Route::get('ambilDataKlien/{id}','administrasi\Klien@ambil_data_klien');
 
 	//--- Surat ---
@@ -440,9 +439,9 @@ Route::post('cari-bapem','administrasi\BApemeriksaan@cari_bapem');
 Route::get('BA-Kemajuan','administrasi\BAkemajuan@form');
 
 Route::post('BA-Kemajuan','administrasi\BAkemajuan@proses');
-//
+
 Route::put('Proses-BAkem/{id}','administrasi\BAkemajuan@proses_Update');
-//
+
 Route::put('Proses-BAkem/{id}/hapus','administrasi\BAkemajuan@proses_delete');
 
 Route::post('cari-bakem','administrasi\BAkemajuan@cari_bakem');
@@ -968,8 +967,6 @@ Route::get('ubah-permintaan-cuti/{id}','hrd\Permintaan_cuti@edit');
 Route::put('update-permintaan-cuti/{id}','hrd\Permintaan_cuti@update');
 
 Route::put('hapus-permintaan-cuti/{id}','hrd\Permintaan_cuti@delete');
-
-
 
 Route::post('upload-file-permintaan-cuti','hrd\Permintaan_cuti@upload');
 
