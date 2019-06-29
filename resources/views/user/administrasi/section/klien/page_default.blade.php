@@ -73,7 +73,7 @@
                                         </td>
 										<td>
                                             <a href="#" onclick="detailKlien('{{ $value->id }}')">
-                                                <span class="badge bg-red">Lihat Detail</span>
+                                                <span class="badge bg-red">Detail</span>
                                             </a>
                                         </td>
                                        <td>
@@ -159,4 +159,3 @@
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     @include('user.administrasi.section.klien.modal.JS')
 @stop
-
