@@ -338,6 +338,10 @@ Route::get('tambah-klien','administrasi\Klien@create');
 
 Route::post('store-klien','administrasi\Klien@store');
 
+Route::get('tambah-calon-klien','administrasi\Klien@create_calon_klien');
+
+Route::post('store-calon-klien','administrasi\Klien@store_calon_klien');
+
 Route::get('ubah-klien/{id}','administrasi\Klien@edit');
 
 Route::put('update-klien/{id}','administrasi\Klien@update');
@@ -345,6 +349,8 @@ Route::put('update-klien/{id}','administrasi\Klien@update');
 Route::get('hapus-klien/{id}','administrasi\Klien@delete');
 
 Route::post('cari-klien','administrasi\Klien@cari_klien');
+
+Route::get('ambilDataKlien/{id}','administrasi\Klien@ambil_data_klien');
 
 	//--- Surat ---
 Route::get('Surat','administrasi\Surat@index');
@@ -828,6 +834,15 @@ Route::get('ubah-progress-pemeliharaan/{id}','produksi\ProgressPemeliharaan@edit
 Route::post('update-progress-pemeliharaan','produksi\ProgressPemeliharaan@update');
 
 Route::put('hapus-progress-pemeliharaan/{id}','produksi\ProgressPemeliharaan@delete');
+
+//================================= Marketing ================================================================
+
+Route::get('Rencana-Marketing', 'marketing\RencanaMarketing@index');
+
+
+//================================= Keuangan ================================================================
+
+Route::get('RAB', 'keuangan\RAB@index');
 
 
 //================================= HRD ======================================================================
