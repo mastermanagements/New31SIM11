@@ -30,19 +30,20 @@ class Klien extends Controller
     public function index()
     {
         $data_klien = [
-            'data_klien' => kliens::where('id_perusahaan', $this->id_perusahaan)->paginate(25)
+            'data_klien' => kliens::where('jenis_klien', '0')->where('id_perusahaan', $this->id_perusahaan)->paginate(25),
+			'data_calon_klien' => kliens::where('jenis_klien', '1')->where('id_perusahaan', $this->id_perusahaan)->paginate(25)
         ];
         return view('user.administrasi.section.klien.page_default', $data_klien);
     }
 
-    public function cari_klien(Request $request)
+    /* public function cari_klien(Request $request)
     {
         $nama_klie = $request->nm_klien;
         $data_klien = [
             'data_klien' => kliens::where('nm_klien', 'LIKE', "%{$nama_klie}%") ->where('id_perusahaan', $this->id_perusahaan)->paginate(10)
         ];
         return view('user.administrasi.section.klien.page_default', $data_klien);
-    }
+    } */
 
     public function create()
     {
@@ -71,7 +72,8 @@ class Klien extends Controller
         $alamat_perusahaan= $req->alamat_perusahaan;
         $telp_perusahaan= $req->telp_perusahaan;
         $jabatan= $req->jabatan;
-
+		$jenis_klien= $req->jenis_klien;
+		
         $models = new kliens;
         $models->nm_klien = $nm_klien;
         $models->alamat = $alamat;
@@ -87,6 +89,7 @@ class Klien extends Controller
         $models->alamat_perusahaan = $alamat_perusahaan;
         $models->telp_perusahaan = $telp_perusahaan;
         $models->jabatan = $jabatan;
+        $models->jenis_klien = $jenis_klien;
         $models->id_perusahaan = $this->id_perusahaan;
         $models->id_karyawan = $this->id_karyawan;
 
@@ -96,6 +99,63 @@ class Klien extends Controller
           }else
             {
                 return redirect('Klien')->with('message_fail','Maaf,Telah terjadi kesalahan, Coba Masukan klien anda');
+            }
+    }
+	
+	public function create_calon_klien()
+    {
+        return view('user.administrasi.section.klien.page_create_calon_klien');
+    }
+	
+	public function store_calon_klien(Request $req)
+    { //validasi
+       $this->validate($req, [
+            'nm_klien' =>'required',
+            'alamat' =>'required',
+            'pekerjaan' =>'required',
+            'hp' =>'required'
+        ]);
+        $nm_klien = $req->nm_klien;
+        $alamat = $req->alamat;
+        $pekerjaan = $req->pekerjaan;
+        $hp = $req->hp;
+        $wa = $req->wa;
+        $email = $req->email;
+        $teleg = $req->teleg;
+        $ig = $req->ig;
+        $fb= $req->fb;
+        $twiter= $req->twiter;
+        $nm_perusahaan= $req->nm_perusahaan;
+        $alamat_perusahaan= $req->alamat_perusahaan;
+        $telp_perusahaan= $req->telp_perusahaan;
+        $jabatan= $req->jabatan;
+		$jenis_klien= $req->jenis_klien;
+		
+        $models = new kliens;
+        $models->nm_klien = $nm_klien;
+        $models->alamat = $alamat;
+        $models->pekerjaan = $pekerjaan;
+        $models->hp = $hp;
+        $models->wa = $wa;
+        $models->email = $email;
+        $models->teleg = $teleg;
+        $models->ig = $ig;
+        $models->fb = $fb;
+        $models->twiter = $twiter;
+        $models->nm_perusahaan = $nm_perusahaan;
+        $models->alamat_perusahaan = $alamat_perusahaan;
+        $models->telp_perusahaan = $telp_perusahaan;
+        $models->jabatan = $jabatan;
+        $models->jenis_klien = $jenis_klien;
+        $models->id_perusahaan = $this->id_perusahaan;
+        $models->id_karyawan = $this->id_karyawan;
+
+        if($models->save())
+        {
+            return redirect('Klien')->with('message_success','Anda telah menambah calon klien');
+          }else
+            {
+                return redirect('Klien')->with('message_fail','Maaf,Telah terjadi kesalahan, Coba Masukan calon klien anda');
             }
     }
 
@@ -136,6 +196,7 @@ class Klien extends Controller
         $alamat_perusahaan= $req->alamat_perusahaan;
         $telp_perusahaan= $req->telp_perusahaan;
         $jabatan= $req->jabatan;
+        $jenis_klien= $req->jenis_klien;
 
         $models = kliens::find($id);
         $models->nm_klien = $nm_klien;
@@ -152,6 +213,7 @@ class Klien extends Controller
         $models->alamat_perusahaan = $alamat_perusahaan;
         $models->telp_perusahaan = $telp_perusahaan;
         $models->jabatan = $jabatan;
+        $models->jenis_klien = $jenis_klien;
         $models->id_perusahaan = $this->id_perusahaan;
         $models->id_karyawan = $this->id_karyawan;
 
@@ -179,5 +241,17 @@ class Klien extends Controller
         {
             return redirect('Klien')->with('message_fail','Maaf,Telah terjadi kesalahan, Coba menghapus klien anda');
         }
+    }
+	
+	public function ambil_data_klien($id)
+    {
+        if(empty($data_klien = kliens::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+
+        $data_pass = [
+            'data'=> $data_klien
+        ];
+        return response()->json($data_pass);
     }
 }
