@@ -300,6 +300,10 @@ Route::get('tambah-klien','administrasi\Klien@create');
 
 Route::post('store-klien','administrasi\Klien@store');
 
+Route::get('tambah-calon-klien','administrasi\Klien@create_calon_klien');
+
+Route::post('store-calon-klien','administrasi\Klien@store_calon_klien');
+
 Route::get('ubah-klien/{id}','administrasi\Klien@edit');
 
 Route::put('update-klien/{id}','administrasi\Klien@update');
@@ -307,6 +311,10 @@ Route::put('update-klien/{id}','administrasi\Klien@update');
 Route::get('hapus-klien/{id}','administrasi\Klien@delete');
 
 Route::post('cari-klien','administrasi\Klien@cari_klien');
+
+Route::get('ambilDataKlien/{id}','administrasi\Klien@ambil_data_klien');
+
+	//--- Surat ---
 
 Route::get('Surat','administrasi\Surat@index');
 
@@ -431,9 +439,9 @@ Route::post('cari-bapem','administrasi\BApemeriksaan@cari_bapem');
 Route::get('BA-Kemajuan','administrasi\BAkemajuan@form');
 
 Route::post('BA-Kemajuan','administrasi\BAkemajuan@proses');
-//
+
 Route::put('Proses-BAkem/{id}','administrasi\BAkemajuan@proses_Update');
-//
+
 Route::put('Proses-BAkem/{id}/hapus','administrasi\BAkemajuan@proses_delete');
 
 Route::post('cari-bakem','administrasi\BAkemajuan@cari_bakem');
@@ -960,8 +968,6 @@ Route::put('update-permintaan-cuti/{id}','hrd\Permintaan_cuti@update');
 
 Route::put('hapus-permintaan-cuti/{id}','hrd\Permintaan_cuti@delete');
 
-
-
 Route::post('upload-file-permintaan-cuti','hrd\Permintaan_cuti@upload');
 
 Route::get('SOP', 'hrd\Sop@index');
@@ -1214,6 +1220,15 @@ Route::get('ubah-progress-pemeliharaan/{id}','produksi\ProgressPemeliharaan@edit
 Route::post('update-progress-pemeliharaan','produksi\ProgressPemeliharaan@update');
 
 Route::put('hapus-progress-pemeliharaan/{id}','produksi\ProgressPemeliharaan@delete');
+
+//================================= Marketing ================================================================
+
+Route::get('Rencana-Marketing', 'marketing\RencanaMarketing@index');
+
+
+//================================= Keuangan ================================================================
+
+Route::get('RAB', 'keuangan\RAB@index');
 
 
 //================================= HRD ======================================================================
