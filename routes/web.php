@@ -1060,6 +1060,28 @@ Route::post('update-kpi-ky','hrd\KpiKaryawan@update');
 
 Route::put('hapus-kpi-ky/{id}','hrd\KpiKaryawan@delete');
 
+Route::get('Tes-kemanajerial','hrd\TesKemanajerial@index');
+
+Route::get('jenis-kompetensi','hrd\JenisKompetensi@index');
+
+Route::post('store-jenis-kompetensi','hrd\JenisKompetensi@store');
+
+Route::get('edit-jenis-kompetensi/{id}','hrd\JenisKompetensi@edit');
+
+Route::post('update-jenis-kompetensi','hrd\JenisKompetensi@update');
+
+Route::put('hapus-jenis-kompetensi/{id}','hrd\JenisKompetensi@delete');
+
+Route::get('kompetensi-majerial','hrd\JenisKompetensiManaJerial@index');
+
+Route::post('store-kompetensi-majerial','hrd\JenisKompetensiManaJerial@store');
+
+Route::get('edit-item-kmanajerial/{id}','hrd\JenisKompetensiManaJerial@edit');
+
+Route::post('update-item-kmanajerial','hrd\JenisKompetensiManaJerial@update');
+
+Route::put('hapus-item_kmanajerial/{id}','hrd\JenisKompetensiManaJerial@delete');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
