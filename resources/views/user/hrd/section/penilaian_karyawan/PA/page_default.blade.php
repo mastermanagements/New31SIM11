@@ -70,7 +70,7 @@
                     </div>
                     <!-- /.info-box -->
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                <div class="col-md-3 col-sm-6 col-xs-12 ">
                     <div class="info-box ">
                         <span class="info-box-icon bg-red"><i class="ion ion-ios-people-outline"></i></span>
 
@@ -81,7 +81,7 @@
                     </div>
                     <!-- /.info-box -->
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                <div class="col-md-3 col-sm-6 col-xs-12 ">
                     <div class="info-box ">
                         <span class="info-box-icon bg-purple"><i class="ion ion-ios-people-outline"></i></span>
 
@@ -92,7 +92,7 @@
                     </div>
                     <!-- /.info-box -->
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                <div class="col-md-3 col-sm-6 col-xs-12 ">
                     <div class="info-box ">
                         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
@@ -103,7 +103,7 @@
                     </div>
                     <!-- /.info-box -->
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                <div class="col-md-3 col-sm-6 col-xs-12 ">
                     <div class="info-box ">
                         <span class="info-box-icon bg-gray"><i class="ion ion-ios-people-outline"></i></span>
 
@@ -114,12 +114,23 @@
                     </div>
                     <!-- /.info-box -->
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                <div class="col-md-3 col-sm-6 col-xs-12 ">
                     <div class="info-box ">
                         <span class="info-box-icon bg-maroon"><i class="ion ion-ios-people-outline"></i></span>
 
                         <div class="info-box-content" >
-                            <span class="info-box-number"><a href="{{ url('jenis-kompetensi-manajerial') }}">Jenis Kompetensi Majerial</a></span>
+                            <span class="info-box-number"><a href="{{ url('item-kompetensi-manajerial') }}">Item Kompetensi Majerial</a></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 ">
+                    <div class="info-box ">
+                        <span class="info-box-icon bg-blue"><i class="ion ion-ios-people-outline"></i></span>
+
+                        <div class="info-box-content" >
+                            <span class="info-box-number"><a href="{{ url('kompetensi-teknis') }}">Kompetensi Teknis</a></span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -127,7 +138,7 @@
                 </div>
 
 
-                <div class="col-md-12 col-sm-6 col-xs-12 ">
+                <div class="col-md-3 col-sm-6 col-xs-12 ">
                     <div class="info-box ">
                         <span class="info-box-icon bg-green"><i class="ion ion-ios-people-outline"></i></span>
                         <div class="info-box-content" >

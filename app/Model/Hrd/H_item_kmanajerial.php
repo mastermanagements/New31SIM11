@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class H_item_kmanajerial extends Model
 {
     //
+    protected $table="h_item_kmanaherial";
 
-    protected $table = "h_kompetensi_majerial";
+    protected $fillable= ['id_kompetensi_m','item_kompetensi_m','id_perusahaan','id_karyawan'];
 
-    protected $fillable=['id_jenis_kompetensi','nm_kompetensi_m','id_perusahaan','id_karyawan'];
-
-    public function jenis_kompetensi(){
-        return $this->belongsTo('App\Model\Hrd\H_jenis_kompetensi','id_jenis_kompetensi');
+    public function kompetensi_m(){
+        return $this->belongsTo('App\Model\Hrd\H_kompetensi_manajerial','id_kompetensi_m');
     }
 }

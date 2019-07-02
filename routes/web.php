@@ -995,7 +995,7 @@ Route::post('daftarkan_peserta','hrd\RencanaPelatihan@store_pelatihan');
 Route::post('batal_daftarkan_peserta','hrd\RencanaPelatihan@delete_pelatihan');
 
 Route::get('Buku-Penilaian', function(){
-    return view('user.hrd.section.penilaian_karyawan.page_default');
+    return view('user.hrd.section.penilaian_karyawan.PA.page_default');
 });
 
 Route::get('Performance-Appraisal', 'hrd\BukuPenilaian@PA');
@@ -1076,12 +1076,31 @@ Route::get('kompetensi-majerial','hrd\JenisKompetensiManaJerial@index');
 
 Route::post('store-kompetensi-majerial','hrd\JenisKompetensiManaJerial@store');
 
-Route::get('edit-item-kmanajerial/{id}','hrd\JenisKompetensiManaJerial@edit');
+Route::get('edit-kmanajerial/{id}','hrd\JenisKompetensiManaJerial@edit');
 
-Route::post('update-item-kmanajerial','hrd\JenisKompetensiManaJerial@update');
+Route::post('update-kmanajerial','hrd\JenisKompetensiManaJerial@update');
 
-Route::put('hapus-item_kmanajerial/{id}','hrd\JenisKompetensiManaJerial@delete');
+Route::put('hapus-kmanajerial/{id}','hrd\JenisKompetensiManaJerial@delete');
 
+Route::get('item-kompetensi-manajerial','hrd\ItemKmanajerial@index');
+
+Route::post('store-item-kompetensi-majerial','hrd\ItemKmanajerial@store');
+
+Route::get('edit-item-kmanajerial/{id}','hrd\ItemKmanajerial@edit');
+
+Route::post('update-item-kmanajerial','hrd\ItemKmanajerial@update');
+
+Route::put('hapus-item-kmanajerial/{id}','hrd\ItemKmanajerial@delete');
+
+Route::get('kompetensi-teknis','hrd\KompetensiTeknis@index');
+
+Route::post('store-kompetensi-teknis','hrd\KompetensiTeknis@store');
+
+Route::get('edit-kompetensi-teknis/{id}','hrd\KompetensiTeknis@edit');
+
+Route::post('update-kompetensi-teknis','hrd\KompetensiTeknis@update');
+
+Route::put('hapus-kompetensi-teknis/{id}','hrd\KompetensiTeknis@delete');
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

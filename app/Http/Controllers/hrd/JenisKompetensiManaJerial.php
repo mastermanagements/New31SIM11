@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Hrd\H_jenis_kompetensi as hjk;
-use App\Model\Hrd\H_item_kmanajerial as hik;
+use App\Model\Hrd\H_kompetensi_manajerial as hik;
 
 class JenisKompetensiManaJerial extends Controller
 {

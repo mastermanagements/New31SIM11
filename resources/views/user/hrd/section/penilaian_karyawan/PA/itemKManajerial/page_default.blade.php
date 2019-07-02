@@ -9,7 +9,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Kompetensi Majerial
+                Item Kompetensi Manajerial
             </h1>
         </section>
 
@@ -24,7 +24,7 @@
                     <div class="box box-primary collapsed">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">Formulir Kompetensi Majerial</h3>
+                            <h3 class="box-title">Formulir Item Kompetensi Manajerial</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                 </button>
@@ -32,25 +32,25 @@
                             <!-- /.box-tools -->
                         </div>
                         <!-- /.box-header -->
-                        <form action="{{ url('store-kompetensi-majerial') }}" method="post" id="formulir">
+                        <form action="{{ url('store-item-kompetensi-majerial') }}" method="post" id="formulir">
                             <div class="box-body" style="">
                                     <input type="hidden" name="id">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Jenis Kompetensi</label>
-                                    <select class="form-control select2" style="width: 100%;" name="id_jenis_kompetisi" required>
-                                        @if(empty($jenis_kompetensi))
-                                            <option>Jenis Kompetensi Masih Kosong</option>
+                                    <label for="exampleInputEmail1">Item Kompetensi Manajerial</label>
+                                    <select class="form-control select2" style="width: 100%;" name="id_kompetesi_m" required>
+                                        @if(empty($Hkm))
+                                            <option>Kompetensi Manajerial Masih Kosong</option>
                                         @else
-                                            @foreach($jenis_kompetensi as $value)
-                                                <option value="{{ $value->id }}">{{ $value->nm_kompetensi }}</option>
+                                            @foreach($Hkm as $value)
+                                                <option value="{{ $value->id }}">{{ $value->nm_kompetensi_m }}</option>
                                             @endforeach
                                         @endif
                                     </select>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
                                     <div class="input-group">
-                                        <label>Nama Kompetensi Majerial</label>
-                                        <input type="text" class="form-control" name="nm_kompetensi_m" required>
+                                        <label>Nama Item Kompetensi Majerial</label>
+                                        <input type="text" class="form-control" name="item_kompetensi_m" required>
                                         <small style="color: red"> * Tidak Boleh Kosong </small>
                                     </div>
 
@@ -67,7 +67,7 @@
                 <div class="col-md-8">
                     <div class="box box-primary collapsed">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Daftar Kompetensi Majerial</h3>
+                            <h3 class="box-title">Daftar Kompetensi Manajerial</h3>
                             <div class="box-tools pull-right">
                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                 </button>
@@ -89,10 +89,10 @@
                                 @foreach($data as $value)
                                     <tr>
                                         <td>{{ $i++ }}</td>
-                                        <td>{{ $value->jenis_kompetensi->nm_kompetensi }}</td>
-                                        <td>{{ $value->nm_kompetensi_m }}</td>
+                                        <td>{{ $value->kompetensi_m->nm_kompetensi_m }}</td>
+                                        <td>{{ $value->item_kompetensi_m }}</td>
                                         <td>
-                                            <form action="{{ url('hapus-kmanajerial/'.$value->id) }}" method="post">
+                                            <form action="{{ url('hapus-item-kmanajerial/'.$value->id) }}" method="post">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="put">
                                                 <button type="button" class="btn btn-warning" id="tomboh-ubah" onclick="update('{{ $value->id }}')" >Ubah</button>
@@ -120,14 +120,14 @@
     <script>
        update=function (id) {
           $.ajax({
-              url: "{{ url('edit-kmanajerial') }}/"+id,
+              url: "{{ url('edit-item-kmanajerial') }}/"+id,
               dataType: "json",
               success: function (result) {
                   console.log(result);
-                  $('[name="id_jenis_kompetisi"]').val(result.id_jenis_kompetensi).trigger('change');
-                  $('[name="nm_kompetensi_m"]').val(result.nm_kompetensi_m);
+                  $('[name="id_kompetesi_m"]').val(result.id_kompetensi_m).trigger('change');
+                  $('[name="item_kompetensi_m"]').val(result.item_kompetensi_m);
                   $('[name="id"]').val(result.id);
-                  $('#formulir').attr('action', '{{ url('update-kmanajerial') }}');
+                  $('#formulir').attr('action', '{{ url('update-item-kmanajerial') }}');
               }
           })
        }

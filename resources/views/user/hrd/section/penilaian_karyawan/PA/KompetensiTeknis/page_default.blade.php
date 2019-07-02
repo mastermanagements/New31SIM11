@@ -9,7 +9,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Kompetensi Majerial
+                Kompetensi Teknis
             </h1>
         </section>
 
@@ -24,7 +24,7 @@
                     <div class="box box-primary collapsed">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">Formulir Kompetensi Majerial</h3>
+                            <h3 class="box-title">Kompetensi Teknis</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                 </button>
@@ -32,7 +32,7 @@
                             <!-- /.box-tools -->
                         </div>
                         <!-- /.box-header -->
-                        <form action="{{ url('store-kompetensi-majerial') }}" method="post" id="formulir">
+                        <form action="{{ url('store-kompetensi-teknis') }}" method="post" id="formulir">
                             <div class="box-body" style="">
                                     <input type="hidden" name="id">
                                 <div class="form-group">
@@ -48,9 +48,22 @@
                                     </select>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Jabatan</label>
+                                    <select class="form-control select2" style="width: 100%;" name="id_jabatan_p" required>
+                                        @if(empty($jabatan))
+                                            <option>Jabatan Masih Kosong</option>
+                                        @else
+                                            @foreach($jabatan as $value)
+                                                <option value="{{ $value->id }}">{{ $value->nm_jabatan }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
+                                </div>
                                     <div class="input-group">
-                                        <label>Nama Kompetensi Majerial</label>
-                                        <input type="text" class="form-control" name="nm_kompetensi_m" required>
+                                        <label>Nama Kompetensi Teknis</label>
+                                        <input type="text" class="form-control" name="nm_kompetensi_t" required>
                                         <small style="color: red"> * Tidak Boleh Kosong </small>
                                     </div>
 
@@ -67,7 +80,7 @@
                 <div class="col-md-8">
                     <div class="box box-primary collapsed">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Daftar Kompetensi Majerial</h3>
+                            <h3 class="box-title">Daftar Kompetensi Teknis</h3>
                             <div class="box-tools pull-right">
                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                 </button>
@@ -79,8 +92,9 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
+                                    <th>Nama Kompetensi Teknis</th>
                                     <th>Jenis Kompetensi</th>
-                                    <th>Nama Kompetensi</th>
+                                    <th>Jabatan</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
@@ -89,10 +103,11 @@
                                 @foreach($data as $value)
                                     <tr>
                                         <td>{{ $i++ }}</td>
+                                        <td>{{ $value->nm_kompetensi_t }}</td>
                                         <td>{{ $value->jenis_kompetensi->nm_kompetensi }}</td>
-                                        <td>{{ $value->nm_kompetensi_m }}</td>
+                                        <td>{{ $value->jabatan->nm_jabatan }}</td>
                                         <td>
-                                            <form action="{{ url('hapus-kmanajerial/'.$value->id) }}" method="post">
+                                            <form action="{{ url('hapus-kompetensi-teknis/'.$value->id) }}" method="post">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="put">
                                                 <button type="button" class="btn btn-warning" id="tomboh-ubah" onclick="update('{{ $value->id }}')" >Ubah</button>
@@ -120,14 +135,15 @@
     <script>
        update=function (id) {
           $.ajax({
-              url: "{{ url('edit-kmanajerial') }}/"+id,
+              url: "{{ url('edit-kompetensi-teknis') }}/"+id,
               dataType: "json",
               success: function (result) {
                   console.log(result);
                   $('[name="id_jenis_kompetisi"]').val(result.id_jenis_kompetensi).trigger('change');
-                  $('[name="nm_kompetensi_m"]').val(result.nm_kompetensi_m);
+                  $('[name="id_jabatan_p"]').val(result.id_jabatan).trigger('change');
+                  $('[name="nm_kompetensi_t"]').val(result.nm_kompetensi_t);
                   $('[name="id"]').val(result.id);
-                  $('#formulir').attr('action', '{{ url('update-kmanajerial') }}');
+                  $('#formulir').attr('action', '{{ url('update-kompetensi-teknis') }}');
               }
           })
        }
