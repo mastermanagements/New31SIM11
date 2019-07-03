@@ -1060,7 +1060,7 @@ Route::post('update-kpi-ky','hrd\KpiKaryawan@update');
 
 Route::put('hapus-kpi-ky/{id}','hrd\KpiKaryawan@delete');
 
-Route::get('Tes-kemanajerial','hrd\TesKemanajerial@index');
+
 
 Route::get('jenis-kompetensi','hrd\JenisKompetensi@index');
 
@@ -1101,6 +1101,32 @@ Route::get('edit-kompetensi-teknis/{id}','hrd\KompetensiTeknis@edit');
 Route::post('update-kompetensi-teknis','hrd\KompetensiTeknis@update');
 
 Route::put('hapus-kompetensi-teknis/{id}','hrd\KompetensiTeknis@delete');
+
+Route::get('penilian-kemanajerial/{id}','hrd\KompetensiTeknis@create');
+
+Route::get('Tes-kemanajerial','hrd\TesKemanajerial@index');
+
+Route::post('store-tes-kmanajerial','hrd\TesKemanajerial@store');
+
+Route::get('Kompensasi-Kinerja','hrd\KompensasiKinerja@index');
+
+Route::post('store-kompensasi-kinerja','hrd\KompensasiKinerja@store');
+
+Route::get('edit-kompensasi-kinerja/{id}','hrd\KompensasiKinerja@edit');
+
+Route::post('update-kompensasi-kinerja','hrd\KompensasiKinerja@update');
+
+Route::put('hapus-kompensasi-kinerja/{id}','hrd\KompensasiKinerja@delete');
+
+Route::get('Log-Diary','hrd\LogDiary@index');
+
+Route::post('store-LogDiary','hrd\LogDiary@store');
+
+Route::get('edit-log-diary/{id}','hrd\LogDiary@edit');
+
+Route::post('update-log-diary','hrd\LogDiary@update');
+
+Route::get('hapus-log-diary/{id}','hrd\LogDiary@delete');
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

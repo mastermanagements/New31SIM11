@@ -1,13 +1,13 @@
 
-<div class="modal fade" id="modal-kpi">
+<div class="modal fade" id="modal-tesKemanajerial">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir KPI Karyawan</h4>
+                <h4 class="modal-title">Formulir Penilaian Tes Manajerial</h4>
             </div>
-            <form action="{{ url('store-kpi-karyawan') }}" method="post" id="formulir">
+            <form action="{{ url('store-tes-kmanajerial') }}" method="post" id="formulir">
             <div class="modal-body">
                 <div class="form-group">
                     <label>Tahun </label>
@@ -15,50 +15,60 @@
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tahun" name="thn_kpi" required>
+                        <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tahun" name="thn_tes_km" required>
                     </div>
                     <!-- /.input group -->
                     <small style="color: red">* Tidak Boleh Kosong</small>
                 </div>
-{{--                <div class="form-group">--}}
-{{--                    <label for="exampleInputEmail1">Karyawan</label>--}}
-{{--                    <select class="form-control select2"  name="id_ky"style="width: 100%" required>--}}
-{{--                        @foreach($ky as $value)--}}
-{{--                            <option value="{{ $value->id }}">{{ $value->nama_ky }}</option>--}}
-{{--                        @endforeach--}}
-{{--                    </select>--}}
-{{--                    <small style="color: red" >* Tidak Boleh Kosong</small>--}}
-{{--                </div>--}}
-{{--                <div class="form-group">--}}
-{{--                    <label for="exampleInputEmail1">Area Kinerja utama</label>--}}
-{{--                    <select class="form-control select2" style="width: 100%" name="id_aku" required>--}}
-{{--                        @foreach($H_aku as $value)--}}
-{{--                            <option value="{{ $value->id }}">{{ $value->nm_aku }}</option>--}}
-{{--                        @endforeach--}}
-{{--                    </select>--}}
-{{--                    <small style="color: red" >* Tidak Boleh Kosong</small>--}}
-{{--                </div>--}}
-{{--                <div class="form-group">--}}
-{{--                    <label for="exampleInputEmail1">KPI</label>--}}
-{{--                    <select class="form-control select2" style="width: 100%" name="id_kpi" required>--}}
-{{--                        @foreach($kpi as $value)--}}
-{{--                            <option value="{{ $value->id }}">{{ $value->nm_kpi }}</option>--}}
-{{--                        @endforeach--}}
-{{--                    </select>--}}
-{{--                    <small style="color: red" >* Tidak Boleh Kosong</small>--}}
-{{--                </div>--}}
-
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Realisasi KPI</label>
-                    <input type="number" name="realisasi_kpi" class="form-control" required>
+                    <label for="exampleInputEmail1">Kompetensi Manajerial</label>
+                    <select class="form-control select2"  name="id_kompetensi_m"style="width: 100%" required>
+                        @foreach($hkm as $value)
+                            <option value="{{ $value->id }}">{{ $value->nm_kompetensi_m }}</option>
+                        @endforeach
+                    </select>
                     <small style="color: red" >* Tidak Boleh Kosong</small>
                 </div>
-{{--                <div class="form-group">--}}
-{{--                    <label for="exampleInputEmail1">Target KPI</label>--}}
-{{--                    <input type="text" name="target_kpi" class="form-control" required>--}}
-{{--                    <small style="color: red" >* Tidak Boleh Kosong</small>--}}
-{{--                </div>--}}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Item Kompetensi Manajerial</label>
+                    <select class="form-control select2" style="width: 100%" name="id_item_km" required>
+                        @foreach($him as $value)
+                            <option value="{{ $value->id }}">{{ $value->item_kompetensi_m }}</option>
+                        @endforeach
+                    </select>
+                    <small style="color: red" >* Tidak Boleh Kosong</small>
+                </div>
 
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nilai Kompetensi 1</label>
+                    <input type="number" name="nilai_km1" class="form-control" required>
+                    <small style="color: red" >* Tidak Boleh Kosong</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nilai Kompetensi 2</label>
+                    <input type="number" name="nilai_km2" class="form-control" required>
+                    <small style="color: red" >* Tidak Boleh Kosong</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nilai Kompetensi 3</label>
+                    <input type="number" name="nilai_km3" class="form-control" required>
+                    <small style="color: red" >* Tidak Boleh Kosong</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nilai Kompetensi 4</label>
+                    <input type="number" name="nilai_km4" class="form-control" required>
+                    <small style="color: red" >* Tidak Boleh Kosong</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nilai Kompetensi 5</label>
+                    <input type="number" name="nilai_km5" class="form-control" required>
+                    <small style="color: red" >* Tidak Boleh Kosong</small>
+                </div>
+
+                <input type="hidden" name="id_ky" class="form-control" required>
 
             </div>
             <div class="modal-footer">

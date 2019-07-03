@@ -21,63 +21,40 @@
               -------------------------->
             <div class="row">
 
-                <div class="col-md-12">
-                    <div class="box box-primary collapsed">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Daftar Tes Kemanajerialan</h3>
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-kpi">
-                                    Tambah
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                               </button>
-                            </div>
+                <div class="col-md-12" >
+                    <form action="{{ url('cari-arsip') }}" method="post" style="width: 100%">
+                        <div class="input-group input-group-md" >
+                            {{ csrf_field() }}
+                            <input type="text" name="ket" class="form-control" placeholder="cari karyawan" required>
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
+                            </span>
                         </div>
-                        <!-- /.box-header -->
-                        <div class="box-body" style="">
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Tahun KPI</th>
-                                    <th>Karyawan</th>
-                                    <th>Area Kerja Utama</th>
-                                    <th>KPI</th>
-                                    <th>Realisasi KPI</th>
-                                    <th>Skor KPI</th>
-                                    <th>Skor Akhir</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @php($i=1)
-{{--                                @foreach($h_kpi as $value)--}}
-{{--                                    <tr>--}}
-{{--                                        <td>{{ $i++ }}</td>--}}
-{{--                                        <td>{{ $value->year }}</td>--}}
-{{--                                        <td>{{ $value->karyawan->nama_ky }}</td>--}}
-{{--                                        <td>{{ $value->aku->nm_aku }}</td>--}}
-{{--                                        <td>{{ $value->kpi->nm_kpi }}</td>--}}
-{{--                                        <td>{{ $value->realisasi_kpi }}</td>--}}
-{{--                                        <td>{{ $value->skor_kpi }}</td>--}}
-{{--                                        <td>{{ $value->skor_akhir }}</td>--}}
-
-{{--                                        <td>--}}
-{{--                                            <form action="{{ url('hapus-kpi-ky/'.$value->id) }}" method="post">--}}
-{{--                                                {{ csrf_field() }}--}}
-{{--                                                <input type="hidden" name="_method" value="put">--}}
-{{--                                                <button type="button" class="btn btn-warning"  onclick="update('{{ $value->id }}')" >Ubah</button>--}}
-{{--                                                <button class="btn btn-danger" type="submit" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>--}}
-{{--                                            </form>--}}
-{{--                                        </td>--}}
-{{--                                    </tr>--}}
-{{--                                @endforeach--}}
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
+                    </form>
                 </div>
+            </div>
+            <p> </p>
+            <div class="row">
+                @foreach($ky as $value)
+                    <div class="col-md-6">
+                        <div class="box box-primary collapsed">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">{{ $value->nama_ky }}</h3>
+                                <div class="box-tools pull-right">
+                                    <a href="#" onclick="create('{{ $value->id }}')" class="btn btn-success" ><i class="fa fa-plus"></i> Penilaian</a>
+                                   </button><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                   </button>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" style="">
+
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                @endforeach
+                {{ $ky->links() }}
             </div>
 
         </section>
@@ -100,6 +77,12 @@
             viewMode: "years",
             minViewMode: "years"
         });
+
+
+        create = function(id){
+            $('[name="id_ky"]').val(id);
+            $('#modal-tesKemanajerial').modal('show');
+        }
 
         update = function (id) {
           $.ajax({
