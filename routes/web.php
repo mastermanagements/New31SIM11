@@ -1127,6 +1127,17 @@ Route::get('edit-log-diary/{id}','hrd\LogDiary@edit');
 Route::post('update-log-diary','hrd\LogDiary@update');
 
 Route::get('hapus-log-diary/{id}','hrd\LogDiary@delete');
+
+Route::get('formulir-tes-kemanajerialan/{id_ky}', 'hrd\TesKemanajerial@create');
+
+Route::get('edit-tes-kemanajerial/{id}', 'hrd\TesKemanajerial@edit');
+
+Route::post('update-tes-kemanajerial', 'hrd\TesKemanajerial@update');
+
+Route::put('hapus-test-manajerial/{id}', 'hrd\TesKemanajerial@delete');
+
+Route::post('cari-tes-km', 'hrd\TesKemanajerial@show');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));

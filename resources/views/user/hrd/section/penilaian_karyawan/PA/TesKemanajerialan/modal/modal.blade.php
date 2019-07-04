@@ -40,42 +40,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Nilai Kompetensi 1</label>
+                    <label for="exampleInputEmail1">Nilai Kompetensi</label>
                     <input type="number" name="nilai_km1" class="form-control" required>
                     <small style="color: red" >* Tidak Boleh Kosong</small>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Nilai Kompetensi 2</label>
-                    <input type="number" name="nilai_km2" class="form-control" required>
-                    <small style="color: red" >* Tidak Boleh Kosong</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Nilai Kompetensi 3</label>
-                    <input type="number" name="nilai_km3" class="form-control" required>
-                    <small style="color: red" >* Tidak Boleh Kosong</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Nilai Kompetensi 4</label>
-                    <input type="number" name="nilai_km4" class="form-control" required>
-                    <small style="color: red" >* Tidak Boleh Kosong</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Nilai Kompetensi 5</label>
-                    <input type="number" name="nilai_km5" class="form-control" required>
-                    <small style="color: red" >* Tidak Boleh Kosong</small>
-                </div>
-
-                <input type="hidden" name="id_ky" class="form-control" required>
+               <input type="hidden" name="id_ky" class="form-control" value="{{ $ky->id }}" required>
 
             </div>
             <div class="modal-footer">
                 <input type="hidden" name="id">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
                 {{ csrf_field() }}
-                <button type="submit" class="btn btn-primary">unggah</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
             </form>
         </div>

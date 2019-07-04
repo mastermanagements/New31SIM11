@@ -19,12 +19,7 @@ class CreateHTesManajerial extends Migration
             $table->integer('id_ky')->unsigned();
             $table->integer('id_kompetensi_m')->unsigned();
             $table->integer('id_item_km')->unsigned();
-            $table->integer('nilai_km1');
-            $table->integer('nilai_km2');
-            $table->integer('nilai_km3');
-            $table->integer('nilai_km4');
-            $table->integer('nilai_km5');
-            $table->integer('skor_akhir_km');
+            $table->integer('nilai_km');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();

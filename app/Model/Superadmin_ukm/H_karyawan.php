@@ -72,4 +72,8 @@ class H_karyawan extends Model
     public function get_pelatihan_karyawan(){
         return $this->hasOne('App\Model\Hrd\H_Karyawan_pelatihan','id_ky');
     }
+
+    public function get_MannyTesKemanajerialan(){
+        return $this->hasMany('App\Model\Hrd\H_tes_manajerial','id_ky');
+    }
 }
