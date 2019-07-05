@@ -136,13 +136,32 @@
                     </div>
                     <!-- /.info-box -->
                 </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 ">
+                    <div class="info-box ">
+                        <span class="info-box-icon bg-blue"><i class="ion ion-ios-people-outline"></i></span>
 
-
+                        <div class="info-box-content" >
+                            <span class="info-box-number"><a href="{{ url('item-teknis') }}">Item Teknis</a></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
                 <div class="col-md-3 col-sm-6 col-xs-12 ">
                     <div class="info-box ">
                         <span class="info-box-icon bg-green"><i class="ion ion-ios-people-outline"></i></span>
                         <div class="info-box-content" >
                             <span class="info-box-number"><a href="{{ url('Tes-kemanajerial') }}">Tes Kemanajerial</a></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 ">
+                    <div class="info-box ">
+                        <span class="info-box-icon bg-green"><i class="ion ion-ios-people-outline"></i></span>
+                        <div class="info-box-content" >
+                            <span class="info-box-number"><a href="{{ url('Tes-kompetensi-teknis') }}">Tes Kompentesi Teknis</a></span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

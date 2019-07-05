@@ -1138,6 +1138,29 @@ Route::put('hapus-test-manajerial/{id}', 'hrd\TesKemanajerial@delete');
 
 Route::post('cari-tes-km', 'hrd\TesKemanajerial@show');
 
+Route::get('Tes-kompetensi-teknis', 'hrd\TesKompetensiTeknis@index');
+
+Route::get('formulir-tes-kompetensi-teknis/{id_karyawan}', 'hrd\TesKompetensiTeknis@create');
+
+Route::post('store-tes-kteknis','hrd\TesKompetensiTeknis@store' );
+
+Route::get('edit-tes-teknis/{id}','hrd\TesKompetensiTeknis@edit');
+
+Route::post('update-tes-teknis','hrd\TesKompetensiTeknis@update' );
+
+Route::put('hapus-test-teknis/{id}','hrd\TesKompetensiTeknis@delete' );
+
+Route::post('cari-tes-kt','hrd\TesKompetensiTeknis@show' );
+
+Route::get('item-teknis','hrd\ItemKTeknis@index');
+
+Route::post('store-item-kompetensi-teknis','hrd\ItemKTeknis@store');
+
+Route::get('edit-item-kteknis/{id}','hrd\ItemKTeknis@edit');
+
+Route::post('update-item-kteknis','hrd\ItemKTeknis@update');
+
+Route::put('hapus-item-kteknis/{id}','hrd\ItemKTeknis@delete');
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
