@@ -49,7 +49,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   @include('user.karyawan.include.header')
   @include('user.karyawan.include.sidebar')
   @yield('master_content')
-  @include('user.hrd.include.footer')
+  @include('user.penggajian.include.footer')
   @include('user.hrd.include.control_sidebar')
 
 </div>

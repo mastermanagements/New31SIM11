@@ -53,7 +53,7 @@
                                                                 @endif
                                                             @endforeach
                                                        @endif
-                                               > <label > {{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}
+                                               > <label >  {{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}
                                                </label>
                                            </div>
 										   @endif

@@ -1428,6 +1428,21 @@ Route::post('tambah-alamat-handphone-ky','karyawan\Karyawan@store_hp');
 
 Route::put('hapus-hp-ky/{id}','karyawan\Karyawan@delete_hp');
 
+//================================= Penggjian ==========================================================================
+
+Route::get('Alokasi-Gaji','penggajian\AlokasiGaji@index');
+
+Route::post('store-aloasi-gaji','penggajian\AlokasiGaji@store');
+
+Route::get('edit-alokasi-gaji/{id}','penggajian\AlokasiGaji@edit');
+
+Route::post('update-alokasi-gaji','penggajian\AlokasiGaji@update');
+
+Route::put('hapus-alokasi-gaji/{id}','penggajian\AlokasiGaji@delete');
+
+Route::get('Compansable-factors','penggajian\CompansableFactors@index');
+
+Route::post('store-compansable-factors','penggajian\CompansableFactors@store');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
