@@ -23,4 +23,8 @@ class U_jabatan_p extends Model
     {
         return $this->hasMany('App\Model\Karyawan\JobDecs', 'id_jabatan_p');
     }
+
+    public function Cf(){
+        return $this->hasMany('App\Model\Penggajian\CompansableFators','id_jabatan');
+    }
 }

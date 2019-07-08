@@ -1444,6 +1444,33 @@ Route::get('Compansable-factors','penggajian\CompansableFactors@index');
 
 Route::post('store-compansable-factors','penggajian\CompansableFactors@store');
 
+Route::get('edit-cf/{id}','penggajian\CompansableFactors@edit');
+
+Route::post('update-cf','penggajian\CompansableFactors@update');
+
+Route::put('delete-cf/{id}','penggajian\CompansableFactors@delete');
+
+Route::get('Sub-Compansable-factors','penggajian\SubCF@index');
+
+Route::post('store-sub-cf','penggajian\SubCF@store');
+
+Route::get('edit-sub-cf/{id}','penggajian\SubCF@edit');
+
+Route::post('update-sub-cf','penggajian\SubCF@update');
+
+Route::put('delete-sub-cf/{id}','penggajian\SubCF@delete');
+
+Route::get('Content-CF','penggajian\ContentCF@index');
+
+Route::get('Pokok-cf','penggajian\PokokCF@index');
+
+Route::post('store-pokok-cf','penggajian\PokokCF@store');
+
+Route::get('edit-pokok-cf/{id}','penggajian\PokokCF@edit');
+
+Route::post('update-pokok-cf','penggajian\PokokCF@update');
+
+Route::put('hapus-pokok-cf/{id}','penggajian\PokokCF@delete');
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 
