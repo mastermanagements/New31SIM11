@@ -1471,6 +1471,21 @@ Route::get('edit-pokok-cf/{id}','penggajian\PokokCF@edit');
 Route::post('update-pokok-cf','penggajian\PokokCF@update');
 
 Route::put('hapus-pokok-cf/{id}','penggajian\PokokCF@delete');
+
+Route::get('item-cf','penggajian\ItemCf@index');
+
+Route::post('store-item-cf','penggajian\ItemCf@store');
+
+Route::get('edit-item-cf/{id}','penggajian\ItemCf@edit');
+
+Route::post('update-item-cf','penggajian\ItemCf@update');
+
+Route::put('hapus-item-cf/{id}','penggajian\ItemCf@delete');
+
+Route::get('content-cf/{id}', 'penggajian\ContentCF@create');
+
+Route::post('store-content-cf','penggajian\ContentCF@store');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

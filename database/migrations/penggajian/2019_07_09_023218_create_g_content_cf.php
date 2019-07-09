@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGPokokCff extends Migration
+class CreateGContentCf extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateGPokokCff extends Migration
      */
     public function up()
     {
-        Schema::create('G_pokok_cff', function (Blueprint $table) {
+        Schema::create('g_content_cf', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_sub_cf')->unsigned();
-            $table->string("nm_pokok_ccf");
+            $table->integer('id_pokok')->unsigned();
+            $table->text('kolom_content');
+            $table->text('content_cf');
+            $table->text('bobot_content_cf');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
@@ -30,6 +33,6 @@ class CreateGPokokCff extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('G_pokok_cff');
+        Schema::dropIfExists('g_content_cf');
     }
 }

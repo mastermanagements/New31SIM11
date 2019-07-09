@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Penggajian\PokokCF as pcf;
+use App\Model\Penggajian\G_sub_cf as gcf;
 class PokokCF extends Controller
 {
     //
@@ -31,7 +32,8 @@ class PokokCF extends Controller
     public function index()
     {
         $data=[
-          'data'=> pcf::all()->where('id_perusahaan', $this->id_perusahaan)
+          'data'=> pcf::all()->where('id_perusahaan', $this->id_perusahaan),
+          'scf'=>gcf::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.penggajian.section.ContentCF.pokokCF.page_default', $data);
     }
@@ -39,11 +41,13 @@ class PokokCF extends Controller
     public function store(Request $req)
     {
         $this->validate($req,[
-           'nm_pokok_ccf'=> 'required'
+           'nm_pokok_ccf'=> 'required',
+           'id_sub_cf'=> 'required',
         ]);
 
         $model= new pcf();
         $model->nm_pokok_ccf = $req->nm_pokok_ccf;
+        $model->id_sub_cf = $req->id_sub_cf;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
         if($model->save()){
@@ -67,11 +71,13 @@ class PokokCF extends Controller
     {
         $this->validate($req,[
             'nm_pokok_ccf'=> 'required',
+            'id_sub_cf'=> 'required',
             'id'=>'required'
         ]);
 
         $model= pcf::find($req->id);
         $model->nm_pokok_ccf = $req->nm_pokok_ccf;
+        $model->id_sub_cf = $req->id_sub_cf;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
         if($model->save()){

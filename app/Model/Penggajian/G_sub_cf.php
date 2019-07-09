@@ -12,4 +12,11 @@ class G_sub_cf extends Model
 
     protected $fillable=['id_cf','sub_faktor','definisi','bobot_subcf','id_perusahaan','id_karyawan'];
 
+    public function cf(){
+        return $this->belongsTo('App\Model\Penggajian\CompansableFators','id_cf');
+    }
+
+    public function pokok_cf(){
+        return $this->hasOne('App\Model\Penggajian\PokokCF','id_sub_cf');
+    }
 }

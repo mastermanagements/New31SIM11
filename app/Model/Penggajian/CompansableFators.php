@@ -14,4 +14,8 @@ class CompansableFators extends Model
         return $this->hasMany('App\Model\Penggajian\G_sub_cf','id_cf');
     }
 
+    public function one_Sub_cf(){
+        return $this->hasOne('App\Model\Penggajian\G_sub_cf','id_cf');
+    }
+
 }

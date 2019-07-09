@@ -27,37 +27,32 @@
                             <a href="{{ url('Pokok-cf') }}" class="btn btn-primary">Pokok Compansable Factors</a>
                         </div>
                         <div class="col-sm-2">
-                            <a href="#" class="btn btn-success">Item Content CF</a>
+                            <a href="{{ url('item-cf') }}" class="btn btn-success">Item Content CF</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="box box-primary collapsed">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Content CF</h3>
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
+                @foreach($cf as $cf)
+                    <div class="col-md-3">
+                        <div class="box box-primary collapsed">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">{{ $cf->faktor }}</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
                             </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" style="">
+                               <ul>
+                                @foreach($cf->sub_cf as $scf)
+                                    <li><a href="{{ url('content-cf/'. $scf->id) }}">{{ $scf->sub_faktor }}</a> </li>
+                                @endforeach
+                               </ul>
+                            </div>
+                            <!-- /.box-body -->
                         </div>
-                        <!-- /.box-header -->
-                        <div class="box-body" style="">
-                            <table class="table table-bordered">
-                                <tbody>
-                                <tr>
-                                    <th style="width: 10px">#</th>
-                                    <th colspan="2">Faktor</th>
-                                    <th>Bobot</th>
-                                    <th style="width: 40px">Aksi</th>
-                                </tr>
-
-                                </tbody>
-                            </table>
-
-                        </div>
-                        <!-- /.box-body -->
                     </div>
-                </div>
+                @endforeach
             </div>
 
         </section>
