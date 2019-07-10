@@ -42,6 +42,7 @@
                                                 <th style="width: 10px">#</th>
                                                 <th colspan="2">Faktor</th>
                                                 <th>Bobot</th>
+                                                <th>Bobot Equivalent</th>
                                                 <th style="width: 40px">Aksi</th>
                                             </tr>
                                             @foreach($data_jabatan->Cf as $cf)
@@ -56,6 +57,13 @@
                                                         @endif
                                                     </td>
                                                     <td>
+                                                        @if(!empty($cf->sub_cf))
+                                                            {{ $cf->sub_cf->sum('bobot_subcf') * 10}}
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </td>
+                                                    <td>
                                                       <button type="button" class="btn btn-danger" onclick="setIDCF('{{ $cf->id }}')"><i class="fa fa-reorder"></i> Tambah Sub </button>
                                                     </td>
                                                 </tr>
@@ -63,9 +71,7 @@
                                                     <tr>
                                                         <th style="width: 10px">#</th>
                                                         <th >Sub Faktor</th>
-                                                        <th>Definisi</th>
-                                                        <th>Bobot</th>
-                                                        <th style="width: 40px">Aksi</th>
+                                                        <th colspan="4">Definisi</th>
                                                     </tr>
                                                     @foreach($cf->sub_cf as $values)
                                                         <tr>
@@ -73,6 +79,7 @@
                                                             <td >{{ $values->sub_faktor }}</td>
                                                             <td>{{ $values->definisi }}</td>
                                                             <td>{{ $values->bobot_subcf }}</td>
+                                                            <td>{{ $values->bobot_subcf * 10 }}</td>
                                                             <td >
                                                                 <form action="{{ url('delete-sub-cf/'. $values->id) }}" method="post">
                                                                     <a href="#" onclick="update('{{ $values->id}}')"><span class="btn btn-warning"><i class="fa fa-pencil"></i> Ubah</span> </a>

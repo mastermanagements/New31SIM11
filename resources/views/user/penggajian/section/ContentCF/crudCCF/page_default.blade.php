@@ -44,21 +44,26 @@
                                     <tbody>
                                     <tr>
                                         <td  rowspan="3" style="width: 40%">
-                                            <textarea name="kolom_content" class="form-control" placeholder="Isi Nama kolom ini sesuai kebutuhan" required>@if(!empty($cf->pokok_cf->content_ccf)){{ $cf->pokok_cf->content_ccf->first()->kolom_content }}@endif</textarea>
+                                            <textarea name="kolom_content" class="form-control" placeholder="Isi Nama kolom ini sesuai kebutuhan" required @if(!empty($cf->pokok_cf->content_ccf)) readonly @endif>@if(!empty($cf->pokok_cf->content_ccf)){{ $cf->pokok_cf->content_ccf->first()->kolom_content }}@endif</textarea>
                                             <input type="hidden" name="id_sub_cf" value="{{ $cf->id }}">
                                             <small style="color: red">* tidak boleh kosong</small>
                                         </td>
-                                        <th colspan="{{ $cf->pokok_cf->item_ccf->count('id') }}"rowspan="2">  {{ $cf->pokok_cf->nm_pokok_ccf }}</th>
+                                        <th colspan="@if(!empty($cf->pokok_cf->item_ccf )){{ $cf->pokok_cf->item_ccf->count('id') }} @endif"rowspan="2">@if(!empty($cf->pokok_cf->nm_pokok_ccf))  {{ $cf->pokok_cf->nm_pokok_ccf }}@else <small style="color: red;">Pokok cff belum dimasukan</small> @endif</th>
                                         <th>Aksi</th>
                                     </tr>
                                     <tr></tr>
                                     <tr>
                                         @if(!empty($cf->pokok_cf->item_ccf))
                                             @foreach($cf->pokok_cf->item_ccf as $item)
-                                                <td>{{ $item->item_ccf}}</td>
+                                                <th>{{ $item->item_ccf}}</th>
                                             @endforeach
+                                                <td></td>
+                                            @else
+                                            <td colspan="2">
+                                                <span style="color: red;">Item Pokok Cff belum dibuat</span>
+                                            </td>
                                         @endif
-                                        <td></td>
+
                                     </tr>
                                     @if(!empty($cf->pokok_cf->content_ccf))
                                         <ol type="a">
@@ -67,17 +72,18 @@
                                                 <td><li>{{ $conten_cf->content_cf }}</li>  </td>
                                                 @php($item = explode(',', $conten_cf->bobot_content_cf))
                                                 @foreach($item as $isi)
-                                                    <td>{{ $isi }}</td>
+                                                    <th>{{ $isi }}</th>
                                                 @endforeach
                                                 <td><button class="btn btn-danger"> Hapus </button></td>
                                             </tr>
                                         @endforeach
                                         </ol>
+
                                     @endif
                                     <tr>
                                         <td>
                                             <textarea name="content_cf" class="form-control" placeholder="Masukan konten anda disini" required></textarea>
-                                            <input type="hidden" name="id_pokok_cf" value="{{ $cf->pokok_cf->id }}">
+                                            <input type="hidden" name="id_pokok_cf" value="@if(!empty($cf->pokok_cf)){{ $cf->pokok_cf->id }} @endif">
                                             <small style="color: red">* tidak boleh kosong</small>
                                         </td>
                                         @if(!empty($cf->pokok_cf->item_ccf))
@@ -85,7 +91,7 @@
                                                 <td><input name="bobot_content_cf[]" class="form-control"/></td>
                                             @endforeach
                                         @endif
-                                        <td>{{ csrf_field() }}<button type="submit" class="btn btn-primary">simpan</button></td>
+                                        <td>{{ csrf_field() }}<button type="submit" class="btn btn-primary" @if(empty($cf->pokok_cf->item_ccf)) onclick="return confirm('Maaf, tidak bisa menambahkan conten ccf karena item ccf belum dimasukan')" @endif>simpan</button></td>
                                     </tr>
                                     </tbody>
                                     </form>

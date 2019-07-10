@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SJP extends Model
 {
-   protected $table="u_strategi_jp";
+   protected $table="u_strategi_jpd";
    protected $fillable = ['id_tjp','isi_sjp','id_perusahaan','id_karyawan'];
 
 	public function getTJP()

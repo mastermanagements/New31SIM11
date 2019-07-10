@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="Penggajian&#10;   - Refisi CF Fix,&#10;   - SUb CF Fix,&#10;   - Pokok CFF">
-      <change afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/crudCCF/page_default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/itemCF/page_default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" afterDir="false" />
+    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="Penggajian&#10;   - Refisi Pokok CCF Fix,&#10;   - Item CCF Fix,&#10;   - Content CF sedikit lagi selesai">
+      <change afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/SkorCF/page_default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/penggajian/ContentCF.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/ContentCF.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/penggajian/PokokCF.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/PokokCF.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Penggajian/CompansableFators.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Penggajian/CompansableFators.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Penggajian/G_sub_cf.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Penggajian/G_sub_cf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Penggajian/PokokCF.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Penggajian/PokokCF.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/penggajian/2019_07_08_065232_create_g_pokok_cff.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/penggajian/2019_07_08_065232_create_g_pokok_cff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Karyawan/SJP.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Karyawan/SJP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/crudCCF/page_default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/crudCCF/page_default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/page_default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/page_default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/pokokCF/page_default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/pokokCF/page_default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/penggajian/section/SubCompansableFactors/page_default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/SubCompansableFactors/page_default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -55,13 +50,6 @@
         <item name="master_management@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="master_management: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="master_management@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="master_management: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="g_content_cf: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -1402,51 +1390,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="1484" column="23" selection-start-line="1484" selection-start-column="12" selection-end-line="1484" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/PokokCF.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="22" column="31" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/ContentCF.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="62" column="46" lean-forward="true" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
-              <folding>
-                <element signature="e#51#79#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/G_content_cf.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="11" column="46" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="46" />
+            <state relative-caret-position="1277">
+              <caret line="1491" column="11" selection-start-line="1491" selection-start-column="11" selection-end-line="1491" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/crudCCF/page_default.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/SkorPosisiCF.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="71" column="89" selection-start-line="71" selection-start-column="89" selection-end-line="71" selection-end-column="89" />
+            <state relative-caret-position="208">
+              <caret line="26" column="11" lean-forward="true" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
               <folding>
-                <element signature="e#2032#2049#0#HTML" expanded="true" />
-                <element signature="e#2248#2266#0#HTML" expanded="true" />
-                <element signature="e#3404#3422#0#HTML" expanded="true" />
+                <element signature="e#52#80#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1463,8 +1419,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Jadwal-Proyek</find>
-      <find>editprofile</find>
       <find>karyawan</find>
       <find>data_karyawan</find>
       <find>Karyawan</find>
@@ -1493,6 +1447,8 @@
       <find>pengaturan-menu</find>
       <find>hak-akses-karyawan</find>
       <find>store-item-cf</find>
+      <find>u_t</find>
+      <find>Strategi-Jangka-Pendek</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1544,10 +1500,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/TesKemanajerialan/page_create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/TesKemanajerialan/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/TesKemanajerial.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/page_default.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/hrd/2019_07_05_013201_create_h_item_teknis.php" />
         <option value="$PROJECT_DIR$/app/Model/Hrd/H_item_teknis.php" />
         <option value="$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/itemTeknis/page_default.blade.php" />
@@ -1571,14 +1523,11 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/AlokasiGaji.php" />
         <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/alokasi_gaji/page_default.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_06_025810_create_g_cf.php" />
-        <option value="$PROJECT_DIR$/app/Model/Superadmin_ukm/U_jabatan_p.php" />
         <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_08_023713_create_g_sub_cf.php" />
         <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/SubCompansableFactors/modal/modal.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/SubCF.php" />
         <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/CompansableFactors/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/CompansableFactors.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/SubCompansableFactors/page_default.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_09_010501_create_g_item_ccf.php" />
         <option value="$PROJECT_DIR$/app/Model/Penggajian/ItemCF.php" />
         <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/itemCF/page_default.blade.php" />
@@ -1588,13 +1537,20 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/PokokCF.php" />
         <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/pokokCF/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/Penggajian/CompansableFators.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/Penggajian/G_sub_cf.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Model/Penggajian/G_content_cf.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/ContentCF.php" />
         <option value="$PROJECT_DIR$/app/Model/Penggajian/PokokCF.php" />
         <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/crudCCF/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/app/Model/Superadmin_ukm/U_jabatan_p.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/ContentCF.php" />
+        <option value="$PROJECT_DIR$/app/Model/Karyawan/TJP.php" />
+        <option value="$PROJECT_DIR$/app/Model/Karyawan/SJP.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
+        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/SubCompansableFactors/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/SkorPosisiCF.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/SkorCF/page_default.blade.php" />
       </list>
     </option>
   </component>
@@ -1732,24 +1688,24 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/crudCCF" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/SkorCF" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\ContentCF\crudCCF" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\ContentCF" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\ContentCF\pokokCF" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\SubCompansableFactors" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\xampp173\htdocs\New31SIM11\app\Model\Hrd" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\progressProyek\crud\modal" />
       <recent name="E:\xampp173\htdocs\New31SIM11\public\fileArsip" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\administrasi\section\surat\surat_masuk" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\ContentCF\SkorCF" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\ContentCF\crudCCF" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\ContentCF" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\ContentCF\pokokCF" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\SubCompansableFactors" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1910,14 +1866,8 @@
       <workItem from="1562370029474" duration="13855000" />
       <workItem from="1562395413237" duration="715000" />
       <workItem from="1562547021908" duration="15832000" />
-      <workItem from="1562632494760" duration="17772000" />
-    </task>
-    <task id="LOCAL-00042" summary="Produk -&gt; Proyek Fix">
-      <created>1556607823177</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1556607823177</updated>
+      <workItem from="1562632494760" duration="18621000" />
+      <workItem from="1562718967374" duration="8698000" />
     </task>
     <task id="LOCAL-00043" summary="Produk -&gt; Perubahan pada menu proyek dan pembuatan menu Tim Proyek">
       <created>1556776013859</created>
@@ -2255,11 +2205,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562575744987</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Penggajian&#10;   - Refisi Pokok CCF Fix,&#10;   - Item CCF Fix,&#10;   - Content CF sedikit lagi selesai">
+      <created>1562659816362</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1562659816364</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="922775000" />
+    <option name="totallyTimeSpent" value="932322000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2273,8 +2230,8 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.09475806" weight="0.16111952" />
-      <window_info active="true" id="Favorites" order="1" sideWeight="0.9034908" visible="true" weight="0.3139183" />
+      <window_info active="true" id="Favorites" order="0" sideWeight="0.9034908" visible="true" weight="0.19591528" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.09475806" weight="0.27760968" />
       <window_info id="Structure" order="2" weight="0.24962178" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -2287,13 +2244,13 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5181543" side_tool="true" weight="0.25531915" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.48487142" weight="0.39770868" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.48184568" weight="0.18821605" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.48184568" weight="0.33551556" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.43799058" />
+      <window_info anchor="right" id="Database" order="3" weight="0.19591528" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49918166" weight="0.29954615" />
@@ -2374,7 +2331,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="HRD&#10;- Interface Kontak Kerja Fix" />
     <MESSAGE value="HRD&#10;- Interface Jenis Kontrak Kerja Dan Crud Jenis Kontrak Kerja FIX,&#10;- Crud Kontrak Kerja Fix" />
     <MESSAGE value="HRD&#10;- Kontrak Kerja Upload File Fix" />
     <MESSAGE value="HRD&#10;- Perancangan Interface Tenaga Kerja Selesai" />
@@ -2399,88 +2355,10 @@
     <MESSAGE value="HRD&#10;   - Design interface Tes Kompetensi Teknis&#10;   - Crud Tes Kompetensi Teknis FIX" />
     <MESSAGE value="Penggajian&#10;   - Alokasi Gaji fix&#10;   - CF Fix" />
     <MESSAGE value="Penggajian&#10;   - Refisi CF Fix,&#10;   - SUb CF Fix,&#10;   - Pokok CFF" />
-    <option name="LAST_COMMIT_MESSAGE" value="Penggajian&#10;   - Refisi CF Fix,&#10;   - SUb CF Fix,&#10;   - Pokok CFF" />
+    <MESSAGE value="Penggajian&#10;   - Refisi Pokok CCF Fix,&#10;   - Item CCF Fix,&#10;   - Content CF sedikit lagi selesai" />
+    <option name="LAST_COMMIT_MESSAGE" value="Penggajian&#10;   - Refisi Pokok CCF Fix,&#10;   - Item CCF Fix,&#10;   - Content CF sedikit lagi selesai" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/u_submenu_ukm">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="82d382a2-addf-4e16-861d-21ccfcb837bd">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/AlokasiGaji.php" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/Cuti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/JenisKPI.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="29" selection-start-line="13" selection-start-column="4" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/AlokasiGaji.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_06_020125_create_g_alokasi_gaji.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/TesKTeknis/modal/modal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="21" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/TesKTeknis/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="97" column="11" selection-start-line="92" selection-start-column="7" selection-end-line="97" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/alokasi_gaji/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="123" column="59" selection-start-line="123" selection-start-column="59" selection-end-line="123" selection-end-column="59" />
-          <folding>
-            <element signature="e#2927#2945#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/AreaKerjaUtama.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="29" column="5" selection-start-line="14" selection-start-column="4" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/AlokasiGaji.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="26" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="26" />
-          <folding>
-            <element signature="e#51#79#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/penilaian_karyawan/PA/AspekPenilaian/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1950" />
@@ -2673,13 +2551,6 @@
     <entry file="file://$PROJECT_DIR$/public/web.config">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/U_jabatan_p.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_08_023713_create_g_sub_cf.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
@@ -2782,13 +2653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/CompansableFactors/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -2796,24 +2660,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/SubCompansableFactors/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="49" column="90" lean-forward="true" selection-start-line="49" selection-start-column="90" selection-end-line="49" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_08_065232_create_g_pokok_cff.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/itemCF/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="49" column="42" lean-forward="true" selection-start-line="38" selection-start-column="36" selection-end-line="49" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -2828,27 +2678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="94" column="62" selection-start-line="94" selection-start-column="62" selection-end-line="94" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/PokokCF.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="37" column="62" selection-start-line="37" selection-start-column="62" selection-end-line="37" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/CompansableFators.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -2868,27 +2697,17 @@
     </entry>
     <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/g_content_cf">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="5e1a3f3b-b905-4871-9e14-5194226b970c">
+        <state projectRestartId="9a93398b-fb1d-43ae-a420-ffb4de8e4f09">
           <filtering>
             <filter text="" />
           </filtering>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/PokokCF.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="1484" column="23" selection-start-line="1484" selection-start-column="12" selection-end-line="1484" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/ContentCF.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="62" column="46" lean-forward="true" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
-          <folding>
-            <element signature="e#51#79#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="396">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -2899,21 +2718,154 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/PokokCF.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/crudCCF/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="31" />
+        <state relative-caret-position="1592">
+          <caret line="93" column="240" selection-start-line="93" selection-start-column="240" selection-end-line="93" selection-end-column="240" />
+          <folding>
+            <element signature="e#2866#2886#0#HTML" expanded="true" />
+            <element signature="e#3569#3589#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/crudCCF/page_default.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/CompansableFators.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="71" column="89" selection-start-line="71" selection-start-column="89" selection-end-line="71" selection-end-column="89" />
+        <state relative-caret-position="214">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Karyawan/TJP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Karyawan/SJPK.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_05_13_063103_create_u_target_jp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_04_04_193802_add_web_to_u_perusahaan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-234" />
+      </provider>
+    </entry>
+    <entry file="das://7f3da4e7-bbfb-477b-82c9-d04004bd90b0/schema/master_management/table/migrations">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="9a93398b-fb1d-43ae-a420-ffb4de8e4f09">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_03_18_030515_create_u_menu_investor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Karyawan/SJP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/karyawan/SJP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-78">
           <folding>
-            <element signature="e#2032#2049#0#HTML" expanded="true" />
-            <element signature="e#2248#2266#0#HTML" expanded="true" />
-            <element signature="e#3404#3422#0#HTML" expanded="true" />
+            <element signature="e#49#77#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/karyawan/section/Swot/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="36" column="22" lean-forward="true" selection-start-line="30" selection-start-column="15" selection-end-line="36" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/itemCF/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-919">
+          <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/U_jabatan_p.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="26" column="22" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/SubCompansableFactors/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="73" column="70" selection-start-line="73" selection-start-column="70" selection-end-line="73" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/PokokCF.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1277">
+          <caret line="1491" column="11" selection-start-line="1491" selection-start-column="11" selection-end-line="1491" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/ContentCF.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="42" column="43" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/SkorCF/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="50" column="40" lean-forward="true" selection-start-line="50" selection-start-column="40" selection-end-line="52" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/SkorPosisiCF.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="26" column="11" lean-forward="true" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+          <folding>
+            <element signature="e#52#80#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1161,6 +1161,9 @@ Route::get('edit-item-kteknis/{id}','hrd\ItemKTeknis@edit');
 Route::post('update-item-kteknis','hrd\ItemKTeknis@update');
 
 Route::put('hapus-item-kteknis/{id}','hrd\ItemKTeknis@delete');
+
+
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
@@ -1485,6 +1488,8 @@ Route::put('hapus-item-cf/{id}','penggajian\ItemCf@delete');
 Route::get('content-cf/{id}', 'penggajian\ContentCF@create');
 
 Route::post('store-content-cf','penggajian\ContentCF@store');
+
+Route::get('stok-total-compensable-factor','penggajian\SkorPosisiCF@index');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

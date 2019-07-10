@@ -8,6 +8,7 @@ use Session;
 use App\Model\Penggajian\CompansableFators as cf;
 use App\Model\Penggajian\G_sub_cf as scf;
 use App\Model\Penggajian\G_content_cf as G_cf;
+use App\Model\Superadmin_ukm\U_jabatan_p as jabatan;
 class ContentCF extends Controller
 {
     //
@@ -31,7 +32,7 @@ class ContentCF extends Controller
 
     public function index(){
         $data = [
-            'cf'=> cf::all()->where('id_perusahaan', $this->id_perusahaan)
+            'jabatan'=> jabatan::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.penggajian.section.ContentCF.page_default', $data);
     }

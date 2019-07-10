@@ -10,7 +10,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-              Content Compansable Factors
+              Skor Content Compansable Factors
             </h1>
         </section>
 
@@ -32,37 +32,48 @@
                         </div>
                     </div>
                 </div>
-                @foreach($jabatan as $cf)
-                    <div class="col-md-12" style="padding-bottom: 3%">
-                        <div style="width: 100%;height: 15px; border-bottom: 1px solid black; text-align: center">
-                          <span style="font-size: 20px; background-color: #ecf0f5; padding: 0 10px;">
-                            {{ $cf->nm_jabatan }}
-                          </span>
-                        </div>
-                    </div>
-                    @foreach($cf->Cf as $cf)
-                        <div class="col-md-3">
-                            <div class="box box-primary collapsed">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">{{ $cf->faktor }}</h3>
-                                    <div class="box-tools pull-right">
-                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="box-body" style="">
-                                   <ul>
-                                    @foreach($cf->sub_cf as $scf)
-                                        <li><a href="{{ url('content-cf/'. $scf->id) }}">{{ $scf->sub_faktor }}</a> </li>
-                                    @endforeach
-                                   </ul>
-                                </div>
-                                <!-- /.box-body -->
+                <div class="col-md-12">
+                    <div class="box box-primary collapsed">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Tabel Skor Total Per Posisi Berdasarkan Compensable Faktors</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
                             </div>
                         </div>
-                    @endforeach
-                @endforeach
+                        <!-- /.box-header -->
+                        <div class="box-body" style="">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th rowspan="2">NO</th>
+                                        <th rowspan="2">Posisi</th>
+                                        <th colspan="3">Know How</th>
+                                        <th colspan="3">Usaha</th>
+                                        <th colspan="3">Tanggung Jawab</th>
+                                        <th rowspan="2">Total</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Teknis</th>
+                                        <th>Manajerial</th>
+                                        <th>Interpersonal</th>
+                                        <th>Pikiran</th>
+                                        <th>Fisik</th>
+                                        <th>Waktu</th>
+                                        <th>Hasil Kerja</th>
+                                        <th>Aset</th>
+                                        <th>Bawahan</th>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
             </div>
 
         </section>
