@@ -1491,6 +1491,8 @@ Route::post('store-content-cf','penggajian\ContentCF@store');
 
 Route::get('stok-total-compensable-factor','penggajian\SkorPosisiCF@index');
 
+Route::post('store-skore-ccf','penggajian\SkorPosisiCF@store');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

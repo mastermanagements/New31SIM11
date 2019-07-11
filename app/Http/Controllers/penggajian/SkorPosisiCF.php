@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Penggajian\CompansableFators as cf;
 use Session;
+use App\Model\Superadmin_ukm\U_jabatan_p as jabatan;
+use App\Model\Penggajian\SkorPosisiCF as spcf;
 class SkorPosisiCF extends Controller
 {
     //
@@ -29,8 +31,30 @@ class SkorPosisiCF extends Controller
 
     public function index(){
         $data = [
-            'cf'=> cf::all()->where('id_perusahaan', $this->id_perusahaan)
+            'cf'=> cf::all()->where('id_perusahaan', $this->id_perusahaan),
+            'jabatan'=>jabatan::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.penggajian.section.ContentCF.SkorCF.page_default', $data);
+    }
+
+    public function store(Request $req){
+        $this->validate($req,[
+           'id_jabatan'=>'required'
+        ]);
+
+        foreach ($req->id_sub_cf as $index => $id_sub_cf)
+        {
+            if(!empty($req->skor_sub_cf[$index])){
+                $model =spcf::UpdateOrCreate([
+                    'skor_sub_cf'=> $req->skor_sub_cf[$index]
+                ],[
+                    'id_jabatan'=> $req->id_jabatan,
+                    'id_sub_cf'=> $id_sub_cf,
+                    'id_perusahaan'=> $this->id_perusahaan,
+                    'id_karyawan'=> $this->id_karyawan,
+                ]);
+            }
+       }
+        return redirect('stok-total-compensable-factor')->with('message_success','Skor baru saja di tambahkah');
     }
 }

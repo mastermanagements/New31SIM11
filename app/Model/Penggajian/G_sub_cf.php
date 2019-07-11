@@ -19,4 +19,8 @@ class G_sub_cf extends Model
     public function pokok_cf(){
         return $this->hasOne('App\Model\Penggajian\PokokCF','id_sub_cf');
     }
+
+    public function skor_pokok_cf(){
+        return $this->hasOne('App\Model\Penggajian\SkorPosisiCF','id_sub_cf');
+    }
 }

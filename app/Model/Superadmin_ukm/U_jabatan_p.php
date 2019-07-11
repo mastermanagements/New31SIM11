@@ -27,4 +27,9 @@ class U_jabatan_p extends Model
     public function Cf(){
         return $this->hasMany('App\Model\Penggajian\CompansableFators','id_jabatan');
     }
+
+    public function skorBaseItem()
+    {
+        return $this->hasOne('App\Model\Penggajian\SkorPosisiCF','id_jabatan');
+    }
 }
