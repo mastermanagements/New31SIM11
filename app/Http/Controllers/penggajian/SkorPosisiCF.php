@@ -42,19 +42,29 @@ class SkorPosisiCF extends Controller
            'id_jabatan'=>'required'
         ]);
 
-        foreach ($req->id_sub_cf as $index => $id_sub_cf)
-        {
-            if(!empty($req->skor_sub_cf[$index])){
-                $model =spcf::UpdateOrCreate([
-                    'skor_sub_cf'=> $req->skor_sub_cf[$index]
-                ],[
-                    'id_jabatan'=> $req->id_jabatan,
-                    'id_sub_cf'=> $id_sub_cf,
-                    'id_perusahaan'=> $this->id_perusahaan,
-                    'id_karyawan'=> $this->id_karyawan,
-                ]);
+        foreach ($req->id_sub_cf as $index => $id_sub_cf) {
+            if(!empty($req->skor_sub_cf[$index]) || $req->skor_sub_cf[$index]==0){
+                $id_sub = $id_sub_cf ;
+                $model = spcf::where('id_sub_cf',$id_sub)->where('id_jabatan', $req->id_jabatan)->first();
+                if(empty($model)){
+                    $model_insert=new spcf();
+                    $model_insert->id_sub_cf = $id_sub_cf;
+                    $model_insert->skor_sub_cf = $req->skor_sub_cf[$index];
+                    $model_insert->id_jabatan = $req->id_jabatan;
+                    $model_insert->id_perusahaan = $this->id_perusahaan;
+                    $model_insert->id_karyawan = $this->id_karyawan;
+                    $model_insert->save();
+                }else{
+                    $model->id_sub_cf = $id_sub;
+                    $model->skor_sub_cf = $req->skor_sub_cf[$index];
+                    $model->id_jabatan = $req->id_jabatan;
+                    $model->id_perusahaan = $this->id_perusahaan;
+                    $model->id_karyawan = $this->id_karyawan;
+                    $model->save();
+                }
             }
        }
+
         return redirect('stok-total-compensable-factor')->with('message_success','Skor baru saja di tambahkah');
     }
 }

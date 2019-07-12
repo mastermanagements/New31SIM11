@@ -49,19 +49,23 @@
                                         <th rowspan="2">NO</th>
                                         <th rowspan="2">Posisi</th>
                                         @php($table_item="")
-                                        @php($table_input_item="")
+                                        @php($column=[])
+
                                         @if(!empty($cf))
                                             @foreach($cf as $CF)
                                             <th colspan="@if(!empty($CF->sub_cf)) {{ $CF->sub_cf->count('id') }} @endif">{{ $CF->faktor }}</th>
                                                 @if($CF->sub_cf->count('id')<=0)
                                                     @php($table_item .="<td style='color:red'>Anda belum mengisi sub cf</td>")
-                                                    @php($table_input_item .="<td style='color:red'>input box tidak tersedia</td>")
                                                 @else
-                                                    @foreach($CF->sub_cf as $sub_cf)
-                                                        @php($skor=0)
+                                                    @foreach($CF->sub_cf as $key=> $sub_cf)
+                                                        @php($row=[])
                                                         @if(!empty($sub_cf))
                                                             @php($table_item .="<td>".$sub_cf->sub_faktor."</td>")
-                                                            @php($table_input_item .="<td><input type='hidden'  name='id_sub_cf[]' value=".$sub_cf->id."> <input type='number'  min='0' name='skor_sub_cf[]' class='form-control idsub_".$sub_cf->id."'></td>")
+                                                           @php($row=[
+                                                                'id_sub'=> $sub_cf->id,
+                                                                'id_index_sub'=> $key
+                                                            ])
+                                                            @php($column[]=$row)
                                                         @endif
                                                     @endforeach
                                                 @endif
@@ -81,8 +85,10 @@
                                             <tr id="{{ $jabatan->id }}" class="jabatan">
                                                 <th>{{ $no++ }}</th>
                                                 <td>{{ $jabatan->nm_jabatan }}</td>
-                                                {!! $table_input_item !!}
-                                                <td>belakangan di kerja</td>
+                                                @foreach($column as $key =>$value)
+                                                    <td><input type='hidden'  name='id_sub_cf[]' value="{{ $value['id_sub'] }}"> <input type='text'  min='0' name='skor_sub_cf[]' value='{{ $jabatan->skorBaseItem->where('id_sub_cf',$value['id_sub'])->first()['skor_sub_cf'] }}' class='form-control'></td>
+                                                @endforeach
+                                                <td>{{ number_format($jabatan->skorBaseItem->sum('skor_sub_cf'),2,'.',',') }}</td>
                                                 {{ csrf_field() }}
                                                 <td><button type="submit" class="btn btn-success" name="id_jabatan" value="{{ $jabatan->id }}">Simpan</button></td>
                                             </tr>
@@ -111,6 +117,8 @@
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script>
+
+
 
         $('#datepicker').datepicker({
             autoclose: true,
