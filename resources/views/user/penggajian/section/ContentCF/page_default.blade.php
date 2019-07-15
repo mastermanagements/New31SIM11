@@ -26,9 +26,10 @@
                         <div class="col-sm-2" style="margin-right:10px ">
                             <a href="{{ url('Pokok-cf') }}" class="btn btn-primary">Pokok Compansable Factors</a>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-8">
                             <a href="{{ url('item-cf') }}" class="btn btn-success">Item Content CF</a>
-                            <a href="{{ url('stok-total-compensable-factor') }}" class="btn btn-danger">Stok Total Compensable Factors</a>
+                            <a href="{{ url('stok-total-compensable-factor') }}" class="btn btn-danger">Skor Total Compensable Factors</a>
+                            <a href="{{ url('Skala-Gaji') }}" class="btn btn-warning">Skala Gaji</a>
                         </div>
                     </div>
                 </div>

@@ -1493,6 +1493,24 @@ Route::get('stok-total-compensable-factor','penggajian\SkorPosisiCF@index');
 
 Route::post('store-skore-ccf','penggajian\SkorPosisiCF@store');
 
+Route::get('Skala-Gaji','penggajian\SkalaGaji@index');
+
+Route::post('store-klasifikasi-gaji','penggajian\KlasifikasiGaji@store');
+
+Route::get('edit-klasifikasi-gaji/{id}','penggajian\KlasifikasiGaji@edit');
+
+Route::post('update-klasifikasi-gaji','penggajian\KlasifikasiGaji@update');
+
+Route::put('delete-klasifikasi-gaji/{id}','penggajian\KlasifikasiGaji@delete');
+
+Route::post('store-grade-gaji','penggajian\Grader@store');
+
+Route::put('delete-grade-gaji/{id}','penggajian\Grader@delete');
+
+Route::get('edit-grade-gaji/{id}','penggajian\Grader@edit');
+
+Route::post('update-grader-gaji','penggajian\Grader@update');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 
