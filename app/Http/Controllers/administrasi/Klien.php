@@ -4,8 +4,12 @@ namespace App\Http\Controllers\administrasi;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use  Session;
 use App\Model\Administrasi\Klien as kliens;
+use App\Model\Marketing\SumberDataKlien as SDK;
+use App\Model\Marketing\PenandaSDK as penandaSDK;
+use App\Model\Marketing\HistoryKlien as historykliens;
+use Session;
+//use Carbon\Carbon;
 
 class Klien extends Controller
 {
@@ -31,8 +35,14 @@ class Klien extends Controller
     {
         $data_klien = [
             'data_klien' => kliens::where('jenis_klien', '0')->where('id_perusahaan', $this->id_perusahaan)->paginate(25),
-			'data_calon_klien' => kliens::where('jenis_klien', '1')->where('id_perusahaan', $this->id_perusahaan)->paginate(25)
+			'data_leads' => kliens::where('jenis_klien', '1')->where('id_perusahaan', $this->id_perusahaan)->paginate(25),
+			'data_prospect' => kliens::where('jenis_klien', '2')->where('id_perusahaan', $this->id_perusahaan)->paginate(25),
+			'data_potential' => kliens::where('jenis_klien', '3')->where('id_perusahaan', $this->id_perusahaan)->paginate(25),
+			'data_closeable' => kliens::where('jenis_klien', '4')->where('id_perusahaan', $this->id_perusahaan)->paginate(25),
+			'SDK'=>SDK::all(),
+			'penandaSDK'=>penandaSDK::all()
         ];
+		//dd($data_klien['penandaSDK']);
         return view('user.administrasi.section.klien.page_default', $data_klien);
     }
 
@@ -44,19 +54,28 @@ class Klien extends Controller
         ];
         return view('user.administrasi.section.klien.page_default', $data_klien);
     } */
-
-    public function create()
+	
+	
+	//tambah leads
+	public function create_leads()
     {
-        return view('user.administrasi.section.klien.page_create');
+		$tambah_leads = [
+			'SDK'=>SDK::all(),
+			'penandaSDK'=>penandaSDK::all(),
+        ];
+        return view('user.administrasi.section.klien.page_create_leads', $tambah_leads);
     }
-
-    public function store(Request $req)
+	
+	//store leads
+	public function store_leads(Request $req)
     { //validasi
        $this->validate($req, [
             'nm_klien' =>'required',
             'alamat' =>'required',
             'pekerjaan' =>'required',
-            'hp' =>'required'
+            'hp' =>'required',
+            'id_sdk' =>'required',
+            'id_penanda_sdk' =>'required'
         ]);
         $nm_klien = $req->nm_klien;
         $alamat = $req->alamat;
@@ -73,6 +92,9 @@ class Klien extends Controller
         $telp_perusahaan= $req->telp_perusahaan;
         $jabatan= $req->jabatan;
 		$jenis_klien= $req->jenis_klien;
+		$id_sdk = $req->id_sdk;
+		$id_penanda_sdk = $req->id_penanda_sdk;
+		$tambahan_sdk = $req->tambahan_sdk;
 		
         $models = new kliens;
         $models->nm_klien = $nm_klien;
@@ -90,75 +112,22 @@ class Klien extends Controller
         $models->telp_perusahaan = $telp_perusahaan;
         $models->jabatan = $jabatan;
         $models->jenis_klien = $jenis_klien;
+		$models->id_sdk = $id_sdk;
+        $models->id_penanda_sdk = $id_penanda_sdk;
+        $models->tambahan_sdk = $tambahan_sdk;
         $models->id_perusahaan = $this->id_perusahaan;
         $models->id_karyawan = $this->id_karyawan;
 
         if($models->save())
         {
-            return redirect('Klien')->with('message_success','Anda telah menambah klien baru');
+            return redirect('Klien')->with('message_success','Anda telah menambah data lead');
           }else
             {
-                return redirect('Klien')->with('message_fail','Maaf,Telah terjadi kesalahan, Coba Masukan klien anda');
+                return redirect('Klien')->with('message_fail','Maaf,Telah terjadi kesalahan, Coba Masukan calon lead anda');
             }
     }
 	
-	public function create_calon_klien()
-    {
-        return view('user.administrasi.section.klien.page_create_calon_klien');
-    }
-	
-	public function store_calon_klien(Request $req)
-    { //validasi
-       $this->validate($req, [
-            'nm_klien' =>'required',
-            'alamat' =>'required',
-            'pekerjaan' =>'required',
-            'hp' =>'required'
-        ]);
-        $nm_klien = $req->nm_klien;
-        $alamat = $req->alamat;
-        $pekerjaan = $req->pekerjaan;
-        $hp = $req->hp;
-        $wa = $req->wa;
-        $email = $req->email;
-        $teleg = $req->teleg;
-        $ig = $req->ig;
-        $fb= $req->fb;
-        $twiter= $req->twiter;
-        $nm_perusahaan= $req->nm_perusahaan;
-        $alamat_perusahaan= $req->alamat_perusahaan;
-        $telp_perusahaan= $req->telp_perusahaan;
-        $jabatan= $req->jabatan;
-		$jenis_klien= $req->jenis_klien;
-		
-        $models = new kliens;
-        $models->nm_klien = $nm_klien;
-        $models->alamat = $alamat;
-        $models->pekerjaan = $pekerjaan;
-        $models->hp = $hp;
-        $models->wa = $wa;
-        $models->email = $email;
-        $models->teleg = $teleg;
-        $models->ig = $ig;
-        $models->fb = $fb;
-        $models->twiter = $twiter;
-        $models->nm_perusahaan = $nm_perusahaan;
-        $models->alamat_perusahaan = $alamat_perusahaan;
-        $models->telp_perusahaan = $telp_perusahaan;
-        $models->jabatan = $jabatan;
-        $models->jenis_klien = $jenis_klien;
-        $models->id_perusahaan = $this->id_perusahaan;
-        $models->id_karyawan = $this->id_karyawan;
-
-        if($models->save())
-        {
-            return redirect('Klien')->with('message_success','Anda telah menambah calon klien');
-          }else
-            {
-                return redirect('Klien')->with('message_fail','Maaf,Telah terjadi kesalahan, Coba Masukan calon klien anda');
-            }
-    }
-
+	//edit untuk semua jenis klien
     public function edit($id)
     {
         if(empty($data = kliens::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first()))
@@ -216,10 +185,11 @@ class Klien extends Controller
         $models->jenis_klien = $jenis_klien;
         $models->id_perusahaan = $this->id_perusahaan;
         $models->id_karyawan = $this->id_karyawan;
-
+		//$models->updated_at = Carbon::now();
+		
         if($models->save())
         {
-            return redirect('Klien')->with('message_success','Anda telah mengubah klien baru');
+            return redirect('Klien')->with('message_success','Anda telah mengubah data customer');
         }else
         {
             return redirect('Klien')->with('message_fail','Maaf,Telah terjadi kesalahan, Coba mengubaubah klien anda');
@@ -253,5 +223,117 @@ class Klien extends Controller
             'data'=> $data_klien
         ];
         return response()->json($data_pass);
+    }
+	
+	public function getSDK()
+    {
+        $model = SDK::all();
+        return $model;
+    }
+
+    public function getPenanda($id=1)
+    {
+        $model = penandaSDK::all()->where('id_sdk', $id);
+        return $model;
+    }
+
+    public function ResponsePenanda($id_sdk){
+        return response()->json($this->getPenanda($id_sdk));
+    }
+	
+	//Ganti jenis klien dari leads ke prospect
+	
+	 public function ganti_jenis_klien_leads(Request $req)
+    { //validasi
+        $this->validate($req,[
+            'id_ubah' => 'required',
+            'jenis_klien'=>'required'
+        ]);
+        $id= $req->id_ubah;
+        $jenis_klien= $req->jenis_klien;
+		
+        $model = kliens::findOrFail($id);
+        $model->jenis_klien = $jenis_klien;
+		
+        if($model->save())
+        {
+           return redirect('Klien')->with('message_success','Anda baru saja memindahkan jenis customer');
+        }
+        else
+        {
+           return redirect('Klien')->with('message_fail','Terjadi kesalahan, gagal memindahkan jenis klien');
+        }
+    }
+	
+	//Ganti jenis klien dari prospect ke Potential
+	
+	 public function ganti_jenis_klien_prospect(Request $req)
+    { //validasi
+        $this->validate($req,[
+            'id_ubah' => 'required',
+            'jenis_klien'=>'required'
+        ]);
+        $id= $req->id_ubah;
+        $jenis_klien= $req->jenis_klien;
+		
+        $model = kliens::findOrFail($id);
+        $model->jenis_klien = $jenis_klien;
+		
+        if($model->save())
+        {
+           return redirect('Klien')->with('message_success','Anda baru saja memindahkan jenis customer');
+        }
+        else
+        {
+           return redirect('Klien')->with('message_fail','Terjadi kesalahan, gagal memindahkan jenis klien');
+        }
+    }
+	
+	//Ganti jenis klien dari potential ke closeable
+	
+	 public function ganti_jenis_klien_potential(Request $req)
+    { //validasi
+        $this->validate($req,[
+            'id_ubah' => 'required',
+            'jenis_klien'=>'required'
+        ]);
+        $id= $req->id_ubah;
+        $jenis_klien= $req->jenis_klien;
+		
+        $model = kliens::findOrFail($id);
+        $model->jenis_klien = $jenis_klien;
+		
+        if($model->save())
+        {
+           return redirect('Klien')->with('message_success','Anda baru saja memindahkan jenis customer');
+        }
+        else
+        {
+           return redirect('Klien')->with('message_fail','Terjadi kesalahan, gagal memindahkan jenis klien');
+        }
+    }
+	
+	//Ganti jenis klien dari closeable ke customer
+	
+	 public function ganti_jenis_klien_closeable(Request $req)
+    { //validasi
+        $this->validate($req,[
+            'id_ubah' => 'required',
+            'jenis_klien'=>'required'
+        ]);
+        $id= $req->id_ubah;
+        $jenis_klien= $req->jenis_klien;
+		
+        $model = kliens::findOrFail($id);
+        $model->jenis_klien = $jenis_klien;
+		
+        if($model->save())
+        {
+           return redirect('Klien')->with('message_success','Anda baru saja memindahkan jenis customer');
+        }
+        else
+        {
+           return redirect('Klien')->with('message_fail','Terjadi kesalahan, gagal memindahkan jenis klien');
+        }
     }
 }
