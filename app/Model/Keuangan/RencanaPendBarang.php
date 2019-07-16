@@ -10,4 +10,9 @@ class RencanaPendBarang extends Model
 	
 	protected $fillable = ['tahun','bulan','id_barang','target_brg_terjual','target_klien_beli','id_perusahaan','id_karyawan'];
 	
+	public function getDataBarang()
+    {
+        return $this->belongsTo('App\Model\Produksi\Barang','id_barang');
+    }
+	
 }
