@@ -58,8 +58,8 @@ class JualBarang extends Controller
         $id_barang = $req->id_barang;
         $jumlah_barang = $req->jumlah_barang;
 
-        $perusahaan = jualBarangs::where('id_perusahaan', $this->id_perusahaan)->first()->perusahaan->singkatan_usaha;
-
+        $perusahaan = jualBarangs::where('id_perusahaan', $this->id_perusahaan)->first();
+		
         foreach ($id_barang as $key => $value)
         {
             $tgl_beli = date('Y-m-d', strtotime($req->tgl_jual));
