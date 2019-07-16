@@ -4,10 +4,8 @@ namespace App\Http\Controllers\marketing;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use app\Model\Marketing\RencanaMarketingBarang as rencana_marketing_brg;
-use App\Model\Keuangan\RAB as rab;
+use app\Model\Marketing\RencanaMarketingBarang as rencana_mb;
 use App\Model\Keuangan\RencanaPendBarang as rencana_pend_brg;
-use App\Model\Keuangan\RincianPendBarang as rincian_pend_brg;
 use Session;
 
 class RencanaMarketingBarang extends Controller
@@ -32,14 +30,11 @@ class RencanaMarketingBarang extends Controller
 	public function index()
     {
         $data_pass= [
-		'data_rab'=> TJP::all()->where('id_perusahaan',$this->id_perusahaan),
 		'data_rencana_pb'=> TT::all()->where('id_perusahaan', $this->id_perusahaan),
-		'data_rincian_pb'=> TB::all()->where('id_perusahaan', $this->id_perusahaan),
-		'bagian_p'=>Bagian::all()->where('id_perusahaan', $this->id_perusahaan),
-		'divisi_p'=>Divisi::all()->where('id_perusahaan', $this->id_perusahaan)
+		'data_rencana_mb'=>rencana_mb::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
 		//dd($data_pass['data_tjp']);
-        return view('user.marketing.section.RencanaMarketingBarang.page_default', $data_pass);
+        return view('user.marketing.section.RencanaMarketing.page_default', $data_pass);
 		
     }
 }
