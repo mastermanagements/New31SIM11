@@ -10,6 +10,16 @@
                         <textarea type="text" class="form-control" name="grader" required></textarea>
                         <small style="color: red"> * Tidak Boleh Kosong </small>
                     </div>
+                    <div class="form-group">
+                        <label>Poin Minimal</label>
+                        <input type="number" min="0" class="form-control" name="poin_min" required/>
+                        <small style="color: red"> * Tidak Boleh Kosong </small>
+                    </div>
+                    <div class="form-group">
+                        <label>Poin Maksimal</label>
+                        <input type="number" min="0" class="form-control" name="poin_max" required/>
+                        <small style="color: red"> * Tidak Boleh Kosong </small>
+                    </div>
                 </div>
                 <div class="box-footer">
                     {{ csrf_field() }}
@@ -29,6 +39,8 @@
                     <tr>
                         <th>No.</th>
                         <th>Grader</th>
+                        <th>Poin Minimal</th>
+                        <th>Poin Maksimal</th>
                         <th>Aksi</th>
                     </tr>
                     </thead>
@@ -38,6 +50,8 @@
                     <tr>
                         <td>{{ $i++ }}</td>
                         <td>{{ $value->grade }}</td>
+                        <td>{{ $value->poin_min }}</td>
+                        <td>{{ $value->poin_max }}</td>
                         <td>
                             <form action="{{ url('delete-grade-gaji/'.$value->id) }}" method="post">
                                 {{ csrf_field() }}

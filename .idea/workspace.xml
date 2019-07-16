@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/Grader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/KlasifikasiGaji.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/SkalaGaji.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Penggajian/GradeGaji.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Penggajian/KlasifikasiGaji.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/penggajian/2019_07_15_013311_create_g_klasifikasi_gaji.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/penggajian/2019_07_15_031127_create_g_grade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/grade_gaji/page.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/klasifikasi_gaji/page.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/page_default.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Penggajian/G_skala_gaji.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/penggajian/2019_07_16_024115_create_g_skala_gaji.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/penggajian/Grader.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/Grader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/penggajian/SkalaGaji.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/SkalaGaji.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Penggajian/GradeGaji.php" afterPath="$PROJECT_DIR$/app/Model/Penggajian/GradeGaji.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Penggajian/KlasifikasiGaji.php" afterPath="$PROJECT_DIR$/app/Model/Penggajian/KlasifikasiGaji.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/penggajian/2019_07_15_031127_create_g_grade.php" afterPath="$PROJECT_DIR$/database/migrations/penggajian/2019_07_15_031127_create_g_grade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/grade_gaji/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/grade_gaji/page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/page_default.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -45,12 +43,6 @@
         <item name="" type="eadb38e5:DatabaseStructure$Root" />
         <item name="master_management@localhost" type="e3449647:DbNodeDescriptor" />
         <item name="master_management" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="master_management@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="master_management" type="e3449647:DbNodeDescriptor" />
-        <item name="g_grade" type="e3449647:DbNodeDescriptor" />
       </path>
     </expand>
     <select />
@@ -1391,18 +1383,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="1511" column="58" lean-forward="false" selection-start-line="1511" selection-start-column="52" selection-end-line="1511" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/grade_gaji/page.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" column="87" lean-forward="true" selection-start-line="4" selection-start-column="87" selection-end-line="4" selection-end-column="87" />
+            <state relative-caret-position="147">
+              <caret line="1495" column="22" lean-forward="true" selection-start-line="1495" selection-start-column="12" selection-end-line="1495" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -1411,28 +1393,18 @@
       <file leaf-file-name="page_default.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/page_default.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2616">
-              <caret line="109" column="24" lean-forward="true" selection-start-line="109" selection-start-column="24" selection-end-line="109" selection-end-column="38" />
+            <state relative-caret-position="42">
+              <caret line="53" column="95" lean-forward="true" selection-start-line="53" selection-start-column="95" selection-end-line="53" selection-end-column="95" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Grader.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/Grader.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="69" column="102" lean-forward="false" selection-start-line="69" selection-start-column="102" selection-end-line="69" selection-end-column="102" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SkalaGaji.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SkalaGaji.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/SkalaGaji.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="36" column="19" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="19" />
+            <state relative-caret-position="315">
+              <caret line="56" column="18" lean-forward="true" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
               <folding>
                 <element signature="e#51#79#0#PHP" expanded="true" />
               </folding>
@@ -1440,11 +1412,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GradeGaji.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/GradeGaji.php">
+      <file leaf-file-name="G_skala_gaji.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/G_skala_gaji.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" column="34" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+            <state relative-caret-position="231">
+              <caret line="11" column="70" lean-forward="false" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -1453,8 +1425,8 @@
       <file leaf-file-name="KlasifikasiGaji.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/KlasifikasiGaji.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+            <state relative-caret-position="273">
+              <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -1551,8 +1523,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_perusahaan/menu_create_page.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/superadmin_ukm/Menu_perusahaan.php" />
         <option value="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_karyawan/menu_create_page.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/AlokasiGaji.php" />
@@ -1593,15 +1563,17 @@
         <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/klasifikasi_gaji/page.php" />
         <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_15_013311_create_g_klasifikasi_gaji.php" />
         <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/klasifikasi_gaji/page.blade.php" />
-        <option value="$PROJECT_DIR$/app/Model/Penggajian/KlasifikasiGaji.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/KlasifikasiGaji.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/SkalaGaji.php" />
         <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_15_031127_create_g_grade.php" />
         <option value="$PROJECT_DIR$/app/Model/Penggajian/GradeGaji.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/Grader.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/page_default.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/grade_gaji/page.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_16_024115_create_g_skala_gaji.php" />
+        <option value="$PROJECT_DIR$/app/Model/Penggajian/G_skala_gaji.php" />
+        <option value="$PROJECT_DIR$/app/Model/Penggajian/KlasifikasiGaji.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/SkalaGaji.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/page_default.blade.php" />
       </list>
     </option>
   </component>
@@ -1705,10 +1677,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -1751,43 +1722,10 @@
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="penggajian" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Model" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -1799,19 +1737,20 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/SkalaGaji.php&#10;jabata&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Superadmin_ukm/U_jabatan_p.php&#10;sk&#9;null&#9;null&#10;klasifikas&#9;null&#9;null&#10;we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;FatalErrorException&#9;null&#9;null&#10;tes&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/Tes.php&#10;kar&#9;null&#9;null&#10;Superadmin_UKM&#9;null&#9;null&#10;JadwalProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JadwalProyek.php&#10;Brifing&#9;null&#9;null&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;2019_04_02_075743_create_a_jenis_arsip&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/administrasi/2019_04_02_075743_create_a_jenis_arsip.php&#10;BAsertim&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BAsertim.php&#10;BApenyelesaian&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BApenyelesaian.php&#10;app/Exceptions/Handler.php&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Exceptions/Handler.php&#10;Pro&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Proposal.php&#10;JenisProposal&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/JenisProposal.php&#10;Surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php&#10;surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/penggajian/2019_07_16_024115_create_g_skala_gaji.php&#10;jabata&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Superadmin_ukm/U_jabatan_p.php&#10;sk&#9;null&#9;null&#10;klasifikas&#9;null&#9;null&#10;we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;FatalErrorException&#9;null&#9;null&#10;tes&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/Tes.php&#10;kar&#9;null&#9;null&#10;Superadmin_UKM&#9;null&#9;null&#10;JadwalProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JadwalProyek.php&#10;Brifing&#9;null&#9;null&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;2019_04_02_075743_create_a_jenis_arsip&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/administrasi/2019_04_02_075743_create_a_jenis_arsip.php&#10;BAsertim&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BAsertim.php&#10;BApenyelesaian&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BApenyelesaian.php&#10;app/Exceptions/Handler.php&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Exceptions/Handler.php&#10;Pro&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Proposal.php&#10;JenisProposal&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/JenisProposal.php&#10;Surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php&#10;surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Debugger" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
   <component name="RecentsManager">
@@ -2001,14 +1940,8 @@
       <workItem from="1562809108136" duration="76000" />
       <workItem from="1562809209632" duration="14289000" />
       <workItem from="1562891050883" duration="13557000" />
-      <workItem from="1563151143921" duration="15080000" />
-    </task>
-    <task id="LOCAL-00046" summary="Produk -&gt; &#10;- Perubahan Menu Task Proyek&#10;- Perancangan ulang Jadwal Proyek">
-      <created>1557114144186</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1557114144186</updated>
+      <workItem from="1563151143921" duration="15237000" />
+      <workItem from="1563236428082" duration="11109000" />
     </task>
     <task id="LOCAL-00047" summary="Produk -&gt; &#10;- Persiapan Data untuk tampilan Jadwal Proyek Selesai">
       <created>1557126258650</created>
@@ -2346,11 +2279,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562917961338</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Penggajian&#10;   - Interface dan Crud Klasifikasi Fix&#10;   - Interface dan Crud Gendre Fix&#10;   - Perancangan Form Skala Gaji Almoust Done">
+      <created>1563177168966</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1563177168966</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="977206000" />
+    <option name="totallyTimeSpent" value="988472000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2363,16 +2303,16 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23827533" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24205749" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18456884" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18456884" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20877458" sideWeight="0.50554675" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3338898" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24508321" sideWeight="0.50554675" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2427,7 +2367,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="HRD&#10;- Tenaga Kerja Crud and freature Fix" />
     <MESSAGE value="HRD&#10;- Periode Kerjaan" />
     <MESSAGE value="HRD&#10;- Periode Kerjaan CRUD FIX&#10;- Menu Kalender Full feature Fix" />
     <MESSAGE value="HRD&#10;- Pengaturan Cuti fix&#10;- daftar cuti Fix" />
@@ -2452,34 +2391,14 @@
     <MESSAGE value="Penggajian&#10;   - Revisi CCF,&#10;   - Design Interface Skor CCF" />
     <MESSAGE value="Penggajian&#10;   - Design Interface Skor CCF" />
     <MESSAGE value="Penggajian&#10;   - Design Interface Skor CCF FIX" />
-    <option name="LAST_COMMIT_MESSAGE" value="Penggajian&#10;   - Design Interface Skor CCF FIX" />
+    <MESSAGE value="Penggajian&#10;   - Interface dan Crud Klasifikasi Fix&#10;   - Interface dan Crud Gendre Fix&#10;   - Perancangan Form Skala Gaji Almoust Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Penggajian&#10;   - Interface dan Crud Klasifikasi Fix&#10;   - Interface dan Crud Gendre Fix&#10;   - Perancangan Form Skala Gaji Almoust Done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/LogDiary.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_08_065232_create_g_pokok_cff.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="18" column="38" lean-forward="false" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/SubCompansableFactors/modal/modal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="5" column="55" lean-forward="false" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/ContentCF/pokokCF/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -2620,7 +2539,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
           <caret line="23" column="75" lean-forward="false" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2645,7 +2563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
           <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2660,7 +2577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2668,7 +2584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="31" column="55" lean-forward="false" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2684,7 +2599,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="11" column="46" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2702,7 +2616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="11" column="49" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2710,7 +2623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
           <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2718,7 +2630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-854">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2726,7 +2637,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2736">
           <caret line="114" column="18" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="114" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2734,7 +2644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2185">
           <caret line="50" column="38" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="50" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2753,14 +2662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/KlasifikasiGaji.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_15_013311_create_g_klasifikasi_gaji.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -2772,58 +2673,92 @@
     <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_15_031127_create_g_grade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/GradeGaji.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="34" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/SkalaGaji.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="36" column="19" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="19" />
-          <folding>
-            <element signature="e#51#79#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/Grader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="69" column="102" lean-forward="false" selection-start-line="69" selection-start-column="102" selection-end-line="69" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="1511" column="58" lean-forward="false" selection-start-line="1511" selection-start-column="52" selection-end-line="1511" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2616">
-          <caret line="109" column="24" lean-forward="true" selection-start-line="109" selection-start-column="24" selection-end-line="109" selection-end-column="38" />
+          <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/grade_gaji/page.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="87" lean-forward="true" selection-start-line="4" selection-start-column="87" selection-end-line="4" selection-end-column="87" />
+        <state relative-caret-position="294">
+          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#small#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#small#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/GradeGaji.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="55" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="55" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/Grader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="67" column="43" lean-forward="true" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_16_024115_create_g_skala_gaji.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="19" column="44" lean-forward="true" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="1495" column="22" lean-forward="true" selection-start-line="1495" selection-start-column="12" selection-end-line="1495" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/KlasifikasiGaji.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/G_skala_gaji.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="70" lean-forward="false" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/SkalaGaji/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="53" column="95" lean-forward="true" selection-start-line="53" selection-start-column="95" selection-end-line="53" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.g_skala_gaji">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/SkalaGaji.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="56" column="18" lean-forward="true" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
+          <folding>
+            <element signature="e#51#79#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

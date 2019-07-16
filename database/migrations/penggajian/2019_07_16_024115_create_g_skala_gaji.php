@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGGrade extends Migration
+class CreateGSkalaGaji extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateGGrade extends Migration
      */
     public function up()
     {
-        Schema::create('g_grade', function (Blueprint $table) {
+        Schema::create('g_skala_gaji', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('grade');
+            $table->integer('id_jabatan')->unsigned();
+            $table->integer('id_klasifikasi')->unsigned();
             $table->integer('besaran_gaji');
-            $table->integer('poin_min');
-            $table->integer('poin_max');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
@@ -32,6 +31,6 @@ class CreateGGrade extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('g_grade');
+        Schema::dropIfExists('g_skala_gaji');
     }
 }

@@ -1495,6 +1495,8 @@ Route::post('store-skore-ccf','penggajian\SkorPosisiCF@store');
 
 Route::get('Skala-Gaji','penggajian\SkalaGaji@index');
 
+Route::post('store-skala-Gaji','penggajian\SkalaGaji@store');
+
 Route::post('store-klasifikasi-gaji','penggajian\KlasifikasiGaji@store');
 
 Route::get('edit-klasifikasi-gaji/{id}','penggajian\KlasifikasiGaji@edit');

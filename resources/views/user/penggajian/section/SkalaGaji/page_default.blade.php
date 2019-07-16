@@ -19,19 +19,19 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs pull-right">
                         <li ><a href="#tab_1-1" data-toggle="tab">Klasifikasi Gaji</a></li>
-                        <li class="active" ><a href="#tab_2-2" data-toggle="tab">Grade/Tingkatan</a></li>
-                        <li ><a href="#tab_3-3" data-toggle="tab">Daftar Skala Gaji</a></li>
+                        <li ><a href="#tab_2-2" data-toggle="tab">Grade/Tingkatan</a></li>
+                        <li class="active"><a href="#tab_3-3" data-toggle="tab">Daftar Skala Gaji</a></li>
                         <li class="pull-left header"><i class="fa fa-th"></i> Skala Gaji</li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane " id="tab_1-1">
                             @include('user.penggajian.section.SkalaGaji.klasifikasi_gaji.page')
                         </div>
-                        <div class="tab-pane active " id="tab_2-2">
+                        <div class="tab-pane  " id="tab_2-2">
                             @include('user.penggajian.section.SkalaGaji.grade_gaji.page')
                         </div>
                         <!-- /.tab-pane -->
-                        <div class="tab-pane " id="tab_3-3">
+                        <div class="tab-pane active " id="tab_3-3">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
@@ -51,16 +51,22 @@
                                 <tbody>
                                 @php($no=1)
                                 @foreach($jabatan as $jabatan)
-                                    <form action="#" method="post">
+                                    <form action="{{ url('store-skala-Gaji') }}" method="post">
+                                        <input type="hidden" name="id_jabatan" value="{{ $jabatan->id }}">
+                                        {{ csrf_field() }}
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $jabatan->nm_jabatan }}</td>
                                         <td>{{ number_format($jabatan->skorBaseItem->sum('skor_sub_cf'),2,'.',',') }}</td>
-                                        <td>1</td>
+                                        <td>
+                                            @if(!empty($grade = $grader->where('poin_min','<',$jabatan->skorBaseItem->sum('skor_sub_cf'))->where('poin_max','>',$jabatan->skorBaseItem->sum('skor_sub_cf'))->first()))
+                                                {{ $grade->grade }}
+                                            @endif
+                                        </td>
                                         @foreach($klasifikasiGaji as $klass)
-                                            <td><input type="number" min="0" max="{{ $klass->besar_gaji }}" class="form-control" name="besaran_gaji"></td>
+                                            <td><input type="hidden" name="id_klasifikasi[]" value="{{ $klass->id }}"><input type="text"   class="form-control" name="besaran_gaji[]" value="@if(!empty($hasil=$klass->skala_gaji->where('id_jabatan', $jabatan->id)->first())) {{ $hasil->besaran_gaji }} @endif"></td>
                                         @endforeach
-                                        <td><button class="btn btn-success">Simpan</button></td>
+                                        <td><button type="submit" class="btn btn-success">Simpan</button></td>
                                     </tr>
                                     </form>
                                 @endforeach
@@ -106,6 +112,8 @@
                 success: function (result) {
                     console.log(result);
                     $('[name="grader"]').val(result.grade);
+                    $('[name="poin_min"]').val(result.poin_min);
+                    $('[name="poin_max"]').val(result.poin_max);
                     $('[name="id_grader"]').val(result.id);
                     $('#formulir_grade').attr('action','{{ url('update-grader-gaji') }}');
                 }

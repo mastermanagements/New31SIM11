@@ -8,6 +8,7 @@ use Session;
 use App\Model\Penggajian\KlasifikasiGaji as KG;
 use App\Model\Superadmin_ukm\U_jabatan_p as jabatan;
 use App\Model\Penggajian\GradeGaji as gg;
+use App\Model\Penggajian\G_skala_gaji as gsg;
 class SkalaGaji extends Controller
 {
     //
@@ -37,5 +38,32 @@ class SkalaGaji extends Controller
             'grader'=> gg::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.penggajian.section.SkalaGaji.page_default', $data);
+    }
+
+    public function store(Request $req){
+        $this->validate($req,[
+            'id_jabatan'=>'required'
+        ]);
+
+        foreach ($req->id_klasifikasi as $index => $id_klass){
+            if(empty($model_gsg = gsg::where('id_jabatan', $req->id_jabatan)->where('id_klasifikasi', $id_klass)->where('id_perusahaan', $this->id_perusahaan)->first())){
+                $model =  new gsg();
+                $model->id_jabatan = $req->id_jabatan;
+                $model->id_klasifikasi = $id_klass;
+                $model->besaran_gaji = $req->besaran_gaji[$index];
+                $model->id_perusahaan = $this->id_perusahaan;
+                $model->id_karyawan = $this->id_karyawan;
+                $model->save();
+            }else{
+                $model_gsg->id_jabatan = $req->id_jabatan;
+                $model_gsg->id_klasifikasi = $id_klass;
+                $model_gsg->besaran_gaji = $req->besaran_gaji[$index];
+                $model_gsg->id_perusahaan = $this->id_perusahaan;
+                $model_gsg->id_karyawan = $this->id_karyawan;
+                $model_gsg->save();
+            }
+        }
+
+        return redirect('Skala-Gaji')->with('message_success','Sudah diproses');
     }
 }

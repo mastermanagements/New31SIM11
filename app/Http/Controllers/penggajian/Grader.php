@@ -32,11 +32,15 @@ class Grader extends Controller
     public function store(Request $req){
         $this->validate($req,[
             'grader'=> 'required',
+            'poin_min'=> 'required',
+            'poin_max'=> 'required',
         ]);
 
         $model = new gg();
         $model->grade= $req->grader;
-         $model->id_perusahaan = $this->id_perusahaan;
+        $model->poin_min= $req->poin_min;
+        $model->poin_max= $req->poin_max;
+        $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
 
         if($model->save()){
@@ -56,11 +60,15 @@ class Grader extends Controller
     public function update(Request $req){
         $this->validate($req,[
             'grader'=> 'required',
-            'id_grader'=> 'required',
+            'poin_min'=> 'required',
+            'poin_max'=> 'required',
         ]);
+
 
         $model = gg::find($req->id_grader);
         $model->grade= $req->grader;
+        $model->poin_min= $req->poin_min;
+        $model->poin_max= $req->poin_max;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
 
