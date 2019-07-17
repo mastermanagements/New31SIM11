@@ -1162,7 +1162,21 @@ Route::post('update-item-kteknis','hrd\ItemKTeknis@update');
 
 Route::put('hapus-item-kteknis/{id}','hrd\ItemKTeknis@delete');
 
+Route::post('store-predikat-penilaian','hrd\PredikatPenilaian@store');
 
+Route::get('edit-predikat-penilaian/{id}','hrd\PredikatPenilaian@edit');
+
+Route::post('update-predikat-penilaian','hrd\PredikatPenilaian@update');
+
+Route::put('delete-predikat-penilaian/{id}','hrd\PredikatPenilaian@delete');
+
+Route::get('kompensasi_kinerja_data/{tahun}','hrd\PredikatPenilaian@data_kompensasisi');
+
+Route::get('Daftar-gaji','penggajian\DaftarGaji@index');
+
+Route::get('detail-daftar-gaji/{id}','penggajian\DaftarGaji@list');
+
+Route::post('tambah-daftar-gaji','penggajian\DaftarGaji@store');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

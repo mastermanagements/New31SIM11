@@ -50,8 +50,12 @@ class KpiKaryawan extends Controller
             "realisasi_kpi"=>"required",
         ]);
 
-        $kpi = kpi::find($req->id_kpi);
-        $skor_kpi = $req->realisasi_kpi/$kpi->targat_kpi*100;
+       $kpi = kpi::find($req->id_kpi);
+       if($kpi->jenis->id==1){
+           $skor_kpi = $kpi->targat_kpi/$req->realisasi_kpi*100;
+       }else{
+           $skor_kpi = $req->realisasi_kpi/$kpi->targat_kpi*100;
+       }
         $skor_akhir =$skor_kpi * $kpi->bobot_kpi/100;
 
         $model = new kpi_ky();
@@ -92,8 +96,13 @@ class KpiKaryawan extends Controller
         ]);
 
         $kpi = kpi::find($req->id_kpi);
-        $skor_kpi = $req->realisasi_kpi/$kpi->targat_kpi*100;
+        if($kpi->jenis->id==1){
+            $skor_kpi = $kpi->targat_kpi/$req->realisasi_kpi*100;
+        }else{
+            $skor_kpi = $req->realisasi_kpi/$kpi->targat_kpi*100;
+        }
         $skor_akhir =$skor_kpi * $kpi->bobot_kpi/100;
+
 
         $model = kpi_ky::find($req->id);
         $model->year = $req->thn_kpi;
