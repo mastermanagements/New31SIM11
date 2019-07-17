@@ -16,8 +16,8 @@ class CreatePJasa extends Migration
         Schema::create('p_jasa', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_kategori_produk')->unsigned();
-           $table->integer('id_subkategori_produk')->unsigned()->default(0);
-            $table->integer('id_subsubkategori_produk')->unsigned()->default(0);
+            $table->integer('id_subkategori_produk')->nullable();
+            $table->integer('id_subsubkategori_produk')->nullable();
             $table->string('nm_jasa');
             $table->decimal('harga_jasa',12,2);
             $table->text('rincian_jasa');

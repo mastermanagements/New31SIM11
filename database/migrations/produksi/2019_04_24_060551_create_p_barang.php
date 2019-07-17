@@ -16,10 +16,8 @@ class CreatePBarang extends Migration
         Schema::create('p_barang', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_kategori_produk')->unsigned();
-
             $table->integer('id_subkategori_produk')->default(0);
             $table->integer('id_subsubkategori_produk')->default(0);
-
             $table->integer('id_subkategori_produk')->unsigned()->default(0);
             $table->integer('id_subsubkategori_produk')->unsigned()->default(0);
 
