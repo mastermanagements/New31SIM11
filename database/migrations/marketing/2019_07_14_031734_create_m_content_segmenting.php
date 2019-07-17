@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMRencanaMarketingJasa extends Migration
+class CreateMContentSegmenting extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateMRencanaMarketingJasa extends Migration
      */
     public function up()
     {
-        Schema::create('m_rencana_marketing_jasa', function (Blueprint $table) {
+        Schema::create('m_content_segmenting', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('id_rencana_pend_jasa')->unsigned();
-			$table->integer('jum_klien_lama');
-			$table->integer('jum_klien_baru');
-			$table->text('ket');
+			$table->integer('id_subsub_segmenting')->nullable()->default('0');
+			$table->string('content_segmenting');
+			$table->enum('jenis_marketing',['0','1']);
 			$table->integer('id_perusahaan')->unsigned();
 			$table->integer('id_karyawan')->unsigned();
             $table->timestamps();
@@ -32,6 +31,6 @@ class CreateMRencanaMarketingJasa extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_rencana_marketing_jasa');
+        Schema::dropIfExists('m_content_segmenting');
     }
 }

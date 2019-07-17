@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelationMRencanaMarketingJasa extends Migration
+class CreateRelationMSegmenting extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class CreateRelationMRencanaMarketingJasa extends Migration
      */
     public function up()
     {
-        Schema::table('m_rencana_marketing_jasa', function (Blueprint $table) {
-            $table->foreign('id_rencana_pend_jasa')->references('id')->on('k_rencana_pend_jasa');
+        Schema::table('m_segmenting', function (Blueprint $table) {
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
         });
@@ -27,8 +26,8 @@ class CreateRelationMRencanaMarketingJasa extends Migration
      */
     public function down()
     {
-        Schema::table('m_rencana_marketing_jasa', function (Blueprint $table) {
-      
+       Schema::table('m_segmenting', function (Blueprint $table) {
+          
         });
     }
 }
