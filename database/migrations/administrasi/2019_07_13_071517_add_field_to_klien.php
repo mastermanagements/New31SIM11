@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddJenisKlienToAKlien extends Migration
+class AddFieldToKlien extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,10 @@ class AddJenisKlienToAKlien extends Migration
     public function up()
     {
         Schema::table('a_klien', function (Blueprint $table) {
-            //tambah field jenis_klien
-			$table->enum('jenis_klien',['0','1','2','3','4'])->after('jabatan');
+            //tambah field 
+			$table->integer('id_sdk')->after('jenis_klien')->nullable()->default('0');
+			$table->integer('id_penanda_sdk')->after('id_sdk')->nullable()->default('0');
+			$table->string('tambahan_sdk')->after('id_penanda_sdk')->nullable();
         });
     }
 
@@ -28,7 +30,8 @@ class AddJenisKlienToAKlien extends Migration
     {
         Schema::table('a_klien', function (Blueprint $table) {
             //rolback
-			$table->dropColumn('jenis_klien');
+			$table->dropColumn('id_sumber_data');
+			$table->dropColumn('ket_sumber_data');
         });
     }
 }
