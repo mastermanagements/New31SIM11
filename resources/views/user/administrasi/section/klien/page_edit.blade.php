@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Klien/Calon Klien
+            Customer
         </h1>
     </section>
 
@@ -19,7 +19,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Klien/Calon Klien</h3>
+                        <h3 class="box-title">Formulir Edit Customer/Leads/Prospect/Potential/Closeable</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -86,17 +86,7 @@
                                 <label for="exampleInputEmail1">Jabatan</label>
                                 <input type="text" name="jabatan" class="form-control"  value="{{ $data_klien->jabatan }}" id="exampleInputEmail1">
                             </div>
-							<div class="form-group">
-                                <label for="exampleInputEmail1">Jenis Klien</label></br>
-                                    @if ($data_klien['jenis_klien']=='0')  
-										<input name="jenis_klien" type="radio" value="0" checked> Klien 
-										&nbsp;&nbsp; <input name="jenis_klien" type="radio" value="1"> Calon Klien 
-									@else 
-										<input name="jenis_klien" type="radio" value="0"> Klien
-										&nbsp;&nbsp;
-										<input name="jenis_klien" type="radio" value="1" checked>Calon Klien 
-									@endif 
-                            </div>
+							<input type="hidden" name="jenis_klien" class="form-control"  value="{{ $data_klien->jenis_klien }}" id="exampleInputEmail1">
                         </div>
                         <!-- /.box-body -->
 
@@ -113,3 +103,4 @@
     <!-- /.content -->
 </div>
 @stop
+

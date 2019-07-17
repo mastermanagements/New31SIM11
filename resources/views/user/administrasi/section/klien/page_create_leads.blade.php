@@ -1,13 +1,11 @@
 @extends('user.administrasi.master_user')
 
-
-
 @section('master_content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Calon Klien
+            Leads
         </h1>
     </section>
 
@@ -19,11 +17,11 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Calon Klien</h3>
+                        <h3 class="box-title">Formulir Tamdah Data Leads</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-calon-klien') }}" method="post">
+                    <form role="form" action="{{ url('store-leads') }}" method="post">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nama </label>
@@ -86,6 +84,30 @@
                                 <input type="text" name="jabatan" class="form-control" id="exampleInputEmail1">
                                 <input type="hidden" name="jenis_klien" value="1" class="form-control" id="exampleInputEmail1">
                             </div>
+							<div class="form-group">
+							<label for="exampleInputEmail1">Info Customer Dari</label>
+								<select class="form-control select2" style="width: 100%;" name="id_sdk" required>
+								@if(empty($SDK))
+									<option>Sumber Data Klien Belum di Isi</option>
+								@else
+									<option>Pilih</option>
+									@foreach($SDK as $sdk)
+                                    <option value="{{ $sdk->id }}">{{ $sdk->sumber_media }}</option>
+									@endforeach
+								@endif
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputFile">Penanda</label>
+								<select class="form-control select2" style="width: 100%;" name="id_penanda_sdk" required>
+									<option>Pilih</option>
+								</select>
+								<small style="color: red">* Tidak boleh kosong</small>
+							</div>
+							<div class="form-group">
+                                <label for="exampleInputEmail1">Ket Tambahan Info Customer</label>
+                                <input type="text" name="tambahan_sdk" class="form-control" id="exampleInputEmail1">
+                            </div>
                         </div>
                         <!-- /.box-body -->
 
@@ -100,4 +122,9 @@
     </section>
     <!-- /.content -->
 </div>
+@stop
+@section('plugins')
+    <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
+    @include('user.administrasi.section.klien.modal.JS')
 @stop
