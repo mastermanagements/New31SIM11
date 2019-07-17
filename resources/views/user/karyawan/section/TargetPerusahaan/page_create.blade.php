@@ -2,8 +2,7 @@
 
 @section('skin')
    <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
-
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 @stop
 
 @section('master_content')
