@@ -14,6 +14,9 @@ class CreateRelationAKlien extends Migration
     public function up()
     {
         Schema::table('a_klien', function (Blueprint $table) {
+			
+			//$table->foreign('id_sdk')->references('id')->on('m_sumber_data_klien');
+			//$table->foreign('id_penanda_sdk')->references('id')->on('m_penanda_sdk');
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
 			$table->foreign('id_karyawan')->references('id')->on('h_karyawan');
         });
