@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMRencanaMarketingJasa extends Migration
+class CreateMHistoryKlien extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateMRencanaMarketingJasa extends Migration
      */
     public function up()
     {
-        Schema::create('m_rencana_marketing_jasa', function (Blueprint $table) {
+        Schema::create('m_history_klien', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('id_rencana_pend_jasa')->unsigned();
-			$table->integer('jum_klien_lama');
-			$table->integer('jum_klien_baru');
-			$table->text('ket');
-			$table->integer('id_perusahaan')->unsigned();
-			$table->integer('id_karyawan')->unsigned();
+			$table->integer('id_klien')->unsigned();
+			$table->enum('jenis_klien',['0','1','2','3','4']);
+			$table->date('tgl_history');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateMRencanaMarketingJasa extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_rencana_marketing_jasa');
+        Schema::dropIfExists('m_history_klien');
     }
 }

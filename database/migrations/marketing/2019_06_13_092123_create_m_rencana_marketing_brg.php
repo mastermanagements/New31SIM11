@@ -15,9 +15,7 @@ class CreateMRencanaMarketingBrg extends Migration
     {
         Schema::create('m_rencana_marketing_brg', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('id_rab')->unsigned();
 			$table->integer('id_rencana_pend_brg')->unsigned();
-			$table->integer('id_rincian_pend_brg')->unsigned();
 			$table->integer('jum_klien_lama');
 			$table->integer('jum_klien_baru');
 			$table->text('ket');
