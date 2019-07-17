@@ -1,10 +1,9 @@
-@extends('user.karyawan.master_user')
+@extends('user.marketing.master_user')
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-	 <!-- iCheck for checkboxes and radio inputs -->
+
     <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
-	
 @stop
 
 @section('master_content')
@@ -12,270 +11,409 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Target Perusahaan
+            Rencana Marketing
         </h1>
     </section>
 
     <!-- Main content -->
     <section class="content container-fluid">
-
-        <!--------------------------
-          | Your Page Content Here |
-          -------------------------->
-        <a href="{{ url('buat-rencana-marketing') }}" class="btn btn-primary">Buat Rencana Marketing Perusahaan Anda</a>
-        <p></p>
         <div class="row">
-
             @if(!empty(session('message_success')))
                 <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
             @elseif(!empty(session('message_fail')))
                 <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
             @endif
             <p></p>
-
-            @if(empty($data_rencana_mb))
-            <h4 style="color: orange; text-align: center">Belum ada rencana marketing perusahaan anda..!!</h4>
-            @else
-			@foreach ($data_tjp as $tjp)
-				<div class="col-md-12">
-                    <div class="box box-default collapsed-box">
-                        <div class="box-header with-border">
-							@if(!empty($tjp))
-                                <h3 class="box-title"><b> {{ $tjp->nm_tjp }}</b></h3>
-							@endif
-							<div class="box-tools pull-right">
-								<button type="button" class="btn btn-box-tool" onclick="tambahTtahunan({{ $tjp->id }})" title="Tambah Target Jangka Panjang"><i class="fa fa-plus"></i>
-								</button> 			
-								<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="Buka tutup isi"></i>
-								</button>   
-							</div>
-                        </div>
-						<!-- /.box-header-->
-							<div class="box-body">
-							<ul>
-								<a href="#" onclick="hapusTJP({{ $tjp->id }})" class="pull-right" 
-								title="Hapus Target Jangka Panjang" style="padding-left: 1%"><i class="fa fa-trash"></i></a> 
-								<a href="#" onclick="ubah_tjp({{ $tjp->id }})" class="pull-right" 
-								title="Ubah target jangka panjang"><i class="fa fa-pencil"></i>  </a> </li>
-								<h4 class="box-title">
-									<p><h5><b>Mulai {{ $tjp->thn_mulai }} - {{ $tjp->thn_selesai }} </b> </h5></p>
-											{!! $tjp->isi_tjp !!}
-								</h4>	
-							</ul>
-							</div>
-                        <!-- /.box body-->
-					</div>
-					 <!-- /.box success-->
-				</div>
-					@foreach($tjp->getTargetTahunan->sortBy('tahun')->groupBy('tahun') as $tahune =>$values)
-					<div class="col-md-11">
-                        <div class="box box-success">
-                            <div class="box-header with-border">
-                                <h3 class="box-title"><b> {{ $tahune }}</b></h3>
-                            </div>   
-                        </div>
-                        <!-- /.box -->
-                    </div>
-						@foreach ($data_tt as $Ttahunan)
-							@if ($tahune == $Ttahunan->tahun)
-							<div class="col-md-10">
-								<div class="box box-default collapsed-box">
+			
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Rencana Pemasaran Barang</a></li>
+                        <li><a href="#tab_2" data-toggle="tab">Rencana Pemasaran Jasa</a></li>
+                    </ul>
+				
+                    <div class="tab-content">
+						<div class="tab-pane active" id="tab_1">
+                        @foreach($data_rpb->groupBy('tahun') as $tahun =>$value)
+							<div class="col-md-12">
+								<div class="box box-success">
 									<div class="box-header with-border">
-										<h4 class="box-title">
-											<b>Departemen</b> : {{ $Ttahunan->getBagian->nm_bagian }}, &nbsp; 
-											<b>Divisi</b> : {{ $Ttahunan->getDivisi->nm_devisi }}, &nbsp; 
-											<b>Jabatan</b> : {{ $Ttahunan->getJabatan->nm_jabatan }}
-										</h4>
-										<div class="box-tools pull-right">
-											<button type="button" class="btn btn-box-tool" onclick="tambahTbulanan({{ $Ttahunan->id }})" title="Tambah Target Bulanan"><i class="fa fa-plus"></i></button> 
-										
-											<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="buka tutup isi"></i></button>   
-										</div>
-									</div>
-										<div class="box-body">
-											<ul>
-											<a href="#" onclick="hapusTtahunan({{ $Ttahunan->id }})" class="pull-right" 
-											title="Hapus Target Tahunan" style="padding-left: 1%"><i class="fa fa-trash"></i></a> 
-											<a href="#" onclick="ubahTtahunan({{ $Ttahunan->id }})" class="pull-right" 
-											title="Ubah target Tahunan"><i class="fa fa-pencil"></i>  </a> </li>
-											<h4 class="box-title"> {!! $Ttahunan->target_tahunan !!}</h4>	
-											</ul>
-										</div>
+										<h3 class="box-title"><b> {{ $tahun }}</b></h3>
+									</div>   
 								</div>
 								<!-- /.box -->
 							</div>
-								@foreach($data_tb as $Tbulanan)
-									@if ($Tbulanan->id_target_tahunan == $Ttahunan->id)
-										<div class="col-md-9">
-											<div class="box box-default collapsed-box">
-												<div class="box-header with-border">
-													<h4 class="box-title">{{ $Tbulanan->bulan}}</h4>
-														<div class="box-tools pull-right">
-															<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="Buka tutup isi"></i></button>   
-														</div>
+							@foreach($value->groupBy('bulan') as $bulane => $values)
+									<div class="col-md-12">
+										<div class="box box-default collapsed-box">
+											<div class="box-header with-border">
+												<h4 class="box-title">
+												{{ $bulane }}
+												</h4>
+												@if ((!empty ($tahun) && ($bulane)))
+												<div class="box-tools pull-right">
+													<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="buka tutup isi"></i></button>				
 												</div>
-													<div class="box-body">
-														<ul>
-															<a href="#" onclick="hapusTbulanan({{ $Tbulanan->id }})" class="pull-right" title="hapus target bulanan" style="padding-left: 1%"><i class="fa fa-trash"></i></a> 
-															<a href="#" onclick="ubahTbulanan({{ $Tbulanan->id }})" class="pull-right" title="ubah target bulanan"><i class="fa fa-pencil"></i>  </a> </li>
-															<h4 class="box-title">
-																{!! $Tbulanan->target_bulanan !!}
-															</h4>
-														</ul>
-													</div>
+												@endif
 											</div>
-											<!-- /.box -->
+											<!-- /.box-header -->
+											<div class="box-body">
+												<table id="example1" class="table table-bordered table-striped">
+												<h5 class="box-title"><b><font color="#e60000">Rencana Penjualan Barang</font color></b></h5>
+												<thead>
+													<tr>
+														<th>No.</th>
+														<th>Nama Barang</th>
+														<th>Harga Beli</th>
+														<th>Harga Jual</th>
+														<th>Target Klien Beli</th>
+														<th>Target Barang Terjual</th>
+														<th>Omset</th>
+														<th>Laba Kotor</th>
+														<th>Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													@php($i=1)
+													@php($total_klien_beli=0)
+													@php($total_barang_dibeli=0)
+													@php($total_omset=0)
+													@php($total_laba_kotor=0)
+													
+													@foreach($data_rpb as $rpb)
+													@if(($rpb->tahun == $tahun) AND 
+														($rpb->bulan == $bulane))
+														<tr>
+															<td>{{ $i++ }}</td>
+															<td>{{ $rpb->getDataBarang->nm_barang }}</td>
+															<td align="right">
+																@foreach($data_pembelian as $beli)
+																	@if(!empty($rpb->getDataBarang->id == $beli->getBarang->id))
+																	{{ number_format($harga_beli = 	$beli->harga_beli,2,',','.') }}
+																	@endif
+																@endforeach
+															</td>
+															<td align="right">
+																{{ number_format($harga_jual = $rpb->getDataBarang->harga_jual,2,',','.') }}
+															</td>
+																@php( $jumlah_klien = $rpb->target_klien_beli)
+															<td align="center">
+																{{ $jumlah_klien }}
+															</td>
+																@php($jumlah_barang = $rpb->target_brg_terjual)
+															<td align="center">
+																{{ $jumlah_barang }}
+															</td>
+															<!--
+															omset per brg = jumlah brg * hrg jual brg * jumlah klien yg beli
+															laba kotor    = jumlah brg * keuntungan (harga jual - hrg beli) * jumlah klien
+															-->
+															<td align="right">
+																{{ number_format($omset = $jumlah_barang * $harga_jual * $jumlah_klien,2,',','.') }}
+																
+															</td>
+															<td align="right">
+																{{ number_format($laba_kotor = $jumlah_barang * ($harga_jual- $harga_beli) * $jumlah_klien,2,',','.') }}
+															</td>
+															<td>	
+																<button type="button" class="btn btn-box-tool" onclick="tambahRMB('{{ $rpb->id }}','{{ $rpb->target_brg_terjual }}','{{ $rpb->target_klien_beli }}'
+																)" title="tambah Marketing Barang"><i class="fa fa-plus"></i>
+																</button> 
+																 	
+															</td>
+														</tr>
+															@php ($total_klien_beli += $jumlah_klien)
+															@php ($total_barang_dibeli += $jumlah_barang)
+															@php ($total_omset += $omset)
+															@php ($total_laba_kotor += $laba_kotor)
+													@endif
+													@endforeach
+														<tr>
+															<td colspan="4"><strong>Jumlah Total</strong></td>
+															<td align="center">{{ $total_klien_beli }}</td>
+															<td align="center">{{ $total_barang_dibeli }}</td>
+															<td align="right">{{ number_format($total_omset,2,',','.') }}</td>
+															<td align="right">{{ number_format($total_laba_kotor,2,',','.') }}</td>
+														</tr>
+												</tbody>
+												</table>
+											</div>
+											<!-- /.box body rencana penjualan brg-->
+											
+											<!--/.rencana marketing barang-->
+											<div class="box-body">
+												<table id="example1" class="table table-bordered table-striped">
+												<h5 class="box-title"><b><font color="#e60000">Rencana Marketing Barang</font color="#e60000"></b></h5>
+												<thead>
+													<tr>
+														<th>No.</th>
+														<th>Nama Barang</th>
+														<th>Promo Klien</th>
+														<th>Promo Calon Klien</th>
+														<th>Keterangan</th>
+														<th>Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													@php($i=1)
+													@foreach($data_rpb as $rpb)
+													@foreach($data_rmb as $rmb)
+													@if($rpb->id == $rmb->id_rencana_pend_brg)
+														<tr>
+															<td>{{ $i++ }}</td>
+															<td>
+															{{ $rmb->getRencanaPendBarang->id_rencana_pend_brg = $rpb->getDataBarang->nm_barang }}
+															</td>
+															<td align="center">
+																{{ $rmb->jum_klien_lama }}
+															</td>
+															<td align="center">
+																{{ $rmb->jum_klien_baru }}
+															</td>
+															<td align="justify">
+																{!! $rmb->ket !!}
+																
+															</td>
+															<td align="center">
+																<form action="{{ url('hapus-rmb/'.$rmb->id) }}" method="post">
+																<a href="#" onclick="ubahRMB({{ $rmb->id }})" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a> 
+																{{ csrf_field() }}
+																<input type="hidden" name="_method" value="put"/>
+																<button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+																</form>	
+															</td>
+														</tr>
+													@endif
+													@endforeach
+													@endforeach
+												</tbody>
+												</table>
+											</div>
+											<!-- /.box body rencana marketing brg-->
 										</div>
-									@endif
-								@endforeach
-							@endif
-						@endforeach
-					@endforeach
-				@endforeach  
-            @endif
-
+										<!-- /.collapsed-box -->
+									</div>
+									<!-- /.col-md-12 -->
+							 @endforeach	
+                        @endforeach
+                        </div>
+						<!-- /.end tab_1 -->
+                        <div class="tab-pane active" id="tab_2">
+                        @foreach($data_rpj->groupBy('tahun') as $tahun =>$value)
+							<div class="col-md-12">
+								<div class="box box-success">
+									<div class="box-header with-border">
+										<h3 class="box-title"><b> {{ $tahun }}</b></h3>
+									</div>   
+								</div>
+								<!-- /.box -->
+							</div>
+							@foreach($value->groupBy('bulan') as $bulane => $values)
+									<div class="col-md-12">
+										<div class="box box-default collapsed-box">
+											<div class="box-header with-border">
+												<h4 class="box-title">
+												{{ $bulane }}
+												</h4>
+												@if ((!empty ($tahun) && ($bulane)))
+												<div class="box-tools pull-right">
+													<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="buka tutup isi"></i></button>				
+												</div>
+												@endif
+											</div>
+											<!-- /.box-header -->
+											<div class="box-body">
+												<table id="example1" class="table table-bordered table-striped">
+												<h5 class="box-title"><b><font color="#e60000">Rencana Penjualan Jasa</font color></b></h5>
+												<thead>
+													<tr>
+														<th>No.</th>
+														<th>Nama Jasa</th>
+														<th>Tarif</th>
+														<th>Target Klien Beli</th>
+														<th>Target Jasa Terjual</th>
+														<th>Omset</th>
+														<th>Laba Kotor</th>
+														<th>Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													@php($i=1)
+													@php($total_jklien_beli=0)
+													@php($total_jasa_dibeli=0)
+													@php($total_jomset=0)
+													@php($total_jlaba_kotor=0)
+													
+													@foreach($data_rpj as $rpj)
+														@if(($rpj->tahun == $tahun) AND 
+														($rpj->bulan == $bulane))
+														<tr>
+															<td>{{ $i++ }}</td>
+															<td>{{ $rpj->getDataJasa->nm_jasa }}</td>
+															<td align="right">
+																{{ number_format($tarif = $rpj->getDataJasa->harga_jasa,2,',','.') }}
+															</td>
+															@php( $target_klien = $rpj->target_klien_beli)
+															<td align="center">
+																{{ $target_klien }}
+															</td>
+															@php($target_jasa = $rpj->target_jasa_terjual)
+															<td align="center">
+																{{ $target_jasa }}
+															</td>
+															<!--
+															omset per jasa = laba kotor  = 
+															jumlah jasa terjual * hrg jual jasa * jumlah klien yg beli
+															laba kotor   
+															-->
+															<td align="right">
+																{{ number_format($jomset = $target_jasa * $tarif * $target_klien,2,',','.') }}
+													
+															</td>
+															<td align="right">
+																{{ number_format($jlaba_kotor = $jomset,2,',','.') }}
+															</td>
+															<td>	
+																<button type="button" class="btn btn-box-tool" onclick="tambahRMJ('{{ $rpj->id }}','{{ $rpj->target_jasa_terjual }}','{{ $rpj->target_klien_beli }}'
+																)" title="tambah Marketing Jasa"><i class="fa fa-plus"></i>
+																</button> 
+																 	
+															</td>
+														</tr>
+															@php ($total_jklien_beli += $target_klien)
+															@php ($total_jasa_dibeli += $target_jasa)
+															@php ($total_jomset += $jomset)
+															@php ($total_jlaba_kotor += $jlaba_kotor)
+														@endif
+													@endforeach
+														<tr>
+															<td colspan="3"><strong>Jumlah Total</strong></td>
+															<td align="center">{{ $total_jklien_beli }}</td>
+															<td align="center">{{ $total_jasa_dibeli }}</td>
+															<td align="right">{{ 	 number_format($total_jomset,2,',','.') }}</td>
+															<td align="right">{{ number_format($total_jlaba_kotor,2,',','.') }}</td>
+														</tr>
+												</tbody>
+												</table>
+											</div>
+											<!-- /.box body rencana penjualan jasa-->
+											
+											<!--/.rencana marketing jasa-->
+											<div class="box-body">
+												<table id="example1" class="table table-bordered table-striped">
+												<h5 class="box-title"><b><font color="#e60000">Rencana Marketing Jasa</font color="#e60000"></b></h5>
+												<thead>
+													<tr>
+														<th>No.</th>
+														<th>Nama Barang</th>
+														<th>Promo Klien</th>
+														<th>Promo Calon Klien</th>
+														<th>Keterangan</th>
+														<th>Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													@php($i=1)
+													@foreach($data_rpj as $rpj)
+													@foreach($data_rmj as $rmj)
+													@if($rpj->id == $rmj->id_rencana_pend_jasa)
+														<tr>
+															<td>{{ $i++ }}</td>
+															<td>
+															{{ $rmj->getRencanaPendJasa->id_rencana_pend_jasa = $rpj->getDataJasa->nm_jasa }}
+															</td>
+															<td align="center">
+																{{ $rmj->jum_klien_lama }}
+															</td>
+															<td align="center">
+																{{ $rmj->jum_klien_baru }}
+															</td>
+															<td align="justify">
+																{!! $rmj->ket !!}
+															</td>
+															<td align="center">
+																<form action="{{ url('hapus-rmj/'.$rmj->id) }}" method="post">
+																<a href="#" onclick="ubahRMJ({{ $rmj->id }})" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a> 
+																{{ csrf_field() }}
+																<input type="hidden" name="_method" value="put"/>
+																<button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+																</form>	
+															</td>
+														</tr>
+													@endif
+													@endforeach
+													@endforeach
+												</tbody>
+												</table>
+											</div>
+											<!-- /.box body rencana marketing jasa-->
+										</div>
+										<!-- /.collapsed-box -->
+									</div>
+									<!-- /.col-md-12 -->
+							 @endforeach	
+                        @endforeach
+                        </div>
+						<!-- /.tab_1 -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+                <!-- nav-tabs-custom -->
+            </div>
+			<!-- /.col-md-12 -->
         </div>
+		<!-- /.row -->
     </section>
-    <!-- /.content -->
+    <!-- /.sectiont -->
 </div>
-	@include('user.karyawan.section.TargetPerusahaan.include.modal')
+	<!-- /.wrapper -->
+	@include('user.marketing.section.RencanaMarketing.include.modal')
 @stop
-
 @section('plugins')
-
-    <!-- Select2 -->
+	 <!-- Select2 -->
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 	  <!-- iCheck 1.0.1 -->
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
 	
-    <script>
-        $(function () {
-			
+	 <script>
+		$(function () {
             $('.select2').select2();
         });
-
-        $(document).ready(function () {
+		
+		$(document).ready(function () {
             var ids;
-            
-         ubah_tjp = function (id) {
-                $.ajax({
-                    url: '{{ url('ubah-tjp') }}/'+id,
-                    dataType : 'json',
-                    success:function (result) {
-					    //console.log(result.data_tjp.thn_mulai);
-						$('[name="id_tjp_ubah"]').val(result.data_tjp.id);
-						$('[name="nm_tjp_ubah"]').val(result.data_tjp.nm_tjp);
-						$('[name="periode_ubah"]').val(result.data_tjp.periode);
-						$('[name="thn_mulai_ubah"]').val(result.data_tjp.thn_mulai).trigger('change');
-						$('[name="thn_selesai_ubah"]').val(result.data_tjp.thn_selesai).trigger('change');
-						CKEDITOR.instances.isi_tjp_ubah.setData(result.data_tjp.isi_tjp);
-                        $('#modal-ubah-tjp').modal('show');
-                    }
-                })
-			};    
 			
-		hapusTJP = function (id) {
-                if(confirm("Apakah anda akan menghapus data ini...?")==true){
-                    $.ajax({
-                        url: '{{ url('hapusTJP') }}/'+id,
-                        type : 'post',
-                        data :{
-                            '_method': 'put',
-                            '_token' : '{{ csrf_token() }}'
-                        },
-                        success:function (result) {
-                            alert(result.message);
-                            window.location.reload()
-                        }
-                    })
-                }else {
-                    alert("Data ini tidak jadi dihapus");
-                }
-			}
-			
-		tambahTtahunan  = function (id) {
-				$('[name="id_tjp"]').val(id);
-				$('[name="id_bagian_p"]').val(id);
-				$('[name="id_divisi_p"]').val(id);
-                $('#tambah-target-tahunan').modal('show');
+			tambahRMB  = function (id,id2,id3) {
+			//alert("test")
+				$('[name="id_rencana_pend_brg"]').val(id);
+				$('[name="target_brg_terjual"]').val(id2);
+				$('[name="target_klien_beli"]').val(id3);
+                $('#modal-tambah-RMB').modal('show');
             };
-			
-		ubahTtahunan = function (id) {
+			ubahRMB = function (id) {
                 $.ajax({
-                    url: '{{ url('ubah-Ttahunan') }}/'+id,
+                    url: '{{ url('ubah-rmb') }}/'+id,
                     dataType : 'json',
                     success:function (result) {
 					    //console.log(result.data_tjp.thn_mulai);
-						$('[name="id_tjp_ubah"]').val(result.data_tt.id_tjp).trigger('change');
-						$('[name="tahun_ubah"]').val(result.data_tt.tahun).trigger('change');
-						$('[name="id_bagian_p_ubah"]').val(result.data_tt.id_bagian_p).trigger('change');
-						$('[name="id_divisi_p_ubah"]').val(result.data_tt.id_divisi_p).trigger('change');
-						$('[name="id_jabatan_p_ubah"]').val(result.data_tt.id_jabatan_p).trigger('change');
-						CKEDITOR.instances.target_tahunan_ubah.setData(result.data_tt.target_tahunan);
-						$('[name="id_Ttahunan"]').val(result.data_tt.id);
-                        $('#modal-ubahTtahunan').modal('show');
+					
+						$('[name="id_rencana_pend_brg_ubah"]').val(result.data_rmb.id_rencana_pend_brg).trigger('change');
+						$('[name="jum_klien_lama_ubah"]').val(result.data_rmb.jum_klien_lama).trigger('change');
+						$('[name="jum_klien_baru_ubah"]').val(result.data_rmb.jum_klien_baru).trigger('change');
+						CKEDITOR.instances.ket_ubah.setData(result.data_rmb.ket);
+						$('[name="id_rmb"]').val(result.data_rmb.id);
+                        $('#modal-ubahRMB').modal('show');
                     }
                 })
-			}; 
-		hapusTtahunan = function (id) {
-                if(confirm("Apakah anda akan menghapus data ini...?")==true){
-                    $.ajax({
-                        url: '{{ url('hapusTtahunan') }}/'+id,
-                        type : 'post',
-                        data :{
-                            '_method': 'put',
-                            '_token' : '{{ csrf_token() }}'
-                        },
-                        success:function (result) {
-                            alert(result.message);
-                            window.location.reload()
-                        }
-                    })
-                }else {
-                    alert("Data ini tidak jadi dihapus");
-                }
-			}
-			
-		tambahTbulanan  = function (id) {
-				$('[name="id_target_tahunan"]').val(id);
-                $('#tambah-target-bulanan').modal('show');
+			};
+			tambahRMJ  = function (id,id2,id3) {
+			//alert("test")
+				$('[name="id_rencana_pend_jasa"]').val(id);
+				$('[name="target_jasa_terjual"]').val(id2);
+				$('[name="target_klien_beli"]').val(id3);
+                $('#modal-tambah-RMJ').modal('show');
             };
-			
-		ubahTbulanan = function (id) {
-                $.ajax({
-                    url: '{{ url('ubah-Tbulanan') }}/'+id,
-                    dataType : 'json',
-                    success:function (result) {
-					    //console.log(result.data_tjp.thn_mulai);
-						$('[name="id_tt_ubah"]').val(result.data_tb.id_target_tahunan).trigger('change');
-						$('[name="bulan_ubah"]').val(result.data_tb.bulan).trigger('change');
-						CKEDITOR.instances.target_bulanan_ubah.setData(result.data_tb.target_bulanan);
-						$('[name="id_Tbulanan"]').val(result.data_tb.id);
-                        $('#modal-ubah-tTbulanan').modal('show');
-                    }
-                })
-			};  
-		hapusTbulanan = function (id) {
-                if(confirm("Apakah anda akan menghapus data ini...?")==true){
-                    $.ajax({
-                        url: '{{ url('hapusTbulanan') }}/'+id,
-                        type : 'post',
-                        data :{
-                            '_method': 'put',
-                            '_token' : '{{ csrf_token() }}'
-                        },
-                        success:function (result) {
-                            alert(result.message);
-                            window.location.reload()
-                        }
-                    })
-                }else {
-                    alert("Data ini tidak jadi dihapus");
-                }
-			}
-			
-			
-        })
-    </script>
+		})
+	 </script>
 @stop
-
