@@ -47,14 +47,32 @@
                                 </thead>
                                 <tbody>
                                 @php($i=1)
-                                {{--@foreach($ky as $data_ky)--}}
-                                    {{--<tr>--}}
-                                        {{--<td>{{ $i++ }}</td>--}}
-                                        {{--<td>{{ $data_ky->nik }}</td>--}}
-                                        {{--<td>{{ $data_ky->nama_ky }}</td>--}}
-                                        {{--<td><a href="{{ url('defail-daftar-gaji/'. $data_ky->id) }}" class="btn btn-success">Detail Daftar Gaji</a></td>--}}
-                                    {{--</tr>--}}
-                                {{--@endforeach--}}
+                                @if(!empty($daftar_gaji))
+                                    @foreach($daftar_gaji as $data_ky)
+                                        <tr>
+                                            <td>{{ $data_ky['no'] }}</td>
+                                            <td>{{ $data_ky['periode'] }}</td>
+                                            <td>{{ number_format($data_ky['besar_gaji'],2,',','.') }}</td>
+                                            <td>{{ $data_ky['ket'] }}</td>
+                                            <td>
+                                                <form action="{{ url('update-status-gaji/'.$data_ky['id']) }}" method="post">
+                                                    <input type="hidden" name="_method" value="put">
+                                                    <input type="hidden" name="status" value="1">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn @if($data_ky['status']==0) btn-danger @else btn-success @endif" onclick="return confirm('Apakah anda akan menghapus data ini ...?')">@if($data_ky['status']==0) Tidak aktif @else Sudah Aktfi @endif</button>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form action="{{ url('hapus-daftar-gaji/'.$data_ky['id']) }}" method="post">
+                                                    <input type="hidden" name="_method" value="put">
+                                                    {{ csrf_field() }}
+                                                    <button  type='button'class="btn btn-warning" onclick="update('{{ $data_ky['id'] }}')">Ubah Daftar Gaji</button>
+                                                    <button class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ...?')">Hapus Daftar Gaji</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
@@ -76,7 +94,7 @@
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Formulir Tambah Daftar Gaji</h4>
                 </div>
-                <form action="{{ url('tambah-daftar-gaji') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('tambah-daftar-gaji') }}" method="post" id="formulir">
                     <input type="hidden" name="id_ky" value="{{ $data->id }}">
                     <input type="hidden" name="id">
                     <div class="modal-body">
@@ -125,6 +143,12 @@
 
     <script>
 
+        $('[name="status"]').change(function () {
+            alert('asda');
+            $(this).trigger("sumbit")
+        });
+
+
         $('#datepicker').datepicker({
             autoclose: true,
             format: 'yyyy',
@@ -134,15 +158,16 @@
 
        update=function (id) {
           $.ajax({
-              url: "{{ url('edit-alokasi-gaji') }}/"+id,
+              url: "{{ url('edit-daftar-gaji') }}/"+id,
               dataType: "json",
               success: function (result) {
                   console.log(result);
-                  $('[name="thn"]').val(result.thn);
-                  $('[name="persen"]').val(result.persen);
-                  $('[name="jumlah"]').val(result.jumlah);
+                  $('[name="periode"]').val(result.priode);
+                  $('[name="besar_gaji"]').val(result.besar_gaji);
+                  $('[name="ket"]').val(result.ket);
                   $('[name="id"]').val(result.id);
-                  $('#formulir').attr('action', '{{ url('update-alokasi-gaji') }}');
+                  $('#formulir').attr('action', '{{ url('update-daftar-gaji') }}');
+                  $('#modal-form-gaji').modal('show');
               }
           })
        }

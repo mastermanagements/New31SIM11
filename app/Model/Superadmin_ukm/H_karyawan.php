@@ -83,4 +83,8 @@ class H_karyawan extends Model
     public function get_MannyTesTeknis(){
         return $this->hasMany('App\Model\Hrd\H_tes_kteknis','id_ky');
     }
+
+    public function getMannyDaftarGaji(){
+        return $this->hasMany('App\Model\Penggajian\DaftarGaji','id_ky');
+    }
 }

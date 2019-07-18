@@ -1172,12 +1172,34 @@ Route::put('delete-predikat-penilaian/{id}','hrd\PredikatPenilaian@delete');
 
 Route::get('kompensasi_kinerja_data/{tahun}','hrd\PredikatPenilaian@data_kompensasisi');
 
+
+Route::get('Absensi','hrd\Absensi@index');
+
+Route::get('tambah-absensi','hrd\Absensi@create');
+
+Route::post('store-absensi','hrd\Absensi@store');
+
+Route::get('ubah-absensi/{id}','hrd\Absensi@edit');
+
+Route::put('update-absensi/{id}','hrd\Absensi@update');
+
+Route::put('delete-absensi/{id}','hrd\Absensi@delete');
+
+
+
 Route::get('Daftar-gaji','penggajian\DaftarGaji@index');
 
 Route::get('detail-daftar-gaji/{id}','penggajian\DaftarGaji@list');
 
 Route::post('tambah-daftar-gaji','penggajian\DaftarGaji@store');
 
+Route::get('edit-daftar-gaji/{id}','penggajian\DaftarGaji@edit');
+
+Route::post('update-daftar-gaji','penggajian\DaftarGaji@update');
+
+Route::put('hapus-daftar-gaji/{id}','penggajian\DaftarGaji@delete');
+
+Route::put('update-status-gaji/{id}','penggajian\DaftarGaji@update_status');
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
