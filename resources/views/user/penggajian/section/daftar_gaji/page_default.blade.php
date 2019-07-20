@@ -9,7 +9,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Daftar Gaji Karyawan
+                Gaji Karyawan
             </h1>
         </section>
 
@@ -47,7 +47,10 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $data_ky->nik }}</td>
                                         <td>{{ $data_ky->nama_ky }}</td>
-                                        <td><a href="{{ url('detail-daftar-gaji/'. $data_ky->id) }}" class="btn btn-success">Detail Daftar Gaji</a></td>
+                                        <td>
+                                            <a href="{{ url('detail-daftar-gaji/'. $data_ky->id) }}" class="btn btn-success">Detail Daftar Gaji</a>
+                                            <a href="{{ url('detail-daftar-tunjangan/'. $data_ky->id) }}" class="btn btn-warning">Detail Daftar Tunjangan</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -87,4 +87,8 @@ class H_karyawan extends Model
     public function getMannyDaftarGaji(){
         return $this->hasMany('App\Model\Penggajian\DaftarGaji','id_ky');
     }
+
+    public function getMannyTunjangan(){
+        return $this->hasMany('App\Model\Penggajian\G_tunjangan_gaji','id_ky');
+    }
 }

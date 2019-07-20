@@ -1185,6 +1185,36 @@ Route::put('update-absensi/{id}','hrd\Absensi@update');
 
 Route::put('delete-absensi/{id}','hrd\Absensi@delete');
 
+Route::get('Potongan-tetap','hrd\PotonganTetap@index');
+
+Route::post('store-potongan-tetap','hrd\PotonganTetap@store');
+
+Route::get('edit-potongan-tetap/{id}','hrd\PotonganTetap@edit');
+
+Route::post('update-potongan-tetap','hrd\PotonganTetap@update');
+
+Route::put('hapus-potongan-tetap/{id}','hrd\PotonganTetap@delete');
+
+Route::get('Potongan-absen','hrd\PotonganAbsen@index');
+
+Route::post('store-potongan-absen','hrd\PotonganAbsen@store');
+
+Route::get('edit-potongan-absen/{id}','hrd\PotonganAbsen@edit');
+
+Route::post('update-potongan-absen','hrd\PotonganAbsen@update');
+
+Route::put('hapus-potongan-absen/{id}','hrd\PotonganAbsen@delete');
+
+
+Route::get('detail-daftar-tunjangan/{id}','penggajian\TunjanganGaji@create');
+
+Route::post('tambah-daftar-tunganga-gaji','penggajian\TunjanganGaji@store');
+
+Route::get('edit-daftar-tunjangan/{id}','penggajian\TunjanganGaji@edit');
+
+Route::post('update-daftar-tunjangan','penggajian\TunjanganGaji@update');
+
+Route::put('delete-daftar-tunjangan/{id}','penggajian\TunjanganGaji@delete');
 
 
 Route::get('Daftar-gaji','penggajian\DaftarGaji@index');
