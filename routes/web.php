@@ -1217,6 +1217,15 @@ Route::post('update-daftar-tunjangan','penggajian\TunjanganGaji@update');
 Route::put('delete-daftar-tunjangan/{id}','penggajian\TunjanganGaji@delete');
 
 
+Route::put('change-status-tunjanganOn/{id}','penggajian\TunjanganGaji@updateStatusOn');
+
+Route::put('change-status-tunjanganOff/{id}','penggajian\TunjanganGaji@updateStatusOf');
+
+Route::put('change-status-aktif-tunjanganOn/{id}','penggajian\TunjanganGaji@updateStatusAktifon');
+
+Route::put('change-status-aktif-tunjanganOff/{id}','penggajian\TunjanganGaji@updateStatusAktifof');
+
+
 Route::get('Daftar-gaji','penggajian\DaftarGaji@index');
 
 Route::get('detail-daftar-gaji/{id}','penggajian\DaftarGaji@list');

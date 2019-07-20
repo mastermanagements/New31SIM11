@@ -18,6 +18,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ @asset('component/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
   {{--<script src="{{ @asset('js/jQuery-2.2.0.min.js') }}"></script>--}}
+
+
+
 @yield('skin')
 
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">

@@ -33,13 +33,15 @@ class TunjanganGaji extends Controller
         return "Tunjangan gaji";
     }
 
-    public function create($id){
+    public function create(Request $req,$id){
         if(empty($model = data_karyawan::where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
         $data = [
             'data'=> $model,
+            'year'=> $req->year
         ];
+
         return view('user.penggajian.section.daftar_gaji.page_tunjangan_create', $data);
     }
 
@@ -94,6 +96,63 @@ class TunjanganGaji extends Controller
             return redirect('detail-daftar-tunjangan/'.$model->id_ky)->with('message_success', 'Anda telah menghapus tunjagan baru');
         }else{
             return redirect('detail-daftar-tunjangan/'.$model->id_ky)->with('message_fail', 'Maaf, data menghapus tidak dapat disimpan');
+        }
+    }
+
+    public function updateStatusOn($id)
+    {
+        $model = gtg::find($id);
+        $model->status_tunjangan='1';
+        if($model->save()){
+            $thn = date('Y',strtotime($model->periode));
+//            $models = gtg::where('id','!=',$model->id)->where('id_perusahaan', $this->id_perusahaan)
+//                ->whereRaw("year(periode) == {$thn}")->update(['status_tunjangan'=>'0']);
+            return redirect('detail-daftar-tunjangan/'.$model->id_ky)->with('message_success', 'Anda telah mengubah status tunjagan baru');
+        }else{
+            return redirect('detail-daftar-tunjangan/'.$model->id_ky)->with('message_fail', 'Maaf, data status tunjangan tidak dapat di ubah');
+        }
+    }
+
+    public function updateStatusAktifon($id)
+    {
+        $model = gtg::find($id);
+        $model->status_aktif='1';
+        if($model->save()){
+            $thn = date('Y',strtotime($model->periode));
+//            $models = gtg::where('id','!=',$model->id)->where('id_perusahaan', $this->id_perusahaan)
+//                ->whereRaw("year(periode) == {$thn}")->update(['status_tunjangan'=>'0']);
+            return redirect('detail-daftar-tunjangan/'.$model->id_ky)->with('message_success', 'Anda telah mengubah status tunjagan baru');
+        }else{
+            return redirect('detail-daftar-tunjangan/'.$model->id_ky)->with('message_fail', 'Maaf, data status tunjangan tidak dapat di ubah');
+        }
+    }
+
+
+    public function updateStatusOf($id)
+    {
+        $model = gtg::find($id);
+        $model->status_tunjangan='0';
+        if($model->save()){
+            $thn = date('Y',strtotime($model->periode));
+//            $models = gtg::where('id','!=',$model->id)->where('id_perusahaan', $this->id_perusahaan)
+//                ->whereRaw("year(periode) == {$thn}")->update(['status_tunjangan'=>'0']);
+            return redirect('detail-daftar-tunjangan/'.$model->id_ky)->with('message_success', 'Anda telah mengubah status tunjagan baru');
+        }else{
+            return redirect('detail-daftar-tunjangan/'.$model->id_ky)->with('message_fail', 'Maaf, data status tunjangan tidak dapat di ubah');
+        }
+    }
+
+    public function updateStatusAktifof($id)
+    {
+        $model = gtg::find($id);
+        $model->status_aktif='0';
+        if($model->save()){
+            $thn = date('Y',strtotime($model->periode));
+//            $models = gtg::where('id','!=',$model->id)->where('id_perusahaan', $this->id_perusahaan)
+//                ->whereRaw("year(periode) == {$thn}")->update(['status_tunjangan'=>'0']);
+            return redirect('detail-daftar-tunjangan/'.$model->id_ky)->with('message_success', 'Anda telah mengubah status tunjagan baru');
+        }else{
+            return redirect('detail-daftar-tunjangan/'.$model->id_ky)->with('message_fail', 'Maaf, data status tunjangan tidak dapat di ubah');
         }
     }
 

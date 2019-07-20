@@ -1,4 +1,4 @@
-@extends('user.hrd.master_user')
+@extends('user.penggajian.master_user')
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
@@ -29,9 +29,12 @@
                     @if(!empty($data->getMannyTunjangan))
                         @php($x=1)
                         @foreach($data->getMannyTunjangan->groupBy('periode')->sortBy('periode') as $key => $value)
-                          <div class="col-md-12" style="padding-bottom: 10px">
-                              <button class="btn btn-lg @if($x++ % 2) btn-primary @else btn-danger @endif" style="margin: 0px;width: 100%; ">{{ $key }}</button>
-                          </div>
+                          <form action="{{ url('detail-daftar-tunjangan/'. $data->id) }}">
+                              <input type="hidden" name="year" value="{{ $key }}">
+                              <div class="col-md-12" style="padding-bottom: 10px">
+                                  <button  class="btn btn-lg @if($x++ % 2) btn-primary @else btn-danger @endif" style="margin: 0px;width: 100%; ">{{ $key }}</button>
+                              </div>
+                          </form>
                         @endforeach
                     @else
                       <div class="col-md-12">
@@ -68,19 +71,38 @@
                                 <tbody>
                                 @php($i=1)
                                 @if(!empty($data->getMannyTunjangan))
-                                    @foreach($data->getMannyTunjangan as $data_tunjangan)
+                                    @if(!empty($year))
+                                       @php($datayear= $data->getMannyTunjangan->where('periode', $year)->sortBy('periode'))
+                                    @else
+                                        @php($datayear= $data->getMannyTunjangan->sortBy('periode'))
+                                    @endif
+                                    @foreach($datayear as $data_tunjangan)
+
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $data_tunjangan->periode }}</td>
                                             <td>{{ $data_tunjangan->nm_tunjangan }}</td>
                                             <td>{{ number_format($data_tunjangan->besar_tunjangan,2,',','.') }}</td>
-                                            <td>{{ $data_tunjangan->status_aktif }}</td>
-                                            <td>{{ $data_tunjangan->status_tunjangan }}</td>
+                                            <td>
+
+                                                @if($data_tunjangan->status_tunjangan == 0)
+                                                    <span class="badge bg-red" onclick="onStatus('{{ $data_tunjangan->id }}')">Off</span>
+                                                @else
+                                                    <span class="badge bg-green" onclick="offStatus('{{ $data_tunjangan->id }}')">On</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($data_tunjangan->status_aktif == 0)
+                                                    <span class="badge bg-red" onclick="onActifStatus('{{ $data_tunjangan->id }}')">Off</span>
+                                                @else
+                                                    <span class="badge bg-green" onclick="offActifStatus('{{ $data_tunjangan->id }}')">On</span>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <form action="{{ url('delete-daftar-tunjangan/'.$data_tunjangan->id) }}" method="post">
                                                     <input type="hidden" name="_method" value="put">
                                                     {{ csrf_field() }}
-                                                    <button class="btn btn-warning" onclick="update('{{ $data_tunjangan->id }}')"><i class="fa fa-pencil"></i></button>
+                                                    <button type="button" class="btn btn-warning" onclick="update('{{ $data_tunjangan->id }}')"><i class="fa fa-pencil"></i></button>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')"><i class="fa fa-eraser"></i></button>
                                                 </form>
                                             </td>
@@ -168,6 +190,78 @@
             viewMode: "years",
             minViewMode: "years"
         });
+
+        onStatus = function (id) {
+            if(confirm('Apakah anda akan mengahapus mengubah status data ini')== true){
+                $.ajax({
+                    url:"{{ url('change-status-tunjanganOn') }}/"+id,
+                    type:"post",
+                    data:{
+                        '_token': "{{ csrf_token() }}",
+                        '_method':"put"
+                    },
+                    success: function (result) {
+                        window.location.reload();
+                    }
+                })
+            }else{
+                alert('Proses dibatalkan');
+            }
+        }
+
+        onActifStatus = function (id) {
+            if(confirm('Apakah anda akan mengahapus mengubah status data ini')== true){
+                $.ajax({
+                    url:"{{ url('change-status-aktif-tunjanganOn') }}/"+id,
+                    type:"post",
+                    data:{
+                        '_token': "{{ csrf_token() }}",
+                        '_method':"put"
+                    },
+                    success: function (result) {
+                        window.location.reload();
+                    }
+                })
+            }else{
+                alert('Proses dibatalkan');
+            }
+        }
+
+        offStatus = function (id) {
+            if(confirm('Apakah anda akan mengahapus mengubah status data ini')== true){
+                $.ajax({
+                    url:"{{ url('change-status-tunjanganOff') }}/"+id,
+                    type:"post",
+                    data:{
+                        '_token': "{{ csrf_token() }}",
+                        '_method':"put"
+                    },
+                    success: function (result) {
+                        window.location.reload();
+                    }
+                })
+            }else{
+                alert('Proses dibatalkan');
+            }
+        }
+
+        offActifStatus = function (id) {
+            if(confirm('Apakah anda akan mengahapus mengubah status data ini')== true){
+                $.ajax({
+                    url:"{{ url('change-status-aktif-tunjanganOff') }}/"+id,
+                    type:"post",
+                    data:{
+                        '_token': "{{ csrf_token() }}",
+                        '_method':"put"
+                    },
+                    success: function (result) {
+                        window.location.reload();
+                    }
+                })
+            }else{
+                alert('Proses dibatalkan');
+            }
+        }
 
        update=function (id) {
           $.ajax({
