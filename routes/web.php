@@ -1226,6 +1226,33 @@ Route::put('change-status-aktif-tunjanganOn/{id}','penggajian\TunjanganGaji@upda
 Route::put('change-status-aktif-tunjanganOff/{id}','penggajian\TunjanganGaji@updateStatusAktifof');
 
 
+Route::get('Tunjangan-gaji','penggajian\Tunjangan@index');
+
+Route::get('item-tunjangan','penggajian\Tunjangan@item_tunjangan');
+
+Route::post('store-item-tunjagan','penggajian\ItemTunjangan@store');
+
+Route::get('edit-item-tunjangan/{id}','penggajian\ItemTunjangan@edit');
+
+Route::post('update-item-tunjangan','penggajian\ItemTunjangan@update');
+
+Route::put('delete-item-tunjangan/{id}','penggajian\ItemTunjangan@delete');
+
+Route::get('Skala-tunjangan','penggajian\Tunjangan@skala_tunjangan');
+
+Route::post('store_skala_tunjangan','penggajian\SkalaTunjangan@store');
+
+Route::get('edit-skala-tunjangan/{id}','penggajian\SkalaTunjangan@edit');
+
+Route::post('update-skala-tunjangan','penggajian\SkalaTunjangan@update');
+
+Route::put('delete-skala-tunjangan/{id}','penggajian\SkalaTunjangan@delete');
+
+Route::put('status-skala-on/{id}','penggajian\SkalaTunjangan@statusOn');
+
+Route::put('status-skala-off/{id}','penggajian\SkalaTunjangan@statusOff');
+
+
 Route::get('Daftar-gaji','penggajian\DaftarGaji@index');
 
 Route::get('detail-daftar-gaji/{id}','penggajian\DaftarGaji@list');
@@ -1239,6 +1266,10 @@ Route::post('update-daftar-gaji','penggajian\DaftarGaji@update');
 Route::put('hapus-daftar-gaji/{id}','penggajian\DaftarGaji@delete');
 
 Route::put('update-status-gaji/{id}','penggajian\DaftarGaji@update_status');
+
+
+Route::get('Tunjangan-gaji','penggajian\Tunjangan@TunjanganGaji');
+
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
 //    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
