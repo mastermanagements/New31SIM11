@@ -9,6 +9,9 @@ class G_tunjangan_gaji extends Model
     //
     protected $table="g_tunjangan_gaji";
 
-    protected $fillable = ['periode','id_ky','nm_tunjangan','besar_tunjangan','status_tunjangan',
-        'status_aktif','id_perusahaan','id_karyawan'];
+    protected $fillable = ['periode','id_ky','id_skala_tunjangan', 'status_aktif','id_perusahaan','id_karyawan'];
+
+    public function skalaTunjangan(){
+        return $this->belongsTo('App\Model\Penggajian\SkalaTunjangan','id_skala_tunjangan');
+    }
 }

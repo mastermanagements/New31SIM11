@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\penggajian;
 
+use App\Model\Penggajian\G_kelas_proyek;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
@@ -9,6 +10,7 @@ use App\Model\Penggajian\ItemTunjangan as IT;
 use App\Model\Superadmin_ukm\U_jabatan_p as jabatan;
 use App\Model\Penggajian\SkalaTunjangan as ST;
 use App\Model\Superadmin_ukm\H_karyawan as Hk;
+use App\Model\Penggajian\G_kelas_proyek as GKP;
 
 
 class Tunjangan extends Controller
@@ -60,6 +62,13 @@ class Tunjangan extends Controller
         Session::put('menu_tun','TunjanganGaji');
         $data = [
             'ky'=> Hk::all()->where('id_perusahaan', $this->id_perusahaan)
+        ];
+        return view('user.penggajian.section.Tunjangan.page_default', $data);
+    }
+    public function KelasProyek(){
+        Session::put('menu_tun','KelasProyek');
+        $data = [
+            'data'=> GKP::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.penggajian.section.Tunjangan.page_default', $data);
     }

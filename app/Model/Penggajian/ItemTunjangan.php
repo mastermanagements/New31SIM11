@@ -11,5 +11,8 @@ class ItemTunjangan extends Model
 
     protected $fillable=['nm_tunjangan','id_perusahaan','id_karyawan'];
 
+    public function OneSkalaGaji(){
+        return $this->hasOne('App\Model\Penggajian\SkalaTunjangan','id_item_tunjangan');
+    }
 
 }

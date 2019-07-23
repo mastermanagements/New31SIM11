@@ -34,6 +34,10 @@ class H_karyawan extends Model
         'tgl_masuk',
     ];
 
+    public function jabatan_ky(){
+        return $this->hasOne('App\Model\Hrd\H_Jabatan_ky','id_ky');
+    }
+
     public function getPerusahaan()
     {
         return $this->belongsTo('App\Model\Superadmin_ukm\U_usaha', 'id_perusahaan');

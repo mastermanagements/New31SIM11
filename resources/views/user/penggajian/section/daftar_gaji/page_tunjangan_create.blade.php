@@ -54,7 +54,7 @@
                         <!-- /.box-header -->
                         <div class="box-body" style="">
 
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-form-gaji" >Tambah Tunjangan</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-form-tunjangan" >Tambah Tunjangan</button>
                             <p></p>
                             <table id="example2" class="table table-bordered table-striped">
                                 <thead>
@@ -63,7 +63,6 @@
                                     <th>Periode </th>
                                     <th>Nama Tunjagan</th>
                                     <th>Besar Tunjangan</th>
-                                    <th>Status Tunjagan</th>
                                     <th>Status Slip</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -81,16 +80,8 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $data_tunjangan->periode }}</td>
-                                            <td>{{ $data_tunjangan->nm_tunjangan }}</td>
-                                            <td>{{ number_format($data_tunjangan->besar_tunjangan,2,',','.') }}</td>
-                                            <td>
-
-                                                @if($data_tunjangan->status_tunjangan == 0)
-                                                    <span class="badge bg-red" onclick="onStatus('{{ $data_tunjangan->id }}')">Off</span>
-                                                @else
-                                                    <span class="badge bg-green" onclick="offStatus('{{ $data_tunjangan->id }}')">On</span>
-                                                @endif
-                                            </td>
+                                            <td>{{ $data_tunjangan->skalaTunjangan->item_tunjangan->nm_tunjangan }}</td>
+                                            <td>{{ number_format($data_tunjangan->skalaTunjangan->besar_tunjangan,2,',','.') }}</td>
                                             <td>
                                                 @if($data_tunjangan->status_aktif == 0)
                                                     <span class="badge bg-red" onclick="onActifStatus('{{ $data_tunjangan->id }}')">Off</span>
@@ -102,8 +93,7 @@
                                                 <form action="{{ url('delete-daftar-tunjangan/'.$data_tunjangan->id) }}" method="post">
                                                     <input type="hidden" name="_method" value="put">
                                                     {{ csrf_field() }}
-                                                    <button type="button" class="btn btn-warning" onclick="update('{{ $data_tunjangan->id }}')"><i class="fa fa-pencil"></i></button>
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')"><i class="fa fa-eraser"></i></button>
+                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')"><i class="fa fa-eraser"></i></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -122,13 +112,13 @@
     </div>
 
 
-    <div class="modal fade" id="modal-form-gaji">
-        <div class="modal-dialog">
+    <div class="modal fade" id="modal-form-tunjangan">
+        <div class="modal-dialog modal-lg" style="width: 80%; height: 80%">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulir Tambah Tunjangan Gaji</h4>
+                    <h4 class="modal-title">Formulir Tunjangan Gaji</h4>
                 </div>
                 <form action="{{ url('tambah-daftar-tunganga-gaji') }}" method="post" id="formulir">
                     <input type="hidden" name="id_ky" value="{{ $data->id }}">
@@ -146,16 +136,29 @@
                             <small style="color: red">* Tidak boleh kosong</small>
                         </div>
                         <div class="form-group">
-                            <label>Nama Tunjangan</label>
-                            <textarea class="form-control "  name="nm_tunjangan" ></textarea>
-                            <!-- /.input group -->
+                            <p><label>Pilih Tunjangan Dibawah ini</label></p>
                             <small style="color: red">* Tidak boleh kosong</small>
-                        </div>
-                        <div class="form-group">
-                            <label>Besar Tunjangan</label>
-                            <input type="number" class="form-control "  name="besar_tunjangan" required>
-                            <!-- /.input group -->
-                            <small style="color: red">* Tidak boleh kosong</small>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>no</th>
+                                        <th>Nama Tunjangan</th>
+                                        <th>Besar Tunjangan</th>
+                                        <th>Centang sesuai kebutuhan</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="overflow-y:auto; height: 200px">
+                                    @php($i=1)
+                                    @foreach($itemTunjangan->where('id_jabatan', $data->jabatan_ky->id_jabatan_p) as $itemTunjangan)
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $itemTunjangan->item_tunjangan->nm_tunjangan }}</td>
+                                        <td>{{ $itemTunjangan->besar_tunjangan }}</td>
+                                        <td><input type="checkbox" name="id_skala_tunjangan[]" value="{{ $itemTunjangan->id }}"></td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -191,23 +194,7 @@
             minViewMode: "years"
         });
 
-        onStatus = function (id) {
-            if(confirm('Apakah anda akan mengahapus mengubah status data ini')== true){
-                $.ajax({
-                    url:"{{ url('change-status-tunjanganOn') }}/"+id,
-                    type:"post",
-                    data:{
-                        '_token': "{{ csrf_token() }}",
-                        '_method':"put"
-                    },
-                    success: function (result) {
-                        window.location.reload();
-                    }
-                })
-            }else{
-                alert('Proses dibatalkan');
-            }
-        }
+
 
         onActifStatus = function (id) {
             if(confirm('Apakah anda akan mengahapus mengubah status data ini')== true){
@@ -227,23 +214,6 @@
             }
         }
 
-        offStatus = function (id) {
-            if(confirm('Apakah anda akan mengahapus mengubah status data ini')== true){
-                $.ajax({
-                    url:"{{ url('change-status-tunjanganOff') }}/"+id,
-                    type:"post",
-                    data:{
-                        '_token': "{{ csrf_token() }}",
-                        '_method':"put"
-                    },
-                    success: function (result) {
-                        window.location.reload();
-                    }
-                })
-            }else{
-                alert('Proses dibatalkan');
-            }
-        }
 
         offActifStatus = function (id) {
             if(confirm('Apakah anda akan mengahapus mengubah status data ini')== true){

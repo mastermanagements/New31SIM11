@@ -1,5 +1,13 @@
 @extends('user.hrd.master_user')
 
+
+@section('skin')
+    <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+
+@stop
+
 @section('master_content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -67,6 +75,11 @@
                                     </div>
                                     <h3 class="widget-user-username">{{ $value->nama_ky }}</h3>
                                     <h5 class="widget-user-desc">Nik {{ $value->nik }}</h5>
+                                    @if(empty($value->jabatan_ky->getJabatan))
+                                        <h5 class="widget-user-desc" onclick="ubahJabatan('{{ $value->id }}')">Jabatan Belum dipilih</h5>
+                                    @else
+                                        <h5 class="widget-user-desc" onclick="ubahJabatan('{{ $value->id }}')">{{ $value->jabatan_ky->getJabatan->nm_jabatan }}</h5>
+                                    @endif
                                 </div>
                                 <div class="box-footer no-padding">
                                     <ul class="nav nav-stacked">
@@ -94,4 +107,38 @@
         </section>
         <!-- /.content -->
     </div>
+    @include('user.hrd.section.karyawan.modal.modal')
+@stop
+
+
+@section('plugins')
+    <!-- Select2 -->
+    <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+
+    <script>
+
+        $('#datepicker').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy'
+        });
+
+        $('#datepicker1').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy'
+        });
+
+
+        //Initialize Select2 Elements
+        $(function () {
+            //iCheck for checkbox and radio inputs
+            $('.select2').select2()
+
+        })
+
+        ubahJabatan = function (id) {
+            $('[name="id_ky"]').val(id);
+            $('#modal-tambah-jabatan').modal('show')
+        }
+    </script>
 @stop

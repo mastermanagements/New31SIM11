@@ -20,7 +20,8 @@
                     <ul class="nav nav-tabs pull-right">
                         <li @if(Session::get('menu_tun')=="itemTunjangan") class="active" @endif><a href="{{ url('item-tunjangan') }}" >Item Tunjangan</a></li>
                         <li @if(Session::get('menu_tun')=="SkalaTunjangan") class="active" @endif ><a href="{{ url('Skala-tunjangan') }}">Skala Tunjangan</a></li>
-                        <li @if(Session::get('menu_tun')=="TunjanganGaji") class="active" @endif ><a href="{{ url('Tunjangan-gaji') }}" >Tunjangan Gaji</a></li>
+                        <li @if(Session::get('menu_tun')=="TunjanganGaji") class="active" @endif ><a href="{{ url('TunjanganGaji') }}" >Tunjangan Gaji</a></li>
+                        <li @if(Session::get('menu_tun')=="KelasProyek") class="active" @endif ><a href="{{ url('Kelas-proyek') }}" >Kelas Proyek</a></li>
                         <li class="pull-left header"><i class="fa fa-th"></i> Skala Gaji</li>
                     </ul>
                     <div class="tab-content">
@@ -35,6 +36,10 @@
                         @elseif(Session::get('menu_tun')=="TunjanganGaji")
                             <div class="tab-pane  @if(Session::get('menu_tun')=="TunjanganGaji") active @endif" id="tab_3-3">
                                 @include('user.penggajian.section.Tunjangan.tunjangan_gaji.page')
+                            </div>
+                        @elseif(Session::get('menu_tun')=="KelasProyek")
+                            <div class="tab-pane  @if(Session::get('menu_tun')=="KelasProyek") active @endif" id="tab_3-3">
+                                @include('user.penggajian.section.Tunjangan.klas_proyek.page')
                             </div>
                         @endif
 
@@ -81,6 +86,21 @@
                     $('[name="besar_tunjangan"]').val(data.besar_tunjangan);
                     $('[name="id"]').val(data.id);
                     $('#formulir_skala_tunjangan').attr('action','update-skala-tunjangan');
+                }
+            })
+        }
+
+        update_kelas_proyek= function (id) {
+            $.ajax({
+                url: "{{ url('edit-kelas-proyek') }}/"+id,
+                dataType:'json',
+                success: function (data) {
+                    console.log(data)
+                    $('[name="nm_kelas"]').val(data.nm_kelas);
+                    $('[name="keterangan"]').val(data.keterangan);
+                    $('[name="persen_besar_proyek"]').val(data.persen_besar_proyek);
+                    $('[name="id"]').val(data.id);
+                    $('#formulir_kelas_proyek').attr('action','update-kelas-proyek');
                 }
             })
         }

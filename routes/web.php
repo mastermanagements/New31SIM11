@@ -1268,7 +1268,18 @@ Route::put('hapus-daftar-gaji/{id}','penggajian\DaftarGaji@delete');
 Route::put('update-status-gaji/{id}','penggajian\DaftarGaji@update_status');
 
 
-Route::get('Tunjangan-gaji','penggajian\Tunjangan@TunjanganGaji');
+Route::get('TunjanganGaji','penggajian\Tunjangan@TunjanganGaji');
+
+Route::get('Kelas-proyek','penggajian\Tunjangan@KelasProyek');
+
+Route::post('store-kelas-proyek','penggajian\KelasProyek@store');
+
+Route::get('edit-kelas-proyek/{id}','penggajian\KelasProyek@edit');
+
+Route::post('update-kelas-proyek','penggajian\KelasProyek@update');
+
+Route::put('delete-kelas-proyek/{id}','penggajian\KelasProyek@delete');
+
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{
@@ -1537,6 +1548,8 @@ Route::post('tambah-alamat-handphone-ky','karyawan\Karyawan@store_hp');
 
 Route::put('hapus-hp-ky/{id}','karyawan\Karyawan@delete_hp');
 
+Route::post('store-jabatan-ky','hrd\JabatanKy@storeUpdate');
+
 //================================= Penggjian ==========================================================================
 
 Route::get('Alokasi-Gaji','penggajian\AlokasiGaji@index');
@@ -1618,6 +1631,7 @@ Route::put('delete-grade-gaji/{id}','penggajian\Grader@delete');
 Route::get('edit-grade-gaji/{id}','penggajian\Grader@edit');
 
 Route::post('update-grader-gaji','penggajian\Grader@update');
+
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

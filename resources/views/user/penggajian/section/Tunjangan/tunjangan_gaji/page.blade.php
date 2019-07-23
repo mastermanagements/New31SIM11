@@ -13,22 +13,13 @@
                     </thead>
                     <tbody>
                     @php($i=1)
-                    @foreach($ST as $value)
+                    @foreach($ky as $value)
                     <tr>
                         <td>{{ $i++ }}</td>
-                        <td>{{ $value->jabatan->nm_jabatan }}</td>
-                        <td>{{ $value->item_tunjangan->nm_tunjangan}}</td>
-                        <td>{{ $value->besar_tunjangan }}</td>
-                        <td>@if($value->status_tunjangan==0)  <span class="badge bg-red" onclick="statuOnSkala('{{ $value->id }}')">Tunjangan Non Tetap</span>  @else <span class="badge bg-green" onclick="statuOffSkala('{{ $value->id }}')">Tunjangan Tetap</span>  @endif</td>
-                        <td>
-                            <form action="{{ url('delete-skala-tunjangan/'.$value->id) }}" method="post">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="_method" value="put">
-                                <button type="button" class="btn btn-warning" id="tomboh-ubah" onclick="update_skala_tunjangan('{{ $value->id }}')" >Ubah</button>
-                                <button class="btn btn-danger" type="submit" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>
-                                </form>
-                            </td>
-                        </tr>
+                        <td>{{ $value->nama_ky }}</td>
+                        <td>@if(!empty($value->jabatan_ky->getJabatan)) {{ $value->jabatan_ky->getJabatan->nm_jabatan }} @else <p style="color: red">Karyawan ini belum mendapatkan jabatan</p> @endif</td>
+                        <td><a href="{{ url('detail-daftar-tunjangan/'.$value->id) }}"> <span class="badge bg-green">@if(!empty($value->getMannyTunjangan )) {{ $value->getMannyTunjangan->count('status_aktif') }} @else <p style="color: red">Tunjangan belum dimasukan</p> @endif</span> </a></td>
+                    </tr>
                     @endforeach
                     </tbody>
                 </table>

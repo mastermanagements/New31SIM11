@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGTunjanganGaji extends Migration
+class CreateGKelasProyek extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateGTunjanganGaji extends Migration
      */
     public function up()
     {
-        Schema::create('g_tunjangan_gaji', function (Blueprint $table) {
+        Schema::create('g_kelas_proyek', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('periode');
-            $table->integer('id_ky')->unsigned();
-            $table->integer('id_skala_tunjangan')->unsigned();
-            $table->enum('status_aktif', [0,1])->default(0);
+            $table->string('nm_kelas');
+            $table->string('keterangan');
+            $table->integer('persen_besar_proyek');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
@@ -32,6 +31,6 @@ class CreateGTunjanganGaji extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('g_tunjangan_gaji');
+        Schema::dropIfExists('g_kelas_proyek');
     }
 }
