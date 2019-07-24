@@ -74,16 +74,19 @@ class TunjanganGaji extends Controller
         if(empty($model=gtg::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
-        return response()->json($model);
+        $data = [
+            $model,
+            $model->skalaTunjangan
+        ];
+        return response()->json($data);
     }
 
     public function update(Request $req)
     {
+
         $this->validate($req,[
-            'id' =>'required',
-            'id_ky' =>'required',
+            'id_ubah' =>'required',
             'periode' =>'required',
-            'nm_tunjangan' =>'required',
             'besar_tunjangan' =>'required',
         ]);
         $model = gtg::find($req->id)->update(array_merge($req->all(),

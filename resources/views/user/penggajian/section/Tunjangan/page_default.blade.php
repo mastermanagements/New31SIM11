@@ -22,6 +22,7 @@
                         <li @if(Session::get('menu_tun')=="SkalaTunjangan") class="active" @endif ><a href="{{ url('Skala-tunjangan') }}">Skala Tunjangan</a></li>
                         <li @if(Session::get('menu_tun')=="TunjanganGaji") class="active" @endif ><a href="{{ url('TunjanganGaji') }}" >Tunjangan Gaji</a></li>
                         <li @if(Session::get('menu_tun')=="KelasProyek") class="active" @endif ><a href="{{ url('Kelas-proyek') }}" >Kelas Proyek</a></li>
+                        <li @if(Session::get('menu_tun')=="BonusProyek") class="active" @endif ><a href="{{ url('Bonus-proyek') }}" >Bonus Proyek</a></li>
                         <li class="pull-left header"><i class="fa fa-th"></i> Skala Gaji</li>
                     </ul>
                     <div class="tab-content">
@@ -31,15 +32,23 @@
                             </div>
                         @elseif(Session::get('menu_tun')=="SkalaTunjangan")
                             <div class="tab-pane  @if(Session::get('menu_tun')=="SkalaTunjangan") active @endif" id="tab_2-2">
-                                @include('user.penggajian.section.Tunjangan.skala_tunjangan.page')
+                                @include('user.penggajian.section.Tunjangan.skala_tunjangan.page2')
                             </div>
                         @elseif(Session::get('menu_tun')=="TunjanganGaji")
                             <div class="tab-pane  @if(Session::get('menu_tun')=="TunjanganGaji") active @endif" id="tab_3-3">
                                 @include('user.penggajian.section.Tunjangan.tunjangan_gaji.page')
                             </div>
                         @elseif(Session::get('menu_tun')=="KelasProyek")
-                            <div class="tab-pane  @if(Session::get('menu_tun')=="KelasProyek") active @endif" id="tab_3-3">
+                            <div class="tab-pane  @if(Session::get('menu_tun')=="KelasProyek") active @endif" id="tab_4-4">
                                 @include('user.penggajian.section.Tunjangan.klas_proyek.page')
+                            </div>
+                        @elseif(Session::get('menu_tun')=="BonusProyek")
+                            <div class="tab-pane  @if(Session::get('menu_tun')=="BonusProyek") active @endif" id="tab_5-5">
+                                @if(!empty(Session::get('menu_sub_tun')) && Session::get('menu_sub_tun') =='SkalaBonusProyek')
+                                    @include('user.penggajian.section.Tunjangan.skala_tunjangan.page')
+                                @else
+                                    @include('user.penggajian.section.Tunjangan.bonus_proyek.page')
+                                @endif
                             </div>
                         @endif
 

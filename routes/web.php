@@ -1280,6 +1280,11 @@ Route::post('update-kelas-proyek','penggajian\KelasProyek@update');
 
 Route::put('delete-kelas-proyek/{id}','penggajian\KelasProyek@delete');
 
+Route::get('Bonus-proyek','penggajian\Tunjangan@BonusProyek');
+
+Route::get('Skala-bonus-proyek/{id}','penggajian\SkalaBonusProyek@create');
+
+Route::post('proses-skala-bonus-proyek/{id}','penggajian\SkalaBonusProyek@store');
 
 //if(!empty(Session::get('id_perusahaan_karyawan')))
 //{

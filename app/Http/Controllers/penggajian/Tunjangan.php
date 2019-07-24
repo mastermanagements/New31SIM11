@@ -11,6 +11,7 @@ use App\Model\Superadmin_ukm\U_jabatan_p as jabatan;
 use App\Model\Penggajian\SkalaTunjangan as ST;
 use App\Model\Superadmin_ukm\H_karyawan as Hk;
 use App\Model\Penggajian\G_kelas_proyek as GKP;
+use App\Model\Produksi\Proyek as proyek;
 
 
 class Tunjangan extends Controller
@@ -34,6 +35,7 @@ class Tunjangan extends Controller
 
     public function index(){
         Session::put('menu_tun','itemTunjangan');
+        Session::put('menu_sub_tun','');
         $data = [
             'data'=> IT::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
@@ -42,6 +44,7 @@ class Tunjangan extends Controller
 
     public function item_tunjangan(){
         Session::put('menu_tun','itemTunjangan');
+        Session::put('menu_sub_tun','');
         $data = [
             'data'=> IT::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
@@ -50,6 +53,7 @@ class Tunjangan extends Controller
 
     public function skala_tunjangan(){
         Session::put('menu_tun','SkalaTunjangan');
+        Session::put('menu_sub_tun','');
         $data =[
             'jabatan'=> jabatan::all()->where('id_perusahaan', $this->id_perusahaan),
             'itemJabatan'=> IT::all()->where('id_perusahaan', $this->id_perusahaan),
@@ -60,15 +64,27 @@ class Tunjangan extends Controller
 
     public function TunjanganGaji(){
         Session::put('menu_tun','TunjanganGaji');
+        Session::put('menu_sub_tun','');
         $data = [
             'ky'=> Hk::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.penggajian.section.Tunjangan.page_default', $data);
     }
+
     public function KelasProyek(){
         Session::put('menu_tun','KelasProyek');
+        Session::put('menu_sub_tun','');
         $data = [
             'data'=> GKP::all()->where('id_perusahaan', $this->id_perusahaan)
+        ];
+        return view('user.penggajian.section.Tunjangan.page_default', $data);
+    }
+
+    public function BonusProyek(){
+        Session::put('menu_tun','BonusProyek');
+        Session::put('menu_sub_tun','');
+        $data = [
+            'proyek'=>proyek::all()->where('id_perusahaan')
         ];
         return view('user.penggajian.section.Tunjangan.page_default', $data);
     }

@@ -22,4 +22,12 @@ class TimProyek extends Model
         return $this->belongsTo('App\Model\Superadmin_ukm\H_karyawan','id_ky');
     }
 
+    public function bonus_proyek(){
+        return $this->hasOne('App\Model\Penggajian\G_Bonus_proyek','id_tim_proyek');
+    }
+
+    public function mannyBonusProject(){
+        return $this->hasMany('App\Model\Penggajian\G_Bonus_proyek','id_tim_proyek');
+    }
+
 }
