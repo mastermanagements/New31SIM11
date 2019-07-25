@@ -9,7 +9,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Gaji Karyawan
+                Daftar Slip Gaji
             </h1>
         </section>
 
@@ -20,12 +20,15 @@
               | Your Page Content Here |
               -------------------------->
             <div class="row">
+                <div class="col-md-12" style="margin-bottom: 2%">
+                    <button type="button" class="btn btn-default bg-maroon" data-toggle="modal" data-target="#modal-slip">tambah Slip</button>
+                </div>
                 <div class="col-md-12">
                     <div class="box box-primary collapsed">
                         <div class="box-header with-border">
                             <h3 class="box-title">Daftar Karyawan</h3>
                             <div class="box-tools pull-right">
-                               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                 </button>
                             </div>
                         </div>
@@ -35,36 +38,35 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Nik </th>
-                                    <th>Namaa Karyawan</th>
+                                    <th>Periode </th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @php($i=1)
-                                @foreach($ky as $data_ky)
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $data_ky->nik }}</td>
-                                        <td>{{ $data_ky->nama_ky }}</td>
-                                        <td>
-                                            <a href="{{ url('detail-daftar-gaji/'. $data_ky->id) }}" class="btn btn-success">Detail Daftar Gaji</a>
-                                            <a href="{{ url('detail-daftar-tunjangan/'. $data_ky->id) }}" class="btn btn-warning">Detail Daftar Tunjangan</a>
-                                            <a href="{{ url('daftar-slip-gaji/'. $data_ky->id) }}" class="btn btn-primary">Daftar Slip Gaji</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                    @foreach($slip_gaji as $data_ky)
+                                        <tr>
+                                            <td>{{ $i++ }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($data_ky->periode)) }}</td>
+                                            <td>
+                                                <a href="{{ url('item-gaji/'. $data_ky->id) }}" class="btn btn-success">Isi Slip ini </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.box-body -->
                     </div>
                 </div>
+
+
             </div>
 
         </section>
         <!-- /.content -->
     </div>
+    @include('user.penggajian.section.daftar_gaji.slipGaji.modal')
 
 @stop
 
@@ -75,9 +77,7 @@
 
         $('#datepicker').datepicker({
             autoclose: true,
-            format: 'yyyy',
-            viewMode: "years",
-            minViewMode: "years"
+            format: 'dd-mm-yyyy',
         });
 
        update=function (id) {

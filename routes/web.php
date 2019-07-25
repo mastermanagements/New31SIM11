@@ -1637,6 +1637,13 @@ Route::get('edit-grade-gaji/{id}','penggajian\Grader@edit');
 
 Route::post('update-grader-gaji','penggajian\Grader@update');
 
+Route::get('daftar-slip-gaji/{id}','penggajian\SlipGaji@index');
+
+//Route::post('tambah-slip/{id}','penggajian\SlipGaji@create');
+
+Route::post('store-slip-gaji','penggajian\SlipGaji@store');
+
+Route::get('item-gaji/{id}','penggajian\SlipGaji@create');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

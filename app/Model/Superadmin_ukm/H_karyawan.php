@@ -95,4 +95,7 @@ class H_karyawan extends Model
     public function getMannyTunjangan(){
         return $this->hasMany('App\Model\Penggajian\G_tunjangan_gaji','id_ky');
     }
+
+
+
 }

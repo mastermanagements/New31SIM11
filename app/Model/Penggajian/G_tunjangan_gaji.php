@@ -14,4 +14,5 @@ class G_tunjangan_gaji extends Model
     public function skalaTunjangan(){
         return $this->belongsTo('App\Model\Penggajian\SkalaTunjangan','id_skala_tunjangan');
     }
+
 }
