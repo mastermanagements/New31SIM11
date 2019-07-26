@@ -125,7 +125,7 @@
                                             <tr>
                                                 <th></th>
                                                 <th>Sub Total Tunjangan Tetap</th>
-                                                <th></th>
+                                                <th>{{ $total_tunjangan_tetap }}</th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -155,18 +155,128 @@
                                             <tr>
                                                 <th></th>
                                                 <th>Sub Total Tunjangan Tidak Tetap</th>
+                                                <th>{{ $total_tunjangan_non_tetap }}</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+
+                                            <tr>
+                                                <th>4</th>
+                                                <th>Lembur</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-lembur"><i class="fa fa-plus"></i></button></th>
+                                            </tr>
+                                            @php($total_lembur=0)
+                                            @if(!empty($data_slip->lembur))
+                                            <tr>
+                                                <td></td>
+                                                <td>{{ $data_slip->lembur->jum_lembur }}</td>
+                                                <td>{{ $data_slip->lembur->jum_besaran_lembur }}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <th>
+                                                    <form action="{{ url('delete-lembur/'.$data_slip->lembur->id) }}" method="post">
+                                                        <input type="hidden" name="_method" value="put">
+                                                        {{ csrf_field() }}
+                                                        <button type="submit" onclick="return confirm('Apakah anda akan mengapus data lembur ini..?')" class="btn btn-sm btn-danger" ><i class="fa fa-eraser"></i></button>
+                                                    </form>
+                                                    @php($total_lembur += $data_slip->lembur->jum_besaran_lembur )
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th></th>
+                                                <th>Sub Total Lembur</th>
+                                                <th>{{ $total_lembur }}</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                            @endif
+                                            <tr>
+                                                <th>5</th>
+                                                <th>Bonus</th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
+
+                                            <tr>
+                                                <th>6</th>
+                                                <th>Tambahan Pendapatan</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-tambahan-pendapatan"><i class="fa fa-plus"></i></button></th>
+                                            </tr>
+                                            @php($total_tambahan = 0 )
+                                            @if(!empty($tambahan= $data_slip->tambahanGaji))
+                                                @foreach($tambahan as $dataT)
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>{{ $dataT->keterangan }}</td>
+                                                        <td>{{ $dataT->jumlah_uang }}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <form action="{{ url('delete-tambahan/'.$dataT->id) }}" method="post">
+                                                                <input type="hidden" name="_method" value="put">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" onclick="return confirm('Apakah anda akan mengapus data tambahan pendapatan ini..?')" class="btn btn-sm btn-danger" ><i class="fa fa-eraser"></i></button>
+                                                            </form>
+
+                                                        </td>
+                                                    </tr>
+                                                    @php($total_tambahan+=$dataT->jumlah_uang)
+                                                @endforeach
+                                            @endif
+                                            <tr>
+                                                <th>7</th>
+                                                <th>Potongan Tetap</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-tambahan-pendapatan"><i class="fa fa-plus"></i></button></th>
+                                            </tr>
+
+                                            <tr>
+                                                <th>8</th>
+                                                <th>Potongan Tambahan</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-potongan-tambahan"><i class="fa fa-plus"></i></button></th>
+                                            </tr>
+                                            @php($total_pot = 0)
+                                            @if(!empty($potongan= $data_slip->PotonganTambahan))
+                                                @foreach($potongan as $potongan)
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>{{ $potongan->keterangan }}</td>
+                                                        <td>{{ $potongan->jumlah_potongan }}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <form action="{{ url('delete-potongan/'.$potongan->id) }}" method="post">
+                                                                <input type="hidden" name="_method" value="put">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" onclick="return confirm('Apakah anda akan mengapus data potongan ini..?')" class="btn btn-sm btn-danger" ><i class="fa fa-eraser"></i></button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                    @php($total_pot+=$potongan->jumlah_potongan)
+                                                @endforeach
+                                            @endif
                                             </tbody>
                                             <tfoot>
                                             <tr>
                                                 <th></th>
                                                 <th>Total Netto</th>
                                                 <th>
-                                                    {{ $gaji_pokok+$total_tunjangan_non_tetap+$total_tunjangan_tetap }}
+                                                    {{ ($gaji_pokok+$total_tunjangan_non_tetap+$total_tunjangan_tetap+$total_lembur+$total_tambahan)-$total_pot }}
                                                 </th>
                                                 <th></th>
                                                 <th></th>
@@ -187,6 +297,10 @@
         </section>
         <!-- /.content -->
     </div>
+
+    @include('user.penggajian.section.daftar_gaji.slipGaji.modal_slip_gaji.modal_lembur')
+    @include('user.penggajian.section.daftar_gaji.slipGaji.modal_slip_gaji.modal_tambahan')
+    @include('user.penggajian.section.daftar_gaji.slipGaji.modal_slip_gaji.modal_potongan_tambahan')
 
 @stop
 

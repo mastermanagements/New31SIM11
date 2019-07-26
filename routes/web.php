@@ -1645,6 +1645,26 @@ Route::post('store-slip-gaji','penggajian\SlipGaji@store');
 
 Route::get('item-gaji/{id}','penggajian\SlipGaji@create');
 
+Route::get('edit-slip-gaji/{id}','penggajian\SlipGaji@edit');
+
+Route::post('update-slip-gaji','penggajian\SlipGaji@update');
+
+Route::put('delete-slip-gaji/{id}','penggajian\SlipGaji@delete');
+
+
+Route::post('store-lembur','penggajian\Lembur@store');
+
+Route::put('delete-lembur/{id}','penggajian\Lembur@delete');
+
+Route::post('store-tambahan-gaji','penggajian\TambahanGaji@store');
+
+Route::put('delete-tambahan/{id}','penggajian\TambahanGaji@delete');
+
+Route::post('store-potongan-tambahan','penggajian\PotonganTambahan@store');
+
+Route::put('delete-potongan/{id}','penggajian\PotonganTambahan@delete');
+
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

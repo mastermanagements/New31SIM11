@@ -2,17 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/SlipGaji.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Penggajian/G_slip_gaji.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/penggajian/2019_07_25_063734_create_slip_gaji.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/list_check.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/page_create.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/Lembur.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/PotonganTambahan.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/TambahanGaji.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Penggajian/G_lembur.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Penggajian/G_potongan_tambahan.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Penggajian/G_tambahan_gaji.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/penggajian/2019_07_26_015731_create_g_bonus.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/penggajian/2019_07_26_030109_create_g_tambahan_gaji.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/penggajian/2019_07_26_055324_create_g_potongan_tambahan.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal_slip_gaji/modal_lembur.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal_slip_gaji/modal_potongan_tambahan.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal_slip_gaji/modal_tambahan.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Penggajian/G_tunjangan_gaji.php" afterPath="$PROJECT_DIR$/app/Model/Penggajian/G_tunjangan_gaji.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php" afterPath="$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/penggajian/SlipGaji.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/penggajian/SlipGaji.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Penggajian/G_slip_gaji.php" afterPath="$PROJECT_DIR$/app/Model/Penggajian/G_slip_gaji.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/list_check.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/list_check.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/page_create.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/page_create.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -48,7 +56,7 @@
         <item name="" type="eadb38e5:DatabaseStructure$Root" />
         <item name="master_management@localhost" type="e3449647:DbNodeDescriptor" />
         <item name="master_management" type="e3449647:DbNodeDescriptor" />
-        <item name="g_slip_gaji" type="e3449647:DbNodeDescriptor" />
+        <item name="g_potongan_tambahan" type="e3449647:DbNodeDescriptor" />
       </path>
     </expand>
     <select />
@@ -1669,8 +1677,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="1645" column="40" lean-forward="false" selection-start-line="1645" selection-start-column="40" selection-end-line="1645" selection-end-column="40" />
+            <state relative-caret-position="308">
+              <caret line="1664" column="62" lean-forward="false" selection-start-line="1664" selection-start-column="46" selection-end-line="1664" selection-end-column="62" />
               <folding>
                 <element signature="e#7#59#0#PHP" expanded="true" />
                 <element signature="e#43068#43120#0#PHP" expanded="false" />
@@ -1679,34 +1687,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SlipGaji.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/SlipGaji.php">
+      <file leaf-file-name="PotonganTambahan.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/PotonganTambahan.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-294">
-              <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_check.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/list_check.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="51" column="65" lean-forward="false" selection-start-line="51" selection-start-column="65" selection-end-line="51" selection-end-column="74" />
+            <state relative-caret-position="357">
+              <caret line="47" column="46" lean-forward="true" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
               <folding>
-                <element signature="e#704#729#0#HTML" expanded="true" />
+                <element signature="e#51#79#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page_create.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/page_create.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -1714,8 +1702,18 @@
       <file leaf-file-name="G_slip_gaji.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/G_slip_gaji.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="28" />
+            <state relative-caret-position="457">
+              <caret line="24" column="36" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page_create.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/page_create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="262" column="97" lean-forward="false" selection-start-line="262" selection-start-column="82" selection-end-line="262" selection-end-column="97" />
               <folding />
             </state>
           </provider>
@@ -1812,19 +1810,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Model/Hrd/H_potongan_tetap.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/PotonganTetap/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/PotonganTetap.php" />
-        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_07_19_031156_create_h_potongan_absen.php" />
-        <option value="$PROJECT_DIR$/app/Model/Hrd/PotonganAbsen.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/hrd/section/PotonganAbsen/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/hrd/PotonganAbsen.php" />
-        <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_20_004550_g_tunjangan_gaji.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/penggajian/master_user.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/Tunjagan/item_tunjangan/page.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/Tunjagan/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_22_034222_create_item_tunjangan.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/Tunjangan/item_tunjangan/page.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/ItemTunjangan.php" />
         <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_22_055915_create_g_skala_tunjangan.php" />
         <option value="$PROJECT_DIR$/app/Model/Penggajian/SkalaTunjangan.php" />
@@ -1857,12 +1842,25 @@
         <option value="$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php" />
         <option value="$PROJECT_DIR$/app/Model/Penggajian/G_tunjangan_gaji.php" />
         <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_25_063734_create_slip_gaji.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/list_check.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/SlipGaji.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/list_check.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal_slip_gaji/modal.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_26_015731_create_g_bonus.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal_slip_gaji/modal_lembur.blade.php" />
+        <option value="$PROJECT_DIR$/app/Model/Penggajian/G_lembur.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/Lembur.php" />
+        <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_26_030109_create_g_tambahan_gaji.php" />
+        <option value="$PROJECT_DIR$/app/Model/Penggajian/G_tambahan_gaji.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal_slip_gaji/modal_tambahan.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/TambahanGaji.php" />
+        <option value="$PROJECT_DIR$/database/migrations/penggajian/2019_07_26_055324_create_g_potongan_tambahan.php" />
+        <option value="$PROJECT_DIR$/app/Model/Penggajian/G_potongan_tambahan.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal_slip_gaji/modal_potongan_tambahan.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/Penggajian/G_slip_gaji.php" />
         <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/penggajian/PotonganTambahan.php" />
       </list>
     </option>
   </component>
@@ -2004,17 +2002,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="New31SIM11" type="cbb8eebc:String" user="New31SIM11" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2033,41 +2020,28 @@
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="penggajian" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="penggajian" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="New31SIM11" type="cbb8eebc:String" user="New31SIM11" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="slipga&#9;null&#9;null&#10;TunjanganGaji&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/TunjanganGaji.php&#10;Karyawan&#9;null&#9;null&#10;Superadmin_UKM&#9;null&#9;null&#10;tunjangan&#9;null&#9;null&#10;tunjaga&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/penggajian/2019_07_20_004550_g_tunjangan_gaji.php&#10;Tu&#9;null&#9;null&#10;potonganAb&#9;null&#9;null&#10;predi&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/PredikatPenilaian.php&#10;predikat&#9;null&#9;null&#10;KompensasiKinerja&#9;null&#9;null&#10;jabata&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Superadmin_ukm/U_jabatan_p.php&#10;sk&#9;null&#9;null&#10;klasifikas&#9;null&#9;null&#10;we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;FatalErrorException&#9;null&#9;null&#10;tes&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/Tes.php&#10;kar&#9;null&#9;null&#10;JadwalProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JadwalProyek.php&#10;Brifing&#9;null&#9;null&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;2019_04_02_075743_create_a_jenis_arsip&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/administrasi/2019_04_02_075743_create_a_jenis_arsip.php&#10;BAsertim&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BAsertim.php&#10;BApenyelesaian&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BApenyelesaian.php&#10;app/Exceptions/Handler.php&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Exceptions/Handler.php&#10;Pro&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Proposal.php&#10;JenisProposal&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/JenisProposal.php&#10;Surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php&#10;surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/resources/views/user/penggajian/section/daftar_gaji/slipGaji/page_create.blade.php&#10;Tambahan&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/TambahanGaji.php&#10;poto&#9;null&#9;null&#10;g_poto&#9;null&#9;null&#10;le&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/Lembur.php&#10;tambaha&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/TambahanGaji.php&#10;tambahan&#9;null&#9;null&#10;Le&#9;null&#9;null&#10;slipga&#9;null&#9;null&#10;TunjanganGaji&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/TunjanganGaji.php&#10;Karyawan&#9;null&#9;null&#10;Superadmin_UKM&#9;null&#9;null&#10;tunjangan&#9;null&#9;null&#10;tunjaga&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/penggajian/2019_07_20_004550_g_tunjangan_gaji.php&#10;Tu&#9;null&#9;null&#10;potonganAb&#9;null&#9;null&#10;predi&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/PredikatPenilaian.php&#10;predikat&#9;null&#9;null&#10;KompensasiKinerja&#9;null&#9;null&#10;jabata&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Superadmin_ukm/U_jabatan_p.php&#10;sk&#9;null&#9;null&#10;klasifikas&#9;null&#9;null&#10;we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;FatalErrorException&#9;null&#9;null&#10;tes&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/Tes.php&#10;kar&#9;null&#9;null&#10;JadwalProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JadwalProyek.php&#10;Brifing&#9;null&#9;null&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;2019_04_02_075743_create_a_jenis_arsip&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/administrasi/2019_04_02_075743_create_a_jenis_arsip.php&#10;BAsertim&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BAsertim.php&#10;BApenyelesaian&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BApenyelesaian.php&#10;app/Exceptions/Handler.php&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Exceptions/Handler.php&#10;Pro&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Proposal.php&#10;JenisProposal&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/JenisProposal.php&#10;Surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php&#10;surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
@@ -2078,18 +2052,18 @@
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\daftar_gaji\slipGaji\modal_slip_gaji" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\daftar_gaji\slipGaji" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\Tunjangan" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\daftar_gaji" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\xampp173\htdocs\New31SIM11\app\Model\Hrd" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\progressProyek\crud\modal" />
       <recent name="E:\xampp173\htdocs\New31SIM11\public\fileArsip" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\administrasi\section\surat\surat_masuk" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\daftar_gaji\slipGaji" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\Tunjangan" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\penggajian\section\daftar_gaji" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\hrd\section" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2277,14 +2251,8 @@
       <workItem from="1563841452412" duration="127000" />
       <workItem from="1563846226152" duration="14400000" />
       <workItem from="1563928675991" duration="15018000" />
-      <workItem from="1564015247209" duration="17688000" />
-    </task>
-    <task id="LOCAL-00055" summary="Produk -&gt; &#10; - Rekruitmen Fix Full Feature">
-      <created>1557887641818</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1557887641819</updated>
+      <workItem from="1564015247209" duration="17861000" />
+      <workItem from="1564101909472" duration="15024000" />
     </task>
     <task id="LOCAL-00056" summary="Produk -&gt; &#10;  - Lamaran fix Dan Seleksi Berkas On Proses Interface">
       <created>1557990377547</created>
@@ -2622,11 +2590,18 @@
       <option name="project" value="LOCAL" />
       <updated>1563954808220</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="Penggajian&#10;   - Aloritma Pengisian Slip Fix&#10;   - Perubahan Struktur tabel Slip penggajian, Bonus, Upah lembur,&#10;   - Interface Slip Gaji Fix">
+      <created>1564042019464</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1564042019464</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1119866000" />
+    <option name="totallyTimeSpent" value="1135063000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2639,16 +2614,16 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21482602" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21785174" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9457237" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22012103" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2193646" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27796054" sideWeight="0.49394855" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22239032" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22163388" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2723,7 +2698,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="HRD&#10;- Interface Buku Penilian FIx&#10;- CRUD Aspek Penilaian FIx" />
     <MESSAGE value="HRD&#10;- Interface H. Aku Fix&#10;- Crud H. AKu Fix" />
     <MESSAGE value="HRD&#10;- H Satuan Kpi&#10;- H Jenis Kpi&#10;- H Kpi Fix" />
     <MESSAGE value="HRD&#10;   - H Kpi Fix,&#10;   - Refisi Button Update Pada H_aku, H_Satuan_kpi, H_Jenis_kpi,H_aspek PA" />
@@ -2748,120 +2722,14 @@
     <MESSAGE value="Penggajian&#10;     - Penambahan Item Tunjangan &#10;     - Penambahan Skala Tunjangan" />
     <MESSAGE value="HRD&#10;   - Jabatan Karyawan&#10;Penggajian&#10;     - Interface Tunjangan Jadi&#10;     - Crud Tunjangan Gaji&#10;     - Interface Kelas Proyek&#10;     - Crud Kelas Proyek" />
     <MESSAGE value="Penggajian&#10;     - Interface bonus gaji fix&#10;     - operasi crud bonus gaji" />
-    <option name="LAST_COMMIT_MESSAGE" value="Penggajian&#10;     - Interface bonus gaji fix&#10;     - operasi crud bonus gaji" />
+    <MESSAGE value="Penggajian&#10;   - Aloritma Pengisian Slip Fix&#10;   - Perubahan Struktur tabel Slip penggajian, Bonus, Upah lembur,&#10;   - Interface Slip Gaji Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Penggajian&#10;   - Aloritma Pengisian Slip Fix&#10;   - Perubahan Struktur tabel Slip penggajian, Bonus, Upah lembur,&#10;   - Interface Slip Gaji Fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/DaftarGaji.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2302">
-          <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/karyawan/modal/modal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="52" column="106" lean-forward="true" selection-start-line="52" selection-start-column="106" selection-end-line="52" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/hrd/section/karyawan/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1302">
-          <caret line="139" column="40" lean-forward="false" selection-start-line="139" selection-start-column="40" selection-end-line="139" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/ItemWawancara.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="28" column="5" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="28" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/hrd/JabatanKy.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="43" column="107" lean-forward="false" selection-start-line="43" selection-start-column="107" selection-end-line="43" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Superadmin_ukm/U_jabatan_p.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="38" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.g_tunjangan_gaji">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_20_005427_create_g_tunjangan_gaji.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="21" column="50" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/Grader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_23_062859_create_g_kelas_proyek.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/KelasProyek.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="71" column="9" lean-forward="false" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/bonus_proyek/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="57" lean-forward="true" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Produksi/ProgressPemeliharaan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Administrasi/SPKKontrak.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="64" lean-forward="false" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Produksi/Proyek.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="19" column="47" lean-forward="false" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_24_020745_create_g_bonus_proyek.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
@@ -2916,7 +2784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2938,9 +2805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="882">
           <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding>
-            <element signature="e#51#91#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2948,7 +2812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="77" lean-forward="false" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2956,7 +2819,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1827">
           <caret line="87" column="6" lean-forward="false" selection-start-line="87" selection-start-column="6" selection-end-line="87" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2964,7 +2826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2972,7 +2833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="54" column="62" lean-forward="false" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2980,9 +2840,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="29" column="5" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="e#51#79#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2990,7 +2847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="36" column="22" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="36" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2998,7 +2854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="111" column="30" lean-forward="true" selection-start-line="100" selection-start-column="24" selection-end-line="111" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3035,7 +2890,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3043,7 +2897,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3051,7 +2904,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3067,7 +2919,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-469">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3090,32 +2941,166 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
           <caret line="61" column="22" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="61" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="17" column="71" lean-forward="false" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_26_015731_create_g_bonus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/list_check.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="51" column="65" lean-forward="false" selection-start-line="51" selection-start-column="65" selection-end-line="51" selection-end-column="74" />
+        <state relative-caret-position="483">
+          <caret line="23" column="121" lean-forward="false" selection-start-line="23" selection-start-column="76" selection-end-line="23" selection-end-column="121" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal_slip_gaji/modal_lembur.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="19" column="97" lean-forward="false" selection-start-line="19" selection-start-column="97" selection-end-line="19" selection-end-column="97" />
           <folding>
-            <element signature="e#704#729#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#small#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal.blade.php">
+    <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.g_lembur">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/G_lembur.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+        <state relative-caret-position="252">
+          <caret line="12" column="75" lean-forward="false" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_26_030109_create_g_tambahan_gaji.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="21" column="50" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/SlipGaji.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-399">
+          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/Lembur.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.g_tambahan_gaji">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal_slip_gaji/modal_tambahan.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="34" column="10" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/G_tambahan_gaji.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="68" lean-forward="false" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/penggajian/2019_07_26_055324_create_g_potongan_tambahan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="23" column="33" lean-forward="false" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/TambahanGaji.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#51#79#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/modal_slip_gaji/modal_potongan_tambahan.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="94" lean-forward="false" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.g_potongan_tambahan">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/G_potongan_tambahan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/G_slip_gaji.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="24" column="36" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="262" column="97" lean-forward="false" selection-start-line="262" selection-start-column="82" selection-end-line="262" selection-end-column="97" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="1645" column="40" lean-forward="false" selection-start-line="1645" selection-start-column="40" selection-end-line="1645" selection-end-column="40" />
+        <state relative-caret-position="308">
+          <caret line="1664" column="62" lean-forward="false" selection-start-line="1664" selection-start-column="46" selection-end-line="1664" selection-end-column="62" />
           <folding>
             <element signature="e#7#59#0#PHP" expanded="true" />
             <element signature="e#43068#43120#0#PHP" expanded="false" />
@@ -3123,27 +3108,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Penggajian/G_slip_gaji.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/PotonganTambahan.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/penggajian/SlipGaji.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-294">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-          <folding />
+        <state relative-caret-position="357">
+          <caret line="47" column="46" lean-forward="true" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+          <folding>
+            <element signature="e#51#79#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

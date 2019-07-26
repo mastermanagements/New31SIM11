@@ -44,12 +44,18 @@
                                 </thead>
                                 <tbody>
                                 @php($i=1)
-                                    @foreach($slip_gaji as $data_ky)
+                                    @foreach($slip_gaji as $data_slip)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($data_ky->periode)) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($data_slip->periode)) }}</td>
                                             <td>
-                                                <a href="{{ url('item-gaji/'. $data_ky->id) }}" class="btn btn-success">Isi Slip ini </a>
+                                                <form action="{{ url('delete-slip-gaji/'.$data_slip->id) }}" method="post">
+                                                    <input type="hidden" name="_method" value="put">
+                                                    {{ csrf_field() }}
+                                                    <a href="{{ url('item-gaji/'. $data_slip->id) }}" class="btn btn-success">Isi Slip ini </a>
+                                                    <button type="button" onclick="update('{{ $data_slip->id }}')" class="btn btn-warning">Ubah Slip</button>
+                                                    <button type="submit" onclick="return confirm('Apakah anda akan menghapus slip ini..?')" class="btn btn-danger">Hapus Slip</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -82,15 +88,14 @@
 
        update=function (id) {
           $.ajax({
-              url: "{{ url('edit-alokasi-gaji') }}/"+id,
+              url: "{{ url('edit-slip-gaji') }}/"+id,
               dataType: "json",
               success: function (result) {
                   console.log(result);
-                  $('[name="thn"]').val(result.thn);
-                  $('[name="persen"]').val(result.persen);
-                  $('[name="jumlah"]').val(result.jumlah);
+                  $('[name="periode"]').val(result.periode);
                   $('[name="id"]').val(result.id);
-                  $('#formulir').attr('action', '{{ url('update-alokasi-gaji') }}');
+                  $('#formulir').attr('action', '{{ url('update-slip-gaji') }}');
+                  $('#modal-slip').modal('show');
               }
           })
        }

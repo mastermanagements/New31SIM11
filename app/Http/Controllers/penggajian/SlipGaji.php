@@ -66,4 +66,37 @@ class SlipGaji extends Controller
             return redirect('daftar-slip-gaji/'. $req->id_ky)->with('message_fail','Maaf, slip tidak dapat dibuat');
         }
     }
+
+    public function edit($id){
+        if(empty($model = gsg::where('id', $id)->where('id_perusahaan',$this->id_perusahaan)->first())){
+            return abort(404);
+        }
+        return response()->json($model);
+    }
+
+    public function update(Request $req){
+        $this->validate($req,[
+            'periode'=> 'required',
+            'id_ky'=> 'required',
+            'id'=> 'required',
+        ]);
+        $data_req=$req->except(['_token']);
+        $data_req['periode'] = date('Y-m-d', strtotime($req->periode));
+        $model = gsg::find($req->id)->update(array_merge($data_req, ['id_perusahaan'=> $this->id_perusahaan,'id_karyawan'=>$this->id_karyawan]));
+        if($model){
+            return redirect('daftar-slip-gaji/'. $req->id_ky)->with('message_success','Anda telah mengubah slip');
+        }else{
+            return redirect('daftar-slip-gaji/'. $req->id_ky)->with('message_fail','Maaf, slip tidak dapat diubah');
+        }
+    }
+
+
+    public function delete(Request $req, $id){
+        $model = gsg::find($id);
+        if($model->delete()){
+            return redirect('daftar-slip-gaji/'. $model->id_ky)->with('message_success','Anda telah menghapus slip');
+        }else{
+            return redirect('daftar-slip-gaji/'. $model->id_ky)->with('message_fail','Maaf, slip tidak dapat dihapus');
+        }
+    }
 }
