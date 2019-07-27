@@ -42,6 +42,7 @@ class SkalaBonusProyek extends Controller
     }
 
     public function store(Request $req, $id_proyek){
+
         $this->validate($req,[
             'apt' => 'required',
             'id_kelas_proyek'=>'required',

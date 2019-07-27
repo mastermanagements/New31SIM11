@@ -1664,6 +1664,10 @@ Route::post('store-potongan-tambahan','penggajian\PotonganTambahan@store');
 
 Route::put('delete-potongan/{id}','penggajian\PotonganTambahan@delete');
 
+Route::post('store-bonus-gaji','penggajian\G_Bonus_Gaji@store');
+
+Route::put('delete-bonus-proyek/{id}','penggajian\G_Bonus_Gaji@delete');
+
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

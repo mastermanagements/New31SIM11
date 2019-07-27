@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Superadmin_ukm\H_karyawan as ky;
 use App\Model\Penggajian\G_slip_gaji as gsg;
+use App\Model\Produksi\Proyek as proyek;
+use App\Model\Penggajian\G_kelas_proyek as kp;
+
 
 class SlipGaji extends Controller
 {
@@ -47,7 +50,9 @@ class SlipGaji extends Controller
         }
 
         $data =[
-            'data_slip'=>$model
+            'data_slip'=>$model,
+            'proyek'=> proyek::all()->where('id_perusahaan', $this->id_perusahaan),
+            'klasifikasi'=> kp::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.penggajian.section.daftar_gaji.slipGaji.page_create', $data);
     }

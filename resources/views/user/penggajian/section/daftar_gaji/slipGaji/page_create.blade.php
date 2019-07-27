@@ -2,6 +2,8 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+
 @stop
 
 @section('master_content')
@@ -201,8 +203,47 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th></th>
+                                                <th><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-bonus"><i class="fa fa-plus"></i></button></th>
                                             </tr>
+                                            @php($totalBonusProyek=0);
+                                            @if(!empty($bonus= $data_slip->BonusProyek))
+                                                @foreach($bonus as $bonus)
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            @if(empty($bonus->proyek))
+                                                                {{ $bonus->nama_bonus }}
+                                                            @else
+                                                                {{ $bonus->proyek->spk->nm_spk }}
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            {{ $bonus->besaran_bonus }}
+                                                        </td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <form action="{{ url('delete-bonus-proyek/'.$bonus->id) }}" method="post">
+                                                                <input type="hidden" name="_method" value="put">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" onclick="return confirm('Apakah anda akan mengapus bonus ini..?')" class="btn btn-sm btn-danger" ><i class="fa fa-eraser"></i></button>
+                                                            </form>
+
+                                                        </td>
+                                                    </tr>
+                                                    @php($totalBonusProyek+=$bonus->besaran_bonus)
+                                                @endforeach
+
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Sub Total Lembur</th>
+                                                    <th>{{ $totalBonusProyek }}</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+
+                                            @endif
 
                                             <tr>
                                                 <th>6</th>
@@ -276,7 +317,7 @@
                                                 <th></th>
                                                 <th>Total Netto</th>
                                                 <th>
-                                                    {{ ($gaji_pokok+$total_tunjangan_non_tetap+$total_tunjangan_tetap+$total_lembur+$total_tambahan)-$total_pot }}
+                                                    {{ ($gaji_pokok+$total_tunjangan_non_tetap+$total_tunjangan_tetap+$total_lembur+$total_tambahan+$totalBonusProyek)-$total_pot }}
                                                 </th>
                                                 <th></th>
                                                 <th></th>
@@ -301,14 +342,16 @@
     @include('user.penggajian.section.daftar_gaji.slipGaji.modal_slip_gaji.modal_lembur')
     @include('user.penggajian.section.daftar_gaji.slipGaji.modal_slip_gaji.modal_tambahan')
     @include('user.penggajian.section.daftar_gaji.slipGaji.modal_slip_gaji.modal_potongan_tambahan')
+    @include('user.penggajian.section.daftar_gaji.slipGaji.modal_slip_gaji.modal_bonus')
 
 @stop
 
 @section('plugins')
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 
     <script>
-
+        $('.select2').select2()
         $('#datepicker').datepicker({
             autoclose: true,
             format: 'yyyy',
@@ -330,5 +373,16 @@
               }
           })
        }
+
+       $('[name="id_proyek"]').change(function () {
+           if($(this).val()!="null"){
+               $('[name="nm_bonus"]').prop('readonly',true)
+               $('[name="jumlah_bonus"]').prop('readonly',true)
+               $('[name="id_kelas"]').prop('required',true)
+           }else{
+               $('[name="nm_bonus"]').prop('readonly',false)
+               $('[name="jumlah_bonus"]').prop('readonly',false)
+           }
+       })
     </script>
 @stop

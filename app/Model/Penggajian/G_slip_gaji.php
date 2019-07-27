@@ -25,4 +25,8 @@ class G_slip_gaji extends Model
     public function PotonganTambahan(){
         return $this->hasMany('App\Model\Penggajian\G_potongan_tambahan','id_slip');
     }
+
+    public function BonusProyek(){
+        return $this->hasMany('App\Model\Penggajian\G_Bonus_Gaji','id_slip');
+    }
 }
