@@ -29,4 +29,5 @@ class G_slip_gaji extends Model
     public function BonusProyek(){
         return $this->hasMany('App\Model\Penggajian\G_Bonus_Gaji','id_slip');
     }
+
 }

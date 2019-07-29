@@ -88,7 +88,6 @@
                                                     <th>Jumlah Gaji</th>
                                                     <th>Absensi</th>
                                                     <th></th>
-                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -99,13 +98,15 @@
                                                     @php($gaji_pokok=$data_slip->karyawan->getMannyDaftarGaji->where('status_aktif',1)->first()['besar_gaji'] ) {{ $data_slip->karyawan->getMannyDaftarGaji->where('status_aktif',1)->first()['besar_gaji'] }}
                                                 </th>
                                                 <th>Hari Normal Masuk</th>
-                                                <th></th>
-                                                <th></th>
+                                                <th>
+                                                    @foreach($data_slip->karyawan->getAbsensi as $value)
+                                                        {{ $value->whereraw('month(periode)='.date('m', strtotime($data_slip->periode)).' ')->whereraw('year(periode)='.date('Y', strtotime($data_slip->periode)).' ')->first()->normal_hari }}
+                                                    @endforeach
+                                                </th>
                                             </tr>
                                             <tr>
                                                 <th>2</th>
                                                 <th>Tunjangan Tetap</th>
-                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -117,8 +118,7 @@
                                                         <td></td>
                                                         <td>{{ $data->skalaTunjangan->item_tunjangan->nm_tunjangan }}</td>
                                                         <td>{{ $data->skalaTunjangan->besar_tunjangan }}</td>
-                                                        <td>Hadir</td>
-                                                        <td></td>
+                                                         <td></td>
                                                         <td></td>
                                                     </tr>
                                                     @php($total_tunjangan_tetap+=$data->skalaTunjangan->besar_tunjangan)
@@ -130,12 +130,10 @@
                                                 <th>{{ $total_tunjangan_tetap }}</th>
                                                 <th></th>
                                                 <th></th>
-                                                <th></th>
                                             </tr>
                                             <tr>
                                                 <th>3</th>
                                                 <th>Tunjangan Tidak Tetap</th>
-                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -147,7 +145,6 @@
                                                         <td></td>
                                                         <td>{{ $data->skalaTunjangan->item_tunjangan->nm_tunjangan }}</td>
                                                         <td>{{ $data->skalaTunjangan->besar_tunjangan }}</td>
-                                                        <td>Hadir</td>
                                                         <td></td>
                                                         <td></td>
                                                     </tr>
@@ -158,15 +155,13 @@
                                                 <th></th>
                                                 <th>Sub Total Tunjangan Tidak Tetap</th>
                                                 <th>{{ $total_tunjangan_non_tetap }}</th>
-                                                <th></th>
-                                                <th></th>
+                                               <th></th>
                                                 <th></th>
                                             </tr>
 
                                             <tr>
                                                 <th>4</th>
                                                 <th>Lembur</th>
-                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-lembur"><i class="fa fa-plus"></i></button></th>
@@ -177,7 +172,6 @@
                                                 <td></td>
                                                 <td>{{ $data_slip->lembur->jum_lembur }}</td>
                                                 <td>{{ $data_slip->lembur->jum_besaran_lembur }}</td>
-                                                <td></td>
                                                 <td></td>
                                                 <th>
                                                     <form action="{{ url('delete-lembur/'.$data_slip->lembur->id) }}" method="post">
@@ -194,13 +188,11 @@
                                                 <th>{{ $total_lembur }}</th>
                                                 <th></th>
                                                 <th></th>
-                                                <th></th>
                                             </tr>
                                             @endif
                                             <tr>
                                                 <th>5</th>
                                                 <th>Bonus</th>
-                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-bonus"><i class="fa fa-plus"></i></button></th>
@@ -221,7 +213,6 @@
                                                             {{ $bonus->besaran_bonus }}
                                                         </td>
                                                         <td></td>
-                                                        <td></td>
                                                         <td>
                                                             <form action="{{ url('delete-bonus-proyek/'.$bonus->id) }}" method="post">
                                                                 <input type="hidden" name="_method" value="put">
@@ -232,23 +223,22 @@
                                                         </td>
                                                     </tr>
                                                     @php($totalBonusProyek+=$bonus->besaran_bonus)
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Sub Total Bonus</th>
+                                                        <th>{{ $totalBonusProyek }}</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+
                                                 @endforeach
 
-                                                <tr>
-                                                    <th></th>
-                                                    <th>Sub Total Lembur</th>
-                                                    <th>{{ $totalBonusProyek }}</th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                </tr>
 
                                             @endif
 
                                             <tr>
                                                 <th>6</th>
                                                 <th>Tambahan Pendapatan</th>
-                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-tambahan-pendapatan"><i class="fa fa-plus"></i></button></th>
@@ -260,8 +250,7 @@
                                                         <td></td>
                                                         <td>{{ $dataT->keterangan }}</td>
                                                         <td>{{ $dataT->jumlah_uang }}</td>
-                                                        <td></td>
-                                                        <td></td>
+                                                       <td></td>
                                                         <td>
                                                             <form action="{{ url('delete-tambahan/'.$dataT->id) }}" method="post">
                                                                 <input type="hidden" name="_method" value="put">
@@ -273,20 +262,49 @@
                                                     </tr>
                                                     @php($total_tambahan+=$dataT->jumlah_uang)
                                                 @endforeach
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Sub Total Tambahan Pendapatan</th>
+                                                    <th>{{ $total_tambahan }}</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
                                             @endif
+
                                             <tr>
                                                 <th>7</th>
                                                 <th>Potongan Tetap</th>
                                                 <th></th>
                                                 <th></th>
-                                                <th></th>
                                                 <th><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-tambahan-pendapatan"><i class="fa fa-plus"></i></button></th>
                                             </tr>
+                                            @php($total_potongan_tetap = 0)
+                                            @foreach($potongan_tetap as $potongan_t)
+                                                @if(!empty($potongan_t->potongan_absen))
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>{{ $potongan_t->nm_potongan }}</td>
+                                                        <td>{{ $potongan_t->besar_potongan }} x
 
+                                                                @php($jumlah_item_potongan = $potongan_t->potongan_absen->whereraw('month(periode)='.date('m', strtotime($data_slip->periode)).' ')->whereraw('year(periode)='.date('Y', strtotime($data_slip->periode)).' ')->first()->jumlah_item_p)
+                                                                {{ $jumlah_item_potongan }} = @php($potongan_tetaps = $potongan_t->besar_potongan * $jumlah_item_potongan) {{ $potongan_tetaps }}
+                                                                @php($total_potongan_tetap += $potongan_tetaps)
+
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                @else 0  = 0 @endif</td>
+                                            @endforeach
+                                            <tr>
+                                                <th></th>
+                                                <th>Sub Total Potongan Pendapatan</th>
+                                                <th>{{ $total_potongan_tetap }}</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
                                             <tr>
                                                 <th>8</th>
                                                 <th>Potongan Tambahan</th>
-                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-potongan-tambahan"><i class="fa fa-plus"></i></button></th>
@@ -299,7 +317,6 @@
                                                         <td>{{ $potongan->keterangan }}</td>
                                                         <td>{{ $potongan->jumlah_potongan }}</td>
                                                         <td></td>
-                                                        <td></td>
                                                         <td>
                                                             <form action="{{ url('delete-potongan/'.$potongan->id) }}" method="post">
                                                                 <input type="hidden" name="_method" value="put">
@@ -311,14 +328,28 @@
                                                     @php($total_pot+=$potongan->jumlah_potongan)
                                                 @endforeach
                                             @endif
+                                            <tr>
+                                                <th></th>
+                                                <th>Sub Total Potongan Tambahan</th>
+                                                <th>{{ $total_pot }}</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
                                             </tbody>
+
                                             <tfoot>
                                             <tr>
                                                 <th></th>
                                                 <th>Total Netto</th>
                                                 <th>
-                                                    {{ ($gaji_pokok+$total_tunjangan_non_tetap+$total_tunjangan_tetap+$total_lembur+$total_tambahan+$totalBonusProyek)-$total_pot }}
+                                                    {{ ($gaji_pokok+$total_tunjangan_non_tetap+$total_tunjangan_tetap+$total_lembur+$total_tambahan+$totalBonusProyek)-($total_pot+$total_potongan_tetap) }}
                                                 </th>
+                                                 <th></th>
+                                                <th></th>
+                                            </tr>
+                                            <tr>
+                                                <th></th>
+                                                <th>Pembayaran Dengan Cara</th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>

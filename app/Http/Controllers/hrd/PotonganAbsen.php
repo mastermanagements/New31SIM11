@@ -31,7 +31,7 @@ class PotonganAbsen extends Controller
     public function index()
     {
         $data = [
-            'absensi'=> abs::all()->where('id_perusahaan', $this->id_perusahaan),
+            'absensi'=> abs::all()->where('id_perusahaan', $this->id_perusahaan)->sortBy('periode'),
             'pt'=> hpt::all()->where('id_perusahaan', $this->id_perusahaan),
             'PA'=> PA::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
@@ -39,13 +39,15 @@ class PotonganAbsen extends Controller
     }
 
     public function store(Request $req){
-        $this->validate($req,[
+         $this->validate($req,[
+            'periode'=>'required',
            'id_absensi' => 'required',
            'id_potongan_tetap' => 'required',
            'jumlah_item_p' => 'required',
         ]);
 
         $model = new PA();
+        $model->periode = date('Y-m-d', strtotime($req->periode));
         $model->id_absensi = $req->id_absensi;
         $model->id_potongan_tetap = $req->id_potongan_tetap;
         $model->jumlah_item_p = $req->jumlah_item_p;
@@ -69,12 +71,14 @@ class PotonganAbsen extends Controller
     public function update(Request $req){
         $this->validate($req,[
             'id'=>'required',
+            'periode'=>'required',
             'id_absensi' => 'required',
             'id_potongan_tetap' => 'required',
             'jumlah_item_p' => 'required',
         ]);
 
         $model = PA::find($req->id);
+        $model->periode = date('Y-m-d', strtotime($req->periode));
         $model->id_absensi = $req->id_absensi;
         $model->id_potongan_tetap = $req->id_potongan_tetap;
         $model->jumlah_item_p = $req->jumlah_item_p;

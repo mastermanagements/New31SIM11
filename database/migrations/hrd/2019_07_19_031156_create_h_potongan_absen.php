@@ -15,6 +15,7 @@ class CreateHPotonganAbsen extends Migration
     {
         Schema::create('h_potongan_absen', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('periode');
             $table->integer('id_absensi');
             $table->integer('id_potongan_tetap');
             $table->integer('jumlah_item_p');

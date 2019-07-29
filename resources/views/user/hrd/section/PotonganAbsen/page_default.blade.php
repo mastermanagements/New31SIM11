@@ -37,6 +37,17 @@
                             <div class="box-body" style="">
                                     <input type="hidden" name="id">
                                 <div class="form-group">
+                                    <label>Periode </label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right" id="datepicker"  name="periode" required>
+                                    </div>
+                                    <!-- /.input group -->
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Absensi</label>
                                     <select class="form-control select2" style="width: 100%;" name="id_absensi" required>
                                         @if(empty($absensi))
@@ -92,6 +103,7 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
+                                    <th>Periode</th>
                                     <th>Nama Karyawan</th>
                                     <th>Potongan Tetap</th>
                                     <th>Besaran Potongan</th>
@@ -104,6 +116,7 @@
                                 @foreach($PA as $value)
                                     <tr>
                                         <td>{{ $i++ }}</td>
+                                        <td>{{ date('M', strtotime($value->periode)) }}</td>
                                         <td>{{ $value->absensi->karyawan->nama_ky }}</td>
                                         <td>{{ $value->potongan->nm_potongan }}</td>
                                         <td>{{ $value->potongan->besar_potongan }}</td>
@@ -137,6 +150,14 @@
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 
     <script>
+
+        $('#datepicker').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy',
+            viewMode: "months",
+            minViewMode: "months"
+        });
+
         $(function () {
             $('.select2').select2();
         })

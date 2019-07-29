@@ -9,6 +9,7 @@ use App\Model\Superadmin_ukm\H_karyawan as ky;
 use App\Model\Penggajian\G_slip_gaji as gsg;
 use App\Model\Produksi\Proyek as proyek;
 use App\Model\Penggajian\G_kelas_proyek as kp;
+use App\Model\Hrd\H_potongan_tetap as Pt;
 
 
 class SlipGaji extends Controller
@@ -37,7 +38,8 @@ class SlipGaji extends Controller
             'id_ky'=> $id,
            // 'date'=> ,
             'slip_gaji'=> gsg::all()->where('id_ky', $id)->where('id_perusahaan', $this->id_perusahaan)
-                ->where('id_karyawan', $this->id_karyawan)
+                ->where('id_karyawan', $this->id_karyawan),
+
         ];
         return view('user.penggajian.section.daftar_gaji.slipGaji.list_check', $data);
     }
@@ -52,7 +54,8 @@ class SlipGaji extends Controller
         $data =[
             'data_slip'=>$model,
             'proyek'=> proyek::all()->where('id_perusahaan', $this->id_perusahaan),
-            'klasifikasi'=> kp::all()->where('id_perusahaan', $this->id_perusahaan)
+            'klasifikasi'=> kp::all()->where('id_perusahaan', $this->id_perusahaan),
+            'potongan_tetap'=> Pt::all()->where('id_perusahaan', $this->id_perusahaan)->where('status_potongan',0)
         ];
         return view('user.penggajian.section.daftar_gaji.slipGaji.page_create', $data);
     }

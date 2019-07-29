@@ -96,6 +96,9 @@ class H_karyawan extends Model
         return $this->hasMany('App\Model\Penggajian\G_tunjangan_gaji','id_ky');
     }
 
+    public function getAbsensi(){
+        return $this->hasMany('App\Model\Hrd\H_absensi','id_ky');
+    }
 
 
 }
