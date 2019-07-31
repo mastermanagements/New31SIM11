@@ -1669,6 +1669,23 @@ Route::post('store-bonus-gaji','penggajian\G_Bonus_Gaji@store');
 Route::put('delete-bonus-proyek/{id}','penggajian\G_Bonus_Gaji@delete');
 
 
+//================================= Investor ==========================================================================
+Route::get('Data-Investor', 'investor\DataInvestor@index');
+
+Route::get('tambah-investor', 'investor\DataInvestor@create');
+
+Route::post('store-investor', 'investor\DataInvestor@store');
+
+Route::get('ubah-investor/{id}', 'investor\DataInvestor@edit');
+
+Route::put('update-investors/{id}', 'investor\DataInvestor@update');
+
+Route::put('hapus-investor/{id}', 'investor\DataInvestor@delete');
+
+Route::post('upload-ktp-invest', 'investor\DataInvestor@uploadEktp');
+
+Route::post('upload-photo-invest', 'investor\DataInvestor@uploadPasFotoInvest');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 
