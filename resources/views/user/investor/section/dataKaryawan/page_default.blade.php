@@ -71,7 +71,7 @@
                                        Aksi
                                          {{ csrf_field() }}
                                          <input type="hidden" name="_method" value="put" >
-                                         <button style="margin-left: 5px" class="btn badge bg-orange pull-right" onclick="return confirm('Apakah anda akan menghapus klien ini...?')"><i class="fa fa-trash"></i></span></button>
+                                         <button style="margin-left: 5px" class="btn badge bg-orange pull-right" onclick="return confirm('Apakah anda akan menghapus klien ini...?')"><i class="fa fa-trash"></i></button>
                                          <a style="margin-left: 5px" class="btn pull-right badge bg-red" href="{{ url('ubah-investor/'. $value->id) }}"><span class=""><i class="fa fa-pencil"></i></span></a>
                                          <button style="margin-left: 5px" type="button" class="btn pull-right badge bg-blue" onclick="uploadKtp('{{ $value->id }}')"><span class=""><i class="fa fa-upload"></i></span></button>
                                          <button type="button" class="btn pull-right badge bg-green" onclick="uploadPhoto('{{ $value->id }}')"><span class=""><i class="fa fa-upload"></i></span></button>

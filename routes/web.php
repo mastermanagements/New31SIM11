@@ -1686,6 +1686,38 @@ Route::post('upload-ktp-invest', 'investor\DataInvestor@uploadEktp');
 
 Route::post('upload-photo-invest', 'investor\DataInvestor@uploadPasFotoInvest');
 
+
+Route::get('Bentuk-Investor','investor\BentukInvestor@index');
+
+Route::post('store-bentuk-investor','investor\BentukInvestor@store');
+
+Route::get('edit-bentuk-investor/{id}','investor\BentukInvestor@edit');
+
+Route::post('update-bentuk-investor','investor\BentukInvestor@update');
+
+Route::put('hapus-bentuk-investor/{id}','investor\BentukInvestor@delete');
+
+
+Route::get('Periode-Investasi','Investor\PeriodeInvestor@index');
+
+Route::post('store-periode-investasi','Investor\PeriodeInvestor@store');
+
+Route::get('edit-periode-investor/{id}','Investor\PeriodeInvestor@edit');
+
+Route::post('update-periode-investor','Investor\PeriodeInvestor@update');
+
+Route::put('hapus-periode-investor/{id}','Investor\PeriodeInvestor@delete');
+
+
+Route::get('Saham','Investor\SahamPerdana@Index');
+
+Route::post('store-saham-perdana','Investor\SahamPerdana@store');
+
+Route::get('edit-saham-perdana/{id}','Investor\SahamPerdana@edit');
+
+Route::post('update-saham-perdana','Investor\SahamPerdana@update');
+
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

@@ -52,7 +52,7 @@ class Brifing extends Controller
 
     public function ambilEventBrifingByTanggal(Request $req)
     {
-       $tanggal = date('Y-m-d', strtotime($req->tgl_usulan_brif));
+        $tanggal = date('Y-m-d', strtotime($req->tgl_usulan_brif));
         $id_divisi = $req->id_divisi;
         $data_brifing = brifings::all()->where('tgl_usulan_brif', $tanggal)->where('id_perusahaan', $this->id_perusahaan)->where('id_divisi', $id_divisi);
         $column = array();
