@@ -21,18 +21,18 @@
                     <!-- Custom Tabs (Pulled to the right) -->
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs pull-right">
-                            <li @if(Session::get('menu-saham')=="saham-perdana") class="active" @endif ><a href="{{ url('Skala-tunjangan') }}">Saham Perdana</a></li>
-                            <li @if(Session::get('menu-saham')=="itemTunjangan") class="active"  @endif><a href="{{ url('item-tunjangan') }}" >Saham Real</a></li>
-                             <li class="pull-left header"><i class="fa fa-th"></i> Skala Gaji</li>
+                            <li @if(Session::get('menu-saham')=="saham-perdana") class="active" @endif ><a href="{{ url('Saham') }}">Saham Perdana</a></li>
+                            <li @if(Session::get('menu-saham')=="saham-real") class="active"  @endif><a href="{{ url('Saham-real') }}" >Saham Real</a></li>
+                             <li class="pull-left header"><i class="fa fa-th"></i> Saham </li>
                         </ul>
                         <div class="tab-content">
                             @if(Session::get('menu-saham')=="saham-perdana")
-                                <div class="tab-pane  @if(Session::get('menu_tun')=="itemTunjangan") active @endif" id="tab_2-2">
+                                <div class="tab-pane  @if(Session::get('menu-saham')=="saham-perdana") active @endif" id="tab_2-2">
                                    @include('user.investor.section.saham.saham_perdana.page')
                                 </div>
                             @else
                                 <div class="tab-pane active" id="tab_1-1">
-
+                                    @include('user.investor.section.saham.saham_real.page')
                                 </div>
 
                         @endif

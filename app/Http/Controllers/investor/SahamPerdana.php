@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\investor;
 
+use App\Model\Investor\PeriodeInvestasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
@@ -47,10 +48,11 @@ class SahamPerdana extends Controller
        $this->validate($req,[
             'id_periode_invest'=> 'required',
             'lembar_saham_perdana'=> 'required',
-            'nilai_saham'=> 'required',
         ]);
 
         $dataReq=$req->except(['id','_token']);
+        $evaluasi = PI::where('id', $req->id_periode_invest)->where('id_perusahaan', $this->id_perusahaan)->first()->nilai_valuasi;
+        $dataReq['nilai_saham'] = $evaluasi/$req->lembar_saham_perdana;
         $model = new SP(
             array_merge($dataReq, $this->id_con)
         );
@@ -85,9 +87,10 @@ class SahamPerdana extends Controller
 
         $dataReq=$req->except(['id','_token']);
         $model = SP::find($req->id);
-        $model->id_periode_invest =$req->id_periode_invest;
+        $evaluasi = PI::where('id', $req->id_periode_invest)->where('id_perusahaan', $this->id_perusahaan)->first()->nilai_valuasi;
+       $model->id_periode_invest =$req->id_periode_invest;
         $model->lembar_saham_perdana =$req->lembar_saham_perdana;
-        $model->nilai_saham =$req->nilai_saham;
+        $model->nilai_saham = $evaluasi/$req->lembar_saham_perdana;
         $model->id_perusahaan =$this->id_perusahaan;
         $model->id_karyawan =$this->id_karyawan;
 

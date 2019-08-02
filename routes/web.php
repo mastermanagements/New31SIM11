@@ -1717,6 +1717,13 @@ Route::get('edit-saham-perdana/{id}','Investor\SahamPerdana@edit');
 
 Route::post('update-saham-perdana','Investor\SahamPerdana@update');
 
+Route::get('Saham-real','Investor\SahamReal@Index');
+
+
+
+Route::get('Data-Investasi','Investor\DataInvestasi@index');
+
+Route::post('store-investasi','Investor\DataInvestasi@store');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

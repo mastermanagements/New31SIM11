@@ -26,11 +26,11 @@
                     <input type="number" class="form-control" name="lembar_saham_perdana" required>
                     <small style="color: red">* Tidak Boleh Kosong</small>
                 </div>
-                {{--<div class="form-group">--}}
-                    {{--<label for="exampleInputEmail1">Nilai Saham</label>--}}
-                    {{--<input type="number" class="form-control" name="nilai_saham" required>--}}
-                    {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
-                {{--</div>--}}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nilai Saham</label>
+                    <input type="number" class="form-control" name="nilai_saham" required>
+                    <small style="color: red">* Tidak Boleh Kosong</small>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
