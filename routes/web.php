@@ -1725,6 +1725,12 @@ Route::get('Data-Investasi','Investor\DataInvestasi@index');
 
 Route::post('store-investasi','Investor\DataInvestasi@store');
 
+Route::get('edit-daftar-investasi/{id}','Investor\DataInvestasi@edit');
+
+Route::post('update-daftar-investasi','Investor\DataInvestasi@update');
+
+Route::put('hapus-bentuk-investasi/{id}','Investor\DataInvestasi@delete');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

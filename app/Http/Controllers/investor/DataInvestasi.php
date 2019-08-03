@@ -61,7 +61,8 @@ class DataInvestasi extends Controller
         $model->id_bentuk_invest = $req->id_bentuk_invest;
         $model->jumlah_saham = $req->jumlah_saham;
 
-        $model_periode = PI::find($req->id_periode_invest)->saham_real->jum_saham;
+        $model_periode =  PI::find($req->id_periode_invest)->nilai_valuasi /PI::find($req->id_periode_invest)->saham_real->jum_saham;
+
         $jumlah_investasi = $model_periode * $model->jumlah_saham;
         $model->jumlah_investasi =$jumlah_investasi;
         $model->id_perusahaan = $this->id_perusahaan;
@@ -73,4 +74,52 @@ class DataInvestasi extends Controller
             return redirect('Data-Investasi')->with('message_fail','Maaf, data investor tidak tersimpan');
         }
     }
+
+    public function edit($id){
+        if(empty($model = DI::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+        return response()->json($model);
+    }
+
+    public function update(Request $req){
+        $this->validate($req,[
+            "id" => "required",
+            "tgl_invest" => "required",
+            "id_periode_invest" => "required",
+            "id_investor" => "required",
+            "jumlah_saham" => "required",
+            "id_bentuk_invest" => "required",
+        ]);
+
+        $model = DI::find($req->id);
+        $model->tgl_invest = date('Y-m-d', strtotime($req->tgl_invest));
+        $model->id_periode_invest = $req->id_periode_invest;
+        $model->id_investor = $req->id_investor;
+        $model->id_bentuk_invest = $req->id_bentuk_invest;
+        $model->jumlah_saham = $req->jumlah_saham;
+
+        $model_periode = PI::find($req->id_periode_invest)->nilai_valuasi /PI::find($req->id_periode_invest)->saham_real->jum_saham;
+        $jumlah_investasi = $model_periode * $model->jumlah_saham;
+        $model->jumlah_investasi =$jumlah_investasi;
+        $model->id_perusahaan = $this->id_perusahaan;
+        $model->id_karyawan = $this->id_karyawan;
+
+        if($model->save()){
+            return redirect('Data-Investasi')->with('message_success','Anda telah mengubah data investor');
+        }else{
+            return redirect('Data-Investasi')->with('message_fail','Maaf, data investor tidak terubah');
+        }
+    }
+
+    public function delete(Request $req, $id){
+        $model = DI::find($id);
+
+        if($model->delete()){
+            return redirect('Data-Investasi')->with('message_success','Anda telah menghapus data investor');
+        }else{
+            return redirect('Data-Investasi')->with('message_fail','Maaf, data investor tidak terhapus');
+        }
+    }
+
 }

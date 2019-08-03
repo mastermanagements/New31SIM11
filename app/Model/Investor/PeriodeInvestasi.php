@@ -20,5 +20,9 @@ class PeriodeInvestasi extends Model
     public function saham_real(){
         return $this->hasOne('App\Model\Investor\SahamReal','id_periode_saham');
     }
-    
+
+
+    public function dataInvetasi(){
+        return $this->hasMany('App\Model\Investor\DaftarInvestasi','id_periode_invest');
+    }
 }

@@ -38,6 +38,8 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body" style="overflow: auto;">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#modal-data-investasi">Tambah data Investasi</button>
+                            <p></p>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
@@ -53,56 +55,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
-
-                                    <tr>
-                                        <form action="{{ url('store-investasi') }}" method="post">
-                                        <th>#</th>
-                                        <th>
-                                            <input type="text" class="form-control pull-right" id="datepicker"  name="tgl_invest" required>
-                                        </th>
-                                        <th>
-                                            <select class="form-control select2" style="width: 100%;" name="id_periode_invest" required>
-                                                @if(empty($periode_inves))
-                                                    <option>Periode Investasi Masih Kosong</option>
-                                                @else
-                                                    @foreach($periode_inves as $value)
-                                                        <option value="{{ $value->id }}">{{ str_limit($value->nm_periode,40) }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
-                                        </th>
-                                        <th>
-                                            <select class="form-control select2" style="width: 100%;" name="id_investor" required>
-                                                @if(empty($data_investor))
-                                                    <option>Investor Masih Kosong</option>
-                                                @else
-                                                    @foreach($data_investor as $value)
-                                                        <option value="{{ $value->id }}">{{ $value->nm_investor }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
-                                        </th>
-                                        <th></th>
-                                        <th><input type="number" name="jumlah_saham" class="form-control" required></th>
-                                        <th>Satuan</th>
-                                        <th>
-                                            <select class="form-control select2" style="width: 100%;" name="id_bentuk_invest" required>
-                                                @if(empty($bentuk_investor))
-                                                    <option>Bentuk Investasi</option>
-                                                @else
-                                                    @foreach($bentuk_investor as $value)
-                                                        <option value="{{ $value->id }}">{{ $value->bentuk_investasi }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
-                                        </th>
-                                        <th>
-                                            {{ csrf_field()}}
-                                            <button type="submit" class="btn btn-success">Simpan</button>
-                                        </th>
-                                        </form>
-                                    </tr>
                                     @php($i=1)
                                     @foreach($data_investasi as $value)
                                         <tr>
@@ -115,7 +67,7 @@
                                             <th>Lembar</th>
                                             <th>{{ $value->bentuk_investasi->bentuk_investasi }}</th>
                                             <td>
-                                                <form action="{{ url('hapus-bentuk-investor/'.$value->id) }}" method="post">
+                                                <form action="{{ url('hapus-bentuk-investasi/'.$value->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="_method" value="put">
                                                     <button type="button" class="btn btn-warning" id="tomboh-ubah" onclick="update('{{ $value->id }}')" >Ubah</button>
@@ -135,7 +87,7 @@
         </section>
         <!-- /.content -->
     </div>
-
+    @include('user.investor.section.dataInvestasi.modal.modal')
 @stop
 
 @section('plugins')
@@ -156,13 +108,19 @@
 
         update=function (id) {
           $.ajax({
-              url: "{{ url('edit-bentuk-investor') }}/"+id,
+              url: "{{ url('edit-daftar-investasi') }}/"+id,
               dataType: "json",
               success: function (result) {
                   console.log(result);
-                  $('[name="bentuk_investasi"]').val(result.bentuk_investasi);
+                  $('[name="id_bentuk_invest"]').attr('disabled',false);
+                  $('[name="tgl_invest"]').val(result.tgl_invest);
+                  $('[name="id_periode_invest"]').val(result.id_periode_invest).trigger('change');
+                  $('[name="id_investor"]').val(result.id_investor).trigger('change');
+                  $('[name="jumlah_saham"]').val(result.jumlah_saham);
+                  $('[name="id_bentuk_invest"]').val(result.id_bentuk_invest).trigger('change');
                   $('[name="id"]').val(result.id);
-                  $('#formulir').attr('action', '{{ url('update-bentuk-investor') }}');
+                  $('#formulir').attr('action', '{{ url('update-daftar-investasi') }}');
+                  $('#modal-data-investasi').modal('show');
               }
           })
        }
