@@ -50,6 +50,7 @@
         <!-- /.content -->
     </div>
     @include('user.investor.section.saham.saham_perdana.modal_saham_perdana')
+    @include('user.investor.section.saham.saham_real.modal_saham_real')
 @stop
 
 @section('plugins')

@@ -17,6 +17,7 @@ class DaftarInvestasi extends Model
         'jumlah_saham',
         'jumlah_investasi',
         'ket',
+        'persentase',
         'id_perusahaan',
         'id_karyawan',
     ];

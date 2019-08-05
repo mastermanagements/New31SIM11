@@ -65,6 +65,7 @@ class DataInvestasi extends Controller
 
         $jumlah_investasi = $model_periode * $model->jumlah_saham;
         $model->jumlah_investasi =$jumlah_investasi;
+        $model->persentase =$model->jumlah_saham/PI::find($req->id_periode_invest)->saham_real->jum_saham * 100;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
 
@@ -102,6 +103,7 @@ class DataInvestasi extends Controller
         $model_periode = PI::find($req->id_periode_invest)->nilai_valuasi /PI::find($req->id_periode_invest)->saham_real->jum_saham;
         $jumlah_investasi = $model_periode * $model->jumlah_saham;
         $model->jumlah_investasi =$jumlah_investasi;
+        $model->persentase =$model->jumlah_saham/PI::find($req->id_periode_invest)->saham_real->jum_saham * 100;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use Session;
 use App\Model\Investor\SahamReal as SR;
+use App\Model\Investor\PeriodeInvestasi as PI;
 
 class SahamReal extends Controller
 {
@@ -36,8 +37,31 @@ class SahamReal extends Controller
     {
         Session::put('menu-saham','saham-real');
         $data = [
-            'data'=>SR::all()->where('id_perusahaan', $this->id_perusahaan)
+            'data'=>SR::all()->where('id_perusahaan', $this->id_perusahaan),
+            'periode_inves'=>PI::all()->where('id_perusahaan', $this->id_perusahaan),
         ];
         return view('user.investor.section.saham.page_default', $data);
+    }
+
+    public function store(Request $req){
+        $this->validate($req,[
+            "id_periode_saham" => "required",
+            "jum_saham" => "required"
+        ]);
+
+        $data_req = $req->except(['id','_token']);
+        $data_periode_lalu = SR::all()->where('id_perusahaan', $this->id_perusahaan)->last();
+        $model = new SR();
+        $model->id_periode_saham = $req->id_periode_saham;
+        $model->jum_saham = $data_periode_lalu->jum_saham+$req->jum_saham;
+        $model->satuan = "lembar";
+        $model->id_perusahaan = $this->id_perusahaan;
+        $model->id_karyawan = $this->id_karyawan;
+        if($model->save()){
+            return redirect('Saham-real')->with('message_success','Anda telah menambahkan data saham real');
+        }else{
+            return redirect('Saham-real')->with('message_fail','Maaf, Saham real tidak dapat disimpan');
+        }
+
     }
 }

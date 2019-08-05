@@ -2,9 +2,7 @@
     <div class="col-md-12">
             <!-- /.box-header -->
             <div class="box-body" style="">
-                @if($data->count('id') <= 0 )
-                     <button class="btn btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#modal-saham-perdana"> <i class="fa fa-plus"></i> Saham Perdana</button>
-                @endif
+                 <button class="btn btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#modal-saham-real"> <i class="fa fa-plus"></i> Saham Real</button>
 
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>

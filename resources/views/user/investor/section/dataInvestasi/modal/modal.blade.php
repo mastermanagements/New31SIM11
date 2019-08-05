@@ -9,7 +9,7 @@
             <form action="{{ url('store-investasi') }}" method="post" id="formulir">
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">File KTP</label>
+                    <label for="exampleInputEmail1">Tanggal Investasi</label>
                     <input type="text" class="form-control" id="datepicker"  name="tgl_invest" required>
                     <small style="color: red" >*Tidak boleh Kosong</small>
                 </div>
@@ -20,7 +20,7 @@
                             <option>Periode Investasi Masih Kosong</option>
                         @else
                             @foreach($periode_inves as $value)
-                                <option value="{{ $value->id }}" @if($value->dataInvetasi->sum('jumlah_saham')==$value->saham_real->jum_saham) disabled="disabled" @endif> {{ str_limit($value->nm_periode,40) }}</option>
+                                <option value="{{ $value->id }}" @if($value->dataInvetasi->sum('jumlah_saham')==$value->saham_real->jum_saham)  @endif> {{ str_limit($value->nm_periode,40) }}</option>
                             @endforeach
                         @endif
                     </select>

@@ -51,7 +51,9 @@
                                     <th>Jumlah Saham</th>
                                     <th>Satuan</th>
                                     <th>Bentuk Investasi</th>
-                                    <th>Aksi</th>
+                                    <th>Persentase</th>
+                                     <th></th>
+                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -66,6 +68,8 @@
                                             <th>{{ $value->jumlah_saham }}</th>
                                             <th>Lembar</th>
                                             <th>{{ $value->bentuk_investasi->bentuk_investasi }}</th>
+                                            <th >{{ $value->persentase }}</th>
+                                            <th></th>
                                             <td>
                                                 <form action="{{ url('hapus-bentuk-investasi/'.$value->id) }}" method="post">
                                                     {{ csrf_field() }}

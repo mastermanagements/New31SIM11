@@ -1,16 +1,16 @@
-<div class="modal fade" id="modal-saham-perdana">
+<div class="modal fade" id="modal-saham-real">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir Saham Perdana</h4>
+                <h4 class="modal-title">Formulir Saham Real</h4>
             </div>
-            <form action="{{ url('store-saham-perdana') }}" method="post" enctype="multipart/form-data" id="formulir">
+            <form action="{{ url('store-saham-real') }}" method="post" enctype="multipart/form-data" id="formulirs">
             <div class="modal-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Periode Investasi</label>
-                    <select class="form-control select2" style="width: 100%;" name="id_periode_invest" required>
+                    <select class="form-control select2" style="width: 100%;" name="id_periode_saham" required>
                         @if(empty($periode_inves))
                             <option>Periode Investasi Masih Kosong</option>
                         @else
@@ -23,12 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Lembar Saham</label>
-                    <input type="number" class="form-control" name="lembar_saham_perdana" required>
-                    <small style="color: red">* Tidak Boleh Kosong</small>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Nilai Saham</label>
-                    <input type="number" class="form-control" name="nilai_saham" required>
+                    <input type="number" class="form-control" name="jum_saham" required>
                     <small style="color: red">* Tidak Boleh Kosong</small>
                 </div>
             </div>
