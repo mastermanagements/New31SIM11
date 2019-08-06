@@ -1731,7 +1731,28 @@ Route::post('update-daftar-investasi','Investor\DataInvestasi@update');
 
 Route::put('hapus-bentuk-investasi/{id}','Investor\DataInvestasi@delete');
 
+
+
 Route::post('store-saham-real','Investor\SahamReal@store');
+
+Route::get('edit-saham-real/{id}','Investor\SahamReal@edit');
+
+Route::post('update-saham-real','Investor\SahamReal@update');
+
+Route::put('delete-saham-real/{id}','Investor\SahamReal@delete');
+
+
+
+Route::get('Jual-Saham','Investor\JualSahamPersahaan@index');
+
+Route::post('store-jual-saham-perusahaan','Investor\JualSahamPersahaan@store');
+
+Route::get('edit-jual-saham-perusahaan/{id}','Investor\JualSahamPersahaan@edit');
+
+Route::post('update-jual-saham-perusahaan','Investor\JualSahamPersahaan@update');
+
+Route::put('hapus-jual-saham-perusahaan/{id}','Investor\JualSahamPersahaan@delete');
+
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

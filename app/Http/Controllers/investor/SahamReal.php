@@ -50,7 +50,7 @@ class SahamReal extends Controller
         ]);
 
         $data_req = $req->except(['id','_token']);
-        $data_periode_lalu = SR::all()->where('id_perusahaan', $this->id_perusahaan)->last();
+        $data_periode_lalu = SR::all()->where('id_perusahaan', $this->id_perusahaan)->whereNotIn('id_periode_saham', $req->id_periode_saham)->last();
         $model = new SR();
         $model->id_periode_saham = $req->id_periode_saham;
         $model->jum_saham = $data_periode_lalu->jum_saham+$req->jum_saham;
@@ -64,4 +64,46 @@ class SahamReal extends Controller
         }
 
     }
+
+    public function edit($id)
+    {
+        if(empty($model =  SR::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+            return abort(404);
+        }
+        return $model;
+    }
+
+    public function update(Request $req){
+        $this->validate($req,[
+            "id_periode_saham" => "required",
+            "jum_saham" => "required",
+            "id" => "required",
+        ]);
+
+        $data_req = $req->except('_token');
+        $data_periode_lalu = SR::all()->where('id_perusahaan', $this->id_perusahaan)->whereNotIn('id_periode_saham', $req->id_periode_saham)->last();
+        $model = SR::find($req->id);
+        $model->id_periode_saham = $req->id_periode_saham;
+        $model->jum_saham = $data_periode_lalu->jum_saham+$req->jum_saham;
+        $model->satuan = "lembar";
+        $model->id_perusahaan = $this->id_perusahaan;
+        $model->id_karyawan = $this->id_karyawan;
+        if($model->save()){
+            return redirect('Saham-real')->with('message_success','Anda telah mengubah data saham real');
+        }else{
+            return redirect('Saham-real')->with('message_fail','Maaf, Saham real tidak dapat diubah');
+        }
+
+    }
+
+    public function delete(Request $req, $id){
+        $model = SR::find($id);
+        if($model->delete()){
+            return redirect('Saham-real')->with('message_success','Anda telah menghapus data saham real');
+        }else{
+            return redirect('Saham-real')->with('message_fail','Maaf, Saham real tidak dapat dihapus');
+        }
+
+    }
+
 }
