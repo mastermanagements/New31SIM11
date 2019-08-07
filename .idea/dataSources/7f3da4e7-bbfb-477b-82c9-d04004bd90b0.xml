@@ -5063,16 +5063,16 @@
     </column>
     <column id="1177" parent="107" name="jumlah_saham">
       <Position>6</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>decimal(12,2)|0</DataType>
     </column>
     <column id="1178" parent="107" name="jumlah_investasi">
       <Position>7</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>decimal(12,2)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="1179" parent="107" name="persentase">
       <Position>8</Position>
-      <DataType>decimal(10)|0</DataType>
+      <DataType>decimal(12,2)|0</DataType>
     </column>
     <column id="1180" parent="107" name="ket">
       <Position>9</Position>
@@ -5216,7 +5216,7 @@
     </column>
     <column id="1210" parent="109" name="jumlah_persen_saham">
       <Position>3</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>decimal(12,2)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="1211" parent="109" name="id_perusahaan">
@@ -5265,7 +5265,7 @@
     </column>
     <column id="1220" parent="110" name="nilai_valuasi">
       <Position>5</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="1221" parent="110" name="id_perusahaan">
@@ -5304,12 +5304,12 @@
     </column>
     <column id="1228" parent="111" name="lembar_saham_perdana">
       <Position>3</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>decimal(12,2)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="1229" parent="111" name="nilai_saham">
       <Position>4</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>decimal(12,2)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="1230" parent="111" name="id_perusahaan">
@@ -5348,7 +5348,7 @@
     </column>
     <column id="1237" parent="112" name="jum_saham">
       <Position>3</Position>
-      <DataType>int(10) unsigned|0</DataType>
+      <DataType>decimal(12,2)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="1238" parent="112" name="satuan">

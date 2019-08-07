@@ -54,6 +54,7 @@ class DataInvestasi extends Controller
               "id_bentuk_invest" => "required",
         ]);
 
+        $cek_data_investor_sdh_ada = DI::where('id_investor', $req->id_investor)->orderBy('id','asc')->first();
         $model = new DI();
         $model->tgl_invest = date('Y-m-d', strtotime($req->tgl_invest));
         $model->id_periode_invest = $req->id_periode_invest;
@@ -63,9 +64,17 @@ class DataInvestasi extends Controller
 
         $model_periode =  PI::find($req->id_periode_invest)->nilai_valuasi /PI::find($req->id_periode_invest)->saham_real->jum_saham;
 
-        $jumlah_investasi = $model_periode * $model->jumlah_saham;
+        if(!empty($cek_data_investor_sdh_ada)){
+            $ls = PI::find($cek_data_investor_sdh_ada->id_periode_invest);
+            $nilai_perlembar = $ls->nilai_valuasi/$ls->saham_real->jum_saham;
+            $jumlah_investasi = $nilai_perlembar*$req->jumlah_saham;
+        }else{
+            $jumlah_investasi = $model_periode * $model->jumlah_saham;
+        }
+
         $model->jumlah_investasi =$jumlah_investasi;
         $model->persentase =$model->jumlah_saham/PI::find($req->id_periode_invest)->saham_real->jum_saham * 100;
+        $model->ket= $req->ket;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
 
@@ -93,6 +102,9 @@ class DataInvestasi extends Controller
             "id_bentuk_invest" => "required",
         ]);
 
+        $cek_data_investor_sdh_ada = DI::where('id_investor', $req->id_investor)->orderBy('id','asc')->first();
+
+
         $model = DI::find($req->id);
         $model->tgl_invest = date('Y-m-d', strtotime($req->tgl_invest));
         $model->id_periode_invest = $req->id_periode_invest;
@@ -101,9 +113,18 @@ class DataInvestasi extends Controller
         $model->jumlah_saham = $req->jumlah_saham;
 
         $model_periode = PI::find($req->id_periode_invest)->nilai_valuasi /PI::find($req->id_periode_invest)->saham_real->jum_saham;
-        $jumlah_investasi = $model_periode * $model->jumlah_saham;
+
+        if(!empty($cek_data_investor_sdh_ada)){
+            $ls = PI::find($cek_data_investor_sdh_ada->id_periode_invest);
+            $nilai_perlembar = $ls->nilai_valuasi/$ls->saham_real->jum_saham;
+            $jumlah_investasi = $nilai_perlembar*$req->jumlah_saham;
+        }else{
+            $jumlah_investasi = $model_periode * $model->jumlah_saham;
+        }
+
         $model->jumlah_investasi =$jumlah_investasi;
         $model->persentase =$model->jumlah_saham/PI::find($req->id_periode_invest)->saham_real->jum_saham * 100;
+        $model->ket = $req->ket;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
 

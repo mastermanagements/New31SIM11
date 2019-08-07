@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir Saham Perdana</h4>
+                <h4 class="modal-title">Formulir Jual Saham Perusahaan</h4>
             </div>
             <form action="{{ url('store-jual-saham-perusahaan') }}" method="post" enctype="multipart/form-data" id="formulir">
             <div class="modal-body">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Lembar Saham</label>
-                    <input type="number" class="form-control" name="jumlah_persen_saham" required>
+                    <input type="text" class="form-control" name="jumlah_persen_saham" required>
                     <small style="color: red">* Tidak Boleh Kosong</small>
                 </div>
                 {{--<div class="form-group">--}}

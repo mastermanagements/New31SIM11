@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Jumlah Saham</label>
-                     <input type="number" name="jumlah_saham" class="form-control" required>
+                     <input type="text" name="jumlah_saham" class="form-control" required>
                     <small style="color: red" >*Tidak boleh Kosong</small>
                 </div>
                 <div class="form-group">
@@ -55,6 +55,11 @@
                             @endforeach
                         @endif
                     </select>
+                    <small style="color: red" >*Tidak boleh Kosong</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Keterangan</label>
+                    <textarea name="ket" class="form-control"></textarea>
                     <small style="color: red" >*Tidak boleh Kosong</small>
                 </div>
             </div>

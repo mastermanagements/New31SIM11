@@ -121,6 +121,7 @@
                   $('[name="id_periode_invest"]').val(result.id_periode_invest).trigger('change');
                   $('[name="id_investor"]').val(result.id_investor).trigger('change');
                   $('[name="jumlah_saham"]').val(result.jumlah_saham);
+                  $('[name="ket"]').val(result.ket);
                   $('[name="id_bentuk_invest"]').val(result.id_bentuk_invest).trigger('change');
                   $('[name="id"]').val(result.id);
                   $('#formulir').attr('action', '{{ url('update-daftar-investasi') }}');

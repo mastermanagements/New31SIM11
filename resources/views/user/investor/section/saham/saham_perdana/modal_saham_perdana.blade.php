@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Lembar Saham</label>
-                    <input type="number" class="form-control" name="lembar_saham_perdana" required>
+                    <input type="text" class="form-control" name="lembar_saham_perdana" required>
                     <small style="color: red">* Tidak Boleh Kosong</small>
                 </div>
                 {{--<div class="form-group">--}}

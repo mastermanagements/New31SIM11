@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Lembar Saham</label>
-                    <input type="number" class="form-control" name="jum_saham" required>
+                    <input type="text" class="form-control" name="jum_saham" required>
                     <small style="color: red">* Tidak Boleh Kosong</small>
                 </div>
             </div>

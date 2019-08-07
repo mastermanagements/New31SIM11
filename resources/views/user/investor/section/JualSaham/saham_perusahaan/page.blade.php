@@ -2,7 +2,7 @@
     <div class="col-md-12">
             <!-- /.box-header -->
             <div class="box-body" style="">
-                    <button class="btn btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#modal-jual-saham-perusahaan"> <i class="fa fa-plus"></i> Tambah Saham Yang akan dijual</button>
+                    <button class="btn btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#modal-jual-saham-perusahaan"> <i class="fa fa-plus"></i> Tambah Persentase Saham Yang akan dijual</button>
 
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
@@ -24,7 +24,7 @@
                                 <form action="{{ url('hapus-jual-saham-perusahaan/'.$value->id) }}" method="post">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="_method" value="put">
-                                    <button class="btn btn-warning" onclick="edit_jual_saham_perusahaan('{{ $value->id }}')">ubah</button>
+                                    <button type="button" class="btn btn-warning" onclick="edit_jual_saham_perusahaan('{{ $value->id }}')">ubah</button>
                                     <button type="submit" value="" class="btn btn-danger" onclick="return confirm('apakah anda akan menghapus data ini ...?')">hapus</button>
                                 </form>
 
