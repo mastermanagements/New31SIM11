@@ -1754,6 +1754,10 @@ Route::post('update-jual-saham-perusahaan','Investor\JualSahamPersahaan@update')
 Route::put('hapus-jual-saham-perusahaan/{id}','Investor\JualSahamPersahaan@delete');
 
 
+Route::get('saham-investor','Investor\JualSahamInvestor@index');
+
+Route::post('store-jual-saham-investor','Investor\JualSahamInvestor@store');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

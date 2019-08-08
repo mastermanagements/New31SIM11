@@ -20,7 +20,7 @@
                             <option>Periode Investasi Masih Kosong</option>
                         @else
                             @foreach($periode_inves as $value)
-                                <option value="{{ $value->id }}" @if($value->dataInvetasi->sum('jumlah_saham')==$value->saham_real->jum_saham)  @endif> {{ str_limit($value->nm_periode,40) }}</option>
+                                <option value="{{ $value->id }}" @if(!empty($value->saham_real->jum_saham)) @if($value->dataInvetasi->sum('jumlah_saham')==$value->saham_real->jum_saham)  disabled  @endif @endif> {{ str_limit($value->nm_periode,40) }}</option>
                             @endforeach
                         @endif
                     </select>

@@ -16,8 +16,8 @@ class CreateISahamPerdana extends Migration
         Schema::create('i_saham_perdana', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_periode_invest')->unsigned();
-            $table->integer('lembar_saham_perdana');
-            $table->integer('nilai_saham');
+            $table->decimal('lembar_saham_perdana',12,2);
+            $table->decimal('nilai_saham',12,2);
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();

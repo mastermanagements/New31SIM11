@@ -12,8 +12,9 @@ class JualSahamPerusahaan extends Model
     protected $fillable= [
         'id_periode_invest',
         'jumlah_persen_saham',
-        'id_perusahaan',
+        'jumlah_saham_terbit',
         'id_karyawan',
+        'id_perusahaan',
     ];
 
     public function periode_invest(){

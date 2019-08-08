@@ -48,17 +48,23 @@ class JualSahamPersahaan extends Controller
             "id_periode_invest" => "required",
             "jumlah_persen_saham" => "required"
         ]);
+        $data_periode_lalu = SR::all()->where('id_perusahaan', $this->id_perusahaan)->whereNotIn('id_periode_saham', $req->id_periode_invest)->last();
+
+        if(empty($data_periode_lalu)){
+            $jumlah_persanSaham = 0;
+        }else{
+            $jumlah_persanSaham = $data_periode_lalu->jum_saham/100*$req->jumlah_persen_saham;
+        }
 
         $data_req = $req->except(['id', '_token']);
         $model = JSM::updateOrCreate(
             ['id_periode_invest'=>$data_req['id_periode_invest'], 'id_perusahaan'=>$this->id_perusahaan,'id_karyawan'=>$this->id_karyawan],
-            ['jumlah_persen_saham'=>$data_req['jumlah_persen_saham']]
+            ['jumlah_persen_saham'=>$data_req['jumlah_persen_saham'],'jumlah_saham_terbit'=>$jumlah_persanSaham]
         );
         if($model->save()){
-            $data_periode_lalu = SR::all()->where('id_perusahaan', $this->id_perusahaan)->whereNotIn('id_periode_saham', $req->id_periode_invest)->last();
-            $modelSr = SR::updateOrCreate(
+           $modelSr = SR::updateOrCreate(
                 ['id_periode_saham'=>$req->id_periode_invest, 'id_perusahaan'=>$this->id_perusahaan, 'id_karyawan'=>$this->id_karyawan],
-                ['jum_saham'=>$data_periode_lalu->jum_saham+$req->jumlah_persen_saham, 'satuan'=>'lembar']
+                ['jum_saham'=>$data_periode_lalu->jum_saham+$jumlah_persanSaham, 'satuan'=>'lembar']
             );
             $modelSr->save();
             return redirect('Jual-Saham')->with('message_success','Anda telah menambahkan daftar persentasi saham yang akan dijual');
@@ -85,11 +91,20 @@ class JualSahamPersahaan extends Controller
         $model = JSM::find($req->id);
         $model->id_periode_invest =  $req->id_periode_invest;
         $model->jumlah_persen_saham =  $req->jumlah_persen_saham;
+
+        $data_periode_lalu = SR::all()->where('id_perusahaan', $this->id_perusahaan)->whereNotIn('id_periode_saham', $req->id_periode_invest)->last();
+
+        if(empty($data_periode_lalu)){
+            $jumlah_persanSaham = 0;
+        }else{
+            $jumlah_persanSaham = $data_periode_lalu->jum_saham/100*$req->jumlah_persen_saham;
+        }
+
+
         if($model->save()){
-            $data_periode_lalu = SR::all()->where('id_perusahaan', $this->id_perusahaan)->whereNotIn('id_periode_saham', $req->id_periode_invest)->last();
             $modelSr = SR::updateOrCreate(
                 ['id_periode_saham'=>$req->id_periode_invest, 'id_perusahaan'=>$this->id_perusahaan, 'id_karyawan'=>$this->id_karyawan],
-                ['jum_saham'=>$data_periode_lalu->jum_saham+$req->jumlah_persen_saham, 'satuan'=>'lembar']
+                ['jum_saham'=>$data_periode_lalu->jum_saham+$jumlah_persanSaham, 'satuan'=>'lembar']
             );
             $modelSr->save();
             return redirect('Jual-Saham')->with('message_success','Anda telah mengubah daftar persentasi saham yang akan dijual');
@@ -98,7 +113,12 @@ class JualSahamPersahaan extends Controller
         }
     }
 
-    public function detele(Request $req, $id){
-        dd($req->all());
+    public function delete(Request $req, $id){
+        $model = JSM::find($id);
+        if($model->delete()){
+            return redirect('Jual-Saham')->with('message_success','Anda telah menghapus daftar persentasi saham yang akan dijual');
+        }else{
+            return redirect('Jual-Saham')->with('message_fail','Maaf, persentase saham yang akan dijual tidak dapat dihapus');
+        }
     }
 }

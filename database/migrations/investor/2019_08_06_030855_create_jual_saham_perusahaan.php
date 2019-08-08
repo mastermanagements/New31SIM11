@@ -16,7 +16,8 @@ class CreateJualSahamPerusahaan extends Migration
         Schema::create('i_jual_saham_perusahaan', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_periode_invest')->unsigned();
-            $table->integer('jumlah_persen_saham');
+            $table->decimal('jumlah_persen_saham',12,2);
+            $table->decimal('jumlah_saham_terbit',12,2);
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();

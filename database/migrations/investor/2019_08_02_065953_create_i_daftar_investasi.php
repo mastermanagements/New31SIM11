@@ -19,8 +19,8 @@ class CreateIDaftarInvestasi extends Migration
             $table->integer('id_periode_invest')->unsigned();
             $table->integer('id_investor')->unsigned();
             $table->integer('id_bentuk_invest')->unsigned();
-            $table->integer('jumlah_saham');
-            $table->integer('jumlah_investasi');
+            $table->decimal('jumlah_saham',12,2);
+            $table->decimal('jumlah_investasi',12,2);
             $table->string('ket')->nullable();
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();

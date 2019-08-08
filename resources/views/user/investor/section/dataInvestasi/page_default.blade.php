@@ -52,7 +52,7 @@
                                     <th>Satuan</th>
                                     <th>Bentuk Investasi</th>
                                     <th>Persentase</th>
-                                     <th></th>
+                                     <th>Keterangan</th>
                                      <th></th>
                                 </tr>
                                 </thead>
@@ -61,21 +61,21 @@
                                     @foreach($data_investasi as $value)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <th>{{ date('d-m-Y', strtotime($value->tgl_invest)) }} </th>
-                                            <th>{{ $value->periode_invest->nm_periode }}</th>
-                                            <th>{{ $value->investor->nm_investor }}</th>
-                                            <th>{{ $value->jumlah_investasi }}</th>
-                                            <th>{{ $value->jumlah_saham }}</th>
-                                            <th>Lembar</th>
-                                            <th>{{ $value->bentuk_investasi->bentuk_investasi }}</th>
-                                            <th >{{ $value->persentase }}</th>
-                                            <th></th>
+                                            <td>{{ date('d-m-Y', strtotime($value->tgl_invest)) }} </td>
+                                            <td>{{ $value->periode_invest->nm_periode }}</td>
+                                            <td>{{ $value->investor->nm_investor }}</td>
+                                            <td>{{ number_format($value->jumlah_investasi,2,',','.') }}</td>
+                                            <td>{{ number_format($value->jumlah_saham,2,',','.') }}</td>
+                                            <td>Lembar</td>
+                                            <td>{{ $value->bentuk_investasi->bentuk_investasi }}</td>
+                                            <td >{{ $value->persentase }}</td>
+                                            <td>{{ $value->ket }}</td>
                                             <td>
                                                 <form action="{{ url('hapus-bentuk-investasi/'.$value->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="_method" value="put">
-                                                    <button type="button" class="btn btn-warning" id="tomboh-ubah" onclick="update('{{ $value->id }}')" >Ubah</button>
-                                                    <button class="btn btn-danger" type="submit" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>
+                                                    <button type="button" class="btn btn-xs btn-warning" style="padding: 7px; margin-bottom: 5px" id="tomboh-ubah" onclick="update('{{ $value->id }}')" ><i class="fa fa-pencil"></i></button>
+                                                    <button class="btn btn-xs btn-danger" type="submit" style="padding: 6px" onclick="return confirm('Apakah anda akan menghapus data ini...?')"><i class="fa fa-eraser"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

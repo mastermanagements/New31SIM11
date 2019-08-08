@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateISahamReal extends Migration
+class CreateIInvestorJualSaham extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateISahamReal extends Migration
      */
     public function up()
     {
-        Schema::create('i_saham_real', function (Blueprint $table) {
+        Schema::create('i_investor_jual_saham', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_periode_saham')->unsigned();
-            $table->decimal('jum_saham',12,2);
-            $table->string('satuan');
-            $table->enum('status',['aktif','non aktif'])->default('non aktif');
+            $table->date('tgl_jual_s');
+            $table->integer('id_periode_invest')->unsigned();
+            $table->integer('id_investor_penjual')->unsigned();
+            $table->decimal('lembar_saham_penjual',12,2);
+            $table->decimal('jumlah_dijual',12,2);
+            $table->integer('id_investor_pembeli')->unsigned();
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
@@ -32,6 +34,6 @@ class CreateISahamReal extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('i_saham_real');
+        Schema::dropIfExists('i_investor_jual_saham');
     }
 }

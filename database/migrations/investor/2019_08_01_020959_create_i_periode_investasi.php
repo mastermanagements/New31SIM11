@@ -18,7 +18,7 @@ class CreateIPeriodeInvestasi extends Migration
             $table->string('periode_ke');
             $table->string('nm_periode');
             $table->integer('vesting_periode');
-            $table->integer('nilai_valuasi');
+            $table->decimal('nilai_valuasi',12,2);
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();

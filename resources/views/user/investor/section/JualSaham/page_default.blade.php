@@ -23,7 +23,7 @@
                         <ul class="nav nav-tabs pull-right">
                             <li @if(Session::get('menu-jual-saham')=="saham-perusahaan") class="active" @endif ><a href="{{ url('saham-perusahaan') }}">Saham Perusahaan</a></li>
                             <li @if(Session::get('menu-jual-saham')=="saham-investor") class="active"  @endif><a href="{{ url('saham-investor') }}" >Saham Investor</a></li>
-                             <li class="pull-left header"><i class="fa fa-th"></i> Saham </li>
+                             <li class="pull-left header"><i class="fa fa-th"></i>Jual Saham </li>
                         </ul>
                         <div class="tab-content">
                             @if(Session::get('menu-jual-saham')=="saham-investor")
@@ -61,9 +61,7 @@
 
         $('#datepicker').datepicker({
             autoclose: true,
-            format: 'yyyy',
-            viewMode: "years",
-            minViewMode: "years"
+            format: 'dd-mm-yyyy',
         });
 
         $(function () {

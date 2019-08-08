@@ -9,7 +9,8 @@
                     <tr>
                         <th>No.</th>
                         <th>Periode</th>
-                        <th>Saham yang Dijual</th>
+                        <th>Jual Persen Saham</th>
+                        <th>Jumlah Saham Terbit</th>
                        <th>Aksi</th>
                     </tr>
                     </thead>
@@ -20,6 +21,7 @@
                             <td>{{ $i++ }}</td>
                             <td>{{ $value->periode_invest->periode_ke }}.{{ $value->periode_invest->nm_periode }} </td>
                             <td>{{ $value->jumlah_persen_saham }}</td>
+                            <td>{{ $value->jumlah_saham_terbit }}</td>
                             <td>
                                 <form action="{{ url('hapus-jual-saham-perusahaan/'.$value->id) }}" method="post">
                                     {{ csrf_field() }}
