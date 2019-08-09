@@ -83,6 +83,25 @@
           });
         }
 
+        edit_jual_saham_investor = function (id) {
+            $.ajax({
+                url: "{{ url('edit-jual-saham-investor') }}/"+id,
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    $('[name="tgl_jual_s"]').val(result.tgl_jual_s);
+                    $('[name="id_periode_invest"]').val(result.id_periode_invest).trigger('change');
+                    $('[name="id_investor_penjual"]').val(result.id_investor_penjual).trigger('change');
+                    $('[name="jumlah_dijual"]').val(result.jumlah_dijual);
+                    $('[name="id_investor_pembeli"]').val(result.id_investor_pembeli).trigger('change');
+                    $('[name="id_bentuk_invest"]').val(result.id_bentuk_invest).trigger('change');
+                    $('[name="id"]').val(result.id);
+                    $('#formulir_inves').attr('action', '{{ url('update-jual-saham-invest') }}');
+                    $('#modal-jual-saham-investor').modal('show');
+                }
+            });
+        }
+
         edit_saham_real=function (id) {
           $.ajax({
               url: "{{ url('edit-saham-real') }}/"+id,

@@ -6,7 +6,7 @@
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Formulir Jual Saham Investor</h4>
             </div>
-            <form action="{{ url('store-jual-saham-investor') }}" method="post" enctype="multipart/form-data" id="formulirs">
+            <form action="{{ url('store-jual-saham-investor') }}" method="post" enctype="multipart/form-data" id="formulir_inves">
             <div class="modal-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tanggal Jual</label>
@@ -41,11 +41,6 @@
                     <small style="color: red">* Tidak Boleh Kosong</small>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Lembar Saham Penjual</label>
-                    <input type="number" class="form-control" name="lembar_saham_penjual" required>
-                    <small style="color: red">* Tidak Boleh Kosong</small>
-                </div>
-                <div class="form-group">
                     <label for="exampleInputEmail1">Jumlah dijual</label>
                     <input type="number" class="form-control" name="jumlah_dijual" required>
                     <small style="color: red">* Tidak Boleh Kosong</small>
@@ -63,6 +58,19 @@
                         @endif
                     </select>
                     <small style="color: red">* Tidak Boleh Kosong</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Bentuk Investasi</label>
+                    <select class="form-control select2" style="width: 100%;" name="id_bentuk_invest" required>
+                        @if(empty($bentuk_investor))
+                            <option>Bentuk Investasi</option>
+                        @else
+                            @foreach($bentuk_investor as $value)
+                                <option value="{{ $value->id }}" >{{ $value->bentuk_investasi }}</option>
+                            @endforeach
+                        @endif
+                    </select>
+                    <small style="color: red" >*Tidak boleh Kosong</small>
                 </div>
             </div>
             <div class="modal-footer">

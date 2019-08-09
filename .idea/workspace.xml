@@ -2,24 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/JualSahamInvestor.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Investor/JualSahamInvestor.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/investor/2019_08_08_071334_create_i_investor_jual_saham.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Traits/ProsesDaftarInvestasi.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/investor/JualSahamPersahaan.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/JualSahamPersahaan.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Investor/JualSahamPerusahaan.php" afterPath="$PROJECT_DIR$/app/Model/Investor/JualSahamPerusahaan.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/investor/2019_08_01_020959_create_i_periode_investasi.php" afterPath="$PROJECT_DIR$/database/migrations/investor/2019_08_01_020959_create_i_periode_investasi.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/investor/2019_08_01_055850_create_i_saham_perdana.php" afterPath="$PROJECT_DIR$/database/migrations/investor/2019_08_01_055850_create_i_saham_perdana.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/investor/2019_08_01_063240_create_i_saham_real.php" afterPath="$PROJECT_DIR$/database/migrations/investor/2019_08_01_063240_create_i_saham_real.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/investor/2019_08_02_065953_create_i_daftar_investasi.php" afterPath="$PROJECT_DIR$/database/migrations/investor/2019_08_02_065953_create_i_daftar_investasi.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/investor/2019_08_06_030855_create_jual_saham_perusahaan.php" afterPath="$PROJECT_DIR$/database/migrations/investor/2019_08_06_030855_create_jual_saham_perusahaan.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestasi.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestasi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/investor/JualSahamInvestor.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/JualSahamInvestor.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Investasi/I_data_investor.php" afterPath="$PROJECT_DIR$/app/Investasi/I_data_investor.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Investor/JualSahamInvestor.php" afterPath="$PROJECT_DIR$/app/Model/Investor/JualSahamInvestor.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/page_default.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/modal_saham_investor.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/modal_saham_investor.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/page.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_perusahaan/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_perusahaan/page.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/dataInvestasi/modal/modal.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/dataInvestasi/modal/modal.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/dataInvestasi/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/dataInvestasi/page_default.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -50,12 +42,6 @@
         <item name="" type="eadb38e5:DatabaseStructure$Root" />
         <item name="master_management@localhost" type="e3449647:DbNodeDescriptor" />
         <item name="master_management" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="master_management@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="master_management" type="e3449647:DbNodeDescriptor" />
-        <item name="i_investor_jual_saham" type="e3449647:DbNodeDescriptor" />
       </path>
     </expand>
     <select />
@@ -1412,8 +1398,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="1758" column="73" lean-forward="false" selection-start-line="1758" selection-start-column="73" selection-end-line="1758" selection-end-column="73" />
+            <state relative-caret-position="413">
+              <caret line="1764" column="11" lean-forward="false" selection-start-line="1764" selection-start-column="11" selection-end-line="1764" selection-end-column="11" />
               <folding>
                 <element signature="e#43068#43120#0#PHP" expanded="false" />
               </folding>
@@ -1421,21 +1407,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page_default.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/page_default.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JualSahamInvestor.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JualSahamInvestor.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/JualSahamInvestor.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="54" column="22" lean-forward="false" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+            <state relative-caret-position="277">
+              <caret line="171" column="7" lean-forward="false" selection-start-line="171" selection-start-column="7" selection-end-line="171" selection-end-column="7" />
               <folding>
                 <element signature="e#49#77#0#PHP" expanded="true" />
               </folding>
@@ -1443,11 +1419,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JualSahamInvestor.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Model/Investor/JualSahamInvestor.php">
+      <file leaf-file-name="i_saham_real" pinned="false" current-in-tab="true">
+        <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.i_saham_real">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProsesDaftarInvestasi.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Traits/ProsesDaftarInvestasi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+            <state relative-caret-position="462">
+              <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+              <folding>
+                <element signature="e#116#161#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/page.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="36" column="91" lean-forward="false" selection-start-line="36" selection-start-column="91" selection-end-line="36" selection-end-column="115" />
               <folding />
             </state>
           </provider>
@@ -1544,13 +1541,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/hrd/2019_07_19_031156_create_h_potongan_absen.php" />
         <option value="$PROJECT_DIR$/app/Model/Penggajian/G_slip_gaji.php" />
         <option value="$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php" />
         <option value="$PROJECT_DIR$/resources/views/user/penggajian/section/daftar_gaji/slipGaji/page_create.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_07_31_014226_create_i_data_investor.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/app/Investasi/I_data_investor.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/dataKaryawan/page_create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/dataKaryawan/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/dataKaryawan/modal/modal.blade.php" />
@@ -1577,7 +1572,6 @@
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/saham/saham_real/modal_saham_real.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/saham/saham_perdana/modal_saham_perdana.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_perusahaan/modal_saham_perusahaan.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestasi.php" />
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_06_030855_create_jual_saham_perusahaan.php" />
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_02_065953_create_i_daftar_investasi.php" />
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_01_063240_create_i_saham_real.php" />
@@ -1588,12 +1582,15 @@
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/dataInvestasi/modal/modal.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/dataInvestasi/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/investor/JualSahamPersahaan.php" />
+        <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_08_071334_create_i_investor_jual_saham.php" />
+        <option value="$PROJECT_DIR$/app/Investasi/I_data_investor.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestasi.php" />
+        <option value="$PROJECT_DIR$/app/Model/Investor/JualSahamInvestor.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/page.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/modal_saham_investor.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/page_default.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/modal_saham_investor.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_08_071334_create_i_investor_jual_saham.php" />
-        <option value="$PROJECT_DIR$/app/Model/Investor/JualSahamInvestor.php" />
+        <option value="$PROJECT_DIR$/app/Traits/ProsesDaftarInvestasi.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/investor/JualSahamInvestor.php" />
       </list>
     </option>
@@ -1736,7 +1733,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -1758,18 +1754,26 @@
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Investasi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2001,14 +2005,8 @@
       <workItem from="1565051921679" duration="3027000" />
       <workItem from="1565057218730" duration="11977000" />
       <workItem from="1565138460246" duration="10099000" />
-      <workItem from="1565224455407" duration="13354000" />
-    </task>
-    <task id="LOCAL-00066" summary="HRD&#10;- Interface Kontak Kerja Fix">
-      <created>1559027212408</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1559027212408</updated>
+      <workItem from="1565224455407" duration="13485000" />
+      <workItem from="1565310603734" duration="17001000" />
     </task>
     <task id="LOCAL-00067" summary="HRD&#10;- Interface Jenis Kontrak Kerja Dan Crud Jenis Kontrak Kerja FIX,&#10;- Crud Kontrak Kerja Fix">
       <created>1559110252796</created>
@@ -2346,11 +2344,18 @@
       <option name="project" value="LOCAL" />
       <updated>1565165614673</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="Investor&#10;   - Revisi Persentasi Saham kompatible dengan daftar investasi&#10;   - penambahan penjualan saham perusahaan dan investor">
+      <created>1565254070198</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1565254070198</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1271038000" />
+    <option name="totallyTimeSpent" value="1288170000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2363,16 +2368,16 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23373677" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2375189" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21710527" sideWeight="0.50907713" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21028744" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21028744" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31907895" sideWeight="0.49092284" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38729197" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31907895" sideWeight="0.49092284" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20726173" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2399,7 +2404,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21104388" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21104388" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -2447,7 +2452,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Penggajian&#10;   - Refisi CF Fix,&#10;   - SUb CF Fix,&#10;   - Pokok CFF" />
     <MESSAGE value="Penggajian&#10;   - Refisi Pokok CCF Fix,&#10;   - Item CCF Fix,&#10;   - Content CF sedikit lagi selesai" />
     <MESSAGE value="Penggajian&#10;   - Revisi CCF,&#10;   - Design Interface Skor CCF" />
     <MESSAGE value="Penggajian&#10;   - Design Interface Skor CCF" />
@@ -2472,20 +2476,14 @@
     <MESSAGE value="Investor&#10;   - Crud Real saham &#10;   - Perancangan Persentase" />
     <MESSAGE value="Investor&#10;   - Revisi Persentasi Saham&#10;   - Perusahaan Menjual ke investor fix" />
     <MESSAGE value="Investor&#10;   - Revisi Persentasi Saham 2&#10;   - Perusahaan Menjual ke investor 2 fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Investor&#10;   - Revisi Persentasi Saham 2&#10;   - Perusahaan Menjual ke investor 2 fix" />
+    <MESSAGE value="Investor&#10;   - Revisi Persentasi Saham kompatible dengan daftar investasi&#10;   - penambahan penjualan saham perusahaan dan investor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Investor&#10;   - Revisi Persentasi Saham kompatible dengan daftar investasi&#10;   - penambahan penjualan saham perusahaan dan investor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/saham/modal/modal_saham_perdana.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="47" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestor.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2518,13 +2516,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="58" column="31" lean-forward="false" selection-start-line="57" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Investasi/I_data_investor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -2625,13 +2616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.i_saham_real">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.i_saham_perdana">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -2653,28 +2637,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.i_daftar_investasi">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestasi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="76" column="26" lean-forward="false" selection-start-line="76" selection-start-column="26" selection-end-line="76" selection-end-column="26" />
-          <folding>
-            <element signature="e#49#77#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/investor/2019_08_06_030855_create_jual_saham_perusahaan.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
           <caret line="19" column="48" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2682,7 +2648,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="22" column="50" lean-forward="false" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2690,7 +2655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="20" column="56" lean-forward="true" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2698,7 +2662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2706,7 +2669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="21" column="42" lean-forward="true" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2714,7 +2676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2722,7 +2683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2761,17 +2721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
           <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding>
-            <marker date="1565227772229" expanded="true" signature="832:1949" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dataInvestasi/modal/modal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
-          <caret line="18" column="11" lean-forward="false" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2779,26 +2728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
           <caret line="73" column="76" lean-forward="true" selection-start-line="73" selection-start-column="76" selection-end-line="73" selection-end-column="76" />
-          <folding>
-            <element signature="e#4361#4401#0#HTML" expanded="false" />
-            <element signature="e#4599#4619#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/page.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-399">
-          <caret line="4" column="111" lean-forward="true" selection-start-line="4" selection-start-column="111" selection-end-line="4" selection-end-column="136" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Investor/DaftarInvestasi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="13" column="26" lean-forward="false" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2810,34 +2739,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/investor/2019_08_08_071334_create_i_investor_jual_saham.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="25" column="33" lean-forward="false" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Investor/DaftarInvestasi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Investasi/I_data_investor.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="371">
-          <caret line="1758" column="73" lean-forward="false" selection-start-line="1758" selection-start-column="73" selection-end-line="1758" selection-end-column="73" />
+          <caret line="33" column="79" lean-forward="false" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestasi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="55" column="11" lean-forward="false" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
           <folding>
-            <element signature="e#43068#43120#0#PHP" expanded="false" />
+            <element signature="e#49#77#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/modal_saham_investor.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dataInvestasi/modal/modal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="44" column="98" lean-forward="false" selection-start-line="44" selection-start-column="98" selection-end-line="44" selection-end-column="98" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#small#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#small#0;n#div#4;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#div#5;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#small#0;n#div#5;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="22" />
+        <state relative-caret-position="378">
+          <caret line="58" column="22" lean-forward="false" selection-start-line="46" selection-start-column="16" selection-end-line="58" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -2849,29 +2787,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/investor/2019_08_08_071334_create_i_investor_jual_saham.php">
+    <entry file="file://$PROJECT_DIR$/app/Model/Investor/JualSahamInvestor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="25" column="33" lean-forward="false" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        <state relative-caret-position="350">
+          <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Investor/JualSahamInvestor.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/page.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        <state relative-caret-position="203">
+          <caret line="36" column="91" lean-forward="false" selection-start-line="36" selection-start-column="91" selection-end-line="36" selection-end-column="115" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="98" column="65" lean-forward="true" selection-start-line="98" selection-start-column="65" selection-end-line="98" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_investor/modal_saham_investor.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="114" lean-forward="false" selection-start-line="8" selection-start-column="114" selection-end-line="8" selection-end-column="128" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="1764" column="11" lean-forward="false" selection-start-line="1764" selection-start-column="11" selection-end-line="1764" selection-end-column="11" />
+          <folding>
+            <element signature="e#43068#43120#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Traits/ProsesDaftarInvestasi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+          <folding>
+            <element signature="e#116#161#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.i_daftar_investasi">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/JualSahamInvestor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="54" column="22" lean-forward="false" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+        <state relative-caret-position="277">
+          <caret line="171" column="7" lean-forward="false" selection-start-line="171" selection-start-column="7" selection-end-line="171" selection-end-column="7" />
           <folding>
             <element signature="e#49#77#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.i_saham_real">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>

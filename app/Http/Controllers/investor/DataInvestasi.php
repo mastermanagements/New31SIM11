@@ -9,6 +9,7 @@ use App\Model\Investor\PeriodeInvestasi as PI;
 use App\Investasi\I_data_investor as investor;
 use App\Model\Investor\BentukInvestor as BI;
 use App\Model\Investor\DaftarInvestasi as DI;
+use App\Traits\ProsesDaftarInvestasi as PDI;
 
 class DataInvestasi extends Controller
 {
@@ -44,8 +45,8 @@ class DataInvestasi extends Controller
         return view('user.investor.section.dataInvestasi.page_default', $data);
     }
 
-    public function store(Request $req){
 
+    public function store(Request $req){
         $this->validate($req,[
              "tgl_invest" => "required",
               "id_periode_invest" => "required",
@@ -53,32 +54,8 @@ class DataInvestasi extends Controller
               "jumlah_saham" => "required",
               "id_bentuk_invest" => "required",
         ]);
-
-        $cek_data_investor_sdh_ada = DI::where('id_investor', $req->id_investor)->orderBy('id','asc')->first();
-        $model = new DI();
-        $model->tgl_invest = date('Y-m-d', strtotime($req->tgl_invest));
-        $model->id_periode_invest = $req->id_periode_invest;
-        $model->id_investor = $req->id_investor;
-        $model->id_bentuk_invest = $req->id_bentuk_invest;
-        $model->jumlah_saham = $req->jumlah_saham;
-
-        $model_periode =  PI::find($req->id_periode_invest)->nilai_valuasi /PI::find($req->id_periode_invest)->saham_real->jum_saham;
-
-        if(!empty($cek_data_investor_sdh_ada)){
-            $ls = PI::find($cek_data_investor_sdh_ada->id_periode_invest);
-            $nilai_perlembar = $ls->nilai_valuasi/$ls->saham_real->jum_saham;
-            $jumlah_investasi = $nilai_perlembar*$req->jumlah_saham;
-        }else{
-            $jumlah_investasi = $model_periode * $model->jumlah_saham;
-        }
-
-        $model->jumlah_investasi =$jumlah_investasi;
-        $model->persentase =$model->jumlah_saham/PI::find($req->id_periode_invest)->saham_real->jum_saham * 100;
-        $model->ket= $req->ket;
-        $model->id_perusahaan = $this->id_perusahaan;
-        $model->id_karyawan = $this->id_karyawan;
-
-        if($model->save()){
+        $trait_data_investasi = new PDI();
+        if($trait_data_investasi->storeInvestasi($req, $this->id_con)){
             return redirect('Data-Investasi')->with('message_success','Anda telah menambahkan data investor');
         }else{
             return redirect('Data-Investasi')->with('message_fail','Maaf, data investor tidak tersimpan');
@@ -101,34 +78,8 @@ class DataInvestasi extends Controller
             "jumlah_saham" => "required",
             "id_bentuk_invest" => "required",
         ]);
-
-        $cek_data_investor_sdh_ada = DI::where('id_investor', $req->id_investor)->orderBy('id','asc')->first();
-
-
-        $model = DI::find($req->id);
-        $model->tgl_invest = date('Y-m-d', strtotime($req->tgl_invest));
-        $model->id_periode_invest = $req->id_periode_invest;
-        $model->id_investor = $req->id_investor;
-        $model->id_bentuk_invest = $req->id_bentuk_invest;
-        $model->jumlah_saham = $req->jumlah_saham;
-
-        $model_periode = PI::find($req->id_periode_invest)->nilai_valuasi /PI::find($req->id_periode_invest)->saham_real->jum_saham;
-
-        if(!empty($cek_data_investor_sdh_ada)){
-            $ls = PI::find($cek_data_investor_sdh_ada->id_periode_invest);
-            $nilai_perlembar = $ls->nilai_valuasi/$ls->saham_real->jum_saham;
-            $jumlah_investasi = $nilai_perlembar*$req->jumlah_saham;
-        }else{
-            $jumlah_investasi = $model_periode * $model->jumlah_saham;
-        }
-
-        $model->jumlah_investasi =$jumlah_investasi;
-        $model->persentase =$model->jumlah_saham/PI::find($req->id_periode_invest)->saham_real->jum_saham * 100;
-        $model->ket = $req->ket;
-        $model->id_perusahaan = $this->id_perusahaan;
-        $model->id_karyawan = $this->id_karyawan;
-
-        if($model->save()){
+        $trait_data_investasi = new PDI();
+        if($trait_data_investasi->update($req, $this->id_con)){
             return redirect('Data-Investasi')->with('message_success','Anda telah mengubah data investor');
         }else{
             return redirect('Data-Investasi')->with('message_fail','Maaf, data investor tidak terubah');
@@ -137,12 +88,13 @@ class DataInvestasi extends Controller
 
     public function delete(Request $req, $id){
         $model = DI::find($id);
-
         if($model->delete()){
             return redirect('Data-Investasi')->with('message_success','Anda telah menghapus data investor');
         }else{
             return redirect('Data-Investasi')->with('message_fail','Maaf, data investor tidak terhapus');
         }
     }
+
+
 
 }

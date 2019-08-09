@@ -1758,6 +1758,12 @@ Route::get('saham-investor','Investor\JualSahamInvestor@index');
 
 Route::post('store-jual-saham-investor','Investor\JualSahamInvestor@store');
 
+Route::put('delete-jual-saham-investor/{id}','Investor\JualSahamInvestor@delete');
+
+Route::get('edit-jual-saham-investor/{id}','Investor\JualSahamInvestor@edit');
+
+Route::post('update-jual-saham-invest','Investor\JualSahamInvestor@update');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

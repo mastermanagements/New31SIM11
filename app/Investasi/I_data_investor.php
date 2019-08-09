@@ -29,4 +29,8 @@ class I_data_investor extends Model
         'id_perusahaan',
         'id_karyawan',
     ];
+
+    public function dataInvestasi(){
+        return $this->hasMany('App\Model\Investor\DaftarInvestasi','id_investor');
+    }
 }

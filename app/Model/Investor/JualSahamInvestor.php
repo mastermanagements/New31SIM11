@@ -16,7 +16,19 @@ class JualSahamInvestor extends Model
         'lembar_saham_penjual',
         'jumlah_dijual',
         'id_investor_pembeli',
+        'sisa_saham_dijual',
         'id_perusahaan',
         'id_karyawan',
     ];
+
+    public function periode_invest(){
+        return $this->belongsTo('App\Model\Investor\PeriodeInvestasi','id_periode_invest');
+    }
+
+    public function investor_penjual(){
+        return $this->belongsTo('App\Investasi\I_data_investor','id_investor_penjual');
+    }
+    public function investor_pembeli(){
+        return $this->belongsTo('App\Investasi\I_data_investor','id_investor_pembeli');
+    }
 }
