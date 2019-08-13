@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tahun dividen</label>
-                    <input type="text" class="form-control" name="thn" id="datepicker" required>
+                    <input type="text" class="form-control" name="thn" id="datepicker3" value="{{ $thn_proses }}" required>
                     <small style="color: red">* Tidak Boleh Kosong</small>
                 </div>
                 <div class="form-group">

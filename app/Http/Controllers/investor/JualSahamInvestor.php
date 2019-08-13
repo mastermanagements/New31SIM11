@@ -8,7 +8,7 @@ use App\Model\Investor\PeriodeInvestasi as PI;
 use Session;
 use App\Investasi\I_data_investor as idi;
 use App\Model\Investor\JualSahamInvestor as JSI;
-use App\Traits\ProsesDaftarInvestasi as PDI;
+use App\Traits\ProsesDaftarInvestasi;
 use App\Model\Investor\BentukInvestor as BI;
 
 class JualSahamInvestor extends Controller
@@ -16,6 +16,8 @@ class JualSahamInvestor extends Controller
     private $id_karyawan;
     private $id_perusahaan;
     private  $id_con;
+    use ProsesDaftarInvestasi;
+
 
     private function makeNewDesignObject($array){
         $newObject = new \stdClass();
@@ -93,6 +95,7 @@ class JualSahamInvestor extends Controller
             'sisa_saham'=>$sisa_saham_penjual,
             'id_bentuk_invest'=>$req->id_bentuk_invest,
             'ket'=>"Dijual",
+            'id'=>"",
         ];
 
         $arrayToObjectBeli = [
@@ -102,13 +105,13 @@ class JualSahamInvestor extends Controller
             'sisa_saham'=>$req->jumlah_dijual,
             'id_bentuk_invest'=>$req->id_bentuk_invest,
             'ket'=>"Dibeli",
+            'id'=>"",
         ];
         $newObjectJual = $this->makeNewDesignObject($arrayToObjectJual);
         $newObjectBeli = $this->makeNewDesignObject($arrayToObjectBeli);
         if($model->save()){
-            $daftarInvestasi=new PDI();
-            $daftarInvestasi->storeInvestasi($newObjectJual, $this->id_con);
-            $daftarInvestasi->storeInvestasi($newObjectBeli, $this->id_con);
+            $this->storeInvestasi($newObjectJual, $this->id_con);
+            $this->storeInvestasi($newObjectBeli, $this->id_con);
             return redirect('saham-investor')->with('message_success','Anda telah menambahkan data saham yang dijual, data ini akan otomatis ditambahkan ke dalam daftar investasi');
         }else{
             return redirect('saham-investor')->with('message_fail','Maaf, data saham yang dijual tidak dapat disimpan');
@@ -147,9 +150,9 @@ class JualSahamInvestor extends Controller
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
 
-        $daftarInvestasi=new PDI();
-        $data_id_jual = $daftarInvestasi->show_data(['id_investor'=>$req->id_investor_penjual,'id_periode_invest'=>$req->id_periode_invest,'id_perusahaan'=>$this->id_perusahaan]);
-        $data_id_beli = $daftarInvestasi->show_data(['id_investor'=>$req->id_investor_pembeli,'id_periode_invest'=>$req->id_periode_invest,'id_perusahaan'=>$this->id_perusahaan]);
+
+        $data_id_jual = $this->show_data(['id_investor'=>$req->id_investor_penjual,'id_periode_invest'=>$req->id_periode_invest,'id_perusahaan'=>$this->id_perusahaan]);
+        $data_id_beli = $this->show_data(['id_investor'=>$req->id_investor_pembeli,'id_periode_invest'=>$req->id_periode_invest,'id_perusahaan'=>$this->id_perusahaan]);
         $arrayToObjectJual = [
             'tgl_jual_s'=>date('Y-m-d', strtotime($req->tgl_jual_s)),
             'id_periode_invest'=>$req->id_periode_invest,
@@ -172,17 +175,16 @@ class JualSahamInvestor extends Controller
         $newObjectJual = $this->makeNewDesignObject($arrayToObjectJual);
         $newObjectBeli = $this->makeNewDesignObject($arrayToObjectBeli);
         if($model->save()){
-            $daftarInvestasi->update($newObjectJual, $this->id_con);
-            $daftarInvestasi->update($newObjectBeli, $this->id_con);
+            $this->update($newObjectJual, $this->id_con);
+            $this->update($newObjectBeli, $this->id_con);
             return redirect('saham-investor')->with('message_success','Anda telah mengubah data saham yang dijual, data ini akan otomatis ditambahkan ke dalam daftar investasi');
         }else{
             return redirect('saham-investor')->with('message_fail','Maaf, data saham yang dijual tidak dapat diubah');
         }
     }
 
-    public function delete(Request $req, $id){
+    public function deletes(Request $req, $id){
         $model = JSI::find($id);
-        $daftarInvestasi = new PDI();
         $arrayJual=[
           'id_investor' =>$model->id_investor_penjual,
           'id_periode_invest'=>$model->id_periode_invest,
@@ -191,8 +193,8 @@ class JualSahamInvestor extends Controller
           'id_investor' =>$model->id_investor_pembeli,
           'id_periode_invest'=>$model->id_periode_invest,
         ];
-        $data_jual=$daftarInvestasi->delete(array_merge($arrayJual,$this->id_con));
-        $data_beli=$daftarInvestasi->delete(array_merge($arrayBeli,$this->id_con));
+        $data_jual=$this->delete(array_merge($arrayJual,$this->id_con));
+        $data_beli=$this->delete(array_merge($arrayBeli,$this->id_con));
         if($model->delete()){
             $data_jual->delete();
             $data_beli->delete();

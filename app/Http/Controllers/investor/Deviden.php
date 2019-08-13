@@ -7,12 +7,14 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Investor\DevidePerbulan as DP;
 use App\Model\Investor\PersenKas as PK;
+use App\Traits\DateYears;
 
 class Deviden extends Controller
 {
     private $id_karyawan;
     private $id_perusahaan;
     private  $id_con;
+    use DateYears;
 
     public function __construct()
     {
@@ -35,10 +37,43 @@ class Deviden extends Controller
 
     public function index(){
         Session::put('menu-dividen','perbulan');
+        $custom_date = $this->costumDate();
         $data = [
-            'data'=>DP::all()->where('id_perusahaan', $this->id_perusahaan)->sortBy('thn_dividen')
+            'data'=>DP::all()->where('thn_dividen',$custom_date->year)->where('id_perusahaan', $this->id_perusahaan)->sortBy('thn_dividen'),
+            'ymd'=>$this->costumDate()
         ];
         return view('user.investor.section.dividen.page_default', $data);
+    }
+
+    public function getDataDP($data){
+        $model = $this->costumDate();
+        if(empty($data)){
+            $tahun = $model->year;
+        }else{
+            $tahun= $data;
+        }
+        $data = DP::all()->where('thn_dividen',$tahun)->where('id_perusahaan', $this->id_perusahaan)->sortBy('thn_dividen');
+        $no = 1;
+        $row = array();
+        foreach ($data as $data_column)
+        {
+            $column = array();
+            $column[] = $no++;
+            $column[] = $data_column->thn_dividen;
+            $column[] = date('M',strtotime($data_column->bln_dividen));
+            $column[] = number_format($data_column->laba_rugi,2,',','.');
+            $column[] = number_format($data_column->alokasi_kas,2,',','.');
+            $column[] = number_format($data_column->net_kas,2,',','.');
+            $column[] = '  <form action="{{ url(\'delete-divine-bulanan/\'. $data_column->id) }}" method="post">
+                                    <input type="hidden" name="_method" value="put">
+                                    <input type="hidden" name="_token" value="\'{{ csrf_token() }}\'">
+                                    <button type="button" class="btn btn-warning" onclick="edit_divide_per_bulan('.$data_column->id.')">ubah</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm(\'apakah anda akan menghapus data ini ... ?\')">hapus</button>
+                            </form>';
+            $row[] = $column;
+        }
+        $data = array('data'=>$row);
+        return response()->json($data);
     }
 
     public function store(Request $req){
@@ -64,7 +99,7 @@ class Deviden extends Controller
         $model->id_karyawan= $this->id_karyawan;
 
         if($model->save()){
-            return redirect('Dividen')->with('message_success','Anda telah menambahkan dividen per bulan');
+            return redirect('Dividen')->with('message_success','Anda telah menambahkan dividen per bulan')->with('yearInput',$model->thn_dividen);
         }else{
             return redirect('Dividen')->with('message_fail','Maaf, dividen perbulan tidak dapat disimpan');
         }
@@ -102,7 +137,7 @@ class Deviden extends Controller
         $model->id_karyawan= $this->id_karyawan;
 
         if($model->save()){
-            return redirect('Dividen')->with('message_success','Anda telah menambahkan dividen per bulan');
+            return redirect('Dividen')->with('message_success','Anda telah menambahkan dividen per bulan')->with('yearInput',$model->thn_dividen);
         }else{
             return redirect('Dividen')->with('message_fail','Maaf, dividen perbulan tidak dapat diubah');
         }

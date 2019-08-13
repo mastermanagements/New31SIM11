@@ -1,10 +1,29 @@
 <div class="row">
     <div class="col-md-12">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Tahun dividen</label>
+            <input type="text" class="form-control" name="thn" id="datepicker" value="{{ $thn_proses }}">
+            <small style="color: darkgray">* Tahun akan disetting otomatis berdasarkan tahun server</small>
+        </div>
+    </div>
+
+    {{--<div class="col-md-12" >--}}
+        {{--<div class="row" >--}}
+            {{--@php($i=1)--}}
+            {{--@foreach($ymd->month->semua_bulan as $key => $value)--}}
+                {{--@php($i++)--}}
+                {{--<div class="col-md-2" style="margin: 2px; margin-left: 0px;margin-right: 0px">--}}
+                    {{--<button class="btn @if($i % 2) btn-success @else btn-danger @endif" style="width: 100%"> {{ $value }}</button>--}}
+                {{--</div>--}}
+            {{--@endforeach--}}
+        {{--</div>--}}
+    {{--</div>--}}
+
+    <div class="col-md-12">
             <!-- /.box-header -->
             <div class="box-body" style="">
-                     <button class="btn btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#modal-divide-perbulan"> <i class="fa fa-plus"></i> Bulan Dividen</button>
-
-                <table id="example1" class="table table-bordered table-striped">
+                <button class="btn btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#modal-divide-perbulan"> <i class="fa fa-plus"></i> Bulan Dividen</button>
+                <table id="example1" class="table table-bordered table-striped tbdividenPerusahaan" style="width: 100%">
                     <thead>
                     <tr>
                         <th>No.</th>

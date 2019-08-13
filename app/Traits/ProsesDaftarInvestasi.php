@@ -10,7 +10,7 @@ namespace App\Traits;
 use App\Model\Investor\DaftarInvestasi as DI;
 use App\Model\Investor\PeriodeInvestasi as PI;
 
-class ProsesDaftarInvestasi
+trait ProsesDaftarInvestasi
 {
 
     public function hitungInvestasi($req)

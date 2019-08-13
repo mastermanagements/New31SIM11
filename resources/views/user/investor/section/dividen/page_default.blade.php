@@ -10,6 +10,11 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
 
+        @if(!empty(Session::get('yearInput')))
+            @php($thn_proses =Session::get('yearInput'))
+        @else
+            @php($thn_proses = $ymd->year)
+        @endif
         <!-- Main content -->
         <section class="content container-fluid">
 
@@ -22,12 +27,12 @@
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs pull-right">
                             <li @if(Session::get('menu-dividen')=="perbulan") class="active" @endif ><a href="{{ url('Dividen') }}">Dividen Per Bulan</a></li>
-                            <li @if(Session::get('menu-dividen')=="saham-real") class="active"  @endif><a href="{{ url('Saham-real') }}" >Divide Investor</a></li>
+                            <li @if(Session::get('menu-dividen')=="investor") class="active"  @endif><a href="{{ url('Dividen-Investor') }}" >Divide Investor</a></li>
                              <li class="pull-left header"><i class="fa fa-th"></i> Dividen </li>
                         </ul>
                         <div class="tab-content">
-                            @if(Session::get('menu-dividen')=="menu-dividen")
-                                <div class="tab-pane  @if(Session::get('menu-dividen')=="saham-perdana") active @endif" id="tab_2-2">
+                            @if(Session::get('menu-dividen')=="investor")
+                                <div class="tab-pane  @if(Session::get('menu-dividen')=="investor") active @endif" id="tab_2-2">
                                    @include('user.investor.section.dividen.dividen_investor.page')
                                 </div>
                             @else
@@ -65,6 +70,55 @@
             viewMode: "years",
             minViewMode: "years"
         });
+        $('#datepicker3').datepicker({
+            autoclose: true,
+            format: 'yyyy',
+            viewMode: "years",
+            minViewMode: "years"
+        });
+
+        $('#datepicker').change(function () {
+            call_data($(this).val());
+        });
+
+        table_divince_perBulan= $('.tbdividenPerusahaan').DataTable({
+            "ajax": '{{ url('getDataDividen') }}/'+"{{ $thn_proses }}",
+            column:[
+                {'data' :'0'},
+                {'data' :'1'},
+                {'data' :'2'},
+                {'data' :'3'},
+                {'data' :'4'},
+                {'data' :'5'},
+            ],
+            rowCallback : function(row, data){
+
+            },
+            filter: false,
+            pagging : true,
+            searching: true,
+            info : true,
+            ordering : true,
+            processing : true,
+            retrieve: true
+        });
+
+        call_data = function (data) {
+            $.ajax({
+                url: '{{ url('getDataDividen') }}/'+data,
+                dataType : 'json',
+                data :{
+                    '_token' : '{{ csrf_token() }}'
+                }
+            }).done(function (result) {
+                table_divince_perBulan.clear().draw();
+                table_divince_perBulan.rows.add(result.data).draw();
+            }).fail(function(jqXHR, textStatus,errorThrown){
+
+            })
+        }
+
+
         $('#datepicker2').datepicker({
             autoclose: true,
             format: 'M',
@@ -75,6 +129,8 @@
         $(function () {
             $('.select2').select2()
         });
+
+
 
         edit_divide_per_bulan=function (id) {
           $.ajax({

@@ -1717,7 +1717,6 @@ Route::get('edit-saham-perdana/{id}','Investor\SahamPerdana@edit');
 
 Route::post('update-saham-perdana','Investor\SahamPerdana@update');
 
-Route::get('Saham-real','Investor\SahamReal@Index');
 
 
 
@@ -1732,6 +1731,7 @@ Route::post('update-daftar-investasi','Investor\DataInvestasi@update');
 Route::put('hapus-bentuk-investasi/{id}','Investor\DataInvestasi@delete');
 
 
+Route::get('Saham-real','Investor\SahamReal@Index');
 
 Route::post('store-saham-real','Investor\SahamReal@store');
 
@@ -1740,6 +1740,8 @@ Route::get('edit-saham-real/{id}','Investor\SahamReal@edit');
 Route::post('update-saham-real','Investor\SahamReal@update');
 
 Route::put('delete-saham-real/{id}','Investor\SahamReal@delete');
+
+Route::put('ubah-status-saham-real/{id}','Investor\SahamReal@updateStatus');
 
 
 
@@ -1758,7 +1760,7 @@ Route::get('saham-investor','Investor\JualSahamInvestor@index');
 
 Route::post('store-jual-saham-investor','Investor\JualSahamInvestor@store');
 
-Route::put('delete-jual-saham-investor/{id}','Investor\JualSahamInvestor@delete');
+Route::put('delete-jual-saham-investor/{id}','Investor\JualSahamInvestor@deletes');
 
 Route::get('edit-jual-saham-investor/{id}','Investor\JualSahamInvestor@edit');
 
@@ -1774,6 +1776,10 @@ Route::post('update-divine-bulanan','Investor\Deviden@update');
 
 Route::put('delete-divine-bulanan/{id}','Investor\Deviden@delete');
 
+Route::get('getDataDividen/{year}','Investor\Deviden@getDataDP');
+
+
+Route::get('Dividen-Investor','Investor\DividenInvestor@index');
 
 
 Route::get('Persen-kas','Investor\PersenKas@index');

@@ -96,6 +96,15 @@ class SahamReal extends Controller
 
     }
 
+    public function updateStatus(Request $req, $id){
+        $data = SR::find($id);
+        $data->status = "aktif";
+        if($data->save()){
+            $updateYgLainJadiNonAktif = SR::where('id','!=',$data->id)->update(['status'=>'non aktif']);
+            return redirect('Saham-real')->with('message_success','Status Aktif Baru Saja diubah');
+        }
+    }
+
     public function delete(Request $req, $id){
         $model = SR::find($id);
         if($model->delete()){
@@ -103,7 +112,7 @@ class SahamReal extends Controller
         }else{
             return redirect('Saham-real')->with('message_fail','Maaf, Saham real tidak dapat dihapus');
         }
-
     }
+
 
 }

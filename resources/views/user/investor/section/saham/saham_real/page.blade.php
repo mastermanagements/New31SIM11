@@ -11,6 +11,7 @@
                         <th>Periode</th>
                          <th>Jumlah Saham Terbit</th>
                         <th>Satuan</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                     </thead>
@@ -22,6 +23,13 @@
                             <td>{{ $value->periode_invest->periode_ke }}.{{ $value->periode_invest->nm_periode }} </td>
                             <td>{{ $value->jum_saham }}</td>
                             <td>Lembar</td>
+                            <td>
+                                <form action="{{ url('ubah-status-saham-real/'. $value->id) }}" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="_method" value="put">
+                                    <button type="submit"  class="btn @if($value->status == "aktif") btn-success @else btn-danger @endif" style="width: 100%">{{ $value->status }}</button>
+                                </form>
+                            </td>
                              <td>
                                  <form action="{{ url('delete-saham-real/'. $value->id) }}" method="post">
                                      <input type="hidden" name="_method" value="put">
