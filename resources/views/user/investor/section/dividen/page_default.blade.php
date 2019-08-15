@@ -55,7 +55,7 @@
         <!-- /.content -->
     </div>
     @include('user.investor.section.dividen.dividen_per_bulan.modal_divide_per_bulan')
-    {{--@include('user.investor.section.saham.saham_real.modal_saham_real')--}}
+    @include('user.investor.section.dividen.dividen_investor.modal_saham_real')
 @stop
 
 @section('plugins')
@@ -148,17 +148,17 @@
           });
         }
 
-        edit_saham_real=function (id) {
+        edit_dividen_investor=function (id) {
           $.ajax({
-              url: "{{ url('edit-saham-real') }}/"+id,
+              url: "{{ url('edit-dividen-investor') }}/"+id,
               dataType: "json",
               success: function (result) {
                   console.log(result);
-                  $('[name="id_periode_saham"]').val(result.id_periode_saham).trigger('change');
-                  $('[name="jum_saham"]').val(result.jum_saham);
+                  $('[name="id_daftar_investor"]').val(result.id_daftar_investor).trigger('change');
+                  $('[name="id_bulan_dividen"]').val(result.id_bulan_dividen).trigger('change');
                   $('[name="id"]').val(result.id);
-                  $('#formulirs').attr('action', '{{ url('update-saham-real') }}');
-                  $('#modal-saham-real').modal('show');
+                  $('#formulirss').attr('action', '{{ url('update-dividen-investor') }}');
+                  $('#modal-dividen-investor').modal('show');
               }
           });
        }

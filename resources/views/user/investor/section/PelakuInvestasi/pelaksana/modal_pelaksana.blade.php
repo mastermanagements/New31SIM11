@@ -1,16 +1,16 @@
-<div class="modal fade" id="modal-dividen-investor">
+<div class="modal fade" id="modal-pelaksana">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir Dividen Investor</h4>
+                <h4 class="modal-title">Formulir Mudharib (pelaksana)</h4>
             </div>
             <form action="{{ url('store-divinden-investor') }}" method="post" enctype="multipart/form-data" id="formulirss">
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Investor</label>
-                    <select class="form-control select2" style="width: 100%;" name="id_daftar_investor" required>
+                    <label for="exampleInputEmail1">Karyawan</label>
+                    <select class="form-control select2" style="width: 100%;" name="id_ky" required>
                         @if(empty($data_investasi))
                             <option>Data Investor Masih Kosong</option>
                         @else
@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Dividen Bulanan</label>
-                    <select class="form-control select2" style="width: 100%;" name="id_bulan_dividen" required>
+                    <select class="form-control select2" style="width: 100%;" name="id_bentuk_invest" required>
                         @if(empty($dividen_bulanan))
                             <option>Dividen Masih Kosong</option>
                         @else

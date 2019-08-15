@@ -1781,6 +1781,14 @@ Route::get('getDataDividen/{year}','Investor\Deviden@getDataDP');
 
 Route::get('Dividen-Investor','Investor\DividenInvestor@index');
 
+Route::post('store-divinden-investor','Investor\DividenInvestor@store');
+
+Route::get('edit-dividen-investor/{id}','Investor\DividenInvestor@edit');
+
+Route::post('update-dividen-investor','Investor\DividenInvestor@update');
+
+Route::put('delete-saham-real/{id}','Investor\DividenInvestor@delete');
+
 
 Route::get('Persen-kas','Investor\PersenKas@index');
 
@@ -1791,6 +1799,10 @@ Route::get('edit-persen-kas/{id}','Investor\PersenKas@edit');
 Route::post('update-persen-kas','Investor\PersenKas@update');
 
 Route::put('hapus-persen-kas/{id}','Investor\PersenKas@delete');
+
+
+Route::get('Pelaku-Investasi','Investor\PelakuInvestasi@index');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 
