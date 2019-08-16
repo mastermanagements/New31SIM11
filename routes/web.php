@@ -1811,6 +1811,18 @@ Route::post('update-pelaksana','Investor\PelakuInvestasi@update');
 
 Route::put('delete-pelaksana/{id}','Investor\PelakuInvestasi@delete');
 
+
+
+Route::get('Pemodal','Investor\Pemodal@index');
+
+Route::post('store-pemodal','Investor\Pemodal@store');
+
+Route::get('edit-pemodal/{id}','Investor\Pemodal@edit');
+
+Route::post('update-pemodal','Investor\Pemodal@update');
+
+Route::put('delete-pemodal','Investor\Pemodal@delete');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

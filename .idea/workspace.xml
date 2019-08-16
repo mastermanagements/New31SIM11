@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/Pemodal.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Investor/Pelaksana.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Investor/Pemodal.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/investor/2019_08_16_014205_create_i_pelaksana.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/investor/2019_08_16_064829_create_i_pemodal.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pemodal/modal_pemodal.blade.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pemodal/modal_divide_per_bulan.blade.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/7f3da4e7-bbfb-477b-82c9-d04004bd90b0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/investor/PelakuInvestasi.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/PelakuInvestasi.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Investor/PeriodeInvestasi.php" afterPath="$PROJECT_DIR$/app/Model/Investor/PeriodeInvestasi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/investor/Pemodal.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/Pemodal.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Investor/Pemodal.php" afterPath="$PROJECT_DIR$/app/Model/Investor/Pemodal.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/page_default.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/modal_pelaksana.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/modal_pelaksana.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pemodal/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pemodal/page.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -49,7 +45,7 @@
         <item name="" type="eadb38e5:DatabaseStructure$Root" />
         <item name="master_management@localhost" type="e3449647:DbNodeDescriptor" />
         <item name="master_management" type="e3449647:DbNodeDescriptor" />
-        <item name="i_pelaksana" type="e3449647:DbNodeDescriptor" />
+        <item name="i_pemodal" type="e3449647:DbNodeDescriptor" />
       </path>
     </expand>
     <select />
@@ -1406,8 +1402,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="1811" column="61" lean-forward="false" selection-start-line="1811" selection-start-column="61" selection-end-line="1811" selection-end-column="61" />
+            <state relative-caret-position="315">
+              <caret line="1823" column="53" lean-forward="false" selection-start-line="1823" selection-start-column="53" selection-end-line="1823" selection-end-column="53" />
               <folding>
                 <element signature="e#43068#43120#0#PHP" expanded="false" />
               </folding>
@@ -1415,41 +1411,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PelakuInvestasi.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/PelakuInvestasi.php">
+      <file leaf-file-name="Pemodal.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/Pemodal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="2310">
+              <caret line="110" column="14" lean-forward="true" selection-start-line="110" selection-start-column="14" selection-end-line="110" selection-end-column="14" />
+              <folding>
+                <element signature="e#49#77#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PeriodeInvestasi.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Model/Investor/PeriodeInvestasi.php">
+      <file leaf-file-name="modal_pemodal.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pemodal/modal_pemodal.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2019_08_16_064829_create_i_pemodal.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/investor/2019_08_16_064829_create_i_pemodal.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+            <state relative-caret-position="168">
+              <caret line="8" column="102" lean-forward="true" selection-start-line="8" selection-start-column="102" selection-end-line="8" selection-end-column="111" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="page.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/page.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pemodal/page.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="27" column="55" lean-forward="true" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="71" />
+            <state relative-caret-position="189">
+              <caret line="28" column="54" lean-forward="false" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -1458,18 +1446,8 @@
       <file leaf-file-name="page_default.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/page_default.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="83" column="34" lean-forward="false" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modal_pelaksana.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/modal_pelaksana.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="60" column="133" lean-forward="false" selection-start-line="60" selection-start-column="133" selection-end-line="60" selection-end-column="133" />
+            <state relative-caret-position="0">
+              <caret line="89" column="10" lean-forward="false" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -1566,10 +1544,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/user/investor/section/saham/saham_real/modal_saham_real.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/investor/section/saham/saham_perdana/modal_saham_perdana.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/investor/section/JualSaham/saham_perusahaan/modal_saham_perusahaan.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_06_030855_create_jual_saham_perusahaan.php" />
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_02_065953_create_i_daftar_investasi.php" />
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_01_063240_create_i_saham_real.php" />
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_01_055850_create_i_saham_perdana.php" />
@@ -1611,12 +1585,16 @@
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_16_014205_create_i_pelaksana.php" />
         <option value="$PROJECT_DIR$/app/Model/Investor/Pelaksana.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/page.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/investor/PelakuInvestasi.php" />
         <option value="$PROJECT_DIR$/app/Model/Investor/PeriodeInvestasi.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/modal_pelaksana.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/page_default.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_16_064829_create_i_pemodal.php" />
+        <option value="$PROJECT_DIR$/app/Model/Investor/Pemodal.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pemodal/modal_pemodal.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pemodal/page.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/investor/Pemodal.php" />
       </list>
     </option>
   </component>
@@ -1759,9 +1737,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1778,19 +1766,19 @@
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\xampp173\htdocs\New31SIM11\app\Http\Controllers\investor" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\app\Model\Hrd" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\progressProyek\crud\modal" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\public\fileArsip" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\administrasi\section\surat\surat_masuk" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\investor\section" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\investor\section\dataInvestasi" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\investor\section\saham" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\investor\section\saham\saham_perdana" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\investor\section\saham\modal" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\xampp173\htdocs\New31SIM11\app\Http\Controllers\investor" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\app\Model\Hrd" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\progressProyek\crud\modal" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\public\fileArsip" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\administrasi\section\surat\surat_masuk" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2003,14 +1991,8 @@
       <workItem from="1565832210061" duration="9969000" />
       <workItem from="1565915976448" duration="4144000" />
       <workItem from="1565922869683" duration="3367000" />
-      <workItem from="1565933916290" duration="5190000" />
-    </task>
-    <task id="LOCAL-00071" summary="HRD&#10;- Periode Kerjaan">
-      <created>1560236599829</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1560236599830</updated>
+      <workItem from="1565933916290" duration="7323000" />
+      <workItem from="1565994021686" duration="4689000" />
     </task>
     <task id="LOCAL-00072" summary="HRD&#10;- Periode Kerjaan CRUD FIX&#10;- Menu Kalender Full feature Fix">
       <created>1560323169983</created>
@@ -2348,11 +2330,18 @@
       <option name="project" value="LOCAL" />
       <updated>1565855038418</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="Investor&#10;   - Perancangan Interface Pelaksana dan Pemodal&#10;   - Crud Pelaksanaa">
+      <created>1565942093638</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1565942093639</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1352792000" />
+    <option name="totallyTimeSpent" value="1359614000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2365,7 +2354,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26399395" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2677761" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31907895" sideWeight="0.5121029" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21028744" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2373,8 +2362,8 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34375" sideWeight="0.48789713" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22065727" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34375" sideWeight="0.48789713" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22012103" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2449,7 +2438,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Penggajian&#10;   - Interface dan Crud Klasifikasi Fix&#10;   - Interface dan Crud Gendre Fix&#10;   - Perancangan Form Skala Gaji Almoust Done" />
     <MESSAGE value="Penggajian&#10;   - Perancangan crud Skala Gaji fix" />
     <MESSAGE value="Penggajian&#10;   - Refisi Kompensisai Kinerja&#10;   - Refisi Kpi Karyawan&#10;   - CRUD Predikat Penilaian&#10;   - Interface Daftar Gaji &#10;   - Proses Insert Daftar Gaji Fix" />
     <MESSAGE value="Penggajian&#10;   - Interface Daftar Gaji Fix&#10;   - Absensi" />
@@ -2474,48 +2462,14 @@
     <MESSAGE value="Investor&#10;   - Persen kas Crud fix&#10;   - Bulan Dividen Crud Fix" />
     <MESSAGE value="Investor&#10;   - Refisi i Bulan Dividen perusahaan&#10;     - Alogarimat proses CRUD Bulan Deviden&#10;   - Pengerjaan Status untuk saham real&#10;   - Dividen Investor" />
     <MESSAGE value="Investor&#10;   - Dividen Investor Fix,&#10;   - Perancangan Pelaku investasi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Investor&#10;   - Dividen Investor Fix,&#10;   - Perancangan Pelaku investasi" />
+    <MESSAGE value="Investor&#10;   - Perancangan Interface Pelaksana dan Pemodal&#10;   - Crud Pelaksanaa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Investor&#10;   - Perancangan Interface Pelaksana dan Pemodal&#10;   - Crud Pelaksanaa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/modal/modal_saham_perdana.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="53" lean-forward="true" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.u_menu_karyawan">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/investor/2019_08_12_023318_create_i_persen_kas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54">
-          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Investor/PersenKas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/PersenKas.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -2777,24 +2731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/page.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="27" column="55" lean-forward="true" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="1811" column="61" lean-forward="false" selection-start-line="1811" selection-start-column="61" selection-end-line="1811" selection-end-column="61" />
-          <folding>
-            <element signature="e#43068#43120#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Model/Investor/Pelaksana.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -2803,43 +2739,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/PelakuInvestasi.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/investor/2019_08_16_064829_create_i_pemodal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/modal_pelaksana.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="60" column="133" lean-forward="false" selection-start-line="60" selection-start-column="133" selection-end-line="60" selection-end-column="133" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="83" column="34" lean-forward="false" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
+        <state relative-caret-position="267">
+          <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Model/Investor/PeriodeInvestasi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="329">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/investor/2019_08_16_064829_create_i_pemodal.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/PelakuInvestasi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+        <state relative-caret-position="315">
+          <caret line="45" column="5" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="45" selection-end-column="5" />
+          <folding>
+            <element signature="e#49#77#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/page.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="27" column="55" lean-forward="false" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="71" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/modal_pelaksana.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="52" column="22" lean-forward="true" selection-start-line="38" selection-start-column="15" selection-end-line="52" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.i_pemodal">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Investor/Pemodal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pemodal/modal_pemodal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="102" lean-forward="true" selection-start-line="8" selection-start-column="102" selection-end-line="8" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="89" column="10" lean-forward="false" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pemodal/page.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="28" column="54" lean-forward="false" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="1823" column="53" lean-forward="false" selection-start-line="1823" selection-start-column="53" selection-end-line="1823" selection-end-column="53" />
+          <folding>
+            <element signature="e#43068#43120#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/Pemodal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2310">
+          <caret line="110" column="14" lean-forward="true" selection-start-line="110" selection-start-column="14" selection-end-line="110" selection-end-column="14" />
+          <folding>
+            <element signature="e#49#77#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
