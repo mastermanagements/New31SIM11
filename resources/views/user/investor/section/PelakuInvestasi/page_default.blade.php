@@ -75,7 +75,23 @@
             $('.select2').select2()
         });
 
-
+        edit_pelaksana = function (id) {
+            $.ajax({
+                url: "{{ url('edit-pelaksana') }}/"+id,
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    $('[name="id_ky"]').val(result.id_ky).trigger('change');
+                    $('[name="id_periode_invest"] option:selected').siblings().removeAttr('disabled');;
+                    $('[name="id_periode_invest"]').val(result.id_periode_invest).trigger('change');
+                    $('[name="id_bentuk_invest"]').val(result.id_bentuk_invest).trigger('change');
+                    $('[name="persen_saham"]').val(result.persen_saham);
+                    $('[name="id"]').val(result.id);
+                    $('#formulir').attr('action','update-pelaksana');
+                    $('#modal-pelaksana').modal('show');
+                }
+            })
+        }
 
     </script>
 @stop

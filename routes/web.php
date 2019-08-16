@@ -1803,6 +1803,14 @@ Route::put('hapus-persen-kas/{id}','Investor\PersenKas@delete');
 
 Route::get('Pelaku-Investasi','Investor\PelakuInvestasi@index');
 
+Route::post('store-pelaksana','Investor\PelakuInvestasi@store');
+
+Route::get('edit-pelaksana/{id}','Investor\PelakuInvestasi@edit');
+
+Route::post('update-pelaksana','Investor\PelakuInvestasi@update');
+
+Route::put('delete-pelaksana/{id}','Investor\PelakuInvestasi@delete');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 
