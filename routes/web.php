@@ -1823,6 +1823,14 @@ Route::post('update-pemodal','Investor\Pemodal@update');
 
 Route::put('delete-pemodal','Investor\Pemodal@delete');
 
+
+
+Route::get('Akad','Investor\Akad@index');
+
+Route::post('store-akad', 'Investor\Akad@store');
+
+Route::put('hapus-akad/{id}', 'Investor\Akad@delete');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

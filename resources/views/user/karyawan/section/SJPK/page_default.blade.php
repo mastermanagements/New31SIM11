@@ -50,7 +50,8 @@
                                 <div class="box-body">
                                     <p>Periode {{ $value->periode }}</p>
                                     {!! $value->isi_sjpg !!}
-                                    @if(!empty($strategi_jangka_pendek = $value->getStrategiJangkaPendek->groupBy('periode')))
+                                    @if(!empty($value->getStrategiJangkaPendek))
+                                        @php($strategi_jangka_pendek = $value->getStrategiJangkaPendek->groupBy('periode'))
                                         <div class="row">
 
                                             @foreach($strategi_jangka_pendek as $key => $periode)
