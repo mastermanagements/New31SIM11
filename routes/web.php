@@ -1831,6 +1831,15 @@ Route::post('store-akad', 'Investor\Akad@store');
 
 Route::put('hapus-akad/{id}', 'Investor\Akad@delete');
 
+
+
+Route::get('Nisbah','Investor\Nisbah@index');
+
+Route::post('store-nisbah','Investor\Nisbah@store');
+
+
+Route::post('store-besar-nisbah','Investor\BesarNisbah@store');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

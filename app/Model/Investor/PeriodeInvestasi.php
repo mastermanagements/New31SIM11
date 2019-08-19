@@ -29,4 +29,8 @@ class PeriodeInvestasi extends Model
     public function dataPelaksana(){
         return $this->hasMany('App\Model\Investor\Pelaksana','id_periode_invest');
     }
+
+    public function nisbah(){
+        return $this->hasOne('App\Model\Investor\Nisbah','id_periode_invest');
+    }
 }
