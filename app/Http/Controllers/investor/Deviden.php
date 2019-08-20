@@ -45,7 +45,7 @@ class Deviden extends Controller
         return view('user.investor.section.dividen.page_default', $data);
     }
 
-    public function getDataDP($data){
+    public function getDataDP(Request $req,$data){
         $model = $this->costumDate();
         if(empty($data)){
             $tahun = $model->year;
@@ -64,9 +64,11 @@ class Deviden extends Controller
             $column[] = number_format($data_column->laba_rugi,2,',','.');
             $column[] = number_format($data_column->alokasi_kas,2,',','.');
             $column[] = number_format($data_column->net_kas,2,',','.');
-            $column[] = '  <form action="{{ url(\'delete-divine-bulanan/\'. $data_column->id) }}" method="post">
+            $url = 'delete-divine-bulanan'.$data_column->id;
+            $token = $req->session()->token();
+            $column[] = '  <form action="/'.$url.'/" method="post">
                                     <input type="hidden" name="_method" value="put">
-                                    <input type="hidden" name="_token" value="\'{{ csrf_token() }}\'">
+                                    <input type="hidden" name="_token" value="'.$token.'">
                                     <button type="button" class="btn btn-warning" onclick="edit_divide_per_bulan('.$data_column->id.')">ubah</button>
                                     <button type="submit" class="btn btn-danger" onclick="return confirm(\'apakah anda akan menghapus data ini ... ?\')">hapus</button>
                             </form>';

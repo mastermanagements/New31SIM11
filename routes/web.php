@@ -1840,6 +1840,18 @@ Route::post('store-nisbah','Investor\Nisbah@store');
 
 Route::post('store-besar-nisbah','Investor\BesarNisbah@store');
 
+Route::get('besar-nisbah/{year}','Investor\BesarNisbah@getDataByDate');
+
+Route::put('besar-nisbah-periode/{id}','Investor\BesarNisbah@getDataByDatePeriode');
+
+Route::get('edit-besar-nisbah/{id}','Investor\BesarNisbah@edit');
+
+Route::post('update-besar-nisbah','Investor\BesarNisbah@update');
+
+Route::put('delete-divine-bulananM/{id}','Investor\BesarNisbah@delete');
+
+Route::get('group-by/{year}','Investor\BesarNisbah@getPeriodeByear');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

@@ -89,42 +89,7 @@
         $(function () {
             $('.select2').select2()
         });
-
-        edit_pelaksana = function (id) {
-            $.ajax({
-                url: "{{ url('edit-pelaksana') }}/"+id,
-                dataType: "json",
-                success: function (result) {
-                    console.log(result);
-                    $('[name="id_ky"]').val(result.id_ky).trigger('change');
-                    $('[name="id_periode_invest"] option:selected').siblings().removeAttr('disabled');;
-                    $('[name="id_periode_invest"]').val(result.id_periode_invest).trigger('change');
-                    $('[name="id_bentuk_invest"]').val(result.id_bentuk_invest).trigger('change');
-                    $('[name="persen_saham"]').val(result.persen_saham);
-                    $('[name="id"]').val(result.id);
-                    $('#formulir').attr('action','update-pelaksana');
-                    $('#modal-pelaksana').modal('show');
-                }
-            })
-        }
-        edit_pemodal = function (id) {
-            $.ajax({
-                url: "{{ url('edit-pemodal') }}/"+id,
-                dataType: "json",
-                success: function (result) {
-                    console.log(result);
-                    $('[name="tgl_invest"]').val(result.tgl_invest);
-                    $('[name="id_periode_invest"] option:selected').siblings().removeAttr('disabled');;
-                    $('[name="id_periode_invest"]').val(result.id_periode_invest).trigger('change');
-                    $('[name="id_investor"]').val(result.id_investor).trigger('change');
-                    $('[name="id_bentuk_invest"]').val(result.id_bentuk_invest).trigger('change');
-                    $('[name="persen_saham"]').val(result.persen_saham);
-                    $('[name="id"]').val(result.id);
-                    $('#formulirs').attr('action','update-pemodal');
-                    $('#modal-pemodal').modal('show');
-                }
-            })
-        }
-
     </script>
+
+    @include('user.investor.section.nisbah.besar_nisbah.Js')
 @stop

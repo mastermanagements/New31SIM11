@@ -6,7 +6,7 @@
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Formulir Besar Nisbah</h4>
             </div>
-            <form action="{{ url('store-besar-nisbah') }}" method="post" enctype="multipart/form-data" id="formulir">
+            <form action="{{ url('store-besar-nisbah') }}" method="post" id="formulir_m">
                 <div class="modal-body">
 
                     <div class="form-group">

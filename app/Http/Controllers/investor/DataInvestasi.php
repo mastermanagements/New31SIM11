@@ -9,13 +9,14 @@ use App\Model\Investor\PeriodeInvestasi as PI;
 use App\Investasi\I_data_investor as investor;
 use App\Model\Investor\BentukInvestor as BI;
 use App\Model\Investor\DaftarInvestasi as DI;
-use App\Traits\ProsesDaftarInvestasi as PDI;
+use App\Traits\ProsesDaftarInvestasi ;
 
 class DataInvestasi extends Controller
 {
     private $id_karyawan;
     private $id_perusahaan;
     private  $id_con;
+    use ProsesDaftarInvestasi;
 
     public function __construct()
     {
@@ -54,8 +55,7 @@ class DataInvestasi extends Controller
               "jumlah_saham" => "required",
               "id_bentuk_invest" => "required",
         ]);
-        $trait_data_investasi = new PDI();
-        if($trait_data_investasi->storeInvestasi($req, $this->id_con)){
+        if($this->storeInvestasi($req, $this->id_con)){
             return redirect('Data-Investasi')->with('message_success','Anda telah menambahkan data investor');
         }else{
             return redirect('Data-Investasi')->with('message_fail','Maaf, data investor tidak tersimpan');
@@ -78,8 +78,7 @@ class DataInvestasi extends Controller
             "jumlah_saham" => "required",
             "id_bentuk_invest" => "required",
         ]);
-        $trait_data_investasi = new PDI();
-        if($trait_data_investasi->update($req, $this->id_con)){
+        if($this->update($req, $this->id_con)){
             return redirect('Data-Investasi')->with('message_success','Anda telah mengubah data investor');
         }else{
             return redirect('Data-Investasi')->with('message_fail','Maaf, data investor tidak terubah');
