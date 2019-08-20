@@ -205,7 +205,7 @@ class Klien extends Controller
 
         if($data->delete())
         {
-            return redirect('Klien')->with('message_success','Anda telah menghapus klien baru');
+            return redirect('Klien')->with('message_success','Anda telah menghapus data klien');
         }
         else
         {
@@ -265,75 +265,4 @@ class Klien extends Controller
         }
     }
 	
-	//Ganti jenis klien dari prospect ke Potential
-	
-	 public function ganti_jenis_klien_prospect(Request $req)
-    { //validasi
-        $this->validate($req,[
-            'id_ubah' => 'required',
-            'jenis_klien'=>'required'
-        ]);
-        $id= $req->id_ubah;
-        $jenis_klien= $req->jenis_klien;
-		
-        $model = kliens::findOrFail($id);
-        $model->jenis_klien = $jenis_klien;
-		
-        if($model->save())
-        {
-           return redirect('Klien')->with('message_success','Anda baru saja memindahkan jenis customer');
-        }
-        else
-        {
-           return redirect('Klien')->with('message_fail','Terjadi kesalahan, gagal memindahkan jenis klien');
-        }
-    }
-	
-	//Ganti jenis klien dari potential ke closeable
-	
-	 public function ganti_jenis_klien_potential(Request $req)
-    { //validasi
-        $this->validate($req,[
-            'id_ubah' => 'required',
-            'jenis_klien'=>'required'
-        ]);
-        $id= $req->id_ubah;
-        $jenis_klien= $req->jenis_klien;
-		
-        $model = kliens::findOrFail($id);
-        $model->jenis_klien = $jenis_klien;
-		
-        if($model->save())
-        {
-           return redirect('Klien')->with('message_success','Anda baru saja memindahkan jenis customer');
-        }
-        else
-        {
-           return redirect('Klien')->with('message_fail','Terjadi kesalahan, gagal memindahkan jenis klien');
-        }
-    }
-	
-	//Ganti jenis klien dari closeable ke customer
-	
-	 public function ganti_jenis_klien_closeable(Request $req)
-    { //validasi
-        $this->validate($req,[
-            'id_ubah' => 'required',
-            'jenis_klien'=>'required'
-        ]);
-        $id= $req->id_ubah;
-        $jenis_klien= $req->jenis_klien;
-		
-        $model = kliens::findOrFail($id);
-        $model->jenis_klien = $jenis_klien;
-		
-        if($model->save())
-        {
-           return redirect('Klien')->with('message_success','Anda baru saja memindahkan jenis customer');
-        }
-        else
-        {
-           return redirect('Klien')->with('message_fail','Terjadi kesalahan, gagal memindahkan jenis klien');
-        }
-    }
 }
