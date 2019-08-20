@@ -108,21 +108,24 @@
                                 <label for="exampleInputEmail1">Ket Tambahan Info Customer</label>
                                 <input type="text" name="tambahan_sdk" class="form-control" id="exampleInputEmail1">
                             </div>
+							<div class="box-footer">
+								{{ csrf_field() }}
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+							
                         </div>
                         <!-- /.box-body -->
-
-                        <div class="box-footer">
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+					</form>	
+					   
                 </div>
             </div>
         </div>
     </section>
     <!-- /.content -->
 </div>
+	@include('user.administrasi.section.klien.modal.modal_detail_view')
 @stop
+	
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
