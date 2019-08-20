@@ -44,49 +44,11 @@
                     }
                 })
             })
-	   gantiLeads = function (id) {
-           $.ajax({
-               url : '{{ url('ambilDataKlien') }}/'+id,
-               dataType : 'json',
-               success : function (result) {
-                   //console.log(result)
-                   $('[name="id_ubah"]').val(result.data.id)
+		gantiLeads = function (id) {
+			//alert("test")
+					$('[name="id_ubah"]').val(id);
                    $('#modal-ganti-leads').modal('show')
-               }
-           })
-       }
-	    gantiProspect = function (id) {
-           $.ajax({
-               url : '{{ url('ambilDataKlien') }}/'+id,
-               dataType : 'json',
-               success : function (result) {
-                   //console.log(result)
-                   $('[name="id_ubah"]').val(result.data.id)
-                   $('#modal-ganti-prospect').modal('show')
-               }
-           })
-       }
-	   gantiPotential = function (id) {
-           $.ajax({
-               url : '{{ url('ambilDataKlien') }}/'+id,
-               dataType : 'json',
-               success : function (result) {
-                   //console.log(result)
-                   $('[name="id_ubah"]').val(result.data.id)
-                   $('#modal-ganti-potential').modal('show')
-               }
-           })
-       }
-	   gantiCloseable = function (id) {
-           $.ajax({
-               url : '{{ url('ambilDataKlien') }}/'+id,
-               dataType : 'json',
-               success : function (result) {
-                   //console.log(result)
-                   $('[name="id_ubah"]').val(result.data.id)
-                   $('#modal-ganti-closeable').modal('show')
-               }
-           })
-       }
+            };
+	    
    });
 </script>
