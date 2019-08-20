@@ -242,6 +242,25 @@ Route::put('update-swot/{id}','karyawan\SWOT@update');
 
 Route::put('delete-swot/{id}','karyawan\SWOT@delete');
 
+	//--- Kompetitor ---
+
+Route::get('Kompetitor','superadmin_ukm\Kompetitor@index');
+
+Route::get('tambah-kompetitor','superadmin_ukm\Kompetitor@create');
+
+Route::post('store-kompetitor','superadmin_ukm\Kompetitor@store');
+
+Route::get('ubah-kompetitor/{id}','superadmin_ukm\Kompetitor@edit');
+
+Route::put('update-kompetitor/{id}','superadmin_ukm\Kompetitor@update');
+
+Route::put('hapus-kompetitor/{id}','superadmin_ukm\Kompetitor@delete');
+
+Route::get('detail-kompetitor/{id}','Superadmin_ukm\Kompetitor@detail');
+
+Route::get('getKabupatenK/{id_provinsi}','Superadmin_ukm\Kompetitor@ResponseKabupaten');
+
+
 	//--- Target Perusahaan ---
 	
 Route::get('Target-Perusahaan','karyawan\TargetPerusahaan@index');
@@ -342,7 +361,7 @@ Route::get('ubah-klien/{id}','administrasi\Klien@edit');
 
 Route::put('update-klien/{id}','administrasi\Klien@update');
 
-Route::get('hapus-klien/{id}','administrasi\Klien@delete');
+Route::put('hapus-klien/{id}','administrasi\Klien@delete');
 
 Route::get('ambilDataKlien/{id}','administrasi\Klien@ambil_data_klien');
 
@@ -350,11 +369,6 @@ Route::get('getPenanda/{id_sdk}','administrasi\Klien@ResponsePenanda');
 
 Route::post('ganti-jenis-klien-leads','administrasi\Klien@ganti_jenis_klien_leads');
 
-Route::post('ganti-jenis-klien-prospect','administrasi\Klien@ganti_jenis_klien_prospect');
-
-Route::post('ganti-jenis-klien-potential','administrasi\Klien@ganti_jenis_klien_potential');
-
-Route::post('ganti-jenis-klien-closeable','administrasi\Klien@ganti_jenis_klien_closeable');
 
 	//--- Surat ---
 Route::get('Surat','administrasi\Surat@index');
@@ -839,15 +853,164 @@ Route::post('update-progress-pemeliharaan','produksi\ProgressPemeliharaan@update
 
 Route::put('hapus-progress-pemeliharaan/{id}','produksi\ProgressPemeliharaan@delete');
 
+
 //================================= Marketing ================================================================
-	//--Rencana Marketing Barang--
-Route::get('Segmenting', 'marketing\Segmenting@index');
+	//--Segmenting--
+	
+Route::get('Segmenting','marketing\Segmenting@index');
+
+Route::post('store-segmenting','marketing\Segmenting@store');
+
+Route::get('ubah-segmenting/{id}','marketing\Segmenting@edit');
+
+Route::put('update-segmenting/{id}','marketing\Segmenting@update');
+
+Route::put('hapus-segmenting/{id}','marketing\Segmenting@delete');
+
+Route::post('store-segbarang','marketing\Segmenting@store_segbarang');
+
+Route::post('store-segjasa','marketing\Segmenting@store_segjasa');
+
+Route::post('store-segbarang-geo','marketing\Segmenting@store_segbarang_geo');
+
+Route::post('store-segjasa-geo','marketing\Segmenting@store_segjasa_geo');
+
+Route::post('store-segbarang-psi','marketing\Segmenting@store_segbarang_psi');
+
+Route::post('store-segjasa-psi','marketing\Segmenting@store_segjasa_psi');
+
+Route::get('ubah-hasil-segmenting-demog/{id_hasilsg}','marketing\Segmenting@edit_hasil_segmenting');
+
+Route::get('ubah-hasil-segmenting-geog/{id_hasilsg}','marketing\Segmenting@edit_hasil_segmenting');
+
+Route::get('ubah-hasil-segmenting-psi/{id_hasilsg}','marketing\Segmenting@edit_hasil_segmenting');
+
+Route::post('update-hasilsg','marketing\Segmenting@update_hasilsg');
+
+Route::get('getHasilSG/{id_hasilsg}','marketing\Segmenting@ResponseHasilSG');
+
+Route::post('cari-hasilsg-brg','marketing\Segmenting@search_hasilsg_brg');
+
+Route::post('cari-hasilsg-jasa','marketing\Segmenting@search_hasilsg_jasa');
+
+	//--Targeting---
+	
+Route::get('Targeting','marketing\Targeting@index');
+
+Route::get('tambah-targeting','marketing\Targeting@create_targeting');
+
+Route::post('store-targeting','marketing\Targeting@store');
+
+Route::put('hapus-targeting/{id}','marketing\Targeting@delete');
+
+	//--Positioning---
+	
+Route::get('Positioning','marketing\PositioningPerusahaan@index');
+
+Route::get('tambah-positioning','marketing\PositioningPerusahaan@create');
+
+Route::post('store-positioning','marketing\PositioningPerusahaan@store');
+
+Route::get('ubah-positioning/{id}','marketing\PositioningPerusahaan@edit');
+
+Route::put('update-positioning/{id}','marketing\PositioningPerusahaan@update');
+
+Route::put('hapus-positioning/{id}','marketing\PositioningPerusahaan@delete');
+
+Route::get('detail-positioning/{id}','marketing\PositioningPerusahaan@detail');
+
+	//--Rencana Marketing & Kegiatan Marketing---
+	
+Route::get('Rencana-Marketing','marketing\RencanaMarketing@index');
+
+Route::post('tambah-rmbj','marketing\RencanaMarketing@create');
+
+Route::post('store-rmb-onOff','marketing\RencanaMarketing@store_rmb_onOff');
+
+Route::post('store-rmb','marketing\RencanaMarketing@store_rmb');
+
+Route::post('store-rmj','marketing\RencanaMarketing@store_rmj');
+
+Route::put('hapus-rmbj/{id}','marketing\RencanaMarketing@delete');
+
+Route::post('store-target-audience','marketing\RencanaMarketing@store_target_audience');
+
+Route::get('getSubMedia/{id_media_marketing}','marketing\RencanaMarketing@ResponseSubMedia');
+
+Route::get('getContentMarketing/{id_submedia_marketing}','marketing\RencanaMarketing@ResponseContentMarketing');
+
+Route::post('cari-rmbj','marketing\RencanaMarketing@search_rmbj');
+
+Route::post('store-keg-marketing','marketing\RencanaMarketing@store_keg_marketing');
+
+Route::get('getdataRM/{id}','marketing\RencanaMarketing@get_data_RM'); 
+
+Route::get('getdataKM/{id}','marketing\RencanaMarketing@get_data_KM'); 
+
+	//--Attract n Convert--
+	
+Route::get('Attract','marketing\PelaksanaanMarketing@index');
+
+Route::get('Convert','marketing\PelaksanaanMarketing@index_convert');
+
+Route::post('store-respon-attract','marketing\PelaksanaanMarketing@store_respon_attract');
+
+Route::post('store-respon-convert','marketing\PelaksanaanMarketing@store_respon_convert');
+
+	//--Closing--
+	
+Route::get('Closing','marketing\Close@index');
+
+Route::post('store-closing','marketing\Close@store');
+
+Route::post('store-sclosing','marketing\Close@store_sclosing');
+
+Route::get('ubah-closing/{id}','marketing\Close@edit');
+
+Route::put('update-closing/{id}','marketing\Close@update');
+
+Route::get('detail-closing/{id}','marketing\Close@detail');
+
+Route::put('hapus-closing/{id}','marketing\Close@delete');
 
 
+	//--Delighting--
+	
+Route::get('Delight','marketing\Delight@index');
 
+Route::post('store-delight','marketing\Delight@store');
 
+Route::post('store-respon-delight','marketing\Delight@store_respon_delight');
 
-//================================= Keuangan ================================================================
+Route::get('ubah-delight/{id}','marketing\Delight@edit');
+
+Route::put('update-delight/{id}','marketing\Delight@update');
+
+Route::get('detail-delight/{id}','marketing\Delight@detail');
+
+Route::put('hapus-delight/{id}','marketing\Delight@delete');
+
+	//--Delighting--
+	
+Route::get('Evaluasi','marketing\Evaluasi@index');
+
+Route::post('store-KEvaluasi','marketing\Evaluasi@store_KE');
+
+Route::post('store-IEvaluasi','marketing\Evaluasi@store_IE');
+
+Route::post('store-SEvaluasi','marketing\Evaluasi@store_SE');
+
+Route::post('store-evaluasi-marketing','marketing\Evaluasi@store');
+
+Route::post('store-evaluasi-marketing','marketing\Evaluasi@store');
+
+Route::get('ubah-evaluasi/{id}','marketing\Evaluasi@edit');
+
+Route::put('update-evaluasi/{id}','marketing\Evaluasi@update');
+
+Route::put('hapus-evaluasi/{id}','marketing\Evaluasi@delete');
+
+//================================= Keuangan ==============================================================
 	//--tab RPB--
 Route::get('RAB', 'keuangan\RAB@index');
 
