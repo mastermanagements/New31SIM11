@@ -35,19 +35,17 @@
                     </ul>
 				
                     <div class="tab-content">
-						<div class="tab-pane active" id="tab_1">
+						<div class="tab-pane active" id="tab_1"></br>
                         @foreach($data_tt as $tahun)
-							<div class="col-md-12">
 								<div class="box box-success">
 									<div class="box-header with-border">
 										<h3 class="box-title"><b> {{ $tahun->tahun }}</b></h3>
 									</div>   
 								</div>
 								<!-- /.box -->
-							</div>
+
 							@foreach($data_tbulanan as $bulan)
 								@if ($bulan->id_target_tahunan == $tahun->id)
-								<div class="col-md-12">
 									<div class="box box-default collapsed-box">
 										<div class="box-header with-border">
 											<h4 class="box-title">
@@ -107,26 +105,22 @@
 										<!-- /.box body -->
 									</div>
 									<!-- /.box -->
-								</div>
-								<!-- /.col-md-12 -->
 								@endif
 							@endforeach	
                         @endforeach
                         </div>
 						<!-- /.tab_1 -->
-                        <div class="tab-pane active" id="tab_2">
+                        <div class="tab-pane" id="tab_2"></br>
                         @foreach($data_tt as $tahun)
-							<div class="col-md-12">
 								<div class="box box-success">
 									<div class="box-header with-border">
 										<h3 class="box-title"><b> {{ $tahun->tahun }}</b></h3>
 									</div>   
 								</div>
 								<!-- /.box -->
-							</div>
+								
 							@foreach($data_tbulanan as $bulan)
 								@if ($bulan->id_target_tahunan == $tahun->id)
-								<div class="col-md-12">
 									<div class="box box-default collapsed-box">
 										<div class="box-header with-border">
 											<h4 class="box-title">
@@ -223,26 +217,24 @@
 										<!-- /.box body -->
 									</div>
 									<!-- /.collapsed-box -->
-								</div>
-								<!-- /.col-md-12 -->
 								@endif
 							@endforeach	
                         @endforeach
                         </div>
 						
-						<div class="tab-pane active" id="tab_3">
+						<div class="tab-pane" id="tab_3"></br>
                         @foreach($data_tt as $tahun)
-							<div class="col-md-12">
+							
 								<div class="box box-success">
 									<div class="box-header with-border">
 										<h3 class="box-title"><b> {{ $tahun->tahun }}</b></h3>
 									</div>   
 								</div>
 								<!-- /.box -->
-							</div>
+							
 							@foreach($data_tbulanan as $bulan)
 								@if ($bulan->id_target_tahunan == $tahun->id)
-								<div class="col-md-12">
+								
 									<div class="box box-default collapsed-box">
 										<div class="box-header with-border">
 											<h4 class="box-title">
@@ -330,8 +322,7 @@
 										</div>
 									</div>
 									<!-- /.box -->
-								</div>
-								<!-- /.col-md-12 -->
+								
 								@endif
 							@endforeach	
                         @endforeach
