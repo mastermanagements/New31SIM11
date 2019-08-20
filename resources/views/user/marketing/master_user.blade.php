@@ -84,14 +84,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
     $(function () {
         $('#example1').DataTable();
+        $('#example2').DataTable();
         $('#example3').DataTable();
-        $('#example2').DataTable({
+        $('#example4').DataTable();
+        $('#example5').DataTable();
+        $('#example6').DataTable();
+        $('#example7').DataTable();
+        $('#example8').DataTable();
+        $('#example9').DataTable();
+        $('#example10').DataTable({
             'paging'      : true,
-            'lengthChange': false,
+            'lengthChange': true,
             'searching'   : false,
             'ordering'    : true,
             'info'        : true,
-            'autoWidth'   : false
+            'autoWidth'   : true
+        })
+		$('#example11').DataTable({
+            'paging'      : false,
+            'lengthChange': true,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : false,
+            'autoWidth'   : true
         })
     })
 </script>
