@@ -1,22 +1,22 @@
-<div class="modal fade" id="modal-i-pelaksana">
+<div class="modal fade" id="modal-i-pemodal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir Nisbah Pelaksana</h4>
+                <h4 class="modal-title">Formulir Nisbah Pemodal</h4>
             </div>
-            <form action="{{ url('store-nisbah-pelaksana') }}" method="post" enctype="multipart/form-data" id="formulirs1">
+            <form action="{{ url('store-nisbah-pemodal') }}" method="post" enctype="multipart/form-data" id="formulirss1">
             <div class="modal-body">
                  <div class="form-group">
-                    <label for="exampleInputEmail1">Pelaksana</label>
-                    <select class="form-control select2" style="width: 100%;" name="id_pelaksana" required>
-                        @if(empty($pelaksana))
-                            <option>Pelaksana Masih Kosong</option>
+                    <label for="exampleInputEmail1">Pemodal</label>
+                    <select class="form-control select2" style="width: 100%;" name="id_pemodal" required>
+                        @if(empty($pemodal))
+                            <option>Pemodal Masih Kosong</option>
                         @else
-                            @foreach($pelaksana as $value)
+                            @foreach($pemodal as $value)
                                 <option value="{{ $value->id }}" style="padding-left: 300px">
-                                    {{ $value->karyawan->nama_ky }}
+                                    {{ $value->investor->nm_investor }}
                                 </option>
                             @endforeach
                         @endif

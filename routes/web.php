@@ -1852,6 +1852,30 @@ Route::put('delete-divine-bulananM/{id}','Investor\BesarNisbah@delete');
 
 Route::get('group-by/{year}','Investor\BesarNisbah@getPeriodeByear');
 
+
+Route::get('Nisbah-pelaksana','Investor\NisbahPelaksana@index');
+
+Route::post('store-nisbah-pelaksana','Investor\NisbahPelaksana@store');
+
+Route::get('edit-nisbah-pelaksana/{id}','Investor\NisbahPelaksana@edit');
+
+Route::post('update-nisbah-pelaksana','Investor\NisbahPelaksana@update');
+
+Route::put('delete-nisbah-pelaksana/{id}','Investor\NisbahPelaksana@delete');
+
+
+Route::get('Nisbah-pemodal','Investor\NisbahPemodal@index');
+
+Route::post('store-nisbah-pemodal','Investor\NisbahPemodal@store');
+
+
+Route::get('edit_dividen_pemodal/{id}','Investor\NisbahPemodal@edit');
+
+Route::post('update-nisbah-pemodal','Investor\NisbahPemodal@update');
+
+Route::put('delete-nisbah-pemodal/{id}','Investor\NisbahPemodal@delete');
+
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 
