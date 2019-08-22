@@ -120,6 +120,64 @@ class DividenInvestor extends Controller
         }else{
             return redirect('Dividen-Investor')->with('message_fail', 'Maaf, Data dividen investor tidak dapat dihapus');
         }
+    }
 
+    public function lihat_data_dividen(Request $req,$id_investor){
+
+        if(empty($model= DIV::all()->where('id_daftar_investor', $id_investor)->where('id_perusahaan', $this->id_perusahaan))){
+            return abort(404);
+        }
+
+        $bulan = $this->costumDate()->month->semua_bulan;
+        $container_bulan = $bulan;
+
+        if(empty($req->thn)){
+            $thn =$this->costumDate()->year;
+        }else{
+            $thn = $req->thn;
+        }
+
+        $array_data= array();
+
+        foreach ($model as $data) {
+            $array_row = array();
+            $data_bulanan_dviden = $data->bulan_dividen;
+            $no = 1;
+            foreach ($container_bulan as $key_bulan => $bulan) {
+                $array_column = array();
+                $bulanDov = $data_bulanan_dviden->where('id', $data->id_bulan_dividen)->whereMonth("bln_dividen","=", $key_bulan)->whereYear('thn_dividen','=', $thn)->first();
+
+                if(!empty($bulanDov))
+                {
+                    $besar_dividen = $data->besar_dividen;
+                }else{
+                    $besar_dividen = 0;
+                }
+
+                $array_column[] = $no++;
+                $array_column[] = $bulan;
+                $array_column[] = $bulanDov['laba_rugi'];
+                $array_column[] = $bulanDov['alokasi_kas'];
+                $array_column[] = $bulanDov['net_kas'];
+                $array_column[] = $besar_dividen;
+                $array_row[] = $array_column;
+            }
+            $array_data[] = $array_column;
+        }
+        return response()->json(array('data'=>$array_row,'button'=>$this->tombolTahun($model)));
+    }
+
+    private function tombolTahun($model){
+        $newModel = $model;
+        $array_container = array();
+        foreach ($newModel as $key => $data)
+        {
+            $data_bulanan_dviden = $data->bulan_dividen;
+            foreach ($data_bulanan_dviden->groupBy('thn_dividen')->get() as $key => $value)
+            {
+                $array_container[] = $value;
+            }
+        }
+        return $array_container;
     }
 }

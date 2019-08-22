@@ -64,6 +64,8 @@
 
     <script>
 
+
+
         $('#datepicker').datepicker({
             autoclose: true,
             format: 'yyyy',
@@ -128,6 +130,15 @@
 
         $(function () {
             $('.select2').select2()
+
+            $("#daftar-investor").slimScroll({
+                size: '8px',
+                width: '100%',
+                height: '100%',
+                color: '#ff4800',
+                allowPageScroll: true,
+                alwaysVisible: true
+            });
         });
 
 
@@ -162,5 +173,11 @@
               }
           });
        }
+
+
     </script>
+
+    @if(Session::get('menu-dividen')=="investor")
+        @include('user.investor.section.dividen.dividen_investor.js')
+    @endif
 @stop

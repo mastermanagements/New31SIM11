@@ -1789,6 +1789,7 @@ Route::post('update-dividen-investor','Investor\DividenInvestor@update');
 
 Route::put('delete-saham-real/{id}','Investor\DividenInvestor@delete');
 
+Route::get('lihat-data-dividen-investor/{id_investor}','Investor\DividenInvestor@lihat_data_dividen');
 
 Route::get('Persen-kas','Investor\PersenKas@index');
 

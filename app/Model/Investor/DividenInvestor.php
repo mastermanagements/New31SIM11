@@ -23,4 +23,5 @@ class DividenInvestor extends Model
     public function bulan_dividen(){
         return $this->belongsTo('App\Model\Investor\DevidePerbulan','id_bulan_dividen');
     }
+
 }
