@@ -21,7 +21,7 @@
                                 <span style="color: darkgray">Investor ini telah ditambahkan ke daftar dividen: </span>
                                 <ul>
                                     @foreach($data_dividen_investor->groupBy('id_daftar_investor') as $investor)
-                                        <li><a href="#" onclick="lihat_dividen('{{ $investor[0]->investor->id }}')">{{ $investor[0]->investor->nm_investor }} </a> </li>
+                                        <li><a href="#" onclick="lihat_dividen('{{ $investor[0]->investor->id }}','')">{{ $investor[0]->investor->nm_investor }} </a> </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -43,8 +43,11 @@
                                         <!-- /.box-tools -->
                                     </div>
                                     <!-- /.box-header -->
-                                    <div class="box-body" id="button-container">
-                                        <div class="overlay">
+                                    <div class="box-body" >
+                                        <div id="button-container">
+
+                                        </div>
+                                        <div class="overlay" id="loading-button">
                                             <i class="fa fa-refresh fa-spin"></i>
                                             <p style="text-align: center; padding-top: 10%">Pilih Salah satu Investor</p>
                                         </div>
@@ -57,16 +60,18 @@
                             <div class="col-md-12">
                                     <div class="box box-danger box-solid">
                                         <div class="box-header">
-                                            <h3 class="box-title">Daftar Dividen</h3>
+                                            <h3 class="box-title" id="title-table">Daftar Dividen</h3>
                                         </div>
                                         <div class="box-body">
                                             <div class="col-md-12">
-                                                <table id="example1" class="table table-bordered table-striped table_dividen">
+                                                <table id="example1" class="table table-bordered table-striped table_dividen" style="width: 100%">
                                                     <thead>
                                                     <tr>
                                                         <th>No.</th>
-                                                        <th>Investor</th>
                                                         <th>Bulan Dividen</th>
+                                                        <th>Laba Rugi</th>
+                                                        <th>Alokasi Kas</th>
+                                                        <th>Net Kas</th>
                                                         <th>Besar Dividen</th>
                                                         <th>Aksi</th>
                                                     </tr>
@@ -96,7 +101,7 @@
                                         </div>
                                         <!-- /.box-body -->
                                         <!-- Loading (remove the following to stop the loading)-->
-                                        <div class="overlay">
+                                        <div class="overlay" id="loading_s">
                                             <i class="fa fa-refresh fa-spin"></i>
                                             <p style="text-align: center; padding-top: 16%; font-weight: bold">Pilih Salah satu Investor</p>
                                         </div>

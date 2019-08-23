@@ -64,7 +64,7 @@ class Deviden extends Controller
             $column[] = number_format($data_column->laba_rugi,2,',','.');
             $column[] = number_format($data_column->alokasi_kas,2,',','.');
             $column[] = number_format($data_column->net_kas,2,',','.');
-            $url = 'delete-divine-bulanan'.$data_column->id;
+            $url = 'delete-divine-bulanan/'.$data_column->id;
             $token = $req->session()->token();
             $column[] = '  <form action="/'.$url.'/" method="post">
                                     <input type="hidden" name="_method" value="put">

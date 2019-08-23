@@ -27,10 +27,14 @@
                         @if(empty($dividen_bulanan))
                             <option>Dividen Masih Kosong</option>
                         @else
-                            @foreach($dividen_bulanan as $value)
-                                <option value="{{ $value->id }}" style="padding-left: 300px">
-                                    <label >{{ date('M', strtotime($value->bln_dividen)) }} {{ $value->thn_dividen }} - Net kas: {{ $value->net_kas }}</label>
-                                </option>
+                            @foreach($dividen_bulanan->groupBy('thn_dividen') as $tahun => $data)
+                                <optgroup label="{{ $tahun }}">
+                                    @foreach($data as $value)
+                                        <option value="{{ $value->id }}" style="padding-left: 300px">
+                                            <label >Bulan :{{ date('M', strtotime($value->bln_dividen)) }}, Net kas: {{ $value->net_kas }}</label>
+                                        </option>
+                                    @endforeach
+                                </optgroup>
                             @endforeach
                         @endif
                     </select>

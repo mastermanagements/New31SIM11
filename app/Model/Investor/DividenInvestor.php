@@ -24,4 +24,7 @@ class DividenInvestor extends Model
         return $this->belongsTo('App\Model\Investor\DevidePerbulan','id_bulan_dividen');
     }
 
+    public function hasDividenPerbulan(){
+        return $this->hasMany('App\Model\Investor\DevidePerbulan','id', 'id_bulan_dividen');
+    }
 }

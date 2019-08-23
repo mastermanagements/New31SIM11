@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/js.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/investor/Deviden.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/Deviden.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/investor/DividenInvestor.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/DividenInvestor.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Investor/DevidePerbulan.php" afterPath="$PROJECT_DIR$/app/Model/Investor/DevidePerbulan.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Investor/DividenInvestor.php" afterPath="$PROJECT_DIR$/app/Model/Investor/DividenInvestor.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/js.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/js.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/modal_saham_real.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/modal_saham_real.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/page.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/dividen/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/dividen/page_default.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1422,8 +1422,8 @@
       <file leaf-file-name="web.php" pinned="true" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="1791" column="41" lean-forward="true" selection-start-line="1791" selection-start-column="41" selection-end-line="1791" selection-end-column="52" />
+            <state relative-caret-position="63">
+              <caret line="1781" column="28" lean-forward="true" selection-start-line="1781" selection-start-column="12" selection-end-line="1781" selection-end-column="28" />
               <folding>
                 <element signature="e#43068#43120#0#PHP" expanded="false" />
               </folding>
@@ -1434,10 +1434,12 @@
       <file leaf-file-name="DividenInvestor.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/DividenInvestor.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="175" column="41" lean-forward="false" selection-start-line="175" selection-start-column="41" selection-end-line="175" selection-end-column="41" />
+            <state relative-caret-position="308">
+              <caret line="46" column="28" lean-forward="false" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="28" />
               <folding>
                 <element signature="e#49#77#0#PHP" expanded="true" />
+                <element signature="e#5920#7068#0#PHP" expanded="false" />
+                <marker date="1566543198603" expanded="false" signature="6418:7047" ph="..." />
               </folding>
             </state>
           </provider>
@@ -1446,18 +1448,8 @@
       <file leaf-file-name="DividenInvestor.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Model/Investor/DividenInvestor.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DevidePerbulan.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Model/Investor/DevidePerbulan.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="37" />
+            <state relative-caret-position="546">
+              <caret line="26" column="38" lean-forward="false" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -1466,8 +1458,30 @@
       <file leaf-file-name="page.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/page.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="63" column="111" lean-forward="true" selection-start-line="63" selection-start-column="111" selection-end-line="63" selection-end-column="124" />
+            <state relative-caret-position="84">
+              <caret line="22" column="67" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="67" />
+              <folding>
+                <element signature="n#style#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modal_saham_real.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/modal_saham_real.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="693">
+              <caret line="33" column="106" lean-forward="false" selection-start-line="33" selection-start-column="106" selection-end-line="33" selection-end-column="106" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DevidePerbulan.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Model/Investor/DevidePerbulan.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="12" column="56" lean-forward="false" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -1476,9 +1490,11 @@
       <file leaf-file-name="js.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/js.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-              <folding />
+            <state relative-caret-position="756">
+              <caret line="36" column="60" lean-forward="false" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
+              <folding>
+                <marker date="1566543057876" expanded="true" signature="1648:1659" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1577,7 +1593,6 @@
       <list>
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/saham/saham_real/page.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/Investor/SahamReal.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/modal_saham_real.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_16_014205_create_i_pelaksana.php" />
         <option value="$PROJECT_DIR$/app/Model/Investor/Pelaksana.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pelaksana/page.blade.php" />
@@ -1604,7 +1619,6 @@
         <option value="$PROJECT_DIR$/app/Model/Investor/BulanDevidenM.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/besar_nisbah/modal_pelaksana.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestasi.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/investor/Deviden.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/besar_nisbah/Js.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/besar_nisbah/page.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/besar_nisbah/Js.blade.php" />
@@ -1621,11 +1635,13 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPemodal.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/dividen/page_default.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/page.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/js.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/Investor/DividenInvestor.php" />
         <option value="$PROJECT_DIR$/app/Model/Investor/DevidePerbulan.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/investor/Deviden.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/js.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/page.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/investor/DividenInvestor.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/modal_saham_real.blade.php" />
       </list>
     </option>
   </component>
@@ -1767,6 +1783,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1796,14 +1814,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/investor/DividenInvestor.php&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;dividen&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_13_063314_create_i_dividen_investor.php&#10;SahamRea&#9;null&#9;null&#10;Devide&#9;null&#9;null&#10;jua&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_06_030855_create_jual_saham_perusahaan.php&#10;jual&#9;null&#9;null&#10;i_bentu&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_01_011959_create_i_bentuk_investor.php&#10;Bentuk&#9;null&#9;null&#10;Brifing&#9;null&#9;null&#10;Abse&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Hrd/H_absensi.php&#10;SlipGaji&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/SlipGaji.php&#10;Tunjangan&#9;null&#9;null&#10;SkalaBonusProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/SkalaBonusProyek.php&#10;G_Bonus_Gaji&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/G_Bonus_Gaji.php&#10;Tambahan&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/TambahanGaji.php&#10;poto&#9;null&#9;null&#10;g_poto&#9;null&#9;null&#10;le&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/Lembur.php&#10;tambaha&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/TambahanGaji.php&#10;tambahan&#9;null&#9;null&#10;Le&#9;null&#9;null&#10;slipga&#9;null&#9;null&#10;TunjanganGaji&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/TunjanganGaji.php&#10;Karyawan&#9;null&#9;null&#10;Superadmin_UKM&#9;null&#9;null&#10;tunjangan&#9;null&#9;null&#10;tunjaga&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/penggajian/2019_07_20_004550_g_tunjangan_gaji.php&#10;Tu&#9;null&#9;null&#10;potonganAb&#9;null&#9;null&#10;predi&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/PredikatPenilaian.php&#10;predikat&#9;null&#9;null&#10;KompensasiKinerja&#9;null&#9;null&#10;jabata&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Superadmin_ukm/U_jabatan_p.php&#10;sk&#9;null&#9;null&#10;klasifikas&#9;null&#9;null&#10;we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;FatalErrorException&#9;null&#9;null&#10;tes&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/Tes.php&#10;kar&#9;null&#9;null&#10;JadwalProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JadwalProyek.php&#10;2019_04_02_075743_create_a_jenis_arsip&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/administrasi/2019_04_02_075743_create_a_jenis_arsip.php&#10;BAsertim&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BAsertim.php&#10;BApenyelesaian&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BApenyelesaian.php&#10;app/Exceptions/Handler.php&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Exceptions/Handler.php&#10;Pro&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Proposal.php&#10;JenisProposal&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/JenisProposal.php&#10;Surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php&#10;surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/resources/views/user/investor/section/dividen/dividen_investor/page.blade.php&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;dividen&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_13_063314_create_i_dividen_investor.php&#10;SahamRea&#9;null&#9;null&#10;Devide&#9;null&#9;null&#10;jua&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_06_030855_create_jual_saham_perusahaan.php&#10;jual&#9;null&#9;null&#10;i_bentu&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_01_011959_create_i_bentuk_investor.php&#10;Bentuk&#9;null&#9;null&#10;Brifing&#9;null&#9;null&#10;Abse&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Hrd/H_absensi.php&#10;SlipGaji&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/SlipGaji.php&#10;Tunjangan&#9;null&#9;null&#10;SkalaBonusProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/SkalaBonusProyek.php&#10;G_Bonus_Gaji&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/G_Bonus_Gaji.php&#10;Tambahan&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/TambahanGaji.php&#10;poto&#9;null&#9;null&#10;g_poto&#9;null&#9;null&#10;le&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/Lembur.php&#10;tambaha&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/TambahanGaji.php&#10;tambahan&#9;null&#9;null&#10;Le&#9;null&#9;null&#10;slipga&#9;null&#9;null&#10;TunjanganGaji&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/TunjanganGaji.php&#10;Karyawan&#9;null&#9;null&#10;Superadmin_UKM&#9;null&#9;null&#10;tunjangan&#9;null&#9;null&#10;tunjaga&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/penggajian/2019_07_20_004550_g_tunjangan_gaji.php&#10;Tu&#9;null&#9;null&#10;potonganAb&#9;null&#9;null&#10;predi&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/PredikatPenilaian.php&#10;predikat&#9;null&#9;null&#10;KompensasiKinerja&#9;null&#9;null&#10;jabata&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Superadmin_ukm/U_jabatan_p.php&#10;sk&#9;null&#9;null&#10;klasifikas&#9;null&#9;null&#10;we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;FatalErrorException&#9;null&#9;null&#10;tes&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/hrd/Tes.php&#10;kar&#9;null&#9;null&#10;JadwalProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JadwalProyek.php&#10;2019_04_02_075743_create_a_jenis_arsip&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/administrasi/2019_04_02_075743_create_a_jenis_arsip.php&#10;BAsertim&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BAsertim.php&#10;BApenyelesaian&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/BApenyelesaian.php&#10;app/Exceptions/Handler.php&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Exceptions/Handler.php&#10;Pro&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Proposal.php&#10;JenisProposal&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/JenisProposal.php&#10;Surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php&#10;surat&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Surat.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
@@ -2045,14 +2061,9 @@
       <workItem from="1566175019890" duration="17383000" />
       <workItem from="1566261667479" duration="13943000" />
       <workItem from="1566347054827" duration="18832000" />
-      <workItem from="1566433851440" duration="16467000" />
-    </task>
-    <task id="LOCAL-00077" summary="HRD&#10;- Menu Rencana Pelatihan Fix">
-      <created>1560845438897</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1560845438897</updated>
+      <workItem from="1566433851440" duration="16502000" />
+      <workItem from="1566522705934" duration="10114000" />
+      <workItem from="1566538125155" duration="6046000" />
     </task>
     <task id="LOCAL-00078" summary="HRD&#10;- pendaftaran Karyawan yang akan ikut pelatihan selesai">
       <created>1560931275382</created>
@@ -2390,11 +2401,18 @@
       <option name="project" value="LOCAL" />
       <updated>1566374137268</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="Investor&#10;  - Refini tampilan dividen investor">
+      <created>1566464222545</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1566464222545</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1430966000" />
+    <option name="totallyTimeSpent" value="1447161000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2406,21 +2424,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21331316" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21633889" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31907895" sideWeight="0.5121029" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18078668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70888156" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25164473" sideWeight="0.48789713" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2473525" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14069591" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2445,7 +2462,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2473525" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2473525" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -2525,20 +2542,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_per_bulan/page.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-483">
-          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_per_bulan/modal_divide_per_bulan.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
@@ -2575,29 +2578,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3528">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestasi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding>
-            <element signature="e#49#77#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/JualSahamPersahaan.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2079">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2605,7 +2589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2613,7 +2596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-945">
           <caret line="45" column="5" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="45" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2621,7 +2603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="672">
           <caret line="38" column="17" lean-forward="true" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2629,18 +2610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-105">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/Deviden.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="70" column="90" lean-forward="true" selection-start-line="70" selection-start-column="90" selection-end-line="70" selection-end-column="90" />
-          <folding>
-            <element signature="e#49#77#0#PHP" expanded="false" />
-            <marker date="1566268429082" expanded="true" signature="2507:3037" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2655,20 +2624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="52" column="20" lean-forward="false" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
-          <folding>
-            <element signature="e#49#77#0#PHP" expanded="false" />
-            <marker date="1566281634167" expanded="true" signature="2547:3071" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/Nisbah.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-399">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#49#77#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2721,14 +2676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPelaksana.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Model/Investor/DividenPelaksana.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
@@ -2754,7 +2701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="43" lean-forward="false" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2762,17 +2708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
           <caret line="29" column="54" lean-forward="false" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPemodal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="109" column="61" lean-forward="false" selection-start-line="109" selection-start-column="61" selection-end-line="109" selection-end-column="61" />
-          <folding>
-            <element signature="e#49#77#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2780,7 +2715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1155">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2788,18 +2722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="93" column="26" lean-forward="true" selection-start-line="93" selection-start-column="26" selection-end-line="93" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
-          <caret line="178" column="0" lean-forward="true" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-          <folding>
-            <element signature="e#5033#5660#0#HTML" expanded="false" />
-            <element signature="e#5706#6342#0#HTML" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2815,25 +2737,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="27" column="47" lean-forward="true" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/app/Investasi/I_data_investor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="1791" column="41" lean-forward="true" selection-start-line="1791" selection-start-column="41" selection-end-line="1791" selection-end-column="52" />
-          <folding>
-            <element signature="e#43068#43120#0#PHP" expanded="false" />
-          </folding>
+        <state relative-caret-position="-70">
+          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/js.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="462">
+          <caret line="130" column="57" lean-forward="true" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/besar_nisbah/Js.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="103" column="5" lean-forward="true" selection-start-line="89" selection-start-column="4" selection-end-line="103" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -2844,10 +2768,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/PelakuInvestasi/pemodal/modal_pemodal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="541">
+          <caret line="178" column="0" lean-forward="true" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="1781" column="28" lean-forward="true" selection-start-line="1781" selection-start-column="12" selection-end-line="1781" selection-end-column="28" />
+          <folding>
+            <element signature="e#43068#43120#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestasi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1365">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/DataInvestor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3528">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPelaksana.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1764">
+          <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/Nisbah.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-735">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPemodal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2163">
+          <caret line="109" column="61" lean-forward="false" selection-start-line="109" selection-start-column="61" selection-end-line="109" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.i_deviden_bulan_m">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/Deviden.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1281">
+          <caret line="66" column="28" lean-forward="true" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2858,14 +2854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Investasi/I_data_investor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-70">
-          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/f75ac4e2/7f3da4e7-bbfb-477b-82c9-d04004bd90b0/master_management.i_dividen_investor">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -2873,52 +2861,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/page_default.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/js.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="130" column="57" lean-forward="true" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
+        <state relative-caret-position="756">
+          <caret line="36" column="60" lean-forward="false" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
+          <folding>
+            <marker date="1566543057876" expanded="true" signature="1648:1659" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Investor/DevidePerbulan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="56" lean-forward="false" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/besar_nisbah/Js.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Model/Investor/DividenInvestor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="103" column="5" lean-forward="true" selection-start-line="89" selection-start-column="4" selection-end-line="103" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/page.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="63" column="111" lean-forward="true" selection-start-line="63" selection-start-column="111" selection-end-line="63" selection-end-column="124" />
+        <state relative-caret-position="546">
+          <caret line="26" column="38" lean-forward="false" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/DividenInvestor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="175" column="41" lean-forward="false" selection-start-line="175" selection-start-column="41" selection-end-line="175" selection-end-column="41" />
+        <state relative-caret-position="308">
+          <caret line="46" column="28" lean-forward="false" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="28" />
           <folding>
             <element signature="e#49#77#0#PHP" expanded="true" />
+            <element signature="e#5920#7068#0#PHP" expanded="false" />
+            <marker date="1566543198603" expanded="false" signature="6418:7047" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Investor/DividenInvestor.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/page.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="84">
+          <caret line="22" column="67" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="67" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Investor/DevidePerbulan.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/modal_saham_real.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="37" />
+        <state relative-caret-position="693">
+          <caret line="33" column="106" lean-forward="false" selection-start-line="33" selection-start-column="106" selection-end-line="33" selection-end-column="106" />
           <folding />
         </state>
       </provider>

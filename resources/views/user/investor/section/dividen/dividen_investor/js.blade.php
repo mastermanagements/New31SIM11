@@ -21,16 +21,21 @@
         retrieve: true
     });
 
-    call_data_dividen = function (data) {
+    call_data_dividen = function (data, year) {
+        $('#loading_s').show();
         $.ajax({
             url: '{{ url('lihat-data-dividen-investor') }}/'+data,
             dataType : 'json',
             data :{
-                '_token' : '{{ csrf_token() }}'
+                '_token' : '{{ csrf_token() }}',
+                'thn': year
             }
         }).done(function (result) {
             table_divince_perBulanM.clear().draw();
             table_divince_perBulanM.rows.add(result.data).draw();
+            buttonBuilder(result.button);
+            $('#title-table').text('Daftar Dividen Tahun :'+ result.thn);
+            $('#loading_s').hide();
            // buttonBuild(data);
         }).fail(function(jqXHR, textStatus,errorThrown){
 
@@ -41,4 +46,21 @@
         //alert('id :'+id);
         call_data_dividen(id);
     }
+
+    buttonBuilder = function (data) {
+        var button = "";
+        $('#loading-button').show();
+        $.each(data, function (i,v) {
+            console.log(v);
+            button += '<button class="btn btn-primary" onclick="lihat_data('+v.id_investor+','+v.tahun+')" style="margin: 2px">'+v.tahun+'</button>';
+        });
+        $('#loading-button').hide();
+        $('#button-container').html(button);
+    }
+
+    lihat_data = function (id, year) {
+        //alert('id :'+id);
+        call_data_dividen(id, year);
+    }
+
 </script>
