@@ -11,7 +11,7 @@
                     {{ csrf_field() }}
                     <select class="form-control select2" style="width: 100%;" name="id_loker" required>
                         @if(empty($lokers))
-                            <option>Lowongan Kerjad masih kosong</option>
+                            <option>Lowongan Kerja masih kosong</option>
                         @else
                             @foreach($lokers as $value)
                                 <option value="{{ $value->id }}">
@@ -48,7 +48,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>Nama Pelamar</th>
                                 <th>Posisi</th>
-                                <th  >Hasil</th>
+                                <th>Hasil</th>
                                 <th style="width: 40px">Proses</th>
                             </tr>
                             @if(!empty($data_lamaran_pek=$lokers->lamaran_pek))

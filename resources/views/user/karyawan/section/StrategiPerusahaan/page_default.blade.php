@@ -107,6 +107,7 @@
 									<h4 class="box-title">
 									{{ $bulan->bulan}}
 									</h4>
+									
 										@if ((!empty ($Ttahunan->getStrategiTahunan->id) && ($bulan->id)))
 										<div class="box-tools pull-right">
 											<button type="button" class="btn btn-box-tool" onclick="tambahSbulanan('{{ $bulan->id }}','{{ $Ttahunan->getStrategiTahunan->id }}' )" title="tambah Strategi Bulanan"><i class="fa fa-plus"></i></button> <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="buka tutup isi"></i></button>				

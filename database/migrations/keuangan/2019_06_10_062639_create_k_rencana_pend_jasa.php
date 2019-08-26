@@ -15,8 +15,11 @@ class CreateKRencanaPendJasa extends Migration
     {
         Schema::create('k_rencana_pend_jasa', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('id_rab')->unsigned();
+			$table->year('tahun', 4);
 			$table->string('bulan',50);
+			$table->integer('id_jasa')->unsigned();
+			$table->integer('target_jasa_terjual');
+			$table->integer('target_klien_beli');
 			$table->integer('id_perusahaan')->unsigned();
 			$table->integer('id_karyawan')->unsigned();
             $table->timestamps();

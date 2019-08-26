@@ -50,6 +50,7 @@
                                 </div>
                             </div>
                             <p></p>
+							
                             <div class="row">
                                 @if(empty($data_barang))
                                     <div class="col-md-12"> <h4 align="center">Anda belum menambahkan Barang </h4></div>
