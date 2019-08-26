@@ -48,19 +48,16 @@
                                     </div>
                                     <!-- /.box-tools -->
                                 </div>
-                                <!-- /.box-header -->
-								<div class="box-body">
-									<form action="{{ url('delete-swot/'. $value->id) }}" method="post">
-                                            <input type="hidden" name="_method" value="put">
-                                            {{ csrf_field() }}
-                                            <button type="submit" onclick="return confirm('apakah anda akan menghapus target tahunan ini .. ?')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
-                                            <a href="{{ url('ubah-swot/'. $value->id) }}" class="btn btn-xs btn-primary pull-right"><i class="fa fa-pencil"></i></a>
-									</form>
-                                    
-									</div>
+
 									<!-- /.box-body 1-->
-                                <div class="box-body" style="display: none;">
-                                    {!! $value->isi !!}
+                                <div class="box-body">
+                                    {!! $value->Isi  !!}
+                                    <form action="{{ url('delete-swot/'. $value->id) }}" method="post">
+                                        <input type="hidden" name="_method" value="put">
+                                        {{ csrf_field() }}
+                                        <button type="submit" onclick="return confirm('apakah anda akan menghapus target tahunan ini .. ?')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                        <a href="{{ url('ubah-swot/'. $value->id) }}" class="btn btn-xs btn-primary pull-right"><i class="fa fa-pencil"></i></a>
+                                    </form>
                                 </div>
                                 <!-- /.box-body 2-->
                             </div>

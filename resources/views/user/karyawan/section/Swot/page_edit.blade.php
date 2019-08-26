@@ -47,7 +47,7 @@
 								</div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Kategori SWOT</label> &nbsp;
-                                        <input type="text"  name="kategori_swot" class="form-control" id="exampleInputEmail1"  disabled value="{{ $data_swot->kategori_swot }}" required>
+                                        <input type="text"  name="kategori_swot" class="form-control" id="exampleInputEmail1"  value="{{ $data_swot->kategori_swot }}" required readonly>
                                     <small style="color: red" id="notify"></small>
                                 </div>
 								<div class="form-group">

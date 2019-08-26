@@ -179,6 +179,12 @@ Route::get('buat-swot','karyawan\SWOT@create');
 
 Route::post('store-swot','karyawan\SWOT@store');
 
+Route::put('update-swot/{id}','karyawan\SWOT@update');
+
+Route::put('delete-swot/{id}','karyawan\SWOT@delete');
+
+Route::get('ubah-swot/{id}','karyawan\SWOT@edit');
+
 Route::get('Strategi-Jangka-Panjang','karyawan\SJP@index');
 
 Route::get('buat-strategi-jangka-panjang','karyawan\SJP@create');
@@ -1864,6 +1870,8 @@ Route::post('update-nisbah-pelaksana','Investor\NisbahPelaksana@update');
 
 Route::put('delete-nisbah-pelaksana/{id}','Investor\NisbahPelaksana@delete');
 
+Route::get('data-pelaksana/{id}','Investor\NisbahPelaksana@data_pelaksana');
+
 
 Route::get('Nisbah-pemodal','Investor\NisbahPemodal@index');
 
@@ -1875,6 +1883,8 @@ Route::get('edit_dividen_pemodal/{id}','Investor\NisbahPemodal@edit');
 Route::post('update-nisbah-pemodal','Investor\NisbahPemodal@update');
 
 Route::put('delete-nisbah-pemodal/{id}','Investor\NisbahPemodal@delete');
+
+Route::get('data-pemodal/{id}','Investor\NisbahPemodal@data_pemodal');
 
 
 //================================= Global Route ======================================================================

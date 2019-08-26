@@ -1,5 +1,4 @@
 <script>
-
     table_divince_perBulanM= $('.table_dividen').DataTable({
         data:[],
         column:[
@@ -21,10 +20,10 @@
         retrieve: true
     });
 
-    call_data_dividen = function (data, year) {
+    lihat_data_dividen = function (data, year) {
         $('#loading_s').show();
         $.ajax({
-            url: '{{ url('lihat-data-dividen-investor') }}/'+data,
+            url: '{{ url('data-pemodal') }}/'+data,
             dataType : 'json',
             data :{
                 '_token' : '{{ csrf_token() }}',
@@ -33,18 +32,12 @@
         }).done(function (result) {
             table_divince_perBulanM.clear().draw();
             table_divince_perBulanM.rows.add(result.data).draw();
-            buttonBuilder(result.button);
-            $('#title-table').text('Daftar Dividen Tahun :'+ result.thn);
+            $('#title-table').text('Daftar Dividen Tahun :'+ result.tahun);
             $('#loading_s').hide();
-            buttonBuild(data);
+            buttonBuilder(result.button);
         }).fail(function(jqXHR, textStatus,errorThrown){
 
         })
-    }
-
-    lihat_dividen = function (id) {
-        //alert('id :'+id);
-        call_data_dividen(id);
     }
 
     buttonBuilder = function (data) {
@@ -52,15 +45,15 @@
         $('#loading-button').show();
         $.each(data, function (i,v) {
             console.log(v);
-            button += '<button class="btn btn-primary" onclick="lihat_data('+v.id_investor+','+v.tahun+')" style="margin: 2px">'+v.tahun+'</button>';
+            button += '<button class="btn btn-primary" onclick="lihat_data('+v.id_pemodal+','+v.tahun+')" style="margin: 2px">'+v.tahun+'</button>';
         });
         $('#loading-button').hide();
         $('#button-container').html(button);
     }
 
-    lihat_data = function (id, year) {
-        //alert('id :'+id);
-        call_data_dividen(id, year);
+    lihat_data = function (data, tahun) {
+        lihat_data_dividen(data, tahun)
     }
+
 
 </script>

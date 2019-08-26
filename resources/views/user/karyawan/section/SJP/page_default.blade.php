@@ -22,8 +22,7 @@
           -------------------------->
         <p></p>
         <div class="row">
-
-            @if(!empty(session('message_success')))
+             @if(!empty(session('message_success')))
                 <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
             @elseif(!empty(session('message_fail')))
                 <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>

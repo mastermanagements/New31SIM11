@@ -24,4 +24,6 @@ class Pelaksana extends Model
         return $this->belongsTo('App\Model\Investor\BentukInvestor','id_bentuk_invest');
     }
 
+
+
 }

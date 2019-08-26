@@ -62,7 +62,7 @@
     @if(Session::get('menu-nisbah')=="nisbah_pelaksana")
         @include('user.investor.section.nisbah.pelaksana.modal_pemodal')
     @elseif(Session::get('menu-nisbah')=="nisbah_pemodal")
-        @include('user.investor.section.nisbah.pelaksana.modal_pemodal')
+        @include('user.investor.section.nisbah.pemodal.modal_pemodal')
     @else
         @include('user.investor.section.nisbah.besar_nisbah.modal_pelaksana')
         @include('user.investor.section.nisbah.modal_nisbah.modal_nisbah')
@@ -129,4 +129,9 @@
     </script>
 
     @include('user.investor.section.nisbah.besar_nisbah.Js')
+    @if(Session::get('menu-nisbah')=="nisbah_pelaksana")
+        @include('user.investor.section.nisbah.pelaksana.Js')
+    @elseif(Session::get('menu-nisbah')=="nisbah_pemodal")
+        @include('user.investor.section.nisbah.pemodal.Js')
+    @endif
 @stop
