@@ -34,6 +34,10 @@ class H_karyawan extends Model
         'tgl_masuk',
     ];
 
+    public function jabatan_ky(){
+        return $this->hasOne('App\Model\Hrd\H_Jabatan_ky','id_ky');
+    }
+
     public function getPerusahaan()
     {
         return $this->belongsTo('App\Model\Superadmin_ukm\U_usaha', 'id_perusahaan');
@@ -76,8 +80,25 @@ class H_karyawan extends Model
     public function get_MannyTesKemanajerialan(){
         return $this->hasMany('App\Model\Hrd\H_tes_manajerial','id_ky');
     }
+    public function get_MannyKpiKaryawan(){
+        return $this->hasMany('App\Model\Hrd\H_kpi_karyawan','id_ky');
+    }
 
     public function get_MannyTesTeknis(){
         return $this->hasMany('App\Model\Hrd\H_tes_kteknis','id_ky');
     }
+
+    public function getMannyDaftarGaji(){
+        return $this->hasMany('App\Model\Penggajian\DaftarGaji','id_ky');
+    }
+
+    public function getMannyTunjangan(){
+        return $this->hasMany('App\Model\Penggajian\G_tunjangan_gaji','id_ky');
+    }
+
+    public function getAbsensi(){
+        return $this->hasMany('App\Model\Hrd\H_absensi','id_ky');
+    }
+
+
 }

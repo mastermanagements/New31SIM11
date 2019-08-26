@@ -58,6 +58,7 @@ class Menu_perusahaan extends Controller
 
     public function store_menu(Request $req)
     {
+
         $this->validate($req,[
            'sub_menu_id' => 'required',
             'id_usaha' => 'required'
@@ -68,8 +69,10 @@ class Menu_perusahaan extends Controller
         $sub_master_menu_mode_l = s_menu::findOrFail($pk_sub_menu);
         $master_menu_model = menu::findOrFail($sub_master_menu_mode_l->id_master_menu);
         $model_menu_ukm=ukm_menu::firstOrCreate(['id_master_menu'=>$master_menu_model->id,'id_perusahaan'=> $id_perusahaan]);
+
         if($model_menu_ukm->save())
         {
+
             $master_SubMenu_model = new s_ukm_menu;
             $master_SubMenu_model->id_menu_ukm = $model_menu_ukm->id;
             $master_SubMenu_model->id_master_submenu = $sub_master_menu_mode_l->id;

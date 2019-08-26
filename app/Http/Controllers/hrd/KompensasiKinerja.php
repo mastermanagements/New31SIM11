@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Hrd\H_kompensasi_kinerja as Hkk;
-use function Sodium\add;
+use App\Model\Hrd\H_predikat_penilaian as hpp;
 
 class KompensasiKinerja extends Controller
 {
@@ -31,7 +31,8 @@ class KompensasiKinerja extends Controller
 
     public function index(){
         $data=[
-            'data'=> Hkk::all()->where('id_perusahaan', $this->id_perusahaan)
+            'data'=> Hkk::all()->where('id_perusahaan', $this->id_perusahaan),
+            'predikat'=> hpp::all()->where('id_perusahaan', $this->id_perusahaan),
         ];
         return view('user.hrd.section.kompensasi_kinerja.page_default', $data);
     }

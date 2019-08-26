@@ -5,7 +5,7 @@ namespace App\Http\Controllers\hrd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Superadmin_ukm\H_karyawan as karyawans;
-use App\Model\Superadmin_ukm\U_user_ukm as superadmins;
+use App\Model\Superadmin_ukm\U_jabatan_p as jbtn;
 use Session;
 
 class Karyawan extends Controller
@@ -42,7 +42,8 @@ class Karyawan extends Controller
     {
         $data =[
             'data_karyawan' => karyawans::where('id_perusahaan', $this->id_perusahaan)->paginate(20),
-            'status'=> $this->status
+            'status'=> $this->status,
+            'jabatan'=>jbtn::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.hrd.section.karyawan.page_default', $data);
     }

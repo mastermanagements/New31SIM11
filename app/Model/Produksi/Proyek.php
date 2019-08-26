@@ -20,6 +20,10 @@ class Proyek extends Model
         return $this->hasMany('App\Model\Produksi\TimProyek', 'id_proyek');
     }
 
+    public function timOneProye(){
+        return $this->hasOne('App\Model\Produksi\TimProyek', 'id_proyek');
+    }
+
     public function taks_proyek(){
         return $this->hasMany('App\Model\Produksi\TaskProyek','id_proyek');
     }

@@ -43,6 +43,7 @@
                                     <th>Karyawan</th>
                                     <th>Area Kerja Utama</th>
                                     <th>KPI</th>
+                                    <th>Bobot</th>
                                     <th>Realisasi KPI</th>
                                     <th>Skor KPI</th>
                                     <th>Skor Akhir</th>
@@ -58,6 +59,7 @@
                                         <td>{{ $value->karyawan->nama_ky }}</td>
                                         <td>{{ $value->aku->nm_aku }}</td>
                                         <td>{{ $value->kpi->nm_kpi }}</td>
+                                        <td>{{ $value->kpi->bobot_kpi }}</td>
                                         <td>{{ $value->realisasi_kpi }}</td>
                                         <td>{{ $value->skor_kpi }}</td>
                                         <td>{{ $value->skor_akhir }}</td>

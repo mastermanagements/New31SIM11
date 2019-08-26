@@ -95,9 +95,9 @@
 
 @section('plugins')
     <script>
-       $('#tomboh-ubah').click(function () {
+        update=function (id) {
           $.ajax({
-              url: "{{ url('edit-satuan-kpi') }}/"+$(this).val(),
+              url: "{{ url('edit-satuan-kpi') }}/"+id,
               dataType: "json",
               success: function (result) {
                   console.log(result);
@@ -106,6 +106,6 @@
                   $('#formulir').attr('action', '{{ url('update-satuan-kpi') }}');
               }
           })
-       })
+       }
     </script>
 @stop
