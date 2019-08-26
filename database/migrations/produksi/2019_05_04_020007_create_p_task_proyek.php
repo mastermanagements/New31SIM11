@@ -15,9 +15,7 @@ class CreatePTaskProyek extends Migration
     {
         Schema::create('p_task_proyek', function (Blueprint $table) {
             $table->increments('id');
-
 			$table->integer('id_proyek')->unsigned();
-
             $table->string('nama_tugas');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
