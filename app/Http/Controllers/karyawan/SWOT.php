@@ -86,6 +86,35 @@ class SWOT extends Controller
         ];
         return view('user.karyawan.section.Swot.page_edit', $data_pass);
     }
+
+    public function update(Request $req, $id)
+    {
+       $this->validate($req,[
+            'tahun_swot' => 'required|numeric',
+            'kategori_swot' => 'required',
+            'isi' => 'required'
+        ]);
+
+        $tahun_anggaran = $req->tahun_swot;
+        $kategori_swot = $req->kategori_swot;
+        $isi = $req->isi;
+
+        $model = swots::find($id)->update([
+            'tahun_swot'=>$tahun_anggaran,
+            'kategori_swot'=>$kategori_swot,
+            'isi'=>$isi,
+            'id_perusahaan'=>$this->id_perusahaan,
+            'id_karyawan'=>$this->id_karyawan
+        ]);
+
+        if($model)
+        {
+            return redirect('Swot')->with('message_success','Anda telah mengubah '.$kategori_swot);
+        }else{
+            return redirect('Swot')->with('message_fail','Terjadi kesalahan, silahkan coba lagi untuk '.$kategori_swot);
+        }
+
+    }
 	
 	public function delete(Request $req, $id)
     {

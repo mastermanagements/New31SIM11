@@ -172,9 +172,19 @@ Route::get('logout-karyawan','karyawan\LoginController@logOut');
 //=========================== Menu Perusahaan ========================================================================
 Route::get('welcome-page','karyawan\Dashboard@index');
 
+
+Route::put('update-swot/{id}','karyawan\SWOT@update');
+
+Route::put('delete-swot/{id}','karyawan\SWOT@delete');
+
+Route::get('ubah-swot/{id}','karyawan\SWOT@edit');
+
+Route::get('Strategi-Jangka-Panjang','karyawan\SJP@index');
+
 	//--- struktur perusahaan ---
 	
 Route::get('Struktur-Perusahaan','karyawan\StruturPerusahaan@index');
+
 
 Route::post('store-bagan','karyawan\StruturPerusahaan@store');
 
@@ -1792,11 +1802,223 @@ Route::post('store-bonus-gaji','penggajian\G_Bonus_Gaji@store');
 Route::put('delete-bonus-proyek/{id}','penggajian\G_Bonus_Gaji@delete');
 
 
+//================================= Investor ==========================================================================
+Route::get('Data-Investor', 'investor\DataInvestor@index');
+
+Route::get('tambah-investor', 'investor\DataInvestor@create');
+
+Route::post('store-investor', 'investor\DataInvestor@store');
+
+Route::get('ubah-investor/{id}', 'investor\DataInvestor@edit');
+
+Route::put('update-investors/{id}', 'investor\DataInvestor@update');
+
+Route::put('hapus-investor/{id}', 'investor\DataInvestor@delete');
+
+Route::post('upload-ktp-invest', 'investor\DataInvestor@uploadEktp');
+
+Route::post('upload-photo-invest', 'investor\DataInvestor@uploadPasFotoInvest');
+
+
+Route::get('Bentuk-Investor','investor\BentukInvestor@index');
+
+Route::post('store-bentuk-investor','investor\BentukInvestor@store');
+
+Route::get('edit-bentuk-investor/{id}','investor\BentukInvestor@edit');
+
+Route::post('update-bentuk-investor','investor\BentukInvestor@update');
+
+Route::put('hapus-bentuk-investor/{id}','investor\BentukInvestor@delete');
+
+
+Route::get('Periode-Investasi','Investor\PeriodeInvestor@index');
+
+Route::post('store-periode-investasi','Investor\PeriodeInvestor@store');
+
+Route::get('edit-periode-investor/{id}','Investor\PeriodeInvestor@edit');
+
+Route::post('update-periode-investor','Investor\PeriodeInvestor@update');
+
+Route::put('hapus-periode-investor/{id}','Investor\PeriodeInvestor@delete');
+
+
+Route::get('Saham','Investor\SahamPerdana@Index');
+
+Route::post('store-saham-perdana','Investor\SahamPerdana@store');
+
+Route::get('edit-saham-perdana/{id}','Investor\SahamPerdana@edit');
+
+Route::post('update-saham-perdana','Investor\SahamPerdana@update');
+
+
+
+
+Route::get('Data-Investasi','Investor\DataInvestasi@index');
+
+Route::post('store-investasi','Investor\DataInvestasi@store');
+
+Route::get('edit-daftar-investasi/{id}','Investor\DataInvestasi@edit');
+
+Route::post('update-daftar-investasi','Investor\DataInvestasi@update');
+
+Route::put('hapus-bentuk-investasi/{id}','Investor\DataInvestasi@delete');
+
+
+Route::get('Saham-real','Investor\SahamReal@Index');
+
+Route::post('store-saham-real','Investor\SahamReal@store');
+
+Route::get('edit-saham-real/{id}','Investor\SahamReal@edit');
+
+Route::post('update-saham-real','Investor\SahamReal@update');
+
+Route::put('delete-saham-real/{id}','Investor\SahamReal@delete');
+
+Route::put('ubah-status-saham-real/{id}','Investor\SahamReal@updateStatus');
+
+
+
+Route::get('Jual-Saham','Investor\JualSahamPersahaan@index');
+
+Route::post('store-jual-saham-perusahaan','Investor\JualSahamPersahaan@store');
+
+Route::get('edit-jual-saham-perusahaan/{id}','Investor\JualSahamPersahaan@edit');
+
+Route::post('update-jual-saham-perusahaan','Investor\JualSahamPersahaan@update');
+
+Route::put('hapus-jual-saham-perusahaan/{id}','Investor\JualSahamPersahaan@delete');
+
+
+Route::get('saham-investor','Investor\JualSahamInvestor@index');
+
+Route::post('store-jual-saham-investor','Investor\JualSahamInvestor@store');
+
+Route::put('delete-jual-saham-investor/{id}','Investor\JualSahamInvestor@deletes');
+
+Route::get('edit-jual-saham-investor/{id}','Investor\JualSahamInvestor@edit');
+
+Route::post('update-jual-saham-invest','Investor\JualSahamInvestor@update');
+
+Route::get('Dividen','Investor\Deviden@index');
+
+Route::post('store-dividen-per-bulan','Investor\Deviden@store');
+
+Route::get('edit-divide-bulanan/{id}','Investor\Deviden@edit');
+
+Route::post('update-divine-bulanan','Investor\Deviden@update');
+
+Route::put('delete-divine-bulanan/{id}','Investor\Deviden@delete');
+
+Route::get('getDataDividen/{year}','Investor\Deviden@getDataDP');
+
+
+Route::get('Dividen-Investor','Investor\DividenInvestor@index');
+
+Route::post('store-divinden-investor','Investor\DividenInvestor@store');
+
+Route::get('edit-dividen-investor/{id}','Investor\DividenInvestor@edit');
+
+Route::post('update-dividen-investor','Investor\DividenInvestor@update');
+
+Route::put('delete-saham-real/{id}','Investor\DividenInvestor@delete');
+
+Route::get('lihat-data-dividen-investor/{id_investor}','Investor\DividenInvestor@lihat_data_dividen');
+
+Route::get('Persen-kas','Investor\PersenKas@index');
+
+Route::post('store-persen-kas','Investor\PersenKas@store');
+
+Route::get('edit-persen-kas/{id}','Investor\PersenKas@edit');
+
+Route::post('update-persen-kas','Investor\PersenKas@update');
+
+Route::put('hapus-persen-kas/{id}','Investor\PersenKas@delete');
+
+
+Route::get('Pelaku-Investasi','Investor\PelakuInvestasi@index');
+
+Route::post('store-pelaksana','Investor\PelakuInvestasi@store');
+
+Route::get('edit-pelaksana/{id}','Investor\PelakuInvestasi@edit');
+
+Route::post('update-pelaksana','Investor\PelakuInvestasi@update');
+
+Route::put('delete-pelaksana/{id}','Investor\PelakuInvestasi@delete');
+
+
+
+Route::get('Pemodal','Investor\Pemodal@index');
+
+Route::post('store-pemodal','Investor\Pemodal@store');
+
+Route::get('edit-pemodal/{id}','Investor\Pemodal@edit');
+
+Route::post('update-pemodal','Investor\Pemodal@update');
+
+Route::put('delete-pemodal','Investor\Pemodal@delete');
+
+
+
+Route::get('Akad','Investor\Akad@index');
+
+Route::post('store-akad', 'Investor\Akad@store');
+
+Route::put('hapus-akad/{id}', 'Investor\Akad@delete');
+
+
+
+Route::get('Nisbah','Investor\Nisbah@index');
+
+Route::post('store-nisbah','Investor\Nisbah@store');
+
+
+Route::post('store-besar-nisbah','Investor\BesarNisbah@store');
+
+Route::get('besar-nisbah/{year}','Investor\BesarNisbah@getDataByDate');
+
+Route::put('besar-nisbah-periode/{id}','Investor\BesarNisbah@getDataByDatePeriode');
+
+Route::get('edit-besar-nisbah/{id}','Investor\BesarNisbah@edit');
+
+Route::post('update-besar-nisbah','Investor\BesarNisbah@update');
+
+Route::put('delete-divine-bulananM/{id}','Investor\BesarNisbah@delete');
+
+Route::get('group-by/{year}','Investor\BesarNisbah@getPeriodeByear');
+
+
+Route::get('Nisbah-pelaksana','Investor\NisbahPelaksana@index');
+
+Route::post('store-nisbah-pelaksana','Investor\NisbahPelaksana@store');
+
+Route::get('edit-nisbah-pelaksana/{id}','Investor\NisbahPelaksana@edit');
+
+Route::post('update-nisbah-pelaksana','Investor\NisbahPelaksana@update');
+
+Route::put('delete-nisbah-pelaksana/{id}','Investor\NisbahPelaksana@delete');
+
+Route::get('data-pelaksana/{id}','Investor\NisbahPelaksana@data_pelaksana');
+
+
+Route::get('Nisbah-pemodal','Investor\NisbahPemodal@index');
+
+Route::post('store-nisbah-pemodal','Investor\NisbahPemodal@store');
+
+
+Route::get('edit_dividen_pemodal/{id}','Investor\NisbahPemodal@edit');
+
+Route::post('update-nisbah-pemodal','Investor\NisbahPemodal@update');
+
+Route::put('delete-nisbah-pemodal/{id}','Investor\NisbahPemodal@delete');
+
+Route::get('data-pemodal/{id}','Investor\NisbahPemodal@data_pemodal');
+
 Route::put('hapus-sop/{id}','hrd\Sop@delete');
 
 	//--- Rencana-Pelatihan---
 	
 Route::get('Rencana-Pelatihan', 'hrd\RencanaPelatihan@index');
+
 
 
 //================================= Global Route ======================================================================
