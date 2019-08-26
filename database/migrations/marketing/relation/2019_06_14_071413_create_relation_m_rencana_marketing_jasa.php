@@ -14,9 +14,7 @@ class CreateRelationMRencanaMarketingJasa extends Migration
     public function up()
     {
         Schema::table('m_rencana_marketing_jasa', function (Blueprint $table) {
-            $table->foreign('id_rab')->references('id')->on('k_rab');
             $table->foreign('id_rencana_pend_jasa')->references('id')->on('k_rencana_pend_jasa');
-            $table->foreign('id_rincian_pend_jasa')->references('id')->on('k_rincian_pend_jasa');
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
         });
