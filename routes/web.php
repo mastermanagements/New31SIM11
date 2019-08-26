@@ -1088,6 +1088,212 @@ Route::put('update-hrd-karyawan/{id}','hrd\Karyawan@update');
 
 Route::get('hapus-karyawan/{id}','hrd\Karyawan@delete');
 
+
+Route::get('tambah-rencana-pelatihan', 'hrd\RencanaPelatihan@create');
+
+Route::post('store-rencana-pelatihan','hrd\RencanaPelatihan@store');
+
+Route::get('ubah-rencana-pelatihan/{id}','hrd\RencanaPelatihan@edit');
+
+Route::post('update-rencana-pelatihan/{id}','hrd\RencanaPelatihan@update');
+
+Route::put('hapus-rencana-pelatihan/{id}','hrd\RencanaPelatihan@delete');
+
+Route::get('daftarkan-peserta-mengikuti-pelatihan/{id_pelatihan}', 'hrd\RencanaPelatihan@daftar_karyawan');
+
+Route::post('daftarkan_peserta','hrd\RencanaPelatihan@store_pelatihan');
+
+Route::post('batal_daftarkan_peserta','hrd\RencanaPelatihan@delete_pelatihan');
+
+Route::get('Buku-Penilaian', function(){
+    return view('user.hrd.section.penilaian_karyawan.PA.page_default');
+});
+
+Route::get('Performance-Appraisal', 'hrd\BukuPenilaian@PA');
+
+Route::get('Aspek-Pa', 'hrd\AspekPenilaian@index');
+
+Route::post('store-aspek-penilaian','hrd\AspekPenilaian@store');
+
+Route::get('edit-Pa/{id}', 'hrd\AspekPenilaian@edit');
+
+Route::post('update-aspek-penilaian','hrd\AspekPenilaian@update');
+
+Route::put('hapus-PA/{id}','hrd\AspekPenilaian@deletes');
+
+Route::get('Area-Kerja-Utama','hrd\AreaKerjaUtama@index');
+
+Route::post('store-area-kerja-utama', 'hrd\AreaKerjaUtama@store');
+
+Route::get('edit-Aku/{id}', 'hrd\AreaKerjaUtama@edit');
+
+Route::post('update-area-kerja-utama', 'hrd\AreaKerjaUtama@update');
+
+Route::put('hapus-area-kerja-utama/{id}', 'hrd\AreaKerjaUtama@delete');
+
+Route::get('satuan-kpi', 'hrd\SatuanKpi@index');
+
+Route::post('store-satuan-kpi','hrd\SatuanKpi@store');
+
+Route::get('edit-satuan-kpi/{id}', 'hrd\SatuanKpi@edit');
+
+Route::post('update-satuan-kpi','hrd\SatuanKpi@update');
+
+Route::put('hapus-satuan-kpi/{id}','hrd\SatuanKpi@delete');
+
+Route::get('jenis-kpi','hrd\JenisKPI@index');
+
+Route::post('store-jenis-kpi','hrd\JenisKpi@store');
+
+Route::get('edit-jenis-kpi/{id}', 'hrd\JenisKpi@edit');
+
+Route::post('update-jenis-kpi','hrd\JenisKpi@update');
+
+Route::put('hapus-jenis-kpi/{id}','hrd\JenisKpi@delete');
+
+Route::get('Kpi','hrd\Kpi@index');
+
+Route::post('store-kpi','hrd\Kpi@store');
+
+Route::get('edit-kpi/{id}','hrd\Kpi@edit');
+
+Route::post('update-kpi','hrd\Kpi@update');
+
+Route::put('hapus-kpi/{id}','hrd\Kpi@delete');
+
+Route::get('Kpi-karyawan','hrd\KpiKaryawan@index');
+
+Route::post('store-kpi-karyawan','hrd\KpiKaryawan@store');
+
+Route::get('edit-kpi-ky/{id}','hrd\KpiKaryawan@edit');
+
+Route::post('update-kpi-ky','hrd\KpiKaryawan@update');
+
+Route::put('hapus-kpi-ky/{id}','hrd\KpiKaryawan@delete');
+
+
+
+Route::get('jenis-kompetensi','hrd\JenisKompetensi@index');
+
+Route::post('store-jenis-kompetensi','hrd\JenisKompetensi@store');
+
+Route::get('edit-jenis-kompetensi/{id}','hrd\JenisKompetensi@edit');
+
+Route::post('update-jenis-kompetensi','hrd\JenisKompetensi@update');
+
+Route::put('hapus-jenis-kompetensi/{id}','hrd\JenisKompetensi@delete');
+
+Route::get('kompetensi-majerial','hrd\JenisKompetensiManaJerial@index');
+
+Route::post('store-kompetensi-majerial','hrd\JenisKompetensiManaJerial@store');
+
+Route::get('edit-kmanajerial/{id}','hrd\JenisKompetensiManaJerial@edit');
+
+Route::post('update-kmanajerial','hrd\JenisKompetensiManaJerial@update');
+
+Route::put('hapus-kmanajerial/{id}','hrd\JenisKompetensiManaJerial@delete');
+
+Route::get('item-kompetensi-manajerial','hrd\ItemKmanajerial@index');
+
+Route::post('store-item-kompetensi-majerial','hrd\ItemKmanajerial@store');
+
+Route::get('edit-item-kmanajerial/{id}','hrd\ItemKmanajerial@edit');
+
+Route::post('update-item-kmanajerial','hrd\ItemKmanajerial@update');
+
+Route::put('hapus-item-kmanajerial/{id}','hrd\ItemKmanajerial@delete');
+
+Route::get('kompetensi-teknis','hrd\KompetensiTeknis@index');
+
+Route::post('store-kompetensi-teknis','hrd\KompetensiTeknis@store');
+
+Route::get('edit-kompetensi-teknis/{id}','hrd\KompetensiTeknis@edit');
+
+Route::post('update-kompetensi-teknis','hrd\KompetensiTeknis@update');
+
+Route::put('hapus-kompetensi-teknis/{id}','hrd\KompetensiTeknis@delete');
+
+Route::get('penilian-kemanajerial/{id}','hrd\KompetensiTeknis@create');
+
+Route::get('Tes-kemanajerial','hrd\TesKemanajerial@index');
+
+Route::post('store-tes-kmanajerial','hrd\TesKemanajerial@store');
+
+Route::get('Kompensasi-Kinerja','hrd\KompensasiKinerja@index');
+
+Route::post('store-kompensasi-kinerja','hrd\KompensasiKinerja@store');
+
+Route::get('edit-kompensasi-kinerja/{id}','hrd\KompensasiKinerja@edit');
+
+Route::post('update-kompensasi-kinerja','hrd\KompensasiKinerja@update');
+
+Route::put('hapus-kompensasi-kinerja/{id}','hrd\KompensasiKinerja@delete');
+
+Route::get('Log-Diary','hrd\LogDiary@index');
+
+Route::post('store-LogDiary','hrd\LogDiary@store');
+
+Route::get('edit-log-diary/{id}','hrd\LogDiary@edit');
+
+Route::post('update-log-diary','hrd\LogDiary@update');
+
+Route::get('hapus-log-diary/{id}','hrd\LogDiary@delete');
+
+Route::get('formulir-tes-kemanajerialan/{id_ky}', 'hrd\TesKemanajerial@create');
+
+Route::get('edit-tes-kemanajerial/{id}', 'hrd\TesKemanajerial@edit');
+
+Route::post('update-tes-kemanajerial', 'hrd\TesKemanajerial@update');
+
+Route::put('hapus-test-manajerial/{id}', 'hrd\TesKemanajerial@delete');
+
+Route::post('cari-tes-km', 'hrd\TesKemanajerial@show');
+
+Route::get('Tes-kompetensi-teknis', 'hrd\TesKompetensiTeknis@index');
+
+Route::get('formulir-tes-kompetensi-teknis/{id_karyawan}', 'hrd\TesKompetensiTeknis@create');
+
+Route::post('store-tes-kteknis','hrd\TesKompetensiTeknis@store' );
+
+Route::get('edit-tes-teknis/{id}','hrd\TesKompetensiTeknis@edit');
+
+Route::post('update-tes-teknis','hrd\TesKompetensiTeknis@update' );
+
+Route::put('hapus-test-teknis/{id}','hrd\TesKompetensiTeknis@delete' );
+
+Route::post('cari-tes-kt','hrd\TesKompetensiTeknis@show' );
+
+Route::get('item-teknis','hrd\ItemKTeknis@index');
+
+Route::post('store-item-kompetensi-teknis','hrd\ItemKTeknis@store');
+
+Route::get('edit-item-kteknis/{id}','hrd\ItemKTeknis@edit');
+
+Route::post('update-item-kteknis','hrd\ItemKTeknis@update');
+
+Route::put('hapus-item-kteknis/{id}','hrd\ItemKTeknis@delete');
+//if(!empty(Session::get('id_perusahaan_karyawan')))
+//{
+//    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+//    foreach ($daftar_menu as $menus)
+//    {
+//        if(!empty($subMenu = $menus->getSubMenu))
+//        {
+//            foreach ($subMenu as $sum_menu)
+//            {
+//                if(!empty($menuKaryawan= $sum_menu->getMenuKaryawan->where('id_karyawan', Session::get('id_karyawan') ))){
+//                    foreach ($menuKaryawan as $menu_karyawan)
+//                    {
+//                        Route::get('{ $sum_menu->getMasterSubMenuUKM->url }','');
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
+//============================================ Produksi ================================================================
+
+
 Route::post('cari-karyawan','hrd\Karyawan@cari');
 
 	//--- Rekruitmen/loker ---

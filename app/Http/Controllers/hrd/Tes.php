@@ -35,7 +35,9 @@ class Tes extends Controller
 
             'loker'=> loker::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at', 'desc')->paginate(15),
             'lokers'=> loker::all()->where('id_perusahaan', $this->id_perusahaan),
-            'jenis_psikotes'=> jenis_psikotes::all()->where('id_perusahaan', $this->id_perusahaan)
+
+            'jenis_psikotes'=> jenis_psikotes::all()->where('id_perusahaan', $this->id_perusahaan),
+
 
         ];
         Session::put('menu_tes', 'psikotes');
@@ -102,24 +104,16 @@ class Tes extends Controller
         return view('user.hrd.section.tes.page_default', $data);
     }
 
-    public function cari_hasil(Request $req){
+    public function cari_hasil(Request $req)
+    {
         $id_loker = $req->id_loker;
         $data = [
-            'loker'=> loker::where('id_perusahaan', $this->id_perusahaan)->where('id', $id_loker)->orderBy('created_at', 'desc')->paginate(15),
-            'lokers'=> loker::all()->where('id_perusahaan', $this->id_perusahaan),
+            'loker' => loker::where('id_perusahaan', $this->id_perusahaan)->where('id', $id_loker)->orderBy('created_at', 'desc')->paginate(15),
+            'lokers' => loker::all()->where('id_perusahaan', $this->id_perusahaan),
         ];
         Session::put('menu_tes', 'hasil');
         return view('user.hrd.section.tes.page_default', $data);
 
-    function keahlian(){
-        Session::put('menu_tes', 'keahlian');
-        return view('user.hrd.section.tes.page_default');
-    }
+    }  
 
-    function wawancara(){
-        Session::put('menu_tes', 'wawancara');
-        return view('user.hrd.section.tes.page_default');
-
-    }
-}
 }
