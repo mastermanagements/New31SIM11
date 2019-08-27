@@ -47,7 +47,7 @@
 
                                 <div class="overlay" id="loading-button">
                                     <i class="fa fa-refresh fa-spin"></i>
-                                    <p style="text-align: center; padding-top: 16%; font-weight: bold">Pilih Salah satu Pelaksana</p>
+                                    <p style="text-align: center; padding-top: 5%; font-weight: bold">Pilih Salah satu Pelaksana</p>
                                 </div>
                             </div>
                             <!-- /.box-body -->
@@ -73,17 +73,30 @@
                                         <th>Alokasi Kas</th>
                                         <th>Net Kas</th>
                                         <th>Nisbah Pelaksana</th>
+                                        <th>Bagi Hasil</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Total</th>
+                                        <th><p id="total_laba_rugi"></p></th>
+                                        <th><p id="total_alokasi_kas"></p></th>
+                                        <th><p id="total_net_kas"></p></th>
+                                        <th><p id="total_nisbah_pelaku"></p></th>
+                                        <th><p id="total_hasil_pelaku"></p></th>
+                                        <th></th>
+                                    </tr>
+                                    </tfoot>
                                 </table>
 
                             </div>
                             <div class="overlay" id="loading_s">
                                 <i class="fa fa-refresh fa-spin"></i>
-                                <p style="text-align: center; padding-top: 16%; font-weight: bold">Pilih Salah satu Pelaksana</p>
+                                <p style="text-align: center; padding-top: 20%; font-weight: bold">Pilih Salah satu Pelaksana</p>
                             </div>
                             <!-- /.box-body -->
                         </div>

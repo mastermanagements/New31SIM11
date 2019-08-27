@@ -2,23 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/Js.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/Js.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/investor/BesarNisbah.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/BesarNisbah.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPelaksana.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPelaksana.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPemodal.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPemodal.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/karyawan/SWOT.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/karyawan/SWOT.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Investor/Pelaksana.php" afterPath="$PROJECT_DIR$/app/Model/Investor/Pelaksana.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/js.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/js.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/page_default.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/modal_pemodal.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/modal_pemodal.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/Js.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/Js.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/page.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/modal_pemodal.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/modal_pemodal.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/Js.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/Js.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/page.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/karyawan/section/SJP/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/karyawan/section/SJP/page_default.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/karyawan/section/Swot/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/karyawan/section/Swot/page_default.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/karyawan/section/Swot/page_edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/karyawan/section/Swot/page_edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1431,8 +1422,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="1886" column="25" lean-forward="false" selection-start-line="1886" selection-start-column="12" selection-end-line="1886" selection-end-column="25" />
+            <state relative-caret-position="219">
+              <caret line="1859" column="40" lean-forward="false" selection-start-line="1859" selection-start-column="40" selection-end-line="1859" selection-end-column="40" />
               <folding>
                 <element signature="e#43232#43284#0#PHP" expanded="false" />
               </folding>
@@ -1440,13 +1431,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NisbahPemodal.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPemodal.php">
+      <file leaf-file-name="BesarNisbah.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/BesarNisbah.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="196" column="72" lean-forward="false" selection-start-line="196" selection-start-column="72" selection-end-line="196" selection-end-column="72" />
+            <state relative-caret-position="2625">
+              <caret line="129" column="5" lean-forward="false" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
               <folding>
                 <element signature="e#49#77#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PelakuInvestasi.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/PelakuInvestasi.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-819">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/page.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1566886711843" expanded="false" signature="5989:6000" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/page.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="95" column="15" lean-forward="false" selection-start-line="95" selection-start-column="15" selection-end-line="95" selection-end-column="15" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1455,22 +1483,10 @@
       <file leaf-file-name="Js.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/Js.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="36" column="39" lean-forward="false" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="39" />
+            <state relative-caret-position="357">
+              <caret line="38" column="76" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="38" selection-end-column="76" />
               <folding>
-                <marker date="1566803509360" expanded="true" signature="1499:1510" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/page.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
-              <caret line="123" column="18" lean-forward="true" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
-              <folding>
-                <marker date="1566803689878" expanded="false" signature="5150:5161" ph="..." />
+                <marker date="1566876805833" expanded="true" signature="1816:1827" ph="..." />
               </folding>
             </state>
           </provider>
@@ -1487,7 +1503,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Buku-Penilaian</find>
       <find>Tes-kemanajerial</find>
       <find>store-tes-kmanajerial</find>
       <find>pengaturan-menu</find>
@@ -1517,6 +1532,7 @@
       <find>Strategi-Jangka-Panjang</find>
       <find>swot</find>
       <find>Nisba</find>
+      <find>delete-divine-bulananM</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1591,7 +1607,6 @@
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/besar_nisbah/Js.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/besar_nisbah/page.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/besar_nisbah/Js.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/investor/BesarNisbah.php" />
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_21_010900_create_i_dividen_pelaksana.php" />
         <option value="$PROJECT_DIR$/app/Model/Investor/DividenPelaksana.php" />
         <option value="$PROJECT_DIR$/database/migrations/investor/2019_08_21_063601_create_i_dividen_pemodal.php" />
@@ -1611,14 +1626,15 @@
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/modal_pemodal.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/Investor/Pelaksana.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/dividen/dividen_investor/js.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/Js.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/page.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPelaksana.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/Js.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/investor/BesarNisbah.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPemodal.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/Js.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPelaksana.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/Js.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/page.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/page.blade.php" />
       </list>
     </option>
   </component>
@@ -1760,6 +1776,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1772,7 +1789,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2023,14 +2039,8 @@
       <workItem from="1566433851440" duration="16502000" />
       <workItem from="1566522705934" duration="10114000" />
       <workItem from="1566538125155" duration="6394000" />
-      <workItem from="1566781154033" duration="15554000" />
-    </task>
-    <task id="LOCAL-00079" summary="HRD&#10;- Interface Buku Penilian FIx&#10;- CRUD Aspek Penilaian FIx">
-      <created>1561019658808</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1561019658808</updated>
+      <workItem from="1566781154033" duration="17053000" />
+      <workItem from="1566866375989" duration="14493000" />
     </task>
     <task id="LOCAL-00080" summary="HRD&#10;- Interface H. Aku Fix&#10;- Crud H. AKu Fix">
       <created>1561101334247</created>
@@ -2368,11 +2378,18 @@
       <option name="project" value="LOCAL" />
       <updated>1566546343893</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="Investor&#10;  - Refini tampilan dividen pelaku dan pemodal">
+      <created>1566806512705</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1566806512705</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1463063000" />
+    <option name="totallyTimeSpent" value="1479055000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2385,7 +2402,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2193646" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22239032" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31907895" sideWeight="0.5121029" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18078668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2394,7 +2411,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25164473" sideWeight="0.48789713" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23676248" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24054463" sideWeight="0.50554675" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2502,35 +2519,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/investor/2019_08_21_063601_create_i_dividen_pemodal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/karyawan/master_user.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1155">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/master_user.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="93" column="26" lean-forward="true" selection-start-line="93" selection-start-column="26" selection-end-line="93" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Traits/DateYears.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="44" column="19" lean-forward="false" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/besar_nisbah/Js.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
@@ -2601,7 +2589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="56" lean-forward="false" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2609,7 +2596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="26" column="38" lean-forward="false" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2617,7 +2603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="41" column="15" lean-forward="false" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2625,7 +2610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="29" column="68" lean-forward="false" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2633,7 +2617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
           <caret line="33" column="23" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2641,7 +2624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="45" column="51" lean-forward="false" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2649,7 +2631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="91" column="29" lean-forward="true" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2671,9 +2652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="51" column="56" lean-forward="true" selection-start-line="51" selection-start-column="56" selection-end-line="51" selection-end-column="56" />
-          <folding>
-            <element signature="e#1186#1254#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2681,7 +2659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="49" column="184" lean-forward="false" selection-start-line="49" selection-start-column="184" selection-end-line="49" selection-end-column="184" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2689,7 +2666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
           <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2697,7 +2673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2705,7 +2680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2721,7 +2695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2729,7 +2702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="106" column="46" lean-forward="true" selection-start-line="103" selection-start-column="38" selection-end-line="106" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2747,27 +2719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="38" column="11" lean-forward="false" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
-          <folding>
-            <marker date="1566790433994" expanded="true" signature="1646:1657" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/Js.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="34" column="21" lean-forward="false" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="21" />
-          <folding>
-            <marker date="1566801202494" expanded="true" signature="1503:1514" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Investor/Pelaksana.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="33" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2775,7 +2726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
           <caret line="23" column="65" lean-forward="false" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2822,19 +2772,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/page.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="91" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
           <caret line="134" column="57" lean-forward="false" selection-start-line="134" selection-start-column="57" selection-end-line="134" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2862,52 +2803,117 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/besar_nisbah/page.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="1886" column="25" lean-forward="false" selection-start-line="1886" selection-start-column="12" selection-end-line="1886" selection-end-column="25" />
+        <state relative-caret-position="-693">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Investor/Pelaksana.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Investor/PersenKas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPemodal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="178" column="132" lean-forward="false" selection-start-line="177" selection-start-column="98" selection-end-line="178" selection-end-column="132" />
           <folding>
-            <element signature="e#43232#43284#0#PHP" expanded="false" />
+            <element signature="e#49#77#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/Js.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="36" column="39" lean-forward="false" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="39" />
+        <state relative-caret-position="357">
+          <caret line="38" column="76" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="38" selection-end-column="76" />
           <folding>
-            <marker date="1566803509360" expanded="true" signature="1499:1510" ph="..." />
+            <marker date="1566876805833" expanded="true" signature="1816:1827" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/Js.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="38" column="72" lean-forward="false" selection-start-line="38" selection-start-column="72" selection-end-line="38" selection-end-column="72" />
+          <folding>
+            <marker date="1566885188238" expanded="true" signature="1816:1827" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPelaksana.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="192" column="0" lean-forward="true" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+        <state relative-caret-position="420">
+          <caret line="181" column="113" lean-forward="false" selection-start-line="181" selection-start-column="113" selection-end-line="181" selection-end-column="113" />
           <folding>
             <element signature="e#49#77#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/NisbahPemodal.php">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="196" column="72" lean-forward="false" selection-start-line="196" selection-start-column="72" selection-end-line="196" selection-end-column="72" />
+        <state relative-caret-position="219">
+          <caret line="1859" column="40" lean-forward="false" selection-start-line="1859" selection-start-column="40" selection-end-line="1859" selection-end-column="40" />
+          <folding>
+            <element signature="e#43232#43284#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/BesarNisbah.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2625">
+          <caret line="129" column="5" lean-forward="false" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
           <folding>
             <element signature="e#49#77#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/investor/PelakuInvestasi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-819">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pemodal/page.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="123" column="18" lean-forward="true" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+        <state relative-caret-position="378">
+          <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
           <folding>
-            <marker date="1566803689878" expanded="false" signature="5150:5161" ph="..." />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1566886711843" expanded="false" signature="5989:6000" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/investor/section/nisbah/pelaksana/page.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="95" column="15" lean-forward="false" selection-start-line="95" selection-start-column="15" selection-end-line="95" selection-end-column="15" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
