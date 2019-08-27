@@ -325,7 +325,6 @@
 </div>
 <!-- /.modal -->
 <script>
-
        window.onload = function() {
 		   
            CKEDITOR.replace( 'isi_tjp_ubah',{
