@@ -15,6 +15,8 @@ class CreateKMasterAkun extends Migration
     {
         Schema::create('k_master_akun', function (Blueprint $table) {
             $table->increments('id');
+			$table->string('kode_m_akun',15);
+			$table->string('nm_m_akun',50);
             $table->timestamps();
         });
     }

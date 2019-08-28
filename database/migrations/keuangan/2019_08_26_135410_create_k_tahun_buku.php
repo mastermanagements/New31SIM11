@@ -15,6 +15,10 @@ class CreateKTahunBuku extends Migration
     {
         Schema::create('k_tahun_buku', function (Blueprint $table) {
             $table->increments('id');
+			$table->date('bln_buku');
+			$table->year('thn_buku');
+			$table->integer('id_perusahaan')->unsigned();
+            $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
         });
     }
