@@ -35,6 +35,10 @@
             table_divince_perBulanM.rows.add(result.data).draw();
             buttonBuilder(result.button);
             $('#title-table').text('Daftar Dividen Tahun :'+ result.thn);
+            $('#total_laba_rugi').text(result.total_laba_rugi);
+            $('#total_alokasi_kas').text(result.total_alokasi_kas);
+            $('#total_net_kas').text(result.total_net_laba);
+            $('#total_bagi_hasil').text(result.total_bagi_hasil);
             $('#loading_s').hide();
             buttonBuild(data);
         }).fail(function(jqXHR, textStatus,errorThrown){

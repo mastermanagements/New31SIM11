@@ -23,8 +23,8 @@
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <p style="color: darkgray">Pelaksana ini telah ditambahkan ke Disbah Pemodal:</p>
-                                @foreach($data as $value)
-                                    <li ><a href="#" onclick="lihat_data_dividen('{{ $value->id_pemodal }}','')"> {{ $value->pemodal->investor->nm_investor }} </a> </li>
+                                @foreach($data->groupBy('id_pemodal') as $value)
+                                    <li ><a href="#" onclick="lihat_data_dividen('{{ $value[0]->id_pemodal }}','')"> {{ $value[0]->pemodal->investor->nm_investor }} </a> </li>
                                 @endforeach
                             </div>
                             <!-- /.box-body -->

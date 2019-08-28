@@ -37,10 +37,12 @@ class BesarNisbah extends Controller
     }
 
     public function getPeriodeByear($year){
-        $data = BDM::all()->where('id_perusahaan', $this->id_perusahaan)->where('thn_dividen', $year);
+        $data = BDM::all()->where('id_perusahaan', $this->id_perusahaan)->where('thn_dividen', $year)->groupBy('id_periode_invest') ;
         $container_button = array();
-        foreach ($data as $key => $value){
-            $container_button[] = '<button class="btn btn-primary" style="margin:5px " onclick="lihatPriode('.$value->id_periode_invest.')"> '.$value->periode_invest->nm_periode.' </button>';
+        //dd($data);
+        $in=0;
+        foreach ($data as $key => $values) {
+            $container_button[] = '<button class="btn btn-primary" style="margin:5px " onclick="lihatPriode(' . $key . ')"> ' . $values[$in++]->periode_invest->nm_periode . ' </button>';
         }
         return $container_button;
     }
@@ -113,11 +115,12 @@ class BesarNisbah extends Controller
         $laba_rugi = $req->laba_rugi;
         $id_periode_invest = $req->id_periode_invest;
         if($laba_rugi < 0){
-            $alokasi = 0;
+            $persenkas = PK::where('id_perusahaan', $this->id_perusahaan)->where('thn', $thn)->first();
+            $alokasi =($laba_rugi* $persenkas->persen_kas)/100;
         }else{
             $persenkas = PK::where('id_perusahaan', $this->id_perusahaan)->where('thn', $thn)->first();
             if(empty($persenkas)){
-                $alokasi = 0;
+                $alokasi =($laba_rugi* $persenkas->persen_kas)/100;
                 return redirect('Nisbah')->with('message_fail','pengaturan persen kas untuk tahun '.$thn.' belum dimasukan');
             }else{
                 $alokasi =($laba_rugi* $persenkas->persen_kas)/100;
@@ -199,7 +202,6 @@ class BesarNisbah extends Controller
         if(empty($model = BDM::where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
-
         if($model->delete()){
             return redirect('Nisbah')->with('message_success','Anda telah menghapus Besar nisbah');
         }else{
