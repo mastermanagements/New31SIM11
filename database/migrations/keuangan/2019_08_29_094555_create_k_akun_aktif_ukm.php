@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKAkun extends Migration
+class CreateKAkunAktifUkm extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateKAkun extends Migration
      */
     public function up()
     {
-        Schema::create('k_akun', function (Blueprint $table) {
+        Schema::create('k_akun_aktif_ukm', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('kode_akun',15);
-			$table->string('nm_akun');
+			$table->integer('id_sub_akun')->nullable();
+			$table->integer('id_subsub_akun')->nullable();
+			$table->string('kode_akun_aktif','15');
+			$table->string('nm_akun_aktif','50');
 			$table->integer('id_perusahaan')->unsigned();
 			$table->integer('id_karyawan')->unsigned();
             $table->timestamps();
@@ -30,6 +32,6 @@ class CreateKAkun extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('k_akun');
+        Schema::dropIfExists('k_akun_aktif_ukm');
     }
 }
