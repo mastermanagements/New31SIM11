@@ -15,7 +15,7 @@ class CreateKAkun extends Migration
     {
         Schema::create('k_akun', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('kode_akun','8');
+			$table->string('kode_akun',15);
 			$table->string('nm_akun');
 			$table->integer('id_perusahaan')->unsigned();
 			$table->integer('id_karyawan')->unsigned();

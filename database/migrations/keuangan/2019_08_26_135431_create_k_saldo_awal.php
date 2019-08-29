@@ -15,6 +15,10 @@ class CreateKSaldoAwal extends Migration
     {
         Schema::create('k_saldo_awal', function (Blueprint $table) {
             $table->increments('id');
+			$table->integer('id_akun_aktif')->unsigned();
+			$table->bigInteger('jumlah_saldo_awal');
+			$table->integer('id_perusahaan')->unsigned();
+			$table->integer('id_karyawan')->unsigned();
             $table->timestamps();
         });
     }

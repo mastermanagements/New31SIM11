@@ -15,6 +15,12 @@ class CreateKAkunAktif extends Migration
     {
         Schema::create('k_akun_aktif', function (Blueprint $table) {
             $table->increments('id');
+			$table->integer('id_sub_akun')->nullable();
+			$table->integer('id_subsub_akun')->nullable();
+			$table->string('kode_akun_aktif','15');
+			$table->string('nm_akun_aktif','50');
+			$table->integer('id_perusahaan')->unsigned();
+			$table->integer('id_karyawan')->unsigned();
             $table->timestamps();
         });
     }
