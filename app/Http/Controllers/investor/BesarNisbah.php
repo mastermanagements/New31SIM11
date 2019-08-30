@@ -37,10 +37,12 @@ class BesarNisbah extends Controller
     }
 
     public function getPeriodeByear($year){
-        $data = BDM::all()->where('id_perusahaan', $this->id_perusahaan)->where('thn_dividen', $year);
+        $data = BDM::all()->where('id_perusahaan', $this->id_perusahaan)->where('thn_dividen', $year)->groupBy('id_periode_invest') ;
         $container_button = array();
-        foreach ($data as $key => $value){
-            $container_button[] = '<button class="btn btn-primary" style="margin:5px " onclick="lihatPriode('.$value->id_periode_invest.')"> '.$value->periode_invest->nm_periode.' </button>';
+        //dd($data);
+        $in=0;
+        foreach ($data as $key => $values) {
+            $container_button[] = '<button class="btn btn-primary" style="margin:5px " onclick="lihatPriode(' . $key . ')"> ' . $values[$in++]->periode_invest->nm_periode . ' </button>';
         }
         return $container_button;
     }
@@ -113,11 +115,12 @@ class BesarNisbah extends Controller
         $laba_rugi = $req->laba_rugi;
         $id_periode_invest = $req->id_periode_invest;
         if($laba_rugi < 0){
-            $alokasi = 0;
+            $persenkas = PK::where('id_perusahaan', $this->id_perusahaan)->where('thn', $thn)->first();
+            $alokasi =($laba_rugi* $persenkas->persen_kas)/100;
         }else{
             $persenkas = PK::where('id_perusahaan', $this->id_perusahaan)->where('thn', $thn)->first();
             if(empty($persenkas)){
-                $alokasi = 0;
+                $alokasi =($laba_rugi* $persenkas->persen_kas)/100;
                 return redirect('Nisbah')->with('message_fail','pengaturan persen kas untuk tahun '.$thn.' belum dimasukan');
             }else{
                 $alokasi =($laba_rugi* $persenkas->persen_kas)/100;
@@ -125,9 +128,8 @@ class BesarNisbah extends Controller
         }
         $netkas = $laba_rugi-$alokasi;
         $nisbah = N::where('id_periode_invest',$id_periode_invest)->where('id_perusahaan', $this->id_perusahaan)->first();
-        $nisbah_pelaksana = ($nisbah->pelaksana*$netkas)/100;
-        $nisbah_pemodal = ($nisbah->pemodal*$netkas)/100;
-
+        $nisbah_pelaksana = ($nisbah->pelaksana/100)*$netkas;
+        $nisbah_pemodal = ($nisbah->pemodal/100)*$netkas;
         $model = BDM::updateOrCreate(
             ['id_periode_invest'=> $id_periode_invest, 'thn_dividen'=>$thn, 'bln_dividen'=>$bln_dividen,'id_perusahaan'=>$this->id_perusahaan,'id_karyawan'=>$this->id_karyawan],
             ['laba_rugi'=> $laba_rugi, 'alokasi_kas'=>$alokasi,'net_kas'=>$netkas,'nisbah_pelaksana'=> $nisbah_pelaksana,'nisbah_pemodal'=> $nisbah_pemodal]
@@ -174,8 +176,8 @@ class BesarNisbah extends Controller
         }
         $netkas = $laba_rugi-$alokasi;
         $nisbah = N::where('id_periode_invest',$id_periode_invest)->where('id_perusahaan', $this->id_perusahaan)->first();
-        $nisbah_pelaksana = ($nisbah->pelaksana*$netkas)/100;
-        $nisbah_pemodal = ($nisbah->pemodal*$netkas)/100;
+        $nisbah_pelaksana = ($nisbah->pelaksana/100)*$netkas;
+        $nisbah_pemodal = ($nisbah->pemodal/100)*$netkas;
 
         $model = BDM::find($req->id);
         $model->id_periode_invest = $id_periode_invest;
@@ -200,8 +202,7 @@ class BesarNisbah extends Controller
         if(empty($model = BDM::where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
-
-        if($model->save()){
+        if($model->delete()){
             return redirect('Nisbah')->with('message_success','Anda telah menghapus Besar nisbah');
         }else{
             return redirect('Nisbah')->with('message_fail','Maaf, besar nisbah tidak dapat diubah');

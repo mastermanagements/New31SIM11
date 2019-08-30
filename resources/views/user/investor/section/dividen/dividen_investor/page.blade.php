@@ -72,7 +72,7 @@
                                                         <th>Laba Rugi</th>
                                                         <th>Alokasi Kas</th>
                                                         <th>Net Kas</th>
-                                                        <th>Besar Dividen</th>
+                                                        <th>Besar Bagi Hasil</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                     </thead>
@@ -95,6 +95,15 @@
                                                         {{--</tr>--}}
                                                         {{--@endforeach--}}
                                                     </tbody>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Total</th>
+                                                        <th><p id="total_laba_rugi"></p></th>
+                                                        <th><p id="total_alokasi_kas"></p></th>
+                                                        <th><p id="total_net_kas"></p></th>
+                                                        <th><p id="total_bagi_hasil"></p></th>
+                                                        <th></th>
+                                                    </tr>
                                                 </table>
                                                 </div>
 
@@ -103,7 +112,7 @@
                                         <!-- Loading (remove the following to stop the loading)-->
                                         <div class="overlay" id="loading_s">
                                             <i class="fa fa-refresh fa-spin"></i>
-                                            <p style="text-align: center; padding-top: 16%; font-weight: bold">Pilih Salah satu Investor</p>
+                                            <p style="text-align: center; padding-top: 20%; font-weight: bold">Pilih Salah satu Investor</p>
                                         </div>
                                         <!-- end loading -->
                                     </div>
