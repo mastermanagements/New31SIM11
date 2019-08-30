@@ -75,7 +75,11 @@
 											@if(($value->tahun == $tahun->tahun) AND ($value->bulan == $bulan->bulan))
 											<tr>
 												<td>{{ $i++ }}</td>
-												<td>{{ $value->getSubSubAkun->nm_subsub_akun }}</td>
+												<td>
+													@if(!empty($value->getSubSubAkun->nm_subsub_akun))
+													{{ $value->getSubSubAkun->nm_subsub_akun }}
+													@endif
+												</td>
 													
 													@php($total_rout = $value->jumlah_pengeluaran)
 												<td align="right">
