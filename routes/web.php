@@ -2010,6 +2010,13 @@ Route::put('hapus-sop/{id}','hrd\Sop@delete');
 Route::get('Rencana-Pelatihan', 'hrd\RencanaPelatihan@index');
 
 
+//===================================== Keuangan =====================================================================
+
+Route::get('Akun','keuangan\Akun@index');
+
+Route::post('store_master_akun_to_ukm', 'keuangan\Akun@store_akun_ukm');
+
+Route::post('nonaktif_master_akun_to_ukm', 'keuangan\Akun@delete_akun_ukm');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
