@@ -15,7 +15,8 @@ class CreateKSubAkunUkm extends Migration
     {
         Schema::create('k_sub_akun_ukm', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('id_akun')->unsigned();
+			$table->integer('id_akun_ukm')->unsigned();
+			$table->integer('id_m_sub_akun')->unsigned()->default(0);
 			$table->string('kode_sub_akun',1);
 			$table->string('nm_sub_akun');
 			$table->enum('off_on',['0','1'])->comment('0=akun non aktif, 1=akun aktif');

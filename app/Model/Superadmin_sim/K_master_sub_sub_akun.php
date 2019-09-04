@@ -14,5 +14,7 @@ class K_master_sub_sub_akun extends Model
       'kode_m_subsub_akun',
       'nm_m_subsub_akun',
       'off_on',
+      'id_perusahaan',
+      'id_perusahaan',
     ];
 }

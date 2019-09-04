@@ -1,4 +1,4 @@
-@extends('user.penggajian.master_user')
+@extends('user.keuangan.master_user')
 
 @section('master_content')
 <div class="content-wrapper">
