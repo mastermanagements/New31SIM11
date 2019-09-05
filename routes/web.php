@@ -2042,6 +2042,9 @@ Route::post('tambah-ke-akun-aktif','keuangan\AkunAktifUkm@store');
 
 Route::get('Transaksi','keuangan\Penerimaan@index');
 
+Route::get('data-penerimaan', 'keuangan\Penerimaan@get_penerimaan');
+
+Route::post('store-transaksi-penerimaan','keuangan\Penerimaan@store');
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

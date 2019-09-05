@@ -48,6 +48,7 @@ class AkunAktifUkm extends Controller
                 }
             }
         }
+        //
         return redirect('daftar-akun')->with('message_success','Anda telah mengaktifkan daftar akun');
     }
 }

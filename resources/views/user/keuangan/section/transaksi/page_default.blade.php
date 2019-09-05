@@ -1,5 +1,10 @@
 @extends('user.keuangan.master_user')
 
+
+@section('skin')
+    <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+@stop
+
 @section('master_content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -36,4 +41,19 @@
     </section>
     <!-- /.content -->
 </div>
+@stop
+
+@section('plugins')
+    <!-- Select2 -->
+    <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+        })
+    </script>
+    @if(Session::get('menu_transaksi')=="penerimaan")
+        @include('user.keuangan.section.transaksi.penerimaan.Js')
+    @else
+        {{--@include('user.keuangan.section.transaksi.pengeluaran.page')--}}
+    @endif
 @stop
