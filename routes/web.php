@@ -1181,8 +1181,6 @@ Route::post('update-kpi-ky','hrd\KpiKaryawan@update');
 
 Route::put('hapus-kpi-ky/{id}','hrd\KpiKaryawan@delete');
 
-
-
 Route::get('jenis-kompetensi','hrd\JenisKompetensi@index');
 
 Route::post('store-jenis-kompetensi','hrd\JenisKompetensi@store');
@@ -1407,26 +1405,8 @@ Route::get('Skala-bonus-proyek/{id}','penggajian\SkalaBonusProyek@create');
 
 Route::post('proses-skala-bonus-proyek/{id}','penggajian\SkalaBonusProyek@store');
 
-//if(!empty(Session::get('id_perusahaan_karyawan')))
-//{
-//    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
-//    foreach ($daftar_menu as $menus)
-//    {
-//        if(!empty($subMenu = $menus->getSubMenu))
-//        {
-//            foreach ($subMenu as $sum_menu)
-//            {
-//                if(!empty($menuKaryawan= $sum_menu->getMenuKaryawan->where('id_karyawan', Session::get('id_karyawan') ))){
-//                    foreach ($menuKaryawan as $menu_karyawan)
-//                    {
-//                        Route::get('{ $sum_menu->getMasterSubMenuUKM->url }','');
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
-//============================================ Produksi ================================================================
+
+//============================================ HRD ================================================================
 
 
 Route::post('cari-karyawan','hrd\Karyawan@cari');
@@ -1622,7 +1602,7 @@ Route::put('hapus-periode-kerja/{id}','hrd\PeriodeKerja@delete');
 
 	//--- Kelender-Kerja---
 
-Route::get('Kelender-Kerja','hrd\KalenderKerja@index');
+Route::get('Kalender-Kerja','hrd\KalenderKerja@index');
 
 Route::get('daftar-event-kalender', 'hrd\KalenderKerja@daftarEvent');
 
@@ -1689,7 +1669,7 @@ Route::put('update-sop/{id}','hrd\Sop@update');
 Route::post('store-jabatan-ky','hrd\JabatanKy@storeUpdate');
 
 //================================= Penggjian ==========================================================================
-
+	//===alokasi gaji===
 Route::get('Alokasi-Gaji','penggajian\AlokasiGaji@index');
 
 Route::post('store-aloasi-gaji','penggajian\AlokasiGaji@store');
@@ -1720,6 +1700,7 @@ Route::post('update-sub-cf','penggajian\SubCF@update');
 
 Route::put('delete-sub-cf/{id}','penggajian\SubCF@delete');
 
+	//=== content CF ===
 Route::get('Content-CF','penggajian\ContentCF@index');
 
 Route::get('Pokok-cf','penggajian\PokokCF@index');
@@ -1773,7 +1754,6 @@ Route::post('update-grader-gaji','penggajian\Grader@update');
 Route::get('daftar-slip-gaji/{id}','penggajian\SlipGaji@index');
 
 //Route::post('tambah-slip/{id}','penggajian\SlipGaji@create');
-
 Route::post('store-slip-gaji','penggajian\SlipGaji@store');
 
 Route::get('item-gaji/{id}','penggajian\SlipGaji@create');
@@ -1783,7 +1763,6 @@ Route::get('edit-slip-gaji/{id}','penggajian\SlipGaji@edit');
 Route::post('update-slip-gaji','penggajian\SlipGaji@update');
 
 Route::put('delete-slip-gaji/{id}','penggajian\SlipGaji@delete');
-
 
 Route::post('store-lembur','penggajian\Lembur@store');
 
@@ -1803,6 +1782,7 @@ Route::put('delete-bonus-proyek/{id}','penggajian\G_Bonus_Gaji@delete');
 
 
 //================================= Investor ==========================================================================
+
 Route::get('Data-Investor', 'investor\DataInvestor@index');
 
 Route::get('tambah-investor', 'investor\DataInvestor@create');
@@ -1849,8 +1829,6 @@ Route::post('store-saham-perdana','Investor\SahamPerdana@store');
 Route::get('edit-saham-perdana/{id}','Investor\SahamPerdana@edit');
 
 Route::post('update-saham-perdana','Investor\SahamPerdana@update');
-
-
 
 
 Route::get('Data-Investasi','Investor\DataInvestasi@index');
@@ -1932,6 +1910,7 @@ Route::get('edit-persen-kas/{id}','Investor\PersenKas@edit');
 Route::post('update-persen-kas','Investor\PersenKas@update');
 
 Route::put('hapus-persen-kas/{id}','Investor\PersenKas@delete');
+
 
 Route::get('Pelaku-Investasi','Investor\PelakuInvestasi@index');
 
