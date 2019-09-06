@@ -25,4 +25,8 @@ class BulanDevidenM extends Model
     public function periode_invest(){
         return $this->belongsTo('App\Model\Investor\PeriodeInvestasi','id_periode_invest');
     }
+
+    public function onePeriodeInvest(){
+
+    }
 }

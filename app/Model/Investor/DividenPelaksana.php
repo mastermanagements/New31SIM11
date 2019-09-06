@@ -20,6 +20,11 @@ class DividenPelaksana extends Model
     public function pelaksana(){
         return $this->belongsTo('App\Model\Investor\Pelaksana','id_pelaksana');
     }
+
+    public function onePelaksana(){
+        return $this->hasOne('App\Model\Investor\Pelaksana','id','id_pelaksana');
+    }
+
     public function bulan_dividen(){
         return $this->belongsTo('App\Model\Investor\BulanDevidenM','id_bulan_dividen');
     }

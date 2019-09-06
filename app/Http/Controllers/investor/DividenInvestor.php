@@ -62,7 +62,7 @@ class DividenInvestor extends Controller
             return redirect('Dividen-Investor')->with('message_fail','Persentase Dalam daftar investasi belum dimasukan');
         }
         $model_dividen_bulanan = DP::find($req->id_bulan_dividen);
-        $besar_dividen = $daftar_investasi->persentase * $model_dividen_bulanan->net_kas;
+        $besar_dividen = ($daftar_investasi->persentase/100) * $model_dividen_bulanan->net_kas;
 
         $model_DI = new DIV();
         $model_DI->id_daftar_investor = $req->id_daftar_investor;
@@ -98,7 +98,7 @@ class DividenInvestor extends Controller
             return redirect('Dividen-Investor')->with('message_fail','Persentase Dalam daftar investasi belum dimasukan');
         }
         $model_dividen_bulanan = DP::find($req->id_bulan_dividen);
-        $besar_dividen = $daftar_investasi->persentase * $model_dividen_bulanan->net_kas;
+        $besar_dividen = ($daftar_investasi->persentase/100) * $model_dividen_bulanan->net_kas;
 
         $model_DI = DIV::find($req->id);
         $model_DI->id_daftar_investor = $req->id_daftar_investor;
@@ -140,6 +140,10 @@ class DividenInvestor extends Controller
 
         $array_row = array();
         $no=1;
+        $total_laba_rugi = 0;
+        $total_alokasi_kas = 0;
+        $total_netlaba = 0;
+        $total_bagi_hasil = 0;
 
             foreach ($container_bulan as $key_bulan => $bulan) {
                 $result = $this->getDataDividenBulanan($model, $key_bulan,$thn);
@@ -163,6 +167,10 @@ class DividenInvestor extends Controller
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm(\'Apakah anda akan menghapus data ini ...?\')" >hapus</button>
                                 </form>';
                 }
+                $total_laba_rugi += $laba_rugi;
+                $total_alokasi_kas += $alokasi_kas;
+                $total_netlaba += $net_kas;
+                $total_bagi_hasil += $besar_dividen;
                 $array_column = array();
                 $array_column[] = $no++;
                 $array_column[] = $bulan;
@@ -173,7 +181,10 @@ class DividenInvestor extends Controller
                 $array_column[] = $button;
                 $array_row[] = $array_column;
             }
-        return response()->json(array('data'=>$array_row,'button'=>$this->buttonYear($id_investor), 'thn'=> $thn));
+        return response()->json(array('data'=>$array_row,'button'=>$this->buttonYear($id_investor),
+        'total_laba_rugi'=> $total_laba_rugi,'total_alokasi_kas'=> $total_alokasi_kas,
+        'total_net_laba'=> $total_netlaba,
+        'total_bagi_hasil'=>$total_bagi_hasil, 'thn'=> $thn));
     }
 
     public function getDataDividenBulanan($model, $bulan, $tahun){

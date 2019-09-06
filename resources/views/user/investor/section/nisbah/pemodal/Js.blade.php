@@ -6,10 +6,9 @@
             {'data' :'1'},
             {'data' :'2'},
             {'data' :'3'},
-            {'data' :'4'}
+            {'data' :'4'},
+            {'data' :'5'},
         ],
-        rowCallback : function(row, data){
-        },
         {{--drawCallback: buttonBuild("{{ $thn_proses }}"),--}}
         filter: false,
         pagging : true,
@@ -33,6 +32,11 @@
             table_divince_perBulanM.clear().draw();
             table_divince_perBulanM.rows.add(result.data).draw();
             $('#title-table').text('Daftar Dividen Tahun :'+ result.tahun);
+            $('#total_laba_rugi').text(result.total_laba_rugi);
+            $('#total_alokasi_kas').text(result.total_alokasi_kas);
+            $('#total_net_kas').text(result.total_net_kas);
+            $('#total_nisbah_pemodal').text(result.total_nisbah_pemodal);
+            $('#total_hasil_pemodal').text(result.total_bagi_hasil_pemodal);
             $('#loading_s').hide();
             buttonBuilder(result.button);
         }).fail(function(jqXHR, textStatus,errorThrown){
