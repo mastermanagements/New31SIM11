@@ -14,4 +14,8 @@ class KetTransaksi extends Model
         'id_perusahaan',
         'id_karyawan',
     ];
+
+    public function dataAkun(){
+        return $this->hasMany('App\Model\Keuangan\Transaksi','id_ket_transaksi');
+    }
 }

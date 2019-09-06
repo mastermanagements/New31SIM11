@@ -56,4 +56,31 @@ class Penerimaan extends Controller
         ];
         return response()->json($this->InsertData($req,'0', $data));
     }
+
+    public function detail_keterangan(Request $req)
+    {
+        $data_pass = [
+            'id'=> $req->id,
+            'jenis_transaksi'=>'0',
+            'id_perusahaan'=> $this->id_perusahaan,
+        ];
+        $data= $this->getDetailKeterangan($data_pass);
+        return response()->json($data);
+    }
+
+    public function update_keterangan(Request $req, $id){
+        $this->validate($req,[
+            'nm_transaksi'=>'required',
+            'id_akun_aktif'=> 'required',
+            'posisi'=> 'required',
+        ]);
+        $array = [
+            'nm_transaksi' => $req->nm_transaksi,
+            'id_akun_aktif' => $req->id_akun_aktif,
+            'posisi' => $req->posisi,
+        ];
+
+        $data = $this->update_keterangans($array, $id, $this->id_perusahaan);
+        return response()->json($data);
+    }
 }
