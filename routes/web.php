@@ -2010,7 +2010,45 @@ Route::put('hapus-sop/{id}','hrd\Sop@delete');
 Route::get('Rencana-Pelatihan', 'hrd\RencanaPelatihan@index');
 
 
+//===================================== Keuangan =====================================================================
 
+Route::get('Akun','keuangan\Akun@index');
+
+Route::post('store_master_akun_to_ukm', 'keuangan\Akun@store_akun_ukm');
+
+Route::post('nonaktif_master_akun_to_ukm', 'keuangan\Akun@delete_akun_ukm');
+
+Route::post('store_master_sub_akun_to_sub_akun','keuangan\Akun@store_akun_sub_ukm');
+
+Route::get('daftar-akun','keuangan\Akun@Daftar_akun');
+
+Route::get('edit-sub-sub-akun/{id}','keuangan\Akun@edit_sub_sub_akun');
+
+Route::post('update-sub-sub-akun','keuangan\Akun@update_sub_sub_akun');
+
+Route::post('hidden-sub-sub-akun/{id}','keuangan\Akun@hidden_sub_sub_akun');
+
+Route::post('store-sub-sub-akun','keuangan\Akun@store_sub_sub_akun');
+
+Route::get('edit-sub-akun/{id}','keuangan\Akun@edit_akun_sub');
+
+Route::post('update-sub-akun','keuangan\Akun@update_akun_sub');
+
+Route::post('hidden-sub-akun/{id}','keuangan\Akun@hidden_akun_sub');
+
+Route::post('store-sub-akun','keuangan\Akun@store_akun_sub');
+
+Route::post('tambah-ke-akun-aktif','keuangan\AkunAktifUkm@store');
+
+Route::get('Transaksi','keuangan\Penerimaan@index');
+
+Route::get('data-penerimaan', 'keuangan\Penerimaan@get_penerimaan');
+
+Route::post('store-transaksi-penerimaan','keuangan\Penerimaan@store');
+
+Route::post('detail-keterangan-transaksi','keuangan\Penerimaan@detail_keterangan');
+
+Route::put('update-transaksi-penerimaan/{id}','keuangan\Penerimaan@update_keterangan');
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 
