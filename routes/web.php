@@ -2028,6 +2028,8 @@ Route::post('store-transaksi-penerimaan','keuangan\Penerimaan@store');
 Route::post('detail-keterangan-transaksi','keuangan\Penerimaan@detail_keterangan');
 
 Route::put('update-transaksi-penerimaan/{id}','keuangan\Penerimaan@update_keterangan');
+
+Route::put('delete-transaksi-penerimaan/{id}','keuangan\Penerimaan@delete_keterangans');
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 
