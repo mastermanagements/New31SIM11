@@ -53,6 +53,7 @@ class Penerimaan extends Controller
         $data=[
             'id_perusahaan'=>$this->id_perusahaan,
             'id_karyawan'=>$this->id_karyawan,
+            'id_ket_transaksi'=> $req->id_ket_transaksi
         ];
         return response()->json($this->InsertData($req,'0', $data));
     }
@@ -82,5 +83,18 @@ class Penerimaan extends Controller
 
         $data = $this->update_keterangans($array, $id, $this->id_perusahaan);
         return response()->json($data);
+    }
+
+    public function delete_keterangans(Request $req, $id){
+        if(empty($model = $this->delete_keterangan($id, $this->id_perusahaan))){
+            return abort(404);
+        }
+        if($model->delete()){
+            $data = [
+                'message'=>'Anda telah menghapus akun',
+                'id'=> $model->id_ket_transaksi
+            ];
+            return $data;
+        }
     }
 }

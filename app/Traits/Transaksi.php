@@ -49,20 +49,21 @@ trait Transaksi
             'posisi'=> 'required',
             'nm_transaksi'=> 'required',
         ]);
-        $model_ket_transaksi = new KetTransaksi();
+        if(!empty($req->id_ket_transaksi)){
+            $model_ket_transaksi = KetTransaksi::find($req->id_ket_transaksi);
+        }else{
+            $model_ket_transaksi = new KetTransaksi();
+        }
         $model_ket_transaksi->nm_transaksi = $req->nm_transaksi;
         $model_ket_transaksi->id_perusahaan = $array['id_perusahaan'];
         $model_ket_transaksi->id_karyawan = $array['id_karyawan'];
         if($model_ket_transaksi->save())
         {
             foreach ($req->id_akun_aktif as $key=> $value){
-                $model = new transaksis();
-                $model->id_ket_transaksi = $model_ket_transaksi->id;
-                $model->jenis_transaksi = $jenis_transaksi;
-                $model->id_akun_aktif = $value;
-                $model->posisi_akun = ''.$req->posisi[$key];
-                $model->id_perusahaan = $array['id_perusahaan'];
-                $model->id_karyawan = $array['id_karyawan'];
+                $model = transaksis::updateOrCreate(
+                    ['id_ket_transaksi'=>$model_ket_transaksi->id,'id_akun_aktif'=>$value,'posisi_akun'=>''.$req->posisi[$key],'id_perusahaan'=> $array['id_perusahaan'] ],
+                    ['jenis_transaksi'=>$jenis_transaksi,'id_karyawan'=>$array['id_karyawan']]
+                );
                 $model->save();
             }
         }
@@ -85,7 +86,7 @@ trait Transaksi
             $column = array();
             $column[]="<select class='form-control select2' style='width:100%' name='id_akun_aktif[]' id='id_akun_aktif_".$value->id."'>".$this->daftarAkun($value->id_akun_aktif, $data['id_perusahaan'])."</select>";
             $column[]="<select class='form-control select2' style='width:100%' name='posisi[]' id='posisi_".$value->id."'>".$this->daftarPoisi($value->posisi_akun, $data['id_perusahaan'])."</select>";
-            $column[]="<button type='button' id='edit' class='btn btn-warning' onclick='update_akun(".$value->id.")'>Ubah</button> <button type='button' class='btn btn-danger'>Hapus</button>";
+            $column[]="<button type='button' id='edit' class='btn btn-warning' onclick='update_akun(".$value->id.")'>Ubah</button> <button type='button' onclick='hapus_akun(".$value->id.")' class='btn btn-danger'>Hapus</button>";
             $row[] = $column;
         }
         return array('data'=> $row,'keterangan'=> $model->nm_transaksi);
@@ -140,6 +141,11 @@ trait Transaksi
             'message'=>'Anda telah mengubah keterangan'
         ];
         return $data;
+    }
+
+    public function delete_keterangan($id, $id_perusahaan){
+        $model = transaksis::where('id', $id)->where('id_perusahaan', $id_perusahaan)->first();
+        return $model;
     }
 
 }
