@@ -57,6 +57,7 @@
             },
             success: function (result) {
                 $('[name="nm_transaksi"]').val(result.keterangan);
+                $('[name="id_ket_transaksi"]').val(id);
                 t.clear().draw();
                 t.rows.add(result.data).draw();
             }
@@ -78,5 +79,23 @@
                  table_transaksi.ajax.reload();
             }
         })
+    }
+
+    hapus_akun = function(id){
+        if(confirm('apakan anda akan menghapus akun ini .. ?')==true){
+         $.ajax({
+            url: "{{ url('delete-transaksi-penerimaan') }}/"+id,
+            type: 'post',
+            data:{
+                '_method':'put',
+                '_token': '{{ csrf_token() }}'
+            },success:function (result) {
+                 alert(result.message);
+                 detail_keterangan(result.id);
+            }
+        })
+        }else{
+            alert('Proses diberhentikan');
+        }
     }
 </script>

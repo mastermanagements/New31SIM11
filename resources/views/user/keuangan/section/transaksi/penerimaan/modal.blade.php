@@ -42,6 +42,7 @@
                                     <div class="form-group">
                                         {{ csrf_field() }}
                                         <label for="exampleInputEmail1">Nama Keteragan</label>
+                                        <input type="hidden" name="id_ket_transaksi">
                                         <input type="text" class="form-control" name="nm_transaksi" required>
                                         <small style="color: red">* Tidak Boleh Kosong</small>
                                     </div>
