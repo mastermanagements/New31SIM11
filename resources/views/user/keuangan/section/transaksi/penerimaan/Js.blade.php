@@ -19,6 +19,9 @@
 
 
     var t= $('#example3').DataTable();
+    var transaksi= $('#example_rincian').DataTable({
+        ordering : false,
+    });
     var akun = "<select class='form-control select2' style='width:100%' name='id_akun_aktif[]' required> @foreach($akun_aktif as $value) <option value='{{ $value->id }}'> {{ $value->kode_akun_aktif }}: {{ $value->nm_akun_aktif }}</option> @endforeach </select>";
     var posisi = "<select class='form-control select2' style='width:100%' name='posisi[]' required> @foreach($posisi as $key=> $value) <option value='{{ $key }}'> {{ $value }}</option> @endforeach </select>";
     var button="<button type='button' class='btn btn-warning' disabled>Ubah</button> <button type='button' class='btn btn-danger' disabled>Hapus</button>"
@@ -42,6 +45,8 @@
             data: $('#form-penerimaan').serialize(),
             success:function (result) {
                 table_transaksi.ajax.reload();
+                t.clear().draw()
+                $('[name="id_ket_transaksi"]').val("");
             }
         })
     })
@@ -98,4 +103,21 @@
             alert('Proses diberhentikan');
         }
     }
+
+
+   $('#id_transaksi').change(function () {
+       var id_ket = $(this).val();
+       $('[name="id_ket_transaksi"]').val(id_ket )
+        $.ajax({
+            url: '{{ url('data-keterangan-transaksi') }}/'+ id_ket ,
+            dataType : 'json',
+            success:function (result) {
+                console.log(result);
+                transaksi.clear().draw();
+                transaksi.rows.add(result.data).draw();
+            }
+        })
+   })
+
+
 </script>

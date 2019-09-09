@@ -159,4 +159,13 @@
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     @include('user.administrasi.section.klien.modal.JS')
+
+    <script>
+        //Red color scheme for iCheck
+        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+            checkboxClass: 'icheckbox_minimal-red',
+            radioClass   : 'iradio_minimal-red'
+        })
+
+    </script>
 @stop

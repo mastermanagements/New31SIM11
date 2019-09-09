@@ -18,9 +18,10 @@ class CreateKJurnal extends Migration
 			$table->enum('jenis_jurnal',['0','1','2'])->comment('0 = Saldo Awal, 1= Jurnal Umum, 2= Jurnal Penyesuaian');
             $table->date('tgl_jurnal');
 			$table->integer('id_transaksi')->unsigned();
+			$table->integer('id_akun_aktif')->unsigned();
 			$table->string('no_transaksi',5);
 			$table->text('ket')->nullable();
-			$table->integer('debet_kredit')->comment('0=debet, 1=kredit');
+			$table->enum('debet_kredit',['0','1'])->comment('0=debet, 1=kredit');
 			$table->bigInteger('jumlah_transaksi');
 			$table->string('bukti_transaksi')->nullable();
 			$table->integer('id_perusahaan')->unsigned();

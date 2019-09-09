@@ -2051,6 +2051,10 @@ Route::post('detail-keterangan-transaksi','keuangan\Penerimaan@detail_keterangan
 Route::put('update-transaksi-penerimaan/{id}','keuangan\Penerimaan@update_keterangan');
 
 Route::put('delete-transaksi-penerimaan/{id}','keuangan\Penerimaan@delete_keterangans');
+
+Route::get('data-keterangan-transaksi/{id}','keuangan\Penerimaan@data_keterangan_transaksi');
+
+Route::post('store-jurnal','keuangan\Penerimaan@store_jurnal_penerimaan');
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 
