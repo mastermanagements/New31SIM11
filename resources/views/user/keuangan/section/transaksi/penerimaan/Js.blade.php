@@ -120,4 +120,37 @@
    })
 
 
+    $(document).on('change','.class_debit', function () {
+        var sum=0;
+        $('.class_debit').each(function () {
+            sum+=+$(this).val();
+        })
+        $('#debit_total').val(sum)
+    })
+
+    $(document).on('change','.class_kredit', function () {
+        var sum=0;
+        $('.class_kredit').each(function () {
+            sum+=+$(this).val();
+        })
+        $('#kredit_total').val(sum)
+    })
+
+
+    $(document).on('change','#debit_total', function () {
+        alert($(this).val());
+    })
+
+    isValidForm = function () {
+        var debit=$('#debit_total').val();
+        var kredit=$('#kredit_total').val();
+
+        if(debit==kredit){
+            return true;
+        }else{
+            $('#notif').text("Debit dan Kredit harus Sama");
+            return false;
+        }
+    }
+
 </script>

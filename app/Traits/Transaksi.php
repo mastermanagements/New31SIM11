@@ -184,25 +184,42 @@ trait Transaksi
             $column[] = $data->transaksi->kode_akun_aktif;
             $column[] = $data->transaksi->nm_akun_aktif;
             $column[] = $this->posisi[$data->posisi_akun] ;
-            $column[] = '<input type="hidden" name="id_akun_aktif[]" value="'.$data->transaksi->nm_akun_aktif.'"> <input  type="text" class="form-control" name="jumlah_transaksi[]" id="debit" style="width: 100%" '.$posisi_debit.'>';
-            $column[] = '<input type="text" class="form-control" name="jumlah_transaksi[]" id="kredit" style="width: 100%" '.$posisi_kredit.'>';
+            $column[] = '<input type="hidden" name="id_akun_aktif[]" value="'.$data->transaksi->id.'"> <input type="hidden" name="debet_kredit[]" value="'.$data->posisi_akun.'"> <input  type="text" class="form-control class_debit" name="jumlah_transaksi[]" id="debit" style="width: 100%" '.$posisi_debit.'>';
+            $column[] = '<input type="text" class="form-control class_kredit" name="jumlah_transaksi[]" id="kredit" style="width: 100%" '.$posisi_kredit.'>';
             $row[] = $column;
         }
         return $row;
     }
 
-    public function store_jurnal($req, $id_perusahaan){
+    public function store_jurnal($req, $id_perusahaan, $id_karyawan){
         $this->validate($req,[
             'id_ket_transaksi'=> 'required',
             'tgl_jurnal'=> 'required',
             'no_transaksi'=> 'required',
             'jenis_jurnal'=> 'required',
             'id_akun_aktif'=> 'required',
+            'debet_kredit'=> 'required',
             'jumlah_transaksi'=> 'required',
         ]);
 
-        $model = new jurnal();
-      //  $model->jenis_jurnal = $req
+        $id_ket_transaksi = "";
+        foreach ($req->id_akun_aktif as $key=>$value){
+            $model = new jurnal();
+            $model->jenis_jurnal = $req->jenis_jurnal;
+            $model->tgl_jurnal = date('Y-m-d', strtotime($req->tgl_jurnal));
+            $model->id_ket_transaksi = $req->id_ket_transaksi;
+            $model->id_akun_aktif = $value;
+            $model->no_transaksi = $req->no_transaksi;
+            $model->ket ='';
+            $model->debet_kredit =$req->debet_kredit[$key];
+            $model->jumlah_transaksi =$req->jumlah_transaksi[$key];
+            $model->id_perusahaan =$id_perusahaan;
+            $model->id_karyawan =$id_karyawan;
+            $model->save();
+            $id_ket_transaksi = $model->id_ket_transaksi;
+        }
+
+        return array('message'=>'transaksi sudah diproses', 'id_transaksi'=> $id_ket_transaksi);
     }
 
 

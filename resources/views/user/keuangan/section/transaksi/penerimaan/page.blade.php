@@ -3,9 +3,16 @@
       <div class="col-md-12">
           <button class="btn btn-primary" data-toggle="modal" data-target="#modal-transaksi-penerimaan">Catata Transaksi Penerimaan</button>
       </div>
+      <div class="col-md-12">
+          @if(!empty(session('message_success')))
+              <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+          @elseif(!empty(session('message_fail')))
+              <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+          @endif
+      </div>
        <div class="col-md-12" style="margin-top: 10px">
             <div class="box  box-danger box-solid">
-                <form action="{{ url('store-jurnal') }}" method="post">{{ csrf_field() }}
+                <form action="{{ url('store-jurnal') }}" method="post" onsubmit="return isValidForm()">{{ csrf_field() }}
                 <div class="box-body" >
                     <div class="form-group">
                         <label for="exampleInputEmail1">Catatan transaksi</label>
@@ -53,7 +60,7 @@
                             <th>Posisi</th>
                             <th>Debet</th>
                             <th>Kredit</th>
-                        </tr>
+                       </tr>
                         </thead>
                         <tfoot>
                         <tr>
@@ -64,7 +71,7 @@
                         </tfoot>
                     </table>
                     <hr>
-                    <button class="btn btn-success" ><i class="fa fa-plus"></i> Simpan</button>
+                    <button type="submit" class="btn btn-success" ><i class="fa fa-plus"></i> Simpan</button> <label id="notif" style="color: red"></label>
                 </div>
                 </form>
             </div>
