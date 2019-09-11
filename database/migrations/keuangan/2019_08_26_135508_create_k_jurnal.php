@@ -16,14 +16,14 @@ class CreateKJurnal extends Migration
         Schema::create('k_jurnal', function (Blueprint $table) {
             $table->increments('id');
 			$table->enum('jenis_jurnal',['0','1','2'])->comment('0 = Saldo Awal, 1= Jurnal Umum, 2= Jurnal Penyesuaian');
-            $table->date('tgl_jurnal');
+      $table->date('tgl_transaksi');
+      $table->string('no_transaksi',5);
 			$table->integer('id_transaksi')->unsigned();
-			$table->integer('id_akun_aktif')->unsigned();
-			$table->string('no_transaksi',5);
-			$table->text('ket')->nullable();
-			$table->enum('debet_kredit',['0','1'])->comment('0=debet, 1=kredit');
+			$table->integer('id_akun_aktif')->unsigned();       
+			$table->text('ket_tambahan')->nullable();
+			$table->integer('debet_kredit')->comment('0=debet, 1=kredit');
 			$table->bigInteger('jumlah_transaksi');
-			$table->string('bukti_transaksi')->nullable();
+			//$table->string('bukti_transaksi')->nullable();
 			$table->integer('id_perusahaan')->unsigned();
 			$table->integer('id_karyawan')->unsigned();
 			$table->timestamps();
