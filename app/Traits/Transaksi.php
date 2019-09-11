@@ -10,11 +10,21 @@ namespace App\Traits;
 use App\Model\Keuangan\Transaksi as transaksis;
 use App\Model\Keuangan\AkunAktifUkm as Akun_aktif;
 use App\Model\Keuangan\KetTransaksi as KetTransaksi;
+use App\Model\Keuangan\Jurnal as jurnal;
 use Illuminate\Http\Request;
 use Session;
 
 trait Transaksi
 {
+    public $jenis_jurnal=array(
+        '0'=>'Saldo Awal',
+        '1'=>'Jurnal',
+        '2'=>'Jurnal Penyesuaian');
+
+    public $posisi = array(
+      '0'=> 'Debit',
+      '1'=> 'Kredit'
+    );
 
     public function getData($array)
     {
@@ -32,6 +42,11 @@ trait Transaksi
 
     public function get_akun_akfif($array){
         $data = Akun_aktif::all()->where('id_perusahaan', $array['id_perusahaan']);
+        return $data;
+    }
+
+    public function getKeterangan($array){
+        $data = KetTransaksi::all()->where('id_perusahaan', $array['id_perusahaan']);
         return $data;
     }
 
@@ -147,5 +162,65 @@ trait Transaksi
         $model = transaksis::where('id', $id)->where('id_perusahaan', $id_perusahaan)->first();
         return $model;
     }
+
+    public function detail_keterangan_aktif($array){
+
+        $model = KetTransaksi::where('id', $array['id'])->where('id_perusahaan', $array['id_perusahaan'])->first();
+        $row = array();
+        foreach ($model->dataAkun->sortBy('posisi_akun') as $data){
+
+            $posisi_kredit = "";
+            $posisi_debit = "";
+
+            if ($data->posisi_akun == 0){
+                $posisi_debit ='';
+                $posisi_kredit = 'disabled';
+            }else{
+                $posisi_debit = 'disabled';
+                $posisi_kredit ='';
+            }
+
+            $column = array();
+            $column[] = $data->transaksi->kode_akun_aktif;
+            $column[] = $data->transaksi->nm_akun_aktif;
+            $column[] = $this->posisi[$data->posisi_akun] ;
+            $column[] = '<input type="hidden" name="id_akun_aktif[]" value="'.$data->transaksi->id.'"> <input type="hidden" name="debet_kredit[]" value="'.$data->posisi_akun.'"> <input  type="text" class="form-control class_debit" name="jumlah_transaksi[]" id="debit" style="width: 100%" '.$posisi_debit.'>';
+            $column[] = '<input type="text" class="form-control class_kredit" name="jumlah_transaksi[]" id="kredit" style="width: 100%" '.$posisi_kredit.'>';
+            $row[] = $column;
+        }
+        return $row;
+    }
+
+    public function store_jurnal($req, $id_perusahaan, $id_karyawan){
+        $this->validate($req,[
+            'id_ket_transaksi'=> 'required',
+            'tgl_jurnal'=> 'required',
+            'no_transaksi'=> 'required',
+            'jenis_jurnal'=> 'required',
+            'id_akun_aktif'=> 'required',
+            'debet_kredit'=> 'required',
+            'jumlah_transaksi'=> 'required',
+        ]);
+
+        $id_ket_transaksi = "";
+        foreach ($req->id_akun_aktif as $key=>$value){
+            $model = new jurnal();
+            $model->jenis_jurnal = $req->jenis_jurnal;
+            $model->tgl_jurnal = date('Y-m-d', strtotime($req->tgl_jurnal));
+            $model->id_ket_transaksi = $req->id_ket_transaksi;
+            $model->id_akun_aktif = $value;
+            $model->no_transaksi = $req->no_transaksi;
+            $model->ket ='';
+            $model->debet_kredit =$req->debet_kredit[$key];
+            $model->jumlah_transaksi =$req->jumlah_transaksi[$key];
+            $model->id_perusahaan =$id_perusahaan;
+            $model->id_karyawan =$id_karyawan;
+            $model->save();
+            $id_ket_transaksi = $model->id_ket_transaksi;
+        }
+
+        return array('message'=>'transaksi sudah diproses', 'id_transaksi'=> $id_ket_transaksi);
+    }
+
 
 }

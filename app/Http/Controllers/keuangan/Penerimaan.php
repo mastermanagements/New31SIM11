@@ -34,7 +34,9 @@ class Penerimaan extends Controller
         Session::put('menu_transaksi','penerimaan');
         $data =[
             'akun_aktif'=> $this->get_akun_akfif(array('id_perusahaan'=> $this->id_perusahaan)),
-            'posisi'=> $this->posisi()
+            'posisi'=> $this->posisi(),
+            'keterangan'=>$this->getKeterangan(array('id_perusahaan'=> $this->id_perusahaan)),
+            'jenis_jurnal'=> $this->jenis_jurnal
         ];
         return view('user.keuangan.section.transaksi.page_default', $data);
     }
@@ -96,5 +98,19 @@ class Penerimaan extends Controller
             ];
             return $data;
         }
+    }
+
+    public function data_keterangan_transaksi($id){
+        $data = [
+          'id_perusahaan'=>$this->id_perusahaan,
+           'id'=> $id
+        ];
+        $data_pass = $this->detail_keterangan_aktif($data);
+        return response()->json(array('data'=>$data_pass));
+    }
+
+    public function store_jurnal_penerimaan(Request $req){
+         $data = $this->store_jurnal($req, $this->id_perusahaan, $this->id_karyawan);
+        return redirect('Transaksi')->with('message_success','Transaksi telah dimasukan kedalam jurnal');
     }
 }

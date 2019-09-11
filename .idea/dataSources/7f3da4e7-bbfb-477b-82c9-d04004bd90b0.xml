@@ -6200,34 +6200,34 @@
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="1435" parent="130" name="id_transaksi">
+    <column id="1435" parent="130" name="id_ket_transaksi">
       <Position>4</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="1436" parent="130" name="no_transaksi">
+    <column id="1436" parent="130" name="id_akun_aktif">
       <Position>5</Position>
+      <DataType>int(12)|0</DataType>
+    </column>
+    <column id="1437" parent="130" name="no_transaksi">
+      <Position>6</Position>
       <DataType>varchar(5)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="1437" parent="130" name="ket">
-      <Position>6</Position>
+    <column id="1438" parent="130" name="ket">
+      <Position>7</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="1438" parent="130" name="debet_kredit">
-      <Position>7</Position>
+    <column id="1439" parent="130" name="debet_kredit">
+      <Position>8</Position>
       <Comment>0=debet, 1=kredit</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>enum(&apos;0&apos;, &apos;1&apos;)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="1439" parent="130" name="jumlah_transaksi">
-      <Position>8</Position>
+    <column id="1440" parent="130" name="jumlah_transaksi">
+      <Position>9</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
-    </column>
-    <column id="1440" parent="130" name="bukti_transaksi">
-      <Position>9</Position>
-      <DataType>varchar(255)|0</DataType>
     </column>
     <column id="1441" parent="130" name="id_perusahaan">
       <Position>10</Position>
