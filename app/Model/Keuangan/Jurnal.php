@@ -22,4 +22,12 @@ class Jurnal extends Model
         'id_perusahaan',
         'id_karyawan',
     ];
+
+    public function keterangan(){
+        return $this->belongsTo('App\Model\Keuangan\KetTransaksi','id_ket_transaksi');
+    }
+
+    public function akun(){
+        return $this->belongsTo('App\Model\Keuangan\AkunAktifUkm','id_akun_aktif');
+    }
 }

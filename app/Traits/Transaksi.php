@@ -144,7 +144,7 @@ trait Transaksi
 
     public function update_keterangans($req, $id, $id_perusahaan){
         $model = transaksis::where('id', $id)->where('id_perusahaan', $id_perusahaan)->first();
-        $model->jenis_transaksi = '0';
+        //$model->jenis_transaksi = '0';
         $model->id_akun_aktif = $req['id_akun_aktif'];
         $model->posisi_akun = $req['posisi'];
         if($model->save()){
@@ -222,5 +222,39 @@ trait Transaksi
         return array('message'=>'transaksi sudah diproses', 'id_transaksi'=> $id_ket_transaksi);
     }
 
+    public function daftar_jurnal($array){
+        if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
+            $model = jurnal::all()->where('id_perusahaan', $array['id_perusahaan']);
+        }else{
+            $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('jenis_jurnal','asc')->get();
+        }
+
+        $row = array();
+        foreach ($model as $value){
+            $column = array();
+            $column['tanggal'] = date('d-m-Y', strtotime($value->tgl_jurnal));
+                        $column['tanggal'] = date('d-m-Y', strtotime($value->tgl_jurnal));
+                        $column['no_transaksi'] = $value->no_transaksi;
+                        $column['kode_akun'] = $value->akun->kode_akun_aktif;
+                        $column['nm_akun'] = $value->akun->nm_akun_aktif;
+                        $column['jenis_jurnal'] = $this->jenis_jurnal[$value->jenis_jurnal];
+
+                        $debet = 0;
+                        $kredit = 0;
+                        if($value->debet_kredit =='0'){
+                            $debet= $value->jumlah_transaksi;
+                            $kredit= 0;
+                        }else{
+                            $kredit= $value->jumlah_transaksi;
+                            $debet= 0;
+                        }
+                        $column['nama_keterangan'] = $value->keterangan->nm_transaksi;
+                        $column['debet'] = $debet;
+                        $column['kredit'] = $kredit;
+                        $column['id_jurnal'] = $value->id;
+            $row[]=$column;
+        }
+        return $row;
+    }
 
 }

@@ -27,11 +27,14 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li @if(Session::get('menu_transaksi')=="penerimaan") class="active" @endif ><a href="{{ url('Transaksi') }}" >Penerimaan</a></li>
-                        <li @if(Session::get('menu_transaksi')=="pengeluaran") class="active" @endif><a href="#tab_2" >Pengeluaran</a></li>
+                        <li @if(Session::get('menu_transaksi')=="pengeluaran") class="active" @endif><a href="{{ url('Pengeluaran') }}" >Pengeluaran</a></li>
+                        <li @if(Session::get('menu_transaksi')=="daftar_jurnal") class="active pull-right" @else class="pull-right" @endif><a href="{{ url('Daftar-jurnal') }}" ><i class="fa fa-file-o"></i>  Daftar Jurnal</a></li>
                     </ul>
                     <div class="tab-content">
                         @if(Session::get('menu_transaksi')=="penerimaan")
                             @include('user.keuangan.section.transaksi.penerimaan.page')
+                        @elseif(Session::get('menu_transaksi')=="daftar_jurnal")
+                            @include('user.keuangan.section.transaksi.daftar_jurnal.page')
                         @else
                             @include('user.keuangan.section.transaksi.pengeluaran.page')
                         @endif
@@ -53,6 +56,7 @@
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/rowgroup/1.1.0/js/dataTables.rowGroup.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.select2').select2();
@@ -71,7 +75,9 @@
     </script>
     @if(Session::get('menu_transaksi')=="penerimaan")
         @include('user.keuangan.section.transaksi.penerimaan.Js')
+    @elseif(Session::get('menu_transaksi')=="daftar_jurnal")
+        @include('user.keuangan.section.transaksi.daftar_jurnal.js')
     @else
-        {{--@include('user.keuangan.section.transaksi.pengeluaran.page')--}}
+        @include('user.keuangan.section.transaksi.pengeluaran.Js')
     @endif
 @stop

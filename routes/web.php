@@ -2040,6 +2040,8 @@ Route::post('store-sub-akun','keuangan\Akun@store_akun_sub');
 
 Route::post('tambah-ke-akun-aktif','keuangan\AkunAktifUkm@store');
 
+//====================================== Penerimaan ===================================================================
+
 Route::get('Transaksi','keuangan\Penerimaan@index');
 
 Route::get('data-penerimaan', 'keuangan\Penerimaan@get_penerimaan');
@@ -2055,6 +2057,29 @@ Route::put('delete-transaksi-penerimaan/{id}','keuangan\Penerimaan@delete_ketera
 Route::get('data-keterangan-transaksi/{id}','keuangan\Penerimaan@data_keterangan_transaksi');
 
 Route::post('store-jurnal','keuangan\Penerimaan@store_jurnal_penerimaan');
+
+//===================================================== Pengeluaran ===================================================
+
+Route::get('Pengeluaran','keuangan\Pengeluaran@index');
+
+Route::get('data-pengeluaran', 'keuangan\pengeluaran@get_pengeluaran');
+
+Route::post('store-transaksi-pengeluaran','keuangan\pengeluaran@store');
+
+Route::post('detail-keterangan-transaksi-pengeluaran','keuangan\Pengeluaran@detail_keterangan');
+
+Route::put('update-transaksi-pengeluaran/{id}','keuangan\Pengeluaran@update_keterangan');
+
+Route::put('delete-transaksi-pengeluaran/{id}','keuangan\Pengeluaran@delete_keterangans');
+
+Route::get('data-keterangan-transaksi-pengeluaran/{id}','keuangan\Pengeluaran@data_keterangan_transaksi');
+
+Route::post('store-jurnal-pengeluaran','keuangan\Pengeluaran@store_jurnal_pengeluaran');
+
+Route::get('Laporan-keuangan','keuangan\LaporanKeuangan@index');
+
+Route::get('Daftar-jurnal','keuangan\DaftarJurnal@index');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 
