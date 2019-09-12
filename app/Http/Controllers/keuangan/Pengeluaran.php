@@ -7,8 +7,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Traits\Transaksi;
 
-
-class Penerimaan extends Controller
+class Pengeluaran extends Controller
 {
     //
     private $id_karyawan;
@@ -31,7 +30,7 @@ class Penerimaan extends Controller
     }
 
     public function index(){
-        Session::put('menu_transaksi','penerimaan');
+        Session::put('menu_transaksi','pengeluaran');
         $data =[
             'akun_aktif'=> $this->get_akun_akfif(array('id_perusahaan'=> $this->id_perusahaan)),
             'posisi'=> $this->posisi(),
@@ -41,10 +40,10 @@ class Penerimaan extends Controller
         return view('user.keuangan.section.transaksi.page_default', $data);
     }
 
-    public function get_penerimaan()
+    public function get_pengeluaran()
     {
         $array =[
-            'jenis_transaksi'=>'0',
+            'jenis_transaksi'=>'1',
             'id_perusahaan'=>$this->id_perusahaan,
         ];
         $json = $this->getData($array);
@@ -57,14 +56,14 @@ class Penerimaan extends Controller
             'id_karyawan'=>$this->id_karyawan,
             'id_ket_transaksi'=> $req->id_ket_transaksi
         ];
-        return response()->json($this->InsertData($req,'0', $data));
+        return response()->json($this->InsertData($req,'1', $data));
     }
 
     public function detail_keterangan(Request $req)
     {
         $data_pass = [
             'id'=> $req->id,
-            'jenis_transaksi'=>'0',
+            'jenis_transaksi'=>'1',
             'id_perusahaan'=> $this->id_perusahaan,
         ];
         $data= $this->getDetailKeterangan($data_pass);
@@ -102,15 +101,15 @@ class Penerimaan extends Controller
 
     public function data_keterangan_transaksi($id){
         $data = [
-          'id_perusahaan'=>$this->id_perusahaan,
-           'id'=> $id
+            'id_perusahaan'=>$this->id_perusahaan,
+            'id'=> $id
         ];
         $data_pass = $this->detail_keterangan_aktif($data);
         return response()->json(array('data'=>$data_pass));
     }
 
-    public function store_jurnal_penerimaan(Request $req){
-         $data = $this->store_jurnal($req, $this->id_perusahaan, $this->id_karyawan);
-        return redirect('Transaksi')->with('message_success','Transaksi telah dimasukan kedalam jurnal');
+    public function store_jurnal_pengeluaran(Request $req){
+        $data = $this->store_jurnal($req, $this->id_perusahaan, $this->id_karyawan);
+        return redirect('Pengeluaran')->with('message_success','Transaksi telah dimasukan kedalam jurnal');
     }
 }
