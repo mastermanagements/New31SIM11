@@ -111,6 +111,6 @@ class Penerimaan extends Controller
 
     public function store_jurnal_penerimaan(Request $req){
          $data = $this->store_jurnal($req, $this->id_perusahaan, $this->id_karyawan);
-        return redirect('Transaksi')->with('message_success','Transaksi telah dimasukan kedalam jurnal');
+        return redirect('Transaksi')->with('message_success',$data['message']);
     }
 }

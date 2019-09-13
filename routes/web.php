@@ -2080,6 +2080,10 @@ Route::get('Laporan-keuangan','keuangan\LaporanKeuangan@index');
 
 Route::get('Daftar-jurnal','keuangan\DaftarJurnal@index');
 
+Route::get('edit-jurnal/{no_transaksi}','keuangan\DaftarJurnal@edit');
+
+Route::post('update-jurnal','keuangan\DaftarJurnal@update');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

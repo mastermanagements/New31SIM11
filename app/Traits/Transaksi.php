@@ -12,10 +12,13 @@ use App\Model\Keuangan\AkunAktifUkm as Akun_aktif;
 use App\Model\Keuangan\KetTransaksi as KetTransaksi;
 use App\Model\Keuangan\Jurnal as jurnal;
 use Illuminate\Http\Request;
+use App\Traits\DateYears;
 use Session;
 
 trait Transaksi
 {
+    use DateYears;
+
     public $jenis_jurnal=array(
         '0'=>'Saldo Awal',
         '1'=>'Jurnal',
@@ -202,6 +205,19 @@ trait Transaksi
             'jumlah_transaksi'=> 'required',
         ]);
 
+        $cek_jenis_jurnal = jurnal::whereYear('tgl_jurnal',$this->costumDate()->year)->where('jenis_jurnal','0')->where('id_perusahaan',$id_perusahaan)->first();
+        $cek_no_transaksi = jurnal::whereYear('tgl_jurnal',$this->costumDate()->year)->where('no_transaksi',$req->no_transaksi)->where('id_perusahaan',$id_perusahaan)->first();
+
+        if(!empty($cek_jenis_jurnal)){
+            if($cek_jenis_jurnal->jenis_jurnal == $req->jenis_jurnal){
+                return array('message'=>'Saldo awal cuma bisa dimasukan sekali', 'id_transaksi'=> $cek_jenis_jurnal->id_ket_transaksi);
+            }
+        }
+
+        if(!empty($cek_no_transaksi)){
+            return array('message'=>'Nomor Transaksi Telah digunakan', 'id_transaksi'=> $cek_jenis_jurnal->id_ket_transaksi);
+        }
+
         $id_ket_transaksi = "";
         foreach ($req->id_akun_aktif as $key=>$value){
             $model = new jurnal();
@@ -251,10 +267,58 @@ trait Transaksi
                         $column['nama_keterangan'] = $value->keterangan->nm_transaksi;
                         $column['debet'] = $debet;
                         $column['kredit'] = $kredit;
-                        $column['id_jurnal'] = $value->id;
+                        $column['no_transaksi'] = $value->no_transaksi;
             $row[]=$column;
         }
         return $row;
     }
+
+    public function getDataByNoTransaksiWithTahunBerjalan($no_transaksi, $id_perusahaan)
+    {
+        $tahun = $this->costumDate()->year;
+        $model = jurnal::where('no_transaksi', $no_transaksi)->whereyear('tgl_jurnal', $tahun)->where('id_perusahaan', $id_perusahaan)->first();
+        $model_data = jurnal::where('no_transaksi', $no_transaksi)->whereyear('tgl_jurnal', $tahun)->where('id_perusahaan', $id_perusahaan)->get();
+        $row = array();
+        $total_debet=0;
+        $total_kredit=0;
+        foreach ($model_data as $key=> $data){
+            $column = array();
+            $column[] = $data->akun->kode_akun_aktif;
+            $column[] = $data->akun->nm_akun_aktif;
+            $column[] = $this->posisi[$data->keterangan->dataAkun[$key]->posisi_akun];
+
+            $posisi_kredit = "";
+            $posisi_debit = "";
+            $posisi_akun = $data->keterangan->dataAkun[$key]->posisi_akun;
+            $debet = 0;
+            $kredit = 0;
+            if ($data->keterangan->dataAkun[$key]->posisi_akun == 0){
+                $posisi_debit ='';
+                $posisi_kredit = 'disabled';
+                $debet= $data->jumlah_transaksi;
+                $kredit= 0;
+            }else{
+                $posisi_debit = 'disabled';
+                $posisi_kredit ='';
+                $kredit= $data->jumlah_transaksi;
+                $debet= 0;
+            }
+            $total_debet+=$debet;
+            $total_kredit+=$kredit;
+            $column[] = '<input type="hidden" name="id_jurnal[]" value="'.$data->id.'"> <input type="hidden" name="debet_kredit[]" value="'.$posisi_akun.'"> <input  type="text" class="form-control class_debit" name="jumlah_transaksi[]" id="debit" value='.$debet.' style="width: 100%" '.$posisi_debit.'>';
+            $column[] = '<input type="text" class="form-control class_kredit" name="jumlah_transaksi[]" id="kredit" style="width: 100%" value='.$kredit.' '.$posisi_kredit.'>';
+
+            $row[] = $column;
+        }
+        $conainer = array(
+            'tanggal'=> date('d-m-Y', strtotime($model->tgl_jurnal)),
+            'nomor_transaksi'=>$model->no_transaksi,
+            'jenis_jurnal'=>$model->jenis_jurnal,
+            'total_debet'=>$total_debet,
+            'total_kredit'=>$total_kredit,
+            'data'=> $row);
+        return $conainer;
+    }
+
 
 }
