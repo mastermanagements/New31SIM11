@@ -321,4 +321,13 @@ trait Transaksi
     }
 
 
+    public function update_keterangan($req, $jumlah_transaksi, $id_jurnal)
+    {
+        $model = jurnal::find($id_jurnal);
+        $model-> jenis_jurnal= $req->jenis_jurnal;
+        $model-> tgl_jurnal= date('Y-m-d', strtotime($req->tgl_jurnal));
+        $model-> jumlah_transaksi= $jumlah_transaksi;
+        return $model->save();
+    }
+
 }

@@ -52,8 +52,6 @@ class DaftarJurnal extends Controller
     }
 
     public function update(Request $req){
-        dd($req->all());
-
         $this->validate($req,[
             "tgl_jurnal" => "required",
             "no_transaksi" => "required",
@@ -64,8 +62,10 @@ class DaftarJurnal extends Controller
             "jumlah_transaksi" => 'required']);
 
         foreach ($req->id_jurnal as $key => $value){
-
+            $this->update_keterangan($req, $req->jumlah_transaksi[$key], $value);
         }
+
+        return redirect('Daftar-jurnal')->with('message_success', 'Ubah jurnal telah selesai');
     }
 
 }
