@@ -24,8 +24,8 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
                     {{ csrf_field() }}
-                    <input type="hidden" name="id_sub">
-                    <input type="hidden" name="id_akun_ukm">
+                    id_sub<input type="text" name="id_sub">
+                    id_akun_ukm<input type="text" name="id_akun_ukm">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
@@ -64,9 +64,9 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
                     {{ csrf_field() }}
-                    <input type="hidden" name="id_sub_sub">
-                    <input type="hidden" name="id_sub_akun_ukm">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    id_sub_sub<input type="text" name="id_sub_sub">
+                    id_sub_akun_ukm<input type="text" name="id_sub_akun_ukm">
+                    <button type="submit" class="btn btn-primary">Simpanw</button>
                 </div>
             </form>
         </div>
