@@ -36,13 +36,45 @@ class DaftarJurnal extends Controller
             'tanggal_akhir'=>'',
             'id_perusahaan'=>$this->id_perusahaan,
             'tahun_berjalan'=>$this->costumDate()->year,
+
         );
         $data = $this->daftar_jurnal($pass);
         $data_pass = [
-            'data' => $data
+            'data' => $data,
+            'jenis_jurnal'=>$this->jenis_jurnal
         ];
-        return view('user.keuangan.section.transaksi.page_default', $data_pass);
+        return view('user.keuangan.section.transaksi.daftar_jurnal.page_default', $data_pass);
     }
 
+    public function edit($id){
+        $data = $this->getDataByNoTransaksiWithTahunBerjalan($id, $this->id_perusahaan);
+        return response()->json(array('data'=>$data));
+    }
+
+    public function update(Request $req){
+        $this->validate($req,[
+            "tgl_jurnal" => "required",
+            "no_transaksi" => "required",
+            "jenis_jurnal" => "required",
+            "example_rincians_length" => "required",
+            "id_jurnal" => 'required',
+            "debet_kredit" => 'required',
+            "jumlah_transaksi" => 'required']);
+
+        foreach ($req->id_jurnal as $key => $value){
+            $this->update_keterangan($req, $req->jumlah_transaksi[$key], $value);
+        }
+
+        return redirect('Daftar-Jurnal')->with('message_success', 'Ubah jurnal telah selesai');
+    }
+
+    public function delete(Request $req){
+        $this->validate($req,[
+           'no_transaksi'=> 'required'
+        ]);
+
+        $model= $this->delete_jurnal($req->no_transaksi, $this->id_perusahaan);
+        return response()->json(array('message'=> $model['message']));
+    }
 
 }

@@ -34,12 +34,13 @@
                         <table id="example_rincian" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
+                                    <th>No. Transaksi</th>
+                                    <th>Tanggal</th>
                                     <th>Kode Akun</th>
-                                    <th>Keterangan Transaksi</th>
-                                    <th>Posisi</th>
+                                    <th>Nama Akun</th>
+                                    <th>Keterangan</th>
                                     <th>Debet</th>
                                     <th>Kredit</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                         </table>

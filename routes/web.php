@@ -2057,7 +2057,25 @@ Route::post('store-jurnal-pengeluaran','keuangan\Pengeluaran@store_jurnal_pengel
 
 Route::get('Laporan-keuangan','keuangan\LaporanKeuangan@index');
 
-Route::get('Daftar-jurnal','keuangan\DaftarJurnal@index');
+Route::get('Daftar-Jurnal','keuangan\DaftarJurnal@index');
+
+Route::get('edit-jurnal/{no_transaksi}','keuangan\DaftarJurnal@edit');
+
+Route::post('update-jurnal','keuangan\DaftarJurnal@update');
+
+Route::put('hapus-jurnal','keuangan\DaftarJurnal@delete');
+
+Route::get('Saldo-awal','keuangan\SaldoAwal@index');
+
+Route::post('store-saldo-awal','keuangan\SaldoAwal@store_jurnal_awal');
+
+Route::get('Jurnal-Umum','keuangan\JurnalUmum@index');
+
+Route::post('store-saldo-awal','keuangan\JurnalUmum@store_jurnal_awal');
+
+Route::get('Jurnal-Penyesuaian','keuangan\JurnalPernyesuaian@index');
+
+Route::get('Laporan-jurnal','keuangan\LaporanKeuangan@dataJurnal');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

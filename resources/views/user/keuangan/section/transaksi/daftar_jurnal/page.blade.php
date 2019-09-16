@@ -20,24 +20,46 @@
                             <th>Keterangan</th>
                             <th>Debet</th>
                             <th>Kredit</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php($total_debet=0)
+                        @php($total_kredit=0)
                         @foreach($data as $value)
                             <tr>
                                 <th>{{ $value['tanggal'] }}</th>
                                 <th>Nomor Transaksi: {{ $value['no_transaksi'] }}</th>
-                                <th>{{ $value['kode_akun'] }}</th>
-                                <th>{{ $value['nm_akun'] }}</th>
-                                <th>{{ $value['jenis_jurnal'] }}</th>
-                                <th>{{ $value['nama_keterangan'] }}</th>
-                                <th>{{ $value['debet'] }}</th>
-                                <th>{{ $value['kredit'] }}</th>
+                                <td>{{ $value['kode_akun'] }}</td>
+                                <td>{{ $value['nm_akun'] }}</td>
+                                <td>{{ $value['jenis_jurnal'] }}</td>
+                                <td>{{ $value['nama_keterangan'] }}</td>
+                                <td>
+                                    @php($total_debet+=$value['debet'])
+                                    {{ number_format($value['debet'],2,',','.') }}
+                                </td>
+                                <td>
+                                    @php($total_kredit+=$value['kredit'])
+                                    {{ number_format($value['kredit'],2,',','.') }}
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-default" onclick="edit_jurnal({{ $value['no_transaksi'] }})">Ubah</button>
+                                    <button type="button" class="btn btn-danger" onclick="delete_jurnal({{ $value['no_transaksi'] }})">Delete</button>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan="6">Total</th>
+                        <th style="background-color: #0b93d5">{{ number_format($total_debet,2,',','.') }}</th>
+                        <th style="background-color: greenyellow">{{ number_format($total_kredit,2,',','.') }}</th>
+                    </tr>
+                    </tfoot>
                 </table>
             </div>
        </div>
   </div>
+    @include('user.keuangan.section.transaksi.daftar_jurnal.modal');
 </div>
+
