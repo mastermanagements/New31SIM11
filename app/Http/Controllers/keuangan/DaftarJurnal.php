@@ -43,7 +43,7 @@ class DaftarJurnal extends Controller
             'data' => $data,
             'jenis_jurnal'=>$this->jenis_jurnal
         ];
-        return view('user.keuangan.section.transaksi.page_default', $data_pass);
+        return view('user.keuangan.section.transaksi.daftar_jurnal.page_default', $data_pass);
     }
 
     public function edit($id){
@@ -65,7 +65,16 @@ class DaftarJurnal extends Controller
             $this->update_keterangan($req, $req->jumlah_transaksi[$key], $value);
         }
 
-        return redirect('Daftar-jurnal')->with('message_success', 'Ubah jurnal telah selesai');
+        return redirect('Daftar-Jurnal')->with('message_success', 'Ubah jurnal telah selesai');
+    }
+
+    public function delete(Request $req){
+        $this->validate($req,[
+           'no_transaksi'=> 'required'
+        ]);
+
+        $model= $this->delete_jurnal($req->no_transaksi, $this->id_perusahaan);
+        return response()->json(array('message'=> $model['message']));
     }
 
 }

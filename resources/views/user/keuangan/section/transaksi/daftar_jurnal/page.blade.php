@@ -44,6 +44,7 @@
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-default" onclick="edit_jurnal({{ $value['no_transaksi'] }})">Ubah</button>
+                                    <button type="button" class="btn btn-danger" onclick="delete_jurnal({{ $value['no_transaksi'] }})">Delete</button>
                                 </td>
                             </tr>
                         @endforeach

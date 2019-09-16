@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Traits\Transaksi;
 
-class LaporanKeuangan extends Controller
+class JurnalUmum extends Controller
 {
     private $id_karyawan;
     private $id_perusahaan;
@@ -29,20 +29,19 @@ class LaporanKeuangan extends Controller
     }
 
     public function index(){
-        Session::put('menu-laporan-keuangan','jurnal_umum');
-        return view('user.keuangan.section.laporan.page_default');
+        Session::put('menu_transaksi','menu_transaksi');
+        $data =[
+            'akun_aktif'=> $this->get_akun_akfif(array('id_perusahaan'=> $this->id_perusahaan)),
+            'posisi'=> $this->posisi(),
+            'keterangan'=>$this->getKeterangan(array('id_perusahaan'=> $this->id_perusahaan)),
+            'jenis_jurnal'=> $this->jenis_jurnal
+        ];
+        return view('user.keuangan.section.transaksi.jurnal_umum.page_default', $data);
     }
 
-    public function dataJurnal(){
-        $data_pass= [
-            'id_perusahaan'=> $this->id_perusahaan,
-            'tahun_berjalan'=> $this->costumDate()->year
-        ];
-
-        $data = [
-            'data'=> $this->daftar_jurnal($data_pass)
-        ];
-
-        return response()->json($data);
+    public function store_jurnal_awal(Request $req){
+        $data = $this->store_jurnal($req, $this->id_perusahaan, $this->id_karyawan);
+        return redirect('Jurnal-Umum')->with('message_success',$data['message']);
     }
+
 }

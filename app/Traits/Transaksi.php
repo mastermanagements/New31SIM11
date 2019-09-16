@@ -31,7 +31,7 @@ trait Transaksi
 
     public function getData($array)
     {
-        $model =KetTransaksi::all()->where('id_perusahaan', $array['id_perusahaan']);
+        $model =KetTransaksi::all()->where('id_perusahaan', $array['id_perusahaan'])->where('jenis_transaksi', $array['jenis_transaksi']);
         $row = array();
         foreach ($model as $value){
             $colum = array();
@@ -73,6 +73,7 @@ trait Transaksi
             $model_ket_transaksi = new KetTransaksi();
         }
         $model_ket_transaksi->nm_transaksi = $req->nm_transaksi;
+        $model_ket_transaksi->jenis_transaksi = $jenis_transaksi;
         $model_ket_transaksi->id_perusahaan = $array['id_perusahaan'];
         $model_ket_transaksi->id_karyawan = $array['id_karyawan'];
         if($model_ket_transaksi->save())
@@ -328,6 +329,19 @@ trait Transaksi
         $model-> tgl_jurnal= date('Y-m-d', strtotime($req->tgl_jurnal));
         $model-> jumlah_transaksi= $jumlah_transaksi;
         return $model->save();
+    }
+
+    public function delete_jurnal($no_transaksi, $id_perusahaan){
+        $model = jurnal::where('no_transaksi',$no_transaksi)->whereyear('tgl_jurnal', $this->costumDate()->year)->where('id_perusahaan', $id_perusahaan)->get();
+        foreach ($model as $data){
+            $model_delete = jurnal::find($data->id);
+            $model_delete->delete();
+        }
+        $data = [
+            'message'=> 'berhasil menghapus jurnal',
+            'status'=> 'true'
+        ];
+        return $data;
     }
 
 }

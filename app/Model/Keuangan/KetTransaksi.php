@@ -11,6 +11,7 @@ class KetTransaksi extends Model
 
     protected $fillable=[
         'nm_transaksi',
+        'jenis_transaksi',
         'id_perusahaan',
         'id_karyawan',
     ];

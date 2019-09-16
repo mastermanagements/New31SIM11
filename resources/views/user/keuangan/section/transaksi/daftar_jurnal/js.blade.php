@@ -61,6 +61,25 @@
         })
     }
 
+    delete_jurnal = function (no_transaksi) {
+        if(confirm("Apakah anda akan menghapus jurnal ini, Semua yang terhubung pada jurnal ini akan terhapus ...?")==true){
+            alert('alert');
+            $.ajax({
+                url: "{{ url('hapus-jurnal') }}",
+                type: 'post',
+                data:{
+                    'no_transaksi': no_transaksi,
+                    '_method':'put',
+                    '_token':'{{ csrf_token() }}'
+                },success: function (result) {
+                    alert(result.message);
+                }
+            });
+        }else{
+            alert('Proses Hapus Dibatal ');
+        }
+    }
+
     $(document).on('change','.class_debit', function () {
         var sum=0;
         $('.class_debit').each(function () {

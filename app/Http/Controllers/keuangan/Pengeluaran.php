@@ -34,7 +34,7 @@ class Pengeluaran extends Controller
         $data =[
             'akun_aktif'=> $this->get_akun_akfif(array('id_perusahaan'=> $this->id_perusahaan)),
             'posisi'=> $this->posisi(),
-            'keterangan'=>$this->getKeterangan(array('id_perusahaan'=> $this->id_perusahaan)),
+            'keterangan'=>$this->getKeterangan(array('id_perusahaan'=> $this->id_perusahaan,'jenis_transaksi'=>'1')),
             'jenis_jurnal'=> $this->jenis_jurnal
         ];
         return view('user.keuangan.section.transaksi.page_default', $data);

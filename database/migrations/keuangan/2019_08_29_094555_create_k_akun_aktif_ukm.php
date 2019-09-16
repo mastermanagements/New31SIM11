@@ -19,6 +19,7 @@ class CreateKAkunAktifUkm extends Migration
 			$table->integer('id_subsub_akun')->nullable();
 			$table->string('kode_akun_aktif','15');
 			$table->string('nm_akun_aktif','50');
+			$table->enum('jenis_transaksi',['0','1']);
 			$table->integer('id_perusahaan')->unsigned();
 			$table->integer('id_karyawan')->unsigned();
             $table->timestamps();
