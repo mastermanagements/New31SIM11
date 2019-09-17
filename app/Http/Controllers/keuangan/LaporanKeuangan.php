@@ -29,8 +29,11 @@ class LaporanKeuangan extends Controller
     }
 
     public function index(){
+        $data=[
+            'judul'=> 'Jurnal Umum'
+        ];
         Session::put('menu-laporan-keuangan','jurnal_umum');
-        return view('user.keuangan.section.laporan.page_default');
+        return view('user.keuangan.section.laporan.page_default', $data);
     }
 
     public function dataJurnal(){
@@ -41,6 +44,42 @@ class LaporanKeuangan extends Controller
 
         $data = [
             'data'=> $this->daftar_jurnal($data_pass)
+        ];
+
+        return response()->json($data);
+    }
+    public function dataBaseOnDate(Request $req){
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tanggal_awal'=> $req->tanggal_awal,
+            'tanggal_akhir'=> $req->tanggal_akhir,
+        ];
+
+        $data = [
+            'data'=> $this->daftar_jurnal($data_pass)
+        ];
+
+        return response()->json($data);
+    }
+
+    //====================================== Buku Besar ======================================================
+
+    public function buku_besar(){
+        Session::put('menu-laporan-keuangan','buku_besar');
+        $data=[
+            'judul'=> 'Buku Besar'
+        ];
+        return view('user.keuangan.section.laporan.page_default', $data);
+    }
+
+    public function dataBukuBesars(){
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tahun_berjalan'=> $this->costumDate()->year
+        ];
+
+        $data = [
+            'data'=> $this->data_buku_besar($data_pass)
         ];
 
         return response()->json($data);

@@ -22,12 +22,12 @@
           -------------------------->
         <div class="row" style="padding: 15px">
             <div class="col-md-2" style="padding: 1px">
-                <a class="btn btn-block btn-social btn-bitbucket">
+                <a class="btn btn-block btn-social btn-bitbucket" href="{{ url('Laporan-keuangan') }}">
                     <i class="fa fa-file-text-o"></i> Jurnal Umum
                 </a>
             </div>
             <div class="col-md-2" style="padding: 1px">
-                <a class="btn btn-block btn-social btn-bitbucket">
+                <a class="btn btn-block btn-social btn-bitbucket" href="{{ url('buku-besar') }}">
                     <i class="fa fa-file-text-o"></i> Buku Besar
                 </a>
             </div>
@@ -55,6 +55,8 @@
         <div class="row">
             @if(Session::get('menu-laporan-keuangan')=="jurnal_umum")
                 @include('user.keuangan.section.laporan.jurnal_umum.page')
+            @elseif(Session::get('menu-laporan-keuangan')=="buku_besar")
+                @include('user.keuangan.section.laporan.buku_besar.page')
             @endif
         </div>
 
@@ -65,6 +67,8 @@
 
 @section('plugins')
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/rowgroup/1.1.0/js/dataTables.rowGroup.min.js"></script>
     <script>
         $(document).ready(function () {
             //Date picker
@@ -81,5 +85,7 @@
     </script>
     @if(Session::get('menu-laporan-keuangan')=="jurnal_umum")
         @include('user.keuangan.section.laporan.jurnal_umum.js')
+    @elseif(Session::get('menu-laporan-keuangan')=="buku_besar")
+        @include('user.keuangan.section.laporan.buku_besar.js')
     @endif
 @stop

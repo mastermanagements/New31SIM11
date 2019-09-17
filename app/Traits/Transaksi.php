@@ -241,7 +241,9 @@ trait Transaksi
 
     public function daftar_jurnal($array){
         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
-            $model = jurnal::all()->where('id_perusahaan', $array['id_perusahaan']);
+            $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
+            $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
+            $model = jurnal::whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->get();
         }else{
             $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('jenis_jurnal','asc')->get();
         }
@@ -269,6 +271,7 @@ trait Transaksi
                         $column['debet'] = $debet;
                         $column['kredit'] = $kredit;
                         $column['no_transaksi'] = $value->no_transaksi;
+                        $column['cmb_kode_akun'] = $value->akun->kode_akun_aktif.'-'.$value->akun->nm_akun_aktif;
             $row[]=$column;
         }
         return $row;
@@ -342,6 +345,73 @@ trait Transaksi
             'status'=> 'true'
         ];
         return $data;
+    }
+
+    public function data_buku_besar($array){
+        if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
+            $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
+            $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
+            $model = jurnal::whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan']);
+        }else{
+            $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('jenis_jurnal','asc');
+        }
+
+        $row = array();
+
+        foreach ($model->groupBy('id_akun_aktif')->get() as $key=> $value){
+              $column = array();
+              $column[] = $value->akun->nm_akun_aktif;
+              $saldo=0;
+              foreach ($value->akun->getMannyJurnal->sortBy('jenis_jurnal') as $data_jurnals){
+                  $data_jurnal = array();
+                  $data_jurnal[] = $data_jurnals->tgl_jurnal;
+                  $data_jurnal[] = $data_jurnals->no_transaksi;
+                  $data_jurnal[] = $data_jurnals->keterangan->nm_transaksi;
+
+                  $debet = 0;
+                  $kredit = 0;
+                  if($data_jurnals->debet_kredit == 0){
+                      $kredit = 0;
+                      $debet  = $data_jurnals->jumlah_transaksi;
+                      $saldo +=$debet;
+                  }else{
+                      $debet=0;
+                      $kredit = $data_jurnals->jumlah_transaksi;
+                      $saldo -=$kredit;
+                  }
+                  $data_jurnal[] =$debet;
+                  $data_jurnal[] =$kredit;
+                  $data_jurnal[] =$saldo;
+
+                  $column[]=array(
+                    'data'=>$data_jurnal
+                  );
+              }
+
+//            $column['tanggal'] = date('d-m-Y', strtotime($value->tgl_jurnal));
+//            $column['tanggal'] = date('d-m-Y', strtotime($value->tgl_jurnal));
+//            $column['no_transaksi'] = $value->no_transaksi;
+//            $column['kode_akun'] = $value->akun->kode_akun_aktif;
+//            $column['nm_akun'] = $value->akun->nm_akun_aktif;
+//            $column['jenis_jurnal'] = $this->jenis_jurnal[$value->jenis_jurnal];
+//
+//            $debet = 0;
+//            $kredit = 0;
+//            if($value->debet_kredit =='0'){
+//                $debet= $value->jumlah_transaksi;
+//                $kredit= 0;
+//            }else{
+//                $kredit= $value->jumlah_transaksi;
+//                $debet= 0;
+//            }
+//            $column['nama_keterangan'] = $value->keterangan->nm_transaksi;
+//            $column['debet'] = $debet;
+//            $column['kredit'] = $kredit;
+//            $column['no_transaksi'] = $value->no_transaksi;
+//            $column['cmb_kode_akun'] = $value->akun->kode_akun_aktif.'-'.$value->akun->nm_akun_aktif;
+            $row[]=$column;
+        }
+        return $row;
     }
 
 }

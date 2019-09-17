@@ -34,6 +34,7 @@
                         <table id="example_rincian" class="table table-bordered table-hover" style="width: 100%">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>No. Transaksi</th>
                                     <th>Tanggal</th>
                                     <th>Kode Akun</th>
@@ -45,7 +46,7 @@
                             </thead>
                             <tfoot>
                             <tr>
-                                <th colspan="5" style="text-align: center">Total</th>
+                                <th colspan="6" style="text-align: center">Total</th>
                                 <th></th>
                                 <th></th>
                             </tr>

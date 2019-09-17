@@ -1,7 +1,9 @@
 <script>
+    var groupColumn =0;
     var example_rincian=$('#example_rincian').DataTable({
         "ajax":"{{ url('Laporan-jurnal') }}",
         "columns":[
+            {'data':'cmb_kode_akun'},
             {'data':'no_transaksi'},
             {'data':'tanggal'},
             {'data':'kode_akun'},
@@ -10,7 +12,6 @@
             {'data':'debet'},
             {'data':'kredit'},
         ],
-        {{--drawCallback: buttonBuild("{{ $thn_proses }}"),--}}
         "footerCallback": function (row, data, start, end, display) {
             var api = this.api(), data;
 
@@ -20,23 +21,23 @@
                     typeof i === 'number' ? i: 0;
             }
 
-            total_debit = api.column(5).data()
+            total_debit = api.column(6).data()
                 .reduce(function (a, b) {
                     return intVal(a) + intVal(b);
                 },0)
-            total_kredit = api.column(6).data()
+            total_kredit = api.column(7).data()
                 .reduce(function (a, b) {
                     return intVal(a) + intVal(b);
                 },0)
 
-            $(api.column(5).footer()).html(total_debit);
-            $(api.column(6).footer()).html(total_kredit);
+            $(api.column(6).footer()).html(total_debit);
+            $(api.column(7).footer()).html(total_kredit);
         },
         filter: false,
         pagging : true,
         searching: false,
         info : true,
-        ordering : true,
+        ordering : false,
         processing : true,
         retrieve: true
     });
