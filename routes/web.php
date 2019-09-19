@@ -2075,7 +2075,20 @@ Route::post('store-saldo-awal','keuangan\JurnalUmum@store_jurnal_awal');
 
 Route::get('Jurnal-Penyesuaian','keuangan\JurnalPernyesuaian@index');
 
+// =================================================== Laporan Keuangan ==============================================
+
 Route::get('Laporan-jurnal','keuangan\LaporanKeuangan@dataJurnal');
+
+Route::post('tampilkan-jurnal-berdasarkan-tanggal','keuangan\LaporanKeuangan@dataBaseOnDate');
+
+Route::get('buku-besar','keuangan\LaporanKeuangan@buku_besar');
+
+Route::get('data-buku-besar','keuangan\LaporanKeuangan@dataBukuBesars');
+
+Route::get('neraca-saldo','keuangan\LaporanKeuangan@neraca_saldo');
+
+Route::get('data-neraca-saldo','keuangan\LaporanKeuangan@dataNeracaSaldo');
+
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

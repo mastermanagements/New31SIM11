@@ -145,7 +145,7 @@
         var debit=$('#debit_total').val();
         var kredit=$('#kredit_total').val();
 
-        if(debit==kredit){
+        if(debit==kredit || kredit=="" ){
             return true;
         }else{
             $('#notif').text("Debit dan Kredit harus Sama");
