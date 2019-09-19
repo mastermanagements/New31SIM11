@@ -21,4 +21,9 @@ class AkunAktifUkm extends Model
     public function getMannyJurnal(){
         return $this->hasMany('App\Model\Keuangan\Jurnal','id_akun_aktif','id');
     }
+
+    public function sub_akun(){
+        return $this->belongsTo('App\Model\Keuangan\SubAkun','id_sub_akun');
+    }
+
 }

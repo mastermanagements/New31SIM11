@@ -13,11 +13,13 @@ use App\Model\Keuangan\KetTransaksi as KetTransaksi;
 use App\Model\Keuangan\Jurnal as jurnal;
 use Illuminate\Http\Request;
 use App\Traits\DateYears;
+use App\Traits\AturanDK;
 use Session;
 
 trait Transaksi
 {
     use DateYears;
+    use AturanDK;
 
     public $jenis_jurnal=array(
         '0'=>'Saldo Awal',
@@ -351,9 +353,9 @@ trait Transaksi
         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
             $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
             $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
-            $model = jurnal::whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan']);
+            $model = jurnal::whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
         }else{
-            $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('jenis_jurnal','asc');
+            $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('id_akun_aktif','asc');
         }
 
         $row = array();
@@ -362,53 +364,97 @@ trait Transaksi
               $column = array();
               $column[] = $value->akun->nm_akun_aktif;
               $saldo=0;
-              foreach ($value->akun->getMannyJurnal->sortBy('jenis_jurnal') as $data_jurnals){
+              $newColumn= array();
+              foreach ($value->akun->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal') as $data_jurnals){
                   $data_jurnal = array();
-                  $data_jurnal[] = $data_jurnals->tgl_jurnal;
-                  $data_jurnal[] = $data_jurnals->no_transaksi;
-                  $data_jurnal[] = $data_jurnals->keterangan->nm_transaksi;
+                  $data_jurnal['tanggal'] = $data_jurnals->tgl_jurnal;
+                  $data_jurnal['no_transaksi'] = $data_jurnals->no_transaksi;
+                  $data_jurnal['nama_keterangan'] = $data_jurnals->keterangan->nm_transaksi;
 
                   $debet = 0;
                   $kredit = 0;
                   if($data_jurnals->debet_kredit == 0){
                       $kredit = 0;
+                      $statusDK = 0;
                       $debet  = $data_jurnals->jumlah_transaksi;
-                      $saldo +=$debet;
                   }else{
                       $debet=0;
+                      $statusDK=1;
                       $kredit = $data_jurnals->jumlah_transaksi;
-                      $saldo -=$kredit;
                   }
-                  $data_jurnal[] =$debet;
-                  $data_jurnal[] =$kredit;
-                  $data_jurnal[] =$saldo;
 
-                  $column[]=array(
-                    'data'=>$data_jurnal
-                  );
+                  $id_akun = $data_jurnals->akun->sub_akun->id_akun_ukm;
+                  $id_sub_akun = $data_jurnals->akun->sub_akun->id;
+                  $saldo = $this->rules($id_akun,$id_sub_akun, $statusDK,$debet,$kredit, $saldo);
+                  $data_jurnal['debet'] =$debet;
+                  $data_jurnal['kredit'] =$kredit;
+                  $data_jurnal['saldo'] =$saldo;
+                  $newColumn[] = $data_jurnal;
               }
+            $column[] = $newColumn;
+            $row[]=$column;
+        }
+        return $row;
+    }
 
-//            $column['tanggal'] = date('d-m-Y', strtotime($value->tgl_jurnal));
-//            $column['tanggal'] = date('d-m-Y', strtotime($value->tgl_jurnal));
-//            $column['no_transaksi'] = $value->no_transaksi;
-//            $column['kode_akun'] = $value->akun->kode_akun_aktif;
-//            $column['nm_akun'] = $value->akun->nm_akun_aktif;
-//            $column['jenis_jurnal'] = $this->jenis_jurnal[$value->jenis_jurnal];
-//
-//            $debet = 0;
-//            $kredit = 0;
-//            if($value->debet_kredit =='0'){
-//                $debet= $value->jumlah_transaksi;
-//                $kredit= 0;
-//            }else{
-//                $kredit= $value->jumlah_transaksi;
-//                $debet= 0;
-//            }
-//            $column['nama_keterangan'] = $value->keterangan->nm_transaksi;
-//            $column['debet'] = $debet;
-//            $column['kredit'] = $kredit;
-//            $column['no_transaksi'] = $value->no_transaksi;
-//            $column['cmb_kode_akun'] = $value->akun->kode_akun_aktif.'-'.$value->akun->nm_akun_aktif;
+    public function data_neraca_saldo($array){
+        if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
+            $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
+            $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
+            $model = jurnal::whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+        }else{
+            $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('id_akun_aktif','asc');
+        }
+
+        $row = array();
+
+        foreach ($model->groupBy('id_akun_aktif')->get() as $key=> $value){
+              $column = array();
+              $column['kode_akun'] = $value->akun->kode_akun_aktif;
+              $column['nm_akun'] = $value->akun->nm_akun_aktif;
+              $saldo=0;
+              $saldo_debits = 0;
+              $saldo_kredits = 0;
+              foreach ($value->akun->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal') as $data_jurnals){
+                      $debet = 0;
+                      $kredit = 0;
+                      $id_akun = $data_jurnals->akun->sub_akun->id_akun_ukm;
+                      $id_sub_akun = $data_jurnals->akun->sub_akun->id;
+                      $saldo_debit=0;
+                      $saldo_kredit = 0;
+
+                     if($data_jurnals->debet_kredit == 0){
+                          $statusDK = 0;
+                          $debet  = $data_jurnals->jumlah_transaksi;
+                     }else{
+                          $statusDK= 1;
+                          $kredit = $data_jurnals->jumlah_transaksi;
+                     }
+
+                      $saldo = $this->rules($id_akun,$id_sub_akun, $statusDK,$debet,$kredit, $saldo);
+                      $rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $statusDK);
+                      if($rules_saldo=='debet'){
+                         $saldo_debit = $saldo;
+                      }elseif($rules_saldo =='kredit'){
+                         $saldo_kredit = $saldo;
+                      }
+
+                }
+                if($saldo_debit <=0 ){
+                    $saldo_debits = $saldo_debit*-1;
+                }else{
+                    $saldo_debits = $saldo_debit;
+                }
+                if($saldo_kredit <=0 ){
+                    $saldo_kredits = $saldo_kredit*-1;
+                }else{
+                    $saldo_kredits = $saldo_kredit;
+                }
+
+                 $column['debet']=$saldo_debits;
+                 $column['kredit']=$saldo_kredits;
+
+            // $column[] = $newColumn;
             $row[]=$column;
         }
         return $row;
