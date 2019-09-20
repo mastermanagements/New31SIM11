@@ -451,6 +451,7 @@ trait Transaksi
                     $saldo_kredits = $saldo_kredit;
                 }
 
+
                  $column['debet']=$saldo_debits;
                  $column['kredit']=$saldo_kredits;
 

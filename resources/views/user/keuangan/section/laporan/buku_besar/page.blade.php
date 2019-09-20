@@ -59,9 +59,9 @@
                                             <td>{{ $keterangan['no_transaksi'] }}</td>
                                             <td>{{ date('d-m-Y', strtotime($keterangan['tanggal'])) }}</td>
                                             <td>{{ $keterangan['nama_keterangan'] }}</td>
-                                            <td>{{ $keterangan['debet'] }}</td>
-                                            <td>{{ $keterangan['kredit'] }}</td>
-                                            <td>{{ $keterangan['saldo'] }}</td>
+                                            <td>{{ number_format($keterangan['debet'],2,',','.') }}</td>
+                                            <td>{{ number_format($keterangan['kredit'],2,',','.') }}</td>
+                                            <td>{{ number_format($keterangan['saldo'],2,',','.') }}</td>
                                             @php($total_debet  += $keterangan['debet'])
                                             @php($total_kredit  += $keterangan['kredit'])
                                         </tr>
@@ -70,8 +70,8 @@
                                         <td >Total</td>
                                         <td ></td>
                                         <td ></td>
-                                        <td >{{ $total_debet }}</td>
-                                        <td >{{ $total_kredit }}</td>
+                                        <td >{{ number_format($total_debet,2,',','.') }}</td>
+                                        <td >{{ number_format($total_kredit,2,',','.') }}</td>
                                         <td ></td>
                                     </tr>
                               @endforeach
