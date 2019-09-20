@@ -24,16 +24,16 @@
                                      <tr>
                                         <td>{{ $data_neraca['kode_akun'] }}</td>
                                         <td>{{ $data_neraca['nm_akun'] }}</td>
-                                        <td>{{ $data_neraca['debet'] }}</td>
-                                        <td>{{ $data_neraca['kredit'] }}</td>
+                                        <td>{{ number_format($data_neraca['debet'],2,',','.') }}</td>
+                                        <td>{{ number_format($data_neraca['kredit'],2,',','.') }}</td>
                                     </tr>
                                     @php($total_debet+=$data_neraca['debet'])
                                     @php($total_kredit+=$data_neraca['kredit'])
                                 @endforeach
                                 <tr>
                                     <td colspan="2">Total</td>
-                                    <td>{{ $total_debet }}</td>
-                                    <td>{{ $total_kredit }}</td>
+                                    <td>{{ number_format($total_debet,2,',','.') }}</td>
+                                    <td>{{ number_format($total_kredit,2,',','.') }}</td>
                                 </tr>
                             </tbody>
 

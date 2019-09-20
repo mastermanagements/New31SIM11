@@ -113,7 +113,6 @@ class LaporanKeuangan extends Controller
         $data = [
             'data'=> $this->data_neraca_saldo($data_pass)
         ];
-
         return response()->json($data);
     }
 }
