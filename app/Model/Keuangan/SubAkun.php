@@ -24,4 +24,8 @@ class SubAkun extends Model
         return $this->hasMany('App\Model\Keuangan\SubSubAkun','id_sub_akun_ukm','id');
     }
 
+    public function id_sub_akun_aktif(){
+        return $this->hasMany('App\Model\Keuangan\AkunAktifUkm','id_sub_akun','id');
+    }
+
 }

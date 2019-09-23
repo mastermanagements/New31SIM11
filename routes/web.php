@@ -2110,6 +2110,11 @@ Route::get('neraca-saldo','keuangan\LaporanKeuangan@neraca_saldo');
 
 Route::get('data-neraca-saldo','keuangan\LaporanKeuangan@dataNeracaSaldo');
 
+Route::get('Laba-rugi','keuangan\LaporanKeuangan@laba_rugi');
+
+Route::get('data-Laba-rugi','keuangan\LaporanKeuangan@data_labaRugi');
+
+
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
