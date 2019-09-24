@@ -11,9 +11,11 @@ use App\Model\Keuangan\Transaksi as transaksis;
 use App\Model\Keuangan\AkunAktifUkm as Akun_aktif;
 use App\Model\Keuangan\KetTransaksi as KetTransaksi;
 use App\Model\Keuangan\Jurnal as jurnal;
+use App\Model\Keuangan\Akun as akn;
 use Illuminate\Http\Request;
 use App\Traits\DateYears;
 use App\Traits\AturanDK;
+use Illuminate\Support\Facades\DB;
 use Session;
 
 trait Transaksi
@@ -461,4 +463,75 @@ trait Transaksi
         return $row;
     }
 
+
+    public function data_laba_rugi($array){
+        $model = akn::all()->whereIn('id',[4,5,6,7,8]);
+        $row = array();
+        foreach ($model as $akun){
+            $column = array();
+            $row_sub =array();
+            $column['akun']= $akun->nm_akun;
+            foreach ($akun->sub_akun_ukm as $sub_akun){
+                $sub_column = array();
+                $sub_column['nm_sub_akun'] = $sub_akun->nm_sub_akun;
+                $sub_sub_row = array();
+                $saldo=0;
+                    foreach ($sub_akun->id_sub_akun_aktif as $akun_akf){
+                        $sub_sub_column = array();
+
+                        if(empty($akun_akf->sub_sub_akun->nm_subsub_akun)){
+                            $sub_sub_column['nm_sub_sub_akun'] = $akun_akf->nm_akun_aktif;
+                        }else{
+                            $sub_sub_column['nm_sub_sub_akun'] = $akun_akf->sub_sub_akun->nm_subsub_akun;
+                        }
+                        if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
+                            $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
+                            $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
+                            $model = $akun_akf->getMannyJurnal->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+                        }else{
+//                          $akun_akf->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal');
+                            $model =  $akun_akf->getMannyJurnal->where(DB::raw('tgl_jurnal','=',2019))->sortBy('no_transaksi')->sortBy('jenis_jurnal');
+                        }
+
+                       //  dd($model );
+                        foreach ($model as $data_jurnals){
+                            $debet = 0;
+                            $kredit = 0;
+                            $id_akun = $data_jurnals->akun->sub_akun->id_akun_ukm;
+                            $id_sub_akun = $data_jurnals->akun->sub_akun->id;
+                            $saldo_debit=0;
+                            $saldo_kredit = 0;
+
+                            if($data_jurnals->debet_kredit == 0){
+                                $statusDK = 0;
+                                $debet  = $data_jurnals->jumlah_transaksi;
+                            }else{
+                                $statusDK= 1;
+                                $kredit = $data_jurnals->jumlah_transaksi;
+                            }
+
+                            $saldo = $this->rules($id_akun,$id_sub_akun, $statusDK,$debet,$kredit, $saldo);
+                            $rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $statusDK);
+//                            if($rules_saldo=='debet'){
+//                                $saldo_debit = $saldo;
+//                            }elseif($rules_saldo =='kredit'){
+//                                $saldo_kredit = $saldo;
+//                            }
+                        }
+                        $sub_sub_column['total_sub_sub'] = $saldo;
+                        $sub_sub_row['sub_sub_akun']= $sub_sub_column;
+                        if(!empty($akun_akf->sub_sub_akun)) {
+                            $sub_column['data_sub_akun_aktif'] = $sub_sub_row;
+                        }
+
+                    }
+
+                $sub_column['total'] = $saldo;
+                $row_sub[] = $sub_column;
+            }
+            $column['sub_akun'] = $row_sub;
+            $row[] = $column;
+        }
+        return $row;
+    }
 }

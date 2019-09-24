@@ -109,9 +109,34 @@ class LaporanKeuangan extends Controller
             'id_perusahaan'=> $this->id_perusahaan,
             'tahun_berjalan'=> $this->costumDate()->year
         ];
-
         $data = [
             'data'=> $this->data_neraca_saldo($data_pass)
+        ];
+        return response()->json($data);
+    }
+
+
+    //============================================== Laba Rugi ============================================
+    public function laba_rugi(){
+        Session::put('menu-laporan-keuangan','laba-rugi');
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tahun_berjalan'=> $this->costumDate()->year
+        ];
+        $data=[
+            'judul'=> 'Laba Rugi',
+            'data'=> $this->data_laba_rugi($data_pass)
+        ];
+        return view('user.keuangan.section.laporan.page_default', $data);
+    }
+
+    public function data_labaRugi(){
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tahun_berjalan'=> $this->costumDate()->year
+        ];
+        $data = [
+            'data'=> $this->data_laba_rugi($data_pass)
         ];
         return response()->json($data);
     }
