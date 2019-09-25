@@ -32,7 +32,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <table id="example_rincian" class="table table-bordered table-hover" style="width: 100%">
-
                             <tbody>
                             @php($total_sub=0)
                             @php($total_kredit=0)
@@ -67,7 +66,6 @@
                                     {{--@php($total_debet+=$data_neraca['debet'])--}}
                                     {{--@php($total_kredit+=$data_neraca['kredit'])--}}
                                 @endforeach
-
                             </tbody>
                             <tfoot>
                                 <tr>

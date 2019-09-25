@@ -247,9 +247,9 @@ trait Transaksi
         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
             $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
             $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
-            $model = jurnal::whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->get();
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->get();
         }else{
-            $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('jenis_jurnal','asc')->get();
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('jenis_jurnal','asc')->get();
         }
 
         $row = array();
@@ -355,9 +355,9 @@ trait Transaksi
         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
             $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
             $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
-            $model = jurnal::whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
         }else{
-            $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('id_akun_aktif','asc');
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('id_akun_aktif','asc');
         }
 
         $row = array();
@@ -403,9 +403,9 @@ trait Transaksi
         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
             $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
             $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
-            $model = jurnal::whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
         }else{
-            $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('id_akun_aktif','asc');
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('id_akun_aktif','asc');
         }
 
         $row = array();
@@ -508,10 +508,10 @@ trait Transaksi
                         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
                             $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
                             $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
-                            $model = $akun_akf->getMannyJurnal->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+                            $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
                         }else{
 //                          $akun_akf->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal');
-                            $model =  $akun_akf->getMannyJurnal->where(DB::raw('tgl_jurnal','=',2019))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
+                            $model =  $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where(DB::raw('tgl_jurnal','=',2019))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
                         }
 
                        //  dd($model );

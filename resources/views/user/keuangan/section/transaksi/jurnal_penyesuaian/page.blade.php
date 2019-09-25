@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nomor Transaksi</label>
                                 <input type="text" class="form-control " name="no_transaksi" required>
-                                <input type="hidden" name="jenis_jurnal" value="1">
+                                <input type="hidden" name="jenis_jurnal" value="2">
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                         </div>

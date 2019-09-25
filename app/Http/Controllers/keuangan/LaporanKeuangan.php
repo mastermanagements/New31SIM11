@@ -39,7 +39,8 @@ class LaporanKeuangan extends Controller
     public function dataJurnal(){
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
-            'tahun_berjalan'=> $this->costumDate()->year
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
         ];
 
         $data = [
@@ -53,6 +54,7 @@ class LaporanKeuangan extends Controller
             'id_perusahaan'=> $this->id_perusahaan,
             'tanggal_awal'=> $req->tanggal_awal,
             'tanggal_akhir'=> $req->tanggal_akhir,
+            'jenis_jurnal'=> ['0','1']
         ];
 
         $data = [
@@ -68,7 +70,8 @@ class LaporanKeuangan extends Controller
         Session::put('menu-laporan-keuangan','buku_besar');
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
-            'tahun_berjalan'=> $this->costumDate()->year
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
         ];
         $data=[
             'judul'=> 'Buku Besar',
@@ -80,7 +83,8 @@ class LaporanKeuangan extends Controller
     public function dataBukuBesars(){
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
-            'tahun_berjalan'=> $this->costumDate()->year
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
         ];
 
         $data = [
@@ -95,7 +99,8 @@ class LaporanKeuangan extends Controller
         Session::put('menu-laporan-keuangan','neraca-saldo');
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
-            'tahun_berjalan'=> $this->costumDate()->year
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
         ];
         $data=[
             'judul'=> 'Neraca Saldo',
@@ -107,7 +112,8 @@ class LaporanKeuangan extends Controller
     public function dataNeracaSaldo(){
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
-            'tahun_berjalan'=> $this->costumDate()->year
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
         ];
         $data = [
             'data'=> $this->data_neraca_saldo($data_pass)
@@ -121,7 +127,8 @@ class LaporanKeuangan extends Controller
         Session::put('menu-laporan-keuangan','laba-rugi');
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
-            'tahun_berjalan'=> $this->costumDate()->year
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
         ];
         $data=[
             'judul'=> 'Laba Rugi',
@@ -133,7 +140,8 @@ class LaporanKeuangan extends Controller
     public function data_labaRugi(){
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
-            'tahun_berjalan'=> $this->costumDate()->year
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
         ];
         $data = [
             'data'=> $this->data_laba_rugi($data_pass)
