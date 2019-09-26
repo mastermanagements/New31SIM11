@@ -148,4 +148,31 @@ class LaporanKeuangan extends Controller
         ];
         return response()->json($data);
     }
+
+    //============================================== Neraca ============================================
+    public function neraca(){
+        Session::put('menu-laporan-keuangan','neraca');
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
+        ];
+        $data=[
+            'judul'=> 'Neraca',
+            'data'=> $this->data_neracas($data_pass)
+        ];
+        return view('user.keuangan.section.laporan.page_default', $data);
+    }
+
+    public function data_neraca(){
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
+        ];
+        $data = [
+            'data'=> $this->data_neracas($data_pass)
+        ];
+        return response()->json($data);
+    }
 }

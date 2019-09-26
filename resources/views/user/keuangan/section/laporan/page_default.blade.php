@@ -47,7 +47,7 @@
                 </a>
             </div>
             <div class="col-md-2" style="padding: 1px">
-                <a class="btn btn-block btn-social btn-bitbucket">
+                <a class="btn btn-block btn-social btn-bitbucket" href="{{ url('neraca') }}">
                     <i class="fa fa-file-text-o"></i> Neraca
                 </a>
             </div>
@@ -61,6 +61,8 @@
                 @include('user.keuangan.section.laporan.neraca_saldo.page')
             @elseif(Session::get('menu-laporan-keuangan')=="laba-rugi")
                 @include('user.keuangan.section.laporan.laba_rugi.page')
+            @elseif(Session::get('menu-laporan-keuangan')=="neraca")
+                @include('user.keuangan.section.laporan.neraca.page')
             @endif
         </div>
 
@@ -95,5 +97,7 @@
         @include('user.keuangan.section.laporan.neraca_saldo.js')
     @elseif(Session::get('menu-laporan-keuangan')=="neraca-saldo")
         @include('user.keuangan.section.laporan.buku_besar.js')
+    @elseif(Session::get('menu-laporan-keuangan')=="neraca")
+        @include('user.keuangan.section.laporan.neraca.js')
     @endif
 @stop
