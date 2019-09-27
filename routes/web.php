@@ -2093,7 +2093,9 @@ Route::get('Laba-rugi','keuangan\LaporanKeuangan@laba_rugi');
 
 Route::get('data-Laba-rugi','keuangan\LaporanKeuangan@data_labaRugi');
 
+Route::get('neraca','keuangan\LaporanKeuangan@neraca');
 
+Route::get('data-neraca','keuangan\LaporanKeuangan@data_neraca');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
