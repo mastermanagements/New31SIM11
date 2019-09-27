@@ -35,7 +35,7 @@
                             <tbody>
                             @php($total_sub=0)
                             @php($total_kredit=0)
-                                @foreach($data as $data_laba_rugi)
+                                @foreach($data['data'] as $data_laba_rugi)
                                     <tr align="left" style="background-color: lightgrey">
                                         <td colspan= "2">{{ $data_laba_rugi['akun'] }}</td>
                                     </tr>
@@ -44,11 +44,6 @@
                                                 <tr align="left" style="background-color: white">
                                                     <td>{{ $data_sub['nm_sub_akun'] }}</td>
                                                     <td>{{ $data_sub['total'] }}
-                                                        @if($data_sub['sub_operasi']==1)
-                                                            @php($total_sub+=$data_sub['total'] )
-                                                        @else
-                                                            @php($total_sub-=$data_sub['total'] )
-                                                        @endif
                                                     </td>
                                                 </tr>
                                                 @if(!empty($data_sub['data_sub_akun_aktif']))
@@ -70,7 +65,7 @@
                             <tfoot>
                                 <tr>
                                    <td >Laba Rugi</td>
-                                   <td align="left">{{ $total_sub }}</td>
+                                   <td align="left">{{ $data['total_laba_rugi'] }}</td>
                                 </tr>
                             </tfoot>
                         </table>
