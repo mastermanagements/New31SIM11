@@ -11,9 +11,11 @@ use App\Model\Keuangan\Transaksi as transaksis;
 use App\Model\Keuangan\AkunAktifUkm as Akun_aktif;
 use App\Model\Keuangan\KetTransaksi as KetTransaksi;
 use App\Model\Keuangan\Jurnal as jurnal;
+use App\Model\Keuangan\Akun as akn;
 use Illuminate\Http\Request;
 use App\Traits\DateYears;
 use App\Traits\AturanDK;
+use Illuminate\Support\Facades\DB;
 use Session;
 
 trait Transaksi
@@ -245,9 +247,9 @@ trait Transaksi
         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
             $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
             $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
-            $model = jurnal::whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->get();
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->get();
         }else{
-            $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('jenis_jurnal','asc')->get();
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('jenis_jurnal','asc')->get();
         }
 
         $row = array();
@@ -353,9 +355,9 @@ trait Transaksi
         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
             $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
             $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
-            $model = jurnal::whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
         }else{
-            $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('id_akun_aktif','asc');
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('id_akun_aktif','asc');
         }
 
         $row = array();
@@ -401,9 +403,9 @@ trait Transaksi
         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
             $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
             $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
-            $model = jurnal::whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
         }else{
-            $model = jurnal::where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('id_akun_aktif','asc');
+            $model = jurnal::whereIn('jenis_jurnal',$array['jenis_jurnal'])->where('id_perusahaan', $array['id_perusahaan'])->whereyear('tgl_jurnal', $array['tahun_berjalan'])->orderBy('id_akun_aktif','asc');
         }
 
         $row = array();
@@ -461,4 +463,198 @@ trait Transaksi
         return $row;
     }
 
+
+    public function data_laba_rugi($array){
+        $model = akn::all()->whereIn('id',[4,5,6,7,8]);
+        $row = array();
+        $status_operasi = 0;
+        $total_keseluruhan = 0;
+        foreach ($model as $akun){
+            $column = array();
+            $row_sub =array();
+            $column['akun']= $akun->nm_akun;
+            if($akun->id ==4){
+                $status_operasi = 1; //bertambah
+            }
+            else if($akun->id ==5){
+                $status_operasi = 1; //Bertambah
+            }
+            else if($akun->id ==6){
+                $status_operasi = 2; //Berkurang
+            }
+            else if($akun->id ==7){
+                $status_operasi = 1; //Berkurang
+            }
+            else if($akun->id ==7){
+                $status_operasi = 2; //Berkurang
+            }
+            $column['operasi']= $status_operasi;
+            $sub_total = 0;
+            foreach ($akun->sub_akun_ukm as $sub_akun){
+                $sub_column = array();
+                $sub_column['nm_sub_akun'] = $sub_akun->nm_sub_akun;
+                $sub_sub_row = array();
+                $saldo_subs=0;
+
+                    foreach ($sub_akun->id_sub_akun_aktif as $akun_akf){
+                        $status_sub = 0;
+                        $sub_sub_column = array();
+                        $saldo_sub=0;
+                        if(empty($akun_akf->sub_sub_akun->nm_subsub_akun)){
+                            $sub_sub_column['nm_sub_sub_akun'] = "";
+                        }else{
+                            $sub_sub_column['nm_sub_sub_akun'] = $akun_akf->sub_sub_akun->nm_subsub_akun;
+                         }
+                        if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
+                            $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
+                            $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
+                            $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+                        }else{
+//                          $akun_akf->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal');
+                            $model =  $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where(DB::raw('tgl_jurnal','=',2019))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
+                        }
+
+                       //  dd($model );
+                        foreach ($model as $data_jurnals){
+                            $saldo=0;
+                            $status_sub = 1;
+                            $debet = 0;
+                            $kredit = 0;
+                            $id_akun = $data_jurnals->akun->sub_akun->id_akun_ukm;
+                            $id_sub_akun = $data_jurnals->akun->sub_akun->id;
+
+                            if($data_jurnals->debet_kredit == 0){
+                                $statusDK = 0;
+                                $debet  = $data_jurnals->jumlah_transaksi;
+                            }else{
+                                $statusDK= 1;
+                                $kredit = $data_jurnals->jumlah_transaksi;
+                            }
+
+                            $saldo = $this->rules($id_akun,$id_sub_akun, $statusDK,$debet,$kredit, $saldo);
+                            $rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $statusDK);
+                            $saldo_sub =$saldo;
+                        }
+
+                        $sub_sub_column['total_sub_sub'] = $saldo_sub;
+                        $sub_sub_column['status'] = $status_sub;
+                        if(!empty($akun_akf->sub_sub_akun)) {
+                            $sub_sub_row[]= $sub_sub_column;
+                            $sub_column['data_sub_akun_aktif'] = $sub_sub_row;
+                        }
+                        $saldo_subs += $saldo_sub;
+                    }
+
+                   $sub_column['total'] = $saldo_subs;
+                   $sub_column['sub_operasi'] = $status_operasi;
+                   $row_sub[] = $sub_column;
+                   $sub_total += $saldo_subs;
+
+                   if($status_operasi==1){
+                       $total_keseluruhan +=$saldo_subs;
+                   }else{
+                       $total_keseluruhan -=$saldo_subs;
+                   }
+            }
+            $column['sub_akun'] = $row_sub;
+            $column['sub_total'] = $sub_total;
+            $row[] = $column;
+        }
+
+        return array('data'=>$row, 'total_laba_rugi'=>$total_keseluruhan );
+    }
+
+    public function data_neracas($array){
+        $model = akn::all()->whereIn('id',[1,2,3]);
+        $section = array();
+        $status_operasi = 0;
+        $row_aktiva = [];
+        $row_pasiva = [];
+        $row = array();
+        foreach ($model as $akun){
+            $column = array();
+            $row_sub =array();
+            $column['akun']= $akun->nm_akun;
+            if($akun->id ==1){
+                $status_operasi = 'aktiva'; //bertambah kalau aktiva
+            }
+            else {
+                $status_operasi = 'pasiva'; //bertambah kalau pasiva
+            }
+            $column['operasi']= $status_operasi;
+            $sub_total = 0;
+            foreach ($akun->sub_akun_ukm as $sub_akun){
+                $sub_column = array();
+                $sub_column['nm_sub_akun'] = $sub_akun->nm_sub_akun;
+                $sub_sub_row = array();
+                $saldo_subs=0;
+                    foreach ($sub_akun->id_sub_akun_aktif as $akun_akf){
+                        $status_sub = 0;
+                        $sub_sub_column = array();
+                        $saldo_sub=0;
+                        if(empty($akun_akf->sub_sub_akun->nm_subsub_akun)){
+                            $sub_sub_column['nm_sub_sub_akun'] = "";
+                        }else{
+                            $sub_sub_column['nm_sub_sub_akun'] = $akun_akf->sub_sub_akun->nm_subsub_akun;
+                        }
+
+                        if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
+                            $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
+                            $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
+                            $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+                        }else{
+    //                          $akun_akf->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal');
+                            $model =  $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where(DB::raw('tgl_jurnal','=',2019))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
+                        }
+
+                        //  dd($model );
+                        foreach ($model as $data_jurnals){
+                            $saldo=0;
+                            $status_sub = 1;
+                            $debet = 0;
+                            $kredit = 0;
+                            $id_akun = $data_jurnals->akun->sub_akun->id_akun_ukm;
+                            $id_sub_akun = $data_jurnals->akun->sub_akun->id;
+
+                            if($data_jurnals->debet_kredit == 0){
+                                $statusDK = 0;
+                                $debet  = $data_jurnals->jumlah_transaksi;
+                            }else{
+                                $statusDK= 1;
+                                $kredit = $data_jurnals->jumlah_transaksi;
+                            }
+
+                            $saldo = $this->rules($id_akun,$id_sub_akun, $statusDK,$debet,$kredit, $saldo);
+                            $rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $statusDK);
+                            $saldo_sub = $saldo;
+                        }
+
+                        $sub_sub_column['total_sub_sub'] = $saldo_sub;
+                        $sub_sub_column['status'] = $status_sub;
+                        if(!empty($akun_akf->sub_sub_akun)) {
+                            $sub_sub_row[]= $sub_sub_column;
+                            $sub_column['data_sub_akun_aktif'] = $sub_sub_row;
+                        }
+                        $saldo_subs += $saldo_sub;
+                    }
+                    if($sub_akun->id==10){
+                        $saldo_subs = $this->data_laba_rugi($array)['total_laba_rugi'];
+                    }
+                $sub_column['sub_operasi'] = $status_operasi;
+                $sub_column['total'] = $saldo_subs;
+                $row_sub[] = $sub_column;
+                $sub_total += $saldo_subs;
+            }
+            $column['sub_akun'] = $row_sub;
+            $column['sub_total'] = $sub_total;
+            $row[] = $column;
+            if($akun->id ==1){
+                $row_aktiva[] = $column; //bertambah kalau aktiva
+            }
+            else {
+                $row_pasiva[] = $column; //bertambah kalau pasiva
+            }
+         }
+        return array_merge(array('aktiva'=> $row_aktiva),array('pasiva'=> $row_pasiva));
+    }
 }
