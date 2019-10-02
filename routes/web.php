@@ -2102,6 +2102,10 @@ Route::get('Laporan-jurnal','keuangan\LaporanKeuangan@dataJurnal');
 
 Route::post('tampilkan-jurnal-berdasarkan-tanggal','keuangan\LaporanKeuangan@dataBaseOnDate');
 
+Route::post('cetak-jurnal-umum','keuangan\LaporanKeuangan@dataBaseOnDate');
+
+Route::get('tampilan-cetak-jurnal-umum/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_jurnal_umum');
+
 Route::get('buku-besar','keuangan\LaporanKeuangan@buku_besar');
 
 Route::get('data-buku-besar','keuangan\LaporanKeuangan@dataBukuBesars');

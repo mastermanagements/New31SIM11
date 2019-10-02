@@ -40,10 +40,14 @@ trait DateYears
     public function costumDate()
     {
         $dateNow = Carbon::today();
+        $start =  Carbon::today()->startOfMonth();
+        $end = $start->copy()->endOfMonth();
         $con = new \stdClass();
         $con->year = $dateNow->year;
         $con->month = $this->dateSettings($dateNow->month);
         $con->day = $dateNow->day;
+        $con->first_date = $start;
+        $con->last_date = $end;
         return $con;
     }
 }
