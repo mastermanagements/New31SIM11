@@ -20,11 +20,12 @@
           | Your Page Content Here |
           -------------------------->
        <div class="row">
-            @if(!empty($menu)=='edit')
+			@if(!empty($menu)=='edit')
                @include('user.superadmin_ukm.master.section.pengaturan_awal.include.section_edit')
-            @else
+		    @else
                 @include('user.superadmin_ukm.master.section.pengaturan_awal.include.section_profil')
             @endif
+			
             <div class="col-md-9">
                <div class="nav-tabs-custom">
                    <ul class="nav nav-tabs">
