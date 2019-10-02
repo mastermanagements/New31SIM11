@@ -65,7 +65,7 @@ class Peralatan extends Controller
 		
 		
 		//mengatur nama file bukti yg akan di ambil
-		 $name_file_bukti = time()."-bukti.".$file_bukti->getClientOriginalExtension();
+		 $name_file_bukti = $file_bukti->getClientOriginalName();
 		 
 		
 		//menginsert data yg diinput ke setiap field 
@@ -114,7 +114,7 @@ class Peralatan extends Controller
 			'thn_buat' => 'numeric',
 			'tgl_beli' => 'required',
 			'kondisi_alat' => 'required',
-			'file_bukti' => 'required|image|mimes:jpeg,jpg,png,gif',
+			'file_bukti' => 'image|mimes:jpeg,jpg,png,gif',
         ]);
 
         //membuat variabel untuk menampung nilai field yg di input
@@ -130,7 +130,7 @@ class Peralatan extends Controller
 		$file_bukti = $req->file_bukti;
 
         //mengatur nama file bukti yg akan di ambil
-		 $name_file_bukti = time()."-bukti.".$file_bukti->getClientOriginalExtension();
+		 $name_file_bukti = $file_bukti->getClientOriginalName();
         
 		$model = alat::find($id);
 
