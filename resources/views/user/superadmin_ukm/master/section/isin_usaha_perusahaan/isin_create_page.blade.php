@@ -14,7 +14,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-           Halaman Membuat Ijin Usaha
+           Halaman Membuat Izin Usaha
         </h1>
     </section>
 
@@ -26,7 +26,7 @@
                <!-- general form elements -->
                <div class="box box-primary">
                    <div class="box-header with-border">
-                       <h3 class="box-title">Formulir Ijin Usaha</h3>
+                       <h3 class="box-title">Formulir Izin Usaha</h3>
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
@@ -95,7 +95,7 @@
                                <div class="form-group">
                                    <label for="exampleInputFile">File UI</label>
                                    <input type="file" id="exampleInputFile" name="file_iu" required>
-                                   <p class="help-block" style="color:red">*Format file yang disarankan .jpg, .png dan .gif</p>
+                                   <p class="help-block" style="color:red">*Format file yang disarankan .jpg,.jpeg,.png, & .gif</p>
                                </div>
                                <div class="box-footer">
                            {{csrf_field()}}
