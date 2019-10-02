@@ -1020,37 +1020,6 @@ Route::put('update-evaluasi/{id}','marketing\Evaluasi@update');
 
 Route::put('hapus-evaluasi/{id}','marketing\Evaluasi@delete');
 
-//================================= Keuangan ==============================================================
-	//--tab RPB--
-Route::get('RAB', 'keuangan\RAB@index');
-
-Route::post('store-rpb','keuangan\RAB@storeRPB');
-
-Route::get('ubah-rpb/{id_rpb}','keuangan\RAB@editRPB');
-
-Route::post('update-rpb','keuangan\RAB@updateRPB');
-
-Route::put('hapus-rpb/{id}','keuangan\RAB@deleteRPB');
-
-	//--tab RPJ--
-	
-Route::post('store-rpj','keuangan\RAB@storeRPJ');
-
-Route::get('ubah-rpj/{id_rpj}','keuangan\RAB@editRPJ');
-
-Route::post('update-rpj','keuangan\RAB@updateRPJ');
-
-Route::put('hapus-rpj/{id}','keuangan\RAB@deleteRPJ');
-
-//--tab RPENGELURAN/ROUT--
-	
-Route::post('store-rout','keuangan\RAB@storeROUT');
-
-Route::get('ubah-rout/{id_rout}','keuangan\RAB@editROUT');
-
-Route::post('update-rout','keuangan\RAB@updateROUT');
-
-Route::put('hapus-rout/{id}','keuangan\RAB@deleteROUT');
 
 //================================= HRD ======================================================================
 
@@ -1990,7 +1959,39 @@ Route::get('Rencana-Pelatihan', 'hrd\RencanaPelatihan@index');
 
 
 //===================================== Keuangan =====================================================================
+	//--tab RPB--
+Route::get('RAB', 'keuangan\RAB@index');
 
+Route::post('store-rpb','keuangan\RAB@storeRPB');
+
+Route::get('ubah-rpb/{id_rpb}','keuangan\RAB@editRPB');
+
+Route::post('update-rpb','keuangan\RAB@updateRPB');
+
+Route::put('hapus-rpb/{id}','keuangan\RAB@deleteRPB');
+
+	//--tab RPJ--
+	
+Route::post('store-rpj','keuangan\RAB@storeRPJ');
+
+Route::get('ubah-rpj/{id_rpj}','keuangan\RAB@editRPJ');
+
+Route::post('update-rpj','keuangan\RAB@updateRPJ');
+
+Route::put('hapus-rpj/{id}','keuangan\RAB@deleteRPJ');
+
+//--tab RPENGELURAN/ROUT--
+	
+Route::post('store-rout','keuangan\RAB@storeROUT');
+
+Route::get('ubah-rout/{id_rout}','keuangan\RAB@editROUT');
+
+Route::post('update-rout','keuangan\RAB@updateROUT');
+
+Route::put('hapus-rout/{id}','keuangan\RAB@deleteROUT');
+
+ //--Akun--
+ 
 Route::get('Akun','keuangan\Akun@index');
 
 Route::post('store_master_akun_to_ukm', 'keuangan\Akun@store_akun_ukm');
@@ -2055,6 +2056,7 @@ Route::get('data-keterangan-transaksi-pengeluaran/{id}','keuangan\Pengeluaran@da
 
 Route::post('store-jurnal-pengeluaran','keuangan\Pengeluaran@store_jurnal_pengeluaran');
 
+
 Route::get('Laporan-keuangan','keuangan\LaporanKeuangan@index');
 
 Route::get('Daftar-Jurnal','keuangan\DaftarJurnal@index');
@@ -2089,6 +2091,8 @@ Route::get('neraca-saldo','keuangan\LaporanKeuangan@neraca_saldo');
 
 Route::get('data-neraca-saldo','keuangan\LaporanKeuangan@dataNeracaSaldo');
 
+Route::get('Laba-rugi','keuangan\LaporanKeuangan@laba_rugi');
+
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
@@ -2096,3 +2100,5 @@ Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@Respons
 Route::post('GlobalSubKategori', 'globals\KategoriJasa@getSubKategori');
 
 Route::post('GlobalSubSubKategori', 'globals\KategoriJasa@getSubSubKategori');
+
+Route::get('/home', 'HomeController@index')->name('home');
