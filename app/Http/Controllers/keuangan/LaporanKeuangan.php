@@ -30,7 +30,8 @@ class LaporanKeuangan extends Controller
 
     public function index(){
         $data=[
-            'judul'=> 'Jurnal Umum'
+            'judul'=> 'Jurnal Umum',
+            'tahun_berjalan'=> $this->costumDate(),
         ];
         Session::put('menu-laporan-keuangan','jurnal_umum');
         return view('user.keuangan.section.laporan.page_default', $data);
@@ -52,8 +53,8 @@ class LaporanKeuangan extends Controller
     public function dataBaseOnDate(Request $req){
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
-            'tanggal_awal'=> $req->tanggal_awal,
-            'tanggal_akhir'=> $req->tanggal_akhir,
+            'tanggal_awal'=> date('Y-m-d',strtotime($req->tanggal_awal)),
+            'tanggal_akhir'=>date('Y-m-d',strtotime($req->tanggal_akhir)) ,
             'jenis_jurnal'=> ['0','1']
         ];
 
@@ -63,6 +64,22 @@ class LaporanKeuangan extends Controller
 
         return response()->json($data);
     }
+
+    public function cetak_jurnal_umum($tgl_awal, $tgl_akhir){
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tanggal_awal'=> date('Y-m-d',strtotime($tgl_awal)),
+            'tanggal_akhir'=>date('Y-m-d',strtotime($tgl_akhir)) ,
+            'jenis_jurnal'=> ['0','1']
+        ];
+
+        $data = [
+            'data' => $this->daftar_jurnal($data_pass)
+        ];
+
+        return view('user.keuangan.section.laporan.jurnal_umum.print_page', $data);
+    }
+
 
     //====================================== Buku Besar ======================================================
 
@@ -93,6 +110,8 @@ class LaporanKeuangan extends Controller
 
         return response()->json($data);
     }
+
+
 
     //======================================= Neraca Saldo ============================================================
     public function neraca_saldo(){
