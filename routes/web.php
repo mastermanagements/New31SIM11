@@ -2118,6 +2118,10 @@ Route::get('Laba-rugi','keuangan\LaporanKeuangan@laba_rugi');
 
 Route::get('data-Laba-rugi','keuangan\LaporanKeuangan@data_labaRugi');
 
+Route::get('perubahan-modal','keuangan\LaporanKeuangan@perubahan_modal');
+
+Route::get('data-perubahan-modal','keuangan\LaporanKeuangan@data_perubahan_modals');
+
 Route::get('neraca','keuangan\LaporanKeuangan@neraca');
 
 Route::get('data-neraca','keuangan\LaporanKeuangan@data_neraca');

@@ -28,7 +28,9 @@ class SubAkun extends Model
         return $this->hasMany('App\Model\Keuangan\AkunAktifUkm','id_sub_akun','id');
     }
 
-
+    public function getOneJurnal(){
+        return $this->hasOne('App\Model\Keuangan\AkunAktifUkm','id_sub_akun','id');
+    }
 
 
 }
