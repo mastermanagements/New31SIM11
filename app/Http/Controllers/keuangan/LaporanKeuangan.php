@@ -173,10 +173,11 @@ class LaporanKeuangan extends Controller
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
             'tahun_berjalan'=> $this->costumDate()->year,
-            'jenis_jurnal'=> ['0','1']
+            'jenis_jurnal'=> ['0','1'],
+            'debet_kredit'=> ['0','1'],
         ];
         $data=[
-            'judul'=> 'Neraca',
+            'judul'=> 'Perubahan Modal',
             'data'=> $this->data_perubahan_modal($data_pass)
         ];
         return view('user.keuangan.section.laporan.page_default', $data);

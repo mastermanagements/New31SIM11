@@ -43,7 +43,7 @@
                                         @foreach($data_laba_rugi['sub_akun'] as $data_sub)
                                                 <tr align="left" style="background-color: white">
                                                     <td>{{ $data_sub['nm_sub_akun'] }}</td>
-                                                    <td>{{ $data_sub['total'] }}
+                                                    <td>{{ number_format($data_sub['total'],2,',','.') }}
                                                     </td>
                                                 </tr>
                                                 @if(!empty($data_sub['data_sub_akun_aktif']))
@@ -51,7 +51,7 @@
                                                         @if($data_sub_sub['status'] ==1)
                                                             <tr align="left" style="background-color: white">
                                                                 <td style="padding-left: 30px">{{ $data_sub_sub['nm_sub_sub_akun'] }}</td>
-                                                                <td>{{ $data_sub_sub['total_sub_sub'] }}</td>
+                                                                <td>{{ number_format($data_sub_sub['total_sub_sub'],2,',','.') }}</td>
                                                             </tr>
                                                         @endif
                                                     @endforeach
@@ -65,7 +65,7 @@
                             <tfoot>
                                 <tr>
                                    <td >Laba Rugi</td>
-                                   <td align="left">{{ $data['total_laba_rugi'] }}</td>
+                                   <td align="left">{{ number_format($data['total_laba_rugi'],2,',','.') }}</td>
                                 </tr>
                             </tfoot>
                         </table>

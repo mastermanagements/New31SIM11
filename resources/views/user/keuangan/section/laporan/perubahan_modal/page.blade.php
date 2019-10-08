@@ -33,96 +33,64 @@
                     <div class="col-md-12">
                         <table id="example_rincian" class="table table-bordered table-hover" style="width: 100%">
                             <tbody>
-                            @php($total_sub=0)
-                            @php($total_aktiva=0)
-                            @php($total_pasiva=0)
-                                @foreach($data['aktiva'] as $data_laba_rugi)
-                                    @php($totals=0)
-                                    @php($total_subsed=0)
-                                    <tr align="left" style="background-color: lightgrey">
-                                        <td colspan= "2">{{ $data_laba_rugi['akun'] }}</td>
-                                    </tr>
-
-                                    @if(!empty($data_laba_rugi['sub_akun']))
-                                        @foreach($data_laba_rugi['sub_akun'] as $data_sub)
-                                                <tr align="left" style="background-color: white">
-                                                    <td>{{ $data_sub['nm_sub_akun'] }}</td>
-                                                    <td>{{ $data_sub['total'] }}
-                                                        @if($data_sub['sub_operasi']==1)
-                                                            @php($total_sub+=$data_sub['total'] )
-                                                        @else
-                                                            @php($total_sub-=$data_sub['total'] )
-                                                         @endif
-                                                    </td>
-                                                </tr>
-                                                @php($totals += $data_sub['total'])
-                                                @if(!empty($data_sub['data_sub_akun_aktif']))
-                                                    @foreach($data_sub['data_sub_akun_aktif'] as $data_sub_sub)
-                                                        @if($data_sub_sub['status'] ==1)
-                                                            <tr align="left" style="background-color: white">
-                                                                <td style="padding-left: 30px">{{ $data_sub_sub['nm_sub_sub_akun'] }}</td>
-                                                                <td>{{ $data_sub_sub['total_sub_sub'] }}</td>
-                                                            </tr>
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-
-                                        @endforeach
-                                    @endif
-                                    {{--@php($total_debet+=$data_neraca['debet'])--}}
-                                    {{--@php($total_kredit+=$data_neraca['kredit'])--}}
-                                    <tr align="left" style="background-color: white">
-                                        <td>Total</td>
-                                        <td>{{ $totals }} @php($total_aktiva +=$totals )</td>
-                                    </tr>
-                                @endforeach
-                                <tr style="background-color: #b0d4f1">
-                                    <td >Total Aktiva</td>
-                                    <td align="left">{{ $total_aktiva }}</td>
+                                @php($total_sub=0)
+                                @php($total_kredit=0)
+                                @php($total_debet=0)
+                                {{-- Kredit --}}
+                                <tr align="left" style="background-color: lightgrey">
+                                    <td>{{ $data['kredit'][0]['akun'] }}</td>
+                                    <td></td>
+                                    <td>{{ number_format($data['kredit'][0]['sub_total'],2,',','.') }} @php($total_kredit = $data['kredit'][0]['sub_total'])</td>
                                 </tr>
-                                @foreach($data['pasiva'] as $data_laba_rugi)
-                                    @php($totals=0)
-                                    @php($total_subsed=0)
-                                    <tr align="left" style="background-color: lightgrey">
-                                        <td colspan= "2">{{ $data_laba_rugi['akun'] }}</td>
-                                    </tr>
 
-                                    @if(!empty($data_laba_rugi['sub_akun']))
-                                        @foreach($data_laba_rugi['sub_akun'] as $data_sub)
-                                                <tr align="left" style="background-color: white">
-                                                    <td>{{ $data_sub['nm_sub_akun'] }}</td>
-                                                    <td>{{ $data_sub['total'] }}
-                                                        @if($data_sub['sub_operasi']==1)
-                                                            @php($total_sub+=$data_sub['total'] )
-                                                        @else
-                                                            @php($total_sub-=$data_sub['total'] )
-                                                         @endif
-                                                    </td>
-                                                </tr>
-                                                @php($totals += $data_sub['total'])
-                                                @if(!empty($data_sub['data_sub_akun_aktif']))
-                                                    @foreach($data_sub['data_sub_akun_aktif'] as $data_sub_sub)
-                                                        @if($data_sub_sub['status'] ==1)
-                                                            <tr align="left" style="background-color: white">
-                                                                <td style="padding-left: 30px">{{ $data_sub_sub['nm_sub_sub_akun'] }}</td>
-                                                                <td>{{ $data_sub_sub['total_sub_sub'] }}</td>
-                                                            </tr>
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-
-                                        @endforeach
-                                    @endif
-                                    {{--@php($total_debet+=$data_neraca['debet'])--}}
-                                    {{--@php($total_kredit+=$data_neraca['kredit'])--}}
-                                    <tr align="left" style="background-color: white">
-                                        <td>Total</td>
-                                        <td>{{ $totals }} @php($total_pasiva+=$totals)</td>
+                                @foreach($data['kredit'][0]['sub_akun'] as $kredit)
+                                    <tr align="left">
+                                        <td>{{ $kredit['nm_sub_akun'] }}</td>
+                                        <td></td>
+                                        <td>{{ number_format($kredit['total'],2,',','.') }}</td>
                                     </tr>
                                 @endforeach
-                                <tr style="background-color: #b0d4f1">
-                                    <td >Total Pasiva</td>
-                                    <td align="left">{{ $total_aktiva }}</td>
+                                <tr align="left" style="background-color: lightgrey">
+                                    <td>{{ $data['laba_tahun_berjalan']['nm_sub_akun'] }} </td>
+                                    <td>{{ number_format($data['laba_tahun_berjalan']['total'],2,',','.') }}</td>
+                                    <td></td>
+                                </tr>
+                                {{--debit--}}
+                                @php($total_debet=$data['debit'][0]['sub_total'])
+                                @foreach($data['debit'][0]['sub_akun'] as $debit)
+                                    <tr align="left">
+                                        <td>{{ $debit['nm_sub_akun'] }} aa</td>
+                                        <td></td>
+                                        <td>{{ number_format($debit['total'],',','.') }}</td>
+                                    </tr>
+                                @endforeach
+                                {{--Laba Bersih--}}
+                                <tr align="left" style="background-color: deepskyblue">
+                                    <td>
+                                        @if($data['laba_tahun_berjalan']['total'] < 0)
+                                            Pengurang Modal
+                                        @else
+                                            Penambah Modal
+                                        @endif
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        @php($total_debet = $total_debet+$data['laba_tahun_berjalan']['total'] + $total_debet)
+                                        {{ number_format($total_debet,2,',','.') }}
+                                    </td>
+                                </tr>
+                                <tr align="left">
+                                    <td>
+                                      Modal Akhir
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        @if($total_debet < 0)
+                                            {{ number_format($total_kredit - $total_debet,2,',','.') }}
+                                        @else
+                                            {{ number_format($total_kredit + $total_debet,2,',','.') }}
+                                        @endif
+                                    </td>
                                 </tr>
                             </tbody>
 
