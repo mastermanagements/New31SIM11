@@ -604,7 +604,7 @@ trait Transaksi
                             $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
                         }else{
     //                          $akun_akf->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal');
-                            $model =  $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where(DB::raw('tgl_jurnal','=',2019))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
+                            $model =  $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where(DB::raw('tgl_jurnal','=',$array['tahun_berjalan']))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
                         }
 
                         //  dd($model );
@@ -656,5 +656,105 @@ trait Transaksi
             }
          }
         return array_merge(array('aktiva'=> $row_aktiva),array('pasiva'=> $row_pasiva));
+    }
+
+    public function data_perubahan_modal($array){
+        $model = akn::all()->whereIn('id',[3]);
+        $section = array();
+        $status_operasi = 0;
+        $row_debit = [];
+        $row_kredit = [];
+        $row = array();
+
+        foreach ($model as $akun){
+
+            foreach ($array['debet_kredit'] as $debet_kredit){
+                $column = array();
+                $row_sub =array();
+                $column['akun']= $akun->nm_akun;
+
+                $sub_total = 0;
+                foreach ($akun->sub_akun_ukm as $sub_akun){
+
+                    $sub_column = array();
+                    $sub_column['nm_sub_akun'] = $sub_akun->nm_sub_akun;
+                    $sub_sub_row = array();
+                    $saldo_subs=0;
+                    foreach ($sub_akun->id_sub_akun_aktif as $akun_akf){
+                        $status_sub = 0;
+                        $sub_sub_column = array();
+                        $saldo_sub=0;
+                        if(empty($akun_akf->sub_sub_akun->nm_subsub_akun)){
+                            $sub_sub_column['nm_sub_sub_akun'] = "";
+                        }else{
+                            $sub_sub_column['nm_sub_sub_akun'] = $akun_akf->sub_sub_akun->nm_subsub_akun;
+                        }
+
+                        if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
+                            $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
+                            $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
+                            $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where('debet_kredit',$debet_kredit)->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+                        }else{
+                            //                          $akun_akf->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal');
+                            $model =  $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where('debet_kredit',$debet_kredit)->where(DB::raw('tgl_jurnal','=',$array['tahun_berjalan']))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
+                        }
+
+                        //  dd($model );
+                        foreach ($model as $data_jurnals){
+                            $saldo=0;
+                            $status_sub = 1;
+                            $debet = 0;
+                            $kredit = 0;
+                            $id_akun = $data_jurnals->akun->sub_akun->id_akun_ukm;
+                            $id_sub_akun = $data_jurnals->akun->sub_akun->id;
+
+                            if($data_jurnals->debet_kredit == 0){
+                                $statusDK = 0;
+                                $debet  = $data_jurnals->jumlah_transaksi;
+                            }else{
+                                $statusDK= 1;
+                                $kredit = $data_jurnals->jumlah_transaksi;
+                            }
+
+                            $saldo = $this->rules($id_akun,$id_sub_akun, $statusDK,$debet,$kredit, $saldo);
+                            $rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $statusDK);
+                            if($rules_saldo == 'kredit'){
+                                $saldo_sub = $saldo;
+                            }else{
+                                $saldo_sub = 0;
+                            }
+                        }
+
+                        $sub_sub_column['total_sub_sub'] = $saldo_sub;
+                        $sub_sub_column['status'] = $status_sub;
+                        if(!empty($akun_akf->sub_sub_akun)) {
+                            $sub_sub_row[]= $sub_sub_column;
+                            $sub_column['data_sub_akun_aktif'] = $sub_sub_row;
+                        }
+                        $saldo_subs += $saldo_sub;
+                    }
+
+                    $sub_column['total'] = $saldo_subs;
+                    if($model->count()>0){
+                        $row_sub[] = $sub_column;
+                    }
+                    $sub_total += $saldo_subs;
+                }
+                $column['sub_akun'] = $row_sub;
+                $column['sub_total'] = $sub_total;
+                //$row[] = $column;
+                if($debet_kredit ==0){
+                    $row_debit[] = $column; //bertambah kalau aktiva
+                }
+                else if($debet_kredit ==1) {
+                    $row_kredit[] = $column; //bertambah kalau pasiva
+                }
+            }
+            $data_laba_bersih =array();
+            $data_laba_bersih['nm_sub_akun']= "Laba Bersih";
+            $data_laba_bersih['total'] = $this->data_laba_rugi($array)['total_laba_rugi'];
+
+        }
+        return array_merge(array('debit'=> $row_debit),array('kredit'=> $row_kredit),array('laba_tahun_berjalan'=>$data_laba_bersih));
     }
 }
