@@ -88,10 +88,12 @@ class LaporanKeuangan extends Controller
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
             'tahun_berjalan'=> $this->costumDate()->year,
+
             'jenis_jurnal'=> ['0','1']
         ];
         $data=[
             'judul'=> 'Buku Besar',
+            'tahun_berjalan2'=> $this->costumDate(),
             'data'=> $this->data_buku_besar($data_pass)
         ];
         return view('user.keuangan.section.laporan.page_default', $data);
@@ -111,7 +113,21 @@ class LaporanKeuangan extends Controller
         return response()->json($data);
     }
 
+    public function cetak_buku_besar($tgl_awal, $tgl_akhir){
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tanggal_awal'=> date('Y-m-d',strtotime($tgl_awal)),
+            'tanggal_akhir'=>date('Y-m-d',strtotime($tgl_akhir)) ,
+            'jenis_jurnal'=> ['0','1'],
+            'tahun_berjalan'=> $this->costumDate()->year,
+        ];
 
+        $data = [
+            'data' => $this->data_buku_besar($data_pass)
+        ];
+
+        return view('user.keuangan.section.laporan.buku_besar.print_page', $data);
+    }
 
     //======================================= Neraca Saldo ============================================================
     public function neraca_saldo(){

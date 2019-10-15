@@ -12,6 +12,7 @@ use App\Model\Keuangan\AkunAktifUkm as Akun_aktif;
 use App\Model\Keuangan\KetTransaksi as KetTransaksi;
 use App\Model\Keuangan\Jurnal as jurnal;
 use App\Model\Keuangan\Akun as akn;
+use App\Model\Keuangan\LabaRugiDitahan as LRD;
 use Illuminate\Http\Request;
 use App\Traits\DateYears;
 use App\Traits\AturanDK;
@@ -464,15 +465,18 @@ trait Transaksi
     }
 
 
+    //laba rugi ditahun berjalan
     public function data_laba_rugi($array){
-        $model = akn::all()->whereIn('id',[4,5,6,7,8]);
+        $model = akn::all()->whereIn('id_m_akun',[4,5,6,7,8]);
         $row = array();
         $status_operasi = 0;
         $total_keseluruhan = 0;
+
         foreach ($model as $akun){
             $column = array();
             $row_sub =array();
             $column['akun']= $akun->nm_akun;
+
             if($akun->id ==4){
                 $status_operasi = 1; //bertambah
             }
@@ -488,6 +492,7 @@ trait Transaksi
             else if($akun->id ==7){
                 $status_operasi = 2; //Berkurang
             }
+
             $column['operasi']= $status_operasi;
             $sub_total = 0;
             foreach ($akun->sub_akun_ukm as $sub_akun){
@@ -511,7 +516,7 @@ trait Transaksi
                             $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
                         }else{
 //                          $akun_akf->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal');
-                            $model =  $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where(DB::raw('tgl_jurnal','=',2019))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
+                            $model =  $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where(DB::raw('tgl_jurnal','=',$array['tahun_berjalan']))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
                         }
 
                        //  dd($model );
@@ -570,6 +575,7 @@ trait Transaksi
         $status_operasi = 0;
         $row_aktiva = [];
         $row_pasiva = [];
+        $laba_ditahan_ditahun_berjalan = $this->data_laba_rugi_lalu(25,$array['tahun_berjalan']-1,$array['id_perusahaan']);
         $row = array();
         foreach ($model as $akun){
             $column = array();
@@ -637,9 +643,14 @@ trait Transaksi
                         }
                         $saldo_subs += $saldo_sub;
                     }
-                    if($sub_akun->id==10){
+
+                    if($sub_akun->id_m_sub_akun==10){
                         $saldo_subs = $this->data_laba_rugi($array)['total_laba_rugi'];
+                    }else if($sub_akun->id_m_sub_akun==25){
+                        $saldo_subs = $laba_ditahan_ditahun_berjalan;
                     }
+
+
                 $sub_column['sub_operasi'] = $status_operasi;
                 $sub_column['total'] = $saldo_subs;
                 $row_sub[] = $sub_column;
@@ -656,6 +667,17 @@ trait Transaksi
             }
          }
         return array_merge(array('aktiva'=> $row_aktiva),array('pasiva'=> $row_pasiva));
+    }
+
+    //cek data laba rugi ditahun sebelumnya
+    public function data_laba_rugi_lalu($id_sub_akun, $tahun, $id_perusahaan)
+    {
+        $model = LRD::whereYear('tahun', $tahun)->where('id_perusahaan', $id_perusahaan)->where('id_sub_akun',$id_sub_akun)->first();
+        if(empty($model)){
+            return 0;
+        }else{
+            return $model->jumlah_laba_tahun_berjalan;
+        }
     }
 
     public function data_perubahan_modal($array){
