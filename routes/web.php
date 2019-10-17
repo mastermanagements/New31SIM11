@@ -2116,17 +2116,25 @@ Route::get('neraca-saldo','keuangan\LaporanKeuangan@neraca_saldo');
 
 Route::get('data-neraca-saldo','keuangan\LaporanKeuangan@dataNeracaSaldo');
 
+Route::get('tampilan-cetak-neraca-saldo/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_neraca_saldo');
+
 Route::get('Laba-rugi','keuangan\LaporanKeuangan@laba_rugi');
 
 Route::get('data-Laba-rugi','keuangan\LaporanKeuangan@data_labaRugi');
+
+Route::get('tampilan-cetak-laba-rugi/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_laba_rugi');
 
 Route::get('perubahan-modal','keuangan\LaporanKeuangan@perubahan_modal');
 
 Route::get('data-perubahan-modal','keuangan\LaporanKeuangan@data_perubahan_modals');
 
+Route::get('tampilan-cetak-perubahan-modal/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_perubahan_modal');
+
 Route::get('neraca','keuangan\LaporanKeuangan@neraca');
 
 Route::get('data-neraca','keuangan\LaporanKeuangan@data_neraca');
+
+Route::get('tampilan-cetak-neraca/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_neraca');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

@@ -9,7 +9,7 @@
                 <div class="row" style="padding: 11px">
                     <div class="col-md-3" style="padding: 1px">
                         <div class="form-group">
-                            <input type="text" class="form-control " id="datepicker" placeholder="Tanggal Awal" name="tgl_awal" required>
+                            <input type="text" class="form-control " id="datepicker" placeholder="Tanggal Awal" name="tgl_awal"  value="{{ date('d-m-Y', strtotime($tahun_berjalan2->first_date->toDateString())) }}" required>
                             <small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>
                         </div>
                     </div>
@@ -18,13 +18,18 @@
                     </div>
                     <div class="col-md-3" style="padding: 1px">
                         <div class="form-group">
-                            <input type="text" class="form-control " id="datepicker1" placeholder="Tanggal Akhir" name="tgl_akhir" required>
+                            <input type="text" class="form-control " id="datepicker1" placeholder="Tanggal Akhir" name="tgl_akhir" value="{{ date('d-m-Y', strtotime($tahun_berjalan2->last_date->toDateString())) }}"  required>
                             <small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>
                         </div>
                     </div>
                     <div class="col-md-1" style="padding: 1px">
                         <div class="form-group">
                             <button type="button" class="btn btn-success" id="tombol-tampilkan">Tampilkan</button>
+                        </div>
+                    </div>
+                    <div class="col-md-1" style="padding: 1px">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-danger" id="tombol-print"><i class="fa fa-print"></i> Cetak</button>
                         </div>
                     </div>
                 </div>
