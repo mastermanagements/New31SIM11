@@ -61,7 +61,8 @@
                                     <tr align="left">
                                         <td>{{ $debit['nm_sub_akun'] }} aa</td>
                                         <td></td>
-                                        <td>{{ number_format($debit['total'],',','.') }}</td>
+                                        <td>{{ number_format($debit['total'],2,',','.') }}</td>
+										
                                     </tr>
                                 @endforeach
                                 {{--Laba Bersih--}}
