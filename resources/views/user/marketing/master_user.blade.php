@@ -49,8 +49,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   @include('user.karyawan.include.header')
   @include('user.karyawan.include.sidebar')
   @yield('master_content')
-  @include('user.administrasi.include.footer')
-  @include('user.administrasi.include.control_sidebar')
+  @include('user.marketing.include.footer')
+  @include('user.marketing.include.control_sidebar')
 
 </div>
 
