@@ -66,7 +66,7 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id_sub_sub">
                     <input type="hidden" name="id_sub_akun_ukm">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpanw</button>
                 </div>
             </form>
         </div>

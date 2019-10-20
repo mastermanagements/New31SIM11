@@ -229,8 +229,6 @@ class Close extends Controller
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
 		
-		
-		
         if($models->save() AND $model->save())
 		
         {

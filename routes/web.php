@@ -1020,37 +1020,6 @@ Route::put('update-evaluasi/{id}','marketing\Evaluasi@update');
 
 Route::put('hapus-evaluasi/{id}','marketing\Evaluasi@delete');
 
-//================================= Keuangan ==============================================================
-	//--tab RPB--
-Route::get('RAB', 'keuangan\RAB@index');
-
-Route::post('store-rpb','keuangan\RAB@storeRPB');
-
-Route::get('ubah-rpb/{id_rpb}','keuangan\RAB@editRPB');
-
-Route::post('update-rpb','keuangan\RAB@updateRPB');
-
-Route::put('hapus-rpb/{id}','keuangan\RAB@deleteRPB');
-
-	//--tab RPJ--
-	
-Route::post('store-rpj','keuangan\RAB@storeRPJ');
-
-Route::get('ubah-rpj/{id_rpj}','keuangan\RAB@editRPJ');
-
-Route::post('update-rpj','keuangan\RAB@updateRPJ');
-
-Route::put('hapus-rpj/{id}','keuangan\RAB@deleteRPJ');
-
-//--tab RPENGELURAN/ROUT--
-	
-Route::post('store-rout','keuangan\RAB@storeROUT');
-
-Route::get('ubah-rout/{id_rout}','keuangan\RAB@editROUT');
-
-Route::post('update-rout','keuangan\RAB@updateROUT');
-
-Route::put('hapus-rout/{id}','keuangan\RAB@deleteROUT');
 
 //================================= HRD ======================================================================
 
@@ -1180,8 +1149,6 @@ Route::get('edit-kpi-ky/{id}','hrd\KpiKaryawan@edit');
 Route::post('update-kpi-ky','hrd\KpiKaryawan@update');
 
 Route::put('hapus-kpi-ky/{id}','hrd\KpiKaryawan@delete');
-
-
 
 Route::get('jenis-kompetensi','hrd\JenisKompetensi@index');
 
@@ -1407,26 +1374,8 @@ Route::get('Skala-bonus-proyek/{id}','penggajian\SkalaBonusProyek@create');
 
 Route::post('proses-skala-bonus-proyek/{id}','penggajian\SkalaBonusProyek@store');
 
-//if(!empty(Session::get('id_perusahaan_karyawan')))
-//{
-//    $daftar_menu = menu_ukm::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
-//    foreach ($daftar_menu as $menus)
-//    {
-//        if(!empty($subMenu = $menus->getSubMenu))
-//        {
-//            foreach ($subMenu as $sum_menu)
-//            {
-//                if(!empty($menuKaryawan= $sum_menu->getMenuKaryawan->where('id_karyawan', Session::get('id_karyawan') ))){
-//                    foreach ($menuKaryawan as $menu_karyawan)
-//                    {
-//                        Route::get('{ $sum_menu->getMasterSubMenuUKM->url }','');
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
-//============================================ Produksi ================================================================
+
+//============================================ HRD ================================================================
 
 
 Route::post('cari-karyawan','hrd\Karyawan@cari');
@@ -1622,7 +1571,7 @@ Route::put('hapus-periode-kerja/{id}','hrd\PeriodeKerja@delete');
 
 	//--- Kelender-Kerja---
 
-Route::get('Kelender-Kerja','hrd\KalenderKerja@index');
+Route::get('Kalender-Kerja','hrd\KalenderKerja@index');
 
 Route::get('daftar-event-kalender', 'hrd\KalenderKerja@daftarEvent');
 
@@ -1689,7 +1638,7 @@ Route::put('update-sop/{id}','hrd\Sop@update');
 Route::post('store-jabatan-ky','hrd\JabatanKy@storeUpdate');
 
 //================================= Penggjian ==========================================================================
-
+	//===alokasi gaji===
 Route::get('Alokasi-Gaji','penggajian\AlokasiGaji@index');
 
 Route::post('store-aloasi-gaji','penggajian\AlokasiGaji@store');
@@ -1720,6 +1669,7 @@ Route::post('update-sub-cf','penggajian\SubCF@update');
 
 Route::put('delete-sub-cf/{id}','penggajian\SubCF@delete');
 
+	//=== content CF ===
 Route::get('Content-CF','penggajian\ContentCF@index');
 
 Route::get('Pokok-cf','penggajian\PokokCF@index');
@@ -1773,7 +1723,6 @@ Route::post('update-grader-gaji','penggajian\Grader@update');
 Route::get('daftar-slip-gaji/{id}','penggajian\SlipGaji@index');
 
 //Route::post('tambah-slip/{id}','penggajian\SlipGaji@create');
-
 Route::post('store-slip-gaji','penggajian\SlipGaji@store');
 
 Route::get('item-gaji/{id}','penggajian\SlipGaji@create');
@@ -1783,7 +1732,6 @@ Route::get('edit-slip-gaji/{id}','penggajian\SlipGaji@edit');
 Route::post('update-slip-gaji','penggajian\SlipGaji@update');
 
 Route::put('delete-slip-gaji/{id}','penggajian\SlipGaji@delete');
-
 
 Route::post('store-lembur','penggajian\Lembur@store');
 
@@ -1803,6 +1751,7 @@ Route::put('delete-bonus-proyek/{id}','penggajian\G_Bonus_Gaji@delete');
 
 
 //================================= Investor ==========================================================================
+
 Route::get('Data-Investor', 'investor\DataInvestor@index');
 
 Route::get('tambah-investor', 'investor\DataInvestor@create');
@@ -1849,8 +1798,6 @@ Route::post('store-saham-perdana','Investor\SahamPerdana@store');
 Route::get('edit-saham-perdana/{id}','Investor\SahamPerdana@edit');
 
 Route::post('update-saham-perdana','Investor\SahamPerdana@update');
-
-
 
 
 Route::get('Data-Investasi','Investor\DataInvestasi@index');
@@ -1933,6 +1880,7 @@ Route::post('update-persen-kas','Investor\PersenKas@update');
 
 Route::put('hapus-persen-kas/{id}','Investor\PersenKas@delete');
 
+
 Route::get('Pelaku-Investasi','Investor\PelakuInvestasi@index');
 
 Route::post('store-pelaksana','Investor\PelakuInvestasi@store');
@@ -2011,7 +1959,39 @@ Route::get('Rencana-Pelatihan', 'hrd\RencanaPelatihan@index');
 
 
 //===================================== Keuangan =====================================================================
+	//--tab RPB--
+Route::get('RAB', 'keuangan\RAB@index');
 
+Route::post('store-rpb','keuangan\RAB@storeRPB');
+
+Route::get('ubah-rpb/{id_rpb}','keuangan\RAB@editRPB');
+
+Route::post('update-rpb','keuangan\RAB@updateRPB');
+
+Route::put('hapus-rpb/{id}','keuangan\RAB@deleteRPB');
+
+	//--tab RPJ--
+	
+Route::post('store-rpj','keuangan\RAB@storeRPJ');
+
+Route::get('ubah-rpj/{id_rpj}','keuangan\RAB@editRPJ');
+
+Route::post('update-rpj','keuangan\RAB@updateRPJ');
+
+Route::put('hapus-rpj/{id}','keuangan\RAB@deleteRPJ');
+
+//--tab RPENGELURAN/ROUT--
+	
+Route::post('store-rout','keuangan\RAB@storeROUT');
+
+Route::get('ubah-rout/{id_rout}','keuangan\RAB@editROUT');
+
+Route::post('update-rout','keuangan\RAB@updateROUT');
+
+Route::put('hapus-rout/{id}','keuangan\RAB@deleteROUT');
+
+ //--Akun--
+ 
 Route::get('Akun','keuangan\Akun@index');
 
 Route::post('store_master_akun_to_ukm', 'keuangan\Akun@store_akun_ukm');
@@ -2075,6 +2055,7 @@ Route::put('delete-transaksi-pengeluaran/{id}','keuangan\Pengeluaran@delete_kete
 Route::get('data-keterangan-transaksi-pengeluaran/{id}','keuangan\Pengeluaran@data_keterangan_transaksi');
 
 Route::post('store-jurnal-pengeluaran','keuangan\Pengeluaran@store_jurnal_pengeluaran');
+
 
 Route::get('Laporan-keuangan','keuangan\LaporanKeuangan@index');
 
@@ -2142,3 +2123,5 @@ Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@Respons
 Route::post('GlobalSubKategori', 'globals\KategoriJasa@getSubKategori');
 
 Route::post('GlobalSubSubKategori', 'globals\KategoriJasa@getSubSubKategori');
+
+Route::get('/home', 'HomeController@index')->name('home');
