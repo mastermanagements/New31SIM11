@@ -183,6 +183,8 @@ class LaporanKeuangan extends Controller
         ];
         return response()->json($data);
     }
+	
+	//============================================== perubahan modal ============================================
 
     public function perubahan_modal(){
         Session::put('menu-laporan-keuangan','perubahan-modal');
