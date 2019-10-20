@@ -23,6 +23,7 @@ trait Transaksi
 {
     use DateYears;
     use AturanDK;
+    private $id_sub_sub_akun=0;
 
     public $jenis_jurnal=array(
         '0'=>'Saldo Awal',
@@ -387,8 +388,13 @@ trait Transaksi
                   }
 
                   $id_akun = $data_jurnals->akun->sub_akun->id_akun_ukm;
-                  $id_sub_akun = $data_jurnals->akun->sub_akun->id;
-                  $saldo = $this->rules($id_akun,$id_sub_akun, $statusDK,$debet,$kredit, $saldo);
+                  $id_sub_akun = $data_jurnals->akun->sub_akun->id_m_sub_akun;
+                  //baru ditambahkan
+
+                  if(!empty($data_sub_sub = $data_jurnals->akun->sub_sub_akun)){
+                      $this->id_sub_sub_akun =  $data_jurnals->akun->sub_sub_akun->id;
+                  }
+                  $saldo = $this->rules($id_akun,$id_sub_akun, $this->id_sub_sub_akun, $statusDK,$debet,$kredit, $saldo);
                   $data_jurnal['debet'] =$debet;
                   $data_jurnal['kredit'] =$kredit;
                   $data_jurnal['saldo'] =$saldo;
@@ -422,8 +428,10 @@ trait Transaksi
                       $debet = 0;
                       $kredit = 0;
                       $id_akun = $data_jurnals->akun->sub_akun->id_akun_ukm;
-                      $id_sub_akun = $data_jurnals->akun->sub_akun->id;
-                      $saldo_debit=0;
+                      $id_sub_akun = $data_jurnals->akun->sub_akun->id_m_sub_akun;
+
+
+                  $saldo_debit=0;
                       $saldo_kredit = 0;
 
                      if($data_jurnals->debet_kredit == 0){
@@ -433,9 +441,12 @@ trait Transaksi
                           $statusDK= 1;
                           $kredit = $data_jurnals->jumlah_transaksi;
                      }
+                      if(!empty($data_sub_sub = $data_jurnals->akun->sub_sub_akun)){
+                          $this->id_sub_sub_akun =  $data_jurnals->akun->sub_sub_akun->id;
+                      }
 
-                      $saldo = $this->rules($id_akun,$id_sub_akun, $statusDK,$debet,$kredit, $saldo);
-                      $rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $statusDK);
+                      $saldo = $this->rules($id_akun,$id_sub_akun,$this->id_sub_sub_akun, $statusDK,$debet,$kredit, $saldo);
+                      $rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $this->id_sub_sub_akun, $statusDK);
                       if($rules_saldo=='debet'){
                          $saldo_debit = $saldo;
                       }elseif($rules_saldo =='kredit'){
@@ -526,7 +537,10 @@ trait Transaksi
                             $debet = 0;
                             $kredit = 0;
                             $id_akun = $data_jurnals->akun->sub_akun->id_akun_ukm;
-                            $id_sub_akun = $data_jurnals->akun->sub_akun->id;
+                            $id_sub_akun = $data_jurnals->akun->sub_akun->id_m_sub_akun;
+
+
+
 
                             if($data_jurnals->debet_kredit == 0){
                                 $statusDK = 0;
@@ -535,9 +549,11 @@ trait Transaksi
                                 $statusDK= 1;
                                 $kredit = $data_jurnals->jumlah_transaksi;
                             }
-
-                            $saldo = $this->rules($id_akun,$id_sub_akun, $statusDK,$debet,$kredit, $saldo);
-                            $rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $statusDK);
+                            if(!empty($data_sub_sub = $data_jurnals->akun->sub_sub_akun)){
+                                $this->id_sub_sub_akun =  $data_jurnals->akun->sub_sub_akun->id;
+                            }
+                            $saldo = $this->rules($id_akun,$id_sub_akun, $this->id_sub_sub_akun, $statusDK,$debet,$kredit, $saldo);
+                            //$rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $this->id_sub_sub_akun, $statusDK);
                             $saldo_sub =$saldo;
                         }
 
@@ -620,7 +636,7 @@ trait Transaksi
                             $debet = 0;
                             $kredit = 0;
                             $id_akun = $data_jurnals->akun->sub_akun->id_akun_ukm;
-                            $id_sub_akun = $data_jurnals->akun->sub_akun->id;
+                            $id_sub_akun = $data_jurnals->akun->sub_akun->id_m_sub_akun;
 
                             if($data_jurnals->debet_kredit == 0){
                                 $statusDK = 0;
@@ -630,8 +646,15 @@ trait Transaksi
                                 $kredit = $data_jurnals->jumlah_transaksi;
                             }
 
-                            $saldo = $this->rules($id_akun,$id_sub_akun, $statusDK,$debet,$kredit, $saldo);
-                            $rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $statusDK);
+                            if(!empty($data_sub_sub = $data_jurnals->akun->sub_sub_akun)){
+                                $this->id_sub_sub_akun =  $data_jurnals->akun->sub_sub_akun->id;
+                            }
+//                            if($id_sub_akun==3){
+//                                dd($id_akun."  ===".$id_sub_akun."====".$statusDK);
+//                            }
+                            $saldo = $this->rules($id_akun,$id_sub_akun, $this->id_sub_sub_akun, $statusDK,$debet,$kredit, $saldo);
+
+                            //$rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $this->id_sub_sub_akun, $statusDK);
                             $saldo_sub = $saldo;
                         }
 
@@ -730,6 +753,8 @@ trait Transaksi
                             $id_akun = $data_jurnals->akun->sub_akun->id_akun_ukm;
                             $id_sub_akun = $data_jurnals->akun->sub_akun->id;
 
+
+
                             if($data_jurnals->debet_kredit == 0){
                                 $statusDK = 0;
                                 $debet  = $data_jurnals->jumlah_transaksi;
@@ -738,8 +763,11 @@ trait Transaksi
                                 $kredit = $data_jurnals->jumlah_transaksi;
                             }
 
-                            $saldo = $this->rules($id_akun,$id_sub_akun, $statusDK,$debet,$kredit, $saldo);
-                            $rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $statusDK);
+                            if(!empty($data_sub_sub = $data_jurnals->akun->sub_sub_akun)){
+                                $this->id_sub_sub_akun =  $data_jurnals->akun->sub_sub_akun->id;
+                            }
+                            $saldo = $this->rules($id_akun,$id_sub_akun, $this->id_sub_sub_akun, $statusDK,$debet,$kredit, $saldo);
+                            $rules_saldo = $this->rules_saldo($id_akun,$id_sub_akun, $this->id_sub_sub_akun, $statusDK);
                             if($rules_saldo == 'kredit'){
                                 $saldo_sub = $saldo;
                             }else{
