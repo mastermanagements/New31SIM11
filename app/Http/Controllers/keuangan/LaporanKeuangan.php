@@ -139,6 +139,7 @@ class LaporanKeuangan extends Controller
         ];
         $data=[
             'judul'=> 'Neraca Saldo',
+            'tahun_berjalan2'=> $this->costumDate(),
             'data'=> $this->data_neraca_saldo($data_pass)
         ];
         return view('user.keuangan.section.laporan.page_default', $data);
@@ -156,6 +157,19 @@ class LaporanKeuangan extends Controller
         return response()->json($data);
     }
 
+    public function cetak_neraca_saldo(){
+         $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
+        ];
+        $data=[
+            'judul'=> 'Neraca Saldo',
+            'tahun_berjalan2'=> $this->costumDate(),
+            'data'=> $this->data_neraca_saldo($data_pass)
+        ];
+        return view('user.keuangan.section.laporan.neraca_saldo.print_page', $data);
+    }
 
     //============================================== Laba Rugi ============================================
     public function laba_rugi(){
@@ -167,6 +181,7 @@ class LaporanKeuangan extends Controller
         ];
         $data=[
             'judul'=> 'Laba Rugi',
+            'tahun_berjalan2'=> $this->costumDate(),
             'data'=> $this->data_laba_rugi($data_pass)
         ];
         return view('user.keuangan.section.laporan.page_default', $data);
@@ -186,6 +201,21 @@ class LaporanKeuangan extends Controller
 	
 	//============================================== perubahan modal ============================================
 
+    public function cetak_laba_rugi(){
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
+        ];
+        $data=[
+            'judul'=> 'Laba Rugi',
+            'tahun_berjalan2'=> $this->costumDate(),
+            'data'=> $this->data_laba_rugi($data_pass)
+        ];
+        return view('user.keuangan.section.laporan.laba_rugi.print_page', $data);
+    }
+
+    //========================================================= Perubahan Modal =================================
     public function perubahan_modal(){
         Session::put('menu-laporan-keuangan','perubahan-modal');
         $data_pass= [
@@ -196,6 +226,7 @@ class LaporanKeuangan extends Controller
         ];
         $data=[
             'judul'=> 'Perubahan Modal',
+            'tahun_berjalan2'=> $this->costumDate(),
             'data'=> $this->data_perubahan_modal($data_pass)
         ];
         return view('user.keuangan.section.laporan.page_default', $data);
@@ -214,6 +245,19 @@ class LaporanKeuangan extends Controller
         return response()->json($data);
     }
 
+    public function cetak_perubahan_modal(){
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1'],
+            'debet_kredit'=> ['0','1'],
+        ];
+        $data=[
+            'judul'=> 'Perubahan Modal',
+            'data'=> $this->data_perubahan_modal($data_pass)
+        ];
+        return view('user.keuangan.section.laporan.perubahan_modal.print_page', $data);
+    }
     //============================================== Neraca ============================================
     public function neraca(){
         Session::put('menu-laporan-keuangan','neraca');
@@ -224,6 +268,7 @@ class LaporanKeuangan extends Controller
         ];
         $data=[
             'judul'=> 'Neraca',
+            'tahun_berjalan2'=> $this->costumDate(),
             'data'=> $this->data_neracas($data_pass)
         ];
         return view('user.keuangan.section.laporan.page_default', $data);
@@ -239,5 +284,19 @@ class LaporanKeuangan extends Controller
             'data'=> $this->data_neracas($data_pass)
         ];
         return response()->json($data);
+    }
+
+    public function cetak_neraca(){
+        Session::put('menu-laporan-keuangan','neraca');
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
+        ];
+        $data=[
+            'judul'=> 'Neraca',
+            'data'=> $this->data_neracas($data_pass)
+        ];
+        return view('user.keuangan.section.laporan.neraca.print_page', $data);
     }
 }

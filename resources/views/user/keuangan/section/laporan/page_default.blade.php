@@ -99,6 +99,8 @@
         @include('user.keuangan.section.laporan.neraca_saldo.js')
     @elseif(Session::get('menu-laporan-keuangan')=="neraca-saldo")
         @include('user.keuangan.section.laporan.buku_besar.js')
+    @elseif(Session::get('menu-laporan-keuangan')=="laba-rugi")
+        @include('user.keuangan.section.laporan.laba_rugi.js')
     @elseif(Session::get('menu-laporan-keuangan')=="perubahan-modal")
         @include('user.keuangan.section.laporan.perubahan_modal.js')
     @elseif(Session::get('menu-laporan-keuangan')=="neraca")
