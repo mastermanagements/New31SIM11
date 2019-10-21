@@ -45,7 +45,7 @@
                                 @foreach($data as $data_neraca)
                                      <tr>
                                         <td>{{ $data_neraca['kode_akun'] }}</td>
-                                        <td>{{ $data_neraca['nm_akun'] }}</td>
+                                        <td align="left">{{ $data_neraca['nm_akun'] }}</td>
                                         <td>{{ number_format($data_neraca['debet'],2,',','.') }}</td>
                                         <td>{{ number_format($data_neraca['kredit'],2,',','.') }}</td>
                                     </tr>
