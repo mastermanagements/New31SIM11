@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use App\Traits\DateYears;
 use App\Traits\AturanDK;
 use Illuminate\Support\Facades\DB;
+use App\Model\Keuangan\SubAkun as SA;
 use Session;
 
 trait Transaksi
@@ -29,6 +30,9 @@ trait Transaksi
         '0'=>'Saldo Awal',
         '1'=>'Jurnal',
         '2'=>'Jurnal Penyesuaian');
+
+    public $jenisjurnal=array(
+        '0','1');
 
     public $posisi = array(
       '0'=> 'Debit',
@@ -806,5 +810,55 @@ trait Transaksi
 
         }
         return array_merge(array('debit'=> $row_debit),array('kredit'=> $row_kredit),array('laba_tahun_berjalan'=>$data_laba_bersih));
+    }
+
+    public function aruskas(){
+        $rule_aruskas = $this->static_rule_arus_kas;
+        $data_container = array();
+        foreach ($rule_aruskas as $data){
+            foreach ($data as $list_id){
+                foreach ($list_id as $data_id=> $status) {
+                    if(!empty($this->formula_arus_kas($data_id, $status))){
+                        $data_container[] =$this->formula_arus_kas($data_id, $status) ;
+                    }
+                }
+            }
+        }
+        $output =array('data'=> $data_container);
+        return $output;
+    }
+
+    public function formula_arus_kas($data_id, $status){
+        $data_sub = SA::find($data_id);
+        $id_sub_akun = $data_sub->id_akun_ukm; //sub_akun
+        $akses_akun_aktif = $data_sub->id_sub_akun_aktif;
+        $data_return = array();
+
+        foreach($akses_akun_aktif as $data_akun_aktif){
+
+            $id_sub_sub_akun = $data_akun_aktif->id_subsub_akun;//sub_sub_akun
+
+            $data_jurnal = $data_akun_aktif->getMannyJurnal;
+            foreach ($data_jurnal as $data_jurnal){
+                $total=0;
+                if($data_jurnal->debet_kredit == 0){
+                    $statusDK = 0;
+                }else{
+                    $statusDK = 1;
+                }
+
+                $status_saldo = $this->rules_saldo($data_sub->id_akun_ukm,$id_sub_akun,$id_sub_sub_akun,$statusDK);
+
+                if($status_saldo==$status){
+                    $total += $data_jurnal->jumlah_transaksi;
+                }else{
+                    $total -= $data_jurnal->jumlah_transaksi;
+                }
+                $data_return[] = $data_jurnal->akun->nm_akun_aktif;
+                $data_return[] = $status_saldo;
+                $data_return[] = $total;
+            }
+        }
+        return $data_return;
     }
 }

@@ -297,4 +297,8 @@ class LaporanKeuangan extends Controller
         ];
         return view('user.keuangan.section.laporan.neraca.print_page', $data);
     }
+
+    public function arus_kas(){
+       return response()->json( $this->aruskas());
+    }
 }

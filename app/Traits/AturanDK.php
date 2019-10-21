@@ -29,6 +29,18 @@ trait AturanDK
         'Pengurangan_harga/diskon'=>32,
     );
 
+
+    public $static_rule_arus_kas = array(
+        'penerimaan_kas_dan_pelanggan' => array(
+            'pendapatan' => [15 => 'kredit',16=>'kredit',17=>'kredit', 18=>'kredit', 19=>'kredit'],
+            'aktiva_lancar'=>[21=>'kredit', 33=>'kredit'],
+            //'hutang_lancar'=>[71=>'kredit',70=>'kredit']
+        ),
+    );
+
+
+
+
     public function rules($id_akun=0, $id_sub_akun=0, $id_sub_sub_akun=0,$statusDK,$jDebit, $jKredit, $saldo){
         $model_sub_akun = SA::where('id_akun_ukm',$id_akun)->first();
         $model_sub_akun2 = SA::where('id_m_sub_akun',$id_sub_akun)->first();
