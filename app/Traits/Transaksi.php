@@ -18,6 +18,7 @@ use App\Traits\DateYears;
 use App\Traits\AturanDK;
 use Illuminate\Support\Facades\DB;
 use App\Model\Keuangan\SubAkun as SA;
+use App\Model\Keuangan\SubSubAkun as SSa;
 use Session;
 
 trait Transaksi
@@ -814,26 +815,86 @@ trait Transaksi
 
     public function aruskas(){
         $rule_aruskas = $this->static_rule_arus_kas;
-        $data_container = array();
-        foreach ($rule_aruskas as $data){
-            foreach ($data as $list_id){
-                foreach ($list_id as $data_id=> $status) {
-                    if(!empty($this->formula_arus_kas($data_id, $status))){
-                        $data_container[] =$this->formula_arus_kas($data_id, $status) ;
+        $ouputs_array =array();
+        foreach ($rule_aruskas as $keys=>$datas){
+            $ouput_array =array();
+            foreach ($datas as $second_floor => $data){
+                $data_container = array();
+                foreach ($data as $list_id){
+                    foreach ($list_id as $data_id=> $status) {
+                        if ($data_id == 'sub-sub') {
+                            foreach ($status as $key=> $data_sub_sub){ //sub-sub
+                                if (!empty($this->formula_arus_kas_sub_sub($key, $data_sub_sub)))
+                                {
+                                    $data_container[] =$this->formula_arus_kas_sub_sub($key, $data_sub_sub) ;
+                                }
+                            }
+                        }else if ($data_id == 'akun') { //akun
+                            foreach ($status as $key=> $data_sub_sub){
+                                if (!empty($this->formula_arus_akun_kas($key, $data_sub_sub)))
+                                {
+                                    $data_container[] =$this->formula_arus_akun_kas($key, $data_sub_sub) ;
+                                }
+                            }
+                        }else{ //sub akun
+                            if (!empty($this->formula_arus_sub_akun_kas($data_id, $status)))
+                            {
+                                $data_container[] =$this->formula_arus_sub_akun_kas($data_id, $status);
+                            }
+                        }
                     }
                 }
+                $ouput_array[$second_floor]=$data_container;
             }
+            $ouputs_array[$keys]=$ouput_array;
         }
-        $output =array('data'=> $data_container);
+        $output =array('data'=> $ouputs_array);
         return $output;
     }
 
-    public function formula_arus_kas($data_id, $status){
-        $data_sub = SA::find($data_id);
+    public function formula_arus_akun_kas($data_id, $status){
+        $data_akun_dari_sub = SA::all()->where('id_akun_ukm',$data_id);
+        $data_return = array();
+        foreach ($data_akun_dari_sub as $data_akun)
+        {
+            $id_sub_akun = $data_akun->id_akun_ukm; //sub_akun
+            $akses_akun_aktif = $data_akun->id_sub_akun_aktif;
+            foreach($akses_akun_aktif as $data_akun_aktif){
+
+                $id_sub_sub_akun = $data_akun_aktif->id_subsub_akun;//sub_sub_akun
+
+                $data_jurnal = $data_akun_aktif->getMannyJurnal;
+                foreach ($data_jurnal as $data_jurnal){
+                    $total=0;
+                    if($data_jurnal->debet_kredit == 0){
+                        $statusDK = 0;
+                    }else{
+                        $statusDK = 1;
+                    }
+
+                    $status_saldo = $this->rules_saldo($data_akun->id_akun_ukm,$id_sub_akun,$id_sub_sub_akun,$statusDK);
+
+                    if($status_saldo==$status){
+                        $total += $data_jurnal->jumlah_transaksi;
+                    }else{
+                        $total -= $data_jurnal->jumlah_transaksi;
+                    }
+                    $data_return[] = $data_jurnal->akun->nm_akun_aktif;
+                    $data_return[] = $status_saldo;
+                    $data_return[] = $total;
+                }
+            }
+        }
+
+       return $data_return;
+    }
+
+    public function formula_arus_sub_akun_kas($data_id, $status){
+        $data_sub = SA::where('id_m_sub_akun',$data_id)->first();
         $id_sub_akun = $data_sub->id_akun_ukm; //sub_akun
         $akses_akun_aktif = $data_sub->id_sub_akun_aktif;
-        $data_return = array();
 
+        $data_return = array();
         foreach($akses_akun_aktif as $data_akun_aktif){
 
             $id_sub_sub_akun = $data_akun_aktif->id_subsub_akun;//sub_sub_akun
@@ -855,6 +916,40 @@ trait Transaksi
                     $total -= $data_jurnal->jumlah_transaksi;
                 }
                 $data_return[] = $data_jurnal->akun->nm_akun_aktif;
+                $data_return[] = $status_saldo;
+                $data_return[] = $total;
+            }
+        }
+        return $data_return;
+    }
+
+    public function formula_arus_kas_sub_sub($data_id, $status){
+        $sub_sub = SSa::where('id_sub_sub_master_akun', $data_id)->first();
+        $akun= $sub_sub->getSubAkun->id_akun_ukm;
+        $sub_akun = $sub_sub->getSubAkun->id_m_sub_akun;
+        $akses_akun_aktif = $sub_sub->getSubAkun->id_sub_akun_aktif->where('id_subsub_akun',$sub_sub->id);
+        $data_return = array();
+        foreach($akses_akun_aktif as $data_akun_aktif){
+
+            $id_sub_sub_akun = $data_akun_aktif->id_subsub_akun;//sub_sub_akun
+
+            $data_jurnal = $data_akun_aktif->getMannyJurnal;
+            foreach ($data_jurnal as $data_jurnal){
+                $total=0;
+                if($data_jurnal->debet_kredit == 0){
+                    $statusDK = 0;
+                }else{
+                    $statusDK = 1;
+                }
+
+                $status_saldo = $this->rules_saldo($sub_akun,$akun,$id_sub_sub_akun,$statusDK);
+
+                if($status_saldo==$status){
+                    $total += $data_jurnal->jumlah_transaksi;
+                }else{
+                    $total -= $data_jurnal->jumlah_transaksi;
+                }
+                $data_return[] = $sub_sub->nm_subsub_akun;
                 $data_return[] = $status_saldo;
                 $data_return[] = $total;
             }
