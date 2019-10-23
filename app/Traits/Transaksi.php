@@ -816,17 +816,21 @@ trait Transaksi
     public function aruskas(){
         $rule_aruskas = $this->static_rule_arus_kas;
         $ouputs_array =array();
+        $totalSemua = 0;
         foreach ($rule_aruskas as $keys=>$datas){
             $ouput_array =array();
             foreach ($datas as $second_floor => $data){
                 $data_container = array();
+                $sub_total = 0;
                 foreach ($data as $list_id){
                     foreach ($list_id as $data_id=> $status) {
                         if ($data_id == 'sub-sub') {
+
                             foreach ($status as $key=> $data_sub_sub){ //sub-sub
                                 if (!empty($this->formula_arus_kas_sub_sub($key, $data_sub_sub)))
                                 {
                                     $data_container[] =$this->formula_arus_kas_sub_sub($key, $data_sub_sub) ;
+                                    $sub_total +=$this->formula_arus_kas_sub_sub($key, $data_sub_sub)[2];
                                 }
                             }
                         }else if ($data_id == 'akun') { //akun
@@ -834,21 +838,23 @@ trait Transaksi
                                 if (!empty($this->formula_arus_akun_kas($key, $data_sub_sub)))
                                 {
                                     $data_container[] =$this->formula_arus_akun_kas($key, $data_sub_sub) ;
+                                    $sub_total +=$this->formula_arus_akun_kas($key, $data_sub_sub)[2];
                                 }
                             }
                         }else{ //sub akun
                             if (!empty($this->formula_arus_sub_akun_kas($data_id, $status)))
                             {
                                 $data_container[] =$this->formula_arus_sub_akun_kas($data_id, $status);
+                                $sub_total +=$this->formula_arus_sub_akun_kas($data_id, $status)[2];
                             }
                         }
                     }
                 }
-                $ouput_array[$second_floor]=$data_container;
+                $ouput_array[$second_floor]=array('data'=>$data_container, 'total'=> $sub_total);
             }
             $ouputs_array[$keys]=$ouput_array;
         }
-        $output =array('data'=> $ouputs_array);
+        $output =array($ouputs_array);
         return $output;
     }
 

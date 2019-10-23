@@ -314,7 +314,7 @@ trait AturanDK
 
     public $static_rule_arus_kas =
         array(
-            'A'=>array(
+            'ARUS KAS DARI OPERASIONAL'=>array(
             'penerimaan_kas_dan_pelanggan' => array(
                 'Pendapatan' => [15 => 'kredit',16=>'kredit',17=>'kredit', 18=>'kredit', 19=>'kredit'],//(pendapatan jasa, pendapatan dagang, pendapatan jual, return penjualan, potongan penjualan)
                 'Aktiva_Lancar'=>[
@@ -361,25 +361,31 @@ trait AturanDK
                     'akun'=>[8=>'kredit'], //(akun biaya lainnya)
                 ]
             )
-
-
         ),
-            'B'=>array(
-                 'Penerimaan_kas_dari_investasi'=>array(
+            'ARUS KAS DARI INVESTASI'=>array(
+                 'Kas_dari_investasi'=>array(
                      'investasi'=>[
                          'sub-sub'=>[ 37=>'debet', 38=>'debet', 39=>'debet', 40=>'debet', 41=>'debet' ],
                      ]
                  )
             ),
-            'C'=>array(
-                'Penerimaan_kas_dari_Pendanaan'=>array(
-                    'penambah_kas'=>[
-                        'akun'=>[6=>'kredit',7=>'kredit',8=>'kredit'],
+            'ARUS KAS DARI PENDANAAN'=>array(
+                'Kas_dari_Pendanaan'=>array(
+                    'penambahan'=>[
+                        6=>'kredit',7=>'kredit',8=>'kredit' //(modal usaha, modal saham, disagio saham)
                     ],
-                    'pengurang_kas'=>[
-                        'akun'=>[9=>'debet', 10=>'debet'],
+                    'pengurang'=>[
+                        9=>'debet', 10=>'debet', //(prive, dividen)
                     ],
-                )
+                ),
+                'Hutang_Jangka_Panjang'=>[
+                    'penambah'=>[
+                        'sub-sub'=>[75=>'kredit',81=>'kredit', 82=>'kredit']
+                    ],
+                    'pengurang'=>[
+                        'sub-sub'=>[75=>'debet',81=>'debet', 82=>'debet']
+                    ]
+                ]
             ),
         );
 }

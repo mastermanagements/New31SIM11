@@ -298,6 +298,21 @@ class LaporanKeuangan extends Controller
         return view('user.keuangan.section.laporan.neraca.print_page', $data);
     }
 
+    public function tampilan_arus_kas(){
+        Session::put('menu-laporan-keuangan','arus-kas');
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1']
+        ];
+        $data=[
+            'judul'=> 'Arus Kas',
+            'tahun_berjalan2'=> $this->costumDate(),
+            'data'=> $this->aruskas()[0]
+        ];
+        return view('user.keuangan.section.laporan.page_default', $data);
+    }
+
     public function arus_kas(){
        return response()->json( $this->aruskas());
     }

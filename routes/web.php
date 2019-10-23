@@ -2136,7 +2136,10 @@ Route::get('data-neraca','keuangan\LaporanKeuangan@data_neraca');
 
 Route::get('tampilan-cetak-neraca/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_neraca');
 
-Route::get('tampilan-arus-kas','keuangan\LaporanKeuangan@arus_kas');
+Route::get('arus-kas','keuangan\LaporanKeuangan@tampilan_arus_kas');
+
+Route::get('tampilan-arus-kas-api','keuangan\LaporanKeuangan@arus_kas');
+
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

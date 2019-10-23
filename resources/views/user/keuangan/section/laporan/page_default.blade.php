@@ -51,6 +51,11 @@
                     <i class="fa fa-file-text-o"></i> Neraca
                 </a>
             </div>
+            <div class="col-md-2" style="padding: 1px">
+                <a class="btn btn-block btn-social btn-bitbucket" href="{{ url('arus-kas') }}">
+                    <i class="fa fa-file-text-o"></i> Arus Kas
+                </a>
+            </div>
         </div>
         <div class="row">
             @if(Session::get('menu-laporan-keuangan')=="jurnal_umum")
@@ -65,6 +70,8 @@
                 @include('user.keuangan.section.laporan.perubahan_modal.page')
             @elseif(Session::get('menu-laporan-keuangan')=="neraca")
                 @include('user.keuangan.section.laporan.neraca.page')
+            @elseif(Session::get('menu-laporan-keuangan')=="arus-kas")
+                @include('user.keuangan.section.laporan.arus_kas.page')
             @endif
         </div>
 
@@ -105,5 +112,7 @@
         @include('user.keuangan.section.laporan.perubahan_modal.js')
     @elseif(Session::get('menu-laporan-keuangan')=="neraca")
         @include('user.keuangan.section.laporan.neraca.js')
+    @elseif(Session::get('menu-laporan-keuangan')=="neraca_saldo")
+        @include('user.keuangan.section.laporan.arus_kas.js')
     @endif
 @stop
