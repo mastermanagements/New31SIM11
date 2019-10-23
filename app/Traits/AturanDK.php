@@ -29,6 +29,10 @@ trait AturanDK
         'Pengurangan_harga/diskon'=>32,
     );
 
+
+
+
+
     public function rules($id_akun=0, $id_sub_akun=0, $id_sub_sub_akun=0,$statusDK,$jDebit, $jKredit, $saldo){
         $model_sub_akun = SA::where('id_akun_ukm',$id_akun)->first();
         $model_sub_akun2 = SA::where('id_m_sub_akun',$id_sub_akun)->first();
@@ -240,11 +244,24 @@ trait AturanDK
                 $DK = 'debet';
             }
         }else{
-            if($model_sub_akun->id_akun_ukm==1){
-                $DK = 'debet';
-            }elseif ($model_sub_akun->id_akun_ukm==2){
+            if($model_sub_akun->id_akun_ukm==1){ //Aset
+                if(!empty($model_sub_sub_akun2)){
+                    if($model_sub_sub_akun2->id_sub_sub_master_akun == $this->static_id_sub_akun['Cadangan_Kerugian_Piutang_Tak_Tertagih']){
+                        $DK = 'kredit';
+                    }else if($model_sub_sub_akun2->id_sub_sub_master_akun == $this->static_id_sub_akun['Akumulasi_penyusutan_gedung']){
+
+                    }else if($model_sub_sub_akun2->id_sub_sub_master_akun == $this->static_id_sub_akun['Akumulasi_penyusutan_peralatan']){
+                        $DK = 'kredit';
+                    }else{
+                        $DK = 'debet';
+                    }
+                }else{
+                    $DK = 'debet';
+                }
+
+            }elseif ($model_sub_akun->id_akun_ukm==2){ //Hutang
                 $DK = 'kredit';
-            }elseif ($model_sub_akun->id_akun_ukm==3){
+            }elseif ($model_sub_akun->id_akun_ukm==3){ //Modal
                 if(!empty($model_sub_akun2)) {
                     if ($model_sub_akun2->id_m_sub_akun == $this->static_id_sub_akun['Prive']) {
                         $DK = 'debet';
@@ -256,7 +273,7 @@ trait AturanDK
                 }else {
                     $DK = 'kredit';
                 }
-            }elseif ($model_sub_akun->id_akun_ukm==4){
+            }elseif ($model_sub_akun->id_akun_ukm==4){ //Pendapatan
                 if(!empty($model_sub_akun2)) {
                     if ($model_sub_akun2->id_m_sub_akun == $this->static_id_sub_akun['Return_Penjualan']) {
                         $DK = 'debet';
@@ -271,7 +288,7 @@ trait AturanDK
                     $DK = 'kredit';
                 }
 
-            }elseif ($model_sub_akun->id_akun_ukm==5){
+            }elseif ($model_sub_akun->id_akun_ukm==5){ //HPP
                 if(!empty($model_sub_akun2)) {
                     if ($model_sub_akun2->id_m_sub_akun == $this->static_id_sub_akun['Potongan_pembelian']) {
                         $DK = 'kredit';
@@ -284,14 +301,91 @@ trait AturanDK
                     $DK = 'debet';
                 }
 
-            }elseif ($model_sub_akun->id_akun_ukm==6){
+            }elseif ($model_sub_akun->id_akun_ukm==6){ //Biaya
                 $DK = 'debet';
-            }elseif ($model_sub_akun->id_akun_ukm==7){
+            }elseif ($model_sub_akun->id_akun_ukm==7){ //Pendapatan lain
                 $DK = 'kredit';
-            }elseif ($model_sub_akun->id_akun_ukm==8){
+            }elseif ($model_sub_akun->id_akun_ukm==8){ //Biaya Lain
                 $DK = 'debet';
             }
         }
         return $DK;
     }
+
+    public $static_rule_arus_kas =
+        array(
+            'ARUS KAS DARI OPERASIONAL'=>array(
+            'penerimaan_kas_dan_pelanggan' => array(
+                'Pendapatan' => [15 => 'kredit',16=>'kredit',17=>'kredit', 18=>'kredit', 19=>'kredit'],//(pendapatan jasa, pendapatan dagang, pendapatan jual, return penjualan, potongan penjualan)
+                'Aktiva_Lancar'=>[
+                    'sub-sub'=>[ 21=>'kredit', 33=>'kredit'],//(Piutang dagang/ Usaha, Pajak dibayar dimuka )
+                ],
+                'Hutang_lancar'=>
+                    [
+                        'sub-sub'=>[71=>'kredit',70=>'kredit'], //(PPN Keluaran, pendapatan di terima dimuka )
+                    ]
+            ),
+            'Kas_yang_dibayarkan_ke_supplier(vendor)_brg_dan_jasa'=>array(
+                'Hutang_lancar'=>
+                    [
+                        'sub-sub'=>[57=>'kredit'], //(Hutang dagang/usaha )
+                    ],
+                'Aktiva_Lancar'=>[
+                    'sub-sub'=>[35=>'kredit'], //(PPN Masukan )
+                ],
+                'Akun_HPP'=>[
+                    [21=>'kredit', 22=>'kredit'] ,//(Harga Pokok Penjualan (HPP), Pembelian)
+                ]
+            ),
+            'Kas_yang_dibayarkan_untuk_pajak'=>array(
+                'pajak'=>[
+                    'sub-sub' =>[ 71 => 'kredit',35=>'kredit'], //(PPN Keluaran, PPN Masukan )
+                ]
+            ),
+            'Kas_yang_dibayarkan_untuk_Biaya_Angkut_Penjualan'=> array(
+                'pendapatan'=>[20=>'kredit']//20
+            ),
+            'Kas_yang_dibayarkan_untuk_biaya_operasional_perusahaan'=>array(
+                'akun_Biaya'=>[
+                    'akun'=>[6=>'kredit'], //
+                ],
+                'akun_aktiva_lancar'=>[
+                    'sub-sub'=> [ 42=>'kredit', 43=>'kredit',44=>'kredit', 45=>'kredit'],// (Akumulasi Penyusutan Gedung, Akumulasi Penyusutan kendaraan, Akumulasi Penyusutan peralatan, mesin )
+                ]
+            ),
+            'Kas_yang_diterima_di_bayarkan_lainnya'=>array(
+                'semua_akun_Pendapatan_lainnya'=>[
+                    'akun'=>[7=>'kredit'], //(akun pendaptan lainnya)
+                ],
+                'semua_akun_Biaya_lainnya'=>[
+                    'akun'=>[8=>'kredit'], //(akun biaya lainnya)
+                ]
+            )
+        ),
+            'ARUS KAS DARI INVESTASI'=>array(
+                 'Kas_dari_investasi'=>array(
+                     'investasi'=>[
+                         'sub-sub'=>[ 37=>'debet', 38=>'debet', 39=>'debet', 40=>'debet', 41=>'debet' ],
+                     ]
+                 )
+            ),
+            'ARUS KAS DARI PENDANAAN'=>array(
+                'Kas_dari_Pendanaan'=>array(
+                    'penambahan'=>[
+                        6=>'kredit',7=>'kredit',8=>'kredit' //(modal usaha, modal saham, disagio saham)
+                    ],
+                    'pengurang'=>[
+                        9=>'debet', 10=>'debet', //(prive, dividen)
+                    ],
+                ),
+                'Hutang_Jangka_Panjang'=>[
+                    'penambah'=>[
+                        'sub-sub'=>[75=>'kredit',81=>'kredit', 82=>'kredit']
+                    ],
+                    'pengurang'=>[
+                        'sub-sub'=>[75=>'debet',81=>'debet', 82=>'debet']
+                    ]
+                ]
+            ),
+        );
 }

@@ -36,7 +36,7 @@ class DaftarJurnal extends Controller
             'tanggal_akhir'=>'',
             'id_perusahaan'=>$this->id_perusahaan,
             'tahun_berjalan'=>$this->costumDate()->year,
-
+            'jenis_jurnal'=>$this->jenisjurnal
         );
         $data = $this->daftar_jurnal($pass);
         $data_pass = [
