@@ -2140,6 +2140,8 @@ Route::get('arus-kas','keuangan\LaporanKeuangan@tampilan_arus_kas');
 
 Route::get('tampilan-arus-kas-api','keuangan\LaporanKeuangan@arus_kas');
 
+Route::get('tampilan-arus-kas-api/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_arus_kas');
+
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

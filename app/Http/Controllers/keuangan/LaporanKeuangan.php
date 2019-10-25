@@ -135,8 +135,8 @@ class LaporanKeuangan extends Controller
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
             'tahun_berjalan'=> $this->costumDate()->year,
-            'jenis_jurnal'=> ['0','1']
-        ];
+            'jenis_jurnal'=> ['0','1'],
+         ];
         $data=[
             'judul'=> 'Neraca Saldo',
             'tahun_berjalan2'=> $this->costumDate(),
@@ -157,11 +157,13 @@ class LaporanKeuangan extends Controller
         return response()->json($data);
     }
 
-    public function cetak_neraca_saldo(){
+    public function cetak_neraca_saldo($tgl_awal, $tgl_akhir){
          $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
             'tahun_berjalan'=> $this->costumDate()->year,
-            'jenis_jurnal'=> ['0','1']
+            'jenis_jurnal'=> ['0','1'],
+             'tanggal_awal'=> date('Y-m-d',strtotime($tgl_awal)),
+             'tanggal_akhir'=>date('Y-m-d',strtotime($tgl_akhir)) ,
         ];
         $data=[
             'judul'=> 'Neraca Saldo',
@@ -199,11 +201,13 @@ class LaporanKeuangan extends Controller
         return response()->json($data);
     }
 
-    public function cetak_laba_rugi(){
+    public function cetak_laba_rugi($tgl_awal, $tgl_akhir){
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
             'tahun_berjalan'=> $this->costumDate()->year,
-            'jenis_jurnal'=> ['0','1']
+            'jenis_jurnal'=> ['0','1'],
+            'tanggal_awal'=> date('Y-m-d',strtotime($tgl_awal)),
+            'tanggal_akhir'=>date('Y-m-d',strtotime($tgl_akhir)) ,
         ];
         $data=[
             'judul'=> 'Laba Rugi',
@@ -243,12 +247,14 @@ class LaporanKeuangan extends Controller
         return response()->json($data);
     }
 
-    public function cetak_perubahan_modal(){
+    public function cetak_perubahan_modal($tgl_awal, $tgl_akhir){
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
             'tahun_berjalan'=> $this->costumDate()->year,
             'jenis_jurnal'=> ['0','1'],
             'debet_kredit'=> ['0','1'],
+            'tanggal_awal'=> date('Y-m-d',strtotime($tgl_awal)),
+            'tanggal_akhir'=>date('Y-m-d',strtotime($tgl_akhir)) ,
         ];
         $data=[
             'judul'=> 'Perubahan Modal',
@@ -284,12 +290,14 @@ class LaporanKeuangan extends Controller
         return response()->json($data);
     }
 
-    public function cetak_neraca(){
+    public function cetak_neraca($tgl_awal, $tgl_akhir){
         Session::put('menu-laporan-keuangan','neraca');
         $data_pass= [
             'id_perusahaan'=> $this->id_perusahaan,
             'tahun_berjalan'=> $this->costumDate()->year,
-            'jenis_jurnal'=> ['0','1']
+            'jenis_jurnal'=> ['0','1'],
+            'tanggal_awal'=> date('Y-m-d',strtotime($tgl_awal)),
+            'tanggal_akhir'=>date('Y-m-d',strtotime($tgl_akhir)) ,
         ];
         $data=[
             'judul'=> 'Neraca',
@@ -308,10 +316,27 @@ class LaporanKeuangan extends Controller
         $data=[
             'judul'=> 'Arus Kas',
             'tahun_berjalan2'=> $this->costumDate(),
-            'data'=> $this->aruskas()[0]
+            'data'=> $this->aruskas($data_pass)[0]
         ];
         return view('user.keuangan.section.laporan.page_default', $data);
     }
+
+    public function cetak_arus_kas($tgl_awal, $tgl_akhir){
+        $data_pass= [
+            'id_perusahaan'=> $this->id_perusahaan,
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1'],
+            'tanggal_awal'=> date('Y-m-d',strtotime($tgl_awal)),
+            'tanggal_akhir'=>date('Y-m-d',strtotime($tgl_akhir)) ,
+        ];
+        $data=[
+            'judul'=> 'Arus Kas',
+            'tahun_berjalan2'=> $this->costumDate(),
+            'data'=> $this->aruskas($data_pass)[0]
+        ];
+        return view('user.keuangan.section.laporan.arus_kas.print_page', $data);
+    }
+
 
     public function arus_kas(){
        return response()->json( $this->aruskas());

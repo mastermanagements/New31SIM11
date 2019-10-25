@@ -529,7 +529,7 @@ trait Transaksi
                         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
                             $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
                             $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
-                            $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+                            $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi');
                         }else{
 //                          $akun_akf->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal');
                             $model =  $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where(DB::raw('tgl_jurnal','=',$array['tahun_berjalan']))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
@@ -628,7 +628,7 @@ trait Transaksi
                         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
                             $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
                             $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
-                            $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+                            $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi');
                         }else{
     //                          $akun_akf->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal');
                             $model =  $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where(DB::raw('tgl_jurnal','=',$array['tahun_berjalan']))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
@@ -743,7 +743,7 @@ trait Transaksi
                         if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
                             $tanggal_awal = date('Y-m-d', strtotime($array['tanggal_awal']));
                             $tanggal_akhir= date('Y-m-d', strtotime($array['tanggal_akhir']));
-                            $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where('debet_kredit',$debet_kredit)->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->orderBy('no_transaksi','asc');
+                            $model = $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where('debet_kredit',$debet_kredit)->whereBetween('tgl_jurnal',[$tanggal_awal,$tanggal_akhir ])->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi');
                         }else{
                             //                          $akun_akf->getMannyJurnal->sortBy('no_transaksi')->sortBy('jenis_jurnal');
                             $model =  $akun_akf->getMannyJurnal->whereIn('jenis_jurnal',$array['jenis_jurnal'])->where('debet_kredit',$debet_kredit)->where(DB::raw('tgl_jurnal','=',$array['tahun_berjalan']))->where('id_perusahaan', $array['id_perusahaan'])->sortBy('no_transaksi')->sortBy('jenis_jurnal');
@@ -813,7 +813,7 @@ trait Transaksi
         return array_merge(array('debit'=> $row_debit),array('kredit'=> $row_kredit),array('laba_tahun_berjalan'=>$data_laba_bersih));
     }
 
-    public function aruskas(){
+    public function aruskas($array){
         $rule_aruskas = $this->static_rule_arus_kas;
         $ouputs_array =array();
         $totalSemua = 0;
@@ -827,25 +827,25 @@ trait Transaksi
                         if ($data_id == 'sub-sub') {
 
                             foreach ($status as $key=> $data_sub_sub){ //sub-sub
-                                if (!empty($this->formula_arus_kas_sub_sub($key, $data_sub_sub)))
+                                if (!empty($this->formula_arus_kas_sub_sub($key, $data_sub_sub, $array)))
                                 {
-                                    $data_container[] =$this->formula_arus_kas_sub_sub($key, $data_sub_sub) ;
-                                    $sub_total +=$this->formula_arus_kas_sub_sub($key, $data_sub_sub)[2];
+                                    $data_container[] =$this->formula_arus_kas_sub_sub($key, $data_sub_sub,$array) ;
+                                    $sub_total +=$this->formula_arus_kas_sub_sub($key, $data_sub_sub,$array)[2];
                                 }
                             }
                         }else if ($data_id == 'akun') { //akun
                             foreach ($status as $key=> $data_sub_sub){
-                                if (!empty($this->formula_arus_akun_kas($key, $data_sub_sub)))
+                                if (!empty($this->formula_arus_akun_kas($key, $data_sub_sub,$array)))
                                 {
-                                    $data_container[] =$this->formula_arus_akun_kas($key, $data_sub_sub) ;
-                                    $sub_total +=$this->formula_arus_akun_kas($key, $data_sub_sub)[2];
+                                    $data_container[] =$this->formula_arus_akun_kas($key, $data_sub_sub,$array) ;
+                                    $sub_total +=$this->formula_arus_akun_kas($key, $data_sub_sub,$array)[2];
                                 }
                             }
                         }else{ //sub akun
-                            if (!empty($this->formula_arus_sub_akun_kas($data_id, $status)))
+                            if (!empty($this->formula_arus_sub_akun_kas($data_id, $status,$array)))
                             {
-                                $data_container[] =$this->formula_arus_sub_akun_kas($data_id, $status);
-                                $sub_total +=$this->formula_arus_sub_akun_kas($data_id, $status)[2];
+                                $data_container[] =$this->formula_arus_sub_akun_kas($data_id, $status,$array);
+                                $sub_total +=$this->formula_arus_sub_akun_kas($data_id, $status,$array)[2];
                             }
                         }
                     }
@@ -858,8 +858,8 @@ trait Transaksi
         return $output;
     }
 
-    public function formula_arus_akun_kas($data_id, $status){
-        $data_akun_dari_sub = SA::all()->where('id_akun_ukm',$data_id);
+    public function formula_arus_akun_kas($data_id, $status, $array){
+        $data_akun_dari_sub = SA::all()->where('id_akun_ukm',$data_id)->where('id_perusahaan', $array['id_perusahaan']);
         $data_return = array();
         foreach ($data_akun_dari_sub as $data_akun)
         {
@@ -868,8 +868,11 @@ trait Transaksi
             foreach($akses_akun_aktif as $data_akun_aktif){
 
                 $id_sub_sub_akun = $data_akun_aktif->id_subsub_akun;//sub_sub_akun
-
-                $data_jurnal = $data_akun_aktif->getMannyJurnal;
+                if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
+                    $data_jurnal = $data_akun_aktif->getMannyJurnal->whereBetween('tgl_jurnal',[$array['tanggal_awal'],$array['tanggal_akhir'] ])->where('id_perusahaan', $array['id_perusahaan']);
+                }else{
+                    $data_jurnal = $data_akun_aktif->getMannyJurnal;
+                }
                 foreach ($data_jurnal as $data_jurnal){
                     $total=0;
                     if($data_jurnal->debet_kredit == 0){
@@ -895,8 +898,8 @@ trait Transaksi
        return $data_return;
     }
 
-    public function formula_arus_sub_akun_kas($data_id, $status){
-        $data_sub = SA::where('id_m_sub_akun',$data_id)->first();
+    public function formula_arus_sub_akun_kas($data_id, $status,$array){
+        $data_sub = SA::where('id_m_sub_akun',$data_id)->where('id_perusahaan', $array['id_perusahaan'])->first();
         $id_sub_akun = $data_sub->id_akun_ukm; //sub_akun
         $akses_akun_aktif = $data_sub->id_sub_akun_aktif;
 
@@ -905,7 +908,12 @@ trait Transaksi
 
             $id_sub_sub_akun = $data_akun_aktif->id_subsub_akun;//sub_sub_akun
 
-            $data_jurnal = $data_akun_aktif->getMannyJurnal;
+
+            if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
+                $data_jurnal = $data_akun_aktif->getMannyJurnal->whereBetween('tgl_jurnal',[$array['tanggal_awal'],$array['tanggal_akhir'] ])->where('id_perusahaan', $array['id_perusahaan']);
+            }else{
+                $data_jurnal = $data_akun_aktif->getMannyJurnal;
+            }
             foreach ($data_jurnal as $data_jurnal){
                 $total=0;
                 if($data_jurnal->debet_kredit == 0){
@@ -929,8 +937,8 @@ trait Transaksi
         return $data_return;
     }
 
-    public function formula_arus_kas_sub_sub($data_id, $status){
-        $sub_sub = SSa::where('id_sub_sub_master_akun', $data_id)->first();
+    public function formula_arus_kas_sub_sub($data_id, $status,$array){
+        $sub_sub = SSa::where('id_sub_sub_master_akun', $data_id)->where('id_perusahaan', $array['id_perusahaan'])->first();
         $akun= $sub_sub->getSubAkun->id_akun_ukm;
         $sub_akun = $sub_sub->getSubAkun->id_m_sub_akun;
         $akses_akun_aktif = $sub_sub->getSubAkun->id_sub_akun_aktif->where('id_subsub_akun',$sub_sub->id);
@@ -939,7 +947,12 @@ trait Transaksi
 
             $id_sub_sub_akun = $data_akun_aktif->id_subsub_akun;//sub_sub_akun
 
-            $data_jurnal = $data_akun_aktif->getMannyJurnal;
+          ;
+            if(!empty($array['tanggal_awal']) && !empty($array['tanggal_akhir'])){
+                $data_jurnal = $data_akun_aktif->getMannyJurnal->whereBetween('tgl_jurnal',[$array['tanggal_awal'],$array['tanggal_akhir'] ])->where('id_perusahaan', $array['id_perusahaan']);
+            }else{
+                $data_jurnal = $data_akun_aktif->getMannyJurnal;
+            }
             foreach ($data_jurnal as $data_jurnal){
                 $total=0;
                 if($data_jurnal->debet_kredit == 0){

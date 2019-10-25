@@ -48,29 +48,46 @@
     <table id="customers">
         <thead>
         <tr>
-            <th>Kode Akun</th>
             <th>Keterangan</th>
-            <th>Debet</th>
-            <th>Kredit</th>
+            <th>Total</th>
         </tr>
         </thead>
         <tbody>
-        @php($total_debet=0)
-        @php($total_kredit=0)
-        @foreach($data as $data_neraca)
-            <tr>
-                <td>{{ $data_neraca['kode_akun'] }}</td>
-                <td>{{ $data_neraca['nm_akun'] }}</td>
-                <td>{{ number_format($data_neraca['debet'],2,',','.') }}</td>
-                <td>{{ number_format($data_neraca['kredit'],2,',','.') }}</td>
+        @php($total=0)
+        @foreach($data as $key=>$first_floor)
+            <tr style="background-color: lightgrey">
+                <td align="left">{{ $key }}</td>
+                <td></td>
             </tr>
-            @php($total_debet+=$data_neraca['debet'])
-            @php($total_kredit+=$data_neraca['kredit'])
+            @foreach($first_floor as $key2 => $second_floor)
+                @php($total_floor=0)
+                @if(!empty($second_floor['data']))
+                    <tr style="background-color: #b0d4f1">
+                        <td align="left">{{ str_replace('_',' ', $key2) }}</td>
+                        <td></td>
+                    </tr>
+                    @foreach($second_floor['data'] as $content)
+                        <tr>
+                            <td align="left">{{ $content[0] }}</td>
+                            <td>{{ number_format($content[2],2,',','.') }}</td>
+                            @php($total_floor+=$content[2])
+                        </tr>
+                    @endforeach
+                    <tr style="background-color: deepskyblue">
+                        <td align="left">Total {{ strtolower($key) }}</td>
+                        <td>{{ number_format($total_floor,2,',','.') }}</td>
+                        @php($total+=$total_floor)
+                    </tr>
+                @endif
+            @endforeach
         @endforeach
-        <tr>
-            <td colspan="2">Total</td>
-            <td>{{ number_format($total_debet,2,',','.') }}</td>
-            <td>{{ number_format($total_kredit,2,',','.') }}</td>
+        <tr style="background-color: lightgreen">
+            <td align="left">Kas Pada Awal Periode 1 januari 2019</td>
+            <td>{{ number_format($total,2,',','.') }}</td>
+        </tr>
+        <tr style="background-color: orange">
+            <td align="left">Kenaikan Kas Bersih</td>
+            <td>{{ number_format($total,2,',','.') }}</td>
         </tr>
         </tbody>
 
