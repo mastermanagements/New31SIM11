@@ -112,7 +112,7 @@
         @include('user.keuangan.section.laporan.perubahan_modal.js')
     @elseif(Session::get('menu-laporan-keuangan')=="neraca")
         @include('user.keuangan.section.laporan.neraca.js')
-    @elseif(Session::get('menu-laporan-keuangan')=="neraca_saldo")
+    @elseif(Session::get('menu-laporan-keuangan')=="arus-kas")
         @include('user.keuangan.section.laporan.arus_kas.js')
     @endif
 @stop
