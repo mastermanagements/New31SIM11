@@ -3,6 +3,12 @@
 use App\Model\Superadmin_ukm\U_menu_ukm as menu_ukm;
 use Illuminate\Routing\Router;
 
+Route::get('/','fronendController@index');
+
+Route::get('pelatihan','fronendController@pelatihan');
+
+Route::get('event','fronendController@event');
+
 Route::get('registerApp', function () {
     return view('user.superadmin_ukm.master.section.registered.registered');
 });
@@ -2141,7 +2147,6 @@ Route::get('arus-kas','keuangan\LaporanKeuangan@tampilan_arus_kas');
 Route::get('tampilan-arus-kas-api','keuangan\LaporanKeuangan@arus_kas');
 
 Route::get('tampilan-arus-kas-api/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_arus_kas');
-
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
