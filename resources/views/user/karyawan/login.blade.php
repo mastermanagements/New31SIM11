@@ -33,7 +33,7 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more" style="background-image: url('{{ asset('temp_karyawan_login/images/bg-01.jpg') }}');"></div>
+			<div class="login100-more" style="background-image: url('{{ asset('temp_karyawan_login/images/loginKaryawan.png') }}');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				<form action="{{ url('cek-karyawan') }}" method="post" class="login100-form validate-form">
