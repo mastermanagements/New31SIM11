@@ -114,18 +114,15 @@
                            </div>
                            <div class="form-group">
                                <label for="exampleInputEmail1">Alamat Ahli Waris</label>
-                               <textarea name="alamat_aw" class="form-control" placeholder="Nomor KTP" required></textarea>
+                               <textarea name="alamat_aw" class="form-control" placeholder="Alamat ahli waris" required></textarea>
                                <small style="color: red">* Tidak boleh kosong</small>
-                           </div>
-                           <div class="form-group">
-                               {{csrf_field()}}
-                               <input type="hidden" name="id_usaha" value="{{ $id_usaha }}">
-                               <button type="submit" class="btn btn-primary pull-right">Submit</button>
                            </div>
                        </div>
                    </div>
-                   <div class="box-footer">
-
+                    <div class="box-footer">
+                       {{csrf_field()}}
+                       <input type="hidden" name="id_usaha" value="{{ $id_usaha }}">
+                       <button type="submit" class="btn btn-primary pull-right">Submit</button>
                    </div>
                    </form>
                </div>

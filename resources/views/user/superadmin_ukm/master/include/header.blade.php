@@ -4,7 +4,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>MM</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Master</b> Manajemen</span>
+        <span class="logo-lg"><b>aturusaha.</b>com</span>
     </a>
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -116,18 +116,18 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{{ @asset('component/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+                        <img src="{{ @asset('component/dist/img/avatar.jpg') }}" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">Avatar</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{{ @asset('component/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                            <img src="{{ @asset('component/dist/img/avatar.jpg') }}" class="img-circle" alt="User Image">
 
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                Avatar
+                                <small>Aktif Sejak 21 Oktober 2019</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
