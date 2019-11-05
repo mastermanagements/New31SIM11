@@ -27,7 +27,7 @@ class LoginAndRegisterController extends Controller
                $req->session()->put('id_superadmin_ukm', $model->id);
                return redirect('dashboard')->with('message_success','Selamat datang '. $model->nama.' !!');
             }else{
-               return redirect('login-page')->with('message_fail','email atau password anda salah...!');
+               return redirect('/')->with('message_fail','email atau password anda salah...!');
            }
        }
     }
@@ -76,7 +76,7 @@ class LoginAndRegisterController extends Controller
     {
         Auth::logout();
         Session::flush();
-        return redirect('login-page');
+        return redirect('/');
     }
 
 

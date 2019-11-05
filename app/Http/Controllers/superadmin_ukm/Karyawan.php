@@ -139,7 +139,7 @@ class Karyawan extends Controller
             if ($file_ktp->move(public_path('fileKtp'), $name_file_ktp) && $cu_vitae->move(public_path('fileCv'), $name_file_cv) &&   $pas_foto->move(public_path('filePFoto'), $name_file_pfoto)) {
                 return redirect('pengguna-karyawan')->with('message_success','Berhasil menambah data karyawan');
             }else{
-                return redirect('daftarkan-karyawan/'. $id_usaha)->with('message_error','Gagal menyimpan data karyawann');
+                return redirect('daftarkan-karyawan/'. $id_usaha)->with('message_error','Gagal menyimpan data karyawan');
             }
             return redirect('pengguna-karyawan')->with('message_success','Berhasil mengubah Data Karyawan');
         }
