@@ -2044,6 +2044,8 @@ Route::get('data-keterangan-transaksi/{id}','keuangan\Penerimaan@data_keterangan
 
 Route::post('store-jurnal','keuangan\Penerimaan@store_jurnal_penerimaan');
 
+Route::post('delete-keterangan-transaksi','keuangan\Penerimaan@delete_keterangan_transaksi');
+
 //===================================================== Pengeluaran ===================================================
 
 Route::get('Pengeluaran','keuangan\Pengeluaran@index');
@@ -2062,6 +2064,7 @@ Route::get('data-keterangan-transaksi-pengeluaran/{id}','keuangan\Pengeluaran@da
 
 Route::post('store-jurnal-pengeluaran','keuangan\Pengeluaran@store_jurnal_pengeluaran');
 
+Route::post('delete-keterangan-transaksi-pengeluaran','keuangan\Pengeluaran@delete_keterangan_transaksi');
 
 Route::get('Laporan-keuangan','keuangan\LaporanKeuangan@index');
 

@@ -3,7 +3,8 @@
     var table_transaksi=$('.table_transaksi').DataTable({
         "ajax":"{{ url('data-pengeluaran') }}",
         column:[
-            {'data':'0'}
+            {'data':'0'},
+            {'data':'1'},
         ],
         {{--drawCallback: buttonBuild("{{ $thn_proses }}"),--}}
         filter: false,
@@ -50,6 +51,26 @@
             }
         })
     })
+
+    hapus = function(id){
+        if(confirm("Apakah anda akan menghapus data ini...?")){
+            //alert("data terhapus");
+            $.ajax({
+                url: "{{ url('delete-keterangan-transaksi-pengeluaran') }}",
+                type :"post",
+                data : {
+                    '_token': '{{ csrf_token() }}',
+                    'id': id
+                },
+                success:function (result) {
+                    alert(result.message);
+                }
+            })
+        }else{
+            alert("Peritah hapus dibatalkan");
+        }
+    }
+
 
     detail_keterangan = function (id) {
         $.ajax({

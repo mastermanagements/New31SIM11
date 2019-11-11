@@ -47,6 +47,7 @@ trait Transaksi
         foreach ($model as $value){
             $colum = array();
             $colum[]= "<a href='#' onclick='detail_keterangan(".$value->id.")'>".$value->nm_transaksi."</a>";
+            $colum[]= "<a href='#' onclick='hapus(".$value->id.")'>Hapus</a>";
             $colum[]= $value->id;
             $row[] = $colum;
         }
@@ -121,6 +122,29 @@ trait Transaksi
         }
         return array('data'=> $row,'keterangan'=> $model->nm_transaksi);
     }
+
+    public function hapus_data_keterangan($array){
+        $model = KetTransaksi::where('id', $array['id'])->where('id_perusahaan', $array['id_perusahaan'])->first();
+       // dd($model->hasOneAkun->count('id'));
+        if($model->hasOneAkun->count('id') > 0){
+            return [
+                'message'=>'Maaf, Data Keterangan ini tidak dapat dihapus. katerana data telah terpakai',
+                'status'=> 'true'
+            ];
+        }else{
+            return [
+                'message'=>'Data Telah terhapus',
+                'status'=> 'true'
+            ];
+//            if($model->delete()){
+//                return [
+//                    'message'=>'Data Telah terhapus',
+//                    'status'=> 'true'
+//                ];
+//            }
+        }
+    }
+
 
     public function daftarAkun($id_selected, $id_perusahaan)
     {

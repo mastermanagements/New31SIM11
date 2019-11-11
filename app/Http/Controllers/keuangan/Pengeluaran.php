@@ -112,4 +112,8 @@ class Pengeluaran extends Controller
         $data = $this->store_jurnal($req, $this->id_perusahaan, $this->id_karyawan);
         return redirect('Pengeluaran')->with('message_success',$data['message']);
     }
+
+    public function delete_keterangan_transaksi(Request $req){
+        return response()->json($this->hapus_data_keterangan(array('id'=> $req->id,'id_perusahaan'=> $this->id_perusahaan)));
+    }
 }
