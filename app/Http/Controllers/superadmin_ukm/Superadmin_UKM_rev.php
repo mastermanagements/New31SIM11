@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\superadmin_ukm;
 
+use Auth;
+use Hash;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
@@ -62,7 +64,7 @@ class Superadmin_UKM extends Controller
     public function updateProfile(Request $req, $id)
     {
         $this->validate($req, [
-            'foto'=>'required|image|mimes:jpeg,png,gif,jpg|max:2048',
+            'foto'=>'image|mimes:jpeg,png,gif,jpg|max:2048',
             'nama'=>'required',
             'email'=>'required',
             'id_provinsi'=>'required',
@@ -70,8 +72,80 @@ class Superadmin_UKM extends Controller
             'hp'=>'required',
             'wa'=>'required',
         ]);
-
-
+        //simpan value inputan yg diisi ke @ variabel untuk tabel superadmin_ukms
+       // $id = $req->id;
+        $nama = $req->nama;
+        $email= $req->email;
+		//simpan value inputan yg diisi ke @ variabel untuk tabel profil_user_ukm
+		$id_provinsi = $req->id_provinsi;
+        $id_kabupaten = $req->id_kabupaten;
+        $telp =  $req->telp;
+        $hp = $req->hp;
+        $wa = $req->wa;
+        $telegram = $req->telegram;
+		//temukan data di tabel superadmin_ukm yg id nya sama
+        $model_user_ukm = superadmin_ukms::find($id);
+		//dd($model_user_ukm);
+        //insert value req ke field tabel superadmin_ukms
+        $model_user_ukm->nama =$nama;
+        $model_user_ukm->email =$email;
+		
+        $model_profil_user_ukm = profil_user_ukm::where('id', $model_user_ukm->id)->first();
+		//dd($model_profil_user_ukm);
+		$model_profil_user_ukm->telp =$telp;
+		$model_profil_user_ukm->hp =$hp;
+		$model_profil_user_ukm->wa =$wa;
+		$model_profil_user_ukm->telegram =$telegram;
+		$model_profil_user_ukm->provinsi_id =$id_provinsi;
+		$model_profil_user_ukm->kab_id =$id_kabupaten;
+		//khusus foto
+		//cek jika tidak ada file foto yg mau di upload
+		 if(isset($_FILES['foto'])){
+				$foto 		= $req->file('foto');
+				$image_name = time().'.'.$foto->getClientOriginalName();
+				$foto->move(public_path('image_superadmin_ukm'), $image_name);
+				
+				//jika foto yg di upload sama dg yg sdh ada
+				if(file_exists(public_path($image_name = time().'.'.$foto->getClientOriginalName()))){
+					unlink(public_path($image_name));
+				}
+		//update foto di tabel
+		$model_profil_user_ukm->foto = $image_name;
+		} 
+		
+		if($req->file !=''){
+			$path = public_path().'/image_superadmin_ukm';
+			//remove old foto
+			if($model_profil_user_ukm->foto !='' && $model_profil_user_ukm->foto != null){
+				$file_old = $path.$model_profil_user_ukm->foto;
+				unlink($file_old);
+			}
+			$foto = $req->foto;
+			$image_name = $foto->getClientOriginalName();
+			$foto->move($path, $file_name);
+			
+			$model_profil_user_ukm->foto = $image_name;	
+		}
+		
+		if($model_user_ukm->save() AND $model_profil_user_ukm->save()){
+                    return redirect('pengaturan-perusahaan')->with('message_success','Profil anda berhasil diperbarui');
+                }else{
+                    return redirect('pengaturan-perusahaan')->with('message_error','Profil anda gagal di update');
+                }						
+    } 
+	
+	//alternatif
+	/*public function updateProfile(Request $req, $id)
+    {
+        $this->validate($req, [
+            'foto'=>'image|mimes:jpeg,png,gif,jpg|max:2048',
+            'nama'=>'required',
+            'email'=>'required',
+            'id_provinsi'=>'required',
+            'id_kabupaten'=>'required',
+            'hp'=>'required',
+            'wa'=>'required',
+        ]);
         $foto = $req->foto;
         $nama = $req->nama;
         $email= $req->email;
@@ -81,20 +155,16 @@ class Superadmin_UKM extends Controller
         $hp = $req->hp;
         $wa = $req->wa;
         $tegram = $req->telegram;
-
-        $image_name = time().'.'.$foto->getClientOriginalExtension();
+        
+		$image_name = time().'.'.$foto->getClientOriginalExtension();
+		
         $model_user_ukm = superadmin_ukms::find($id);
-        if(!empty($req->password))
-        {
-            $password = bcrypt($req->password);
-        }
-        else
-        {
-            $password = $model_user_ukm->password;
-        }
+		
+     
         $model_user_ukm->nama =$nama;
         $model_user_ukm->email =$email;
         $model_user_ukm->password =$password;
+		//dd($model_user_ukm);
         if($model_user_ukm->save())
         {
             $profil_user_ukm = profil_user_ukm::updateOrCreate([
@@ -108,7 +178,6 @@ class Superadmin_UKM extends Controller
                 'kab_id'=>$id_kabupaten,
                 'foto'=>$image_name
             ]);
-
             if($profil_user_ukm->save()){
                 if ($foto->move(public_path('image_superadmin_ukm'), $image_name)) {
                     return redirect('pengaturan-perusahaan')->with('message_success','Profil anda berhasil diperbarui');
@@ -117,10 +186,8 @@ class Superadmin_UKM extends Controller
                 }
             }
         }
-
         return redirect('editprofile')->with('message_error','Data tidak boleh kosong');
-
-    }
+    }*/
 
     public function getFavoriteData(){
         $data = [

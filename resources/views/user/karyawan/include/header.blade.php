@@ -4,7 +4,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>MM</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Master</b> Manajemen</span>
+        <span class="logo-lg"><b>aturusaha.</b>com</span>
     </a>
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">

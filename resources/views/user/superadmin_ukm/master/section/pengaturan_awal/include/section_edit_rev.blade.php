@@ -3,7 +3,7 @@
     <div class="box box-primary">
         <div class="box-body box-profile">
             <form action="{{ url('updateProfile/'.$data_user->id) }}" method="post" enctype="multipart/form-data">
-			
+				
             <img class="profile-user-img img-responsive img-circle" src="
                             @if(empty($profil_user_ukm->foto))
             {{ asset('image_superadmin_ukm/default.png') }}
@@ -12,7 +12,7 @@
             @endif
                     " alt="User profile picture">
 
-            <h3 class="profile-username text-center">Foto :<input class="form-control input-sm" type="file" name="foto" required></h3>
+            <h3 class="profile-username text-center">Foto :<input class="form-control input-sm" type="file" name="foto" id="foto"></h3>
             <h3 class="profile-username text-center"><input class="form-control input-sm" type="text" name="nama" value="{{ $data_user->nama }}" required>
             <small style="color:red;">* Tidak boleh kosong</small></h3>
 
@@ -21,11 +21,7 @@
             <ul class="list-group list-group-unbordered">
 
                 <li class="list-group-item">
-                    <a><input type="hidden" class="form-control input-sm" name="email" value="{{ $data_user->email }}" readonly></a>
-                </li>
-                <li class="list-group-item">
-                    <a><input type="password" class="form-control input-sm" name="password" placeholder="Password Baru"></a>
-                    <small style="color:red;">* Tidak boleh kosong</small>
+                    <a><input type="text" class="form-control input-sm" name="email" value="{{ $data_user->email }}" readonly></a>
                 </li>
                 <li class="list-group-item">
                         @if(empty($profil_user_ukm))
@@ -101,6 +97,7 @@
             @endif
                 {{ csrf_field() }}
                 <input hidden="hidden" name="_method" value="put">
+				<input type="text" class="form-control input-sm" name="id" value="{{ $data_user->id }}" readonly></a>
                 <button type="submit" class="btn btn-success btn-block"><i class="fa fa-pencil"></i> <b>Submit</b></button>
             </form>
         </div>
