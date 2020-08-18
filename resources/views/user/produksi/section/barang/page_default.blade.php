@@ -30,6 +30,7 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Daftar Barang </a></li>
+                        <li ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Koversi Satuan </a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -50,7 +51,6 @@
                                 </div>
                             </div>
                             <p></p>
-							
                             <div class="row">
                                 @if(empty($data_barang))
                                     <div class="col-md-12"> <h4 align="center">Anda belum menambahkan Barang </h4></div>
@@ -123,7 +123,27 @@
                                 @endif
                             </div>
                         </div>
-
+                        <div class="tab-pane " id="tab_2">
+                           <table id="example1" class="table table-bordered table-striped" style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <td>No</td>
+                                        <td>Barang</td>
+                                        <td>Konversi</td>
+                                    </tr>
+                                </thead>
+                               <tbody>
+                               @php($i=1)
+                               @foreach($data_barang as $data)
+                                   <tr>
+                                       <td>{{ $i++ }}</td>
+                                       <td>{{ $data->nm_barang }}</td>
+                                       <td><a href="{{ url('atur-konversi/'.$data->id) }}" class="btn btn-xs btn-danger">Atur Konversi</a> </td>
+                                   </tr>
+                               @endforeach
+                               </tbody>
+                           </table>
+                        </div>
                     </div>
                     <!-- /.tab-content -->
                 </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Produksi\Barang as barangs;
 use App\Model\Superadmin_sim\P_kategori_produk as kategori_produk;
+use App\Model\Produksi\SatuanBarang as Sb;
 
 class Barang extends Controller
 {
@@ -50,7 +51,8 @@ class Barang extends Controller
     public function create()
     {
         $data = [
-            'kategori_jasa'=> kategori_produk::all()
+            'kategori_jasa'=> kategori_produk::all(),
+            'satuan' => Sb::all()
         ];
         return view('user.produksi.section.barang.page_create', $data);
     }
@@ -63,13 +65,14 @@ class Barang extends Controller
      */
     public function store(Request $request)
     {
+
          $this->validate($request,[
             'id_kategori' => 'required',
             'nm_barang' => 'required',
             'spec_barang' => 'required',
             'desc_barang' => 'required',
             'stok_barang' => 'required',
-            'harga_jual' => 'required',
+            'hpp' => 'required',
         ]);
 
          $id_kategori = $request->id_kategori;
@@ -79,21 +82,32 @@ class Barang extends Controller
          $spec_barang= $request->spec_barang;
          $desc_barang= $request->desc_barang;
          $expired_date= date('Y-m-d', strtotime($request->expired_date));
-         $stok_barang= $request->stok_barang;
-         $diskon= $request->stok_barang;
-         $harga_jual= $request->harga_jual;
+         $stok_awal= $request->stok_awal;
+         $stok_minimum= $request->stok_minimum;
+         $harga_jual= $request->hpp;
+         $kd_barang = $request->kd_barang;
+         $barcode = $request->barcode;
+         $id_satuan = $request->id_satuan;
+         $no_rak = $request->no_rak;
+         $hpp = $request->hpp;
+
+
 
          $model =new barangs;
          $model->id_kategori_produk = $id_kategori;
          $model->id_subkategori_produk = $id_subkategori;
          $model->id_subsubkategori_produk= $id_subsubkategori;
+         $model->kd_barang= $kd_barang;
+         $model->barcode= $barcode;
          $model->nm_barang= $nm_barang;
+         $model->id_satuan= $id_satuan;
          $model->spec_barang= $spec_barang;
          $model->desc_barang= $desc_barang;
          $model->expired_date= $expired_date;
-         $model->stok_barang= $stok_barang;
-         $model->diskon= $diskon;
-         $model->harga_jual= $harga_jual;
+         $model->no_rak= $no_rak;
+         $model->stok_awal= $stok_awal;
+         $model->stok_minimum= $stok_minimum;
+         $model->hpp= $hpp;
          $model->id_perusahaan= $this->id_perusahaan;
          $model->id_karyawan= $this->id_karyawan;
 
@@ -128,7 +142,8 @@ class Barang extends Controller
 
         $data = [
             'kategori_jasa'=> kategori_produk::all(),
-            'data_barang' => $data_barang
+            'data_barang' => $data_barang,
+            'satuan' => Sb::all()
         ];
         return view('user.produksi.section.barang.page_edit', $data);
     }
@@ -158,21 +173,30 @@ class Barang extends Controller
         $spec_barang= $request->spec_barang;
         $desc_barang= $request->desc_barang;
         $expired_date= date('Y-m-d', strtotime($request->expired_date));
-        $stok_barang= $request->stok_barang;
-        $diskon= $request->stok_barang;
-        $harga_jual= $request->harga_jual;
+        $stok_awal= $request->stok_awal;
+        $stok_minimum= $request->stok_minimum;
+        $harga_jual= $request->hpp;
+        $kd_barang = $request->kd_barang;
+        $barcode = $request->barcode;
+        $id_satuan = $request->id_satuan;
+        $no_rak = $request->no_rak;
+        $hpp = $request->hpp;
 
         $model =barangs::find($id);
         $model->id_kategori_produk = $id_kategori;
         $model->id_subkategori_produk = $id_subkategori;
         $model->id_subsubkategori_produk= $id_subsubkategori;
+        $model->kd_barang= $kd_barang;
+        $model->barcode= $barcode;
         $model->nm_barang= $nm_barang;
+        $model->id_satuan= $id_satuan;
         $model->spec_barang= $spec_barang;
         $model->desc_barang= $desc_barang;
         $model->expired_date= $expired_date;
-        $model->stok_barang= $stok_barang;
-        $model->diskon= $diskon;
-        $model->harga_jual= $harga_jual;
+        $model->no_rak= $no_rak;
+        $model->stok_awal= $stok_awal;
+        $model->stok_minimum= $stok_minimum;
+        $model->hpp= $hpp;
         $model->id_perusahaan= $this->id_perusahaan;
         $model->id_karyawan= $this->id_karyawan;
 

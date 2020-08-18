@@ -670,6 +670,8 @@ Route::put('delete-barang/{id}','produksi\Barang@destroy');
 
 Route::post('cari-barang','produksi\Barang@show');
 
+//Route::get('atur-konversi/{id}');
+
 	//--- Supplier ---
 
 Route::get('Supplier','produksi\Supplier@index');
