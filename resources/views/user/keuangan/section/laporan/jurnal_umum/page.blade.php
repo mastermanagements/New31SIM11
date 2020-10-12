@@ -49,11 +49,26 @@
                                     <th>Kredit</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                            @if(!empty($data_jurnal))
+                                @foreach($data_jurnal as $data)
+                                    <tr>
+                                        <td>{{ $data['no_transaksi'] }}</td>
+                                        <td>{{ $data['tanggal'] }}</td>
+                                        <td>{{ $data['kode_akun'] }}</td>
+                                        <td>{{ $data['nama_akun'] }}</td>
+                                        <td>{{ $data['keterangan'] }}</td>
+                                        <td>{{ $data['debet'] }}</td>
+                                        <td>{{ $data['kredit'] }}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                            </tbody>
                             <tfoot>
                             <tr>
                                 <th colspan="5" style="text-align: center">Total</th>
-                                <th></th>
-                                <th></th>
+                                <th>{{ $total_debet }}</th>
+                                <th>{{ $total_kredit }}</th>
                             </tr>
                             </tfoot>
                         </table>

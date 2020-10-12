@@ -132,7 +132,6 @@ trait Transaksi
             if ($value->id == $id_selected){
                 $select= "selected";
             }
-
             $option.="<option value='".$value->id."' ".$select.">".$value->kode_akun_aktif.':'.$value->nm_akun_aktif."</option>";
         }
 
@@ -320,7 +319,7 @@ trait Transaksi
             }
             $total_debet+=$debet;
             $total_kredit+=$kredit;
-            $column[] = '<input type="hidden" name="id_jurnal[]" value="'.$data->id.'"> <input type="hidden" name="debet_kredit[]" value="'.$posisi_akun.'"> <input  type="text" class="form-control class_debit" name="jumlah_transaksi[]" id="debit" value='.$debet.' style="width: 100%" '.$posisi_debit.'>';
+            $column[] = '<input type="hidden"  name="id_jurnal[]" value="'.$data->id.'"> <input type="hidden" name="debet_kredit[]" value="'.$posisi_akun.'"> <input  type="text" class="form-control class_debit" name="jumlah_transaksi[]" id="debit" value='.$debet.' style="width: 100%" '.$posisi_debit.'>';
             $column[] = '<input type="text" class="form-control class_kredit" name="jumlah_transaksi[]" id="kredit" style="width: 100%" value='.$kredit.' '.$posisi_kredit.'>';
 
             $row[] = $column;

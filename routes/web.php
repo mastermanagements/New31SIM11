@@ -2084,7 +2084,7 @@ Route::get('data-keterangan-transaksi-pengeluaran/{id}','keuangan\Pengeluaran@da
 
 Route::post('store-jurnal-pengeluaran','keuangan\Pengeluaran@store_jurnal_pengeluaran');
 
-Route::get('Laporan-keuangan','keuangan\LaporanKeuangan@index');
+
 
 Route::get('Daftar-Jurnal','keuangan\DaftarJurnal@index');
 
@@ -2108,13 +2108,17 @@ Route::get('Jurnal-Penyesuaian','keuangan\JurnalPernyesuaian@index');
 
 Route::get('Laporan-jurnal','keuangan\LaporanKeuangan@dataJurnal');
 
-Route::post('tampilkan-jurnal-berdasarkan-tanggal','keuangan\LaporanKeuangan@dataBaseOnDate');
+Route::get('Laporan-keuangan','keuangan\report\JurnalUmum@index');
+
+Route::get('tampilan-cetak-jurnal-umum/{tgl_awal}/{tgl_akhir}','keuangan\report\JurnalUmum@print');
+//Route::get('tampilan-cetak-jurnal-umum/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_jurnal_umum');
+
+Route::post('tampilkan-jurnal-berdasarkan-tanggal','keuangan\report\JurnalUmum@preview');
 
 Route::post('cetak-jurnal-umum','keuangan\LaporanKeuangan@dataBaseOnDate');
 
-Route::get('tampilan-cetak-jurnal-umum/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_jurnal_umum');
-
-Route::get('buku-besar','keuangan\LaporanKeuangan@buku_besar');
+Route::get('buku-besar','keuangan\report\BukuBesar@index');
+//Route::get('buku-besar','keuangan\LaporanKeuangan@buku_besar');
 
 Route::get('data-buku-besar','keuangan\LaporanKeuangan@dataBukuBesars');
 

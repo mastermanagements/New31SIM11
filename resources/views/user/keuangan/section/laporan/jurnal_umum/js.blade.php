@@ -1,37 +1,26 @@
 <script>
+    $(document).ready(function () {
+        var example_rincian=$('#example_rincian').DataTable({
+            filter: false,
+            pagging : true,
+            searching: false,
+            info : true,
+            ordering : true,
+            processing : true,
+            retrieve: true
+        });
+    })
+
     var example_rincian=$('#example_rincian').DataTable({
-        "ajax":"{{ url('Laporan-jurnal') }}",
         "columns":[
             {'data':'no_transaksi'},
             {'data':'tanggal'},
             {'data':'kode_akun'},
-            {'data':'nm_akun'},
-            {'data':'nama_keterangan'},
+            {'data':'nama_akun'},
+            {'data':'keterangan'},
             {'data':'debet'},
             {'data':'kredit'},
         ],
-        {{--drawCallback: buttonBuild("{{ $thn_proses }}"),--}}
-        "footerCallback": function (row, data, start, end, display) {
-            var api = this.api(), data;
-
-            var intVal = function (i) {
-                return typeof i === 'string' ?
-                    i.replace(/[\$,]/g, '')*1:
-                    typeof i === 'number' ? i: 0;
-            }
-
-            total_debit = api.column(5).data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                },0)
-            total_kredit = api.column(6).data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                },0)
-
-            $(api.column(5).footer()).html(total_debit);
-            $(api.column(6).footer()).html(total_kredit);
-        },
         filter: false,
         pagging : true,
         searching: false,
@@ -40,6 +29,7 @@
         processing : true,
         retrieve: true
     });
+
 
     $('#tombol-tampilkan').click(function () {
         $.ajax({
@@ -52,7 +42,7 @@
             },
             success: function (result) {
                 example_rincian.clear().draw();
-                example_rincian.rows.add(result.data).draw();
+                example_rincian.rows.add(result.data_jurnal).draw();
             }
         })
     })
