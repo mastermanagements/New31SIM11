@@ -17,7 +17,7 @@ class JurnalUmum extends Controller
         $jurnal = data_jurnal_umum::data_jurnal_umum(null);
         $jurnal['judul']='Jurnal Umum';
         $jurnal['tahun_berjalan']=$this->costumDate();
-
+        Session::put('menu-laporan-keuangan','jurnal_umum');
 //        dd($jurnal);
         return view('user.keuangan.section.laporan.page_default', $jurnal);
     }

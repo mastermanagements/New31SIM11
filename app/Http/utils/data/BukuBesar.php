@@ -29,7 +29,7 @@ class BukuBesar
             $saldo = 0;
             foreach ($object as $item){
                 if($item['debet']!=0){
-//                    $saldo
+//                    Buat Dulu Table Posisi Saldo Supaya ngga terlalu jau carinya ke 3 table yang berbeda
                 }
             }
         }

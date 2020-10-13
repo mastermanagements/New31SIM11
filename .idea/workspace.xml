@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="- Barang Dan Investor">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/keuangan/report/BukuBesar.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/keuangan/report/JurnalUmum.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/utils/data/BukuBesar.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/utils/data/JurnalUmum.php" />
+    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/keuangan/new/2020_10_13_092356_k_posisi_saldo.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Traits/Transaksi.php" afterPath="$PROJECT_DIR$/app/Traits/Transaksi.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/buku_besar/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/buku_besar/page.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/jurnal_umum/js.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/jurnal_umum/js.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/jurnal_umum/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/jurnal_umum/page.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/jurnal_umum/print_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/jurnal_umum/print_page.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/page_default.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/keuangan/report/BukuBesar.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/keuangan/report/BukuBesar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/keuangan/report/JurnalUmum.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/keuangan/report/JurnalUmum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/utils/data/BukuBesar.php" afterPath="$PROJECT_DIR$/app/Http/utils/data/BukuBesar.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1426,8 +1419,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="2121" column="0" lean-forward="true" selection-start-line="2121" selection-start-column="0" selection-end-line="2121" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="2110" column="28" lean-forward="false" selection-start-line="2110" selection-start-column="13" selection-end-line="2110" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -1437,7 +1430,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/keuangan/report/BukuBesar.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="267">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <caret line="16" column="55" lean-forward="false" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
               <folding>
                 <element signature="e#56#84#0#PHP" expanded="true" />
               </folding>
@@ -1448,8 +1441,18 @@
       <file leaf-file-name="BukuBesar.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/utils/data/BukuBesar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+            <state relative-caret-position="318">
+              <caret line="31" column="106" lean-forward="false" selection-start-line="31" selection-start-column="106" selection-end-line="31" selection-end-column="106" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JurnalUmum.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/keuangan/report/JurnalUmum.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="19" column="53" lean-forward="false" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -1458,8 +1461,8 @@
       <file leaf-file-name="JurnalUmum.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/utils/data/JurnalUmum.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+            <state relative-caret-position="236">
+              <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
               <folding>
                 <element signature="e#125#155#0#PHP" expanded="true" />
               </folding>
@@ -1470,8 +1473,8 @@
       <file leaf-file-name="page_default.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/page_default.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1109">
-              <caret line="105" column="55" lean-forward="false" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
+            <state relative-caret-position="765">
+              <caret line="60" column="67" lean-forward="false" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -1480,7 +1483,7 @@
       <file leaf-file-name="page.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/buku_besar/page.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="884">
               <caret line="52" column="70" lean-forward="false" selection-start-line="52" selection-start-column="70" selection-end-line="52" selection-end-column="70" />
               <folding>
                 <marker date="1602472013136" expanded="false" signature="2939:2964" ph="..." />
@@ -1501,7 +1504,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nm_bank</find>
       <find>update-investor</find>
       <find>edit-daftar-investasi</find>
       <find>saham-real</find>
@@ -1531,6 +1533,7 @@
       <find>Laporan-keuangan</find>
       <find>tampilkan-jurnal-berdasarkan-tanggal</find>
       <find>buku-besar</find>
+      <find>aporan-keuangan</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1582,7 +1585,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Traits/DateYears.php" />
         <option value="$PROJECT_DIR$/app/Model/Keuangan/SubAkun.php" />
         <option value="$PROJECT_DIR$/app/Model/Keuangan/Akun.php" />
         <option value="$PROJECT_DIR$/database/migrations/keuangan/2019_10_14_191638_create_daftar_laba_rugi_ditahan_tahun_berajalan.php" />
@@ -1626,12 +1628,13 @@
         <option value="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/jurnal_umum/page.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/jurnal_umum/print_page.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/jurnal_umum/js.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/keuangan/report/JurnalUmum.php" />
         <option value="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/page_default.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/buku_besar/page.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/keuangan/report/BukuBesar.php" />
         <option value="$PROJECT_DIR$/app/Http/utils/data/JurnalUmum.php" />
+        <option value="$PROJECT_DIR$/database/migrations/keuangan/new/2020_10_13_092356_k_posisi_saldo.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/keuangan/report/JurnalUmum.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/keuangan/report/BukuBesar.php" />
         <option value="$PROJECT_DIR$/app/Http/utils/data/BukuBesar.php" />
       </list>
     </option>
@@ -1775,7 +1778,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1791,64 +1793,39 @@
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="keuangan" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="keuangan" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="keuangan" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laporan" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="keuangan" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laporan" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="buku_besar" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="report" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2172,14 +2149,9 @@
       <workItem from="1602118535257" duration="2890000" />
       <workItem from="1602133933930" duration="38000" />
       <workItem from="1602203890977" duration="3588000" />
-      <workItem from="1602462637715" duration="12348000" />
-    </task>
-    <task id="LOCAL-00102" summary="HRD&#10;   - Jabatan Karyawan&#10;Penggajian&#10;     - Interface Tunjangan Jadi&#10;     - Crud Tunjangan Gaji&#10;     - Interface Kelas Proyek&#10;     - Crud Kelas Proyek">
-      <created>1563870689858</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1563870689858</updated>
+      <workItem from="1602462637715" duration="12437000" />
+      <workItem from="1602480742602" duration="59000" />
+      <workItem from="1602549426120" duration="8644000" />
     </task>
     <task id="LOCAL-00103" summary="Penggajian&#10;     - Interface bonus gaji fix&#10;     - operasi crud bonus gaji">
       <created>1563954808220</created>
@@ -2517,11 +2489,18 @@
       <option name="project" value="LOCAL" />
       <updated>1597720642919</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="- Optimasi Laporan &#10;  -Jurnal Umum&#10;  -Buku Besar">
+      <created>1602476309514</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1602476309514</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1899587000" />
+    <option name="totallyTimeSpent" value="1908379000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2534,7 +2513,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="723" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2624811" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2700454" sideWeight="0.49445325" order="1" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2504259" sideWeight="0.5181543" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18078668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2599,7 +2578,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Investor&#10;                - Nisabah&#10;                - Besar nisbah fix" />
     <MESSAGE value="Investor&#10;  - Refisi Proses input besar dividen&#10;  + penambahan fitur&#10;    - Pencarian Berdasarkan tahun&#10;    - pencarian berdasarkan periode" />
     <MESSAGE value="Investor&#10;  - Nisabah Pelaksana Fix&#10;  - Nisbah Pemodal Fix" />
     <MESSAGE value="Investor&#10;  - Refini tampilan dividen investor" />
@@ -2624,7 +2602,8 @@
     <MESSAGE value="Keuangan&#10;  - Revisi Api Arus Kas. Penambahan Filter By Date" />
     <MESSAGE value="Frontend sudah terpasang" />
     <MESSAGE value="- Barang Dan Investor" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Barang Dan Investor" />
+    <MESSAGE value="- Optimasi Laporan &#10;  -Jurnal Umum&#10;  -Buku Besar" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Optimasi Laporan &#10;  -Jurnal Umum&#10;  -Buku Besar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2633,13 +2612,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/keuangan/DaftarJurnal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/keuangan/section/transaksi/penerimaan/page.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-966">
@@ -2873,7 +2845,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2881,7 +2852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2889,7 +2859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="35" column="91" lean-forward="false" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="91" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2897,7 +2866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="26" column="50" lean-forward="false" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2905,7 +2873,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2913,7 +2880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2921,7 +2887,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-221">
           <caret line="251" column="20" lean-forward="false" selection-start-line="251" selection-start-column="20" selection-end-line="251" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2929,7 +2894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="70" column="60" lean-forward="true" selection-start-line="69" selection-start-column="32" selection-end-line="70" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2937,6 +2901,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="61" column="20" lean-forward="true" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/jurnal_umum/js.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/buku_besar/page.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="70" lean-forward="false" selection-start-line="52" selection-start-column="70" selection-end-line="52" selection-end-column="70" />
+          <folding>
+            <marker date="1602472013136" expanded="false" signature="2939:2964" ph="..." />
+            <marker date="1602472013136" expanded="false" signature="4697:4726" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/keuangan/new/2020_10_13_092356_k_posisi_saldo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -2949,55 +2938,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/keuangan/report/JurnalUmum.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-124">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding>
-            <element signature="e#56#84#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/jurnal_umum/js.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="2121" column="0" lean-forward="true" selection-start-line="2121" selection-start-column="0" selection-end-line="2121" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="2110" column="28" lean-forward="false" selection-start-line="2110" selection-start-column="13" selection-end-line="2110" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1109">
-          <caret line="105" column="55" lean-forward="false" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
+        <state relative-caret-position="765">
+          <caret line="60" column="67" lean-forward="false" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="67" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/keuangan/section/laporan/buku_besar/page.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/keuangan/report/JurnalUmum.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="52" column="70" lean-forward="false" selection-start-line="52" selection-start-column="70" selection-end-line="52" selection-end-column="70" />
-          <folding>
-            <marker date="1602472013136" expanded="false" signature="2939:2964" ph="..." />
-            <marker date="1602472013136" expanded="false" signature="4697:4726" ph="..." />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="19" column="53" lean-forward="false" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/utils/data/JurnalUmum.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        <state relative-caret-position="236">
+          <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
           <folding>
             <element signature="e#125#155#0#PHP" expanded="true" />
           </folding>
@@ -3007,7 +2975,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/keuangan/report/BukuBesar.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <caret line="16" column="55" lean-forward="false" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
           <folding>
             <element signature="e#56#84#0#PHP" expanded="true" />
           </folding>
@@ -3016,8 +2984,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/utils/data/BukuBesar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        <state relative-caret-position="318">
+          <caret line="31" column="106" lean-forward="false" selection-start-line="31" selection-start-column="106" selection-end-line="31" selection-end-column="106" />
           <folding />
         </state>
       </provider>

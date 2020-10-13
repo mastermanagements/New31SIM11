@@ -16,8 +16,6 @@ class BukuBesar extends Controller
 
         $data_buku_besar = data_buku_besar::groupAkunBaseOnDataJurnal(null);
 
-
-
         Session::put('menu-laporan-keuangan','buku_besar');
         $data=[
             'judul'=> 'Buku Besar',
