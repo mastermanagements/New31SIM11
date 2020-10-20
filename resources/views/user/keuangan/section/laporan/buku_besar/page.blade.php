@@ -80,6 +80,29 @@
                                         {{--<td ></td>--}}
                                     {{--</tr>--}}
                               {{--@endforeach--}}
+                              @if(!empty($data_buku_besar))
+                                @foreach($data_buku_besar as $key=> $data)
+                                    <tr style="background-color: lawngreen; text-align: left; font-weight: bold">
+                                        <td colspan="6">{{ $akun->where('id',$key)->first()->nm_akun_aktif }}</td>
+                                    </tr>
+                                    @foreach($data as $sub_key => $sub_data)
+                                        <tr>
+                                            <td>{{ $sub_data['no_transaksi'] }}</td>
+                                            <td>{{ $sub_data['tanggal'] }}</td>
+                                            <td>{{ $sub_data['keterangan'] }}</td>
+                                            <td>{{ $sub_data['debet'] }}</td>
+                                            <td>{{ $sub_data['kredit'] }}</td>
+                                            <td>
+                                                @if($sub_data['saldo_debet']!=0)
+                                                    {{ abs($sub_data['saldo_debet']) }}
+                                                @else
+                                                    {{ abs($sub_data['saldo_kredit']) }}
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
+                              @endif
                             </tbody>
 
                         </table>

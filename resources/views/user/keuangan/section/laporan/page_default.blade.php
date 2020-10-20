@@ -62,8 +62,8 @@
                 @include('user.keuangan.section.laporan.jurnal_umum.page')
             @elseif(Session::get('menu-laporan-keuangan')=="buku_besar")
                 @include('user.keuangan.section.laporan.buku_besar.page')
-            {{--@elseif(Session::get('menu-laporan-keuangan')=="neraca-saldo")--}}
-                {{--@include('user.keuangan.section.laporan.neraca_saldo.page')--}}
+            @elseif(Session::get('menu-laporan-keuangan')=="neraca-saldo")
+                @include('user.keuangan.section.laporan.neraca_saldo.page')
             {{--@elseif(Session::get('menu-laporan-keuangan')=="laba-rugi")--}}
                 {{--@include('user.keuangan.section.laporan.laba_rugi.page')--}}
             {{--@elseif(Session::get('menu-laporan-keuangan')=="perubahan-modal")--}}

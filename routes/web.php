@@ -2124,7 +2124,8 @@ Route::get('data-buku-besar','keuangan\LaporanKeuangan@dataBukuBesars');
 
 Route::get('tampilan-cetak-buku-besar/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_buku_besar');
 
-Route::get('neraca-saldo','keuangan\LaporanKeuangan@neraca_saldo');
+//Route::get('neraca-saldo','keuangan\LaporanKeuangan@neraca_saldo');
+Route::get('neraca-saldo','keuangan\report\NeracaSaldo@index');
 
 Route::get('data-neraca-saldo','keuangan\LaporanKeuangan@dataNeracaSaldo');
 

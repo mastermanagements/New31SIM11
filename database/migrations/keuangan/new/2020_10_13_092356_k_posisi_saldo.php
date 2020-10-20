@@ -15,7 +15,10 @@ class KPosisiSaldo extends Migration
     {
         Schema::create('k_posisi_saldo', function (Blueprint $table) {
             $table->increments('id');
-            $table->
+            $table->integer('id_akun')->unsigned();
+            $table->integer('id_sub_akun')->unsigned();
+            $table->integer('id_sub_sub_akun')->unsigned();
+            $table->enum('posisi_saldo',['d','k'])->default('d');
             $table->timestamps();
         });
     }

@@ -12,6 +12,7 @@ use App\Http\utils\data\JurnalUmum;
 
 class BukuBesar
 {
+    public static $saldo;
 
     public static function groupAkunBaseOnDataJurnal($array){
         $junal_data = JurnalUmum::data_jurnal_umum(null);
@@ -21,19 +22,52 @@ class BukuBesar
                 $array_group[$data['id_akun']][] = $data;
             }
         }
-       self::countSaldo($array_group);
+       return self::countSaldo($array_group);
+    }
+
+
+    public static function filterSaldow($item){
+        if($item['posisi_saldo']=='D'){
+            if ($item['debet'] !=0){
+                self::$saldo+=$item['debet'];
+                $item['saldo_debet'] = self::$saldo;
+                $item['saldo_kredit'] = 0;
+            }
+            if ($item['kredit'] !=0){
+                self::$saldo-=$item['kredit'];
+                $item['saldo_debet'] = self::$saldo;
+                $item['saldo_kredit'] = 0;
+            }
+        }elseif($item['posisi_saldo']=='K'){
+            if ($item['debet'] !=0){
+                self::$saldo-=$item['debet'];
+                $item['saldo_debet'] = 0;
+                $item['saldo_kredit'] = self::$saldo;
+            }
+            if ($item['kredit'] !=0){
+                self::$saldo+=$item['kredit'];
+                $item['saldo_debet'] =0;
+                $item['saldo_kredit'] =self::$saldo;
+            }
+        }
+
+
+
+        return $item;
     }
 
     public static function countSaldo($data_group_jurnal){
+        $container=[];
+        ksort($data_group_jurnal);
         foreach ($data_group_jurnal as $key=> $object) {
-            $saldo = 0;
-            foreach ($object as $item){
-                if($item['debet']!=0){
-//                    Buat Dulu Table Posisi Saldo Supaya ngga terlalu jau carinya ke 3 table yang berbeda
-                }
+            self::$saldo=0;
+            $rebuil_array = [];
+            foreach ($object as $keys=>$item){
+                $rebuil_array[] = self::filterSaldow($item);
             }
+            $container[$key] = $rebuil_array;
         }
-        dd($data_group_jurnal);
+       return $container;
     }
 
 }
