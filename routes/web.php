@@ -2131,7 +2131,8 @@ Route::get('data-neraca-saldo','keuangan\LaporanKeuangan@dataNeracaSaldo');
 
 Route::get('tampilan-cetak-neraca-saldo/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_neraca_saldo');
 
-Route::get('Laba-rugi','keuangan\LaporanKeuangan@laba_rugi');
+//Route::get('Laba-rugi','keuangan\LaporanKeuangan@laba_rugi');
+Route::get('Laba-rugi','keuangan\report\LabaRugi@index');
 
 Route::get('data-Laba-rugi','keuangan\LaporanKeuangan@data_labaRugi');
 

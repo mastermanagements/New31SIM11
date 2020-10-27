@@ -46,6 +46,7 @@ class JurnalUmum
                 $column['debet'] = $nilai_debet;
                 $column['kredit'] = $nilai_kredit;
                 $column['id_akun'] = $data_jurnal->akun->id;
+                $column['id_akun_ukm'] = $data_jurnal->akun->sub_akun->id_akun_ukm;
                 $column['posisi_saldo'] = $data_jurnal->akun->posisi_saldo;
 
                 $total_sum_debet+=$nilai_debet;

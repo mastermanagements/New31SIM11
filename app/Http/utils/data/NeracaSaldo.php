@@ -15,13 +15,10 @@ class NeracaSaldo
     public static function neraca($array)
     {
         $data_buku_besar = BukuBesar::groupAkunBaseOnDataJurnal($array);
-
         $row=[];
         foreach ($data_buku_besar as $data){
-            $column = [];
-            $column[]=end($data);
-            $row[]=$column;
+            $row[]=end($data);
         }
-        return $row;
+       return $row;
     }
 }

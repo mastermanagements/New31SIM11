@@ -65,19 +65,19 @@
                                 @php($total_kredit=0)
                             @foreach($data as $data)
                                 <tr>
-                                    <th>{{ $data[0]['kode_akun'] }}</th>
-                                    <th>{{ $data[0]['nama_akun'] }}</th>
-                                    <th>{{ $data[0]['saldo_debet'] }}</th>
-                                    <th>{{ $data[0]['saldo_kredit'] }}</th>
+                                    <th>{{ $data['kode_akun'] }}</th>
+                                    <th>{{ $data['nama_akun'] }}</th>
+                                    <th>{{ $data['saldo_debet'] }}</th>
+                                    <th>{{ $data['saldo_kredit'] }}</th>
                                 </tr>
-                                @php($total_debet+=$data[0]['saldo_debet'])
-                                @php($total_kredit+=$data[0]['saldo_kredit'])
+                                @php($total_debet+=$data['saldo_debet'])
+                                @php($total_kredit+=$data['saldo_kredit'])
                             @endforeach
                             @endif
                             <tr>
                                 <td colspan="2">Total</td>
-                                <td>{{ $total_debet }}</td>
-                                <td>{{ $total_kredit }}</td>
+                                <th>{{ $total_debet }}</th>
+                                <th>{{ $total_kredit }}</th>
                             </tr>
                             </tbody>
                         </table>
