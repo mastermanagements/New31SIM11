@@ -2138,7 +2138,9 @@ Route::get('data-Laba-rugi','keuangan\LaporanKeuangan@data_labaRugi');
 
 Route::get('tampilan-cetak-laba-rugi/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_laba_rugi');
 
-Route::get('perubahan-modal','keuangan\LaporanKeuangan@perubahan_modal');
+//Route::get('perubahan-modal','keuangan\LaporanKeuangan@perubahan_modal');
+
+Route::get('perubahan-modal','keuangan\report\PerubahanModal@index');
 
 Route::get('data-perubahan-modal','keuangan\LaporanKeuangan@data_perubahan_modals');
 

@@ -2,28 +2,35 @@
 /**
  * Created by PhpStorm.
  * User: Fandiansyah
- * Date: 27/10/2020
- * Time: 9:42
+ * Date: 02/11/2020
+ * Time: 10:46
  */
 
 namespace App\Http\utils\data;
 use App\Http\utils\data\NeracaSaldo;
+use App\Http\utils\data\LabaRugi;
 
-class LabaRugi
+class PerubahanModal
 {
-
     public static $akun_focus =[
-        4=>['Pendapatan','K'],7=>['Pendapatan Lain','K'], 6=>['Biaya','D'],8=>['Biaya Lain','D']
+        3=>['Modal','K']
     ];
 
-    public static $total_laba_rugi=0;
-    protected static $data_laba;
 
-    public static function LabaRugi($array){
+
+    public static function data_perubahan_model($array){
+
+        LabaRugi::LabaRugi(null);
+        $total_laba_rugi = LabaRugi::hitungjumlah_laba();
         $data_neraca = NeracaSaldo::neraca($array);
         $group_data = self::group_array($data_neraca);
         $data_spesifik_key = self::getArrayWithSpesificKey($group_data);
-        self::$data_laba = $data_spesifik_key;
+        $data_spesifik_key['laba_rugi'] =[
+            'nama_akun'=> 'Laba Rugi',
+            'posisi_saldo'=> 'D',
+            'saldo_debet'=> $total_laba_rugi,
+            'saldo_kredit'=>0
+        ];
         return $data_spesifik_key;
     }
 
@@ -44,21 +51,5 @@ class LabaRugi
             }
         }
         return $new_container;
-    }
-
-    public static function hitungjumlah_laba(){
-        $data = self::$data_laba;
-        $total_laba=0;
-        foreach ($data as $data_akun){
-            foreach ($data_akun as $data_saldo){
-                if($data_saldo['posisi_saldo']=="K")
-                {
-                    $total_laba += $data_saldo['saldo_kredit'];
-                } else {
-                    $total_laba -= $data_saldo['saldo_debet'];
-                }
-            }
-        }
-        return $total_laba;
     }
 }
