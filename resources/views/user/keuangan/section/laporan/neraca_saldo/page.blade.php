@@ -67,11 +67,11 @@
                                 <tr>
                                     <th>{{ $data['kode_akun'] }}</th>
                                     <th>{{ $data['nama_akun'] }}</th>
-                                    <th>{{ $data['saldo_debet'] }}</th>
-                                    <th>{{ $data['saldo_kredit'] }}</th>
+                                    <th>{{ abs($data['saldo_debet']) }}</th>
+                                    <th>{{ abs($data['saldo_kredit']) }}</th>
                                 </tr>
-                                @php($total_debet+=$data['saldo_debet'])
-                                @php($total_kredit+=$data['saldo_kredit'])
+                                @php($total_debet+=abs($data['saldo_debet']))
+                                @php($total_kredit+=abs($data['saldo_kredit']))
                             @endforeach
                             @endif
                             <tr>

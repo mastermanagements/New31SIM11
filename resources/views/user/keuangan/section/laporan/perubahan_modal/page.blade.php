@@ -48,9 +48,9 @@
                                                 <td>{{ $daftar_akun['nama_akun'] }}</td>
                                                 <td>
                                                     @if($daftar_akun['posisi_saldo']=="D")
-                                                        @php($saldo_debet+=$daftar_akun['saldo_debet'])
+                                                        @php($saldo_debet+=abs($daftar_akun['saldo_debet']))
                                                     @else
-                                                        @php($saldo_kredit+=$daftar_akun['saldo_kredit'])
+                                                        @php($saldo_kredit+=abs($daftar_akun['saldo_kredit']))
                                                     @endif
                                                     {{ $daftar_akun['saldo_debet']+$daftar_akun['saldo_kredit'] }}
                                                 </td>

@@ -2146,7 +2146,8 @@ Route::get('data-perubahan-modal','keuangan\LaporanKeuangan@data_perubahan_modal
 
 Route::get('tampilan-cetak-perubahan-modal/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_perubahan_modal');
 
-Route::get('neraca','keuangan\LaporanKeuangan@neraca');
+//Route::get('neraca','keuangan\LaporanKeuangan@neraca');
+Route::get('neraca','keuangan\report\Neraca@index');
 
 Route::get('data-neraca','keuangan\LaporanKeuangan@data_neraca');
 

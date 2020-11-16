@@ -94,9 +94,9 @@
                                             <td>{{ $sub_data['kredit'] }}</td>
                                             <td>
                                                 @if($sub_data['saldo_debet']!=0)
-                                                    {{ abs($sub_data['saldo_debet']) }}
+                                                    {{ $sub_data['saldo_debet'] }}
                                                 @else
-                                                    {{ abs($sub_data['saldo_kredit']) }}
+                                                    {{ $sub_data['saldo_kredit'] }}
                                                 @endif
                                             </td>
                                         </tr>

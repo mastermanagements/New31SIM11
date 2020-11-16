@@ -25,34 +25,72 @@ class BukuBesar
        return self::countSaldo($array_group);
     }
 
-
+    #rule
     public static function filterSaldow($item){
+//        self::$saldo=0;
+        # Penentuan Saldo
         if($item['posisi_saldo']=='D'){
-            if ($item['debet'] !=0){
-                self::$saldo+=$item['debet'];
-                $item['saldo_debet'] = self::$saldo;
-                $item['saldo_kredit'] = 0;
+            #Bandingkan posisi saldo Debet dan posisi akun saldo
+            if($item['posisi_saldo'] == $item['posisi_akun_saldo']){
+                # Kalau posisi Saldo debet dan nilai uang debet !=0 maka saldo akan ditambah dengan nilai uang debet
+                if ($item['debet'] !=0){
+                    self::$saldo+=$item['debet'];
+                    $item['saldo_debet'] = self::$saldo;
+                    $item['saldo_kredit'] = 0;
+                }
+
+                # Kalau posisi Saldo debet dan nilai uang kredit !=0 maka saldo akan dikurang dengan nilai uang kredit
+                if ($item['kredit'] !=0){
+                    self::$saldo-=$item['kredit'];
+                    $item['saldo_debet'] = self::$saldo;
+                    $item['saldo_kredit'] = 0;
+                }
+            }else{
+                if ($item['debet'] !=0){
+                    self::$saldo-=$item['debet'];
+                    $item['saldo_debet'] = self::$saldo;
+                    $item['saldo_kredit'] = 0;
+                }
+
+                # Kalau posisi Saldo debet dan nilai uang kredit !=0 maka saldo akan dikurang dengan nilai uang kredit
+                if ($item['kredit'] !=0){
+                    self::$saldo+=$item['kredit'];
+                    $item['saldo_debet'] = self::$saldo;
+                    $item['saldo_kredit'] = 0;
+                }
             }
-            if ($item['kredit'] !=0){
-                self::$saldo-=$item['kredit'];
-                $item['saldo_debet'] = self::$saldo;
-                $item['saldo_kredit'] = 0;
-            }
-        }elseif($item['posisi_saldo']=='K'){
-            if ($item['debet'] !=0){
-                self::$saldo-=$item['debet'];
-                $item['saldo_debet'] = 0;
-                $item['saldo_kredit'] = self::$saldo;
-            }
-            if ($item['kredit'] !=0){
-                self::$saldo+=$item['kredit'];
-                $item['saldo_debet'] =0;
-                $item['saldo_kredit'] =self::$saldo;
+
+        }
+        elseif($item['posisi_saldo']=='K'){
+            #Bandingkan posisi saldo Kredit dan posisi akun saldo
+            if($item['posisi_saldo'] == $item['posisi_akun_saldo']) {
+                # Kalau posisi Saldo kredit dan nilai uang debet !=0 maka saldo akan dikurangi dengan nilai uang debet
+                if ($item['debet'] != 0) {
+                    self::$saldo -= $item['debet'];
+                    $item['saldo_debet'] = 0;
+                    $item['saldo_kredit'] = self::$saldo;
+                }
+                # Kalau posisi Saldo kredit dan nilai uang kredit !=0 maka saldo akan ditambah dengan nilai uang kredit
+                if ($item['kredit'] != 0) {
+                    self::$saldo += $item['kredit'];
+                    $item['saldo_debet'] = 0;
+                    $item['saldo_kredit'] = self::$saldo;
+                }
+            }else{
+                # Kalau posisi Saldo kredit dan nilai uang debet !=0 maka saldo akan dikurangi dengan nilai uang debet
+                if ($item['debet'] != 0) {
+                    self::$saldo += $item['debet'];
+                    $item['saldo_debet'] = 0;
+                    $item['saldo_kredit'] = self::$saldo;
+                }
+                # Kalau posisi Saldo kredit dan nilai uang kredit !=0 maka saldo akan ditambah dengan nilai uang kredit
+                if ($item['kredit'] != 0) {
+                    self::$saldo -= $item['kredit'];
+                    $item['saldo_debet'] = 0;
+                    $item['saldo_kredit'] = self::$saldo;
+                }
             }
         }
-
-
-
         return $item;
     }
 

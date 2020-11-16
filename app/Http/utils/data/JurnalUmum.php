@@ -20,9 +20,9 @@ class JurnalUmum
         try{
 
             if(!empty(self::$date_awal) && !empty(self::$date_akhir)){
-                $model_jurnal = Jurnal::whereBetween('tgl_jurnal',[self::$date_awal, self::$date_akhir])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+                $model_jurnal = Jurnal::whereBetween('tgl_jurnal',[self::$date_awal, self::$date_akhir])->whereIn('jenis_transaksi',['0','1'])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
             }else{
-                $model_jurnal = Jurnal::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+                $model_jurnal = Jurnal::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->whereIn('jenis_jurnal',[0,1]);
             }
             $row=array();
             $total_sum_debet =0;
@@ -47,8 +47,27 @@ class JurnalUmum
                 $column['kredit'] = $nilai_kredit;
                 $column['id_akun'] = $data_jurnal->akun->id;
                 $column['id_akun_ukm'] = $data_jurnal->akun->sub_akun->id_akun_ukm;
+
+                # Posisi saldo adalah gabungan posisi saldo dari akun, sub akun, sub sub akun.
                 $column['posisi_saldo'] = $data_jurnal->akun->posisi_saldo;
 
+                if(!empty($data_jurnal->akun->sub_akun->posisi_saldo)){
+                    $column['posisi_akun_saldo'] = $data_jurnal->akun->sub_akun->linktoakunUkm->posisi_saldo;
+                }else{
+                    $column['posisi_akun_saldo'] ='';
+                }
+
+                if(!empty($data_jurnal->akun->sub_akun->posisi_saldo)){
+                    $column['posisi_akun_sub_saldo'] = $data_jurnal->akun->sub_akun->posisi_saldo;
+                }else{
+                    $column['posisi_akun_sub_saldo'] ='';
+                }
+
+                if(!empty($data_jurnal->akun->sub_sub_akun->posisi_saldo)){
+                    $column['posisi_akun_sub_sub_saldo'] = $data_jurnal->akun->sub_sub_akun->posisi_saldo;
+                }else{
+                    $column['posisi_akun_sub_sub_saldo'] ='';
+                }
                 $total_sum_debet+=$nilai_debet;
                 $total_sum_kredit+=$nilai_kredit;
 
