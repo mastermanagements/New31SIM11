@@ -14,7 +14,7 @@ class NeracaSaldo extends Controller
 
     public function index(){
         $data_neraca = neraca_saldo::neraca(null);
-//        dd($data_neraca);
+    //    dd($data_neraca);
         Session::put('menu-laporan-keuangan','neraca-saldo');
         $data=[
             'judul'=> 'Neraca Saldo',

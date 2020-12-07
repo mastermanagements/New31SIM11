@@ -15,14 +15,22 @@ class JurnalUmum
     public static $date_awal;
     public static $date_akhir;
 
+    private static function sortFunction( $a, $b ) {
+        return strtotime($a["tanggal"]) - strtotime($b["tanggal"]);
+    }
+
     public static function data_jurnal_umum($array)
     {
         try{
 
             if(!empty(self::$date_awal) && !empty(self::$date_akhir)){
-                $model_jurnal = Jurnal::whereBetween('tgl_jurnal',[self::$date_awal, self::$date_akhir])->whereIn('jenis_transaksi',['0','1'])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+                $model_jurnal = Jurnal::whereBetween('tgl_jurnal',[self::$date_awal, self::$date_akhir])->whereIn('jenis_jurnal',['0','1'])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
             }else{
-                $model_jurnal = Jurnal::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->whereIn('jenis_jurnal',[0,1]);
+                if(!empty($array['thn_berjalan'])){
+                    $model_jurnal = Jurnal::whereYear('tgl_jurnal',$array['thn_berjalan'])->whereIn('jenis_jurnal',['0','1'])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+                }else{
+                    $model_jurnal = Jurnal::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->whereIn('jenis_jurnal',['0','1'])->get();
+                }
             }
             $row=array();
             $total_sum_debet =0;
@@ -65,15 +73,17 @@ class JurnalUmum
 
                 if(!empty($data_jurnal->akun->sub_sub_akun->posisi_saldo)){
                     $column['posisi_akun_sub_sub_saldo'] = $data_jurnal->akun->sub_sub_akun->posisi_saldo;
+                    $column['status_alur_kas'] = $data_jurnal->akun->status_alur_kas;
                 }else{
                     $column['posisi_akun_sub_sub_saldo'] ='';
+                    $column['status_alur_kas'] = 0;
                 }
                 $total_sum_debet+=$nilai_debet;
                 $total_sum_kredit+=$nilai_kredit;
 
                 $row[]=$column;
             }
-
+            usort($row,'self::sortFunction');
             return ['data_jurnal'=>$row, 'total_debet'=> number_format($total_sum_debet,2,',','.'), 'total_kredit'=> number_format($total_sum_kredit,2,',','.')];
         }catch (Throwable $e){
             return false;

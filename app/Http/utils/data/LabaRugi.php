@@ -12,12 +12,17 @@ use App\Http\utils\data\NeracaSaldo;
 class LabaRugi
 {
 
+    public static $total_laba_rugi=0;
+    protected static $data_laba;
+    public static $status_alurkas = false;
+
     public static $akun_focus =[
         4=>['Pendapatan','K'],7=>['Pendapatan Lain','K'], 6=>['Biaya','D'],8=>['Biaya Lain','D']
     ];
 
-    public static $total_laba_rugi=0;
-    protected static $data_laba;
+    private static function sortFunction( $a, $b ) {
+        return strtotime($a["tanggal"]) - strtotime($b["tanggal"]);
+    }
 
     public static function LabaRugi($array){
         $data_neraca = NeracaSaldo::neraca($array);
@@ -29,8 +34,15 @@ class LabaRugi
 
     private static function group_array($array){
         $result = array();
-        foreach ($array as $element) {
-            $result[$element['id_akun_ukm']][] = $element;
+        usort($array,'self::sortFunction');
+         foreach ($array as $element) {
+            if(self::$status_alurkas == false){
+                $result[$element['id_akun_ukm']][] = $element;
+            }else{
+                if($element['status_alur_kas'] == 1){
+                    $result[$element['id_akun_ukm']][] = $element;
+                }
+            }
         }
         return $result;
     }

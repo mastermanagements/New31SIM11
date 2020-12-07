@@ -15,7 +15,8 @@ class BukuBesar
     public static $saldo;
 
     public static function groupAkunBaseOnDataJurnal($array){
-        $junal_data = JurnalUmum::data_jurnal_umum(null);
+      
+        $junal_data = JurnalUmum::data_jurnal_umum($array);
         $array_group=[];
         if(!empty($junal_data['data_jurnal'])){
             foreach ($junal_data['data_jurnal'] as $key=>$data){

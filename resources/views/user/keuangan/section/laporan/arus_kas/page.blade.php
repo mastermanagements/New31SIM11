@@ -34,46 +34,15 @@
                             <thead>
                                 <tr>
                                     <th>Keterangan</th>
-                                    <th>Total</th>
+                                    <th>Desember 2019</th>
+                                    <th>Desember 2020</th>
+                                    <th>Net Change</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @php($total=0)
-                            @foreach($data as $key=>$first_floor)
-                                <tr style="background-color: lightgrey">
-                                    <td align="left">{{ $key }}</td>
-                                    <td></td>
-                                </tr>
-                                @foreach($first_floor as $key2 => $second_floor)
-                                    @php($total_floor=0)
-                                    @if(!empty($second_floor['data']))
-                                       <tr style="background-color: #b0d4f1">
-                                           <td align="left">{{ str_replace('_',' ', $key2) }}</td>
-                                           <td></td>
-                                       </tr>
-                                        @foreach($second_floor['data'] as $content)
-                                            <tr>
-                                                <td align="left">{{ $content[0] }}</td>
-                                                <td>{{ number_format($content[2],2,',','.') }}</td>
-                                                @php($total_floor+=$content[2])
-                                            </tr>
-                                        @endforeach
-                                       <tr style="background-color: deepskyblue">
-                                           <td align="left">Total {{ strtolower($key) }}</td>
-                                           <td>{{ number_format($total_floor,2,',','.') }}</td>
-                                           @php($total+=$total_floor)
-                                       </tr>
-                                   @endif
-                                @endforeach
+                            @foreach($data as $data)
+
                             @endforeach
-                            <tr style="background-color: lightgreen">
-                                <td align="left">Kas Pada Awal Periode 1 januari 2019</td>
-                                <td>{{ number_format($total,2,',','.') }}</td>
-                            </tr>
-                            <tr style="background-color: orange">
-                                <td align="left">Kenaikan Kas Bersih</td>
-                                <td>{{ number_format($total,2,',','.') }}</td>
-                            </tr>
                             </tbody>
 
                         </table>

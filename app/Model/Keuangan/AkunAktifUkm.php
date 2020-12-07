@@ -8,7 +8,7 @@ class AkunAktifUkm extends Model
 {
     //
     protected $table = "k_akun_aktif_ukm";
-
+    
     protected $fillable = [
         'id_sub_akun',
         'id_subsub_akun',
