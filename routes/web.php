@@ -26,7 +26,7 @@ Route::get('dashboard', function (){
     {
         return abort(404);
     } */
-    $data_perusahaan = App\Model\superadmin_ukm\U_usaha::all()->where('id_user_ukm',Session::get('id_superadmin_ukm'));
+    $data_perusahaan = App\Model\Superadmin_ukm\U_usaha::all()->where('id_user_ukm',Session::get('id_superadmin_ukm'));
     $data=[
         'data_perusahaan'=>$data_perusahaan
     ];
