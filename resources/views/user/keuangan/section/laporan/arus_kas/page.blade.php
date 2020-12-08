@@ -33,15 +33,25 @@
                         <table id="example_rincian" class="table table-bordered table-hover" style="width: 100%">
                             <thead>
                                 <tr>
+                                    <th>Akun</th>
                                     <th>Keterangan</th>
-                                    <th>Desember 2019</th>
-                                    <th>Desember 2020</th>
-                                    <th>Net Change</th>
+                                    <th>Sub Total</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($data as $data)
-
+                            @foreach($data as $key=>$data)
+                             @if($key !='total_laba_rugi')
+                                <tr>
+                                    <th colspan="3">{{  $akun[$key]['0'] }}</th>
+                                </tr>
+                                @foreach ($data as $item)
+                                    <tr>
+                                        <th>{{ $item['kode_akun'] }} - {{  $item['nama_akun'] }}</th>
+                                        <th>{{  $item['keterangan'] }}</th>
+                                        <th>{{  $item['sub_total'] }}</th>
+                                    </tr>
+                                @endforeach
+                             @endif
                             @endforeach
                             </tbody>
 

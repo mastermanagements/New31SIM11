@@ -20,6 +20,7 @@ class NeracaSaldo
         foreach ($data_buku_besar as $data){
             $row[]=end($data);
         }
+       dd($row);
        return $row;
     }
 }

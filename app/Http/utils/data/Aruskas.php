@@ -15,6 +15,9 @@ class Aruskas
         public static $akun =  [
             1=>['Aktiva','D'], 2=>['Hutang','K']
         ];
+
+        public static $total_saldo =0;
+
         public static function set_total_laba_rugi(){
             $default_akun = LabaRugi::$akun_focus;
             LabaRugi::LabaRugi($default_akun);
@@ -25,7 +28,6 @@ class Aruskas
         public static function DataArusKas($array)
         {
                 LabaRugi::$akun_focus=self::$akun;
-
                 LabaRugi::$status_alurkas = true;
 
                 $row = [];
@@ -47,7 +49,11 @@ class Aruskas
             foreach ($data as $key=> $data){
                 $extrat_data[$key] = self::change_index_to_kode_akun($data);
             }
-            return $extrat_data;
+
+
+            $ndata=self::filter_same_kode_akun($extrat_data);
+
+            return $ndata;
         }
 
         private static function change_index_to_kode_akun($array){
@@ -60,6 +66,47 @@ class Aruskas
                 }
             }
             return $new_array;
+        }
+
+        private static function filter_same_kode_akun($array){
+            $tahun_berjalan = self::$tahun_setting[1];
+            $row = [];
+            foreach($array[$tahun_berjalan] as $key=> $akun){
+                self::$total_saldo = 0;
+                foreach($akun as $nkey=> $item) {
+                    $column = [];
+                    $column['no_transaksi'] = $item['no_transaksi'];
+                    $column['kode_akun'] = $item['kode_akun'];
+                    $column['nama_akun'] = $item['nama_akun'];
+                    $column['keterangan'] = $item['keterangan'];
+                    # Cek kode akun yang berada pada data neraca ditahun sebelumnya
+                    if(!empty($array[self::$tahun_setting[0]][$key][$nkey])){
+                        $column['sub_total'] = self::subSaldo($array[self::$tahun_setting[0]][$key][$nkey])+self::subSaldo($item);
+                    }else{
+                        $column['sub_total'] = self::subSaldo($item);                       
+                    }
+                    $row[$key][$nkey] = $column;
+                }
+            }
+            return $row;
+        }
+
+        private static function subSaldo($item)
+        {
+            if($item['posisi_saldo'] == "D"){
+                if($item['posisi_akun_sub_saldo']=="D"){
+                    self::$total_saldo += $item['saldo_debet'];
+                }else{
+                    self::$total_saldo -= $item['saldo_kredit'];     
+                }                    
+            }else if($item['posisi_saldo'] == "K"){
+                if($item['posisi_akun_sub_saldo']=="K"){
+                    self::$total_saldo += $item['saldo_kredit'];
+                }else{
+                    self::$total_saldo -= $item['saldo_debet'];     
+                }
+            }
+            return self::$total_saldo;
         }
 
 }

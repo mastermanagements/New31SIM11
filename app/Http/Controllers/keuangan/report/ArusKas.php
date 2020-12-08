@@ -22,8 +22,9 @@ class ArusKas extends Controller
         $akun = DataAruskas::$akun;
         $data_arusakan = DataAruskas::compare_between_array();
         $data_arusakan['total_laba_rugi']= $total_laba_rugi;
-        dd($data_arusakan);
         Session::put('menu-laporan-keuangan', 'arus-kas');
+
+        // dd($data_arusakan);
         $data = [
             'id_perusahaan' => Session::get('id_perusahaan_karyawan'),
             'judul' => 'Arus Kas',
