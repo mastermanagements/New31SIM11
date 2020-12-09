@@ -2104,6 +2104,8 @@ Route::post('store-saldo-awal','keuangan\JurnalUmum@store_jurnal_awal');
 
 Route::get('Jurnal-Penyesuaian','keuangan\JurnalPernyesuaian@index');
 
+Route::post('tutup-buku','keuangan\TutupBuku@store');
+
 // =================================================== Laporan Keuangan ==============================================
 
 Route::get('Laporan-jurnal','keuangan\LaporanKeuangan@dataJurnal');

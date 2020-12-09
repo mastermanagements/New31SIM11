@@ -33,42 +33,53 @@
                         </div>
                     </div>
                 </div>
+            </form>
                 <hr>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="example_rincian" class="table table-bordered table-hover" style="width: 100%; text-align: left">
-                            <tbody>
-                                @if(!empty($data))
+                        <form action="{{ url('tutup-buku') }}" method="post">
+                            {{ csrf_field() }}
+                            <button style="margin:5px" type="submit" class="btn btn-primary" onclick="return confirm('Apakah anda akan tutup buku ...?')"> Tutup buku </button>
+                            <table id="example_rincian" class="table table-bordered table-hover" style="width: 100%; text-align: left">
+                                <tbody>
+                                    @if(!empty($data))
 
-                                @foreach($data as $key => $data_sort)
-                                    <tr style="background-color: greenyellow">
-                                        <td colspan="2">{{ $key }}</td>
-                                    </tr>
-                                    @if(!empty($data_sort['data']))
-                                        @foreach($data_sort['data'] as $data_akuns)
-                                            @foreach($data_akuns as $data_akun)
-                                                <tr>
-                                                    <td >{{ $data_akun['nama_akun'] }}</td>
-                                                    @if($data_akun['posisi_saldo']=='D')
-                                                        <td >{{ $data_akun['saldo_debet'] }}</td>
-                                                    @else
-                                                        <td >{{ $data_akun['saldo_kredit'] }}</td>
-                                                    @endif
-                                                </tr>
+                                    @foreach($data as $key => $data_sort)
+                                        <tr style="background-color: greenyellow">
+                                            <td colspan="2">{{ $key }}</td>
+                                        </tr>
+                                        @if(!empty($data_sort['data']))
+                                            @foreach($data_sort['data'] as  $key_account=> $data_akuns)
+                                                @foreach($data_akuns as $data_akun)
+                                                    <tr>
+                                                        <td>
+                                                            <input type="hidden" name="id_akun[]" value="{{ $key_account }}">
+                                                            <input type="hidden" name="id_aktif_ukm[]" value="{{ $data_akun['id_aktif_ukm'] }}">
+                                                            <input type="hidden" name="tgl_jurnal[]" value="{{ $data_akun['tgl_jurnal'] }}">
+                                                            <input type="hidden" name="debet_kredit[]" value="{{ $data_akun['debet_kredit'] }}">
+                                                            {{ $data_akun['nama_akun'] }}
+                                                        </td>
+                                                        @if($data_akun['posisi_saldo']=='D')
+                                                            <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_debet'] }}"> {{ $data_akun['saldo_debet'] }}</td>
+                                                        @else
+                                                            <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_kredit'] }}"> {{ $data_akun['saldo_kredit'] }}</td>
+                                                        @endif
+                                                    </tr>
+                                                @endforeach
                                             @endforeach
-                                        @endforeach
-                                            <tr style="background-color: lightblue">
-                                                <td>Total {{ $key }}</td>
-                                                <td>{{ $data_sort['total'] }}</td>
-                                            </tr>
+                                                <tr style="background-color: lightblue">
+                                                    <td>Total {{ $key }}</td>
+                                                    <td>{{ $data_sort['total'] }}</td>
+                                                </tr>
+                                        @endif
+                                    @endforeach
                                     @endif
-                                @endforeach
-                                @endif
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </form>
                     </div>
                 </div>
-            </form>
+
         </div>
         <!-- /.box-body -->
     </div>

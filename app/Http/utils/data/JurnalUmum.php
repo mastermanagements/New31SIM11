@@ -55,6 +55,9 @@ class JurnalUmum
                 $column['kredit'] = $nilai_kredit;
                 $column['id_akun'] = $data_jurnal->akun->id;
                 $column['id_akun_ukm'] = $data_jurnal->akun->sub_akun->id_akun_ukm;
+                $column['id_aktif_ukm'] = $data_jurnal->id_akun_aktif;
+                $column['tgl_jurnal'] = $data_jurnal->tgl_jurnal;
+                $column['debet_kredit'] = $data_jurnal->debet_kredit;
 
                 # Posisi saldo adalah gabungan posisi saldo dari akun, sub akun, sub sub akun.
                 $column['posisi_saldo'] = $data_jurnal->akun->posisi_saldo;
@@ -83,6 +86,7 @@ class JurnalUmum
 
                 $row[]=$column;
             }
+
             usort($row,'self::sortFunction');
             return ['data_jurnal'=>$row, 'total_debet'=> number_format($total_sum_debet,2,',','.'), 'total_kredit'=> number_format($total_sum_kredit,2,',','.')];
         }catch (Throwable $e){

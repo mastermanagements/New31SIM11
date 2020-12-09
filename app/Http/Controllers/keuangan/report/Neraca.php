@@ -15,6 +15,7 @@ class Neraca extends Controller
     public function index(){
         Session::put('menu-laporan-keuangan','neraca');
         $data_neraca = data_neraca::getAktivaPasiva(null);
+//        dd($data_neraca);
         $data= [
             'tahun_berjalan'=> $this->costumDate()->year,
             'jenis_jurnal'=> ['0','1'],

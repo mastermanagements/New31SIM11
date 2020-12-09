@@ -24,13 +24,12 @@ class Neraca
 
     public static function getAktivaPasiva(){
         $data_laba = self::data(null);
-
         $result = [];
         foreach (self::$array_aktiva_pasiva as $key=> $data){
             $total = 0;
           foreach ($data as $data_){
                 $total+=self::sumSubArray($data_laba[$data_]);
-                $result[$key]['data'][]=$data_laba[$data_];
+                $result[$key]['data'][$data_]=$data_laba[$data_];
           }
             $result[$key]['total']=$total;
         };
@@ -62,7 +61,11 @@ class Neraca
             }
         }
         $total_laba =self::getLabaRugi();
+        # Note bagaimana caranya agar id_aktif_ukm bisa dinama didapatkan jika data akun digunakan berbeda user
         $array_akun_laba_ditahan_ditahun_berjalan = [
+            'tgl_jurnal'=> '2020-12-31',
+            'id_aktif_ukm'=> 94,
+            'debet_kredit' =>1,
             'nama_akun'=> 'Laba di tahan Tahun Berjalan',
             'posisi_saldo'=> 'K',
             'posisi_akun_saldo'=> 'K',

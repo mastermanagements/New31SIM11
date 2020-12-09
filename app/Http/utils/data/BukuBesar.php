@@ -70,12 +70,18 @@ class BukuBesar
                     self::$saldo -= $item['debet'];
                     $item['saldo_debet'] = 0;
                     $item['saldo_kredit'] = self::$saldo;
+                }else{
+                    $item['saldo_debet'] = 0;
+                    $item['saldo_kredit'] = 0;
                 }
                 # Kalau posisi Saldo kredit dan nilai uang kredit !=0 maka saldo akan ditambah dengan nilai uang kredit
                 if ($item['kredit'] != 0) {
                     self::$saldo += $item['kredit'];
                     $item['saldo_debet'] = 0;
                     $item['saldo_kredit'] = self::$saldo;
+                }else{
+                    $item['saldo_debet'] = 0;
+                    $item['saldo_kredit'] = 0;
                 }
             }else{
                 # Kalau posisi Saldo kredit dan nilai uang debet !=0 maka saldo akan dikurangi dengan nilai uang debet
@@ -83,12 +89,18 @@ class BukuBesar
                     self::$saldo += $item['debet'];
                     $item['saldo_debet'] = 0;
                     $item['saldo_kredit'] = self::$saldo;
+                }else{
+                    $item['saldo_debet'] = 0;
+                    $item['saldo_kredit'] = 0;
                 }
                 # Kalau posisi Saldo kredit dan nilai uang kredit !=0 maka saldo akan ditambah dengan nilai uang kredit
                 if ($item['kredit'] != 0) {
                     self::$saldo -= $item['kredit'];
                     $item['saldo_debet'] = 0;
                     $item['saldo_kredit'] = self::$saldo;
+                }else{
+                    $item['saldo_debet'] = 0;
+                    $item['saldo_kredit'] = 0;
                 }
             }
         }
