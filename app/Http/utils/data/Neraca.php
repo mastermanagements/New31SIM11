@@ -9,7 +9,7 @@
 namespace App\Http\utils\data;
 use App\Http\utils\data\NeracaSaldo;
 use App\Http\utils\data\LabaRugi;
-
+use App\Http\utils\data\SettingTahunBuku;
 class Neraca
 {
 
@@ -22,8 +22,8 @@ class Neraca
         'Pasiva'=>[2,3]
     ];
 
-    public static function getAktivaPasiva(){
-        $data_laba = self::data(null);
+    public static function getAktivaPasiva($array){
+        $data_laba = self::data($array);
         $result = [];
         foreach (self::$array_aktiva_pasiva as $key=> $data){
             $total = 0;
@@ -51,7 +51,10 @@ class Neraca
     }
 
     public static function data($array){
-        $data = NeracaSaldo::neraca(null);
+
+        #testing dengan tahun
+
+        $data = NeracaSaldo::neraca($array);
 
         $result = array();
         # Group Berdasarkan Akun

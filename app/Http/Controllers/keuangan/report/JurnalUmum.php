@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Traits\Transaksi;
 use App\Http\utils\data\JurnalUmum as data_jurnal_umum;
+use App\Http\utils\data\SettingTahunBuku;
 use Session;
 class JurnalUmum extends Controller
 {
@@ -13,8 +14,8 @@ class JurnalUmum extends Controller
     use Transaksi;
 
     public function index(){
-
-        $jurnal = data_jurnal_umum::data_jurnal_umum(null);
+        $data_tahun = SettingTahunBuku::tahun_buku();
+        $jurnal = data_jurnal_umum::data_jurnal_umum($data_tahun);
         $jurnal['judul']='Jurnal Umum';
         $jurnal['tahun_berjalan']=$this->costumDate();
         Session::put('menu-laporan-keuangan','jurnal_umum');

@@ -7,14 +7,15 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Traits\Transaksi;
 use App\Http\utils\data\LabaRugi as laba;
+use App\Http\utils\data\SettingTahunBuku;
 class LabaRugi extends Controller
 {
     //
     use Transaksi;
 
     public function index(){
-
-        $data = laba::LabaRugi(null);
+        $data_tahun = SettingTahunBuku::tahun_buku();
+        $data = laba::LabaRugi($data_tahun);
         $akun = laba::$akun_focus;
         Session::put('menu-laporan-keuangan','laba-rugi');
         $data_pass= [

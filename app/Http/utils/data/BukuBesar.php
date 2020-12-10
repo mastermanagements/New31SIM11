@@ -9,13 +9,11 @@
 namespace App\Http\utils\data;
 use App\Http\utils\data\JurnalUmum;
 
-
 class BukuBesar
 {
     public static $saldo;
 
     public static function groupAkunBaseOnDataJurnal($array){
-      
         $junal_data = JurnalUmum::data_jurnal_umum($array);
         $array_group=[];
         if(!empty($junal_data['data_jurnal'])){

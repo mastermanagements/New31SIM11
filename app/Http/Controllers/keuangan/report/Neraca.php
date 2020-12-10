@@ -7,14 +7,15 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Traits\Transaksi;
 use App\Http\utils\data\Neraca as data_neraca;
-
+use App\Http\utils\data\SettingTahunBuku;
 class Neraca extends Controller
 {
     //
     use Transaksi;
     public function index(){
         Session::put('menu-laporan-keuangan','neraca');
-        $data_neraca = data_neraca::getAktivaPasiva(null);
+        $data_tahun = SettingTahunBuku::tahun_buku();
+        $data_neraca = data_neraca::getAktivaPasiva($data_tahun);
 //        dd($data_neraca);
         $data= [
             'tahun_berjalan'=> $this->costumDate()->year,

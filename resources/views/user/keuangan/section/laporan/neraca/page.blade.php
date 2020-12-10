@@ -39,7 +39,38 @@
                     <div class="col-md-12">
                         <form action="{{ url('tutup-buku') }}" method="post">
                             {{ csrf_field() }}
-                            <button style="margin:5px" type="submit" class="btn btn-primary" onclick="return confirm('Apakah anda akan tutup buku ...?')"> Tutup buku </button>
+                            @if(!empty(Session::get('message_error_tutup_buku')))
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-ban"></i>Info</h4>
+                                        {{ Session::get('message_error_tutup_buku') }}
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if(!empty(Session::get('message_success_tutup_buku')))
+                                <div class="col-md-12">
+                                    <div class="alert alert-info alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-info"></i> Info </h4>
+                                        {{ Session::get('message_error_tutup_buku') }}
+                                    </div>
+                                </div>
+                            @endif
+                            <div class="col-md-12 row">
+                                    <div class="col-md-2">
+                                        <label>Tahun</label>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <select name="thn_periode" class="form-control">
+                                            <option value="{{$tahun_berjalan}}">{{ $tahun_berjalan }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button style="margin:5px" type="submit" class="btn btn-primary" onclick="return confirm('Apakah anda akan tutup buku ...?')"> Tutup buku </button>
+                                    </div>
+                            </div>
                             <table id="example_rincian" class="table table-bordered table-hover" style="width: 100%; text-align: left">
                                 <tbody>
                                     @if(!empty($data))
