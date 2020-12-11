@@ -24,12 +24,12 @@ class JurnalUmum
         try{
 
             if(!empty(self::$date_awal) && !empty(self::$date_akhir)){
-                $model_jurnal = Jurnal::whereBetween('tgl_jurnal',[self::$date_awal, self::$date_akhir])->whereIn('jenis_jurnal',['0','1'])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+                $model_jurnal = Jurnal::whereBetween('tgl_jurnal',[self::$date_awal, self::$date_akhir])->whereIn('jenis_jurnal',['0','1','2'])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
             }else{
                 if(!empty($array['thn_berjalan'])){
-                    $model_jurnal = Jurnal::whereYear('tgl_jurnal',$array['thn_berjalan'])->whereIn('jenis_jurnal',['0','1'])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+                    $model_jurnal = Jurnal::whereYear('tgl_jurnal',$array['thn_berjalan'])->whereIn('jenis_jurnal',['0','1','2'])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
                 }else{
-                    $model_jurnal = Jurnal::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->whereIn('jenis_jurnal',['0','1'])->get();
+                    $model_jurnal = Jurnal::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->whereIn('jenis_jurnal',['0','1','2'])->get();
                 }
             }
             $row=array();
