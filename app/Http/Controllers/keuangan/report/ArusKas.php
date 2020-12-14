@@ -34,4 +34,23 @@ class ArusKas extends Controller
         ];
         return view('user.keuangan.section.laporan.page_default',$data);
     }
+
+    public function print()
+    {
+        $total_laba_rugi = DataAruskas::set_total_laba_rugi();
+        DataAruskas::DataArusKas(null);
+        $akun = DataAruskas::$akun;
+        $data_arusakan = DataAruskas::compare_between_array();
+        $data_arusakan['total_laba_rugi']= $total_laba_rugi;
+
+        // dd($data_arusakan);
+        $data = [
+            'id_perusahaan' => Session::get('id_perusahaan_karyawan'),
+            'judul' => 'Arus Kas',
+            'tahun_berjalan2' => $this->costumDate(),
+            'data' => $data_arusakan,
+            'akun'=> $akun
+        ];
+        return view('user.keuangan.section.laporan.arus_kas.print_page',$data);
+    }
 }

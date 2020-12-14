@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Halaman Cetak Laporan Buku Besar</title>
+    <title>Halaman Cetak Laporan Neraca</title>
     <style>
         #customers {
             font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -55,22 +55,24 @@
         </tr>
         </thead>
         <tbody>
-        @php($total_debet=0)
-        @php($total_kredit=0)
-        @foreach($data as $data_neraca)
-            <tr>
-                <td>{{ $data_neraca['kode_akun'] }}</td>
-                <td>{{ $data_neraca['nm_akun'] }}</td>
-                <td>{{ number_format($data_neraca['debet'],2,',','.') }}</td>
-                <td>{{ number_format($data_neraca['kredit'],2,',','.') }}</td>
-            </tr>
-            @php($total_debet+=$data_neraca['debet'])
-            @php($total_kredit+=$data_neraca['kredit'])
-        @endforeach
+        @if(!empty($data))
+            @php($total_debet=0)
+            @php($total_kredit=0)
+            @foreach($data as $data)
+                <tr style="background-color: white">
+                    <td>{{ $data['kode_akun'] }}</td>
+                    <td>{{ $data['nama_akun'] }}</td>
+                    <td>{{ number_format(abs($data['saldo_debet']),2,',','.') }}</td>
+                    <td>{{ number_format(abs($data['saldo_kredit']),2,',','.') }}</td>
+                </tr>
+                @php($total_debet+=abs($data['saldo_debet']))
+                @php($total_kredit+=abs($data['saldo_kredit']))
+            @endforeach
+        @endif
         <tr>
             <td colspan="2">Total</td>
-            <td>{{ number_format($total_debet,2,',','.') }}</td>
-            <td>{{ number_format($total_kredit,2,',','.') }}</td>
+            <th>{{ number_format($total_debet,2,',','.') }}</th>
+            <th>{{ number_format($total_kredit,2,',','.') }}</th>
         </tr>
         </tbody>
 

@@ -22,11 +22,11 @@
                             <small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>
                         </div>
                     </div>
-                    <div class="col-md-1" style="padding: 1px">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-success" id="tombol-tampilkan">Tampilkan</button>
-                        </div>
-                    </div>
+                    {{--<div class="col-md-1" style="padding: 1px">--}}
+                        {{--<div class="form-group">--}}
+                            {{--<button type="button" class="btn btn-success" id="tombol-tampilkan">Tampilkan</button>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     <div class="col-md-1" style="padding: 1px">
                         <div class="form-group">
                             <button type="button" class="btn btn-danger" id="tombol-print"><i class="fa fa-print"></i> Cetak</button>
@@ -52,7 +52,7 @@
                                                     @else
                                                         @php($saldo_kredit+=abs($daftar_akun['saldo_kredit']))
                                                     @endif
-                                                    {{ $daftar_akun['saldo_debet']+$daftar_akun['saldo_kredit'] }}
+                                                    {{ number_format($daftar_akun['saldo_debet']+$daftar_akun['saldo_kredit'],2,',','.') }}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -61,18 +61,18 @@
                                             <td>{{ $data_['nama_akun'] }}</td>
                                             <td>
                                                 @php($saldo_laba+=($data_['saldo_debet']+$data_['saldo_kredit']))
-                                                {{ ($data_['saldo_debet']+$data_['saldo_kredit']) }}
+                                                {{ number_format(($data_['saldo_debet']+$data_['saldo_kredit']),2,',','.') }}
                                             </td>
                                         </tr>
                                     @endif
                                 @endforeach
                                 <tr>
                                     <td>Penambahan Saldo</td>
-                                    <td>{{ $saldo_laba-$saldo_debet }}</td>
+                                    <td>{{ number_format($saldo_laba-$saldo_debet,2,',','.') }}</td>
                                 </tr>
                                 <tr>
                                     <td>Modal Akhir</td>
-                                    <td>{{ ($saldo_laba-$saldo_debet)+$saldo_kredit }}</td>
+                                    <td>{{ number_format(($saldo_laba-$saldo_debet)+$saldo_kredit,2,',','.') }}</td>
                                 </tr>
                             </tbody>
 

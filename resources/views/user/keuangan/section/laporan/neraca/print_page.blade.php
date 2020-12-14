@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Halaman Cetak Laporan Buku Besar</title>
+    <title>Halaman Cetak Laporan Neraca</title>
     <style>
         #customers {
             font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -47,101 +47,39 @@
 <body style="margin: 10px;padding: 20px">
     <table id="customers">
         <tbody>
-        @php($total_sub=0)
-        @php($total_aktiva=0)
-        @php($total_pasiva=0)
-        @foreach($data['aktiva'] as $data_laba_rugi)
-            @php($totals=0)
-            @php($total_subsed=0)
-            <tr align="left" style="background-color: lightgrey">
-                <td colspan= "2">{{ $data_laba_rugi['akun'] }}</td>
-            </tr>
+        @if(!empty($data))
 
-            @if(!empty($data_laba_rugi['sub_akun']))
-                @foreach($data_laba_rugi['sub_akun'] as $data_sub)
-                    <tr align="left" style="background-color: white">
-                        <td>{{ $data_sub['nm_sub_akun'] }}</td>
-                        <td>{{ number_format($data_sub['total'],2,',','.') }}
-                            @if($data_sub['sub_operasi']==1)
-                                @php($total_sub+=$data_sub['total'] )
-                            @else
-                                @php($total_sub-=$data_sub['total'] )
-                            @endif
-                        </td>
-                    </tr>
-                    @php($totals += $data_sub['total'])
-                    @if(!empty($data_sub['data_sub_akun_aktif']))
-                        @foreach($data_sub['data_sub_akun_aktif'] as $data_sub_sub)
-                            @if($data_sub_sub['status'] ==1)
-                                <tr align="left" style="background-color: white">
-                                    <td style="padding-left: 30px">{{ $data_sub_sub['nm_sub_sub_akun'] }}</td>
-                                    <td>{{ number_format($data_sub_sub['total_sub_sub'],2,',','.') }}</td>
-                                </tr>
-                            @endif
+            @foreach($data as $key => $data_sort)
+                <tr style="background-color: greenyellow">
+                    <td colspan="2">{{ $key }}</td>
+                </tr>
+                @if(!empty($data_sort['data']))
+                    @foreach($data_sort['data'] as  $key_account=> $data_akuns)
+                        @foreach($data_akuns as $data_akun)
+                            <tr>
+                                <td>
+                                    <input type="hidden" name="id_akun[]" value="{{ $key_account }}">
+                                    <input type="hidden" name="id_aktif_ukm[]" value="{{ $data_akun['id_aktif_ukm'] }}">
+                                    <input type="hidden" name="tgl_jurnal[]" value="{{ $data_akun['tgl_jurnal'] }}">
+                                    <input type="hidden" name="debet_kredit[]" value="{{ $data_akun['debet_kredit'] }}">
+                                    {{ $data_akun['nama_akun'] }}
+                                </td>
+                                @if($data_akun['posisi_saldo']=='D')
+                                    <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_debet'] }}"> {{ number_format($data_akun['saldo_debet'],2,',','.') }}</td>
+                                @else
+                                    <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_kredit'] }}"> {{ number_format($data_akun['saldo_kredit'],2,',','.') }}</td>
+                                @endif
+                            </tr>
                         @endforeach
-                    @endif
-
-                @endforeach
-            @endif
-            {{--@php($total_debet+=$data_neraca['debet'])--}}
-            {{--@php($total_kredit+=$data_neraca['kredit'])--}}
-            <tr align="left" style="background-color: white">
-                <td>Total</td>
-                <td>{{ number_format($totals,2,',','.') }} @php($total_aktiva +=$totals )</td>
-            </tr>
-        @endforeach
-        <tr style="background-color: #b0d4f1">
-            <td >Total Aktiva</td>
-            <td align="left">{{ number_format($total_aktiva,2,',','.') }}</td>
-        </tr>
-        @foreach($data['pasiva'] as $data_laba_rugi)
-            @php($totals=0)
-            @php($total_subsed=0)
-            <tr align="left" style="background-color: lightgrey">
-                <td colspan= "2">{{ $data_laba_rugi['akun'] }}</td>
-            </tr>
-
-            @if(!empty($data_laba_rugi['sub_akun']))
-                @foreach($data_laba_rugi['sub_akun'] as $data_sub)
-                    <tr align="left" style="background-color: white">
-                        <td>{{ $data_sub['nm_sub_akun'] }}</td>
-                        <td>{{ number_format($data_sub['total'],2,',','.') }}
-                            @if($data_sub['sub_operasi']==1)
-                                @php($total_sub+=$data_sub['total'] )
-                            @else
-                                @php($total_sub-=$data_sub['total'] )
-                            @endif
-                        </td>
+                    @endforeach
+                    <tr style="background-color: lightblue">
+                        <td>Total {{ $key }}</td>
+                        <td>{{ number_format($data_sort['total'],2,',','.') }}</td>
                     </tr>
-                    @php($totals += $data_sub['total'])
-                    @if(!empty($data_sub['data_sub_akun_aktif']))
-                        @foreach($data_sub['data_sub_akun_aktif'] as $data_sub_sub)
-                            @if($data_sub_sub['status'] ==1)
-                                <tr align="left" style="background-color: white">
-                                    <td style="padding-left: 30px">{{ $data_sub_sub['nm_sub_sub_akun'] }}</td>
-                                    <td>{{ number_format($data_sub_sub['total_sub_sub'],2,',','.') }}</td>
-                                </tr>
-                            @endif
-                        @endforeach
-                    @endif
-
-                @endforeach
-            @endif
-            {{--@php($total_debet+=$data_neraca['debet'])--}}
-            {{--@php($total_kredit+=$data_neraca['kredit'])--}}
-            <tr align="left" style="background-color: white">
-                <td>Total</td>
-                <td>{{ number_format($totals,2,',','.') }} @php($total_pasiva+=$totals)</td>
-            </tr>
-        @endforeach
-        <tr style="background-color: #b0d4f1">
-            <td >Total Pasiva</td>
-            <td align="left">{{ number_format($total_pasiva,2,',','.') }}</td>
-        </tr>
+                @endif
+            @endforeach
+        @endif
         </tbody>
-
-
-
     </table>
 </body>
 <script type="text/javascript">

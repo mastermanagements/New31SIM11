@@ -17,7 +17,6 @@ class NeracaSaldo extends Controller
     public function index(){
         $data_tahun = SettingTahunBuku::tahun_buku();
         $data_neraca = neraca_saldo::neraca($data_tahun);
-    //    dd($data_neraca);
         Session::put('menu-laporan-keuangan','neraca-saldo');
         $data=[
             'judul'=> 'Neraca Saldo',
@@ -28,5 +27,19 @@ class NeracaSaldo extends Controller
             'data'=>$data_neraca
         ];
         return view('user.keuangan.section.laporan.page_default', $data);
+    }
+
+    public function print($tgl_awal, $tgl_akhir){
+        $data_array = SettingTahunBuku::tahun_buku();
+        $data_array['tgl_awal'] = date('Y-m-d', strtotime($tgl_awal));
+        $data_array['tgl_akhir'] = date('Y-m-d', strtotime($tgl_akhir));
+        $data_neraca = neraca_saldo::neraca($data_array);
+        $data=[
+            'judul'=> 'Neraca Saldo',
+            'id_perusahaan'=> Session::get('id_perusahaan_karyawan'),
+            'jenis_jurnal'=> ['0','1'],
+            'data'=>$data_neraca
+        ];
+        return view('user.keuangan.section.laporan.neraca_saldo.print_page', $data);
     }
 }

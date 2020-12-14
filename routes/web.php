@@ -2124,21 +2124,23 @@ Route::get('buku-besar','keuangan\report\BukuBesar@index');
 
 Route::get('data-buku-besar','keuangan\LaporanKeuangan@dataBukuBesars');
 
-Route::get('tampilan-cetak-buku-besar/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_buku_besar');
+Route::get('tampilan-cetak-buku-besar/{tgl_awal}/{tgl_akhir}','keuangan\report\BukuBesar@preview');
+
+Route::get('print-buku-besar/{tgl_awal}/{tgl_akhir}','keuangan\report\BukuBesar@print');
 
 //Route::get('neraca-saldo','keuangan\LaporanKeuangan@neraca_saldo');
 Route::get('neraca-saldo','keuangan\report\NeracaSaldo@index');
 
 Route::get('data-neraca-saldo','keuangan\LaporanKeuangan@dataNeracaSaldo');
 
-Route::get('tampilan-cetak-neraca-saldo/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_neraca_saldo');
+Route::get('tampilan-cetak-neraca-saldo/{tgl_awal}/{tgl_akhir}','keuangan\report\NeracaSaldo@print');
 
 //Route::get('Laba-rugi','keuangan\LaporanKeuangan@laba_rugi');
 Route::get('Laba-rugi','keuangan\report\LabaRugi@index');
 
 Route::get('data-Laba-rugi','keuangan\LaporanKeuangan@data_labaRugi');
 
-Route::get('tampilan-cetak-laba-rugi/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_laba_rugi');
+Route::get('tampilan-cetak-laba-rugi/{tgl_awal}/{tgl_akhir}','keuangan\report\LabaRugi@print');
 
 //Route::get('perubahan-modal','keuangan\LaporanKeuangan@perubahan_modal');
 
@@ -2146,21 +2148,21 @@ Route::get('perubahan-modal','keuangan\report\PerubahanModal@index');
 
 Route::get('data-perubahan-modal','keuangan\LaporanKeuangan@data_perubahan_modals');
 
-Route::get('tampilan-cetak-perubahan-modal/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_perubahan_modal');
+Route::get('tampilan-cetak-perubahan-modal/{tgl_awal}/{tgl_akhir}','keuangan\report\PerubahanModal@print');
 
 //Route::get('neraca','keuangan\LaporanKeuangan@neraca');
 Route::get('neraca','keuangan\report\Neraca@index');
 
 Route::get('data-neraca','keuangan\LaporanKeuangan@data_neraca');
 
-Route::get('tampilan-cetak-neraca/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_neraca');
+Route::get('tampilan-cetak-neraca/{tgl_awal}/{tgl_akhir}','keuangan\report\Neraca@print');
 
 // Route::get('arus-kas','keuangan\LaporanKeuangan@tampilan_arus_kas');
 Route::get('arus-kas','keuangan\report\ArusKas@index');
 
 Route::get('tampilan-arus-kas-api','keuangan\LaporanKeuangan@arus_kas');
 
-Route::get('tampilan-arus-kas-api/{tgl_awal}/{tgl_akhir}','keuangan\LaporanKeuangan@cetak_arus_kas');
+Route::get('tampilan-arus-kas-api/{tgl_awal}/{tgl_akhir}','keuangan\report\ArusKas@print');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

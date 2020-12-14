@@ -22,11 +22,11 @@
                             <small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>
                         </div>
                     </div>
-                    <div class="col-md-1" style="padding: 1px">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-success" id="tombol-tampilkan">Tampilkan</button>
-                        </div>
-                    </div>
+                    {{--<div class="col-md-1" style="padding: 1px">--}}
+                        {{--<div class="form-group">--}}
+                            {{--<button type="button" class="btn btn-success" id="tombol-tampilkan">Tampilkan</button>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     <div class="col-md-1" style="padding: 1px">
                         <div class="form-group">
                             <button type="button" class="btn btn-danger" id="tombol-print"><i class="fa fa-print"></i> Cetak</button>
@@ -52,18 +52,18 @@
                                                 @if($data_group['posisi_saldo']=="K")
                                                     @php($total_sub+=$data_group['saldo_kredit'])
                                                     @php($total_laba += $data_group['saldo_kredit'])
-                                                    {{ $data_group['saldo_kredit'] }}
+                                                    {{ number_format($data_group['saldo_kredit'],2,',','.') }}
                                                 @else
                                                     @php($total_laba -= $data_group['saldo_debet'])
                                                     @php($total_sub+=$data_group['saldo_debet'])
-                                                    {{ $data_group['saldo_debet'] }}
+                                                    {{ number_format($data_group['saldo_debet'],2,',','.') }}
                                                 @endif
                                             </td>
                                           </tr>
                                        @endforeach
                                         <tr>
                                             <td>Total</td>
-                                            <td>{{ $total_sub }}</td>
+                                            <td>{{ number_format($total_sub,2,',','.') }}</td>
                                         </tr>
                                     @endif
                                 @endforeach
@@ -71,7 +71,7 @@
                             <tfoot>
                                 <tr>
                                    <td >Laba Rugi</td>
-                                   <td align="center">{{ $total_laba }}</td>
+                                   <td align="center">{{ number_format($total_laba,2,',','.') }}</td>
                                 </tr>
                             </tfoot>
                         </table>

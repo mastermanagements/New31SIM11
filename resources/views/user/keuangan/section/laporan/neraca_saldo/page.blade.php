@@ -67,8 +67,8 @@
                                 <tr>
                                     <th>{{ $data['kode_akun'] }}</th>
                                     <th>{{ $data['nama_akun'] }}</th>
-                                    <th>{{ abs($data['saldo_debet']) }}</th>
-                                    <th>{{ abs($data['saldo_kredit']) }}</th>
+                                    <th>{{ number_format(abs($data['saldo_debet']),2,',','.') }}</th>
+                                    <th>{{ number_format(abs($data['saldo_kredit']),2,',','.') }}</th>
                                 </tr>
                                 @php($total_debet+=abs($data['saldo_debet']))
                                 @php($total_kredit+=abs($data['saldo_kredit']))
@@ -76,8 +76,8 @@
                             @endif
                             <tr>
                                 <td colspan="2">Total</td>
-                                <th>{{ $total_debet }}</th>
-                                <th>{{ $total_kredit }}</th>
+                                <th>{{ number_format($total_debet,2,',','.') }}</th>
+                                <th>{{ number_format($total_kredit,2,',','.') }}</th>
                             </tr>
                             </tbody>
                         </table>

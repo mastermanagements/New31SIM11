@@ -7,31 +7,27 @@
         <div class="box-body text-center">
             <form action="#" id="setting_tanggal">
                 <div class="row" style="padding: 11px">
-                    <div class="col-md-3" style="padding: 1px">
-                        <div class="form-group">
-                            <input type="text" class="form-control " id="datepicker" placeholder="Tanggal Awal" name="tgl_awal"  value="{{ date('d-m-Y', strtotime($tahun_berjalan2->first_date->toDateString())) }}" required>
-                            <small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>
-                        </div>
-                    </div>
-                    <div class="col-md-1" style="padding: 0px; margin: 0px">
-                        <label>s/d</label>
-                    </div>
-                    <div class="col-md-3" style="padding: 1px">
-                        <div class="form-group">
-                            <input type="text" class="form-control " id="datepicker1" placeholder="Tanggal Akhir" name="tgl_akhir" value="{{ date('d-m-Y', strtotime($tahun_berjalan2->last_date->toDateString())) }}"  required>
-                            <small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>
-                        </div>
-                    </div>
-                    <div class="col-md-1" style="padding: 1px">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-success" id="tombol-tampilkan">Tampilkan</button>
-                        </div>
-                    </div>
-                    <div class="col-md-1" style="padding: 1px">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-danger" id="tombol-print"><i class="fa fa-print"></i> Cetak</button>
-                        </div>
-                    </div>
+                    {{--<div class="col-md-3" style="padding: 1px">--}}
+                        {{--<div class="form-group">--}}
+                            {{--<input type="text" class="form-control " id="datepicker" placeholder="Tanggal Awal" name="tgl_awal"  value="{{ date('d-m-Y', strtotime($tahun_berjalan2->first_date->toDateString())) }}" required>--}}
+                            {{--<small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-1" style="padding: 0px; margin: 0px">--}}
+                        {{--<label>s/d</label>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-3" style="padding: 1px">--}}
+                        {{--<div class="form-group">--}}
+                            {{--<input type="text" class="form-control " id="datepicker1" placeholder="Tanggal Akhir" name="tgl_akhir" value="{{ date('d-m-Y', strtotime($tahun_berjalan2->last_date->toDateString())) }}"  required>--}}
+                            {{--<small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-1" style="padding: 1px">--}}
+                        {{--<div class="form-group">--}}
+                            {{--<button type="button" class="btn btn-success" id="tombol-tampilkan">Tampilkan</button>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
                 </div>
             </form>
                 <hr>
@@ -67,10 +63,12 @@
                                             <option value="{{$tahun_berjalan}}">{{ $tahun_berjalan }}</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <button style="margin:5px" type="submit" class="btn btn-primary" onclick="return confirm('Apakah anda akan tutup buku ...?')"> Tutup buku </button>
+                                        <button type="button" class="btn btn-danger" id="tombol-print"> Cetak</button>
                                     </div>
                             </div>
+
                             <table id="example_rincian" class="table table-bordered table-hover" style="width: 100%; text-align: left">
                                 <tbody>
                                     @if(!empty($data))
@@ -91,16 +89,16 @@
                                                             {{ $data_akun['nama_akun'] }}
                                                         </td>
                                                         @if($data_akun['posisi_saldo']=='D')
-                                                            <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_debet'] }}"> {{ $data_akun['saldo_debet'] }}</td>
+                                                            <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_debet'] }}"> {{ number_format($data_akun['saldo_debet'],2,',','.') }}</td>
                                                         @else
-                                                            <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_kredit'] }}"> {{ $data_akun['saldo_kredit'] }}</td>
+                                                            <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_kredit'] }}"> {{ number_format($data_akun['saldo_kredit'],2,',','.') }}</td>
                                                         @endif
                                                     </tr>
                                                 @endforeach
                                             @endforeach
                                                 <tr style="background-color: lightblue">
                                                     <td>Total {{ $key }}</td>
-                                                    <td>{{ $data_sort['total'] }}</td>
+                                                    <td>{{ number_format($data_sort['total'],2,',','.') }}</td>
                                                 </tr>
                                         @endif
                                     @endforeach

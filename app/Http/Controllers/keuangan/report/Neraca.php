@@ -27,4 +27,19 @@ class Neraca extends Controller
 
         return view('user.keuangan.section.laporan.page_default', $data);
     }
+
+    public function print($tgl_awal, $tgl_akhir){
+        $data_array = SettingTahunBuku::tahun_buku();
+        $data_neraca = data_neraca::getAktivaPasiva($data_array);
+//        dd($data_neraca);
+        $data= [
+            'tahun_berjalan'=> $this->costumDate()->year,
+            'jenis_jurnal'=> ['0','1'],
+            'judul'=> 'Neraca',
+            'tahun_berjalan2'=> $this->costumDate(),
+            'data'=> $data_neraca
+        ];
+
+        return view('user.keuangan.section.laporan.neraca.print_page', $data);
+    }
 }

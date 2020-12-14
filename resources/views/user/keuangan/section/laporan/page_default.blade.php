@@ -100,19 +100,17 @@
     </script>
     @if(Session::get('menu-laporan-keuangan')=="jurnal_umum")
         @include('user.keuangan.section.laporan.jurnal_umum.js')
-    {{--@elseif(Session::get('menu-laporan-keuangan')=="buku_besar")--}}
-        {{--@include('user.keuangan.section.laporan.buku_besar.js')--}}
-    {{--@elseif(Session::get('menu-laporan-keuangan')=="neraca-saldo")--}}
-        {{--@include('user.keuangan.section.laporan.neraca_saldo.js')--}}
-    {{--@elseif(Session::get('menu-laporan-keuangan')=="neraca-saldo")--}}
-        {{--@include('user.keuangan.section.laporan.buku_besar.js')--}}
-    {{--@elseif(Session::get('menu-laporan-keuangan')=="laba-rugi")--}}
-        {{--@include('user.keuangan.section.laporan.laba_rugi.js')--}}
-    {{--@elseif(Session::get('menu-laporan-keuangan')=="perubahan-modal")--}}
-        {{--@include('user.keuangan.section.laporan.perubahan_modal.js')--}}
-    {{--@elseif(Session::get('menu-laporan-keuangan')=="neraca")--}}
-        {{--@include('user.keuangan.section.laporan.neraca.js')--}}
-    {{--@elseif(Session::get('menu-laporan-keuangan')=="arus-kas")--}}
-        {{--@include('user.keuangan.section.laporan.arus_kas.js')--}}
+    @elseif(Session::get('menu-laporan-keuangan')=="buku_besar")
+        @include('user.keuangan.section.laporan.buku_besar.js')
+    @elseif(Session::get('menu-laporan-keuangan')=="neraca-saldo")
+        @include('user.keuangan.section.laporan.neraca_saldo.js')
+    @elseif(Session::get('menu-laporan-keuangan')=="laba-rugi")
+        @include('user.keuangan.section.laporan.laba_rugi.js')
+    @elseif(Session::get('menu-laporan-keuangan')=="perubahan-modal")
+        @include('user.keuangan.section.laporan.perubahan_modal.js')
+    @elseif(Session::get('menu-laporan-keuangan')=="neraca")
+        @include('user.keuangan.section.laporan.neraca.js')
+    @elseif(Session::get('menu-laporan-keuangan')=="arus-kas")
+        @include('user.keuangan.section.laporan.arus_kas.js')
     @endif
 @stop

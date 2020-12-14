@@ -25,6 +25,8 @@ class JurnalUmum
 
             if(!empty(self::$date_awal) && !empty(self::$date_akhir)){
                 $model_jurnal = Jurnal::whereBetween('tgl_jurnal',[self::$date_awal, self::$date_akhir])->whereIn('jenis_jurnal',['0','1','2'])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+            }else if(!empty($array['tgl_awal']) && !empty($array['tgl_akhir'])){
+                $model_jurnal = Jurnal::whereBetween('tgl_jurnal', [$array['tgl_awal'], $array['tgl_akhir']])->whereIn('jenis_jurnal',['0','1','2'])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
             }else{
                 if(!empty($array['thn_berjalan'])){
                     $model_jurnal = Jurnal::whereYear('tgl_jurnal',$array['thn_berjalan'])->whereIn('jenis_jurnal',['0','1','2'])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
