@@ -9,7 +9,7 @@ use App\Http\utils\data\LabaRugi;
 class Aruskas
 {
 
-        private static $tahun_setting = ['2019', '2020'];
+        public static $tahun_setting = ['2019', '2020'];
         public static $data_arus_kas;
         public static $total_laba_rugi = [];
         public static $akun =  [

@@ -2164,6 +2164,10 @@ Route::get('tampilan-arus-kas-api','keuangan\LaporanKeuangan@arus_kas');
 
 Route::get('tampilan-arus-kas-api/{tgl_awal}/{tgl_akhir}','keuangan\report\ArusKas@print');
 
+Route::resource('tahun-buku','keuangan\TahunBuku');
+Route::post('tahun-buku/{id}/delete','keuangan\TahunBuku@delete');
+Route::post('ubah-status-tahun-buku/{id}','keuangan\TahunBuku@ubah_status');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Http\utils\data\Aruskas as DataAruskas;
 use App\Traits\DateYears;
+use App\Model\Keuangan\TahunBuku;
 
 class ArusKas extends Controller
 {
@@ -18,6 +19,17 @@ class ArusKas extends Controller
     public function index()
     {
         $total_laba_rugi = DataAruskas::set_total_laba_rugi();
+
+        $thn_buku = TahunBuku::where('status','1')->first();
+        if(!empty($thn_buku)){
+            $tahun_berjalan = $thn_buku->thn_buku;
+            $tahun_lalu = $tahun_berjalan-1;
+        }else{
+            $tahun_berjalan = date('Y');
+            $tahun_lalu = $tahun_berjalan-1;
+        }
+
+        DataAruskas::$tahun_setting=[$tahun_lalu,$tahun_berjalan];
         DataAruskas::DataArusKas(null);
         $akun = DataAruskas::$akun;
         $data_arusakan = DataAruskas::compare_between_array();
@@ -38,6 +50,18 @@ class ArusKas extends Controller
     public function print()
     {
         $total_laba_rugi = DataAruskas::set_total_laba_rugi();
+
+        $thn_buku = TahunBuku::where('status','1')->first();
+        if(!empty($thn_buku)){
+            $tahun_berjalan = $thn_buku->thn_buku;
+            $tahun_lalu = $tahun_berjalan-1;
+        }else{
+            $tahun_berjalan = date('Y');
+            $tahun_lalu = $tahun_berjalan-1;
+        }
+
+        DataAruskas::$tahun_setting=[$tahun_lalu,$tahun_berjalan];
+
         DataAruskas::DataArusKas(null);
         $akun = DataAruskas::$akun;
         $data_arusakan = DataAruskas::compare_between_array();
