@@ -30,9 +30,6 @@ trait AturanDK
     );
 
 
-
-
-
     public function rules($id_akun=0, $id_sub_akun=0, $id_sub_sub_akun=0,$statusDK,$jDebit, $jKredit, $saldo){
         $model_sub_akun = SA::where('id_akun_ukm',$id_akun)->first();
         $model_sub_akun2 = SA::where('id_m_sub_akun',$id_sub_akun)->first();

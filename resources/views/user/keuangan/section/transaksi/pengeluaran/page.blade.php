@@ -12,7 +12,7 @@
       </div>
        <div class="col-md-12" style="margin-top: 10px">
            <div class="row">
-               <div class="col-md-3">
+               <div class="col-md-4">
                    <div class="box box-danger box-solid">
                        <div class="box-header">
                            <h3 class="box-title">Daftar Transaksi</h3>
@@ -22,6 +22,7 @@
                                <thead>
                                <tr>
                                    <th>Keterangan</th>
+                                   <th>Aksi</th>
                                </tr>
                                </thead>
                            </table>
@@ -35,7 +36,7 @@
                    </div>
                    <!-- /.box -->
                </div>
-               <div class="col-md-9">
+               <div class="col-md-8">
                    <div class="box box-success box-solid">
                        <div class="box-header">
                            <h3 class="box-title">Formulir Transaksi Pengeluaran</h3>

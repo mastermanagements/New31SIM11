@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelationKAkun extends Migration
+class CreateRelationMasterSubsubAkun extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateRelationKAkun extends Migration
      */
     public function up()
     {
-        Schema::table('k_akun', function (Blueprint $table) {
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
-            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
+         Schema::table('k_master_subsub_akun', function (Blueprint $table) {
+            $table->foreign('id_m_sub_akun')->references('id')->on('k_master_sub_akun');
+            
         });
     }
 
@@ -26,7 +26,7 @@ class CreateRelationKAkun extends Migration
      */
     public function down()
     {
-        Schema::table('k_akun', function (Blueprint $table) {
+        Schema::table('k_master_subsub_akun', function (Blueprint $table) {
 		 });
     }
 }

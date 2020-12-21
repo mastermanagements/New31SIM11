@@ -32,7 +32,7 @@ class Ijin_usaha extends Controller
     }
 
     public function store(Request $req)
-    {
+    { //dd($req->all());
         $this->validate($req,[
             'id_perusahaan'=>'required',
             'nm_ijin' => 'required',
@@ -41,7 +41,7 @@ class Ijin_usaha extends Controller
             'kualifikasi' => 'required',
             'instansi_pemberi' => 'required',
             'klasifikasi' => 'required',
-            'file_iu' => 'required|image|mimes:jpg,png,gif'
+            'file_iu' => 'required|image|mimes:jpg,jpeg,png,gif'
         ]);
 
         $id_perusahaan = $req->id_perusahaan;

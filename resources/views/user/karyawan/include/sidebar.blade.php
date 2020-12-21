@@ -63,7 +63,7 @@
                                                     @else
                                                     href="{{ url($sum_menu->getMasterSubMenuUKM->url) }}"
                                                     @endif
-                                            ><i ></i> <span>{{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}</span></a></li>
+                                            ><i></i> <span>{{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}</span></a></li>
                                     @endforeach
                                 @endif
                             @endforeach

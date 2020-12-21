@@ -38,7 +38,7 @@
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				<form action="{{ url('cek-karyawan') }}" method="post" class="login100-form validate-form">
 					<span class="login100-form-title p-b-59">
-						Sign In
+						Sign In please
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Username is required">

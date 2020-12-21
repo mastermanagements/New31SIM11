@@ -21,7 +21,7 @@
             <ul class="list-group list-group-unbordered">
 
                 <li class="list-group-item">
-                    <a><input type="text" class="form-control input-sm" name="email" value="{{ $data_user->email }}" readonly></a>
+                    <a><input type="hidden" class="form-control input-sm" name="email" value="{{ $data_user->email }}" readonly></a>
                 </li>
                 <li class="list-group-item">
                     <a><input type="password" class="form-control input-sm" name="password" placeholder="Password Baru"></a>

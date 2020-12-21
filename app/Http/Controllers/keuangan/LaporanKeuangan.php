@@ -200,6 +200,8 @@ class LaporanKeuangan extends Controller
         ];
         return response()->json($data);
     }
+	
+	//============================================== perubahan modal ============================================
 
     public function cetak_laba_rugi($tgl_awal, $tgl_akhir){
         $data_pass= [
