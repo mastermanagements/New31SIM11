@@ -30,7 +30,9 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Daftar Barang </a></li>
-                        <li ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Koversi Satuan </a></li>
+                        <li ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Daftar Harga Barang </a></li>
+                        <li ><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Koversi Satuan </a></li>
+                        <li ><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -55,22 +57,12 @@
                                 @if(empty($data_barang))
                                     <div class="col-md-12"> <h4 align="center">Anda belum menambahkan Barang </h4></div>
                                 @else
-                                    @foreach($data_barang as $value)
-                                        <div class="col-md-12">
+                                    <div class="col-md-12">
                                         <div class="box box-success box-solid">
                                             <div class="box-header with-border">
-                                                <h3 class="box-title">Tanggal Buat : {{ date('d-m-Y H:i:s', strtotime($value->created_at)) }}</h3>
+                                                <h3 class="box-title">Tabel Barang</h3>
                                                 <div class="box-tools pull-right">
-                                                    <form action="{{ url('delete-barang/'.$value->id) }}" method="post">
-                                                        <a href="{{ url('ubah-barang/'.$value->id) }}" type="button" class="btn btn-box-tool" title="ubah jasa"><i class="fa fa-pencil"></i>
-                                                        </a>
-                                                        {{ csrf_field() }}
-                                                        <input type="hidden" name="_method" value="put">
-                                                        <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data barang ini ... ?')" class="btn btn-box-tool" title="hapus proposal"><i class="fa fa-eraser"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                                        </button>
-                                                    </form>
+
                                                 </div>
                                                 <!-- /.box-tools -->
                                             </div>
@@ -78,39 +70,60 @@
                                             <div class="box-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <h3 style="color: #0b93d5; margin-top: 0px"><u>{{ $value->nm_barang }}</u> @if(!empty($value->expired_date) and $value->expired_date != '1970-01-01')<small> {{ date('d-m-Y', strtotime($value->expired_date)) }}</small>@endif</h3>
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                            <h4 style="font-weight: bold">Rincian Barang :</h4>
-                                                            <p>Harga Jasa :Rp. {{ $value->harga_jual }}</p>
-                                                                <p> <b>Diskon :</b> <br>
-                                                                <ul>{{ $value->diskon }}%</ul>
-                                                                </p>
-                                                            <p>
-                                                                <b>Kategori :</b>
-                                                                <ul>
-                                                                     {{ $value->getkategori->nm_kategori_p }}
-                                                                    @if(!empty($value->getsubkategori->nm_subkategori_produk))
-                                                                        <i class="fa fa-level-down"></i>
-                                                                    <ul>
-                                                                       {{ $value->getsubkategori->nm_subkategori_produk }}
-                                                                        @if(!empty($value->getsubsubkategori->nm_subsub_kategori_produk))
-                                                                            <i class="fa fa-level-down"></i>
-                                                                        <ul>
-                                                                            {{ $value->getsubsubkategori->nm_subsub_kategori_produk }} <i class="fa fa-level-down"></i>
-                                                                        </ul>
-                                                                        @endif
-                                                                    </ul>
-                                                                    @endif
-                                                                </ul>
-                                                            </p>
-
-                                                            </div>
-                                                            <div class="col-md-9" style="width:73%;height: 255px; overflow-y: scroll; ">
-                                                                <p><h5 style="font-weight: bold">Spesifikasi :</h5> {!!  $value->spec_barang  !!} </p>
-                                                                <p><h5 style="font-weight: bold">Deskripsi Barang :</h5> {!!  $value->desc_barang  !!}</p>
-                                                            </div>
-                                                        </div>
+                                                        <table id="example1" class="table table-bordered table-striped">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>No.</th>
+                                                                <th>Barcode</th>
+                                                                <th>Kode-Nama Barang</th>
+                                                                <th>Satuan</th>
+                                                                <th>Kategori Barang</th>
+                                                                <th>Spesifikasi</th>
+                                                                <th>Deskripsi</th>
+                                                                <th>No Rak</th>
+                                                                <th>Stok Minimum</th>
+                                                                <th>HPP</th>
+                                                                <th>Metode jual</th>
+                                                                <th>Aksi</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @php($no = 1)
+                                                                @foreach($data_barang as $data)
+                                                                    <tr>
+                                                                        <td>{{ $no++ }}</td>
+                                                                        <td>{{ $data->barcode }}</td>
+                                                                        <td>{{ $data->kd_barang }} {{ $data->nm_barang }}</td>
+                                                                        <td>{{ $data->linkToSatuan->satuan_brg }}</td>
+                                                                        <td>{{ $data->getkategori->nm_kategori_p }}</td>
+                                                                        <td>{!!  substr($data->spec_barang,0,100) !!}</td>
+                                                                        <td>{!! substr($data->desc_barang,0,100) !!}</td>
+                                                                        <td>{{ $data->no_rak }}</td>
+                                                                        <td>{{ $data->stok_minimum }}</td>
+                                                                        <td>{{ $data->hpp }}</td>
+                                                                        <td>
+                                                                            @if($data->metode_jual == '0')
+                                                                                berdasarkan satu harga
+                                                                            @else
+                                                                                berdasarkan jumlah beli
+                                                                            @endif
+                                                                        </td>
+                                                                        <th>
+                                                                            <form action="{{ url('delete-barang/'.$data->id) }}" method="post">
+                                                                                <a href="#" type="button" class="btn btn-primary" title="ubah jasa">Harga Jual</a>
+                                                                                <a href="{{ url('ubah-barang/'.$data->id) }}" type="button" class="btn btn-warning" title="ubah jasa">ubah</a>
+                                                                                {{ csrf_field() }}
+                                                                                <input type="hidden" name="_method" value="put">
+                                                                                <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data barang ini ... ?')" class="btn btn-danger" title="hapus proposal">hapus</button>
+                                                                            </form>
+                                                                        </th>
+                                                                    </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        {{ $data_barang->links() }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -118,12 +131,18 @@
                                         </div>
                                         <!-- /.box -->
                                     </div>
-                                    @endforeach
-                                    {{ $data_barang->links() }}
+
                                 @endif
                             </div>
                         </div>
-                        <div class="tab-pane " id="tab_2">
+                        <div class="tab-pane active" id="tab_2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1>Harga Barang</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane " id="tab_3">
                            <table id="example1" class="table table-bordered table-striped" style="width: 100%">
                                 <thead>
                                     <tr>
@@ -143,6 +162,11 @@
                                @endforeach
                                </tbody>
                            </table>
+                        </div>
+                        <div class="tab-pane active" id="tab_4">
+                            <div class="row">
+                                <h1>Transfer Data Barang</h1>
+                            </div>
                         </div>
                     </div>
                     <!-- /.tab-content -->

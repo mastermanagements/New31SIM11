@@ -15,6 +15,9 @@ class Barang extends Controller
 
     private $id_karyawan;
     private $id_perusahaan;
+    private $metode_penjualan = [
+        '0'=>'berdasarkan satu harga','1'=>'berdasarkan jumlah beli'
+    ];
 
     public function __construct()
     {
@@ -52,6 +55,7 @@ class Barang extends Controller
     {
         $data = [
             'kategori_jasa'=> kategori_produk::all(),
+            'metode_jual'=>$this->metode_penjualan,
             'satuan' => Sb::all()
         ];
         return view('user.produksi.section.barang.page_create', $data);
@@ -71,7 +75,8 @@ class Barang extends Controller
             'nm_barang' => 'required',
             'spec_barang' => 'required',
             'desc_barang' => 'required',
-            'stok_barang' => 'required',
+            'stok_minimum' => 'required',
+//            'stok_barang' => 'required',
             'hpp' => 'required',
         ]);
 
@@ -81,10 +86,7 @@ class Barang extends Controller
          $nm_barang = $request->nm_barang;
          $spec_barang= $request->spec_barang;
          $desc_barang= $request->desc_barang;
-         $expired_date= date('Y-m-d', strtotime($request->expired_date));
-         $stok_awal= $request->stok_awal;
          $stok_minimum= $request->stok_minimum;
-         $harga_jual= $request->hpp;
          $kd_barang = $request->kd_barang;
          $barcode = $request->barcode;
          $id_satuan = $request->id_satuan;
@@ -103,11 +105,15 @@ class Barang extends Controller
          $model->id_satuan= $id_satuan;
          $model->spec_barang= $spec_barang;
          $model->desc_barang= $desc_barang;
-         $model->expired_date= $expired_date;
+         $model->desc_barang= $desc_barang;
+//         $model->expired_date= $expired_date;
          $model->no_rak= $no_rak;
-         $model->stok_awal= $stok_awal;
+//         $model->stok_awal= $stok_awal;
          $model->stok_minimum= $stok_minimum;
-         $model->hpp= $hpp;
+        $model->hpp= $hpp;
+        $model->metode_jual= $request->metode_jual;
+        $model->stok_akhir= $request->stok_akhir;
+        $model->gambar= '';
          $model->id_perusahaan= $this->id_perusahaan;
          $model->id_karyawan= $this->id_karyawan;
 
@@ -143,6 +149,7 @@ class Barang extends Controller
         $data = [
             'kategori_jasa'=> kategori_produk::all(),
             'data_barang' => $data_barang,
+            'metode_jual'=>$this->metode_penjualan,
             'satuan' => Sb::all()
         ];
         return view('user.produksi.section.barang.page_edit', $data);
@@ -162,9 +169,11 @@ class Barang extends Controller
             'nm_barang' => 'required',
             'spec_barang' => 'required',
             'desc_barang' => 'required',
-            'stok_barang' => 'required',
-            'harga_jual' => 'required',
+//            'stok_barang' => 'required',
+//            'harga_jual' => 'required',
         ]);
+
+
 
         $id_kategori = $request->id_kategori;
         $id_subkategori = $request->id_subkategori_produk;
@@ -173,9 +182,7 @@ class Barang extends Controller
         $spec_barang= $request->spec_barang;
         $desc_barang= $request->desc_barang;
         $expired_date= date('Y-m-d', strtotime($request->expired_date));
-        $stok_awal= $request->stok_awal;
         $stok_minimum= $request->stok_minimum;
-        $harga_jual= $request->hpp;
         $kd_barang = $request->kd_barang;
         $barcode = $request->barcode;
         $id_satuan = $request->id_satuan;
@@ -192,11 +199,12 @@ class Barang extends Controller
         $model->id_satuan= $id_satuan;
         $model->spec_barang= $spec_barang;
         $model->desc_barang= $desc_barang;
-        $model->expired_date= $expired_date;
         $model->no_rak= $no_rak;
-        $model->stok_awal= $stok_awal;
         $model->stok_minimum= $stok_minimum;
         $model->hpp= $hpp;
+        $model->metode_jual= $request->metode_jual;
+        $model->stok_akhir= $request->stok_akhir;
+        $model->gambar= '';
         $model->id_perusahaan= $this->id_perusahaan;
         $model->id_karyawan= $this->id_karyawan;
 
