@@ -105,7 +105,7 @@ class Barang extends Controller
          $model->id_satuan= $id_satuan;
          $model->spec_barang= $spec_barang;
          $model->desc_barang= $desc_barang;
-         $model->desc_barang= $desc_barang;
+
 //         $model->expired_date= $expired_date;
          $model->no_rak= $no_rak;
 //         $model->stok_awal= $stok_awal;

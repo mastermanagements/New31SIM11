@@ -58,7 +58,7 @@
                                     <div class="col-md-12"> <h4 align="center">Anda belum menambahkan Barang </h4></div>
                                 @else
                                     <div class="col-md-12">
-                                        <div class="box box-success box-solid">
+                                        <div class="box box-success">
                                             <div class="box-header with-border">
                                                 <h3 class="box-title">Tabel Barang</h3>
                                                 <div class="box-tools pull-right">
@@ -69,7 +69,7 @@
                                             <!-- /.box-header -->
                                             <div class="box-body">
                                                 <div class="row">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap; margin: 10px">
                                                         <table id="example1" class="table table-bordered table-striped">
                                                             <thead>
                                                             <tr>
@@ -102,15 +102,15 @@
                                                                         <td>{{ $data->stok_minimum }}</td>
                                                                         <td>{{ $data->hpp }}</td>
                                                                         <td>
-                                                                            @if($data->metode_jual == '0')
-                                                                                berdasarkan satu harga
-                                                                            @else
-                                                                                berdasarkan jumlah beli
-                                                                            @endif
+
+                                                                                @if($data->metode_jual == '0')
+                                                                                   <a href="#" onclick='window.location.href="{{ url('harga-jual-satuan/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> berdasarkan satu harga</a>
+                                                                                @else
+                                                                                   <a href="#" onclick="modalShow({{$data->id}})" type="button" class="btn btn-primary" title="ubah jasa"> berdasarkan jumlah beli</a>
+                                                                                @endif
                                                                         </td>
                                                                         <th>
                                                                             <form action="{{ url('delete-barang/'.$data->id) }}" method="post">
-                                                                                <a href="#" type="button" class="btn btn-primary" title="ubah jasa">Harga Jual</a>
                                                                                 <a href="{{ url('ubah-barang/'.$data->id) }}" type="button" class="btn btn-warning" title="ubah jasa">ubah</a>
                                                                                 {{ csrf_field() }}
                                                                                 <input type="hidden" name="_method" value="put">
@@ -135,7 +135,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="tab-pane active" id="tab_2">
+                        <div class="tab-pane " id="tab_2">
                             <div class="row">
                                 <div class="col-md-12">
                                     <h1>Harga Barang</h1>
@@ -163,7 +163,7 @@
                                </tbody>
                            </table>
                         </div>
-                        <div class="tab-pane active" id="tab_4">
+                        <div class="tab-pane " id="tab_4">
                             <div class="row">
                                 <h1>Transfer Data Barang</h1>
                             </div>
@@ -176,6 +176,38 @@
         </div>
     </section>
     <!-- /.content -->
+
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Form Jumlah Barang</h4>
+                </div>
+                <form onsubmit="alert('OnProses')">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Banyak Barang</label>
+                                {{ csrf_field() }}
+                                <input type="number" minlength="0" maxlength="100" name="jumlah_barang" class="form-control" required/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Proses</button>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
 </div>
 
 @stop
@@ -184,4 +216,9 @@
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     @include('user.administrasi.section.arsip.jenis_arsip.modal.JS')
+    <script>
+        modalShow = function (kode) {
+            $('#modal-default').modal('show');
+        }
+    </script>
 @stop

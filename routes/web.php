@@ -670,6 +670,10 @@ Route::put('delete-barang/{id}','produksi\Barang@destroy');
 
 Route::post('cari-barang','produksi\Barang@show');
 
+Route::resource('harga-jual-satuan','produksi\HargaJualSatuan');
+Route::get('harga-jual-satuan/{id_barang}/create','produksi\HargaJualSatuan@create');
+Route::put('harga-jual-satuan/{id_harga_jual}/delete','produksi\HargaJualSatuan@destroy');
+
 //Route::get('atur-konversi/{id}');
 
 	//--- Supplier ---
