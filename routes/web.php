@@ -674,6 +674,9 @@ Route::resource('harga-jual-satuan','produksi\HargaJualSatuan');
 Route::get('harga-jual-satuan/{id_barang}/create','produksi\HargaJualSatuan@create');
 Route::put('harga-jual-satuan/{id_harga_jual}/delete','produksi\HargaJualSatuan@destroy');
 
+Route::post('banyak-barang','produksi\HargaJualBaseOnJumlah@create');
+Route::get('harga-jual-baseon-jumlah/{id}','produksi\HargaJualBaseOnJumlah@index');
+Route::resource('harga-jual-baseon-jumlah','produksi\HargaJualBaseOnJumlah');
 //Route::get('atur-konversi/{id}');
 
 	//--- Supplier ---

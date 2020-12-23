@@ -106,7 +106,7 @@
                                                                                 @if($data->metode_jual == '0')
                                                                                    <a href="#" onclick='window.location.href="{{ url('harga-jual-satuan/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> berdasarkan satu harga</a>
                                                                                 @else
-                                                                                   <a href="#" onclick="modalShow({{$data->id}})" type="button" class="btn btn-primary" title="ubah jasa"> berdasarkan jumlah beli</a>
+                                                                                    <a href="#" onclick='window.location.href="{{ url('harga-jual-baseon-jumlah/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> berdasarkan jumlah barang</a>
                                                                                 @endif
                                                                         </td>
                                                                         <th>
@@ -177,35 +177,7 @@
     </section>
     <!-- /.content -->
 
-    <div class="modal fade" id="modal-default">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Form Jumlah Barang</h4>
-                </div>
-                <form onsubmit="alert('OnProses')">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Banyak Barang</label>
-                                {{ csrf_field() }}
-                                <input type="number" minlength="0" maxlength="100" name="jumlah_barang" class="form-control" required/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Proses</button>
-                    </div>
-                </form>
 
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
     <!-- /.modal -->
 
 </div>
@@ -216,9 +188,5 @@
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     @include('user.administrasi.section.arsip.jenis_arsip.modal.JS')
-    <script>
-        modalShow = function (kode) {
-            $('#modal-default').modal('show');
-        }
-    </script>
+
 @stop

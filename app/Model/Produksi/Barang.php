@@ -33,4 +33,8 @@ class Barang extends Model
     public function linkToHargaJualSatuan(){
         return $this->hasMany('App\Model\Produksi\HargaJualSatuan','id_barang','id');
     }
+
+    public function linkToHargaBaseOnJumlah(){
+        return $this->hasMany('App\Model\Produksi\HargaJualBaseOnJumlah','id_barang','id');
+    }
 }
