@@ -57,10 +57,10 @@
                                                      <td>{{ $data->jumlah_maks_brg }}</td>
                                                      <td>{{ $data->harga_jual }}</td>
                                                      <td>
-                                                         <form action="{{ url('harga-jual-satuan/'.$data->id.'/delete') }}" method="post">
+                                                         <form action="{{ url('harga-jual-baseon-jumlah/'.$data->id.'/delete') }}" method="post">
                                                              {{ csrf_field() }}
                                                              <input type="hidden" name="_method" value="put">
-                                                             <a href="{{ url('harga-jual-satuan/'.$data->id.'/edit') }}" class="btn btn-sm btn-warning">ubah</a>
+                                                             <a href="{{ url('harga_jual_base_on_jumlah/'.$data->id) }}" onclick="ubah_barang_jumlah('{{ $data->id }}')" class="btn btn-sm btn-warning">ubah</a>
                                                              <button type="submit" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')" class="btn btn-sm btn-danger">hapus</button>
                                                          </form>
                                                      </td>
@@ -107,6 +107,43 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
+    <div class="modal fade" id="modal-default-update">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Form Ubah Harga Satuan Barang Berdasarkan Jumlah</h4>
+                </div>
+                <form action="#" id="form-ubah" method="post">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="hidden" name="_method" value="put">
+                                    <label for="exampleInputEmail1">Jumlah Masimal penjualan</label>
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="id_HBJ" required>
+                                    <input type="number" minlength="0" maxlength="100" name="jumlah_maks_brg" class="form-control" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Harga Jual</label>
+                                    {{ csrf_field() }}
+                                    <input type="number" minlength="0" maxlength="100" name="harga_jual" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Proses</button>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 </div>
 @stop
 @section('plugins')
@@ -118,5 +155,8 @@
             $('[name="id_barang"]').val(kode);
             $('#modal-default').modal('show');
         }
+
+
+
     </script>
 @stop

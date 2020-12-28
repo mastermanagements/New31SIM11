@@ -44,9 +44,9 @@ class HargaJualSatuan extends Controller
         );
 
         if($model->save()){
-            return redirect('harga-jual-satuan/'.$model->id_barang)->with('message_success','Harga Jual telah disimpan');
+            return redirect('Barang')->with('message_success','Harga Jual telah disimpan')->with('tab','tab2');
         }else{
-            return redirect('harga-jual-satuan/'.$model->id_barang)->with('message_fail','Harga Jual gagal untuk disimpan');
+            return redirect('Barang')->with('message_fail','Harga Jual gagal untuk disimpan')->with('tab','tab2');
         }
 
     }

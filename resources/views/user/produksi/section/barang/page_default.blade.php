@@ -29,13 +29,13 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Daftar Barang </a></li>
-                        <li ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Daftar Harga Barang </a></li>
-                        <li ><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Koversi Satuan </a></li>
-                        <li ><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
+                        <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Daftar Barang  {{ Session::get('tab1') }}</a></li>
+                        <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Daftar Harga Barang </a></li>
+                        <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Koversi Satuan </a></li>
+                        <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
+                        <div class="tab-pane @if(Session::get('tab1') == 'tab1') active @else '' @endif" id="tab_1">
                             <div class="row">
                                 <div class="col-md-3" style="margin: 0">
                                     <a href="{{ url('tambah-barang') }}" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah Barang </a>
@@ -135,14 +135,84 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="tab-pane " id="tab_2">
+                        <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1>Harga Barang</h1>
+                                    <h4 style="font-weight: bold">Daftar Harga Barang Satuan</h4>
+                                    @if(!empty($data->linkToHargaJualSatuan))
+                                        <table id="example3" class="table table-bordered table-striped" style="width: 100%">
+                                            <thead>
+                                            <tr>
+                                                <td>#</td>
+                                                <td>Nama Barang</td>
+                                                <td>Harga HPP</td>
+                                                <td>Harga Jual</td>
+                                                <td>Aksi</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @php($no=1)
+                                            @foreach($data->linkToHargaJualSatuan as $data_satuan)
+                                                <tr>
+                                                    <td>{{ $no++ }}</td>
+                                                    <td>{{ $data_satuan->linkToBarang->nm_barang }}</td>
+                                                    <td>{{ $data_satuan->linkToBarang->hpp }}</td>
+                                                    <td>{{ $data_satuan->harga_jual }}</td>
+                                                    <td>
+                                                        <form action="{{ url('harga-jual-satuan/'.$data_satuan->id.'/delete') }}" method="post">
+                                                            {{ csrf_field() }}
+                                                            <input type="hidden" name="_method" value="put">
+                                                            <a href="{{ url('harga-jual-satuan/'.$data_satuan->id.'/edit') }}" class="btn btn-sm btn-warning">ubah</a>
+                                                            {{--<button type="submit" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')" class="btn btn-sm btn-danger">hapus</button>--}}
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    @endif
+
+                                </div>
+                                <div class="col-md-12">
+                                    <h4 style="font-weight: bold">Daftar Harga Barang Berdsarkan Jumlah</h4>
+                                @if(!empty($data->linkToHargaBaseOnJumlah))
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                            <tr>
+                                                <td>#</td>
+                                                <td>Nama Barang</td>
+                                                <td>Harga HPP</td>
+                                                <td>Harga Jumlah Maks</td>
+                                                <td>Harga Jual</td>
+                                                <td>Aksi</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @php($no=1)
+                                            @foreach($data->linkToHargaBaseOnJumlah as $data_bJumlah)
+                                                <tr>
+                                                    <td>{{ $no++ }}</td>
+                                                    <td>{{ $data_bJumlah->linkToBarang->nm_barang }}</td>
+                                                    <td>{{ $data_bJumlah->linkToBarang->hpp }}</td>
+                                                    <td>{{ $data_bJumlah->jumlah_maks_brg }}</td>
+                                                    <td>{{ $data_bJumlah->harga_jual }}</td>
+                                                    <td>
+                                                        <form action="{{ url('harga-jual-baseon-jumlah/'.$data_bJumlah->id.'/delete') }}" method="post">
+                                                            {{ csrf_field() }}
+                                                            <input type="hidden" name="_method" value="put">
+                                                            <a href="{{ url('harga_jual_base_on_jumlah/'.$data_bJumlah->id) }}" onclick="ubah_barang_jumlah('{{ $data->id }}')" class="btn btn-sm btn-warning">ubah</a>
+                                                            {{--<button type="submit" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')" class="btn btn-sm btn-danger">hapus</button>--}}
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane " id="tab_3">
+                        <div class="tab-pane @if(Session::get('tab3') == 'tab3') 'active' @else '' @endif" id="tab_3">
                            <table id="example1" class="table table-bordered table-striped" style="width: 100%">
                                 <thead>
                                     <tr>
@@ -163,7 +233,7 @@
                                </tbody>
                            </table>
                         </div>
-                        <div class="tab-pane " id="tab_4">
+                        <div class="tab-pane @if(Session::get('tab4') == 'tab4') 'active' @else '' @endif" id="tab_4">
                             <div class="row">
                                 <h1>Transfer Data Barang</h1>
                             </div>

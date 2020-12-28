@@ -14,7 +14,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Harga Jual Satuan
+            Harga Jual Berdasarkan Jumlah
         </h1>
     </section>
 
@@ -26,11 +26,11 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Harga Jual Satuan</h3>
+                        <h3 class="box-title">Formulir ubah Harga Jual Berdasarkan Jumlah</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('harga-jual-satuan') }}" method="post">
+                    <form role="form" action="{{ url('harga-jual-baseon-jumlah/'.$data->id) }}" method="post">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Kode/Nama Barang :{{ $data->linkToBarang->kd_barang }} {{ $data->linkToBarang->nm_barang }}</label>
@@ -41,16 +41,16 @@
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Persentase Keuntungan</label>
+                                <input type="hidden" name="_method" value="put">
+                                <label for="exampleInputEmail1">Jumlah Masimal penjualan</label>
                                 {{ csrf_field() }}
-                                <input type="number" minlength="0" maxlength="100" name="persentase" class="form-control" required/>
-                                <input type="hidden" name="hpp" class="form-control" value="{{ $data->linkToBarang->hpp }}"/>
+                                <input type="hidden" name="id_HBJ" value="{{ $data->id }}" required>
+                                <input type="number" minlength="0" maxlength="100" value="{{ $data->jumlah_maks_brg }}" name="jumlah_maks_brg" class="form-control" required/>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Harga Jual Barang</label>
+                                <label for="exampleInputEmail1">Harga Jual</label>
                                 {{ csrf_field() }}
-                                <input type="hidden" name="id_barang" value="{{ $data->linkToBarang->id }}">
-                                <input type="text" name="harga_jual" value="{{ $data->harga_jual }}" class="form-control" required readonly/>
+                                <input type="number" minlength="0" maxlength="100"  value="{{ $data->harga_jual }}" name="harga_jual" class="form-control" required/>
                             </div>
                         </div>
                         <!-- /.box-body -->
