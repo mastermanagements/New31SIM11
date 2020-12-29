@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Produksi\Barang as barangs;
 use App\Model\Superadmin_sim\P_kategori_produk as kategori_produk;
+use App\Model\Produksi\AturKonversi as p_konversi_barang;
 use App\Model\Produksi\SatuanBarang as Sb;
+use App\Model\Produksi\HistroyKonversiBrg as p_history_konversi_brg;
 
 class Barang extends Controller
 {
@@ -41,7 +43,9 @@ class Barang extends Controller
     public function index()
     {
         $data=[
-            'data_barang'=> barangs::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at')->paginate(15)
+            'data_barang'=> barangs::all()->where('id_perusahaan', $this->id_perusahaan)->sortBy('created_at'),
+            'konvesi_barang' => p_konversi_barang::all()->where('id_perusahaan', $this->id_perusahaan),
+            'history_konversi_barang' => p_history_konversi_brg::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.produksi.section.barang.page_default', $data);
     }

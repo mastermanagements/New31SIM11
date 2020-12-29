@@ -679,9 +679,12 @@ Route::get('harga-jual-baseon-jumlah/{id}','produksi\HargaJualBaseOnJumlah@index
 Route::resource('harga-jual-baseon-jumlah','produksi\HargaJualBaseOnJumlah');
 Route::get('harga_jual_base_on_jumlah/{id}', 'produksi\HargaJualBaseOnJumlah@show');
 Route::put('harga-jual-baseon-jumlah/{id}/delete', 'produksi\HargaJualBaseOnJumlah@delete');
-//Route::get('atur-konversi/{id}');
 
-	//--- Supplier ---
+Route::resource('atur-konversi', 'produksi\AturKonversi');
+Route::put('atur-konversi/{id}/delete', 'produksi\AturKonversi@delete');
+Route::put('atur-konversi/{id}/konversi', 'produksi\AturKonversi@konversi');
+
+//--- Supplier ---
 
 Route::get('Supplier','produksi\Supplier@index');
 
