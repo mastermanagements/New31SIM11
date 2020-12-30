@@ -10,6 +10,7 @@ use App\Model\Superadmin_sim\P_kategori_produk as kategori_produk;
 use App\Model\Produksi\AturKonversi as p_konversi_barang;
 use App\Model\Produksi\SatuanBarang as Sb;
 use App\Model\Produksi\HistroyKonversiBrg as p_history_konversi_brg;
+use Illuminate\Support\Facades\DB;
 
 class Barang extends Controller
 {
@@ -40,12 +41,23 @@ class Barang extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    private function query_perusahaan(){
+       $data =  DB::select('SELECT u_perusahaan.* FROM h_karyawan 
+                            join u_user_ukm on u_user_ukm.id=h_karyawan.id_user_ukm
+                            join u_perusahaan on u_perusahaan.id_user_ukm = u_user_ukm.id
+                            where h_karyawan.id_user_ukm ='.Session::get('id_superadmin_karyawan').' GROUP by u_perusahaan.id'
+                           );
+       return $data;
+    }
+
     public function index()
     {
         $data=[
             'data_barang'=> barangs::all()->where('id_perusahaan', $this->id_perusahaan)->sortBy('created_at'),
             'konvesi_barang' => p_konversi_barang::all()->where('id_perusahaan', $this->id_perusahaan),
-            'history_konversi_barang' => p_history_konversi_brg::all()->where('id_perusahaan', $this->id_perusahaan)
+            'history_konversi_barang' => p_history_konversi_brg::all()->where('id_perusahaan', $this->id_perusahaan),
+            'data_perusahaan'=> $this->query_perusahaan()
         ];
         return view('user.produksi.section.barang.page_default', $data);
     }
@@ -236,5 +248,41 @@ class Barang extends Controller
         }else{
             return redirect('Barang')->with('message_fail', 'Maaf terjadi kesalahan, coba lagi mengubah data barang');
         }
+    }
+
+    public function transerBarang(Request $req){
+
+        $this->validate($req,[
+            'p_awal'=> 'required',
+            'p_tujuan'=> 'required',
+        ]);
+
+        $model_perusahaan_awal = barangs::all()->where('id_perusahaan', $req->p_awal);
+        foreach ($model_perusahaan_awal as $data_barang){
+            $model_perusahaan_tujuan = barangs::updateOrCreate(
+                [
+                    'id_perusahaan'=> $req->p_tujuan,
+                    'kd_barang'=>$data_barang->kd_barang
+                ],
+                [
+                   'id_kategori_produk'=>$data_barang->id_kategori_produk,
+                   'id_subkategori_produk'=>$data_barang->id_subkategori_produk,
+                   'id_subsubkategori_produk'=>$data_barang->id_subsubkategori_produk,
+                   'barcode'=>$data_barang->barcode,
+                   'nm_barang'=>$data_barang->nm_barang,
+                   'id_satuan'=>$data_barang->id_satuan,
+                   'spec_barang'=>$data_barang->spec_barang,
+                   'desc_barang'=>$data_barang->desc_barang,
+                   'no_rak'=>'-',
+                   'stok_minimum'=>$data_barang->stok_minimum,
+                   'hpp'=>$data_barang->hpp,
+                   'id_karyawan'=>$data_barang->id_karyawan,
+                   'stok_akhir'=>0,
+                   'metode_jual'=>'0',
+                   'gambar'=>$data_barang->gambar,
+                ]
+            );
+        }
+           return redirect('Barang')->with('message_success', 'Data barang telah berhasil ditransfer')->with('tab5','tab5');
     }
 }

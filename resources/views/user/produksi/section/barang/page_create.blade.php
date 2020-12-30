@@ -66,12 +66,12 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Kode Barang</label>
                                 <input type="text" name="kd_barang" class="form-control" placeholder="Kode Barang" required/>
-                                {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
+                                <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Barcode</label>
                                 <input type="text" name="barcode" class="form-control" placeholder="Barcode" required/>
-                                {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
+                                <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nama Barang</label>

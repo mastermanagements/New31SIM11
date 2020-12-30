@@ -117,13 +117,24 @@ class AturKonversi extends Controller
 
         try{
             $model_konversi = p_konversi_barang::findOrFail($req->id_konversi);
-            $model = new p_history_konversi_brg();
-            $model->id_konversi_brg = $model_konversi->id;
-            $model->tgl_konversi = $req->tgl_konversi;
-            $model->jum_brg_dikonversi = $model_konversi->jumlah_konversi_satuan*$req->jum_brg_dikonversi;
-            $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+//            $model = new p_history_konversi_brg();
+//            $model->id_konversi_brg = $model_konversi->id;
+//            $model->tgl_konversi = $req->tgl_konversi;
+//            $model->jum_brg_dikonversi =$req->jum_brg_dikonversi;
+//            $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+            $model = p_history_konversi_brg::updateOrCreate(
+              [
+                  'id_konversi_brg'=>$model_konversi->id,
+                  'id_perusahaan'=>Session::get('id_perusahaan_karyawan')
+              ],
+              [
+                 'tgl_konversi'=>  $req->tgl_konversi,
+                  'jum_brg_dikonversi'=>$req->jum_brg_dikonversi
+              ]
+            );
 
             if($model->save()){
+                $this->konversi_formula($model);
                 return redirect('Barang')->with('message_success','Barang telah dikonversi')->with('tab4','tab4');
             }else{
                 return redirect('Barang')->with('message_success','Barang telah dikonversi')->with('tab4','tab4');
@@ -132,5 +143,21 @@ class AturKonversi extends Controller
         }catch (Throwable $e){
             return false;
         }
+    }
+
+
+    private function konversi_formula($model){
+        $ubah_stok_barang_asal = $model->linkToKonversiBarang->linkToBarangAsal;
+        $ubah_stok_barang_tujuan = $model->linkToKonversiBarang->linkToBarangTujuan;
+        // TODO: konversi dari satuan terbesar ke satuan terkecil
+        $stok_barang_asal =  $ubah_stok_barang_asal->stok_akhir*$model->linkToKonversiBarang->jumlah_konversi_satuan;
+        $konversi_nilai = $model->linkToKonversiBarang->jumlah_konversi_satuan * $model->jum_brg_dikonversi;
+        $total_stok_konversi = ($stok_barang_asal-$konversi_nilai)/$model->linkToKonversiBarang->jumlah_konversi_satuan;
+        $ubah_stok_barang_asal->stok_akhir = $total_stok_konversi;
+        if($ubah_stok_barang_asal->save()){
+            $ubah_stok_barang_tujuan->stok_akhir = $konversi_nilai;
+            $ubah_stok_barang_tujuan->save();
+        }
+        return true;
     }
 }

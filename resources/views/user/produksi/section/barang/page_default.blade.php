@@ -29,11 +29,11 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Daftar Barang  {{ Session::get('tab1') }}</a></li>
+                        <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Daftar Barang  </a></li>
                         <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Daftar Harga Barang </a></li>
                         <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Koversi Satuan </a></li>
                         <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Daftar Konversi Barang </a></li>
-                        <li class="@if(Session::get('tab4') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
+                        <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane @if(Session::get('tab1') == 'tab1') active @else '' @endif" id="tab_1">
@@ -296,7 +296,35 @@
                         </div>
                         <div class="tab-pane @if(Session::get('tab5') == 'tab5') active @else '' @endif" id="tab_5">
                             <div class="row">
-                                <h1>Transfer Data Barang</h1>
+                                <form action="{{ url('transfer_barang') }}" method="post">
+                                    {{ csrf_field() }}
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Form Transfer Data Barang dari Perusahaan</label><br>
+                                            <select class="form-control select2" name="p_awal" style="width: 100%" required>
+                                                @if(!empty($data_perusahaan))
+                                                    @foreach($data_perusahaan as $data)
+                                                        <option value="{{ $data->id }}"  @if($data->id != Session::get('id_perusahaan_karyawan')) disabled="disabled" @endif>{{ $data->nm_usaha }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ke Perusahaan</label><br>
+                                            <select class="form-control select2" name="p_tujuan" style="width: 100%" required>
+                                                @if(!empty($data_perusahaan))
+                                                    {{--<option>Pilih Perusahaan Tujuan</option>--}}
+                                                    @foreach($data_perusahaan as $data)
+                                                        <option value="{{ $data->id }}" @if($data->id == Session::get('id_perusahaan_karyawan')) disabled="disabled" @endif>{{ $data->nm_usaha }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Proses</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

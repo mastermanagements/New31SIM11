@@ -684,6 +684,8 @@ Route::resource('atur-konversi', 'produksi\AturKonversi');
 Route::put('atur-konversi/{id}/delete', 'produksi\AturKonversi@delete');
 Route::put('atur-konversi/{id}/konversi', 'produksi\AturKonversi@konversi');
 
+Route::post('transfer_barang', 'produksi\Barang@transerBarang');
+
 //--- Supplier ---
 
 Route::get('Supplier','produksi\Supplier@index');

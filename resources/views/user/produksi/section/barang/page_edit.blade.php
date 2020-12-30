@@ -61,13 +61,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Kode barang</label>
-                                    <input type="text" name="kd_barang" class="form-control" placeholder="nama barang" value="{{ $data_barang->nm_barang }}" required/>
+                                    <input type="text" name="kd_barang" class="form-control" placeholder="nama barang" value="{{ $data_barang->kd_barang }}" required/>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Barcode</label>
                                     <input type="text" name="barcode" class="form-control" placeholder="Barcode"  value="{{ $data_barang->barcode }}" required/>
-                                    {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Barang</label>
