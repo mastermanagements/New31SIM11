@@ -117,11 +117,6 @@ class AturKonversi extends Controller
 
         try{
             $model_konversi = p_konversi_barang::findOrFail($req->id_konversi);
-//            $model = new p_history_konversi_brg();
-//            $model->id_konversi_brg = $model_konversi->id;
-//            $model->tgl_konversi = $req->tgl_konversi;
-//            $model->jum_brg_dikonversi =$req->jum_brg_dikonversi;
-//            $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
             $model = p_history_konversi_brg::updateOrCreate(
               [
                   'id_konversi_brg'=>$model_konversi->id,

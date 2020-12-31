@@ -59,6 +59,18 @@ class Barang extends Controller
             'history_konversi_barang' => p_history_konversi_brg::all()->where('id_perusahaan', $this->id_perusahaan),
             'data_perusahaan'=> $this->query_perusahaan()
         ];
+        if(empty(Session::get('tab')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5'))){
+            Session::flash('tab1','tab1');
+        }
+
+        if(!empty(Session::get('tab'))){
+            Session::flash('tab2',Session::get('tab'));
+        }
+
+        if(!empty(Session::get('tab3'))){
+            Session::flash('tab3',Session::get('tab3'));
+        }
+
         return view('user.produksi.section.barang.page_default', $data);
     }
 

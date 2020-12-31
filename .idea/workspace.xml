@@ -5,10 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/AturKonversi.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/AturKonversi.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_create.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_default.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1421,7 +1417,7 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
+            <state relative-caret-position="0">
               <caret line="686" column="61" lean-forward="false" selection-start-line="686" selection-start-column="61" selection-end-line="686" selection-end-column="61" />
               <folding />
             </state>
@@ -1431,12 +1427,9 @@
       <file leaf-file-name="page_create.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
+            <state relative-caret-position="25">
               <caret line="74" column="31" lean-forward="false" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
-              <folding>
-                <element signature="e#3565#3583#0#HTML" expanded="true" />
-                <element signature="e#3940#3958#0#HTML" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1444,26 +1437,44 @@
       <file leaf-file-name="page_default.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_default.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="316" column="87" lean-forward="true" selection-start-line="316" selection-start-column="87" selection-end-line="316" selection-end-column="87" />
+            <state relative-caret-position="-2325">
+              <caret line="33" column="68" lean-forward="true" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Barang.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="73" column="27" lean-forward="true" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
               <folding>
-                <element signature="e#23243#23262#0#HTML" expanded="true" />
-                <element signature="e#24102#24121#0#HTML" expanded="true" />
+                <marker date="1609379824600" expanded="true" signature="1393:1664" ph="SELECT u_per... h_karyawan" />
+                <marker date="1609379824600" expanded="true" signature="1393:1731" ph="SELECT u_per... h_karyawan" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Barang.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php">
+      <file leaf-file-name="AturKonversi.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/AturKonversi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="285" column="120" lean-forward="true" selection-start-line="285" selection-start-column="120" selection-end-line="285" selection-end-column="120" />
+            <state relative-caret-position="371">
+              <caret line="157" column="1" lean-forward="true" selection-start-line="157" selection-start-column="1" selection-end-line="157" selection-end-column="1" />
               <folding>
                 <element signature="e#49#77#0#PHP" expanded="true" />
-                <marker date="1609302072762" expanded="true" signature="1393:1664" ph="SELECT u_per... h_karyawan" />
-                <marker date="1609302072762" expanded="true" signature="1393:1731" ph="SELECT u_per... h_karyawan" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HargaJualSatuan.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/HargaJualSatuan.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="46" column="101" lean-forward="false" selection-start-line="46" selection-start-column="98" selection-end-line="46" selection-end-column="101" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1605,12 +1616,12 @@
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/barang/konversi_barang/page_konversi.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/Produksi/HistroyKonversiBrg.php" />
         <option value="$PROJECT_DIR$/app/Model/Produksi/AturKonversi.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/AturKonversi.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/AturKonversi.php" />
       </list>
     </option>
   </component>
@@ -1753,8 +1764,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1786,12 +1795,14 @@
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="karyawan" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="produksi" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2173,14 +2184,8 @@
       <workItem from="1609117354528" duration="8777000" />
       <workItem from="1609132973231" duration="89000" />
       <workItem from="1609201934865" duration="15573000" />
-      <workItem from="1609289573553" duration="11013000" />
-    </task>
-    <task id="LOCAL-00119" summary="Investor&#10;   - Dividen Investor Fix,&#10;   - Perancangan Pelaku investasi">
-      <created>1565855038418</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1565855038418</updated>
+      <workItem from="1609289573553" duration="11184000" />
+      <workItem from="1609376781316" duration="4063000" />
     </task>
     <task id="LOCAL-00120" summary="Investor&#10;   - Perancangan Interface Pelaksana dan Pemodal&#10;   - Crud Pelaksanaa">
       <created>1565942093638</created>
@@ -2518,11 +2523,18 @@
       <option name="project" value="LOCAL" />
       <updated>1609222127935</updated>
     </task>
-    <option name="localTasksCounter" value="168" />
+    <task id="LOCAL-00168" summary="- Update AturKonversi&#10;- Revisi Barang&#10;- Tranfer Barang">
+      <created>1609303629655</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1609303629656</updated>
+    </task>
+    <option name="localTasksCounter" value="169" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2134922000" />
+    <option name="totallyTimeSpent" value="2139156000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2535,7 +2547,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2655068" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26928896" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5181543" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18078668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2621,7 +2633,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Keuangan&#10;  - Refisi Api Perubahan Modal&#10;  - Tampilan Perubahan Modal &#10;  - Revisi Tampilan Labar Rugi" />
     <MESSAGE value="Keuangan&#10;  - Refisi API Laba Rugi penambahan pengaturan Saldo ditahan tahun berjalan.&#10;  - Refifi API Besaran Modal" />
     <MESSAGE value="Keuangan&#10;  - Refisi API Laba Rugi&#10;  - Refisi Rule&#10;  - Pembuatan Print Neraca Saldo, Laba Rugi, Perubahan Modal, Neraca" />
     <MESSAGE value="Keuangan&#10;  - Perancangan API Arus Kas" />
@@ -2646,7 +2657,8 @@
     <MESSAGE value="- Perancangan Daftar Harga Jual Per Jumlah Barang" />
     <MESSAGE value="- Update Daftar Barang dan Daftar Harga barang" />
     <MESSAGE value="- Update Barang, AturKonversi, History Konversi Barang" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Update Barang, AturKonversi, History Konversi Barang" />
+    <MESSAGE value="- Update AturKonversi&#10;- Revisi Barang&#10;- Tranfer Barang" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Update AturKonversi&#10;- Revisi Barang&#10;- Tranfer Barang" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2831,29 +2843,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/HargaJualSatuan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="46" column="110" lean-forward="false" selection-start-line="46" selection-start-column="92" selection-end-line="46" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/HargaJualBaseOnJumlah.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="18" column="10" lean-forward="false" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-          <folding>
-            <element signature="e#49#77#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/produksi/revisi/2020_12_23_084700_p_harga_jual_baseon_jumlah.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="21" column="11" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2861,7 +2854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="571">
           <caret line="34" column="63" lean-forward="false" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2869,7 +2861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
           <caret line="35" column="60" lean-forward="false" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2878,7 +2869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1141">
           <caret line="73" column="5" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2886,7 +2876,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2894,7 +2883,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="18" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2902,7 +2890,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2910,7 +2897,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2918,9 +2904,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1350">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1609290885174" expanded="true" signature="2864:2879" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2928,9 +2911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-375">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1609290927779" expanded="true" signature="3142:3157" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2938,7 +2918,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="11" column="79" lean-forward="false" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="79" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2946,7 +2925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="43" column="34" lean-forward="true" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2954,35 +2932,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="17" column="78" lean-forward="false" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/transfer_barang/page_edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/transfer_barang/page_edit.blade.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="69" column="32" lean-forward="true" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
-          <folding>
-            <element signature="e#4214#4232#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/AturKonversi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="155" column="59" lean-forward="true" selection-start-line="155" selection-start-column="59" selection-end-line="155" selection-end-column="59" />
-          <folding>
-            <element signature="e#49#77#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2990,7 +2947,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2998,7 +2954,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-154">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3010,44 +2965,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/HargaJualBaseOnJumlah.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="686" column="61" lean-forward="false" selection-start-line="686" selection-start-column="61" selection-end-line="686" selection-end-column="61" />
+        <state relative-caret-position="-350">
+          <caret line="18" column="10" lean-forward="false" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="25">
           <caret line="74" column="31" lean-forward="false" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
-          <folding>
-            <element signature="e#3565#3583#0#HTML" expanded="true" />
-            <element signature="e#3940#3958#0#HTML" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="686" column="61" lean-forward="false" selection-start-line="686" selection-start-column="61" selection-end-line="686" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="316" column="87" lean-forward="true" selection-start-line="316" selection-start-column="87" selection-end-line="316" selection-end-column="87" />
-          <folding>
-            <element signature="e#23243#23262#0#HTML" expanded="true" />
-            <element signature="e#24102#24121#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="-2325">
+          <caret line="33" column="68" lean-forward="true" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/HargaJualSatuan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="46" column="101" lean-forward="false" selection-start-line="46" selection-start-column="98" selection-end-line="46" selection-end-column="101" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="285" column="120" lean-forward="true" selection-start-line="285" selection-start-column="120" selection-end-line="285" selection-end-column="120" />
+        <state relative-caret-position="335">
+          <caret line="73" column="27" lean-forward="true" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
+          <folding>
+            <marker date="1609379824600" expanded="true" signature="1393:1664" ph="SELECT u_per... h_karyawan" />
+            <marker date="1609379824600" expanded="true" signature="1393:1731" ph="SELECT u_per... h_karyawan" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/AturKonversi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="157" column="1" lean-forward="true" selection-start-line="157" selection-start-column="1" selection-end-line="157" selection-end-column="1" />
           <folding>
             <element signature="e#49#77#0#PHP" expanded="true" />
-            <marker date="1609302072762" expanded="true" signature="1393:1664" ph="SELECT u_per... h_karyawan" />
-            <marker date="1609302072762" expanded="true" signature="1393:1731" ph="SELECT u_per... h_karyawan" />
           </folding>
         </state>
       </provider>
