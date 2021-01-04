@@ -56,26 +56,24 @@
                 <th>Debet</th>
                 <th>Kredit</th>
             </tr>
-            @php($total_debet=0)
-            @php($total_kredit=0)
-            @foreach($data as $value)
-                <tr>
-                    <td>{{ $value['no_transaksi'] }}</td>
-                    <td>{{ $value['tanggal'] }}</td>
-                    <td>{{ $value['kode_akun'] }}</td>
-                    <td>{{ $value['nm_akun'] }}</td>
-                    <td>{{ $value['nama_keterangan'] }}</td>
-                    <td>{{ number_format($value['debet'],2,',','.') }}</td>
-                    <td>{{ number_format($value['kredit'],2,',','.') }}</td>
-                </tr>
-            @php($total_debet+=$value['debet'])
-            @php($total_kredit+=$value['kredit'])
 
-        @endforeach
+        @if(!empty($data_jurnal))
+            @foreach($data_jurnal as $data)
+                <tr>
+                    <td>{{ $data['no_transaksi'] }}</td>
+                    <td>{{ $data['tanggal'] }}</td>
+                    <td>{{ $data['kode_akun'] }}</td>
+                    <td>{{ $data['nama_akun'] }}</td>
+                    <td>{{ $data['keterangan'] }}</td>
+                    <td>{{ $data['debet'] }}</td>
+                    <td>{{ $data['kredit'] }}</td>
+                </tr>
+            @endforeach
+        @endif
             <tr class="vendorListHeading">
                 <th colspan="5"></th>
-                <th>{{ number_format($total_debet,2,',','.') }}</th>
-                <th>{{ number_format($total_kredit,2,',','.') }}</th>
+                <th>{{ $total_debet }}</th>
+                <th>{{ $total_kredit }}</th>
             </tr>
 
     </table>

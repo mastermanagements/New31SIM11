@@ -7,134 +7,108 @@
         <div class="box-body text-center">
             <form action="#" id="setting_tanggal">
                 <div class="row" style="padding: 11px">
-                    <div class="col-md-3" style="padding: 1px">
-                        <div class="form-group">
-                            <input type="text" class="form-control " id="datepicker" placeholder="Tanggal Awal" name="tgl_awal"  value="{{ date('d-m-Y', strtotime($tahun_berjalan2->first_date->toDateString())) }}" required>
-                            <small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>
-                        </div>
-                    </div>
-                    <div class="col-md-1" style="padding: 0px; margin: 0px">
-                        <label>s/d</label>
-                    </div>
-                    <div class="col-md-3" style="padding: 1px">
-                        <div class="form-group">
-                            <input type="text" class="form-control " id="datepicker1" placeholder="Tanggal Akhir" name="tgl_akhir" value="{{ date('d-m-Y', strtotime($tahun_berjalan2->last_date->toDateString())) }}"  required>
-                            <small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>
-                        </div>
-                    </div>
-                    <div class="col-md-1" style="padding: 1px">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-success" id="tombol-tampilkan">Tampilkan</button>
-                        </div>
-                    </div>
-                    <div class="col-md-1" style="padding: 1px">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-danger" id="tombol-print"><i class="fa fa-print"></i> Cetak</button>
-                        </div>
-                    </div>
+                    {{--<div class="col-md-3" style="padding: 1px">--}}
+                        {{--<div class="form-group">--}}
+                            {{--<input type="text" class="form-control " id="datepicker" placeholder="Tanggal Awal" name="tgl_awal"  value="{{ date('d-m-Y', strtotime($tahun_berjalan2->first_date->toDateString())) }}" required>--}}
+                            {{--<small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-1" style="padding: 0px; margin: 0px">--}}
+                        {{--<label>s/d</label>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-3" style="padding: 1px">--}}
+                        {{--<div class="form-group">--}}
+                            {{--<input type="text" class="form-control " id="datepicker1" placeholder="Tanggal Akhir" name="tgl_akhir" value="{{ date('d-m-Y', strtotime($tahun_berjalan2->last_date->toDateString())) }}"  required>--}}
+                            {{--<small style="color: red" class="pull-left">* Tidak Boleh Kosong</small>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-1" style="padding: 1px">--}}
+                        {{--<div class="form-group">--}}
+                            {{--<button type="button" class="btn btn-success" id="tombol-tampilkan">Tampilkan</button>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
                 </div>
+            </form>
                 <hr>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="example_rincian" class="table table-bordered table-hover" style="width: 100%">
-                            <tbody>
-                            @php($total_sub=0)
-                            @php($total_aktiva=0)
-                            @php($total_pasiva=0)
-                                @foreach($data['aktiva'] as $data_laba_rugi)
-                                    @php($totals=0)
-                                    @php($total_subsed=0)
-                                    <tr align="left" style="background-color: lightgrey">
-                                        <td colspan= "2">{{ $data_laba_rugi['akun'] }}</td>
-                                    </tr>
+                        <form action="{{ url('tutup-buku') }}" method="post">
+                            {{ csrf_field() }}
+                            @if(!empty(Session::get('message_error_tutup_buku')))
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-ban"></i>Info</h4>
+                                        {{ Session::get('message_error_tutup_buku') }}
+                                    </div>
+                                </div>
+                            @endif
 
-                                    @if(!empty($data_laba_rugi['sub_akun']))
-                                        @foreach($data_laba_rugi['sub_akun'] as $data_sub)
-                                                <tr align="left" style="background-color: white">
-                                                    <td>{{ $data_sub['nm_sub_akun'] }}</td>
-                                                    <td>{{ number_format($data_sub['total'],2,',','.') }}
-                                                        @if($data_sub['sub_operasi']==1)
-                                                            @php($total_sub+=$data_sub['total'] )
+                            @if(!empty(Session::get('message_success_tutup_buku')))
+                                <div class="col-md-12">
+                                    <div class="alert alert-info alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-info"></i> Info </h4>
+                                        {{ Session::get('message_error_tutup_buku') }}
+                                    </div>
+                                </div>
+                            @endif
+                            <div class="col-md-12 row">
+                                    <div class="col-md-2">
+                                        <label>Tahun</label>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <select name="thn_periode" class="form-control">
+                                            <option value="{{$tahun_berjalan}}">{{ $tahun_berjalan }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button style="margin:5px" type="submit" class="btn btn-primary" onclick="return confirm('Apakah anda akan tutup buku ...?')"> Tutup buku </button>
+                                        <button type="button" class="btn btn-danger" id="tombol-print"> Cetak</button>
+                                    </div>
+                            </div>
+
+                            <table id="example_rincian" class="table table-bordered table-hover" style="width: 100%; text-align: left">
+                                <tbody>
+                                    @if(!empty($data))
+
+                                    @foreach($data as $key => $data_sort)
+                                        <tr style="background-color: greenyellow">
+                                            <td colspan="2">{{ $key }}</td>
+                                        </tr>
+                                        @if(!empty($data_sort['data']))
+                                            @foreach($data_sort['data'] as  $key_account=> $data_akuns)
+                                                @foreach($data_akuns as $data_akun)
+                                                    <tr>
+                                                        <td>
+                                                            <input type="hidden" name="id_akun[]" value="{{ $key_account }}">
+                                                            <input type="hidden" name="id_aktif_ukm[]" value="{{ $data_akun['id_aktif_ukm'] }}">
+                                                            <input type="hidden" name="tgl_jurnal[]" value="{{ $data_akun['tgl_jurnal'] }}">
+                                                            <input type="hidden" name="debet_kredit[]" value="{{ $data_akun['debet_kredit'] }}">
+                                                            {{ $data_akun['nama_akun'] }}
+                                                        </td>
+                                                        @if($data_akun['posisi_saldo']=='D')
+                                                            <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_debet'] }}"> {{ number_format($data_akun['saldo_debet'],2,',','.') }}</td>
                                                         @else
-                                                            @php($total_sub-=$data_sub['total'] )
-                                                         @endif
-                                                    </td>
-                                                </tr>
-                                                @php($totals += $data_sub['total'])
-                                                @if(!empty($data_sub['data_sub_akun_aktif']))
-                                                    @foreach($data_sub['data_sub_akun_aktif'] as $data_sub_sub)
-                                                        @if($data_sub_sub['status'] ==1)
-                                                            <tr align="left" style="background-color: white">
-                                                                <td style="padding-left: 30px">{{ $data_sub_sub['nm_sub_sub_akun'] }}</td>
-                                                                <td>{{ number_format($data_sub_sub['total_sub_sub'],2,',','.') }}</td>
-                                                            </tr>
+                                                            <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_kredit'] }}"> {{ number_format($data_akun['saldo_kredit'],2,',','.') }}</td>
                                                         @endif
-                                                    @endforeach
-                                                @endif
-
-                                        @endforeach
-                                    @endif
-                                    {{--@php($total_debet+=$data_neraca['debet'])--}}
-                                    {{--@php($total_kredit+=$data_neraca['kredit'])--}}
-                                    <tr align="left" style="background-color: white">
-                                        <td>Total</td>
-                                        <td>{{ number_format($totals,2,',','.') }} @php($total_aktiva +=$totals )</td>
-                                    </tr>
-                                @endforeach
-                                <tr style="background-color: #b0d4f1">
-                                    <td >Total Aktiva</td>
-                                    <td align="left">{{ number_format($total_aktiva,2,',','.') }}</td>
-                                </tr>
-                                @foreach($data['pasiva'] as $data_laba_rugi)
-                                    @php($totals=0)
-                                    @php($total_subsed=0)
-                                    <tr align="left" style="background-color: lightgrey">
-                                        <td colspan= "2">{{ $data_laba_rugi['akun'] }}</td>
-                                    </tr>
-
-                                    @if(!empty($data_laba_rugi['sub_akun']))
-                                        @foreach($data_laba_rugi['sub_akun'] as $data_sub)
-                                                <tr align="left" style="background-color: white">
-                                                    <td>{{ $data_sub['nm_sub_akun'] }}</td>
-                                                    <td>{{ number_format($data_sub['total'],2,',','.') }}
-                                                        @if($data_sub['sub_operasi']==1)
-                                                            @php($total_sub+=$data_sub['total'] )
-                                                        @else
-                                                            @php($total_sub-=$data_sub['total'] )
-                                                         @endif
-                                                    </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endforeach
+                                                <tr style="background-color: lightblue">
+                                                    <td>Total {{ $key }}</td>
+                                                    <td>{{ number_format($data_sort['total'],2,',','.') }}</td>
                                                 </tr>
-                                                @php($totals += $data_sub['total'])
-                                                @if(!empty($data_sub['data_sub_akun_aktif']))
-                                                    @foreach($data_sub['data_sub_akun_aktif'] as $data_sub_sub)
-                                                        @if($data_sub_sub['status'] ==1)
-                                                            <tr align="left" style="background-color: white">
-                                                                <td style="padding-left: 30px">{{ $data_sub_sub['nm_sub_sub_akun'] }}</td>
-                                                                <td>{{ number_format($data_sub_sub['total_sub_sub'],2,',','.') }}</td>
-                                                            </tr>
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-
-                                        @endforeach
+                                        @endif
+                                    @endforeach
                                     @endif
-                                    {{--@php($total_debet+=$data_neraca['debet'])--}}
-                                    {{--@php($total_kredit+=$data_neraca['kredit'])--}}
-                                    <tr align="left" style="background-color: white">
-                                        <td>Total</td>
-                                        <td>{{ number_format($totals,2,',','.') }} @php($total_pasiva+=$totals)</td>
-                                    </tr>
-                                @endforeach
-                                <tr style="background-color: #b0d4f1">
-                                    <td >Total Pasiva</td>
-                                    <td align="left">{{ number_format($total_pasiva,2,',','.') }}</td>
-                                </tr>
-                            </tbody>
-
-                        </table>
+                                </tbody>
+                            </table>
+                        </form>
                     </div>
                 </div>
-            </form>
+
         </div>
         <!-- /.box-body -->
     </div>

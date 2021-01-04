@@ -60,11 +60,27 @@
                                     <small style="color: orange">* Isi Jika Perlu</small>
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Kode barang</label>
+                                    <input type="text" name="kd_barang" class="form-control" placeholder="nama barang" value="{{ $data_barang->kd_barang }}" required/>
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Barcode</label>
+                                    <input type="text" name="barcode" class="form-control" placeholder="Barcode"  value="{{ $data_barang->barcode }}" required/>
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Barang</label>
                                     <input type="text" name="nm_barang" class="form-control" placeholder="nama barang" value="{{ $data_barang->nm_barang }}" required/>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
-                                <div class="form-group">
+                                <select class="form-control select2" style="width: 100%;" name="id_satuan" required>
+                                    <option >Pilih Satuan </option>
+                                    @foreach($satuan as $data)
+                                        <option value="{{ $data->id }}" @if($data->id ==$data_barang->id_satuan ) selected @endif>{{ $data->satuan_brg }}</option>
+                                    @endforeach
+                                </select>
+                                <small style="color: red">* Tidak Boleh Kosong</small>                                <div class="form-group">
                                     <label for="exampleInputEmail1">Speksifikasi Barang</label>
                                     <textarea name="spec_barang" class="form-control" required>{!!  $data_barang->spec_barang !!} </textarea>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
@@ -74,31 +90,40 @@
                                     <textarea name="desc_barang" class="form-control" required>{!!  $data_barang->desc_barang !!} </textarea>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
+
                                 <div class="form-group">
-                                    <label>Tanggal Expired</label>
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control pull-right" id="datepicker" value=" @if($data_barang->expired_date != '1970-01-01'){{  date('d-m-Y', strtotime($data_barang->expired_date)) }} @endif" placeholder="Tanggal Barang Expired" name="expired_date" >
-                                    </div>
-                                    <!-- /.input group -->
-                                    <small style="color: orange">* Isi Jika Perlu</small>
+                                    <label for="exampleInputEmail1">No Rak</label>
+                                    <input type="number" min="0" name="no_rak" class="form-control" placeholder="Nomor Rak" value="{{ $data_barang->no_rak }}" required/>
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Stok</label>
-                                    <input type="number" min="0" name="stok_barang" class="form-control" value="{{ $data_barang->stok_barang }}" placeholder="Stok Barang" required/>
+                              <div class="form-group">
+                                    <label for="exampleInputEmail1">Stok Minimum</label>
+                                    <input type="number" min="0" name="stok_minimum" class="form-control" value="{{ $data_barang->stok_minimum }}" placeholder="Stok Awal" required/>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Diskon</label>
-                                    <input type="number" min="0" max="100" name="diskon" class="form-control" value="{{ $data_barang->diskon }}" placeholder="Diskon dalam %"/>
+                                    <label for="exampleInputEmail1">Stok Akhir</label>
+                                    <input type="number" min="0" name="stok_akhir" class="form-control" value="{{ $data_barang->stok_akhir }}" placeholder="Stok Akhir" required/>
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Hpp (Harga Pokok Penjualan)</label>
+                                    <input type="number" min="0" name="hpp" value="{{ $data_barang->hpp }}" class="form-control" placeholder="Harga Pokok Penjualan"/>
                                     <small style="color: orange">* Isi Jika Perlu</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Harga Jual</label>
-                                    <input type="number" min="0"  name="harga_jual" class="form-control" value="{{ $data_barang->harga_jual }}" placeholder="Harga Barang" required/>
-                                    <small style="color: red">* Tidak boleh kosong</small>
+                                    <label for="exampleInputEmail1">Metode Penjualan</label>
+                                    <select class="form-control select2" style="width: 100%;" name="metode_jual" required>
+                                        @foreach($metode_jual as $key=> $data)
+                                            <option value="{{ $key }}" @if($data_barang=='0') selected @endif>{{ $data }}</option>
+                                        @endforeach
+                                    </select>
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Gambar Barang</label>
+                                    <input type="file"  name="gambar" class="form-control" placeholder="Gambar" />
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
 
                             </div>

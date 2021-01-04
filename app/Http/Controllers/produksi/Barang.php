@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Produksi\Barang as barangs;
 use App\Model\Superadmin_sim\P_kategori_produk as kategori_produk;
+use App\Model\Produksi\AturKonversi as p_konversi_barang;
+use App\Model\Produksi\SatuanBarang as Sb;
+use App\Model\Produksi\HistroyKonversiBrg as p_history_konversi_brg;
+use Illuminate\Support\Facades\DB;
 
 class Barang extends Controller
 {
@@ -14,6 +18,9 @@ class Barang extends Controller
 
     private $id_karyawan;
     private $id_perusahaan;
+    private $metode_penjualan = [
+        '0'=>'berdasarkan satu harga','1'=>'berdasarkan jumlah beli'
+    ];
 
     public function __construct()
     {
@@ -34,11 +41,36 @@ class Barang extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    private function query_perusahaan(){
+       $data =  DB::select('SELECT u_perusahaan.* FROM h_karyawan 
+                            join u_user_ukm on u_user_ukm.id=h_karyawan.id_user_ukm
+                            join u_perusahaan on u_perusahaan.id_user_ukm = u_user_ukm.id
+                            where h_karyawan.id_user_ukm ='.Session::get('id_superadmin_karyawan').' GROUP by u_perusahaan.id'
+                           );
+       return $data;
+    }
+
     public function index()
     {
         $data=[
-            'data_barang'=> barangs::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at')->paginate(15)
+            'data_barang'=> barangs::all()->where('id_perusahaan', $this->id_perusahaan)->sortBy('created_at'),
+            'konvesi_barang' => p_konversi_barang::all()->where('id_perusahaan', $this->id_perusahaan),
+            'history_konversi_barang' => p_history_konversi_brg::all()->where('id_perusahaan', $this->id_perusahaan),
+            'data_perusahaan'=> $this->query_perusahaan()
         ];
+        if(empty(Session::get('tab')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5'))){
+            Session::flash('tab1','tab1');
+        }
+
+        if(!empty(Session::get('tab'))){
+            Session::flash('tab2',Session::get('tab'));
+        }
+
+        if(!empty(Session::get('tab3'))){
+            Session::flash('tab3',Session::get('tab3'));
+        }
+
         return view('user.produksi.section.barang.page_default', $data);
     }
 
@@ -50,7 +82,9 @@ class Barang extends Controller
     public function create()
     {
         $data = [
-            'kategori_jasa'=> kategori_produk::all()
+            'kategori_jasa'=> kategori_produk::all(),
+            'metode_jual'=>$this->metode_penjualan,
+            'satuan' => Sb::all()
         ];
         return view('user.produksi.section.barang.page_create', $data);
     }
@@ -63,13 +97,15 @@ class Barang extends Controller
      */
     public function store(Request $request)
     {
+
          $this->validate($request,[
             'id_kategori' => 'required',
             'nm_barang' => 'required',
             'spec_barang' => 'required',
             'desc_barang' => 'required',
-            'stok_barang' => 'required',
-            'harga_jual' => 'required',
+            'stok_minimum' => 'required',
+//            'stok_barang' => 'required',
+            'hpp' => 'required',
         ]);
 
          $id_kategori = $request->id_kategori;
@@ -78,22 +114,34 @@ class Barang extends Controller
          $nm_barang = $request->nm_barang;
          $spec_barang= $request->spec_barang;
          $desc_barang= $request->desc_barang;
-         $expired_date= date('Y-m-d', strtotime($request->expired_date));
-         $stok_barang= $request->stok_barang;
-         $diskon= $request->stok_barang;
-         $harga_jual= $request->harga_jual;
+         $stok_minimum= $request->stok_minimum;
+         $kd_barang = $request->kd_barang;
+         $barcode = $request->barcode;
+         $id_satuan = $request->id_satuan;
+         $no_rak = $request->no_rak;
+         $hpp = $request->hpp;
+
+
 
          $model =new barangs;
          $model->id_kategori_produk = $id_kategori;
          $model->id_subkategori_produk = $id_subkategori;
          $model->id_subsubkategori_produk= $id_subsubkategori;
+         $model->kd_barang= $kd_barang;
+         $model->barcode= $barcode;
          $model->nm_barang= $nm_barang;
+         $model->id_satuan= $id_satuan;
          $model->spec_barang= $spec_barang;
          $model->desc_barang= $desc_barang;
-         $model->expired_date= $expired_date;
-         $model->stok_barang= $stok_barang;
-         $model->diskon= $diskon;
-         $model->harga_jual= $harga_jual;
+
+//         $model->expired_date= $expired_date;
+         $model->no_rak= $no_rak;
+//         $model->stok_awal= $stok_awal;
+         $model->stok_minimum= $stok_minimum;
+        $model->hpp= $hpp;
+        $model->metode_jual= $request->metode_jual;
+        $model->stok_akhir= $request->stok_akhir;
+        $model->gambar= '';
          $model->id_perusahaan= $this->id_perusahaan;
          $model->id_karyawan= $this->id_karyawan;
 
@@ -128,7 +176,9 @@ class Barang extends Controller
 
         $data = [
             'kategori_jasa'=> kategori_produk::all(),
-            'data_barang' => $data_barang
+            'data_barang' => $data_barang,
+            'metode_jual'=>$this->metode_penjualan,
+            'satuan' => Sb::all()
         ];
         return view('user.produksi.section.barang.page_edit', $data);
     }
@@ -147,9 +197,11 @@ class Barang extends Controller
             'nm_barang' => 'required',
             'spec_barang' => 'required',
             'desc_barang' => 'required',
-            'stok_barang' => 'required',
-            'harga_jual' => 'required',
+//            'stok_barang' => 'required',
+//            'harga_jual' => 'required',
         ]);
+
+
 
         $id_kategori = $request->id_kategori;
         $id_subkategori = $request->id_subkategori_produk;
@@ -158,21 +210,29 @@ class Barang extends Controller
         $spec_barang= $request->spec_barang;
         $desc_barang= $request->desc_barang;
         $expired_date= date('Y-m-d', strtotime($request->expired_date));
-        $stok_barang= $request->stok_barang;
-        $diskon= $request->stok_barang;
-        $harga_jual= $request->harga_jual;
+        $stok_minimum= $request->stok_minimum;
+        $kd_barang = $request->kd_barang;
+        $barcode = $request->barcode;
+        $id_satuan = $request->id_satuan;
+        $no_rak = $request->no_rak;
+        $hpp = $request->hpp;
 
         $model =barangs::find($id);
         $model->id_kategori_produk = $id_kategori;
         $model->id_subkategori_produk = $id_subkategori;
         $model->id_subsubkategori_produk= $id_subsubkategori;
+        $model->kd_barang= $kd_barang;
+        $model->barcode= $barcode;
         $model->nm_barang= $nm_barang;
+        $model->id_satuan= $id_satuan;
         $model->spec_barang= $spec_barang;
         $model->desc_barang= $desc_barang;
-        $model->expired_date= $expired_date;
-        $model->stok_barang= $stok_barang;
-        $model->diskon= $diskon;
-        $model->harga_jual= $harga_jual;
+        $model->no_rak= $no_rak;
+        $model->stok_minimum= $stok_minimum;
+        $model->hpp= $hpp;
+        $model->metode_jual= $request->metode_jual;
+        $model->stok_akhir= $request->stok_akhir;
+        $model->gambar= '';
         $model->id_perusahaan= $this->id_perusahaan;
         $model->id_karyawan= $this->id_karyawan;
 
@@ -200,5 +260,41 @@ class Barang extends Controller
         }else{
             return redirect('Barang')->with('message_fail', 'Maaf terjadi kesalahan, coba lagi mengubah data barang');
         }
+    }
+
+    public function transerBarang(Request $req){
+
+        $this->validate($req,[
+            'p_awal'=> 'required',
+            'p_tujuan'=> 'required',
+        ]);
+
+        $model_perusahaan_awal = barangs::all()->where('id_perusahaan', $req->p_awal);
+        foreach ($model_perusahaan_awal as $data_barang){
+            $model_perusahaan_tujuan = barangs::updateOrCreate(
+                [
+                    'id_perusahaan'=> $req->p_tujuan,
+                    'kd_barang'=>$data_barang->kd_barang
+                ],
+                [
+                   'id_kategori_produk'=>$data_barang->id_kategori_produk,
+                   'id_subkategori_produk'=>$data_barang->id_subkategori_produk,
+                   'id_subsubkategori_produk'=>$data_barang->id_subsubkategori_produk,
+                   'barcode'=>$data_barang->barcode,
+                   'nm_barang'=>$data_barang->nm_barang,
+                   'id_satuan'=>$data_barang->id_satuan,
+                   'spec_barang'=>$data_barang->spec_barang,
+                   'desc_barang'=>$data_barang->desc_barang,
+                   'no_rak'=>'-',
+                   'stok_minimum'=>$data_barang->stok_minimum,
+                   'hpp'=>$data_barang->hpp,
+                   'id_karyawan'=>$data_barang->id_karyawan,
+                   'stok_akhir'=>0,
+                   'metode_jual'=>'0',
+                   'gambar'=>$data_barang->gambar,
+                ]
+            );
+        }
+           return redirect('Barang')->with('message_success', 'Data barang telah berhasil ditransfer')->with('tab5','tab5');
     }
 }

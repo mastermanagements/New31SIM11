@@ -20,6 +20,11 @@ class SubAkun extends Model
       'id_karyawan',
     ];
 
+
+    public function linktoakunUkm(){
+        return $this->belongsTo('App\Model\Keuangan\Akun','id_akun_ukm');
+    }
+
     public function subsub_ukm(){
         return $this->hasMany('App\Model\Keuangan\SubSubAkun','id_sub_akun_ukm','id');
     }

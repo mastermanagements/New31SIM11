@@ -48,38 +48,61 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              @foreach($data as $akun)
-                                    <tr style="background-color: #00D8D8" id="akuns">
-                                        <th >{{ $akun[0] }} </th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
+                              {{--@foreach($data as $akun)--}}
+                                    {{--<tr style="background-color: #00D8D8" id="akuns">--}}
+                                        {{--<th >{{ $akun[0] }} </th>--}}
+                                        {{--<th></th>--}}
+                                        {{--<th></th>--}}
+                                        {{--<th></th>--}}
+                                        {{--<th></th>--}}
+                                        {{--<th></th>--}}
+                                    {{--</tr>--}}
+                                    {{--@php($total_debet  = 0)--}}
+                                    {{--@php($total_kredit = 0)--}}
+                                    {{--@foreach($akun[1] as $keterangan)--}}
+                                        {{--<tr class="body-table-buku-besar">--}}
+                                            {{--<td>{{ $keterangan['no_transaksi'] }}</td>--}}
+                                            {{--<td>{{ date('d-m-Y', strtotime($keterangan['tanggal'])) }}</td>--}}
+                                            {{--<td>{{ $keterangan['nama_keterangan'] }}</td>--}}
+                                            {{--<td>{{ number_format($keterangan['debet'],2,',','.') }}</td>--}}
+                                            {{--<td>{{ number_format($keterangan['kredit'],2,',','.') }}</td>--}}
+                                            {{--<td>{{ number_format($keterangan['saldo'],2,',','.') }}</td>--}}
+                                            {{--@php($total_debet  += $keterangan['debet'])--}}
+                                            {{--@php($total_kredit  += $keterangan['kredit'])--}}
+                                        {{--</tr>--}}
+                                    {{--@endforeach--}}
+                                    {{--<tr style="background-color: greenyellow">--}}
+                                        {{--<td >Total</td>--}}
+                                        {{--<td ></td>--}}
+                                        {{--<td ></td>--}}
+                                        {{--<td >{{ number_format($total_debet,2,',','.') }}</td>--}}
+                                        {{--<td >{{ number_format($total_kredit,2,',','.') }}</td>--}}
+                                        {{--<td ></td>--}}
+                                    {{--</tr>--}}
+                              {{--@endforeach--}}
+                              @if(!empty($data_buku_besar))
+                                @foreach($data_buku_besar as $key=> $data)
+                                    <tr style="background-color: lawngreen; text-align: left; font-weight: bold">
+                                        <td colspan="6">{{ $akun->where('id',$key)->first()->nm_akun_aktif }}</td>
                                     </tr>
-                                    @php($total_debet  = 0)
-                                    @php($total_kredit = 0)
-                                    @foreach($akun[1] as $keterangan)
-                                        <tr class="body-table-buku-besar">
-                                            <td>{{ $keterangan['no_transaksi'] }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($keterangan['tanggal'])) }}</td>
-                                            <td>{{ $keterangan['nama_keterangan'] }}</td>
-                                            <td>{{ number_format($keterangan['debet'],2,',','.') }}</td>
-                                            <td>{{ number_format($keterangan['kredit'],2,',','.') }}</td>
-                                            <td>{{ number_format($keterangan['saldo'],2,',','.') }}</td>
-                                            @php($total_debet  += $keterangan['debet'])
-                                            @php($total_kredit  += $keterangan['kredit'])
+                                    @foreach($data as $sub_key => $sub_data)
+                                        <tr>
+                                            <td>{{ $sub_data['no_transaksi'] }}</td>
+                                            <td>{{ $sub_data['tanggal'] }}</td>
+                                            <td>{{ $sub_data['keterangan'] }}</td>
+                                            <td>{{ $sub_data['debet'] }}</td>
+                                            <td>{{ $sub_data['kredit'] }}</td>
+                                            <td>
+                                                @if($sub_data['saldo_debet']!=0)
+                                                    {{ $sub_data['saldo_debet'] }}
+                                                @else
+                                                    {{ $sub_data['saldo_kredit'] }}
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endforeach
-                                    <tr style="background-color: greenyellow">
-                                        <td >Total</td>
-                                        <td ></td>
-                                        <td ></td>
-                                        <td >{{ number_format($total_debet,2,',','.') }}</td>
-                                        <td >{{ number_format($total_kredit,2,',','.') }}</td>
-                                        <td ></td>
-                                    </tr>
-                              @endforeach
+                                @endforeach
+                              @endif
                             </tbody>
 
                         </table>
