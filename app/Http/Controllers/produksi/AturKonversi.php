@@ -141,7 +141,8 @@ class AturKonversi extends Controller
     }
 
 
-    private function konversi_formula($model){
+    private function konversi_formula($model)
+    {
         $ubah_stok_barang_asal = $model->linkToKonversiBarang->linkToBarangAsal;
         $ubah_stok_barang_tujuan = $model->linkToKonversiBarang->linkToBarangTujuan;
         // TODO: konversi dari satuan terbesar ke satuan terkecil
