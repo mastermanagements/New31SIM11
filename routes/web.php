@@ -2189,6 +2189,8 @@ Route::post('ubah-status-tahun-buku/{id}','keuangan\TahunBuku@ubah_status');
 Route::resource('inventory', 'produksi\StokAwal');
 Route::post('inventory/{id}/destroy', 'produksi\StokAwal@delete');
 
+Route::resource('itemIO', 'produksi\ItemIO');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

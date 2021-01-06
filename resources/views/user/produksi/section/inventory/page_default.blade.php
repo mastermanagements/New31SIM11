@@ -27,6 +27,8 @@
                     <div class="box-body">
                        @if($menu == 'stok_awal')
                             @include('user.produksi.section.inventory.stok_awal.page_default')
+                       @elseif($menu == 'itemIO')
+                            @include('user.produksi.section.inventory.itemIO.page_default')
                        @endif
                     </div>
                 </div>

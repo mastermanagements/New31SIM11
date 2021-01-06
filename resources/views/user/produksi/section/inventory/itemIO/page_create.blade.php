@@ -15,16 +15,31 @@
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="box box-warning">
+                <div class="box box-primary">
                     @include('user.produksi.section.inventory.menu')
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap;">
-                                <form action="{{ url('inventory/'.$data_stok->id) }}" method="post">
+                                <form action="{{ url('itemIO') }}" method="post">
                                     {{ csrf_field() }}
-                                    <input type="hidden" name="_method" value="put">
-                                    <div class="form-group">
 
+                                    <div class="form-group">
+                                        <label>
+                                            Jenis Item
+                                        </label><br>
+                                        <select name="jenis_item" class="form-control select2" required>
+                                            @foreach($jenis_item as $key=>$jenis_item)
+                                                <option value="{{ $key }}">{{$jenis_item }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Tanggal
+                                        </label>
+                                        <input type="date" name="tgl" class="form-control" required/>
+                                    </div>
+                                    <div class="form-group">
                                         <label>
                                             Nama Barang
                                         </label><br>
@@ -32,23 +47,24 @@
                                             <option>Pilihan Barang</option>
                                             @if(!empty($barang))
                                                 @foreach($barang as $data)
-                                                    <option value="{{ $data->id }}" @if($data_stok->id_barang==$data->id) selected @endif>{{ $data->nm_barang }}</option>
+                                                    <option value="{{ $data->id }}">{{ $data->nm_barang }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>
-                                            Jumlah Barang
+                                            Keterangan
                                         </label>
-                                        <input type="text" name="jumlah_brg" class="form-control" value="{{ $data_stok->jumlah_brg }}" required/>
+                                        <textarea name="ket" class="form-control" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>
-                                            Tanggal Expired
+                                            Jumlah Barang
                                         </label>
-                                        <input type="date" name="expired_date" class="form-control" value="{{ $data_stok->expired_date }}" required/>
+                                        <input type="text" name="jumlah_brg" class="form-control" required/>
                                     </div>
+
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Simpan</button>
                                     </div>

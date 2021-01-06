@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Produksi\Barang;
 use App\Model\Produksi\StokAwal as stok_awal;
+use App\Http\Controllers\produksi\utils\StokBarangOperation;
 class StokAwal extends Controller
 {
     //
@@ -32,14 +33,19 @@ class StokAwal extends Controller
             'expired_date'=>'required',
         ]);
 
-
-        $model = new stok_awal();
-        $model->id_barang = $req->id_barang;
-        $model->jumlah_brg = $req->jumlah_brg;
-        $model->expired_date = $req->expired_date;
-        $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        $model = stok_awal::updateOrCreate(
+            [
+                'id_barang'=> $req->id_barang,
+                'id_perusahaan'=>Session::get('id_perusahaan_karyawan')
+            ],
+            [
+                'jumlah_brg'=>$req->jumlah_brg,
+                'expired_date'=>$req->expired_date,
+            ]
+        );
 
         if($model){
+            StokBarangOperation::operation($model,'stok_awal');
             return redirect('inventory')->with('message_success','Data Stok telah disimpan');
         }else{
             return redirect('inventory')->with('message_fail','Data Stok gagal disimpan');
@@ -68,6 +74,7 @@ class StokAwal extends Controller
         $model->expired_date = $req->expired_date;
 
         if($model->save()){
+            StokBarangOperation::operation($model,'stok_awal');
             return redirect('inventory')->with('message_success','Data Stok telah diubah');
         }else{
             return redirect('inventory')->with('message_fail','Data Stok gagal diubah');
