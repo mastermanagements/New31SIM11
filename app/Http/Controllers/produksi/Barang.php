@@ -297,4 +297,13 @@ class Barang extends Controller
         }
            return redirect('Barang')->with('message_success', 'Data barang telah berhasil ditransfer')->with('tab5','tab5');
     }
+
+    # Todo: Stok Akhir
+    public function akhir_stok(){
+        $data = [
+            'menu'=> 'stok_akhir',
+            'data_barang'=> barangs::all()->where('id_perusahaan', $this->id_perusahaan)->sortBy('created_at'),
+        ];
+        return view('user.produksi.section.inventory.page_default', $data);
+    }
 }

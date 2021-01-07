@@ -2191,6 +2191,8 @@ Route::post('inventory/{id}/destroy', 'produksi\StokAwal@delete');
 
 Route::resource('itemIO', 'produksi\ItemIO');
 
+Route::get('stok-akhir','produksi\Barang@akhir_stok');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

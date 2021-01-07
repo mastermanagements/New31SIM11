@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/ItemIO.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/utils/StokBarangOperation.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Produksi/ItemIO.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_01_06_095239_tbl_p_item_masuk_keluar.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_create.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_default.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_edit.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/stok_akhir/page_default.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/StokAwal.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/StokAwal.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Produksi/Barang.php" afterPath="$PROJECT_DIR$/app/Model/Produksi/Barang.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/menu.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/menu.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/page_default.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/stok_awal/page_edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/stok_awal/page_edit.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -1428,8 +1421,42 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="2191" column="23" lean-forward="false" selection-start-line="2191" selection-start-column="17" selection-end-line="2191" selection-end-column="23" />
+            <state relative-caret-position="267">
+              <caret line="2193" column="45" lean-forward="false" selection-start-line="2193" selection-start-column="45" selection-end-line="2193" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://E:/Sample/Digram_Sekolah/Backup Website Mts Ummusshabri.com (CBT)/Website/public_html/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="20" column="33" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page_default.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/stok_akhir/page_default.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="47" column="43" lean-forward="true" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
+              <folding>
+                <element signature="e#2758#2775#0#HTML" expanded="true" />
+                <element signature="e#2935#2954#0#HTML" expanded="true" />
+                <marker date="1609984417080" expanded="false" signature="1183:1202" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/menu.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -1438,8 +1465,8 @@
       <file leaf-file-name="ItemIO.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/ItemIO.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="91" column="5" lean-forward="true" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+            <state relative-caret-position="410">
+              <caret line="86" column="37" lean-forward="true" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
               <folding>
                 <element signature="e#49#77#0#PHP" expanded="true" />
               </folding>
@@ -1447,24 +1474,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page_edit.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_edit.blade.php">
+      <file leaf-file-name="StokBarangOperation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/utils/StokBarangOperation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+            <state relative-caret-position="244">
+              <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page_default.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_default.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="78" column="45" lean-forward="true" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
-              <folding>
-                <element signature="e#3813#3860#0#HTML" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -1480,7 +1495,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>menu-laporan-keuangan</find>
       <find>tampilan-cetak-jurnal-umum</find>
       <find>jurnal_umum</find>
       <find>cetak_jurnal_umum</find>
@@ -1510,6 +1524,7 @@
       <find>login</find>
       <find>Barang</find>
       <find>trigger</find>
+      <find>stok-akhir</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1561,7 +1576,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/keuangan/TahunBuku.php" />
         <option value="$PROJECT_DIR$/app/Http/utils/data/SettingTahunBuku.php" />
         <option value="$PROJECT_DIR$/app/Http/utils/data/Aruskas.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/keuangan/report/ArusKas.php" />
@@ -1592,7 +1606,6 @@
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/AturKonversi.php" />
         <option value="E:/Backup Data/Simper offlie/Disperindak/db_simper (6).sql" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/stok_awal/page_create.blade.php" />
@@ -1601,10 +1614,6 @@
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/stok_awal/page_default.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/stok_awal/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_01_06_095239_tbl_p_item_masuk_keluar.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/menu.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/StokAwal.php" />
         <option value="$PROJECT_DIR$/app/Model/Produksi/Barang.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/utils/StokBarangOperation.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_create.blade.php" />
@@ -1612,6 +1621,12 @@
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/ItemIO.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/menu.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/stok_akhir/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/StokAwal.php" />
       </list>
     </option>
   </component>
@@ -1754,7 +1769,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -1784,14 +1798,6 @@
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="produksi" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -1843,18 +1849,30 @@
               <item name="produksi" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="inventory" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="itemIO" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="stok_akhir" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="produksi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="inventory" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="stok_awal" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="Barang&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/Barang.php&#10;Atur&#9;null&#9;null&#10;HargaJualBaseOnJumlah&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/HargaJualBaseOnJumlah.php&#10;p&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/Barang.php&#10;Penerim&#9;null&#9;null&#10;Neraca&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/data/Neraca.php&#10;Labaru&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/data/LabaRugi.php&#10;Buku&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/data/BukuBesar.php&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;Ne&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/report/Neraca.php&#10;Jurn&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Jurnal.php&#10;Akun&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Akun.php&#10;BukuBe&#9;null&#9;null&#10;Bu&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/data/BukuBesar.php&#10;Jurnal&#9;null&#9;null&#10;Lapora&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/LaporanKeuangan.php&#10;AkunAktifUkm&#9;null&#9;null&#10;Lapo&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/LaporanKeuangan.php&#10;JurnalUmu&#9;null&#9;null&#10;Jurna&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Jurnal.php&#10;lapora&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/LaporanKeuangan.php&#10;atu&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Traits/AturanDK.php&#10;daftar&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/DaftarJurnal.php&#10;atura&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Traits/AturanDK.php&#10;tra&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Traits/Transaksi.php&#10;akun&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Akun.php&#10;aku&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/SubAkun.php&#10;we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;lap&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/LaporanKeuangan.php&#10;jur&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Jurnal.php&#10;la&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/LaporanKeuangan.php&#10;Ju&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Jurnal.php&#10;tr&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Traits/Transaksi.php&#10;LaporanKeuangan&#9;null&#9;null&#10;Daf&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/DaftarJurnal.php&#10;pene&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/Penerimaan.php&#10;SW&#9;null&#9;null&#10;dividen&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_13_063314_create_i_dividen_investor.php&#10;SahamRea&#9;null&#9;null&#10;Devide&#9;null&#9;null&#10;jua&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_06_030855_create_jual_saham_perusahaan.php&#10;jual&#9;null&#9;null&#10;i_bentu&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_01_011959_create_i_bentuk_investor.php&#10;Bentuk&#9;null&#9;null&#10;Brifing&#9;null&#9;null&#10;Abse&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Hrd/H_absensi.php&#10;SlipGaji&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/SlipGaji.php&#10;Tunjangan&#9;null&#9;null&#10;SkalaBonusProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/SkalaBonusProyek.php&#10;G_Bonus_Gaji&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/G_Bonus_Gaji.php" />
+    <property name="SearchEverywhereHistoryKey" value="Stok&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/StokAwal.php&#10;Barang&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/Barang.php&#10;Atur&#9;null&#9;null&#10;HargaJualBaseOnJumlah&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/HargaJualBaseOnJumlah.php&#10;p&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/Barang.php&#10;Penerim&#9;null&#9;null&#10;Neraca&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/data/Neraca.php&#10;Labaru&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/data/LabaRugi.php&#10;Buku&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/data/BukuBesar.php&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;Ne&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/report/Neraca.php&#10;Jurn&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Jurnal.php&#10;Akun&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Akun.php&#10;BukuBe&#9;null&#9;null&#10;Bu&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/data/BukuBesar.php&#10;Jurnal&#9;null&#9;null&#10;Lapora&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/LaporanKeuangan.php&#10;AkunAktifUkm&#9;null&#9;null&#10;Lapo&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/LaporanKeuangan.php&#10;JurnalUmu&#9;null&#9;null&#10;Jurna&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Jurnal.php&#10;lapora&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/LaporanKeuangan.php&#10;atu&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Traits/AturanDK.php&#10;daftar&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/DaftarJurnal.php&#10;atura&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Traits/AturanDK.php&#10;tra&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Traits/Transaksi.php&#10;akun&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Akun.php&#10;aku&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/SubAkun.php&#10;we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;lap&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/LaporanKeuangan.php&#10;jur&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Jurnal.php&#10;la&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/LaporanKeuangan.php&#10;Ju&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Keuangan/Jurnal.php&#10;tr&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Traits/Transaksi.php&#10;LaporanKeuangan&#9;null&#9;null&#10;Daf&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/DaftarJurnal.php&#10;pene&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/keuangan/Penerimaan.php&#10;SW&#9;null&#9;null&#10;dividen&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_13_063314_create_i_dividen_investor.php&#10;SahamRea&#9;null&#9;null&#10;Devide&#9;null&#9;null&#10;jua&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_06_030855_create_jual_saham_perusahaan.php&#10;jual&#9;null&#9;null&#10;i_bentu&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/investor/2019_08_01_011959_create_i_bentuk_investor.php&#10;Bentuk&#9;null&#9;null&#10;Brifing&#9;null&#9;null&#10;Abse&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Hrd/H_absensi.php&#10;SlipGaji&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/SlipGaji.php&#10;Tunjangan&#9;null&#9;null&#10;SkalaBonusProyek&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/penggajian/SkalaBonusProyek.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
@@ -1866,19 +1884,19 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\inventory" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\inventory\stok_awal" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\barang" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\barang\konversi_barang" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\xampp173\htdocs\New31SIM11\app\Model\Investor" />
       <recent name="E:\xampp173\htdocs\New31SIM11\app\Http\Controllers\investor" />
       <recent name="E:\xampp173\htdocs\New31SIM11\app\Model\Hrd" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\progressProyek\crud\modal" />
       <recent name="E:\xampp173\htdocs\New31SIM11\public\fileArsip" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\inventory\stok_akhir" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\inventory" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\inventory\stok_awal" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\barang" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2236,14 +2254,9 @@
       <workItem from="1609722859599" duration="681000" />
       <workItem from="1609727629459" duration="2489000" />
       <workItem from="1609807599055" duration="10632000" />
-      <workItem from="1609894420227" duration="11660000" />
-    </task>
-    <task id="LOCAL-00122" summary="Investor&#10;   - Akad Fix">
-      <created>1566046110434</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1566046110434</updated>
+      <workItem from="1609894420227" duration="11756000" />
+      <workItem from="1609936265974" duration="25000" />
+      <workItem from="1609981350216" duration="5835000" />
     </task>
     <task id="LOCAL-00123" summary="Investor&#10;                - Nisabah&#10;                - Besar nisbah fix">
       <created>1566204026738</created>
@@ -2581,11 +2594,18 @@
       <option name="project" value="LOCAL" />
       <updated>1609822686519</updated>
     </task>
-    <option name="localTasksCounter" value="171" />
+    <task id="LOCAL-00171" summary="- Perancangan Item Masuk dan Item Keluar&#10;- CRUD Item Keluar">
+      <created>1609909820867</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1609909820869</updated>
+    </task>
+    <option name="localTasksCounter" value="172" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2164751000" />
+    <option name="totallyTimeSpent" value="2170707000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2598,11 +2618,10 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22087745" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22692889" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5181543" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18078668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70888156" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2616,6 +2635,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -2684,7 +2704,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Keuangan&#10;  - Perancangan API Arus Kas" />
     <MESSAGE value="Keuangan&#10;  - Perancangan Api Arus kas Selesai&#10;  - Tampilan Arus Kas" />
     <MESSAGE value="Keuangan&#10;  - Revisi Api Arus Kas. Penambahan Filter By Date" />
     <MESSAGE value="Frontend sudah terpasang" />
@@ -2709,7 +2728,8 @@
     <MESSAGE value="- Update AturKonversi&#10;- Revisi Barang&#10;- Tranfer Barang" />
     <MESSAGE value="- Update Atur Konversi&#10;- Update Barang Tabs" />
     <MESSAGE value="- Perancangan Investor&#10;- CRUD Stok Awal Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Perancangan Investor&#10;- CRUD Stok Awal Fix" />
+    <MESSAGE value="- Perancangan Item Masuk dan Item Keluar&#10;- CRUD Item Keluar" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Perancangan Item Masuk dan Item Keluar&#10;- CRUD Item Keluar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2718,49 +2738,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/harga_jual_satuan/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="47" column="34" lean-forward="false" selection-start-line="42" selection-start-column="28" selection-end-line="47" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/harga_jual_satuan/page_conten.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="68" column="39" lean-forward="true" selection-start-line="37" selection-start-column="31" selection-end-line="68" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/harga_jual_base_on_jumlah/page_conten.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="70" column="39" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="70" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/harga_jual_base_on_jumlah/page_edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="32" column="90" lean-forward="false" selection-start-line="32" selection-start-column="90" selection-end-line="32" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/konversi_barang/page_conten.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="34" column="63" lean-forward="false" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/konversi_barang/page_edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="35" column="60" lean-forward="false" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/daftar_konversi_barang/page_edit.blade.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/barang/konversi_barang/page_create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1141">
@@ -2890,7 +2867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="22705" column="0" lean-forward="false" selection-start-line="22705" selection-start-column="0" selection-end-line="22705" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2898,7 +2874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2906,7 +2881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="23" column="104" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="23" selection-end-column="104" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2914,7 +2888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="24" column="96" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="96" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2936,7 +2909,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2944,18 +2916,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="45" column="52" lean-forward="false" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="73" column="27" lean-forward="false" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
-          <folding>
-            <marker date="1609379824600" expanded="true" signature="1393:1664" ph="SELECT u_per... h_karyawan" />
-            <marker date="1609379824600" expanded="true" signature="1393:1731" ph="SELECT u_per... h_karyawan" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2963,7 +2923,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="33" column="74" lean-forward="true" selection-start-line="33" selection-start-column="74" selection-end-line="33" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2971,7 +2930,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="426">
           <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2979,31 +2937,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="30" column="89" lean-forward="false" selection-start-line="30" selection-start-column="89" selection-end-line="30" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/stok_awal/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="51" column="75" lean-forward="false" selection-start-line="51" selection-start-column="75" selection-end-line="51" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/menu.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" lean-forward="false" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3011,27 +2944,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
           <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/utils/StokBarangOperation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding>
-            <element signature="e#141#181#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/StokAwal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1396">
-          <caret line="64" column="30" lean-forward="true" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
-          <folding>
-            <element signature="e#49#77#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3039,7 +2951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
           <caret line="14" column="48" lean-forward="false" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3047,7 +2958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
           <caret line="29" column="52" lean-forward="false" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3055,15 +2965,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="2191" column="23" lean-forward="false" selection-start-line="2191" selection-start-column="17" selection-end-line="2191" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3071,35 +2972,149 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
           <caret line="41" column="60" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="87" selection-end-column="5" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="78" column="45" lean-forward="false" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+        <state relative-caret-position="25">
+          <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/utils/StokBarangOperation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/ItemIO.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="91" column="5" lean-forward="true" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+        <state relative-caret-position="410">
+          <caret line="86" column="37" lean-forward="true" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
           <folding>
             <element signature="e#49#77#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_default.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/menu.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="78" column="45" lean-forward="true" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
+        <state relative-caret-position="100">
+          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="304" column="24" lean-forward="false" selection-start-line="304" selection-start-column="13" selection-end-line="304" selection-end-column="24" />
           <folding>
-            <element signature="e#3813#3860#0#HTML" expanded="true" />
+            <marker date="1609983768686" expanded="true" signature="1393:1664" ph="SELECT u_per... h_karyawan" />
+            <marker date="1609983768686" expanded="true" signature="1393:1731" ph="SELECT u_per... h_karyawan" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/stok_akhir/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="47" column="43" lean-forward="true" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
+          <folding>
+            <element signature="e#2758#2775#0#HTML" expanded="true" />
+            <element signature="e#2935#2954#0#HTML" expanded="true" />
+            <marker date="1609984417080" expanded="false" signature="1183:1202" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/stok_awal/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="51" column="75" lean-forward="false" selection-start-line="51" selection-start-column="75" selection-end-line="51" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/StokAwal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="55" column="37" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/Sample/Digram_Sekolah/Backup Website Mts Ummusshabri.com (CBT)/Website/public_html/bootstrap/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/Sample/Digram_Sekolah/Backup Website Mts Ummusshabri.com (CBT)/Website/public_html/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="2193" column="45" lean-forward="false" selection-start-line="2193" selection-start-column="45" selection-end-line="2193" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/Sample/Digram_Sekolah/Backup Website Mts Ummusshabri.com (CBT)/Website/public_html/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-525">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/Sample/Digram_Sekolah/Backup Website Mts Ummusshabri.com (CBT)/Website/public_html/server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/Sample/Digram_Sekolah/Backup Website Mts Ummusshabri.com (CBT)/Website/public_html/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="20" column="33" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
