@@ -53,7 +53,7 @@ class StokAwal extends Controller
     }
 
     public function edit($id){
-        dd(stok_awal::findOrFail($id));
+
         $data = [
             'barang'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'data_stok'=> stok_awal::findOrFail($id)

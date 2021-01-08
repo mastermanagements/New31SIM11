@@ -27,32 +27,31 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap;">
-                                <h4>Stok Awal <a href="{{ url('inventory/create') }}" class="btn btn-success pull-right" style="margin-bottom: 10px">Tambah Stok Barang</a></h4>
+                                <h4>Stok Opname
+                                    <a href="{{ url('stok-opname-print') }}" class="btn btn-success pull-right" style="margin-bottom: 10px">Print Stok Opname</a>
+                                </h4>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <td>No.</td>
                                             <td>Nama Barang</td>
-                                            <td>Jumlah Stok</td>
-                                            <td>Expired Date</td>
+                                            <td>Satuan Barang</td>
+                                            <td>Sisa Barang</td>
                                             <td>Aksi</td>
+                                          
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @php($no=1)
-                                        @if(!empty($data_stok))
-                                            @foreach($data_stok as $data)
+                                        @if(!empty($data_barang))
+                                            @foreach($data_barang as $data)
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
-                                                    <td>{{ $data->linkToBarang->nm_barang }}</td>
-                                                    <td>{{ $data->jumlah_brg }}</td>
-                                                    <td>{{ date('d-m-Y', strtotime($data->expired_date)) }}</td>
+                                                    <td>{{ $data->nm_barang }}</td>
+                                                    <td>{{ $data->linkToSatuan->satuan_brg }}</td>
+                                                    <td>{{ $data->stok_akhir }}</td>
                                                     <td>
-                                                        <form action="{{ url('inventory/'.$data->id.'/destroy') }}" method="post">
-                                                            {{ csrf_field() }}
-                                                            <a href="{{ url('inventory/'.$data->id.'/edit') }}" class="btn btn-warning">ubah</a>
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data stok ini ... ?')">hapus</button>
-                                                        </form>
+                                                        <a href="#" class="btn btn-default">Perbaiki Stok</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

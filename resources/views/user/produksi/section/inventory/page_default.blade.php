@@ -29,8 +29,10 @@
                             @include('user.produksi.section.inventory.stok_awal.page_default')
                        @elseif($menu == 'itemIO')
                             @include('user.produksi.section.inventory.itemIO.page_default')
-                        @elseif($menu == 'stok_akhir')
+                       @elseif($menu == 'stok_akhir')
                             @include('user.produksi.section.inventory.stok_akhir.page_default')
+                       @elseif($menu == 'stok_opname')
+                            @include('user.produksi.section.inventory.stok_opname.page_default')
                        @endif
                     </div>
                 </div>

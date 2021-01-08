@@ -2193,6 +2193,9 @@ Route::resource('itemIO', 'produksi\ItemIO');
 
 Route::get('stok-akhir','produksi\Barang@akhir_stok');
 
+Route::resource('stok-opname','produksi\StokOpname');
+Route::get('stok-opname-print','produksi\StokOpname@cetak');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

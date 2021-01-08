@@ -38,7 +38,7 @@
                                             <td>Satuan Barang</td>
                                             <td>Sisa Barang</td>
                                             <td>Keterangan</td>
-                                            <td>Aksi</td>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,13 +57,7 @@
                                                             <label style="color:green">Stok aman</label>
                                                         @endif
                                                     </td>
-                                                    <td>
-                                                        <form action="{{ url('inventory/'.$data->id.'/destroy') }}" method="post">
-                                                            {{ csrf_field() }}
-                                                            <a href="{{ url('inventory/'.$data->id.'/edit') }}" class="btn btn-warning">ubah</a>
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data stok ini ... ?')">ubah</button>
-                                                        </form>
-                                                    </td>
+
                                                 </tr>
                                             @endforeach
                                         @endif
