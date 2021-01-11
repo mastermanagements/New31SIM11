@@ -27,32 +27,39 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap;">
-                                <h4>Stok Opname
-                                    <a href="{{ url('stok-opname-print') }}" class="btn btn-success pull-right" style="margin-bottom: 10px">Print Stok Opname</a>
-                                    <a href="{{ url('history-barang') }}" class="btn btn-primary pull-right" style="margin-bottom: 10px">History Stok Opname</a>
+                                <h4>History Stok Opname
+                                    {{--<a href="{{ url('stok-opname-print') }}" class="btn btn-success pull-right" style="margin-bottom: 10px">Print Stok Opname</a>--}}
+                                    {{--<a href="{{ url('history-barang') }}" class="btn btn-primary pull-right" style="margin-bottom: 10px">History Stok Opname</a>--}}
                                 </h4>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <td>No.</td>
+                                            <td>Tanggal</td>
                                             <td>Nama Barang</td>
                                             <td>Satuan Barang</td>
-                                            <td>Sisa Barang</td>
-                                            <td>Aksi</td>
-                                          
+                                            <td>Stok Akhir</td>
+                                            <td>Bukti Fisik</td>
+                                            <td>Seilisi</td>
+                                            <td>Petugas</td>
+                                            <td>aksi</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @php($no=1)
-                                        @if(!empty($data_barang))
-                                            @foreach($data_barang as $data)
+                                        @if(!empty($barang))
+                                            @foreach($barang as $data)
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
-                                                    <td>{{ $data->nm_barang }}</td>
-                                                    <td>{{ $data->linkToSatuan->satuan_brg }}</td>
+                                                    <td>{{ date('d-m-Y', strtotime($data->tgl_so)) }}</td>
+                                                    <td>{{ $data->linkToBarang->nm_barang }}</td>
+                                                    <td>{{ $data->linkToBarang->linkToSatuan->satuan_brg }}</td>
                                                     <td>{{ $data->stok_akhir }}</td>
+                                                    <td>{{ $data->bukti_fisik }}</td>
+                                                    <td>{{ $data->stok_akhir-$data->bukti_fisik }}</td>
+                                                    <td>{{ $data->petugas }}</td>
                                                     <td>
-                                                        <a href="{{ url('perbaikan-stok/'.$data->id) }}" class="btn btn-default">Perbaiki Stok</a>
+                                                        <a href="{{ url('ubah-stok-opname/'. $data->id) }}" class="btn btn-primary" style="margin-bottom: 10px">Ubah</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

@@ -2195,6 +2195,11 @@ Route::get('stok-akhir','produksi\Barang@akhir_stok');
 
 Route::resource('stok-opname','produksi\StokOpname');
 Route::get('stok-opname-print','produksi\StokOpname@cetak');
+Route::get('perbaikan-stok/{id_barang}','produksi\StokOpname@perbaikanstok');
+Route::post('tambah-perbaikan-stok','produksi\StokOpname@tambah_perbaikan_stok');
+Route::get('history-barang','produksi\StokOpname@HistoryStokOpname');
+Route::get('ubah-stok-opname/{id}','produksi\StokOpname@UbahHistoryStokUpname');
+Route::post('ubah-perbaikan-stok/{id}','produksi\StokOpname@update_perbaikan_stok');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');

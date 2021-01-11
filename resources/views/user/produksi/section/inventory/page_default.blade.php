@@ -33,6 +33,12 @@
                             @include('user.produksi.section.inventory.stok_akhir.page_default')
                        @elseif($menu == 'stok_opname')
                             @include('user.produksi.section.inventory.stok_opname.page_default')
+                       @elseif($menu == 'perbaikan_stok')
+                            @include('user.produksi.section.inventory.stok_opname.page_create')
+                       @elseif($menu == 'history-barang')
+                            @include('user.produksi.section.inventory.stok_opname.page_create')
+                       @elseif($menu == 'ubah-history-barang')
+                            @include('user.produksi.section.inventory.stok_opname.page_edit')
                        @endif
                     </div>
                 </div>
