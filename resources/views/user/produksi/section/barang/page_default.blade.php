@@ -32,6 +32,7 @@
                         <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Daftar Barang  </a></li>
                         <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Daftar Harga Barang </a></li>
                         <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Koversi Satuan </a></li>
+                        <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Promosi Barang </a></li>
                         <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Daftar Konversi Barang </a></li>
                         <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
                     </ul>
@@ -327,11 +328,87 @@
                                 </form>
                             </div>
                         </div>
+                        <div class="tab-pane @if(Session::get('tab6') == 'tab6') active @else '' @endif" id="tab_6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Event Promo <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-default"> Buat Event </a> </h3>
+                                    <table id="example1" class="table table-bordered table-striped" style="width: 100%">
+                                        <thead>
+                                        <tr>
+                                            <td>No</td>
+                                            <td>Nama Promo</td>
+                                            <td>Mulai</td>
+                                            <td>Selesai</td>
+                                            <td>Syarat</td>
+                                            <td>Fasilitas</td>
+                                            <td>Aksi</td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.tab-content -->
                 </div>
                 <!-- nav-tabs-custom -->
             </div>
+                <div class="modal fade" id="modal-default">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Form Promo</h4>
+                            </div>
+                            <form action="#" method="post">
+                                {{ csrf_field() }}
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Nama Promo</label>
+                                                <input type="text" class="form-control" name="nm_promo" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Jenis Promo</label>
+                                                <select name="jenis_promo" class="form-control">
+                                                    <option>Promo 1</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tanggal Dibuat</label>
+                                                <input type="date" class="form-control" name="tgl_awal_promo" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Berlaku s/d</label>
+                                                <input type="date" class="form-control" name="tgl_akhir_promo" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Syarat</label>
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Fasilitas Promo</label>
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
         </div>
     </section>
     <!-- /.content -->
