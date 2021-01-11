@@ -2201,6 +2201,11 @@ Route::get('history-barang','produksi\StokOpname@HistoryStokOpname');
 Route::get('ubah-stok-opname/{id}','produksi\StokOpname@UbahHistoryStokUpname');
 Route::post('ubah-perbaikan-stok/{id}','produksi\StokOpname@update_perbaikan_stok');
 
+#Todo Promo
+
+Route::resource('promo-crud', 'marketing\Promo');
+Route::post('delete-promo/{id}','marketing\Promo@delete_promo');
+
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}','globals\ProvinsiDanKabupaten@ResponseKabupaten');
 

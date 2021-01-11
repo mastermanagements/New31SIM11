@@ -345,7 +345,26 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-
+                                            @if(!empty($promo))
+                                                @php($no=1)
+                                                @foreach($promo as $data_promo)
+                                                    <tr>
+                                                        <td>{{ $no++ }}</td>
+                                                        <td>{{ $data_promo->nama_promo }}</td>
+                                                        <td>{{ $data_promo->tgl_dibuat }}</td>
+                                                        <td>{{ $data_promo->tgl_berlaku }}</td>
+                                                        <td>{{ $data_promo->syarat }}</td>
+                                                        <td>{{ $data_promo->fasilitas_promo }}</td>
+                                                        <td>
+                                                            <form action="{{ url('delete-promo/'.$data_promo->id) }}" method="post">
+                                                                {{ csrf_field() }}
+                                                                <a href="#" onclick="onPromoEdit({{ $data_promo->id }})" class="btn btn-warning">ubah</a>
+                                                                <button type="submit" class="btn btn-danger">hapus</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>
@@ -364,36 +383,40 @@
                                     <span aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title">Form Promo</h4>
                             </div>
-                            <form action="#" method="post">
+                            <form action="{{ url('promo-crud') }}" method="post" id="form_promo">
                                 {{ csrf_field() }}
+                                <input type="hidden" name="_method" value="">
                                 <div class="modal-body">
                                     <div class="row">
+
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Nama Promo</label>
-                                                <input type="text" class="form-control" name="nm_promo" required>
+                                                <input type="text" class="form-control" name="nm_promo" id="nama_promo" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Jenis Promo</label>
-                                                <select name="jenis_promo" class="form-control">
-                                                    <option>Promo 1</option>
+                                                <select name="jenis_promo" class="form-control" id="jenis_promo" required>
+                                                    @foreach($metode_promo as $key=> $promo)
+                                                        <option value="{{ $key }}">{{ $promo }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Tanggal Dibuat</label>
-                                                <input type="date" class="form-control" name="tgl_awal_promo" required>
+                                                <input type="date" class="form-control" name="tgl_awal_promo" id="tgl_awal_promo" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Berlaku s/d</label>
-                                                <input type="date" class="form-control" name="tgl_akhir_promo" required>
+                                                <input type="date" class="form-control" name="tgl_akhir_promo" id="tgl_akhir_promo" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Syarat</label>
-                                                <textarea class="form-control"></textarea>
+                                                <textarea name="syarat" class="form-control" id="syarat"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>Fasilitas Promo</label>
-                                                <textarea class="form-control"></textarea>
+                                                <textarea name="fasilitas" class="form-control" id="fasilitas"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -424,5 +447,23 @@
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     @include('user.administrasi.section.arsip.jenis_arsip.modal.JS')
-
+    <script>
+        onPromoEdit =function(kode){
+            $.ajax({
+                'url':'{{ url('promo-crud') }}/'+kode+'/edit',
+                'type':'get',
+                success:function(result){
+                    console.log(result.nama_promo);
+                    $('#nama_promo').val(result.nama_promo);
+                    $('[name="tgl_awal_promo"]').val(result.tgl_dibuat);
+                    $('[name="tgl_akhir_promo"]').val(result.tgl_berlaku);
+                    $('[name="syarat"]').text(result.syarat);
+                    $('[name="fasilitas"]').val(result.fasilitas_promo);
+                    $('[name="_method"]').val('put');
+                    $('#form_promo').attr('action','{{ url('promo-crud') }}/'+result.id);
+                    $('#modal-default').modal('show')
+                }
+            })
+        }
+    </script>
 @stop
