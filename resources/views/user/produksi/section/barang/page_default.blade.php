@@ -360,6 +360,7 @@
                                                                 {{ csrf_field() }}
                                                                 <a href="#" onclick="onPromoEdit({{ $data_promo->id }})" class="btn btn-warning">ubah</a>
                                                                 <button type="submit" class="btn btn-danger">hapus</button>
+                                                                <a href="#" onclick="window.location.href='{{ url('barang-promo/'.$data_promo->id) }}'" class="btn btn-default">Barang Promo</a>
                                                             </form>
                                                         </td>
                                                     </tr>

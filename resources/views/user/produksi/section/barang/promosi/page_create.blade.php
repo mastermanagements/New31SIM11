@@ -14,7 +14,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Harga Jual Satuan
+            Daftar Barang Promosi
         </h1>
     </section>
 
@@ -26,40 +26,118 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Harga Jual Satuan</h3>
+                        <h3 class="box-title">Formulir Barang Promosi</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('harga-jual-satuan') }}" method="post">
+
                         <div class="box-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Kode/Nama Barang :{{ $data->kd_barang }} {{ $data->nm_barang }}</label>
-                                {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">HPP :{{ $data->hpp }}</label>
-                                {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Persentase Keuntungan</label>
-                                {{ csrf_field() }}
-                                <input type="number" minlength="0" maxlength="100" name="persentase" class="form-control" required/>
-                                <input type="hidden" name="hpp" class="form-control" value="{{ $data->hpp }}"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Harga Jual Barang</label>
-                                {{ csrf_field() }}
-                                <input type="hidden" name="id_barang" value="{{ $data->id }}">
-                                <input type="text" name="harga_jual" class="form-control" required readonly/>
+                           <div class="col-md-12">
+                               <form role="form" action="{{ url('tambah-promo/'.$data->id) }}" method="post">
+                                   {{ csrf_field() }}
+                                   <table style="width: 100%; margin-bottom: 10px">
+                                       <tr>
+                                           <td>Nama Barang</td>
+                                           <td>Harga Satuan</td>
+                                           <td>Diskon</td>
+                                           <td>Jumlah Minimum beli</td>
+                                       </tr>
+                                       <tr>
+                                           <td>@if(!empty($barang))
+                                               <select class="form-control select2" name="id_barang" style="width: 100%" required>
+                                                       @foreach($barang as $data)
+                                                            <option value="{{ $data->id }}">{{ $data->nm_barang }}</option>
+                                                       @endforeach
+
+                                               </select>
+                                               @endif
+                                               @if(!empty($jasa))
+                                                   <select class="form-control select2" name="id_jasa" style="width: 100%" required>
+
+                                                       @foreach($jasa as $data)
+                                                           <option value="{{ $data->id }}">{{ $data->nm_jasa }}</option>
+                                                       @endforeach
+
+                                                   </select>
+                                               @endif
+                                           </td>
+                                           <td>
+                                               <input type="text" class="form-control" name="hpp"  value="0" disabled required>
+                                           </td>
+                                           <td>
+                                               <input type="number" class="form-control" name="diskon" placeholder="diskon %"  required>
+                                           </td>
+                                           <td>
+                                               <input type="number" class="form-control" name="minimum_beli" required>
+                                           </td>
+                                       </tr>
+                                   </table>
+                                   <div class="form-group">
+                                       <button class="btn btn-primary">Simpan</button>
+                                   </div>
+                               </form>
+                           </div>
+                            <div class="col-md-12">
+                                @if(!empty($detail_promo->linkToDetailBarang))
+                                    <h4>detail Barang Promo</h4>
+                                    {{ csrf_field() }}
+                                    <table style="width: 100%; margin-bottom: 10px">
+                                        <tr>
+                                            <td>Nama Barang</td>
+                                            <td>Harga Satuan</td>
+                                            <td>Diskon</td>
+                                            <td>Jumlah Minimum beli</td>
+                                            <td>aksi</td>
+                                        </tr>
+                                        @foreach($detail_promo->linkToDetailBarang as $data_detail_promo)
+
+                                                <tr>
+                                                    <form role="form" action="{{ url('ubah-detail-promo/'.$data_detail_promo->id) }}" method="post">
+                                                        {{ csrf_field() }}
+
+                                                        <td><input type="hidden" name="_method" value="put">
+                                                            @if(!empty($barang))
+                                                                <select class="form-control select2" name="id_barang" style="width: 100%" required>
+                                                                    @foreach($barang as $data)
+                                                                        <option value="{{ $data->id }}" @if($data_detail_promo->id_barang==$data->id) selected @endif>{{ $data->nm_barang }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            @endif
+                                                            @if(!empty($jasa))
+                                                                <select class="form-control select2" name="id_jasa" style="width: 100%" required>
+                                                                    @foreach($jasa as $data)
+                                                                        <option value="{{ $data->id }}" @if($data_detail_promo->id_jasa==$data->id) selected @endif>{{ $data->nm_jasa }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control" name="hpp"  value="0" disabled required>
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" class="form-control" name="diskon" value="{{ $data_detail_promo->diskon }}" placeholder="diskon %"  required>
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" class="form-control" name="minimum_beli" value="{{ $data_detail_promo->minimum_beli }}" required>
+                                                        </td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-warning">ubah</button>
+                                                            <a href="#" onclick="if(confirm('Apakah anda yakin akan menghapus data barang ini .. ?')){ window.location.href='{{  url('hapus-detail-promo/'.$data_detail_promo->id) }}'  }else { alert('proses hapus dihentikan')} " class="btn btn-danger">hapus</a>
+                                                        </td>
+                                                    </form>
+                                                </tr>
+                                        @endforeach
+                                    </table>
+
+                                @endif
                             </div>
                         </div>
                         <!-- /.box-body -->
 
-                        <div class="box-footer">
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+
+
                 </div>
             </div>
         </div>
