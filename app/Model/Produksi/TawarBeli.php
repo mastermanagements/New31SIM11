@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Model\Produksi;
+
+use Illuminate\Database\Eloquent\Model;
+
+class TawarBeli extends Model
+{
+    //
+    protected $table = 'p_tawar_beli';
+
+    protected $fillable = ['no_tawar','tgl_tawar','tgl_berlaku','tgl_kirim','id_supplier','id_perusahaan'];
+
+
+}

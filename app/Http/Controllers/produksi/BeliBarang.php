@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Produksi\BeliBarang as beliBarangs;
 use App\Model\Produksi\Supplier as suppliers;
 use App\Model\Produksi\Barang as barangs;
+use App\Model\Produksi\TawarBeli;
 use Session;
 
 class BeliBarang extends Controller
@@ -32,6 +33,8 @@ class BeliBarang extends Controller
     public function index(){
         $data=[
             'data_pembelian'=> beliBarangs::all()->where('id_perusahaan', $this->id_perusahaan)->sortByDesc('created_at')
+            ,'suppliers' => suppliers::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan')),
+            'tawar_beli'=> TawarBeli::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan'))
         ];
         return view('user.produksi.section.belibarang.page_default', $data);
     }
