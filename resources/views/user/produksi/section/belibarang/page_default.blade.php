@@ -57,7 +57,11 @@
                                                 <th>{{ date('d-m-Y',strtotime($data->tgl_tawar)) }}</th>
                                                 <th>{{ date('d-m-Y',strtotime($data->tgl_tawar)) }}</th>
                                                 <th>@if(!empty($data->tgl_kirim)){{ date('d-m-Y',strtotime($data->tgl_kirim)) }}@endif</th>
-                                                <th><a href="{{ url('tawar-beli/'.$data->id) }}">Barang Penawaran</a> </th>
+                                                <th>
+                                                    <a href="{{ url('tawar-beli/'.$data->id) }}" class="btn btn-success">Barang Penawaran</a>
+                                                    <a href="#" onclick="updatePembelianBarang({{$data->id}})" class="btn btn-warning">Ubah</a>
+                                                    <a href="{{ url('tawar-beli/'.$data->id.'/hapus') }}" onclick="return confirm('Apakah anda akan menghapus data ini ...?')" class="btn btn-danger">Hapus</a>
+                                                </th>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -148,6 +152,10 @@
                                         <input type="date" class="form-control" name="tgl_berlaku"  required>
                                     </div>
                                     <div class="form-group">
+                                        <label>Nomor Penawaran</label>
+                                        <input type="text" class="form-control" name="no_tawar"  required>
+                                    </div>
+                                    <div class="form-group">
                                         <label>Supplier</label>
                                         <select name="id_supplier" class="form-control"  required>
                                             @if(!empty($suppliers))
@@ -181,4 +189,23 @@
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
+
+    <script>
+        updatePembelianBarang = function (id) {
+            $.ajax({
+                url:'{{ url('tawar-beli') }}/'+id+'/edit',
+                type : 'get',
+                success:function (result) {
+                    console.log(result);
+                    $('[name="no_tawar"]').val(result.no_tawar);
+                    $('[name="tgl_tawar"]').val(result.tgl_tawar);
+                    $('[name="tgl_berlaku"]').val(result.tgl_berlaku);
+                    $('[name="id_supplier"]').val(result.id_supplier).trigger('changed');
+                    $('#form_tawar_beli').attr('action','{{ url('tawar-beli') }}/'+id);
+                    $('[name="_method"]').val('put');
+                    $('#modal-default').modal('show');
+                }
+            })
+        }
+    </script>
 @stop

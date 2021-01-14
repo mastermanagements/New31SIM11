@@ -46,8 +46,8 @@
                                            <td>
                                                @if(!empty($barang))
                                                <select class="form-control select2" name="id_barang" style="width: 100%" required>
-                                                       @foreach($barang as $data)
-                                                            <option value="{{ $data->id }}">{{ $data->nm_barang }}</option>
+                                                       @foreach($barang as $datas)
+                                                            <option value="{{ $datas->id }}">{{ $datas->nm_barang }}</option>
                                                        @endforeach
                                                </select>
                                                @endif
@@ -69,17 +69,53 @@
                                </form>
                            </div>
                             <div class="col-md-12">
+                                @if(!empty($data))
                                     <h4>detail barang penawaran</h4>
                                     {{ csrf_field() }}
-                                    <table style="width: 100%; margin-bottom: 10px">
+                                        <table style="width: 100%; margin-bottom: 10px">
                                         <tr>
+                                            <td>No.</td>
                                             <td>Nama Barang</td>
-                                            <td>Harga Satuan</td>
-                                            <td>Diskon</td>
-                                            <td>Jumlah Minimum beli</td>
-                                            <td>aksi</td>
+                                            <td>Harga Lama</td>
+                                            <td>Harga Baru</td>
+                                            <td>Jumlah Beli</td>
+                                            <td>Aksi</td>
                                         </tr>
+                                            @php($no=1)
+                                            @foreach($data->linkToDetail as $data_tb)
+                                                <tr>
+                                                    <form role="form" action="{{ url('ubah-pembelian-penawaran-barang/'.$data_tb->id) }}" method="post" >
+
+                                                    <td>{{ $no++ }}</td>
+                                                    <td>
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="_method" value="put">
+                                                        @if(!empty($barang))
+                                                            <select class="form-control select2" name="id_barang" style="width: 100%" required>
+                                                                @foreach($barang as $datas)
+                                                                    <option value="{{ $datas->id }}">{{ $datas->nm_barang }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="harga_lama" value="0" disabled required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="harga_baru" value="{{ $data_tb->hpp_baru }}"  required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" name="jumlah_beli" value="{{$data_tb->jumlah_beli}}"  required>
+                                                    </td>
+                                                    <td>
+                                                        <button type="submit" class="btn btn-warning"> ubah </button>
+                                                        <a href="{{ url('hapus-pembelian-penawaran-barang/'.$data_tb->id) }}" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')"> hapus </a>
+                                                   </td>
+                                                    </form>
+                                                </tr>
+                                            @endforeach
                                     </table>
+                                @endif
 
 
                             </div>

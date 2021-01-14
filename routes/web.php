@@ -703,7 +703,10 @@ Route::put('hapus-supplier/{id}','produksi\Supplier@delete');
 	# Todo Pembelian ---
 
 Route::resource('tawar-beli', 'produksi\TawarBeli');
+Route::get('tawar-beli/{id}/hapus', 'produksi\TawarBeli@destroy');
 Route::post('tambah-pembelian-penawaran-barang/{id_tawar}', 'produksi\TawarBeli@storePenawaranBarang');
+Route::put('ubah-pembelian-penawaran-barang/{id_tb}', 'produksi\TawarBeli@updatePenawaranBarang');
+Route::get('hapus-pembelian-penawaran-barang/{id_tb}', 'produksi\TawarBeli@deletePenawaranBarang');
 
 Route::get('Pembelian', 'produksi\BeliBarang@index');
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Produksi\TawarBeli as TB;
 use App\Model\Produksi\Barang;
 use App\Model\Produksi\DetailTB;
+use Hash;
 use Session;
 class TawarBeli extends Controller
 {
@@ -26,7 +27,7 @@ class TawarBeli extends Controller
         ]);
 
         $model= new TB();
-        $model->no_tawar = 'no urut/Pre-PO/Singkatan usaha/tgl/bln/thn';
+        $model->no_tawar = $req->no_tawar;
         $model->tgl_tawar = $req->tgl_tawar;
         $model->tgl_berlaku = $req->tgl_berlaku;
         $model->id_supplier = $req->id_supplier;
@@ -37,6 +38,42 @@ class TawarBeli extends Controller
         }else{
             return redirect('Pembelian')->with('message_fail','penawaran pembelian gagal dibuat');
         }
+    }
+
+    public function update(Request $req, $id){
+        $this->validate($req,[
+            'tgl_tawar' => 'required',
+            'tgl_berlaku' => 'required',
+            'id_supplier' => 'required',
+        ]);
+
+        $model= TB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+        $model->no_tawar = $req->no_tawar;
+        $model->tgl_tawar = $req->tgl_tawar;
+        $model->tgl_berlaku = $req->tgl_berlaku;
+        $model->id_supplier = $req->id_supplier;
+        $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+
+        if($model->save()){
+            return redirect('Pembelian')->with('message_success','penawaran pembelian sudah diubah');
+        }else{
+            return redirect('Pembelian')->with('message_fail','penawaran pembelian gagal diubah');
+        }
+    }
+
+    public function destroy($id){
+        $model= TB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+        if($model->delete()){
+            return redirect('Pembelian')->with('message_success','penawaran pembelian sudah dihapus');
+        }else{
+            return redirect('Pembelian')->with('message_fail','penawaran pembelian gagal dihapus');
+        }
+    }
+
+
+    public function edit($id){
+        $model = TB::findOrFail($id);
+        return response()->json($model);
     }
 
     public function storePenawaranBarang(Request $req, $id){
@@ -57,6 +94,35 @@ class TawarBeli extends Controller
             return redirect()->back()->with('message_success','Barang penawaran telah ditambahkan');
         }else{
             return redirect()->back()->with('message_fail','Barang penawaran gagal ditambahkan');
+        }
+    }
+
+    public function updatePenawaranBarang(Request $req, $id_tb){
+        $this->validate($req,[
+            'id_barang'=> 'required',
+            'harga_baru'=> 'required',
+            'jumlah_beli'=> 'required',
+        ]);
+
+        $model = DetailTB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id_tb);
+        $model->id_barang = $req->id_barang;
+        $model->hpp_baru = $req->harga_baru;
+        $model->jumlah_beli = $req->jumlah_beli;
+        $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        if($model->save()){
+            return redirect()->back()->with('message_success','Barang penawaran telah diubah');
+        }else{
+            return redirect()->back()->with('message_fail','Barang penawaran gagal diubah');
+        }
+    }
+
+    public function deletePenawaranBarang(Request $req, $id_tb){
+
+        $model = DetailTB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id_tb);
+        if($model->delete()){
+            return redirect()->back()->with('message_success','Barang penawaran telah dihapus');
+        }else{
+            return redirect()->back()->with('message_fail','Barang penawaran gagal dihapus');
         }
     }
 }
