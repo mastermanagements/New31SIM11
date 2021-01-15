@@ -21,9 +21,9 @@ class TblPDetailTb extends Migration
             $table->decimal('hpp_baru')->unsigned();
             $table->integer('jumlah_beli')->unsigned();
 
-            $table->integer('id_perusahaan')->unsigned();
             $table->foreign('id_barang')->references('id')->on('p_barang')->onDelete('cascade');
             $table->foreign('id_tawar')->references('id')->on('p_tawar_beli')->onDelete('cascade');
+            $table->integer('id_perusahaan')->unsigned();
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
             $table->timestamps();
         });

@@ -69,7 +69,22 @@
                             </table>
                         </div>
                         <div class="tab-pane " id="tab_2">
-                            <h1>Pesanan pembelian</h1>
+                           <p style="margin-bottom: 10px;">Daftar Pesanan pembelian  <a href="{{ url('pesanan-pembelian') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Pesanan Pembelian</a>
+                           </p>
+                            <table id="example3" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Tanggal</th>
+                                    <th>Nomor Penawaran</th>
+                                    <th>Supplier</th>
+                                    <th>Total</th>
+                                    <th>Aksi</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="tab-pane" id="tab_3">
                             <a href="{{ url('tambah-pembelian') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Pembelian</a>
