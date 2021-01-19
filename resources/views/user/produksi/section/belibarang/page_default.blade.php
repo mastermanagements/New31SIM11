@@ -92,7 +92,7 @@
                                             <th>{{ $data_pesanan_pembelian->no_po }}</th>
                                             <th>{{ $data_pesanan_pembelian->linkToSupplier->nama_suplier }}</th>
 
-                                            <th>{{ $data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga')*$data_pesanan_pembelian->dp_po  }}</th>
+                                            <th>{{ $data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga') + ($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga') * $data_pesanan_pembelian->dp_po/100)+($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga')-($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga') * $data_pesanan_pembelian->dp_po/100)*$data_pesanan_pembelian->pajak/100) }}</th>
                                             <th>
                                                 <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Tambah Barang </a>
                                             </th>
