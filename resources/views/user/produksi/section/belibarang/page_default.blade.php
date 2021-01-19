@@ -83,6 +83,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @if(!empty($pesanan_pembelian))
+                                    @php($i=1)
+                                    @foreach($pesanan_pembelian as $data_pesanan_pembelian)
+                                        <tr>
+                                            <th>{{ $i++ }}</th>
+                                            <th>{{ $data_pesanan_pembelian->tgl_po }}</th>
+                                            <th>{{ $data_pesanan_pembelian->no_po }}</th>
+                                            <th>{{ $data_pesanan_pembelian->linkToSupplier->nama_suplier }}</th>
+
+                                            <th>{{ $data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga')*$data_pesanan_pembelian->dp_po  }}</th>
+                                            <th>
+                                                <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Tambah Barang </a>
+                                            </th>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>

@@ -708,12 +708,19 @@ Route::post('tambah-pembelian-penawaran-barang/{id_tawar}', 'produksi\TawarBeli@
 Route::put('ubah-pembelian-penawaran-barang/{id_tb}', 'produksi\TawarBeli@updatePenawaranBarang');
 Route::get('hapus-pembelian-penawaran-barang/{id_tb}', 'produksi\TawarBeli@deletePenawaranBarang');
 
+
     # Todo Pesanan Pembelian
 Route::resource('pesanan-pembelian', 'produksi\PesananPembelian');
 
 Route::get('Pembelian', 'produksi\BeliBarang@index');
 
 Route::get('tambah-pembelian', 'produksi\BeliBarang@create');
+
+Route::get('show-barang-pembelian/{id_pesanan_pembelian}', 'produksi\PesananPembelian@show');
+Route::post('tambah-barang-pembelian/{id_pesanan_pembelian}', 'produksi\PesananPembelian@tambah_Pesanan_pembelian');
+Route::post('ubah-barang-pembelian/{id_pesanan_pembelian}', 'produksi\PesananPembelian@ubah_Pesanan_pembelian');
+Route::get('hapus-barang-pembelian/{id_pesanan_pembelian}', 'produksi\PesananPembelian@hapus_Pesanan_pembelian');
+Route::post('ubah-pesanan-pembelian/{id_pesanan_pembelian}', 'produksi\PesananPembelian@ubah_Pesanan_pembelian_po');
 
 Route::post('store-beli-barang', 'produksi\BeliBarang@store');
 

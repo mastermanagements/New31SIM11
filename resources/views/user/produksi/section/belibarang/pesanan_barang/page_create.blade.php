@@ -47,7 +47,7 @@
                                        <label>Penawaran Pembelian</label>
                                        <select class="form-control select2" name="id_tawar_beli" style="width: 100%">
                                            @if(!empty($penawaran_pembelian))
-                                               <option>Pilihan Penawaran pembelian</option>
+                                               <option value="0">Pilihan Penawaran pembelian</option>
                                                @foreach($penawaran_pembelian as $data)
                                                      <option value="{{ $data->id }}">{{ $data->no_tawar }}</option>
                                                @endforeach
@@ -56,7 +56,7 @@
                                    </div>
                                    <div class="form-group">
                                        <label>Supplier</label>
-                                       <select class="form-control select2" name="id_supplier" style="width: 100%">
+                                       <select class="form-control select2" name="id_supplier"  required style="width: 100%">
                                            @if(!empty($supplier))
                                                <option>Pilihan supplier</option>
                                                @foreach($supplier as $data)
@@ -72,6 +72,35 @@
                                    <div class="form-group">
                                        <button class="btn btn-primary">Simpan</button>
                                    </div>
+                                   {{--<div class="row">--}}
+                                       {{--<div class="col-md-6">--}}
+                                           {{--<div class="form-group">--}}
+                                               {{--<label>Diskon Tambahan</label>--}}
+                                               {{--<input type="number" name="diskon_tambahan" class="form-control" required>--}}
+                                           {{--</div>--}}
+                                       {{--</div>--}}
+                                       {{--<div class="col-md-6">--}}
+                                           {{--<div class="form-group">--}}
+                                               {{--<label>Pajak</label>--}}
+                                               {{--<input type="number" name="pajak" class="form-control" required>--}}
+                                           {{--</div>--}}
+                                       {{--</div>--}}
+                                   {{--</div>--}}
+                                   {{--<div class="row">--}}
+                                       {{--<div class="col-md-6">--}}
+                                           {{--<div class="form-group">--}}
+                                               {{--<label>Uang Muka</label>--}}
+                                               {{--<input type="number" name="uang_muka" class="form-control" required>--}}
+                                           {{--</div>--}}
+                                       {{--</div>--}}
+                                       {{--<div class="col-md-6">--}}
+                                           {{--<div class="form-group">--}}
+                                               {{--<label>Kurang Bayar</label>--}}
+                                               {{--<input type="number" name="kurang_bayar" class="form-control" required>--}}
+                                           {{--</div>--}}
+                                       {{--</div>--}}
+                                   {{--</div>--}}
+
                                </form>
                            </div>
                             <div class="col-md-12">
