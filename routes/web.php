@@ -711,6 +711,7 @@ Route::get('hapus-pembelian-penawaran-barang/{id_tb}', 'produksi\TawarBeli@delet
 
     # Todo Pesanan Pembelian
 Route::resource('pesanan-pembelian', 'produksi\PesananPembelian');
+Route::post('pesanan-pembelian/{id}/hapus', 'produksi\PesananPembelian@delete');
 
 Route::get('Pembelian', 'produksi\BeliBarang@index');
 

@@ -39,6 +39,47 @@ class PesananPembelian extends Controller
         }
     }
 
+    public function edit($id){
+        $model_pb = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
+        $model = TawarBeli::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        $supplier = Supplier::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        $barangs = barangs::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        return view('user.produksi.section.belibarang.pesanan_barang.page_edit_pesanan', ['barang'=>$barangs,'data'=>$model_pb,'penawaran_pembelian'=> $model,'supplier'=> $supplier]);
+    }
+
+    public function update(Request $req, $id){
+        $this->validate($req,[
+            'no_po' => 'required',
+            'tgl_po' => 'required',
+            'id_supplier' => 'required',
+        ]);
+//        dd($req->all());
+        $model = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
+        $model->id_tawar_beli = $req->id_tawar_beli;
+        $model->no_po = $req->no_po;
+        $model->tgl_po = $req->tgl_po;
+        $model->id_supplier = $req->id_supplier;
+        $model->tgl_krm = $req->tgl_dikirim;
+        $model->diskon_tambahan = $req->diskon_tambahan;
+        $model->pajak = $req->pajak;
+        $model->dp_po = $req->uang_muka;
+        $model->kurang_bayar = $req->kurang_bayar;
+        $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        if($model->save()){
+            return redirect('Pembelian')->with('message_success','anda telah mengubah nota pesanan pembelian');
+        }else{
+            return redirect('Pembelian')->with('message_error','gagal, mengubah pesanan pembelian');
+        }
+    }
+
+    public function delete(Request $req, $id){
+        $model = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+        if($model->delete()){
+            return redirect('Pembelian')->with('message_success','anda telah menghapus nota pesanan pembelian');
+        }else{
+            return redirect('Pembelian')->with('message_error','gagal,menghapus pesanan pembelian');
+        }
+    }
 
     public function show($id_pembelian){
         $model_pb = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id_pembelian);

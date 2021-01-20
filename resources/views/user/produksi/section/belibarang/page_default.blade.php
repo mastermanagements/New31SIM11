@@ -94,7 +94,12 @@
 
                                             <th>{{ $data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga') + ($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga') * $data_pesanan_pembelian->dp_po/100)+($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga')-($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga') * $data_pesanan_pembelian->dp_po/100)*$data_pesanan_pembelian->pajak/100) }}</th>
                                             <th>
-                                                <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Tambah Barang </a>
+                                                <form action="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/hapus') }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Tambah Barang </a>
+                                                    <a href="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/edit') }}" class="btn btn-warning"> Ubah Pesanan</a>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus nota ini ...?')"> Hapus pesanan</button>
+                                                </form>
                                             </th>
                                         </tr>
                                     @endforeach
