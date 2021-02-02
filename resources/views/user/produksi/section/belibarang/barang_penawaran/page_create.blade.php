@@ -45,7 +45,7 @@
                                        <tr>
                                            <td>
                                                @if(!empty($barang))
-                                               <select class="form-control select2" name="id_barang" style="width: 100%" required>
+                                               <select class="form-control select2" name="id_barang" style="width: 100%" onclick="" required>
                                                        @foreach($barang as $datas)
                                                             <option value="{{ $datas->id }}">{{ $datas->nm_barang }}</option>
                                                        @endforeach
@@ -93,7 +93,7 @@
                                                         @if(!empty($barang))
                                                             <select class="form-control select2" name="id_barang" style="width: 100%" required>
                                                                 @foreach($barang as $datas)
-                                                                    <option value="{{ $datas->id }}">{{ $datas->nm_barang }}</option>
+                                                                    <option value="{{ $datas->id }}" @if($datas->id==$data_tb->id_barang) selected @endif>{{ $datas->nm_barang }}</option>
                                                                 @endforeach
                                                             </select>
                                                         @endif

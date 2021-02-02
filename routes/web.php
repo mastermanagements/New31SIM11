@@ -700,7 +700,8 @@ Route::put('update-supplier/{id}','produksi\Supplier@update');
 
 Route::put('hapus-supplier/{id}','produksi\Supplier@delete');
 
-	# Todo Pembelian ---
+
+	# Todo Penawaran Pembelian
 
 Route::resource('tawar-beli', 'produksi\TawarBeli');
 Route::get('tawar-beli/{id}/hapus', 'produksi\TawarBeli@destroy');
@@ -709,9 +710,13 @@ Route::put('ubah-pembelian-penawaran-barang/{id_tb}', 'produksi\TawarBeli@update
 Route::get('hapus-pembelian-penawaran-barang/{id_tb}', 'produksi\TawarBeli@deletePenawaranBarang');
 
 
+
     # Todo Pesanan Pembelian
 Route::resource('pesanan-pembelian', 'produksi\PesananPembelian');
 Route::post('pesanan-pembelian/{id}/hapus', 'produksi\PesananPembelian@delete');
+Route::get('rincian-penawaran/{id}', 'produksi\PesananPembelian@RincianBarangPenawaran');
+
+	# Todo Pembelian ---
 
 Route::get('Pembelian', 'produksi\BeliBarang@index');
 

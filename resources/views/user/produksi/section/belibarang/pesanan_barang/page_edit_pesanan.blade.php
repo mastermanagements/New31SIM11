@@ -91,7 +91,6 @@
                                                 </tr>
                                                 @foreach($data->linkToDetailPO as $data_pesanan)
                                                 <tr>
-
                                                     <td>
                                                         {{ csrf_field() }}
                                                         @if(!empty($barang))

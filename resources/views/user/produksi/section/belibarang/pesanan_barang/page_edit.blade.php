@@ -116,9 +116,9 @@
                                         </table>
                                         <div class="form-group">
                                             <button class="btn btn-primary">Tambah barang</button>
-                                        </div>
-                                        @if(!empty($data->linkToDetailPO))
+                                        </div>       
                                 </form>
+                                @if(!empty($data->linkToDetailPO))
                                         <h3>Daftar Pesanan Pembelian </h3>
 
                                             <table style="width: 100%; margin-bottom: 10px">

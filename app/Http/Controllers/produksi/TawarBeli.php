@@ -125,4 +125,7 @@ class TawarBeli extends Controller
             return redirect()->back()->with('message_fail','Barang penawaran gagal dihapus');
         }
     }
+
+
+    
 }
