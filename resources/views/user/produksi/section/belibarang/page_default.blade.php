@@ -85,15 +85,33 @@
                                 <tbody>
                                 @if(!empty($pesanan_pembelian))
                                     @php($i=1)
+                                    
                                     @foreach($pesanan_pembelian as $data_pesanan_pembelian)
+                                        @php($sub_total =0)
+                                        @php($besar_diskon_tambahan =0)
+                                        @php($besar_pajak =0)
+                                        @php($pajak =0)
                                         <tr>
                                             <th>{{ $i++ }}</th>
                                             <th>{{ $data_pesanan_pembelian->tgl_po }}</th>
                                             <th>{{ $data_pesanan_pembelian->no_po }}</th>
                                             <th>{{ $data_pesanan_pembelian->linkToSupplier->nama_suplier }}</th>
-
-                                            <th>{{ $data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga') + ($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga') * $data_pesanan_pembelian->dp_po/100)+($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga')-($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga') * $data_pesanan_pembelian->dp_po/100)*$data_pesanan_pembelian->pajak/100) }}</th>
-                                            <th>
+                                            @php($sub_total =($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga')))
+                                            @if($data_pesanan_pembelian->diskon_tambahan !=0)    
+                                                @php($besar_diskon_tambahan = $sub_total*($data_pesanan_pembelian->diskon_tambahan/100))
+                                            @else
+                                                @php($besar_diskon_tambahan = 0)
+                                            @endif
+                                            @if($data_pesanan_pembelian->pajak !=0)
+                                                @php($besar_pajak =($sub_total-$besar_diskon_tambahan)*($data_pesanan_pembelian->pajak/100))
+                                            @else
+                                                @php($besar_pajak =0)
+                                            @endif
+                                            
+                                            <th>{{ 
+                                                    $sub_total-$besar_diskon_tambahan+$besar_pajak
+                                                }}</th>
+                                            <th>    
                                                 <form action="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/hapus') }}" method="post">
                                                     {{ csrf_field() }}
                                                     <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Tambah Barang </a>

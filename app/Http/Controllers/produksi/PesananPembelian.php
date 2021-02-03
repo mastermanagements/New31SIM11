@@ -27,7 +27,7 @@ class PesananPembelian extends Controller
         $model = TawarBeli::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
         $supplier = Supplier::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
         $barang_penawaran = TawarBeli::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
-        return view('user.produksi.section.belibarang.pesanan_barang.page_rincian_barang_penawaran', ['penawaran_pembelian' => $model, 'supplier' => $supplier, 'barang_penawaran' => $barang_penawaran]);
+       return view('user.produksi.section.belibarang.pesanan_barang.page_rincian_barang_penawaran', ['penawaran_pembelian' => $model, 'supplier' => $supplier, 'barang_penawaran' => $barang_penawaran]);
     }
 
     public function store(Request $req)
@@ -38,27 +38,33 @@ class PesananPembelian extends Controller
             'id_supplier' => 'required',
         ]);
 
+        $model = PB::updateOrCreate(
+            [
+                'no_po' => $req->no_po,
+                'id_perusahaan' => Session::get('id_perusahaan_karyawan')
+            ],
+            [
+                'id_tawar_beli' => $req->id_tawar_beli,
+                'tgl_po' => $req->tgl_po,
+                'id_supplier' => $req->id_supplier,
+                'tgl_krm' => $req->tgl_dikirim,
+            ]
+        );
 
-        $model = new PB();
-        $model->id_tawar_beli = $req->id_tawar_beli;
-        $model->no_po = $req->no_po;
-        $model->tgl_po = $req->tgl_po;
-        $model->id_supplier = $req->id_supplier;
-        $model->tgl_krm = $req->tgl_dikirim;
-        $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
-
-        if ($model->save()) {
+        if ($model) {
             if (!empty($model->id_tawar_beli)) {
                 foreach ($req->id_barang as $key => $id_barang) {
+
                     $n_request = new Request([
                         'id_barang' => $id_barang,
                         'id_po' => $model->id,
                         'hpp' => $req->hpp[$key],
                         'diskon' => $req->diskon[$key],
-                        'jumlah_beli' => $req->jumlah[$key],
-                        'redirect' => false,
+                        'jumlah_beli' => $req->jumlah_beli[$key],
+                        'redirect' => false, // setting redirect, false tidak menjalankan redirect yang ada pada function tambah pesanan pembelian
                     ]);
-                    $this->tambah_Pesanan_pembelian($n_request, $model->id);
+                    $this->tambah_Pesanan_pembelian($n_request, $model->id); # kirim request ke function tambah pesanan pembelian
+
                 }
             }
             return redirect()->back()->with('message_success', 'anda telah membuat nota pesanan pembelian');
@@ -130,12 +136,7 @@ class PesananPembelian extends Controller
             'hpp' => 'required',
             'jumlah_beli' => 'required',
         ]);
-     
-        $model_po = new DetailPO();
-        $model_po->id_po = $id;
-        $model_po->id_barang = $req->id_barang;
-        $model_po->hpp = $req->hpp;
-        $model_po->jumlah_beli = $req->jumlah_beli;
+
 
         $total_harga = $req->jumlah_beli * $req->hpp;
         if ($req->diskon != 0) {
@@ -143,11 +144,23 @@ class PesananPembelian extends Controller
         } else {
             $total_setelah_diskon = $req->diskon;
         }
-        $model_po->diskon_item = $total_setelah_diskon;
         $jumlah_harga = $total_harga - ($total_harga * $total_setelah_diskon);
-        $model_po->jumlah_harga = $jumlah_harga;
-        $model_po->id_perusahaan = Session::get('id_perusahaan_karyawan');
-        if ($model_po->save()) {
+
+        $model_po = DetailPO::updateOrCreate(
+            [
+                'id_po' => $id,
+                'id_barang' => $req->id_barang,
+                'id_perusahaan' => Session::get('id_perusahaan_karyawan')
+            ],
+            [
+                'hpp' => $req->hpp,
+                'jumlah_beli' => $req->jumlah_beli,
+                'diskon_item' => $total_setelah_diskon,
+                'jumlah_harga' => $jumlah_harga,
+            ]
+        );
+
+        if ($model_po) {
             if ($req->redirect == true) {
                 return redirect()->back()->with('message_success', 'anda telah menambahkan item baru');
             }
@@ -162,8 +175,7 @@ class PesananPembelian extends Controller
         $this->validate($req, [
             'id_barang' => 'required',
             'hpp' => 'required',
-            'hpp' => 'required',
-            'jumlah_beli' => 'required',
+           'jumlah_beli' => 'required',
         ]);
 
 

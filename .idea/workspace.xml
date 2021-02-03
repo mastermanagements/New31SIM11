@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_rincian_barang_penawaran.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Produksi/POrder.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_02_04_000552_p_order.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/PesananPembelian.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/PesananPembelian.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/TawarBeli.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/TawarBeli.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Produksi/DetailTB.php" afterPath="$PROJECT_DIR$/app/Model/Produksi/DetailTB.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/barang_penawaran/page_create.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/barang_penawaran/page_create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_create.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit_pesanan.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit_pesanan.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Produksi/PesananPembelian.php" afterPath="$PROJECT_DIR$/app/Model/Produksi/PesananPembelian.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Produksi/TawarBeli.php" afterPath="$PROJECT_DIR$/app/Model/Produksi/TawarBeli.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_rincian_barang_penawaran.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_rincian_barang_penawaran.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -1427,9 +1427,8 @@
             <state relative-caret-position="17850">
               <caret line="715" column="36" lean-forward="false" selection-start-line="715" selection-start-column="36" selection-end-line="715" selection-end-column="36" />
               <folding>
-                <marker date="1612277024637" expanded="true" signature="39193:39296" ph="..." />
-                <marker date="1612277024637" expanded="true" signature="39222:39295" ph="..." />
-                <marker date="1612277024637" expanded="true" signature="48665:49498" ph="//..." />
+                <marker date="1612373882980" expanded="true" signature="39255:39358" ph="..." />
+                <marker date="1612373882980" expanded="true" signature="48727:49560" ph="//..." />
               </folding>
             </state>
           </provider>
@@ -1438,21 +1437,19 @@
       <file leaf-file-name="PesananPembelian.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/PesananPembelian.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1100">
-              <caret line="106" column="50" lean-forward="false" selection-start-line="106" selection-start-column="50" selection-end-line="106" selection-end-column="50" />
+            <state relative-caret-position="225">
+              <caret line="73" column="5" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page_default.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php">
+      <file leaf-file-name="TawarBeli.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/TawarBeli.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2500">
-              <caret line="100" column="67" lean-forward="false" selection-start-line="100" selection-start-column="67" selection-end-line="100" selection-end-column="67" />
-              <folding>
-                <marker date="1611114967679" expanded="true" signature="5444:5806" ph="..." />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1462,37 +1459,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="5025">
               <caret line="201" column="53" lean-forward="false" selection-start-line="201" selection-start-column="53" selection-end-line="201" selection-end-column="53" />
-              <folding>
-                <marker date="1612277658269" expanded="false" signature="7748:7780" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="7781:11336" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="7834:8303" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="8453:11223" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="8589:11169" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="8647:9494" ph="..." />
-                <marker date="1612277658269" expanded="false" signature="8922:8933" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="8943:9373" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="9563:9772" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="9841:10081" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="10150:10377" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="10446:10677" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="10734:11109" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="11569:14357" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="11687:14087" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="11748:12866" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="11818:12302" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="11894:12248" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="12372:12816" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="12448:12762" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="12927:14041" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="12997:13449" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="13073:13395" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="13519:13991" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="13595:13937" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="14150:14317" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="14395:14402" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="14951:15235" ph="..." />
-                <marker date="1612277658269" expanded="true" signature="15004:15221" ph="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1794,6 +1761,27 @@
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="produksi" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
@@ -2270,14 +2258,9 @@
       <workItem from="1611103477797" duration="197000" />
       <workItem from="1611109965022" duration="4702000" />
       <workItem from="1611361097050" duration="15000" />
-      <workItem from="1612242999700" duration="50000" />
-    </task>
-    <task id="LOCAL-00134" summary="Keuangan&#10;  - Revisi Laporan Neraca Saldo">
-      <created>1568964676545</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1568964676546</updated>
+      <workItem from="1612242999700" duration="2647000" />
+      <workItem from="1612316120797" duration="34000" />
+      <workItem from="1612330208759" duration="100000" />
     </task>
     <task id="LOCAL-00135" summary="Keuangan&#10;  - Laporan Laba Rugi">
       <created>1569223738359</created>
@@ -2615,11 +2598,18 @@
       <option name="project" value="LOCAL" />
       <updated>1611115656052</updated>
     </task>
-    <option name="localTasksCounter" value="183" />
+    <task id="LOCAL-00183" summary="- Penawaran Pembelian berdasarkan nota penawaran pembelian">
+      <created>1612243101491</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1612243101491</updated>
+    </task>
+    <option name="localTasksCounter" value="184" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2262528000" />
+    <option name="totallyTimeSpent" value="2265259000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2632,7 +2622,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26701966" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27458397" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5181543" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18078668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2640,7 +2630,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.48184568" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2487725" sideWeight="0.48184568" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20574887" sideWeight="0.50554675" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2718,7 +2708,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- Perancangan Tutup Buku Selesai(fix).&#10;- Penyesuian akun laba rugi dengan tutup buku (recoding)" />
     <MESSAGE value="- Perancangan Tutup Buku Selesai.&#10;- Penyesuian akun laba rugi dengan tutup buku&#10;- Penambahan tahun periode tutup buku&#10; &#10;+ Neraca Penyesuain(Recoding)" />
     <MESSAGE value="- revisi utility jurnal umum, buku besar agar bisa digunakan ulang untuk akun penyesuian" />
     <MESSAGE value="- Tampilkan Laporan dan cetak laporan&#10; - Jurnal Umum&#10; - Buku Besar&#10; - Neraca saldo&#10; - Perubahan Modal&#10; - Neraca&#10; - Arus Kas" />
@@ -2743,7 +2732,8 @@
     <MESSAGE value="- Perancangan Pembelian selesai" />
     <MESSAGE value="- perbaikan hasil hitungan total" />
     <MESSAGE value="- Perancangan Pembelian" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Perancangan Pembelian" />
+    <MESSAGE value="- Penawaran Pembelian berdasarkan nota penawaran pembelian" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Penawaran Pembelian berdasarkan nota penawaran pembelian" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3030,44 +3020,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5025">
           <caret line="201" column="53" lean-forward="false" selection-start-line="201" selection-start-column="53" selection-end-line="201" selection-end-column="53" />
-          <folding>
-            <marker date="1612277658269" expanded="false" signature="7748:7780" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="7781:11336" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="7834:8303" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="8453:11223" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="8589:11169" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="8647:9494" ph="..." />
-            <marker date="1612277658269" expanded="false" signature="8922:8933" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="8943:9373" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="9563:9772" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="9841:10081" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="10150:10377" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="10446:10677" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="10734:11109" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="11569:14357" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="11687:14087" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="11748:12866" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="11818:12302" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="11894:12248" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="12372:12816" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="12448:12762" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="12927:14041" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="12997:13449" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="13073:13395" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="13519:13991" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="13595:13937" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="14150:14317" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="14395:14402" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="14951:15235" ph="..." />
-            <marker date="1612277658269" expanded="true" signature="15004:15221" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/TawarBeli.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="6" column="28" lean-forward="true" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3118,27 +3071,31 @@
         <state relative-caret-position="17850">
           <caret line="715" column="36" lean-forward="false" selection-start-line="715" selection-start-column="36" selection-end-line="715" selection-end-column="36" />
           <folding>
-            <marker date="1612277024637" expanded="true" signature="39193:39296" ph="..." />
-            <marker date="1612277024637" expanded="true" signature="39222:39295" ph="..." />
-            <marker date="1612277024637" expanded="true" signature="48665:49498" ph="//..." />
+            <marker date="1612373882980" expanded="true" signature="39255:39358" ph="..." />
+            <marker date="1612373882980" expanded="true" signature="48727:49560" ph="//..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2500">
+        <state relative-caret-position="325">
           <caret line="100" column="67" lean-forward="false" selection-start-line="100" selection-start-column="67" selection-end-line="100" selection-end-column="67" />
-          <folding>
-            <marker date="1611114967679" expanded="true" signature="5444:5806" ph="..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/TawarBeli.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/PesananPembelian.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="106" column="50" lean-forward="false" selection-start-line="106" selection-start-column="50" selection-end-line="106" selection-end-column="50" />
+        <state relative-caret-position="225">
+          <caret line="73" column="5" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
           <folding />
         </state>
       </provider>

@@ -737,6 +737,10 @@ Route::put('update-beli-barang/{id}', 'produksi\BeliBarang@update');
 Route::put('hapus-pembelian/{id}', 'produksi\BeliBarang@delete');
 
 
+	# Todo P Order
+
+Route::resource('Oder', 'produksi\POrder');
+
 	//--- Penjualan ---
 	
 Route::get('Penjualan','produksi\JualBarang@index');

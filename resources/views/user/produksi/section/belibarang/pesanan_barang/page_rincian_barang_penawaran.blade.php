@@ -124,7 +124,7 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>
                                                     {{ csrf_field() }}
-                                                    <input type="hidden" name="id_barang[]" value="{{ $data_tb->linkToBarang->id_barang }}">
+                                                    <input type="hidden" name="id_barang[]" value="{{ $data_tb->linkToBarang->id }}">
                                                       {{  $data_tb->linkToBarang->nm_barang }}
                                                 </td>
                                                 <td>
@@ -152,21 +152,22 @@
                                  @endif
                                 </div>
                             </form>
+                            @if(!empty($barang_penawaran->linkToPpO))
                             <div class="col-md-12">
-                                <form action="{{ url('ubah-pesanan-pembelian/'.$data->id) }}" method="post">
+                                <form action="{{ url('ubah-pesanan-pembelian/'.$barang_penawaran->linkToPpO->id) }}" method="post">
                                     {{ csrf_field() }}
                                        <div class="col-md-12">
                                            <div class="row">
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Diskon Tambahan</label>
-                                                       <input type="number" name="diskon_tambahan"  class="form-control" required>
+                                                       <input type="number" name="diskon_tambahan" value="{{  $barang_penawaran->linkToPpO->diskon_tambahan }}" class="form-control" required>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Pajak</label>
-                                                       <input type="number" name="pajak" class="form-control" required>
+                                                       <input type="number" name="pajak" value="{{ $barang_penawaran->linkToPpO->diskon_tambahan }}" class="form-control" required>
                                                    </div>
                                                </div>
                                            </div>
@@ -174,13 +175,13 @@
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Uang Muka</label>
-                                                       <input type="number" name="uang_muka" class="form-control" required>
+                                                       <input type="number" name="uang_muka" value="{{ $barang_penawaran->linkToPpO->uang_muka  }}" class="form-control" required>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Kurang Bayar</label>
-                                                       <input type="number" name="kurang_bayar" class="form-control" required>
+                                                       <input type="number" name="kurang_bayar" value="{{ $barang_penawaran->linkToPpO->kurang_bayar }}" class="form-control" required>
                                                    </div>
                                                </div>
                                            </div>
@@ -190,6 +191,7 @@
                                        </div>
                                 </form>
                             </div>
+                            @endif
     
                         </div>
                         <!-- /.box-body -->

@@ -14,4 +14,9 @@ class TawarBeli extends Model
     public function linkToDetail(){
         return $this->hasMany('App\Model\Produksi\DetailTB','id_tawar','id');
     }
+
+    public function linkToPpO()
+    {
+        return $this->hasOne('App\Model\Produksi\PesananPembelian','id_tawar_beli','id');
+    }
 }
