@@ -9,6 +9,7 @@ use App\Model\Produksi\Supplier as suppliers;
 use App\Model\Produksi\Barang as barangs;
 use App\Model\Produksi\TawarBeli;
 use App\Model\Produksi\PesananPembelian;
+use App\Model\Produksi\POrder;
 use Session;
 
 class BeliBarang extends Controller
@@ -33,7 +34,7 @@ class BeliBarang extends Controller
 
     public function index(){
         $data=[
-            'data_pembelian'=> beliBarangs::all()->where('id_perusahaan', $this->id_perusahaan)->sortByDesc('created_at')
+            'data_pembelian'=> POrder::all()->where('id_perusahaan', $this->id_perusahaan)->sortByDesc('created_at')
             ,'suppliers' => suppliers::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan')),
             'tawar_beli'=> TawarBeli::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan')),
             'pesanan_pembelian'=> PesananPembelian::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))

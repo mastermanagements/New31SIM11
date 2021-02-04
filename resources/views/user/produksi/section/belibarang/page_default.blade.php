@@ -27,7 +27,7 @@
                     <ul class="nav nav-tabs">
                         <li class="active" ><a href="#tab_1" data-toggle="tab">Penawaran pembelian</a></li>
                         <li ><a href="#tab_2" data-toggle="tab">Pesanan pembelian</a></li>
-                        <li ><a href="#tab_3" data-toggle="tab">Daftar Pembelian</a></li>
+                        <li ><a href="#tab_3" data-toggle="tab">Pembelian</a></li>
                         <li ><a href="#tab_4" data-toggle="tab">Return pembelian</a></li>
                     </ul>
                     <div class="tab-content">
@@ -126,46 +126,43 @@
                             </table>
                         </div>
                         <div class="tab-pane" id="tab_3">
-                            <a href="{{ url('tambah-pembelian') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Pembelian</a>
+                            <a href="{{ url('Oder/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Pembelian</a>
                             <p></p>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>No. Order</th>
-                                    <th>No. Faktur</th>
                                     <th>Tanggal Beli</th>
-                                    <th>Barang</th>
+                                    <th>No. Order</th>
                                     <th>Supplier</th>
-                                    <th>Jumlah Barang</th>
-                                    <th>Harga Beli</th>
+                                    <th>Tanggal tiba</th>
                                     <th>Total</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @php($i=1)
-                                @foreach($data_pembelian as $value)
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $value->no_order  }}</td>
-                                        <td>{{ $value->no_faktur  }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($value->tgl_beli)) }}</td>
-                                        <td>{{ $value->getBarang->nm_barang }}</td>
-                                        <td>{{ $value->getSupplier->nama_suplier }}</td>
-                                        <td>{{ $value->jumlah_barang }}</td>
-                                        <td>{{ number_format($value->harga_beli,2,',','.') }}</td>
-                                        <td>{{ number_format($value->jumlah_barang*$value->harga_beli,2,',','.') }}</td>
-                                       <td>
-                                            <form action="{{ url('hapus-pembelian/'.$value->id) }}" method="post">
-                                                <a href="{{ url('ubah-pembelian/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
-                                                {{ csrf_field() }}
-                                                <input type="hidden" name="_method" value="put"/>
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus pembelian ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
-                                            </form>
-                                        </td>
-                                        </tr>
-                                @endforeach
+                                    @if(!empty($data_pembelian))
+                                    @php($no=1)
+                                        @foreach ($data_pembelian as $item)
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
+                                                <td>{{ $item->no_order }}</td>
+                                                <td>{{ $item->linkToSuppliers->nama_suplier }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
+                                                <td>Total</td>
+                                                <td>
+                                                    <form action="{{ url('Oder/'.$item->id) }}" method="post">
+                                                        {{ csrf_field() }}
+                                                        @method('delete')    
+                                                        <a href="{{  url('Oder/'.$item->id) }}" class="btn btn-primary">tambahkan barang</a>
+                                                        <a href="{{  url('Oder/'.$item->id.'/edit') }}" class="btn btn-warning">ubah</a>   
+                                                        <button class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')">hapus</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
