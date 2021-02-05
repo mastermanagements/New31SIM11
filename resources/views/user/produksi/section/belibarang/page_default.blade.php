@@ -150,7 +150,7 @@
                                                 <td>{{ $item->no_order }}</td>
                                                 <td>{{ $item->linkToSuppliers->nama_suplier }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
-                                                <td>Total</td>
+                                                <td>{{ number_format($item->total,2,',','.') }}</td>
                                                 <td>
                                                     <form action="{{ url('Oder/'.$item->id) }}" method="post">
                                                         {{ csrf_field() }}

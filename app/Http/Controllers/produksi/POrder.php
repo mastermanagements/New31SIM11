@@ -8,17 +8,26 @@ use App\Model\Produksi\PesananPembelian;
 use App\Model\Produksi\Supplier;
 use App\Model\Produksi\POrder as p_order;
 use App\Model\Produksi\DetailOrder;
+use Illuminate\Database\Eloquent\Model;
+use App\Model\Produksi\Barang;
 use Session;
 
 class POrder extends Controller
 {
     //
+    private $metode_bayar = [
+        'Tunai',
+        'Kredit'
+    ];
+
     public function show($id)
     {
         $data =[
             'supplier'=> Supplier::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
             'pesana_pembelian'=>PesananPembelian::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
-            'data_order'=> p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id)
+            'data_order'=> p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id),
+            'barang'=>Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
+            'metode_pembayaran'=> $this->metode_bayar,
         ];
         return view('user.produksi.section.belibarang.order_pembelian.page_rincian_barang', $data);
     }
@@ -108,17 +117,30 @@ class POrder extends Controller
 
     public function detail_order(Request $req, $id)
     {
+
         # code...
         $this->validate($req,[
             'id_barang'=> 'required',
             'jumlah_beli'=> 'required',
             'diskon_item'=> 'required',
             'hpp'=> 'required',
-            'jumlah_harga' => 'required'
         ]);
 
+     
         foreach ($req->id_barang as $key => $id_barang) {
             # code...
+
+            $jumlah_harga =0;
+            $sub_total = 0;
+            $diskon=$req->diskon_item[$key];
+
+            if(!empty($diskon)){
+                $nilai_diskon = ($req->hpp[$key]+$req->jumlah_beli[$key])*($diskon/100);
+                $sub_total = ($req->hpp[$key]+$req->jumlah_beli[$key])+$nilai_diskon;
+            }else{
+                $sub_total = ($req->hpp[$key]+$req->jumlah_beli[$key]);
+            }
+
             $model = DetailOrder::updateOrCreate(
                 [
                     'id_order'=>$id,
@@ -128,14 +150,63 @@ class POrder extends Controller
                 [
                     'hpp'=>$req->hpp[$key],
                     'jumlah_beli'=>$req->jumlah_beli[$key],
-                    'diskon_item'=>$req->diskon_item[$key],
-                    'jumlah_harga'=>$req->jumlah_harga[$key]
+                    'diskon_item'=>$diskon,
+                    'jumlah_harga'=>$sub_total
                 ]
             );
         }
        
 
         return redirect()->back()->with('message_success','Data barang pembelian telah disimpan');
+    }
+
+    public function simpan_rincian_pembelian(Request $req, $id)
+    {
+        
+      
+        $this->validate($req,[
+            'tgl_jatuh_tempo'=> 'required',
+            'pajak'=> 'required',
+            'onkir'=> 'required',
+            'bayar'=> 'required',
+            // 'kurang_bayar'=>'required',
+            'diskon_tambahan'=> 'required',
+            'sub_total'=>'required'
+        ]);
+
+        $model =p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id); 
+        
+        $pajak = 0;
+        $diskon_tambahan = 0;
+        if($req->pajak !=0){
+            $pajak = $req->sub_total*($req->pajak/100);
+        }
+
+        if($req->diskon_tambahan !=0){
+            $diskon_tambahan = $req->sub_total*($req->diskon_tambahan/100);
+        }
+
+        $total = $req->onkir+($req->sub_total+$diskon_tambahan+$pajak)-($req->bayar+$req->dp_po);
+        
+        $model->diskon_tambahan = $req->diskon_tambahan;
+        $model->pajak = $req->pajak;
+        $model->dp_po = $req->dp_po;
+        $model->bayar = $req->bayar;
+        $model->kurang_bayar = ($req->bayar+$req->dp_po)-($req->sub_total+$diskon_tambahan+$pajak);
+        $model->metode_bayar = $req->metode_bayar;
+        $model->tgl_jatuh_tempo = $req->tgl_jatuh_tempo;
+        $model->ongkir = $req->onkir;
+        $model->ket = $req->ket;
+        
+        $model->total = $total;
+        
+        // dd($model);
+
+        if($model->save()){
+            return redirect()->back()->with('message_success','data pembelian telah disimpan');
+        }else{
+            return redirect()->back()->with('message_error','data pembelian gagal disimpan');     
+        }
     }
 
 }
