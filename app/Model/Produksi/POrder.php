@@ -21,4 +21,9 @@ class POrder extends Model
     {
         return $this->belongsTo('App\Model\Produksi\Supplier','id_supplier');
     }
+
+    public function linkToDetailOrder()
+    {
+        return $this->hasMany('App\Model\Produksi\DetailOrder','id_order','id');
+    }
 }

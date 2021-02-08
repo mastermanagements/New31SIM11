@@ -83,6 +83,7 @@ class POrder extends Controller
 
     public function update(Request $req, $id)
     {
+        dd('test');
         $this->validate($req,[
             'no_order'=> 'required',
             'tgl_order'=> 'required',
@@ -160,10 +161,50 @@ class POrder extends Controller
         return redirect()->back()->with('message_success','Data barang pembelian telah disimpan');
     }
 
+    public function ubah_detail_order(Request $req, $id)
+    {
+         # code...
+         $this->validate($req,[
+            'id_barang'=> 'required',
+            'jumlah_beli'=> 'required',
+            'diskon_item'=> 'required',
+            'hpp'=> 'required',
+        ]);
+
+     
+        foreach ($req->id_barang as $key => $id_barang) {
+            # code...
+
+            $jumlah_harga =0;
+            $sub_total = 0;
+            $diskon=$req->diskon_item[$key];
+
+            if(!empty($diskon)){
+                $nilai_diskon = ($req->hpp[$key]+$req->jumlah_beli[$key])*($diskon/100);
+                $sub_total = ($req->hpp[$key]+$req->jumlah_beli[$key])+$nilai_diskon;
+            }else{
+                $sub_total = ($req->hpp[$key]+$req->jumlah_beli[$key]);
+            }
+
+            $model = DetailOrder::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+            $model->id_order = $model->id_order;
+            $model->id_barang = $id_barang; 
+            $model->id_perusahaan = Session::get('id_perusahaan_karyawan'); 
+            $model->hpp = $req->hpp[$key];
+            $model->jumlah_beli = $req->jumlah_beli[$key];
+            $model->diskon_item = $diskon;
+            $model->jumlah_harga = $sub_total;
+            $model->save();
+        }
+       
+
+        return redirect()->back()->with('message_success','Data barang pembelian telah disimpan');
+   
+    }
+
     public function simpan_rincian_pembelian(Request $req, $id)
     {
         
-      
         $this->validate($req,[
             'tgl_jatuh_tempo'=> 'required',
             'pajak'=> 'required',
@@ -186,17 +227,25 @@ class POrder extends Controller
             $diskon_tambahan = $req->sub_total*($req->diskon_tambahan/100);
         }
 
-        $total = $req->onkir+($req->sub_total+$diskon_tambahan+$pajak)-($req->bayar+$req->dp_po);
-        
+//        $total = ($req->sub_total+$diskon_tambahan+$pajak)-($req->bayar+$req->dp_po+(int)$req->onkir);
+        $total = ($req->bayar+$req->dp_po)-($req->sub_total+$diskon_tambahan+$pajak+(int)$req->onkir);
+
         $model->diskon_tambahan = $req->diskon_tambahan;
         $model->pajak = $req->pajak;
         $model->dp_po = $req->dp_po;
         $model->bayar = $req->bayar;
-        $model->kurang_bayar = ($req->bayar+$req->dp_po)-($req->sub_total+$diskon_tambahan+$pajak);
+        $model->kurang_bayar = abs($total);
         $model->metode_bayar = $req->metode_bayar;
         $model->tgl_jatuh_tempo = $req->tgl_jatuh_tempo;
         $model->ongkir = $req->onkir;
-        $model->ket = $req->ket;
+        $keterangan = "";
+        $model->ket ="";
+        if($total < 0){
+            $keterangan = ", Kurang Bayar :".$total;
+        }else{
+            $keterangan = ", Lebih Bayar :".$total;
+        }
+        $model->ket = $keterangan;
         
         $model->total = $total;
         
@@ -209,4 +258,5 @@ class POrder extends Controller
         }
     }
 
+    
 }

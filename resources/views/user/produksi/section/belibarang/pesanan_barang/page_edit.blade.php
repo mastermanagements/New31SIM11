@@ -183,7 +183,7 @@
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Pajak</label>
-                                                       <input type="number" name="pajak" class="form-control" @if(!empty($data->pajak)) value="{{ $data->pajak }}" @endif required>
+                                                       <input type="number" name="pajak" class="form-control" @if(!empty($data->pajak)) value="{{ number_format($data->pajak,2,',','.') }}" @else  value="0" @endif >
                                                    </div>
                                                </div>
                                            </div>

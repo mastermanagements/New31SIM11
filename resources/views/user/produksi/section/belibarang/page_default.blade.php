@@ -158,6 +158,7 @@
                                                         <a href="{{  url('Oder/'.$item->id) }}" class="btn btn-primary">tambahkan barang</a>
                                                         <a href="{{  url('Oder/'.$item->id.'/edit') }}" class="btn btn-warning">ubah</a>   
                                                         <button class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')">hapus</button>
+                                                        <a href="#" class="btn btn-default">cetak</a>
                                                     </form>
                                                 </td>
                                             </tr>

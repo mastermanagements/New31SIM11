@@ -4,9 +4,11 @@
     <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Produksi/DetailOrder.php" afterPath="$PROJECT_DIR$/app/Model/Produksi/DetailOrder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Produksi/POrder.php" afterPath="$PROJECT_DIR$/app/Model/Produksi/POrder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -1420,21 +1422,54 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17850">
+            <state relative-caret-position="0">
               <caret line="715" column="36" lean-forward="false" selection-start-line="715" selection-start-column="36" selection-end-line="715" selection-end-column="36" />
               <folding>
-                <marker date="1612536613468" expanded="true" signature="39743:39845" ph="..." />
-                <marker date="1612536613468" expanded="true" signature="49333:50166" ph="//..." />
+                <marker date="1612799851128" expanded="true" signature="39847:39949" ph="..." />
+                <marker date="1612799851128" expanded="true" signature="39878:39948" ph="..." />
+                <marker date="1612799851128" expanded="true" signature="49437:50270" ph="//..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PesananPembelian.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PesananPembelian.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/PesananPembelian.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="75" column="29" lean-forward="false" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
+            <state relative-caret-position="296">
+              <caret line="193" column="31" lean-forward="false" selection-start-line="193" selection-start-column="19" selection-end-line="193" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page_default.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="160" column="101" lean-forward="false" selection-start-line="160" selection-start-column="101" selection-end-line="160" selection-end-column="101" />
+              <folding>
+                <marker date="1612764279451" expanded="true" signature="6706:6855" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page_rincian_barang.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1148">
+              <caret line="289" column="95" lean-forward="false" selection-start-line="289" selection-start-column="83" selection-end-line="289" selection-end-column="95" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="POrder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="410">
+              <caret line="247" column="22" lean-forward="false" selection-start-line="247" selection-start-column="22" selection-end-line="247" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -1453,8 +1488,8 @@
       <file leaf-file-name="page_edit.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5025">
-              <caret line="201" column="53" lean-forward="false" selection-start-line="201" selection-start-column="53" selection-end-line="201" selection-end-column="53" />
+            <state relative-caret-position="-714">
+              <caret line="119" column="32" lean-forward="false" selection-start-line="119" selection-start-column="32" selection-end-line="119" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -1471,7 +1506,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>store</find>
       <find>tambah-ke-akun-aktif</find>
       <find>neraca_saldo</find>
       <find>neraca-saldo</find>
@@ -1501,6 +1535,7 @@
       <find>pesanan-pembelian</find>
       <find>&lt;form</find>
       <find>&lt;/form</find>
+      <find>hutan</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1552,8 +1587,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_01_06_095239_tbl_p_item_masuk_keluar.php" />
-        <option value="$PROJECT_DIR$/app/Model/Produksi/Barang.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/utils/StokBarangOperation.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/inventory/itemIO/page_create.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/Produksi/ItemIO.php" />
@@ -1598,11 +1631,13 @@
         <option value="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_01_19_095033_tbl_detail_po.php" />
         <option value="$PROJECT_DIR$/app/Model/Produksi/DetailPO.php" />
         <option value="$PROJECT_DIR$/app/Model/Produksi/PesananPembelian.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit_pesanan.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/PesananPembelian.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" />
       </list>
     </option>
   </component>
@@ -1833,7 +1868,7 @@
               <item name="produksi" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="belibarang" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="pesanan_barang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="order_pembelian" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -2260,14 +2295,11 @@
       <workItem from="1612401994219" duration="6000" />
       <workItem from="1612418813015" duration="222000" />
       <workItem from="1612486807842" duration="10000" />
-      <workItem from="1612496639622" duration="44000" />
-    </task>
-    <task id="LOCAL-00137" summary="Keuangan&#10;  - Revisi semua API, Jurnal umum, Buku besar, neraca saldo, dan laba rugi">
-      <created>1569399261210</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1569399261210</updated>
+      <workItem from="1612496639622" duration="144000" />
+      <workItem from="1612577107777" duration="12000" />
+      <workItem from="1612745939424" duration="342000" />
+      <workItem from="1612746326976" duration="21000" />
+      <workItem from="1612761431938" duration="2909000" />
     </task>
     <task id="LOCAL-00138" summary="Keuangan&#10;  - Perancangan API Neraca">
       <created>1569482538132</created>
@@ -2605,11 +2637,18 @@
       <option name="project" value="LOCAL" />
       <updated>1612418976713</updated>
     </task>
-    <option name="localTasksCounter" value="186" />
+    <task id="LOCAL-00186" summary="- Perancangan Detail Order Tampah Penawaran pembelian">
+      <created>1612496766713</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1612496766713</updated>
+    </task>
+    <option name="localTasksCounter" value="187" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2265935000" />
+    <option name="totallyTimeSpent" value="2269319000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2622,7 +2661,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2927383" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21633889" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5181543" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18078668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2630,7 +2669,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2487725" sideWeight="0.48184568" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24835527" sideWeight="0.48184568" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20574887" sideWeight="0.50554675" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2708,7 +2747,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- revisi utility jurnal umum, buku besar agar bisa digunakan ulang untuk akun penyesuian" />
     <MESSAGE value="- Tampilkan Laporan dan cetak laporan&#10; - Jurnal Umum&#10; - Buku Besar&#10; - Neraca saldo&#10; - Perubahan Modal&#10; - Neraca&#10; - Arus Kas" />
     <MESSAGE value="- Penambahan menu tahun buku&#10;- CRUD Tahun Buku&#10;- Jurnal Umum, Buku besar, Neraca Saldo, Perubahan Modal, Neraca, Arus Kas.berdasarkan tahun buku yang aktif" />
     <MESSAGE value="- Migrasi revisi tabel barang&#10;- Revisi CRUD Barang" />
@@ -2733,7 +2771,8 @@
     <MESSAGE value="- Penawaran Pembelian berdasarkan nota penawaran pembelian" />
     <MESSAGE value="- Perancangan Pembelian" />
     <MESSAGE value="- Perancangan Detail POrder Fix&#10;- Perancangan Interface POrder" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Perancangan Detail POrder Fix&#10;- Perancangan Interface POrder" />
+    <MESSAGE value="- Perancangan Detail Order Tampah Penawaran pembelian" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Perancangan Detail Order Tampah Penawaran pembelian" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2742,27 +2781,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/produksi/revisi/2021_01_06_095239_tbl_p_item_masuk_keluar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="25" column="104" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="25" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Produksi/Barang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="45" column="48" lean-forward="false" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/inventory/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="40" column="91" lean-forward="false" selection-start-line="40" selection-start-column="82" selection-end-line="40" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Model/Produksi/StokOpname.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -2988,13 +3006,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/barang_penawaran/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-745">
-          <caret line="69" column="33" lean-forward="true" selection-start-line="34" selection-start-column="27" selection-end-line="69" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/produksi/revisi/2021_01_19_095033_tbl_detail_po.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -3013,21 +3024,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5025">
-          <caret line="201" column="53" lean-forward="false" selection-start-line="201" selection-start-column="53" selection-end-line="201" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1340">
-          <caret line="63" column="58" lean-forward="true" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -3068,19 +3064,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17850">
+        <state relative-caret-position="0">
           <caret line="715" column="36" lean-forward="false" selection-start-line="715" selection-start-column="36" selection-end-line="715" selection-end-column="36" />
           <folding>
-            <marker date="1612536613468" expanded="true" signature="39743:39845" ph="..." />
-            <marker date="1612536613468" expanded="true" signature="49333:50166" ph="//..." />
+            <marker date="1612799851128" expanded="true" signature="39847:39949" ph="..." />
+            <marker date="1612799851128" expanded="true" signature="39878:39948" ph="..." />
+            <marker date="1612799851128" expanded="true" signature="49437:50270" ph="//..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="100" column="67" lean-forward="false" selection-start-line="100" selection-start-column="67" selection-end-line="100" selection-end-column="67" />
         </state>
       </provider>
     </entry>
@@ -3092,11 +3082,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/barang_penawaran/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-875">
+          <caret line="69" column="33" lean-forward="true" selection-start-line="34" selection-start-column="27" selection-end-line="69" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="746">
+          <caret line="63" column="58" lean-forward="true" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-714">
+          <caret line="119" column="32" lean-forward="false" selection-start-line="119" selection-start-column="32" selection-end-line="119" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1350">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/PesananPembelian.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="75" column="29" lean-forward="false" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
+        <state relative-caret-position="296">
+          <caret line="193" column="31" lean-forward="false" selection-start-line="193" selection-start-column="19" selection-end-line="193" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="247" column="22" lean-forward="false" selection-start-line="247" selection-start-column="22" selection-end-line="247" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1148">
+          <caret line="289" column="95" lean-forward="false" selection-start-line="289" selection-start-column="83" selection-end-line="289" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="160" column="101" lean-forward="false" selection-start-line="160" selection-start-column="101" selection-end-line="160" selection-end-column="101" />
+          <folding>
+            <marker date="1612764279451" expanded="true" signature="6706:6855" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
