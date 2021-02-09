@@ -11,6 +11,7 @@ use App\Model\Produksi\AturKonversi as p_konversi_barang;
 use App\Model\Produksi\SatuanBarang as Sb;
 use App\Model\Produksi\HistroyKonversiBrg as p_history_konversi_brg;
 use Illuminate\Support\Facades\DB;
+use App\Model\Marketing\Promo;
 
 class Barang extends Controller
 {
@@ -20,6 +21,11 @@ class Barang extends Controller
     private $id_perusahaan;
     private $metode_penjualan = [
         '0'=>'berdasarkan satu harga','1'=>'berdasarkan jumlah beli'
+    ];
+
+    private $metode_promo = [
+      'Promo Barang',
+      'Promo Jasa'
     ];
 
     public function __construct()
@@ -57,9 +63,12 @@ class Barang extends Controller
             'data_barang'=> barangs::all()->where('id_perusahaan', $this->id_perusahaan)->sortBy('created_at'),
             'konvesi_barang' => p_konversi_barang::all()->where('id_perusahaan', $this->id_perusahaan),
             'history_konversi_barang' => p_history_konversi_brg::all()->where('id_perusahaan', $this->id_perusahaan),
-            'data_perusahaan'=> $this->query_perusahaan()
+            'data_perusahaan'=> $this->query_perusahaan(),
+            'metode_promo'=>$this->metode_promo,
+            'promo'=>Promo::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
-        if(empty(Session::get('tab')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5'))){
+
+        if(empty(Session::get('tab')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6'))){
             Session::flash('tab1','tab1');
         }
 
@@ -69,6 +78,10 @@ class Barang extends Controller
 
         if(!empty(Session::get('tab3'))){
             Session::flash('tab3',Session::get('tab3'));
+        }
+
+        if(!empty(Session::get('tab6'))){
+            Session::flash('tab6',Session::get('tab6'));
         }
 
         return view('user.produksi.section.barang.page_default', $data);
@@ -306,4 +319,6 @@ class Barang extends Controller
         ];
         return view('user.produksi.section.inventory.page_default', $data);
     }
+
+
 }
