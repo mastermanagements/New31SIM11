@@ -26,11 +26,13 @@ Route::get('dashboard', function () {
     {
         return abort(404);
     } */
-	$data_perusahaan = App\Model\superadmin_ukm\U_usaha::all()->where('id_user_ukm', Session::get('id_superadmin_ukm'));
-	$data = [
-		'data_perusahaan' => $data_perusahaan
-	];
-	return view('user.superadmin_ukm.master.section.default.page_default', $data);
+
+    $data_perusahaan = App\Model\Superadmin_ukm\U_usaha::all()->where('id_user_ukm',Session::get('id_superadmin_ukm'));
+    $data=[
+        'data_perusahaan'=>$data_perusahaan
+    ];
+    return view('user.superadmin_ukm.master.section.default.page_default', $data);
+
 });
 //=========================== Registrasi & Login ========================================================================
 Route::post('registered', 'Superadmin_ukm\LoginAndRegisterController@registered');
