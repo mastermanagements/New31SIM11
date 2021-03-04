@@ -38,8 +38,8 @@
                            <thead>
                            <tr>
                                <th>No.</th>
-                               <th>Nik</th>
                                <th>Nama</th>
+                               <th>Username</th>
                                <th>Status Kerja</th>
                                <th>Aksi</th>
                            </tr>
@@ -49,8 +49,8 @@
                            @foreach($data_karyawan as $value)
                                <tr>
                                    <td>{{ $i++ }}</td>
-                                   <td>{{ $value->nik }}</td>
                                    <td>{{ $value->nama_ky }}</td>
+                                   <td>{{ $value->username }}</td>
                                    <td>
                                        @if($value->status_kerja==0)
                                            Aktif

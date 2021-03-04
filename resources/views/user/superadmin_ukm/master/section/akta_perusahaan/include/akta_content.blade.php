@@ -1,5 +1,5 @@
 <div>
-    <a href="{{ url('unggah-akta') }}" class="btn btn-block btn-info"><i class="fa fa-sticky-note-o"></i> Unggah Akta Anda</a>
+    <a href="{{ url('unggah-akta') }}" class="btn btn-block btn-info"><i class="fa fa-sticky-note-o"></i> Tambah Akta Perusahaan</a>
     @if(!empty(session('message_success')))
         <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
     @elseif(!empty(session('message_fail')))
@@ -18,12 +18,52 @@
                         <img class="img-circle" src="https://cdn2.iconfinder.com/data/icons/file-format-colorful/100/rar-512.png" alt="User Avatar">
                     </div>
                     <!-- /.widget-user-image -->
-                    <h3 class="widget-user-username">{{ $value->getPerusahaan->nm_usaha }}</h3>
-                    <h5 class="widget-user-desc">{{ $value->file_akta }}</h5>
+                    <h3 class="widget-user-username">{{ $value->getPerusahaan->nm_usaha }}
+                      @if($value->getPerusahaan->jenis_kantor !== NULL)
+                        @if($value->getPerusahaan->jenis_kantor =='0')
+                              (Pusat)
+                        @else ($value->getPerusahaan->jenis_kantor =='1')
+                              (Cabang)
+                        @endif
+                      @endif
+                    </h3>
+                    <h5 class="widget-user-desc"><a href="{{ asset('fileAkta'.$value->file_akta) }}"><font color="#DC3F0D">{{ $value->file_akta }}</a></font></h5>
+                    @if(!empty($value))
+                    <form action="{{ url('delete-akta/'.$value->id) }}" method="post">
+                        <a href="{{ url('ubah-akta/'.$value->id) }}" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Ubah </a>
+                        {{ csrf_field() }}
+                        <input name="_method" value="put" type="hidden">
+                        <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini...?')"><i class="fa fa-trash"></i> Hapus </button>
+                    </form>
+                    @endif
                 </div>
-                <div class="box-footer no-padding" sy>
+
+                <div class="info-box bg-white">
+                  <ul class="list-group list-group-unbordered">
+                      <li class="list-group-item">
+                        <b>Nomor Akta</b> <a class="pull-right">{{ $value->no_akta }}&nbsp;</a>
+                      </li>
+                      <li class="list-group-item">
+                        <b>Tanggal Akta</b> <a class="pull-right">{{ date('d-m-Y'),strtotime($value->tgl_akta) }}&nbsp;</a>
+                      </li>
+                      <li class="list-group-item">
+                        <b>Notaris</b> <a class="pull-right">{{ $value->notaris }}&nbsp;</a>
+                      </li>
+                      @if(!empty($value->no_rak))
+                      <li class="list-group-item">
+                        <b>Nomor Rak</b> <a class="pull-right">{{ $value->no_rak }}&nbsp;</a>
+                      </li>
+                      @endif
+                      @if(!empty($value->ket))
+                      <li class="list-group-item">
+                        <b>Keterangan</b> <a class="pull-right">{{ $value->ket }}&nbsp;</a>
+                      </li>
+                      @endif
+                    </ul>
+                  </div>
+                <!--<div class="box-footer no-padding">
                     <a href="{{ asset('fileAkta/'.$value->file_akta) }}" class="btn btn-primary pull-right" style="margin: 10px"><i class="fa fa-download"></i></a>
-                </div>
+                </div>-->
             </div>
             <!-- /.widget-user -->
         </div>
