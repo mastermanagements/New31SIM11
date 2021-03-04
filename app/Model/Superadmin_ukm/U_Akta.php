@@ -9,7 +9,7 @@ class U_Akta extends Model
     //
     protected $table="u_akta";
 
-    protected $fillable=['no_akta','tgl_akta','notaris','bentuk_usaha','no_rak','file_akta','id_perusahaan','id_user_ukm'];
+    protected $fillable=['no_akta','tgl_akta','notaris','no_rak','file_akta','ket','id_perusahaan','id_user_ukm'];
 
     public function getPerusahaan()
     {
