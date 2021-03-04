@@ -16,7 +16,6 @@ class CreateUProfilUser extends Migration
         Schema::create('u_profil', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_user_ukm')->unsigned();
-            $table->string('telp')->nullable();
             $table->string('hp');
             $table->string('wa');
             $table->string('telegram')->nullable();

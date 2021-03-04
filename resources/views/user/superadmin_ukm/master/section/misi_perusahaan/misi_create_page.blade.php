@@ -44,6 +44,14 @@
                                    <label>
                                        <input type="radio"  name="id_perusahaan" class="minimal" value="{{ $usaha->id}}" required>
                                        {{ $usaha->nm_usaha }}
+                                       @if($usaha->jenis_kantor !== NULL)
+                                         @if($usaha->jenis_kantor =='0')
+                                               (Pusat)&nbsp;
+                                         @else ($usaha->jenis_kantor =='1')
+                                               (Cabang)&nbsp;
+                                         @endif
+
+                                       @endif
                                    </label>
                                    @endforeach
                                    <p></p>
@@ -89,7 +97,7 @@
 
         window.onload = function() {
             CKEDITOR.replace( 'misi',{
-                height: 600
+                height: 300
             } );
         };
 
