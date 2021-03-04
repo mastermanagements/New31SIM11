@@ -309,11 +309,11 @@ class Surat extends Controller
         $id= $req->id_ubah;
         $status_surat= $req->status_surat;
 		$tgl_dikirim = date('Y-m-d', strtotime($req->tgl_dikirim));
-		
+
         $model = surat_keluar::findOrFail($id);
         $model->status_surat = $status_surat;
 		$model->tgl_dikirim = $tgl_dikirim;
-		
+
         if($model->save())
         {
            return redirect('Surat')->with('message_success','Anda baru saja meng-unggah file surat keluar');
