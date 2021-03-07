@@ -5,7 +5,7 @@
     <title>aturusaha.com - ERP For UMKM -</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
-    <meta name="keywords" content="ERP, Enterprice Resource Planning, UMKM, Usaha Mikro Kecil Menengah, 
+    <meta name="keywords" content="ERP, Enterprice Resource Planning, UMKM, Usaha Mikro Kecil Menengah,
 	manajemen perusahaan satu pintu, merancang usaha, strategi usaha" />
     <script>
         addEventListener("load", function () {
@@ -90,11 +90,11 @@
 						jalannya perusahaan?, Anda kesulitan mengontrol
 						administrasi, produk, keuangan, kinerja karyawan, marketing, penggajian dan semua bagian di perusahaan?
 						Hal tersebut tentunya membuat usaha Anda sulit untuk berkembang. Aturusaha.com, sebuah aplikasi Enterprice Resource Planning (ERP) hadir
-						sebagai solusi permasalahan UMKM. ERP mengintegrasikan jalannya semua bagian di perusahaan Anda mulai 
+						sebagai solusi permasalahan UMKM. ERP mengintegrasikan jalannya semua bagian di perusahaan Anda mulai
 						dari Perencanaan, Pelaksanaan, Monitoring sampai Laporan (Evaluasi). Menjalankan bisnis semakin mudah dengan menggunakan
 						aplikasi ini.
-						
-                    </p>  
+
+                    </p>
                 </div>
             </div>
             <!-- //banner text -->
@@ -108,7 +108,7 @@
                                 <h3>Perencanaan</h3>
 								<p>
 									Perencanaan akan mengarahkan jalannya perusahaan Anda ke depan.
-								</p>	
+								</p>
                             </div>
                         </div>
                         <div class="col-sm-3 col-6">
@@ -157,7 +157,7 @@
 							{{ csrf_field() }}
 							<button type="submit" name="submit" id="submit" class="btn btn-primary mt-5 tombol">Login</button>
                         </form>
-                        
+
 						<div>
 						<br>
 						@if(!empty(session('message_success')))
@@ -172,13 +172,13 @@
                     <div class="col-md-12 wthree_pvt_title text-center">
                         <p class="mb-5"><b>Login Karyawan</b></p>
                         <form action="{{ url('cek-karyawan') }}" method="post">
-                            <input type="text" class="mx-auto nama" placeholder="Nama Karyawan" name="nm_ky" required>
+                            <input type="text" class="mx-auto nama" placeholder="Username" name="user_nm" required>
                             <br/>
                             <input type="password" class="mx-auto pass" placeholder="password" name="pass" required>
 							{{ csrf_field() }}
 							<button type="submit" class="btn btn-primary mt-5 tombol">Login</button>
                         </form>
-                       
+
                     </div>
                 </div>
                 <div class="row mb-5 f-investor" id="investor">
@@ -201,7 +201,7 @@
                             <input type="email" name="alamat_email" id="email"class="mx-auto nama" placeholder="email" required>
                             <br/>
                             <input type="password" name="kata_kunci" id="name" class="mx-auto pass" placeholder="password">
-                       
+
                         <!--<br>
                         <div class="g-recaptcha move-left" data-sitekey="6LcTOr0UAAAAAGcl4liqP6-IPIvHpdr_m8jke99Y"></div>-->
                         <br>
@@ -238,10 +238,10 @@
                                         <h5>Tidak Tahu Arah Perusahaan ke Depan ?</h5>
                                         <br>
                                         <p>
-											Perusahaan yang penting jalan saja?, 
+											Perusahaan yang penting jalan saja?,
 											tidak mempunyai struktur dan bagian/departemen serta divisinya?, tidak ada analisa SWOT,
 											 tidak ada jobdesc yang jelas, tidak ada tanggung jawab dan wewenang karyawan, tidak tidak mengetahui
-											siapa kompetitor Anda?, tidak mempunyai sasaran, target tahunan, bulanan per bagian, per divisi dan  
+											siapa kompetitor Anda?, tidak mempunyai sasaran, target tahunan, bulanan per bagian, per divisi dan
 											strategi untuk mencapainya?.
 										</p>
                                     </div>
@@ -262,10 +262,10 @@
                                         <h5>Administrasi amburadul?</h5>
                                         <br>
                                         <p>
-											Arsip perusahaan: badan hukum, data perizinan, data proposal, data kontrak pekerjaan, 
+											Arsip perusahaan: badan hukum, data perizinan, data proposal, data kontrak pekerjaan,
 											surat masuk dan keluar, inventaris peralatan,
-											serta file arsip lainnya tersebar di berbagai komputer karyawan, 
-											dan Anda kesulitan mencari file dan hard copy jika membutuhkannya?, dan itu membuat waktu anda 
+											serta file arsip lainnya tersebar di berbagai komputer karyawan,
+											dan Anda kesulitan mencari file dan hard copy jika membutuhkannya?, dan itu membuat waktu anda
 											terbuang banyak untuk urusan administrasi?
 										</p>
                                     </div>
@@ -290,7 +290,7 @@
                                         <h5>Kesulitan mengontrol Produk ?</h5>
                                         <br>
                                         <p>
-											Anda kesulitan mengetahui data pembelian ke supplier?, penjualan harian, bulanan tidak terupdate?, 
+											Anda kesulitan mengetahui data pembelian ke supplier?, penjualan harian, bulanan tidak terupdate?,
 											Anda tidak tahu barang apa yang paling laku, yang tidak laku?,
 											Anda kesulitan mengontrol persediaan barang? berapa sisa?, berapa kedaluarsa?,
 											Kesulitan mengetahui layanan jasa yang paling banyak peminatnya?
@@ -322,7 +322,7 @@
 											Anda merasa tidak tahu kenapa pendapatan mudah didapat, tapi uang perusahaan cepat habis? terlebih
 											menjelang gajian karyawan,
 											Anda tidak tahu berapa laba/rugi perusahaan anda setiap saat?
-		
+
 										</p>
                                     </div>
                                 </div>
@@ -372,7 +372,7 @@
 											tidak ada SOP yg jelas, kesulitan mengatur absensi dan cuti karyawan,
 											menilai kinera karyawan berdasarkan feeling?, aspek apa yang akan di nilai, kapan harus naik gaji?,
 											bagaimana memberikan kompensasi kinerja karyawan (bonus, keniakan gaji, tunjangan, dll).
-											
+
 										</p>
                                     </div>
                                 </div>
@@ -399,8 +399,8 @@
 											berapa menentukan jumlah alokasi gaji setiap tahun sesuai dengan perubahan pendapatan perusahaan?,
 											tidak ada standar baku menentukan gaji pokok karyawan,
 											bagaimana menentukan dan menghitung compansable factor untuk menentukan nilai gaji setiap jabatan?,
-											apa saja standar penilaiannya?, 
-											bagaimana menentukan tunjangan karyawan sesuai dengan jabatan?  item apa saja yang dinilai, 
+											apa saja standar penilaiannya?,
+											bagaimana menentukan tunjangan karyawan sesuai dengan jabatan?  item apa saja yang dinilai,
 											bagaimana menentukan skala gaji, bonus proyek, kelas proyek?.
 										</p>
                                     </div>
@@ -433,12 +433,12 @@
                 </div>
             </div>
         </section>
-        <!-- //about --> 
+        <!-- //about -->
         <section>
             <div class="container">
                 <div class="wthree_pvt_title text-center">
                     <h4>
-						Jangan menunggu perusahaan menjadi besar untuk menggunakan sistem, tapi 
+						Jangan menunggu perusahaan menjadi besar untuk menggunakan sistem, tapi
 						gunakanlah sistem agar perusahaan anda menjadi besar.
                     </h4>
                 </div>
@@ -464,7 +464,7 @@
                                     Anda dapat mengelola lebih dari satu perusahaan baik perusahaan pusat dan cabang untuk perusahaan sejenis maupun berbeda jenis
 									perusahaan cukup dari satu aplikasi.
 									Pengguna Aplikasi ini terdiri dari:
-									
+
                                 </h6>
                             </div>
                             <div class="row flex-column">
@@ -480,7 +480,7 @@
 													Untuk menggunakan aplikasi ini, Anda sebagai owner perusahaan silahkan melakukan registrasi.
 													Setelah melakukan login ke sistem, Anda dapat menambahkan perusahaan apa saja yang ingin Anda tambahkan.
 													Kemudian Anda dapat memilih menu aplikasi sesuai dengan kebutuhan perusahaa Anda, menambahkan karyawan
-													dan mengatur hak akses mereka sesuai dengan menu yang di izinkan. Anda juga dapat menambahkan data investor jika 
+													dan mengatur hak akses mereka sesuai dengan menu yang di izinkan. Anda juga dapat menambahkan data investor jika
 													ada.
 												</p>
                                             </div>
@@ -510,7 +510,7 @@
                                             <div class="abt-txt ml-0">
                                                 <h6><b>Investor</b></h6>
 												<p>
-													Invstor login ke sistem menggunakan akun yang diberikan oleh owner. Investor dapat melihat perkembangan perusahaan 
+													Invstor login ke sistem menggunakan akun yang diberikan oleh owner. Investor dapat melihat perkembangan perusahaan
 													seperti laporan keuangan dan menu lainnya yang ditentukan oleh owner.
 												</p>
                                             </div>
@@ -616,7 +616,7 @@
                                     <a href="single.html">Anda lebih fokus ke core bisnis.</a>
                                 </h5>
                                 <p>Dengan menggunakan aplikasi ini anda tidak perlu membuat dan mengembangkan sistem
-								   yang membutuhkan waktu dan biaya mahal. Kerja Anda dan tim lebih fokus meningkatkan pendapatan 
+								   yang membutuhkan waktu dan biaya mahal. Kerja Anda dan tim lebih fokus meningkatkan pendapatan
 								   sesuai dengan core bisnis Anda. Dengan fokus ke core bisnis, hasil bisnis Anda lebih optimal.
 								</p>
                                 <!--<a href="single.html" class="blog_link">Read more</a>-->
@@ -662,7 +662,7 @@
                                 <p>
 								   Syarat scale up adalah bisnis Anda sudah harus tersistem. Anda tidak lagi menggunakan cara konvensional, yaitu
 								    menjalankan bisnis secara manual. Proses bisnis   dan hasilnya sudah real time tersaji di aplikasi ini.
-								 
+
 								</p>
                                 <!--<a href="single.html" class="blog_link">Read more</a>-->
                             </div>
@@ -697,7 +697,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="system-email">
-                            <form class="f-email"> 
+                            <form class="f-email">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Nama">
                                 </div>
@@ -747,7 +747,7 @@
                         <a href="#" class="fa fa-google"></a>
                     </div>
                     <div class="footerv2-w3ls">
-                        
+
                         <!-- <h4 class="mb-3 w3f_titles">Kerjasama  <span>&emsp;</span> Syarat & Ketentuan <span>&emsp;</span> Kebijakan Privasi</h4> -->
                         <h4 class="w3f_titles">Kerjasama</h4>
                         <h4 class="w3f_titles">Syarat & Ketentuan</h4>
@@ -763,7 +763,7 @@
     <!-- //footer -->
     <!-- copyright -->
     <div class="cpy-right text-center">
-        <p class="text-bl">© 2019 aturusaha.com All rights reserved 
+        <p class="text-bl">© 2019 aturusaha.com All rights reserved
         </p>
     </div>
     <!-- //copyright -->
@@ -790,10 +790,10 @@
 			}else if(menu == "event"){
 				$('.content').load('event');
 			}
-		});					
+		});
 		$('.sarat').click(function(){
 			$('.content').load('Syarat.blade.php');
-		});					
+		});
 
         // Form login dan register
         $(".owner").click(function(){
