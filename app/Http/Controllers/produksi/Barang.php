@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Imports\ImportBarang;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
@@ -320,5 +322,29 @@ class Barang extends Controller
         return view('user.produksi.section.inventory.page_default', $data);
     }
 
+    # Todo Import Barang
+    public function import_barang(Request $request){
+        // validasi
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
 
+        // menangkap file excel
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = rand().$file->getClientOriginalName();
+
+        // upload ke folder file_siswa di dalam folder public
+        $file->move('filebarang',$nama_file);
+
+        // import data
+        Excel::import(new ImportBarang, public_path('/filebarang/'.$nama_file));
+
+        // notifikasi dengan session
+        Session::flash('message_success','Data Barang Berhasil Diimport!');
+
+        // alihkan halaman kembali
+        return redirect('/Barang');
+    }
 }

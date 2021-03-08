@@ -3,35 +3,31 @@
     <div class="box box-primary">
         <div class="box-body box-profile">
             <form action="{{ url('updateProfile/'.$data_user->id) }}" method="post" enctype="multipart/form-data">
-
+			
             <img class="profile-user-img img-responsive img-circle" src="
                             @if(empty($profil_user_ukm->foto))
             {{ asset('image_superadmin_ukm/default.png') }}
             @else
             {{ asset('image_superadmin_ukm/'.$profil_user_ukm->foto) }}
             @endif
-            " alt="User profile picture">
+                    " alt="User profile picture">
 
-            <div class="form-group">Foto :<input class="form-control input-sm" type="file" name="foto" value="$profil_user_ukm->foto">
-            <small style="color:red;">* Tidak boleh kosong</small>
-            </div>
+            <h3 class="profile-username text-center">Foto :<input class="form-control input-sm" type="file" name="foto" required></h3>
+            <h3 class="profile-username text-center"><input class="form-control input-sm" type="text" name="nama" value="{{ $data_user->nama }}" required>
+            <small style="color:red;">* Tidak boleh kosong</small></h3>
 
-            <div class="form-group">
-              <input class="form-control input-sm" type="text" name="nama" value="{{ $data_user->nama }}" required>
-              <small style="color:red;">* Tidak boleh kosong</small>
-            </div>
+            <p class="text-muted text-center">Owner Application</p>
+
             <ul class="list-group list-group-unbordered">
-                <div class="form-group">
+
+                <li class="list-group-item">
                     <a><input type="hidden" class="form-control input-sm" name="email" value="{{ $data_user->email }}" readonly></a>
-                </div>
-                <div class="form-group">
-                       @if(empty($profil_user_ukm->alamat))
-                            <a><input type="text" class="form-control" style="width:100%" name="alamat" placeholder="Alamat"></a>
-                        @else
-                            <a ><input type="text" class="form-control" style="width:100%" name="alamat" value="{{ $profil_user_ukm->alamat}}"></a>
-                        @endif
-                </div>
-                <div class="form-group">
+                </li>
+                <li class="list-group-item">
+                    <a><input type="password" class="form-control input-sm" name="password" placeholder="Password Baru"></a>
+                    <small style="color:red;">* Tidak boleh kosong</small>
+                </li>
+                <li class="list-group-item">
                         @if(empty($profil_user_ukm))
                            <select class="form-control select2" style="width: 100%;" name="id_provinsi">
                                 <option>Pilih Provinsi</option>
@@ -41,15 +37,15 @@
                             </select>
                        @else
                                 <select class="form-control select2" style="width: 100%;" name="id_provinsi">
-                                    <option>Pilih Provinsi </option>
+                                    <option>Pilih Provinsi</option>
                                     @foreach($provinsi as $value)
                                         <option value="{{ $value->id }}" @if($profil_user_ukm->getUserProvinsi->id == $value->id) selected @endif>{{ $value->nama_provinsi }}</option>
                                     @endforeach
                                 </select>
                         @endif
-                        <small style="color:red;">* Tidak boleh kosong</small>
-                </div>
-                <div class="form-group">
+                            <small style="color:red;">* Tidak boleh kosong</small>
+                </li>
+                <li class="list-group-item">
                         @if(empty($profil_user_ukm))
                             <select class="form-control select2" style="width: 100%;" name="id_kabupaten">
                                 <option>Pilih Kabupaten</option>
@@ -63,16 +59,24 @@
                             </select>
                        @endif
                             <small style="color:red;">* Tidak boleh kosong</small>
-                </div>
-                <div class="form-group">
+                </li>
+                <li class="list-group-item">
+                        @if(empty($profil_user_ukm))
+                            <a ><input type="text" class="form-control input-sm"  style="width:100%" name="telp"  placeholder="No.Telepon"></a>
+                        @else
+                            <a ><input type="text" class="form-control input-sm" style="width:100%" name="telp" value="{{ $profil_user_ukm->telp }}"></a>
+                        @endif 
+							<small style="color:orange;">* Isi Jika ada</small>
+                </li>
+                <li class="list-group-item">
                        @if(empty($profil_user_ukm))
                             <a ><input type="text" class="form-control" style="width:100%" name="hp" placeholder="No.Handphone" required></a>
                         @else
-                            <a ><input type="text" class="form-control" style="width:100%" name="hp" value="{{ $profil_user_ukm->hp }}" placeholder="HP" required></a>
+                            <a ><input type="text" class="form-control" style="width:100%" name="hp" value="{{ $profil_user_ukm->hp }}" placeholder="No.Telepon" required></a>
                         @endif
                            <small style="color:red;">* Tidak boleh kosong</small>
-                </div>
-                <div class="form-group">
+                </li>
+                <li class="list-group-item">
                         @if(empty($profil_user_ukm))
                             <a ><input type="text" class="form-control input-sm" name="wa"  placeholder="No.Whatshapp" required></a>
                         @else
@@ -80,42 +84,15 @@
                         @endif
                             <small style="color:red;">* Tidak boleh kosong</small>
 
-                </div>
-                <div class="form-group">
-                       @if(empty($profil_user_ukm->telegram))
-                            <a ><input type="text" class="form-control input-sm" name="telegram" placeholder="Telegram"></a>
+                </li>
+                <li class="list-group-item">
+                       @if(empty($profil_user_ukm))
+                            <a ><input type="text" class="form-control input-sm" name="telegram" placeholder="No.Telegram"></a>
                         @else
                             <a ><input type="text" class="form-control input-sm" name="telegram" value="{{ $profil_user_ukm->telegram }}"></a>
                         @endif
-                </div>
-                <div class="form-group">
-                       @if(empty($profil_user_ukm->fb))
-                            <a ><input type="text" class="form-control input-sm" name="fb" placeholder="Facebook"></a>
-                        @else
-                            <a ><input type="text" class="form-control input-sm" name="fb" value="{{ $profil_user_ukm->fb }}"></a>
-                        @endif
-                </div>
-                <div class="form-group">
-                       @if(empty($profil_user_ukm->ig))
-                            <a ><input type="text" class="form-control input-sm" name="ig" placeholder="ig"></a>
-                        @else
-                            <a ><input type="text" class="form-control input-sm" name="ig" value="{{ $profil_user_ukm->ig }}"></a>
-                        @endif
-                </div>
-                <div class="form-group">
-                       @if(empty($profil_user_ukm->twitter))
-                            <a ><input type="text" class="form-control input-sm" name="twitter" placeholder="Twitter"></a>
-                        @else
-                            <a ><input type="text" class="form-control input-sm" name="twitter" value="{{ $profil_user_ukm->twitter }}"></a>
-                        @endif
-                </div>
-                <div class="form-group">
-                       @if(empty($profil_user_ukm->tiktok))
-                            <a ><input type="text" class="form-control input-sm" name="tiktok" placeholder="Tiktok"></a>
-                        @else
-                            <a ><input type="text" class="form-control input-sm" name="tiktok" value="{{ $profil_user_ukm->tiktok }}"></a>
-                        @endif
-                </div>
+                           <small style="color:orange;">* Isi Jika ada</small>
+                </li>
             </ul>
             @if(empty($profil_user_ukm))
                 <div style="width: 100%">
@@ -131,7 +108,7 @@
     </div>
     <!-- /.box -->
 </div>
-
+           
 @section('plugins')
     <script>
         $(document).ready(function () {

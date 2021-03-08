@@ -13,7 +13,6 @@ class H_karyawan extends Model
     protected $fillable = [
         'nik',
         'nama_ky',
-        'username',
         'password',
         'tmp_lahir',
         'tgl_lahir',

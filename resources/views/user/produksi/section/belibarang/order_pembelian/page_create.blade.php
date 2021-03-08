@@ -37,7 +37,7 @@
                                    {{ csrf_field() }}
                                    <div class="form-group">
                                        <label>No. Order</label>
-                                       <input type="text" name="no_order" class="form-control" required>
+                                       <input type="text" name="no_order" class="form-control" value="{{ $no_surat }}" required>
                                    </div>
                                    <div class="form-group">
                                        <label>Tanggal. PO</label>

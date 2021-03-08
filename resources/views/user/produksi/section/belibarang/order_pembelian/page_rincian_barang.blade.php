@@ -101,19 +101,19 @@
                                                             {{  $data_tb->linkToBarang->nm_barang }}
                                                         </td>
                                                         <td>
-                                                            <input type="number" class="form-control" name="hpp[]" value="{{ $data_tb->hpp }}" readonly required>
+                                                            <input type="text" class="form-control" name="hpp[]" id="hpp_" value="{{ $data_tb->hpp }}" readonly required>
                                                       
                                                         </td>
                                                         <td>
-                                                            <input type="number" class="form-control" name="diskon_item[]" value="{{ $data_tb->diskon_item }}" readonly required>
+                                                            <input type="text" class="form-control" name="diskon_item[]" id="diskon" value="{{ $data_tb->diskon_item }}" readonly required>
                                                         </td>
                                                         <td>
-                                                            <input type="number" class="form-control" name="jumlah_beli[]" value="{{ $data_tb->jumlah_beli }}" readonly required>
+                                                            <input type="text" class="form-control" name="jumlah_beli[]" id="jumlah_beli" value="{{ $data_tb->jumlah_beli }}" readonly required>
                                                      
                                                         </td>
                                                         <td>
                                                             @php($sub_total+=$data_tb->jumlah_harga*$data_tb->jumlah_beli)
-                                                            <input type="number" class="form-control" name="jumlah_harga[]" value="{{ $data_tb->jumlah_harga }}" readonly required >
+                                                            <input type="text" class="form-control" name="jumlah_harga[]" id="jumlah_harga" value="{{ $data_tb->jumlah_harga }}" readonly required >
                                                         </td>
                                                        
                                                     {{-- <td>
@@ -165,7 +165,8 @@
                                                            
                                                     </tr>
                                                     @endif
-                                                </form>     
+
+                                                </form>
                                                     @if($data_order->id_po ==0)
                                                         @if(!empty($data_orders=$data_order->linkToDetailOrder))
                                                             @foreach ($data_orders as $data_tb)
@@ -187,8 +188,8 @@
                                                                                 </select>
                                                                             </td>
                                                                             <td>
-                                                                                <input type="number" class="form-control" name="hpp[]" value="{{ $data_tb->hpp }}"  required>
-                                                                        
+                                                                                <input type="text" class="form-control" name="hpp[]" value="{{ $data_tb->hpp }}"  required>
+
                                                                             </td>
                                                                             <td>
                                                                                 <input type="number" class="form-control" name="diskon_item[]" value="{{ $data_tb->diskon_item }}"  required>
@@ -199,7 +200,7 @@
                                                                             </td>
                                                                             <td>
                                                                                 @php($sub_total+=$data_tb->jumlah_harga*$data_tb->jumlah_beli)
-                                                                                <input type="number" class="form-control" name="jumlah_harga[]" value="{{ $data_tb->jumlah_harga*$data_tb->jumlah_beli }}"  required >
+                                                                                <input type="text" class="form-control" name="jumlah_harga[]" value="{{ $data_tb->jumlah_harga*$data_tb->jumlah_beli }}" readonly required >
                                                                             </td>
                                                                         
                                                                             <td>
@@ -235,20 +236,20 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Uang Muka Pembelian</label>
-                                                    <input type="number" name="dp_po" value="{{ $data_order->linkToPO->dp_po }}" class="form-control" readonly required>
+                                                    <input type="text" name="dp_po" value="{{ $data_order->linkToPO->dp_po }}" class="form-control" readonly required>
                                                 </div>
                                             </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Diskon Tambahan</label>
                                                        <input type="hidden" name="sub_total" value="{{ $sub_total }}">
-                                                       <input type="number" name="diskon_tambahan" value="{{ $data_order->diskon_tambahan }}" class="form-control" required>
+                                                       <input type="text" name="diskon_tambahan" value="@if(!empty($data_order->diskon_tambahan)){{ $data_order->diskon_tambahan }}@else {{ '0' }} @endif " class="form-control" required>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Pajak</label>
-                                                       <input type="number" name="pajak" value="{{ $data_order->pajak }}" class="form-control" required>
+                                                       <input type="text" name="pajak" value="@if(!empty($data_order->pajak)) {{ $data_order->pajak }} @else 0 @endif" class="form-control" required>
                                                    </div>
                                                </div>
                                            </div>
@@ -256,86 +257,7 @@
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Ongkos Kirim</label>
-                                                       <input type="number" name="onkir" value="{{ $data_order->ongkir }}" class="form-control" required>
-                                                   </div>
-                                               </div>
-                                               <div class="col-md-6">
-                                                   <div class="form-group">
-                                                       <label>Jatuh Tempo</label>
-                                                       <input type="date" name="tgl_jatuh_tempo" value="{{ $data_order->tgl_jatuh_tempo }}" class="form-control" required>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                           <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Metode pembayaran</label>
-                                                        <select class="form-control" name="metode_bayar">
-                                                            <option disabled>Pilih metode pembayaran</option>
-                                                            @foreach ($metode_pembayaran as $key=> $item)
-                                                                <option value="{{ $key }}">{{ $item }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Bayar</label>
-                                                        <input class="form-control" name="bayar" value="{{ $data_order->bayar }}" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Hutangs</label>
-                                                        <input type="number" name="kurang_bayar" value="{{ $data_order->kurang_bayar }}" class="form-control" disabled required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label>Keterangan</label>
-                                                        <textarea class="form-control" name="ket">{{ $data_order->ket }}</textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                       </div>
-                                       <div class="col-md-12">
-                                           <button type="submit" onclick="return confirm('Pastikan yang anda isi telah sesuai atau tidak')" class="btn btn-primary pull-left"> Simpan daftar pembelian </button>
-                                       </div>
-                                </form>
-                            </div>
-                            @else
-                            <div class="col-md-12">
-                                <form action="{{ url('Order/'.$data_order->id.'/simpan-rincian-pembelian') }}" method="post">
-                                    {{ csrf_field() }}
-                                       <div class="col-md-12">
-                                           <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Uang Muka Pembelian</label>
-                                                    <input type="number" name="dp_po" class="form-control" value="{{ $data_order->dp_po }}" required>
-                                                </div>
-                                            </div>
-                                               <div class="col-md-6">
-                                                   <div class="form-group">
-                                                       <label>Diskon Tambahan</label>
-                                                       <input type="hidden" name="sub_total" value="{{ $sub_total }}">
-                                                       <input type="number" name="diskon_tambahan" value="{{ $data_order->diskon_tambahan }}" class="form-control" required>
-                                                   </div>
-                                               </div>
-                                               <div class="col-md-6">
-                                                   <div class="form-group">
-                                                       <label>Pajak</label>
-                                                       <input type="number" name="pajak" value="{{ $data_order->pajak }}" class="form-control" required>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                           <div class="row">
-                                               <div class="col-md-6">
-                                                   <div class="form-group">
-                                                       <label>Ongkos Kirim</label>
-                                                       <input type="number" name="onkir" value="{{$data_order->ongkir}}" class="form-control" required>
+                                                       <input type="text" name="onkir" value=" @if(!empty($data_order->ongkir)) {{ $data_order->ongkir }} @else 0 @endif " class="form-control" required>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
@@ -366,7 +288,7 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Hutang</label>
-                                                        <input type="number" name="kurang_bayar" value="{{ $data_order->kurang_bayar }}" class="form-control" disabled required>
+                                                        <input type="text" name="kurang_bayar" value="{{ $data_order->kurang_bayar }}" class="form-control" disabled required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -380,7 +302,86 @@
                                             </div>
                                        </div>
                                        <div class="col-md-12">
-                                           <button type="submit" onclick="return confirm('Pastikan yang anda isi telah sesuai atau tidak')" class="btn btn-primary pull-left"> Simpan daftar pembelian </button>
+                                          <label><input type="checkbox" value="on" name="jurnal_otomatis"> Buat jurnal otomatis </label> <button type="submit" onclick="return confirm('Pastikan yang anda isi telah sesuai atau tidak')" class="btn btn-primary"> Simpan daftar pembelian </button>
+                                       </div>
+                                </form>
+                            </div>
+                            @else
+                            <div class="col-md-12">
+                                <form action="{{ url('Order/'.$data_order->id.'/simpan-rincian-pembelian') }}" method="post">
+                                    {{ csrf_field() }}
+                                       <div class="col-md-12">
+                                           <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Uang Muka Pembelian</label>
+                                                    <input type="text" name="dp_po" class="form-control" value="{{ $data_order->dp_po }}" required>
+                                                </div>
+                                            </div>
+                                               <div class="col-md-6">
+                                                   <div class="form-group">
+                                                       <label>Diskon Tambahan</label>
+                                                       <input type="hidden" name="sub_total" value="{{ $sub_total }}">
+                                                       <input type="text" name="diskon_tambahan" value="{{ $data_order->diskon_tambahan }}" class="form-control" required>
+                                                   </div>
+                                               </div>
+                                               <div class="col-md-6">
+                                                   <div class="form-group">
+                                                       <label>Pajak</label>
+                                                       <input type="text" name="pajak" value="{{ $data_order->pajak }}" class="form-control" required>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="row">
+                                               <div class="col-md-6">
+                                                   <div class="form-group">
+                                                       <label>Ongkos Kirim</label>
+                                                       <input type="text" name="onkir" value="{{$data_order->ongkir}}" class="form-control" required>
+                                                   </div>
+                                               </div>
+                                               <div class="col-md-6">
+                                                   <div class="form-group">
+                                                       <label>Jatuh Tempo</label>
+                                                       <input type="date" name="tgl_jatuh_tempo" value="{{ $data_order->tgl_jatuh_tempo }}" class="form-control" required>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Metode pembayaran</label>
+                                                        <select class="form-control" name="metode_bayar" onchange=" var value = $(this).val(); if(value==0){ $('#hutang').hide() }else{ $('#hutang').show() }">
+                                                            <option disabled>Pilih metode pembayaran</option>
+                                                            @foreach ($metode_pembayaran as $key=> $item)
+                                                                <option value="{{ $key }}">{{ $item }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Bayar</label>
+                                                        <input class="form-control" name="bayar" value="{{ $data_order->bayar }}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4" id="hutang" style="display: @if($data_order->metode_bayar=="0") none @else show @endif;"  >
+                                                    <div class="form-group">
+                                                        <label>Hutang</label>
+                                                        <input type="number" name="kurang_bayar" value="{{ $data_order->kurang_bayar }}" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Keterangan</label>
+                                                        <textarea class="form-control" name="ket">{{ $data_order->ket }}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                       </div>
+                                       <div class="col-md-12">
+                                          <label><input type="checkbox" name="jurnal_otomatis" value="on" required> Buat jurnal umum otomatis </label> <button type="submit" onclick="return confirm('Pastikan yang anda isi telah sesuai atau tidak')" class="btn btn-primary"> Simpan daftar pembelian </button>
                                        </div>
                                 </form>
                             </div>
@@ -408,6 +409,43 @@
             var harga_jual =parseInt($('[name="hpp"]').val()) + persentase;
             $('[name="harga_jual"]').val(harga_jual);
         })
+
+        var hpp =0;
+        var diskon = 0;
+        var jumlah_barang = 0;
+        var total =0
+
+        $('#hpp_').keyup(function(){
+            hpp = $(this).val();
+            alert(hpp);
+            calculate_jumlah();
+        });
+
+        $('#diskon').keyup(function(){
+            diskon = $(this).val();
+            calculate_jumlah();
+        });
+
+        $('#jumlah_beli').keyup(function(){
+            jumlah_barang = $(this).val();
+            calculate_jumlah();
+        });
+
+        calculate_jumlah = function(){
+            var n_diskon = 0;
+            var sub_total = 0;
+            if(diskon !=0){
+                n_diskon = diskon/100;
+            }
+
+            sub_total = hpp * jumlah_barang;
+            dis_total = sub_total * n_diskon;
+            total = sub_total - dis_total;
+            $('#jumlah_harga').val(total);
+        }
+
+
+
     </script>
 
 @stop

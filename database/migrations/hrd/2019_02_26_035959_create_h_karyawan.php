@@ -17,7 +17,6 @@ class CreateHKaryawan extends Migration
             $table->increments('id');
             $table->string('nik');
             $table->string('nama_ky');
-            $table->string('username');
             $table->string('password');
             $table->string('tmp_lahir');
             $table->date('tgl_lahir');

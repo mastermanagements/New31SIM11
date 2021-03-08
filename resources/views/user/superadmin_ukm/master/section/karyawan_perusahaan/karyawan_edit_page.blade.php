@@ -38,20 +38,15 @@
                               @elseif(!empty(session('message_fail')))
                                   <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                               @endif
-                          <div class="col-md-6">
-                              <!--<div class="form-group">
+                                  <div class="col-md-6">
+                              <div class="form-group">
                                   <label for="exampleInputEmail1">NIK</label>
                                   <input name="nik" class="form-control" placeholder="Nomor Induk Karyawan" value="{{ $data_karyawan->nik }}" required>
                                   <small style="color: red">* Tidak boleh kosong</small>
-                              </div>-->
+                              </div>
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Nama Karyawan</label>
                                   <input name="nama_ky" class="form-control" placeholder="Nama Karyawan" value="{{ $data_karyawan->nama_ky }}" required>
-                                  <small style="color: red">* Tidak boleh kosong</small>
-                              </div>
-                              <div class="form-group">
-                                  <label for="exampleInputEmail1">Username</label>
-                                  <input name="username" class="form-control" placeholder="Username" value="{{ $data_karyawan->username }}" required>
                                   <small style="color: red">* Tidak boleh kosong</small>
                               </div>
                               <div class="form-group">
@@ -60,7 +55,7 @@
                                   <small style="color: red">* Tidak boleh kosong</small>
                               </div>
 
-                                    <!--  <div class="form-group">
+                                      <div class="form-group">
                                           <label for="exampleInputEmail1">Nomor KTP</label>
                                           <input name="no_ktp" class="form-control" placeholder="Nomor KTP" value="{{ $data_karyawan->no_ktp }}" required>
                                           <small style="color: red">* Tidak boleh kosong</small>
@@ -71,8 +66,8 @@
                                           <input type="hidden" id="exampleInputFile" name="file_ktp_old" value="{{ $data_karyawan->file_ktp }}">
                                           <small>Anda telah meng-unggah berkas anda dengan nama: {{$data_karyawan->file_ktp }}</small>
                                           <p class="help-block" style="color:red">*Format file yang disarankan .jpg, png, gif</p>
-                                      </div>-->
-                                    <!--<div class="form-group">
+                                      </div>
+                                      <div class="form-group">
                                           <label for="exampleInputEmail1">Tempat Lahir</label>
                                           <input type="text" name="tmp_lahir" class="form-control" placeholder="Tempat Lahir karyawan" value="{{ $data_karyawan->tmp_lahir }}" required>
                                           <small style="color: red">* Tidak boleh kosong</small>
@@ -87,7 +82,7 @@
                                               <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal Lahir Karyawan" name="tgl_lahir" value="{{ date('d-m-Y', strtotime($data_karyawan->tgl_lahir)) }}" required>
                                           </div>
                                           <!-- /.input group -->
-                                        <!--  <small style="color: red">* Tidak boleh kosong</small>
+                                          <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">Jenis Kelamin</label>
@@ -114,7 +109,7 @@
                                               <p></p>
                                               <small style="color: red">* Tidak Boleh Kosong</small>
                                           </div>
-                                      </div>-->
+                                      </div>
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">Status Kerja</label>
                                           <div class="form-group">
@@ -130,8 +125,7 @@
                                       </div>
 
                             </div>
-
-                            <!--<div class="col-md-6">
+                            <div class="col-md-6">
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">Golongan Darah</label>
                                           <div class="form-group">
@@ -194,10 +188,10 @@
                                               </div>
                                               <input type="text" class="form-control pull-right" id="datepicker1" placeholder="Tanggal Masuk Kerja" name="tgl_masuk" value="{{ date('d-m-Y', strtotime($data_karyawan->tgl_lahir)) }}" required>
                                           </div>
-
+                                          <!-- /.input group -->
                                           <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
-                                  </div>-->
+                                  </div>
                             </div>
                    <div class="box-footer">
                        {{csrf_field()}}

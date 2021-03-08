@@ -5,10 +5,7 @@ namespace App\Http\Controllers\superadmin_ukm;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Hash;
-
 use Session;
-use Auth;
 use App\Model\Superadmin_ukm\U_user_ukm as superadmin_ukms;
 use App\Model\Superadmin_ukm\U_profil_ukm as profil_user_ukm;
 use App\Model\Superadmin_sim\U_provinsi as provinsi;
@@ -48,53 +45,12 @@ class Superadmin_UKM extends Controller
         return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
     }
 
-    public function editPwo()
-    {
-        $pass_data = [
-          'data_user'=> superadmin_ukms::findOrFail(Session::get('id_superadmin_ukm'))
-        ];
-        return view('user/superadmin_ukm/master/section/pengaturan_awal/include/section_editpwo', $pass_data);
-    }
-
-    public function updatePwo(Request $request)
-    {
-
-    if (!(Hash::check($request->get('pass_old'), Auth::superadmin_ukms()->password))) {
-        // The passwords matches
-        return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
-    }
-
-    if(strcmp($request->get('pass_old'), $request->get('pass_new')) == 0){
-        //Current password and new password are same
-        return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
-    }
-    if(strcmp($request->get('pass_new'), $request->get('repass_new')) !== 0){
-        //mewpassword and re new password are not same
-        return redirect()->back()->with("error","re New Password must be same as your new password. Please choose a different password.");
-    }
-
-
-    $validatedData = $request->validate([
-        'pass_old' => 'required',
-        'pass_new' => 'required|string|min:6|confirmed',
-        'repass_new'=>'required'
-    ]);
-
-    //Change Password
-    $user_ukm = superadmin_ukms::findOrFail(Session::get('id_superadmin_ukm'));
-    $user_ukm->password = bcrypt($request->get('pass_new'));
-    $user_ukm->save();
-
-    return redirect()->back()->with("success","Password changed successfully !");
-
-}
-
     public function editProfileSuperadminUkm()
     {
         $pass_data = [
             'menu'=>'edit',
             'data_user'=>$this->getFavoriteData()['data_user'],
-			      'profil_user_ukm'=>$this->getFavoriteData()['profil_user_ukm'],
+			'profil_user_ukm'=>$this->getFavoriteData()['profil_user_ukm'],
             'provinsi'=>$this->getProvinsi(),
             'kabupaten' => $this->getKabupaten(),
             'usaha'=> $this->getFavoriteData()['data_usaha'],
@@ -106,7 +62,7 @@ class Superadmin_UKM extends Controller
     public function updateProfile(Request $req, $id)
     {
         $this->validate($req, [
-            'foto'=>'nullable|image|mimes:jpeg,png,gif,jpg|max:2048',
+            'foto'=>'required|image|mimes:jpeg,png,gif,jpg|max:2048',
             'nama'=>'required',
             'email'=>'required',
             'id_provinsi'=>'required',
@@ -116,60 +72,50 @@ class Superadmin_UKM extends Controller
         ]);
 
 
+        $foto = $req->foto;
         $nama = $req->nama;
         $email= $req->email;
-        $alamat = $req->alamat;
         $id_provinsi = $req->id_provinsi;
         $id_kabupaten = $req->id_kabupaten;
         $telp =  $req->telp;
         $hp = $req->hp;
         $wa = $req->wa;
         $tegram = $req->telegram;
-        $fb = $req->fb;
-        $ig = $req->ig;
-        $twitter = $req->twitter;
-        $tiktok = $req->tiktok;
-        $foto = $req->foto;
 
-        if(!empty($foto)){
-            $image_name = time().'.'.$foto->getClientOriginalExtension();
-        } else{
-            //ambil foto lama
-            $foto_lama = profil_user_ukm::find($id);
-            $image_name = $foto_lama['foto'] ;
-        }
-
+        $image_name = time().'.'.$foto->getClientOriginalExtension();
         $model_user_ukm = superadmin_ukms::find($id);
+        if(!empty($req->password))
+        {
+            $password = bcrypt($req->password);
+        }
+        else
+        {
+            $password = $model_user_ukm->password;
+        }
         $model_user_ukm->nama =$nama;
         $model_user_ukm->email =$email;
-
+        $model_user_ukm->password =$password;
         if($model_user_ukm->save())
         {
             $profil_user_ukm = profil_user_ukm::updateOrCreate([
-                'id_user_ukm'=>$model_user_ukm->id],
-                [ 'hp'=>$hp,
-                  'wa'=>$wa,
-                  'telegram'=>$tegram,
-                  'fb'=>$fb,
-                  'twitter'=>$twitter,
-                  'ig'=>$ig,
-                  'tiktok'=>$tiktok,
-                  'alamat'=>$alamat,
-                  'provinsi_id'=>$id_provinsi,
-                  'kab_id'=>$id_kabupaten,
-                  'foto'=>$image_name
-                ]);
+                'id_user_ukm'=>$model_user_ukm->id
+            ],[
+                'telp'=>$telp,
+                'hp'=>$hp,
+                'wa'=>$wa,
+                'telegram'=>$tegram,
+                'provinsi_id'=>$id_provinsi,
+                'kab_id'=>$id_kabupaten,
+                'foto'=>$image_name
+            ]);
 
             if($profil_user_ukm->save()){
-              if(!empty($foto)){
                 if ($foto->move(public_path('image_superadmin_ukm'), $image_name)) {
-
+                    return redirect('pengaturan-perusahaan')->with('message_success','Profil anda berhasil diperbarui');
                 }else{
                     return redirect('pengaturan-perusahaan')->with('message_error','Profil anda berhasil diperbarui namun foto gagal diupload');
                 }
-              }
             }
-            return redirect('pengaturan-perusahaan')->with('message_success','Profil anda berhasil diperbarui');
         }
 
         return redirect('editprofile')->with('message_error','Data tidak boleh kosong');

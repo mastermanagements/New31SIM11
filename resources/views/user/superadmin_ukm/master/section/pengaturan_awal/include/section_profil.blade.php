@@ -8,23 +8,16 @@
             @else
             {{ asset('image_superadmin_ukm/'.$profil_user_ukm->foto) }}
             @endif
-            " alt="User profile picture">
+                    " alt="User profile picture">
 
             <h3 class="profile-username text-center">{{ $data_user->nama }}</h3>
+
+            <p class="text-muted text-center">Owner Application</p>
 
             <ul class="list-group list-group-unbordered">
 
                 <li class="list-group-item">
                     <b>Email</b> <a class="pull-right">{{ $data_user->email }}</a>
-                </li>
-                <li class="list-group-item">
-                    <b>Alamat </b> <a class="pull-right">
-                        @if(empty($profil_user_ukm->alamat))
-                            <p style="color: red">Belum diisi..!</p>
-                        @else
-                            <a class="pull-right">{{ $profil_user_ukm->alamat }}</a>
-                        @endif
-                    </a>
                 </li>
                 <li class="list-group-item">
                     <b>Provinsi </b> <a class="pull-right">
@@ -44,7 +37,15 @@
                         @endif
                     </a>
                 </li>
-
+                <li class="list-group-item">
+                    <b>No.Telepon </b> <a class="pull-right">
+                        @if(empty($profil_user_ukm->telp))
+                            <p style="color: red">Belum diisi..!</p>
+                        @else
+                            <a class="pull-right">{{ $profil_user_ukm->telp }}</a>
+                        @endif
+                    </a>
+                </li>
                 <li class="list-group-item">
                     <b>No.Handphone </b> <a class="pull-right">
                         @if(empty($profil_user_ukm->hp))
@@ -72,42 +73,6 @@
                         @endif
                     </a>
                 </li>
-                <li class="list-group-item">
-                    <b>Facebook</b> <a class="pull-right">
-                        @if(empty($profil_user_ukm->fb))
-                            <p style="color: orange">Isi jika ada</p>
-                        @else
-                            <a class="pull-right">{{ $profil_user_ukm->fb }}</a>
-                        @endif
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <b>Instagram </b> <a class="pull-right">
-                        @if(empty($profil_user_ukm->ig))
-                            <p style="color: orange">Isi jika ada</p>
-                        @else
-                            <a class="pull-right">{{ $profil_user_ukm->ig }}</a>
-                        @endif
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <b>Twitter </b> <a class="pull-right">
-                        @if(empty($profil_user_ukm->twitter))
-                            <p style="color: orange">Isi jika ada</p>
-                        @else
-                            <a class="pull-right">{{ $profil_user_ukm->twitter}}</a>
-                        @endif
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <b>Tiktok </b> <a class="pull-right">
-                        @if(empty($profil_user_ukm->tiktok))
-                            <p style="color: orange">Isi jika ada</p>
-                        @else
-                            <a class="pull-right">{{ $profil_user_ukm->tiktok }}</a>
-                        @endif
-                    </a>
-                </li>
             </ul>
             @if(!empty(session('message_success')))
                 <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
@@ -125,3 +90,4 @@
     </div>
     <!-- /.box -->
 </div>
+           

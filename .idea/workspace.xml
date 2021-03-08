@@ -2,13 +2,97 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/AkunPembelian.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/Bayar.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/CekBarang.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/ReturnPembelian.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/TawarJual.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/utils/JenisAkunPembelian.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/utils/SettingNoSurat.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/utils/Stok.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Imports/ImportBarang.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Produksi/AkunPembelian.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Produksi/Bayar.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Produksi/Cek_Barang.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Produksi/Detail_Cek_Barang.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Produksi/PHistoryStokAkhir.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Produksi/PHistoryStokAwal.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Produksi/ReturnPembelian.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_02_09_225705_p_cek_barang.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_02_10_224211_p_detail_cek_barang.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_02_15_092433_p_bayar.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_02_18_101611_p_return_pembelian.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_02_24_090502_p_akun_pembelian.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_03_02_084315_p_tawar_jual.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_03_02_133220_p_history_saldo_akhir.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_03_03_101646_p_history_saldo_awal.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/akun_pembelian/page_create.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/akun_pembelian/page_edit.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/bayar/page_bayar.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/bayar/page_order.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/bayar/page_rincian_bayar.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/cek_barang/page_rincian_barang.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/return_pembelian/page_create.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/return_pembelian/page_preview.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/status_return/page_rincian_barang.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/penawaran_penjualan/page_create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/31SIM11.iml" afterPath="$PROJECT_DIR$/.idea/31SIM11.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/Akta.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/Akta.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/Ijin_usaha.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/Ijin_usaha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/Karyawan.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/Karyawan.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/Kompetitor.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/Kompetitor.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/Superadmin_UKM.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/Superadmin_UKM.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/UsahaController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Superadmin_ukm/UsahaController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/karyawan/LoginController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/karyawan/LoginController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/Barang.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/BeliBarang.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/BeliBarang.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/PesananPembelian.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/PesananPembelian.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Keuangan/Jurnal.php" afterPath="$PROJECT_DIR$/app/Model/Keuangan/Jurnal.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Produksi/DetailOrder.php" afterPath="$PROJECT_DIR$/app/Model/Produksi/DetailOrder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Produksi/POrder.php" afterPath="$PROJECT_DIR$/app/Model/Produksi/POrder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Produksi/PesananPembelian.php" afterPath="$PROJECT_DIR$/app/Model/Produksi/PesananPembelian.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php" afterPath="$PROJECT_DIR$/app/Model/Superadmin_ukm/H_karyawan.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Superadmin_ukm/U_Akta.php" afterPath="$PROJECT_DIR$/app/Model/Superadmin_ukm/U_Akta.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Superadmin_ukm/U_profil_ukm.php" afterPath="$PROJECT_DIR$/app/Model/Superadmin_ukm/U_profil_ukm.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Superadmin_ukm/U_usaha.php" afterPath="$PROJECT_DIR$/app/Model/Superadmin_ukm/U_usaha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/hrd/2019_02_26_035959_create_h_karyawan.php" afterPath="$PROJECT_DIR$/database/migrations/hrd/2019_02_26_035959_create_h_karyawan.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_02_26_015758_create_u_perusahaan.php" afterPath="$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_02_26_015758_create_u_perusahaan.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_02_27_012738_create_u_akta.php" afterPath="$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_02_27_012738_create_u_akta.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_02_27_070536_create_u_profil_user.php" afterPath="$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_02_27_070536_create_u_profil_user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/page/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/page/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/karyawan/include/header.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/karyawan/include/header.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/karyawan/include/sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/karyawan/include/sidebar.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_create.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_create.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_create.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_create.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit_pesanan.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit_pesanan.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/include/header.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/include/header.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/include/sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/include/sidebar.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/akta_perusahaan/akta_create_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/akta_perusahaan/akta_create_page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/akta_perusahaan/include/akta_content.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/akta_perusahaan/include/akta_content.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/default/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/default/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/isin_usaha_perusahaan/include/isin_content.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/isin_usaha_perusahaan/include/isin_content.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/jabatan_perusahaan/create_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/jabatan_perusahaan/create_page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/karyawan_perusahaan/karyawan_create_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/karyawan_perusahaan/karyawan_create_page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/karyawan_perusahaan/karyawan_detail_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/karyawan_perusahaan/karyawan_detail_page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/karyawan_perusahaan/karyawan_edit_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/karyawan_perusahaan/karyawan_edit_page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/karyawan_perusahaan/karyawan_view_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/karyawan_perusahaan/karyawan_view_page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/misi_perusahaan/include/misi_content.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/misi_perusahaan/include/misi_content.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/misi_perusahaan/misi_create_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/misi_perusahaan/misi_create_page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/pengaturan_awal/include/section_edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/pengaturan_awal/include/section_edit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/pengaturan_awal/include/section_profil.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/pengaturan_awal/include/section_profil.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/pengaturan_awal/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/pengaturan_awal/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/profil_perusahaan/create_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/profil_perusahaan/create_page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/profil_perusahaan/edit_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/profil_perusahaan/edit_page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/profil_perusahaan/include/profil_content.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/profil_perusahaan/include/profil_content.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/visi_perusahaan/include/visi_content.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/visi_perusahaan/include/visi_content.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/visi_perusahaan/visi_create_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/visi_perusahaan/visi_create_page.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -1422,13 +1506,9 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="715" column="36" lean-forward="false" selection-start-line="715" selection-start-column="36" selection-end-line="715" selection-end-column="36" />
-              <folding>
-                <marker date="1612799851128" expanded="true" signature="39847:39949" ph="..." />
-                <marker date="1612799851128" expanded="true" signature="39878:39948" ph="..." />
-                <marker date="1612799851128" expanded="true" signature="49437:50270" ph="//..." />
-              </folding>
+            <state relative-caret-position="24276">
+              <caret line="715" column="0" lean-forward="false" selection-start-line="715" selection-start-column="0" selection-end-line="715" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1436,8 +1516,8 @@
       <file leaf-file-name="PesananPembelian.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/PesananPembelian.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="193" column="31" lean-forward="false" selection-start-line="193" selection-start-column="19" selection-end-line="193" selection-end-column="31" />
+            <state relative-caret-position="6188">
+              <caret line="193" column="30" lean-forward="false" selection-start-line="193" selection-start-column="19" selection-end-line="193" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -1446,10 +1526,10 @@
       <file leaf-file-name="page_default.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="160" column="101" lean-forward="false" selection-start-line="160" selection-start-column="101" selection-end-line="160" selection-end-column="101" />
+            <state relative-caret-position="-307">
+              <caret line="155" column="52" lean-forward="false" selection-start-line="155" selection-start-column="52" selection-end-line="155" selection-end-column="52" />
               <folding>
-                <marker date="1612764279451" expanded="true" signature="6706:6855" ph="..." />
+                <marker date="1614141680047" expanded="true" signature="6892:7041" ph="..." />
               </folding>
             </state>
           </provider>
@@ -1458,8 +1538,8 @@
       <file leaf-file-name="page_rincian_barang.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1148">
-              <caret line="289" column="95" lean-forward="false" selection-start-line="289" selection-start-column="83" selection-end-line="289" selection-end-column="95" />
+            <state relative-caret-position="9826">
+              <caret line="289" column="77" lean-forward="false" selection-start-line="289" selection-start-column="77" selection-end-line="289" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -1468,7 +1548,7 @@
       <file leaf-file-name="POrder.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
+            <state relative-caret-position="7990">
               <caret line="247" column="22" lean-forward="false" selection-start-line="247" selection-start-column="22" selection-end-line="247" selection-end-column="22" />
               <folding />
             </state>
@@ -1478,7 +1558,7 @@
       <file leaf-file-name="TawarBeli.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/TawarBeli.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="204">
               <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
               <folding />
             </state>
@@ -1488,7 +1568,7 @@
       <file leaf-file-name="page_edit.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-714">
+            <state relative-caret-position="4046">
               <caret line="119" column="32" lean-forward="false" selection-start-line="119" selection-start-column="32" selection-end-line="119" selection-end-column="32" />
               <folding />
             </state>
@@ -1738,10 +1818,35 @@
       <path value="$PROJECT_DIR$/vendor/laravel/slack-notification-channel" />
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/vendor/kylekatarnls/update-helper" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/nexmo/client-core" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="318" />
+    <option name="y" value="-11" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
@@ -1779,8 +1884,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2300,6 +2405,7 @@
       <workItem from="1612745939424" duration="342000" />
       <workItem from="1612746326976" duration="21000" />
       <workItem from="1612761431938" duration="2909000" />
+      <workItem from="1615167572558" duration="148000" />
     </task>
     <task id="LOCAL-00138" summary="Keuangan&#10;  - Perancangan API Neraca">
       <created>1569482538132</created>
@@ -2648,7 +2754,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2269319000" />
+    <option name="totallyTimeSpent" value="2269467000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2661,7 +2767,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21633889" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2193646" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5181543" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18078668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2669,7 +2775,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24835527" sideWeight="0.48184568" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24835527" sideWeight="0.48184568" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20574887" sideWeight="0.50554675" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2971,13 +3077,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/xampplite/htdocs/simper/admin/cetak_stok_opname.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="131" column="26" lean-forward="false" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/xampplite/htdocs/simper/admin/cetak_stok_opname.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3064,19 +3164,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="715" column="36" lean-forward="false" selection-start-line="715" selection-start-column="36" selection-end-line="715" selection-end-column="36" />
-          <folding>
-            <marker date="1612799851128" expanded="true" signature="39847:39949" ph="..." />
-            <marker date="1612799851128" expanded="true" signature="39878:39948" ph="..." />
-            <marker date="1612799851128" expanded="true" signature="49437:50270" ph="//..." />
-          </folding>
+        <state relative-caret-position="24276">
+          <caret line="715" column="0" lean-forward="false" selection-start-line="715" selection-start-column="0" selection-end-line="715" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/TawarBeli.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="204">
           <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
           <folding />
         </state>
@@ -3086,7 +3182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-875">
           <caret line="69" column="33" lean-forward="true" selection-start-line="34" selection-start-column="27" selection-end-line="69" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3094,13 +3189,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="746">
           <caret line="63" column="58" lean-forward="true" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-714">
+        <state relative-caret-position="4046">
           <caret line="119" column="32" lean-forward="false" selection-start-line="119" selection-start-column="32" selection-end-line="119" selection-end-column="32" />
           <folding />
         </state>
@@ -3110,21 +3204,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1350">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/PesananPembelian.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="193" column="31" lean-forward="false" selection-start-line="193" selection-start-column="19" selection-end-line="193" selection-end-column="31" />
+        <state relative-caret-position="6188">
+          <caret line="193" column="30" lean-forward="false" selection-start-line="193" selection-start-column="19" selection-end-line="193" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
+        <state relative-caret-position="7990">
           <caret line="247" column="22" lean-forward="false" selection-start-line="247" selection-start-column="22" selection-end-line="247" selection-end-column="22" />
           <folding />
         </state>
@@ -3132,18 +3225,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1148">
-          <caret line="289" column="95" lean-forward="false" selection-start-line="289" selection-start-column="83" selection-end-line="289" selection-end-column="95" />
+        <state relative-caret-position="9826">
+          <caret line="289" column="77" lean-forward="false" selection-start-line="289" selection-start-column="77" selection-end-line="289" selection-end-column="77" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="160" column="101" lean-forward="false" selection-start-line="160" selection-start-column="101" selection-end-line="160" selection-end-column="101" />
+        <state relative-caret-position="-307">
+          <caret line="155" column="52" lean-forward="false" selection-start-line="155" selection-start-column="52" selection-end-line="155" selection-end-column="52" />
           <folding>
-            <marker date="1612764279451" expanded="true" signature="6706:6855" ph="..." />
+            <marker date="1614141680047" expanded="true" signature="6892:7041" ph="..." />
           </folding>
         </state>
       </provider>

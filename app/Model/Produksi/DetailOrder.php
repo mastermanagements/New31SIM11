@@ -17,4 +17,8 @@ class DetailOrder extends Model
         return $this->belongsTo('App\Model\Produksi\Barang','id_barang');
     }
 
+    public function linkToOrder(){
+        return $this->belongsTo('App\Model\Produksi\POrder','id_order');
+    }
+
 }

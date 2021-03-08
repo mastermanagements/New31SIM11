@@ -64,7 +64,7 @@
                                             <div class="box-header with-border">
                                                 <h3 class="box-title">Tabel Barang</h3>
                                                 <div class="box-tools pull-right">
-
+                                                    <a href="{{ url('import-barang') }}"  class="btn btn-primary" data-toggle="modal" data-target="#modal-import"> Import Barang </a>
                                                 </div>
                                                 <!-- /.box-tools -->
                                             </div>
@@ -425,6 +425,39 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
                                     <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
+                <div class="modal fade" id="modal-import">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Form Import Barang</h4>
+                            </div>
+                            <form action="{{ url('import-barang') }}" method="post" id="form_promo" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="_method" value="">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>File Barang</label>
+                                                <input type="file" class="form-control" name="file" id="file" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-primary">Import</button>
                                 </div>
                             </form>
                         </div>

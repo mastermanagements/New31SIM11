@@ -74,6 +74,11 @@
                                    <small style="color: red">* Tidak boleh kosong</small>
                                </div>
                                <div class="form-group">
+                                   <label for="exampleInputEmail1">Bentuk Usaha</label>
+                                   <input name="bentuk_usaha" class="form-control" placeholder="CV, PT, Dll" required>
+                                   <small style="color: red">* Tidak boleh kosong</small>
+                               </div>
+                               <div class="form-group">
                                    <label for="exampleInputEmail1">No. Rak</label>
                                    <input name="no_rak" class="form-control" placeholder="No.rak akta asli anda simpan">
                                </div>
@@ -81,10 +86,6 @@
                                    <label for="exampleInputFile">File Akta</label>
                                    <input type="file" id="exampleInputFile" name="file_akta" required>
                                    <p class="help-block" style="color:red">*Format file yang disarankan .rar dan .zip, kami sarankan agar file rar terpassword untuk kenyamanan anda</p>
-                               </div>
-                               <div class="form-group">
-                                   <label for="exampleInputEmail1">Keterangan</label>
-                                   <input name="ket" class="form-control" placeholder="Keterangan">
                                </div>
                                <div class="box-footer">
                            {{csrf_field()}}

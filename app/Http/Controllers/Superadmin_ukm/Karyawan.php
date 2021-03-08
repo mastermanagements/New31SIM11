@@ -63,164 +63,7 @@ class Karyawan extends Controller
         return view('user.superadmin_ukm.master.section.karyawan_perusahaan.karyawan_create_page',$data_pass);
     }
 
-    /*--untuk menu superadmn ukm ---*/
-
     public function store(Request $req)
-    {
-        $this->validate($req, [
-            'username' => 'required',
-            'nama_ky' => 'required',
-            'password' => 'required',
-            'status_kerja' => 'required',
-            'id_usaha'=> 'required|numeric'
-        ]);
-        $nama_ky =  $req->nama_ky;
-        $username =  $req->username;
-        $password =  bcrypt($req->password);
-        $status_kerja =  $req->status_kerja;
-        $id_usaha =  $req->id_usaha;
-        $id_superadmin =  $this->id_superadmin;
-
-
-        $model = new karyawans;
-        $model->nama_ky = $nama_ky;
-        $model->username = $username;
-        $model->password = $password;
-        $model->status_kerja = $status_kerja;
-        $model->id_perusahaan = $id_usaha;
-        $model->id_user_ukm = $id_superadmin;
-
-        if($model->save())
-        {
-          return redirect('pengguna-karyawan')->with('message_success','Berhasil menambah data karyawan');
-
-            }else{
-                return redirect('daftarkan-karyawan/'. $id_usaha)->with('message_error','Gagal menyimpan data karyawan');
-            }
-    }
-
-    public function edit($id_usaha, $id_karyawan)
-    {
-        if(empty($data_karyawan = karyawans::where('id', $id_karyawan)->where('id_user_ukm', $this->id_superadmin)->where('id_user_ukm', $this->id_superadmin)->where('id_perusahaan', $id_usaha)->first()))
-        {
-            return abort(404);
-        }
-
-        $data_pass = [
-            'agama' => $this->agama,
-            'jenis_kelamin' => $this->jenis_kelamin,
-            'gol_darah' => $this->gol_darah,
-            'status_kerja'=> $this->status_kerja,
-            'id_usaha' => $id_usaha,
-            'data_karyawan' => $data_karyawan
-        ];
-        return view('user.superadmin_ukm.master.section.karyawan_perusahaan.karyawan_edit_page',$data_pass);
-    }
-
-    public function update(Request $req, $id)
-    {
-        $this->validate($req, [
-            'username' => 'required',
-            'nama_ky' => 'required',
-            'password' => 'required',
-            'status_kerja' => 'required',
-            'id_usaha'=> 'required|numeric'
-        ]);
-
-        //$nik = $req->nik;
-        $nama_ky =  $req->nama_ky;
-        $username =  $req->username;
-        $password =  bcrypt($req->password);
-        $status_kerja =  $req->status_kerja;
-        $id_usaha =  $req->id_usaha;
-        $id_superadmin =  $this->id_superadmin;
-
-       $model = karyawans::findOrFail($id);
-
-       $model->nama_ky = $nama_ky;
-       $model->username = $username;
-       $model->password = $password;
-       $model->status_kerja = $status_kerja;
-       $model->id_perusahaan = $id_usaha;
-       $model->id_user_ukm = $id_superadmin;
-
-       if($model->save()){
-               return redirect('daftar-karyawan/'.$id_usaha)->with('message_success','Berhasil mengubah Data Karyawan');
-           }else{
-               return redirect('daftar-karyawan/'.$id_usaha)->with('message_error','Gagal mengubah data karyawann');
-           }
-    }
-
-    public function delete(Request $req, $id)
-    {
-        $model = karyawans::findOrFail($id);
-        if(!empty($model->file_ktp))
-        {
-            $file_path =public_path('fileKtp').'/' . $model->file_ktp;
-            if (file_exists($file_path)) {
-                @unlink($file_path);
-            }
-        }
-        if(!empty($model->cu_vitae))
-        {
-            $file_path =public_path('fileCv').'/' . $model->cu_vitae;
-            if (file_exists($file_path)) {
-                @unlink($file_path);
-            }
-        }
-
-        if(!empty($model->pas_foto))
-        {
-            $file_path =public_path('filePFoto').'/' . $model->pas_foto;
-            if (file_exists($file_path)) {
-                @unlink($file_path);
-            }
-        }
-
-        if($model->delete())
-        {
-            return redirect('daftar-karyawan/'.$model->id_perusahaan)->with('message_success','Berhasil mengubah Data Karyawan');
-        }else{
-            return redirect('pengguna-karyawan')->with('message_error','Terjadi Kesalahan');
-        }
-    }
-
-    public function detail($id_karyawan)
-    {
-        if(empty($data_karyawan = karyawans::where('id', $id_karyawan)->where('id_user_ukm', $this->id_superadmin)->first()))
-        {
-            return abort(404);
-        }
-        $data_pass = [
-            'agama' => $this->agama,
-            'jenis_kelamin' => $this->jenis_kelamin,
-            'gol_darah' => $this->gol_darah,
-            'status_kerja'=> $this->status_kerja,
-            'data_karyawan' => $data_karyawan
-        ];
-        return view('user.superadmin_ukm.master.section.karyawan_perusahaan.karyawan_detail_page',$data_pass);
-    }
-
-    /*--untuk menu HRD---*/
-
-    public function createKaryawan ($id_usaha)
-    {
-        if(empty($data_usaha = usaha::where('id_user_ukm', $this->id_superadmin)->where('id', $id_usaha)->first()))
-        {
-            return abort(404);
-        }
-
-        $data_pass = [
-            'agama' => $this->agama,
-            'jenis_kelamin' => $this->jenis_kelamin,
-            'gol_darah' => $this->gol_darah,
-            'status_kerja'=> $this->status_kerja,
-            'id_usaha' => $id_usaha
-        ];
-        return view('user.hrd.master.section.karyawan_perusahaan.karyawan_create_page',$data_pass);
-    }
-
-    public function storeKaryawan (Request $req)
     {
         $this->validate($req, [
             'nik' => 'required',
@@ -302,7 +145,7 @@ class Karyawan extends Controller
         }
     }
 
-    public function editKaryawan ($id_usaha, $id_karyawan)
+    public function edit($id_usaha, $id_karyawan)
     {
         if(empty($data_karyawan = karyawans::where('id', $id_karyawan)->where('id_user_ukm', $this->id_superadmin)->where('id_user_ukm', $this->id_superadmin)->where('id_perusahaan', $id_usaha)->first()))
         {
@@ -320,7 +163,7 @@ class Karyawan extends Controller
         return view('user.superadmin_ukm.master.section.karyawan_perusahaan.karyawan_edit_page',$data_pass);
     }
 
-    public function updateKaryawan (Request $req, $id)
+    public function update(Request $req, $id)
     {
         $this->validate($req, [
             'nik' => 'required',
@@ -426,6 +269,56 @@ class Karyawan extends Controller
             }
             return redirect('daftar-karyawan/'.$id_usaha)->with('message_success','Berhasil mengubah Data Karyawan');
         }
+    }
+
+    public function delete(Request $req, $id)
+    {
+        $model = karyawans::findOrFail($id);
+        if(!empty($model->file_ktp))
+        {
+            $file_path =public_path('fileKtp').'/' . $model->file_ktp;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+        if(!empty($model->cu_vitae))
+        {
+            $file_path =public_path('fileCv').'/' . $model->cu_vitae;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+
+        if(!empty($model->pas_foto))
+        {
+            $file_path =public_path('filePFoto').'/' . $model->pas_foto;
+            if (file_exists($file_path)) {
+                @unlink($file_path);
+            }
+        }
+
+        if($model->delete())
+        {
+            return redirect('daftar-karyawan/'.$model->id_perusahaan)->with('message_success','Berhasil mengubah Data Karyawan');
+        }else{
+            return redirect('pengguna-karyawan')->with('message_error','Terjadi Kesalahan');
+        }
+    }
+
+    public function detail($id_karyawan)
+    {
+        if(empty($data_karyawan = karyawans::where('id', $id_karyawan)->where('id_user_ukm', $this->id_superadmin)->first()))
+        {
+            return abort(404);
+        }
+        $data_pass = [
+            'agama' => $this->agama,
+            'jenis_kelamin' => $this->jenis_kelamin,
+            'gol_darah' => $this->gol_darah,
+            'status_kerja'=> $this->status_kerja,
+            'data_karyawan' => $data_karyawan
+        ];
+        return view('user.superadmin_ukm.master.section.karyawan_perusahaan.karyawan_detail_page',$data_pass);
     }
 
 }

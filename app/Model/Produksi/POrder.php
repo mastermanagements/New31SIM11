@@ -26,4 +26,22 @@ class POrder extends Model
     {
         return $this->hasMany('App\Model\Produksi\DetailOrder','id_order','id');
     }
+
+    public function linkToCekBarang()
+    {
+        return $this->hasOne('App\Model\Produksi\Cek_Barang','id_order');
+    }
+
+    public function linkToCekBarangDetail()
+    {
+        return $this->hasMany('App\Model\Produksi\Detail_Cek_Barang','id_order','id');
+    }
+
+    public function linkToBayar(){
+        return $this->hasOne('App\Model\Produksi\Bayar','id_order', 'id');
+    }
+
+    public function linkToMannyBayar(){
+        return $this->hasMany('App\Model\Produksi\Bayar','id_order', 'id');
+    }
 }

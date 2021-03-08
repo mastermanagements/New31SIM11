@@ -39,19 +39,14 @@
                                   <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                               @endif
                                   <div class="col-md-6">
-                              <!--<div class="form-group">
+                              <div class="form-group">
                                   <label for="exampleInputEmail1">NIK</label>
                                   <input name="nik" class="form-control" placeholder="Nomor Induk Karyawan" required>
                                   <small style="color: red">* Tidak boleh kosong</small>
-                              </div>-->
+                              </div>
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Nama Karyawan</label>
                                   <input name="nama_ky" class="form-control" placeholder="Nama Karyawan" required>
-                                  <small style="color: red">* Tidak boleh kosong</small>
-                              </div>
-                              <div class="form-group">
-                                  <label for="exampleInputEmail1">Username</label>
-                                  <input name="username" class="form-control" placeholder="Username" required>
                                   <small style="color: red">* Tidak boleh kosong</small>
                               </div>
                               <div class="form-group">
@@ -60,9 +55,9 @@
                                   <small style="color: red">* Tidak boleh kosong</small>
                               </div>
 
-                                      <!--<div class="form-group">
+                                      <div class="form-group">
                                           <label for="exampleInputEmail1">Nomor KTP</label>
-                                          <input name="no_ktp" class="form-control" placeholder="Nomor KTP">
+                                          <input name="no_ktp" class="form-control" placeholder="Nomor KTP" required>
                                           <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
                                       <div class="form-group">
@@ -84,7 +79,7 @@
                                               </div>
                                               <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal Lahir Karyawan" name="tgl_lahir" required>
                                           </div>
-
+                                          <!-- /.input group -->
                                           <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
                                       <div class="form-group">
@@ -112,7 +107,7 @@
                                               <p></p>
                                               <small style="color: red">* Tidak Boleh Kosong</small>
                                           </div>
-                                      </div>-->
+                                      </div>
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">Status Kerja</label>
                                           <div class="form-group">
@@ -127,7 +122,7 @@
                                           </div>
                                       </div>
 
-                        <!--</div>
+                        </div>
                                   <div class="col-md-6">
 
                                       <div class="form-group">
@@ -188,11 +183,11 @@
                                               </div>
                                               <input type="text" class="form-control pull-right" id="datepicker1" placeholder="Tanggal Masuk Kerja" name="tgl_masuk" required>
                                           </div>
-
+                                          <!-- /.input group -->
                                           <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
                                   </div>
-                   </div>-->
+                   </div>
                    <div class="box-footer">
                        {{csrf_field()}}
                        <input type="hidden" name="id_usaha" value="{{ $id_usaha }}">

@@ -25,11 +25,12 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Daftar Penjualan</a></li>
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Penawaran penjualan</a></li>
+                        <li ><a href="#tab_2" data-toggle="tab">Daftar Penjualan</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
-                            <a href="{{ url('tambah-penjualan') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Penjualan</a>
+                            <a href="{{ url('penawaran-penjualan') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
                             <p></p>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>

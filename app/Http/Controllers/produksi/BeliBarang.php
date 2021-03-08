@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Model\Keuangan\Akun;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Produksi\BeliBarang as beliBarangs;
@@ -10,6 +11,9 @@ use App\Model\Produksi\Barang as barangs;
 use App\Model\Produksi\TawarBeli;
 use App\Model\Produksi\PesananPembelian;
 use App\Model\Produksi\POrder;
+use App\Http\utils\SettingNoSurat;
+use App\Model\Produksi\AkunPembelian;
+use App\Http\utils\JenisAkunPembelian;
 use Session;
 
 class BeliBarang extends Controller
@@ -17,6 +21,17 @@ class BeliBarang extends Controller
     //
     private $id_karyawan;
     private $id_perusahaan;
+
+    # Tanggapan Supplier 
+    private $tanggapan = [
+        'Menerima',
+        'Menolak'
+    ];
+
+    private $jenis_pembayran = [
+        'PO',
+        'Pembelian'
+    ];
 
     public function __construct()
     {
@@ -33,11 +48,17 @@ class BeliBarang extends Controller
     }
 
     public function index(){
+        $no_surat = SettingNoSurat::no_kode_po();
         $data=[
             'data_pembelian'=> POrder::all()->where('id_perusahaan', $this->id_perusahaan)->sortByDesc('created_at')
             ,'suppliers' => suppliers::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan')),
             'tawar_beli'=> TawarBeli::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan')),
-            'pesanan_pembelian'=> PesananPembelian::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'pesanan_pembelian'=> PesananPembelian::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'tanggapan'=> $this->tanggapan,
+            'jenis_pembayaran'=> $this->jenis_pembayran,
+            'no_surat_penawaran'=> $no_surat,
+            'akun_pembelian'=> AkunPembelian::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'jenis_jurnal'=> JenisAkunPembelian::$jenis_akun
         ];
         return view('user.produksi.section.belibarang.page_default', $data);
     }

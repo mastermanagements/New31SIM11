@@ -154,7 +154,7 @@
                                            </div>
                                        </div>
                                        <div class="col-md-12">
-                                           <button class="btn btn-primary pull-left"> Simpan Pesanan pembelian </button>
+                                         <button class="btn btn-primary pull-left"> Simpan Pesanan pembelian </button>
                                        </div>
 
                                 {{--</form>--}}

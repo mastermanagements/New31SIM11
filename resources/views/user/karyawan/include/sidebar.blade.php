@@ -29,7 +29,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">LIST MENU KARYAWAN</li>
+            <li class="header">LIST MENU </li>
            @if(!empty($daftar_menu['daftar_menu']))
                 @foreach($daftar_menu['daftar_menu'] as $menus)
                     <li class="treeview" >

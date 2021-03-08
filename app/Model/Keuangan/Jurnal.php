@@ -21,6 +21,8 @@ class Jurnal extends Model
         'jumlah_transaksi',
         'id_perusahaan',
         'id_karyawan',
+        'id_pesanan',
+        'id_pembelian',
     ];
 
     public function keterangan(){

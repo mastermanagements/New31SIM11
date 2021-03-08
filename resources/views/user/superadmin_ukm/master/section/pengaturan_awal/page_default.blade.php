@@ -21,11 +21,11 @@
           -------------------------->
        <div class="row">
 			@if(!empty($menu)=='edit')
-              @include('user.superadmin_ukm.master.section.pengaturan_awal.include.section_edit')
-          @else
+               @include('user.superadmin_ukm.master.section.pengaturan_awal.include.section_edit')
+		    @else
                 @include('user.superadmin_ukm.master.section.pengaturan_awal.include.section_profil')
             @endif
-
+			
             <div class="col-md-9">
                <div class="nav-tabs-custom">
                    <ul class="nav nav-tabs">
@@ -34,7 +34,7 @@
                        <li @if($content_menu=="misi") class="active" @endif><a href="{{ url('misi') }}">Misi</a></li>
                        <li @if($content_menu=="akta") class="active" @endif><a href="{{ url('akta') }}" >Akta</a></li>
                        <li  @if($content_menu=="isi_usaha") class="active" @endif><a href="{{ url('izin-usaha') }}" >Izin Usaha</a></li>
-                       <!--<li  @if($content_menu=="jabatan") class="active" @endif><a href="{{ url('jabatan') }}" >Jabatan</a></li>-->
+                       <li  @if($content_menu=="jabatan") class="active" @endif><a href="{{ url('jabatan') }}" >Jabatan</a></li>
                    </ul>
                    <div class="tab-content">
                        <div class="active tab-pane"

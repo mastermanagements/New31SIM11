@@ -10,7 +10,7 @@ class U_profil_ukm extends Model
 
     protected $table='u_profil';
 
-    protected $fillable = ['id_user_ukm','hp','wa','telegram','fb','ig','twitter','tiktok','foto','alamat','provinsi_id','kab_id'];
+    protected $fillable = ['id_user_ukm','telp','hp','wa','telegram','foto','provinsi_id','kab_id'];
 
     public function getUserData()
     {

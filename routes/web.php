@@ -670,6 +670,8 @@ Route::put('update-barang/{id}', 'produksi\Barang@update');
 
 Route::put('delete-barang/{id}', 'produksi\Barang@destroy');
 
+Route::post('import-barang', 'produksi\Barang@import_barang');
+
 Route::post('cari-barang', 'produksi\Barang@show');
 
 Route::resource('harga-jual-satuan', 'produksi\HargaJualSatuan');
@@ -729,6 +731,23 @@ Route::post('tambah-barang-pembelian/{id_pesanan_pembelian}', 'produksi\PesananP
 Route::post('ubah-barang-pembelian/{id_pesanan_pembelian}', 'produksi\PesananPembelian@ubah_Pesanan_pembelian');
 Route::get('hapus-barang-pembelian/{id_pesanan_pembelian}', 'produksi\PesananPembelian@hapus_Pesanan_pembelian');
 Route::post('ubah-pesanan-pembelian/{id_pesanan_pembelian}', 'produksi\PesananPembelian@ubah_Pesanan_pembelian_po');
+Route::get('Order/pesanan_pembelian/{jenis_pembelian}','produksi\PesananPembelian@show_pesanan_pembelian');
+Route::get('rincian-pembayaran/{id}','produksi\Bayar@show_rincian');
+
+
+Route::resource('akun-pembelian','produksi\AkunPembelian');
+Route::get('hapus-akun-pembelian/{id}','produksi\AkunPembelian@delete');
+
+Route::get('bayar/{id_po}/bayar-po/{jenis_pembayaran}','produksi\Bayar@show_po');
+Route::get('bayar/{id_po}/bayar-order/{jenis_pembayaran}','produksi\Bayar@show_order');
+Route::post('bayar-po','produksi\Bayar@bayar_po');
+Route::post('bayar-order','produksi\Bayar@bayar_order');
+
+Route::get('return-barang/{id_order}','produksi\ReturnPembelian@show');
+Route::post('simpan-return-barang','produksi\ReturnPembelian@store');
+Route::get('preview-return-barang/{id_order}','produksi\ReturnPembelian@preview');
+
+Route::get('status-return/{id_pembelian}','produksi\CekBarang@showCek');
 
 Route::post('store-beli-barang', 'produksi\BeliBarang@store');
 
@@ -745,7 +764,10 @@ Route::resource('Oder', 'produksi\POrder');
 Route::put('Order/{id}/simpan', 'produksi\POrder@detail_order');
 Route::post('Order/{id}/simpan-rincian-pembelian', 'produksi\POrder@simpan_rincian_pembelian');
 Route::post('Order/ubah-rincian-pembelian/{id_detail_pembelian}', 'produksi\POrder@ubah_detail_order');
+Route::resource('cek-barang', 'produksi\CekBarang');
 
+//---- Penawaran --------
+Route::resource('penawaran-penjualan','produksi\TawarJual');
 
 //--- Penjualan ---
 
@@ -760,6 +782,7 @@ Route::get('ubah-penjualan/{id}', 'produksi\JualBarang@edit');
 Route::put('update-penjualan/{id}', 'produksi\JualBarang@update');
 
 Route::put('hapus-penjualan/{id}', 'produksi\JualBarang@destory');
+
 
 //--- Jasa ---
 
