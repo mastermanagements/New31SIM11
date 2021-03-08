@@ -769,6 +769,9 @@ Route::resource('cek-barang', 'produksi\CekBarang');
 //---- Penawaran --------
 Route::resource('penawaran-penjualan','produksi\TawarJual');
 
+Route::resource('detail-barang-Tpenjualan','produksi\DetailBarangTawar');
+Route::get('detail-barang-Tpenjualan/{id}/delete','produksi\DetailBarangTawar@delete');
+
 //--- Penjualan ---
 
 Route::get('Penjualan', 'produksi\JualBarang@index');

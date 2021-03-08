@@ -27,10 +27,11 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                       <div class="box-body">
-                          <form role="form" action="{{ url('penawaran-penjualan') }}" method="post" enctype="multipart/form-data">
+                          <form role="form" action="{{ url('penawaran-penjualan/'.$data->id) }}" method="post" enctype="multipart/form-data">
 
                           <div class="row">
                               {{ csrf_field() }}
+                              @method('put')
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Promo</label>
@@ -40,14 +41,14 @@
                                                 <option value="0">Klien masih kosong</option>
                                             @else
                                                 @foreach($promo as $value)
-                                                    <option value="{{ $value->id }}">{{ $value->nama_promo }}</option>
+                                                    <option value="{{ $value->id }}" @if($data->id_promo == $value->id) selected @endif>{{ $value->nama_promo }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>No Penawaran</label>
-                                        <input type="text" class="form-control" name="no_penawaran">
+                                        <input type="text" class="form-control" name="no_penawaran" value="{{ $data->no_tawar }}">
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Penawaran </label>
@@ -55,7 +56,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal barang penawaran" name="tgl_penawaran" >
+                                            <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal barang penawaran" value="{{ $data->tgl_tawar }}" name="tgl_penawaran" >
                                         </div>
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
@@ -66,7 +67,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="datepicker2" placeholder="Tanggal sampai dengan.." name="tgl_sd" >
+                                            <input type="text" class="form-control pull-right" id="datepicker2" placeholder="Tanggal sampai dengan.." name="tgl_sd" value="{{ $data->tgl_berlaku }}">
                                         </div>
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
@@ -77,7 +78,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="datepicker3" placeholder="Tanggal kirim sampai dengan" name="tgl_krm" >
+                                            <input type="text" class="form-control pull-right" id="datepicker3" placeholder="Tanggal kirim sampai dengan" name="tgl_krm" value="{{ $data->tgl_krm }}">
                                         </div>
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
@@ -89,7 +90,7 @@
                                                 <option>Klien masih kosong</option>
                                             @else
                                                 @foreach($klien as $value)
-                                                    <option value="{{ $value->id }}">{{ $value->nm_klien }}</option>
+                                                    <option value="{{ $value->id }}" @if($data->id_klien==$value->id) selected @endif>{{ $value->nm_klien }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -97,7 +98,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="keterangan">Keterangan</label>
-                                        <textarea class="form-control" name="ket"></textarea>
+                                        <textarea class="form-control" name="ket">{{ $data->ket }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Submit</button>

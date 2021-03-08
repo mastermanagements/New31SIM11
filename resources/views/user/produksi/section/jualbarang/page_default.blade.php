@@ -26,7 +26,12 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Penawaran penjualan</a></li>
-                        <li ><a href="#tab_2" data-toggle="tab">Daftar Penjualan</a></li>
+                        <li ><a href="#tab_2" data-toggle="tab">Pesanan penjualan</a></li>
+                        <li ><a href="#tab_3" data-toggle="tab">Penjualan</a></li>
+                        <li ><a href="#tab_4" data-toggle="tab">Penjualan</a></li>
+                        <li ><a href="#tab_5" data-toggle="tab">Pembayaran</a></li>
+                        <li ><a href="#tab_6" data-toggle="tab">Return Pembayaran</a></li>
+                        <li ><a href="#tab_7" data-toggle="tab">History Harga Penjualan</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -36,34 +41,41 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>No. Invoice</th>
-                                    <th>Tanggal Jual</th>
+                                    <th>No. Tawar</th>
+                                    <th>Promo</th>
                                     <th>Klien</th>
-                                    <th>Barang</th>
-                                    <th>Jumlah Barang</th>
+                                    <th>Tanggal tawar</th>
+                                    <th>Tanggal berlaku</th>
+                                    <th>Tanggal kirim</th>
+                                    <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @if(!empty($tawar_jual))
                                 @php($i=1)
-                                @foreach($penjualan as $value)
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $value->no_invoice }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($value->tgl_jual)) }}</td>
-                                        <td>{{ $value->klien->nm_klien }}</td>
-                                        <td>{{ $value->barang->nm_barang }}</td>
-                                        <td>{{ $value->jumlah_barang }}</td>
-                                      <td>
-                                            <form action="{{ url('hapus-penjualan/'.$value->id) }}" method="post">
-                                                <a href="{{ url('ubah-penjualan/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
-                                                {{ csrf_field() }}
-                                                <input type="hidden" name="_method" value="put"/>
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus penjualan ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
-                                            </form>
-                                        </td>
+                                    @foreach($tawar_jual as $data)
+                                        <tr>
+                                            <th>{{ $i++ }}</th>
+                                            <th>{{ $data->no_invoice }}</th>
+                                            <th>{{ $data->no_tawar }}</th>
+                                            <th>{{ $data->linkktoKlien->nm_klien }}</th>
+                                            <th>{{ $data->tgl_tawar }}</th>
+                                            <th>{{ $data->tgl_berlaku }}</th>
+                                            <th>{{ $data->tgl_krm }}</th>
+                                            <th>{{ $data->ket }}</th>
+                                            <th>
+                                                <form action="{{ url('penawaran-penjualan/'.$data->id) }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    @method('delete')
+                                                    <a href="{{ url('detail-barang-Tpenjualan/'.$data->id) }}" class="btn btn-primary">Tambahkan detail barang</a>
+                                                    <a href="{{ url('penawaran-penjualan/'. $data->id.'/edit') }}" class="btn btn-warning">Ubah Penawaran</a>
+                                                    <button type="submt" href="#" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus nota penawaran penjualan barang ini...?')">Hapus Penawaran</button>
+                                                </form>
+                                            </th>
                                         </tr>
-                                @endforeach
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
