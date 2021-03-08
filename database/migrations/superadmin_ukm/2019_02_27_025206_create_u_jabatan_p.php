@@ -16,9 +16,9 @@ class CreateUJabatanP extends Migration
         Schema::create('u_jabatan_p', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nm_jabatan');
-            $table->integer('id_perusahaan')->unsigned();
-            $table->integer('id_user_ukm')->unsigned();
             $table->integer('level_jabatan');
+            $table->integer('id_perusahaan')->unsigned();
+            $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
         });
     }

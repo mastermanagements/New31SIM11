@@ -14,7 +14,7 @@
                         <label for="exampleInputEmail1">Job Desc</label>
                         <textarea class="form-control"  name="job_desc" id="job_desc" required></textarea>
                         <small style="color: red">* Tidak boleh kosong</small>
-						<input type="text" name="id_jabatan_p">
+						<input type="hidden" name="id_jabatan_p">
 					</div>
                 </div>
                 <div class="modal-footer">
@@ -64,10 +64,10 @@
            CKEDITOR.replace( 'job_desc',{
                 height: 75
            } );
-		   
+
 		    CKEDITOR.replace( 'jobdesc_ubah',{
                 height: 75
            } );
        };
-	  
+
 </script>
