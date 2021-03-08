@@ -19,7 +19,6 @@ Route::get('login-page', function () {
 
 Route::get('sign-out', 'Superadmin_ukm\LoginAndRegisterController@signOut');
 
-
 Route::get('dashboard', function () {
 	/*     dd(Session::get('id_superadmin_ukm'));
     if(empty($model_superadmin = App\Model\Superadmin_ukm\U_usaha::where("id_user_ukm",Session::get('id_superadmin_ukm'))->first()))
@@ -92,7 +91,7 @@ Route::put('ijin-usaha-update/{id}', 'Superadmin_ukm\Ijin_usaha@update');
 
 Route::put('unggah-ijin-delete/{id}', 'Superadmin_ukm\Ijin_usaha@delete');
 
-Route::get('jabatan', 'Superadmin_ukm\Superadmin_UKM@jabatan_perusahaan');
+/*Route::get('jabatan', 'Superadmin_ukm\Superadmin_UKM@jabatan_perusahaan');
 
 Route::get('pilih-usaha/{id}', 'Superadmin_ukm\Superadmin_UKM@jabatan_di_perusahaan');
 
@@ -106,7 +105,7 @@ Route::get('ubah-jabatan/{id_perusahaan}/{id_jabatan}', 'Superadmin_ukm\Jabatan@
 
 Route::put('update-jabatan/{id_jabatan}', 'Superadmin_ukm\Jabatan@update');
 
-Route::put('jabatan-delete/{id_jabatan}', 'Superadmin_ukm\Jabatan@delete');
+Route::put('jabatan-delete/{id_jabatan}', 'Superadmin_ukm\Jabatan@delete');*/
 
 Route::get('menu-perusahaan', 'Superadmin_ukm\Menu_perusahaan@daftar_perusahaan');
 
@@ -180,7 +179,6 @@ Route::get('logout-karyawan', 'karyawan\LoginController@logOut');
 //=========================== Menu Perusahaan ========================================================================
 Route::get('welcome-page', 'karyawan\Dashboard@index');
 
-
 Route::put('update-swot/{id}', 'karyawan\SWOT@update');
 
 Route::put('delete-swot/{id}', 'karyawan\SWOT@delete');
@@ -231,6 +229,18 @@ Route::post('update-divisi', 'karyawan\Devisi@update');
 Route::put('hapusDivisi/{id_divisi}', 'karyawan\Devisi@delete');
 
 Route::get('getDivisi/{id_bagian_p}', 'karyawan\Devisi@ResponseDivisi');
+
+//--- jabatan ---
+
+Route::get('Jabatan', 'karyawan\Jabatan@index');
+
+Route::post('store-jabatan', 'karyawan\Jabatan@store');
+
+Route::get('edit-jabatan/{id}', 'karyawan\Jabatan@edit');
+
+Route::post('update-jabatan', 'karyawan\Jabatan@update');
+
+Route::put('hapus-jabatan/{id}', 'karyawan\Jabatan@delete');
 
 //--- JobDesc ---
 
