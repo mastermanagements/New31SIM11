@@ -18,7 +18,15 @@
                         <img class="img-circle" src="{{ asset('logoUsaha/'.$value->getPerusahaan->logo) }}" alt="User Avatar">
                     </div>
                     <!-- /.widget-user-image -->
-                    <h3 class="widget-user-username">{{ $value->getPerusahaan->nm_usaha }}</h3>
+                    <h3 class="widget-user-username">{{ $value->getPerusahaan->nm_usaha }}
+                      @if($value->getPerusahaan->jenis_kantor !== NULL)
+                        @if($value->getPerusahaan->jenis_kantor =='0')
+                              (Pusat)
+                        @else ($value->getPerusahaan->jenis_kantor =='1')
+                              (Cabang)
+                        @endif
+                      @endif
+                    </h3>
                     <h5 class="widget-user-desc">Visi</h5>
                 </div>
                 <div class="box-footer no-padding">
