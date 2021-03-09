@@ -79,7 +79,45 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="tab-pane " id="tab_2">
+                            <a href="{{ url('pesanan-penjualan/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                            <table id="example2" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Tanggal</th>
+                                        <th>Nomor. Pesanan</th>
+                                        <th>Klien</th>
+                                        <th>Total</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                @if(!empty($p_so))
+                                    @php($no=1)
+                                    <tbody>
+                                        @foreach($p_so as $data)
 
+                                            <tr>
+                                                <th>{{ $no++ }}</th>
+                                                <th>{{ date('d-m-Y', strtotime($data->tgl_so)) }}</th>
+                                                <th>{{ $data->no_so }}</th>
+                                                <th>{{ $data->linkToKlien->nm_klien }}</th>
+                                                <th>{{ $data->total }}</th>
+                                                <th>
+                                                    <form action="{{ url('pesanan-penjualan/'.$data->id) }}" method="post" >
+                                                        {{ csrf_field() }}
+                                                        @method('delete')
+                                                        <a href="{{ url('detail-pSo/'.$data->id) }}" class="btn btn-primary">detail barang</a>
+                                                        <a href="{{ url('pesanan-penjualan/'.$data->id.'/edit') }}" class="btn btn-warning">ubah</a>
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data nota pesanan ini...?')">hapus</button>
+                                                    </form>
+                                                </th>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                @endif
+                            </table>
+                        </div>
                         <!-- /.tab-pane -->
                     </div>
                     <!-- /.tab-content -->

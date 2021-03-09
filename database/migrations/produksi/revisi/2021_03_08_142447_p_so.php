@@ -23,7 +23,7 @@ class PSo extends Migration
             $table->date('tgl_dikirim');
             $table->integer('diskon_tambahan')->default(0);
             $table->integer('pajak')->default(0);
-            $table->decimal('desimal',12,2)->default(0);
+            $table->decimal('dp_so',12,2)->default(0);
             $table->decimal('kurang_bayar',12,2)->default(0);
             $table->text('text');
             $table->enum('status',['0','1'])->default(0);
