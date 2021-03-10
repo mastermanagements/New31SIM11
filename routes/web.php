@@ -783,7 +783,9 @@ Route::resource('detail-barang-Tpenjualan','produksi\DetailBarangTawar');
 Route::get('detail-barang-Tpenjualan/{id}/delete','produksi\DetailBarangTawar@delete');
 
 Route::resource('pesanan-penjualan', 'produksi\PesananPenjualan');
+Route::post('pesanan-penjualan/{id_so}','produksi\PesananPenjualan@updateSO_BaseOnDetailSO');
 Route::resource('detail-pSo', 'produksi\DetailSo');
+Route::get('detail-pSo/{id_detail_pso}/delete', 'produksi\DetailSo@delete');
 //--- Penjualan ---
 
 Route::get('Penjualan', 'produksi\JualBarang@index');

@@ -40,11 +40,11 @@ class LoginController extends Controller
         $user_nm = $req->user_nm;
         $password = $req->pass;
 
-        $model_ky = karyawan::where('username', $user_nm)->first();
+        $model_ky = karyawan::where('nama_ky', $user_nm)->first();
           //dd($model_ky);
         if(Hash::check($password, $model_ky->password)){
             $req->session()->put('id_karyawan', $model_ky->id);
-            $req->session()->put('user_nm', $model_ky->username);
+            $req->session()->put('user_nm', $model_ky->nama_ky);
             $req->session()->put('id_perusahaan_karyawan', $model_ky->id_perusahaan);
             $req->session()->put('id_superadmin_karyawan', $model_ky->id_user_ukm);
             return redirect('welcome-page')->with('success_login','Selamat Datang '.$model_ky->nama_ky);

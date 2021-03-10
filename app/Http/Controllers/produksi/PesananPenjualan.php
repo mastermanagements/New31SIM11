@@ -90,4 +90,42 @@ class PesananPenjualan extends Controller
             return redirect('Penjualan')->with('message_fail','Nota pesanan penjualan gagal dihapus');
         }
     }
+
+    public function updateSO_BaseOnDetailSO(Request $req, $id_so){
+
+        $this->validate($req,[
+           'diskon_tambahan'=> 'required',
+           'pajak'=> 'required',
+           'uang_muka'=> 'required',
+           'kurang_bayar'=> 'required',
+           'jurnal_otomatis'=> 'required',
+           'sub_total'=> 'required',
+        ]);
+
+        $total = $req->sub_total;
+        if($req->diskon_tambahan != 0){
+            $diskon = $total * ($req->diskon_tambahan/100);
+            $total = $total - $diskon;
+        }
+
+        if($req->pajak != 0 ){
+            $pajak = ($req->pajak / 100);
+            $total = $total + $pajak;
+        }
+
+        $model = PSO::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id_so);
+        $model->diskon_tambahan = $req->diskon_tambahan;
+        $model->pajak = $req->pajak;
+        $model->dp_so = $req->uang_muka;
+        $model->kurang_bayar = $req->kurang_bayar;
+        $model->total = $total;
+
+
+
+        if($model->save()){
+            return redirect('detail-pSo/'. $model->id)->with('message_success', 'Berhasil menyimpan data');
+        }else{
+            return redirect('detail-pSo/'. $model->id)->with('message_fail', 'Gagal menyimpan data');
+        }
+    }
 }

@@ -15,4 +15,11 @@ class PSO extends Model
         return $this->belongsTo('App\Model\Administrasi\Klien', 'id_klien');
     }
 
+    public function linkToDetailPSO(){
+        return $this->hasMany('App\Model\Produksi\DetailSO','id_so','id');
+    }
+
+    public function linkToPO(){
+        return $this->belongsTo('App\Model\Produksi\TawarJual','id_po');
+    }
 }
