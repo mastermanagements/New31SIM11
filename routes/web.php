@@ -800,6 +800,9 @@ Route::put('update-penjualan/{id}', 'produksi\JualBarang@update');
 
 Route::put('hapus-penjualan/{id}', 'produksi\JualBarang@destory');
 
+# Komisi Sales
+
+Route::resource('komisi-sales','produksi\KomisiSales');
 
 //--- Jasa ---
 

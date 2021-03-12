@@ -28,10 +28,9 @@
                         <li class="active"><a href="#tab_1" data-toggle="tab">Penawaran penjualan</a></li>
                         <li ><a href="#tab_2" data-toggle="tab">Pesanan penjualan</a></li>
                         <li ><a href="#tab_3" data-toggle="tab">Penjualan</a></li>
-                        <li ><a href="#tab_4" data-toggle="tab">Penjualan</a></li>
-                        <li ><a href="#tab_5" data-toggle="tab">Pembayaran</a></li>
-                        <li ><a href="#tab_6" data-toggle="tab">Return Pembayaran</a></li>
-                        <li ><a href="#tab_7" data-toggle="tab">History Harga Penjualan</a></li>
+                        <li ><a href="#tab_4" data-toggle="tab">Pembayaran</a></li>
+                        <li ><a href="#tab_5" data-toggle="tab">Return Pembayaran</a></li>
+                        <li ><a href="#tab_6" data-toggle="tab">History Harga Penjualan</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -116,6 +115,22 @@
                                         @endforeach
                                     </tbody>
                                 @endif
+                            </table>
+                        </div>
+                        <div class="tab-pane " id="tab_3">
+                            <a href="{{ url('komisi-sales') }}" class="btn btn-primary pull-right">Komisi Sales</a>
+                            <table class="table table-bordered table-striped" style="margin-top: 10px">
+                                <thead>
+                                    <tr>
+                                        <td>No</td>
+                                        <td>Tgl Jual</td>
+                                        <td>Nomor Order</td>
+                                        <td>Klien</td>
+                                        <td>Tgl Kirim</td>
+                                        <td>Total</td>
+                                        <td>Aksi</td>
+                                    </tr>
+                                </thead>
                             </table>
                         </div>
                         <!-- /.tab-pane -->
