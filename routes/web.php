@@ -252,9 +252,28 @@ Route::get('ubah-jobdesc/{id_jobdesc}', 'karyawan\JobDecs@edit');
 
 Route::post('update-jobdesc', 'karyawan\JobDecs@update');
 
-Route::put('hapusJobdesc/{id_jobdesc}', 'karyawan\JobDecs@delete');
+Route::put('hapus-jobdesc/{id}', 'karyawan\JobDecs@delete');
 
-Route::get('getJobdesc/{id_jabatan_p}', 'karyawan\JobDecs@ResponseJobdesc');
+//tugas
+Route::post('store-tugas', 'karyawan\JobDecs@storeTugas');
+
+Route::get('ubah-tugas/{id_jobdesc}', 'karyawan\JobDecs@editTugas');
+
+Route::post('update-tugas', 'karyawan\JobDecs@updateTugas');
+
+//tanggung jawab
+Route::post('store-tanggungjawab', 'karyawan\JobDecs@storeTanggungJ');
+
+Route::get('ubah-tanggungjawab/{id_jobdesc}', 'karyawan\JobDecs@editTanggungjawab');
+
+Route::post('update-tanggungjawab', 'karyawan\JobDecs@updateTanggungjawab');
+
+//wewenang
+Route::post('store-wewenang', 'karyawan\JobDecs@storeWewenang');
+
+Route::get('ubah-wewenang/{id_jobdesc}', 'karyawan\JobDecs@editWewenang');
+
+Route::post('update-wewenang', 'karyawan\JobDecs@updateWewenang');
 
 //--- SWOT ---
 
