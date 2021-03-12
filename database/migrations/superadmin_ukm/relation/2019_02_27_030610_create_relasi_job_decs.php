@@ -16,6 +16,7 @@ class CreateRelasiJobDecs extends Migration
         Schema::table('u_job_desc', function (Blueprint $table) {
             //
             $table->foreign('id_jabatan_p')->references('id')->on('u_jabatan_p');
+            $table->foreign('atasan')->references('id')->on('u_jabatan_p');
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
         });
