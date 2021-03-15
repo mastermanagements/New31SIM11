@@ -29,7 +29,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">LIST MENU </li>
+            <li class="header">LIST MENU KARYAWAN</li>
            @if(!empty($daftar_menu['daftar_menu']))
                 @foreach($daftar_menu['daftar_menu'] as $menus)
                     <li class="treeview" >
@@ -39,12 +39,12 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
-                        @if(!empty($submenu=$menus->getSubMenu->sortBy('id_master_submenu')))
+                        @if(!empty($submenu=$menus->getSubMenu->sortBy('urutan')))
                             <ul class="treeview-menu">
                             @foreach($submenu as $sKey => $sum_menu)
                                 @if(!empty($Menu_karyawan = $sum_menu->getMenuKaryawan->where('id_karyawan', Session::get('id_karyawan'))))
                                     @foreach($Menu_karyawan as $menus_karyawan)
-                                        <li ><a
+                                        <li><a
                                                     @if($sum_menu->getMasterSubMenuUKM->url=="BA-Pemeriksaan")
                                                     href="#"
                                                     data-toggle="modal" data-target="#modal-menu-ba-pemeriksaan"
@@ -60,9 +60,11 @@
                                                     @elseif($sum_menu->getMasterSubMenuUKM->url=="BA-Serah-Terima-Operasional")
                                                     href="#"
                                                     data-toggle="modal" data-target="#modal-menu-ba-serops"
+
                                                     @else
                                                     href="{{ url($sum_menu->getMasterSubMenuUKM->url) }}"
                                                     @endif
+
                                             ><i></i> <span>{{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}</span></a></li>
                                     @endforeach
                                 @endif
