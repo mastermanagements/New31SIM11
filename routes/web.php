@@ -789,21 +789,26 @@ Route::get('detail-pSo/{id_detail_pso}/delete', 'produksi\DetailSo@delete');
 //--- Penjualan ---
 
 Route::get('Penjualan', 'produksi\JualBarang@index');
-
-Route::get('tambah-penjualan', 'produksi\JualBarang@create');
-
-Route::post('store-penjualan', 'produksi\JualBarang@store');
-
-Route::get('ubah-penjualan/{id}', 'produksi\JualBarang@edit');
-
-Route::put('update-penjualan/{id}', 'produksi\JualBarang@update');
-
-Route::put('hapus-penjualan/{id}', 'produksi\JualBarang@destory');
+//
+//Route::get('tambah-penjualan', 'produksi\JualBarang@create');
+//
+//Route::post('store-penjualan', 'produksi\JualBarang@store');
+//
+//Route::get('ubah-penjualan/{id}', 'produksi\JualBarang@edit');
+//
+//Route::put('update-penjualan/{id}', 'produksi\JualBarang@update');
+//
+//Route::put('hapus-penjualan/{id}', 'produksi\JualBarang@destory');
 
 # Komisi Sales
 
 Route::resource('komisi-sales','produksi\KomisiSales');
 
+# Penjualan
+Route::resource('penjualan-barang','produksi\PSales');
+#detail penjualan
+Route::resource('detail-penjualan-barang','produksi\DetailSales');
+Route::get('detail-penjualan-barang/{id_detail_penjualan}/destroy','produksi\DetailSales@destroy');
 //--- Jasa ---
 
 Route::get('Jasa', 'produksi\Jasa@index');

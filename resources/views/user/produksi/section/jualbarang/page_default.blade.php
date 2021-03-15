@@ -118,6 +118,7 @@
                             </table>
                         </div>
                         <div class="tab-pane " id="tab_3">
+                            <a href="{{ url('penjualan-barang/create') }}" class="btn btn-primary pull-left">Penjualan Barang</a>
                             <a href="{{ url('komisi-sales') }}" class="btn btn-primary pull-right">Komisi Sales</a>
                             <table class="table table-bordered table-striped" style="margin-top: 10px">
                                 <thead>
@@ -131,6 +132,30 @@
                                         <td>Aksi</td>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    @if(!empty($PSales))
+                                        @php($no_p_sales=1)
+                                        @foreach($PSales as $item_Psales)
+                                        <tr>
+                                            <td>{{ $no_p_sales }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($item_Psales->tgl_sales)) }}</td>
+                                            <td>{{ $item_Psales->no_sales }}</td>
+                                            <td>{{ $item_Psales->linkToKlien->nm_klien }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($item_Psales->tgl_kirim)) }}</td>
+                                            <td>{{ $item_Psales->total }}</td>
+                                            <td>
+                                                <form action="{{ url('penjualan-barang/'. $item_Psales->id) }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    @method('delete')
+                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id) }}" class="btn btn-primary">Detail barang</a>
+                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/edit') }}" class="btn btn-warning">ubah</a>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
                             </table>
                         </div>
                         <!-- /.tab-pane -->
