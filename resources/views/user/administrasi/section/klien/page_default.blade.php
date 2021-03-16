@@ -31,7 +31,8 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Customer</a></li>
                         <li><a href="#tab_2" data-toggle="tab">Leads</a></li>
-						
+                        <li><a href="#tab_3" data-toggle="tab">Group Klien</a></li>
+
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -143,6 +144,48 @@
                             </table>
                         </div>
                         <!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_3">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form action="{{ url('group-klien') }}" method="post">
+                                        {{ csrf_field() }}
+                                        <div class="form-group">
+                                            <label>Nama Group</label>
+                                            <input class="form-control" name="nama_group" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">simpan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        @if(!empty($group_klien))
+                                            @foreach($group_klien as $data)
+                                                <div class="col-md-4">
+                                                    <div class="box box-primary">
+                                                        <div class="box box-body">
+                                                            <form action="{{ url('group-klien/'.$data->id) }}" method="post">
+                                                                {{ csrf_field() }}
+                                                                @method('put')
+                                                                <div class="form-group">
+                                                                    <label>Nama Group</label>
+                                                                    <input class="form-control" name="nama_group" value="{{ $data->nama_group }}" required/>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <button type="submit" class="btn btn-warning">simpan</button>
+                                                                    <a href="{{ url('group-klien/'.$data->id.'/destroy') }}" class="btn btn-danger" onclick="return confirm('apakah anda akan menghapus data ini ...?')">hapus</a>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.tab-content -->
                 </div>

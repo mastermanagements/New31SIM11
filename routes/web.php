@@ -410,6 +410,9 @@ Route::put('update-klien/{id}', 'administrasi\Klien@update');
 
 Route::put('hapus-klien/{id}', 'administrasi\Klien@delete');
 
+Route::resource('group-klien','administrasi\GroupKlien');
+Route::get('group-klien/{id_group}/destroy','administrasi\GroupKlien@destroy');
+
 Route::get('ambilDataKlien/{id}', 'administrasi\Klien@ambil_data_klien');
 
 Route::get('getPenanda/{id_sdk}', 'administrasi\Klien@ResponsePenanda');
@@ -822,6 +825,9 @@ Route::get('Penjualan', 'produksi\JualBarang@index');
 # Komisi Sales
 
 Route::resource('komisi-sales','produksi\KomisiSales');
+
+# Diskon
+Route::resource('p-diskon', 'produksi\PDiskon');
 
 # Penjualan
 Route::resource('penjualan-barang','produksi\PSales');

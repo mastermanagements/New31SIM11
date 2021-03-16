@@ -10,7 +10,7 @@ use App\Model\Marketing\PenandaSDK as penandaSDK;
 use App\Model\Marketing\HistoryKlien as historykliens;
 use Session;
 //use Carbon\Carbon;
-
+use App\Model\Administrasi\GroupKlien;
 class Klien extends Controller
 {
     //
@@ -40,7 +40,8 @@ class Klien extends Controller
 			'data_potential' => kliens::where('jenis_klien', '3')->where('id_perusahaan', $this->id_perusahaan)->paginate(25),
 			'data_closeable' => kliens::where('jenis_klien', '4')->where('id_perusahaan', $this->id_perusahaan)->paginate(25),
 			'SDK'=>SDK::all(),
-			'penandaSDK'=>penandaSDK::all()
+			'penandaSDK'=>penandaSDK::all(),
+            'group_klien'=> GroupKlien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
 		//dd($data_klien['penandaSDK']);
         return view('user.administrasi.section.klien.page_default', $data_klien);

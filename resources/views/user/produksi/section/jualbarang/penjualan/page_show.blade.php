@@ -138,7 +138,7 @@
                                                             <th><input type="number" name="hpp" class="form-control" required></th>
                                                             <th><input type="number" name="jumlah_jual" class="form-control" required></th>
                                                             <th><input type="number" name="diskon" class="form-control" required></th>
-                                                            <th><input type="number" name="jumlah_harga" readonly class="form-control" required></th>
+                                                            <th><input type="number" name="jumlah_harga" readonly class="form-control" id="tbl_jumlah" required></th>
                                                             <th><button type="submit" class="btn btn-primary">Simpan</button></th>
                                                         </tr>
                                                     </tbody>
@@ -160,10 +160,15 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                        @php($total_item = 0)
+                                                        @php($total_uang = 0)
                                                         @foreach($data->linkToDetailSales as $data_detail)
+                                                            @php($total_item++)
+
                                                             <form action="{{ url('detail-penjualan-barang/'. $data_detail->id) }}" method="post">
                                                                 <tr>
                                                                     <th >
+
                                                                         @method('put')
                                                                         {{ csrf_field() }}
                                                                         <select class="form-control select2" style="width: 100%;" name="id_barang" required>
@@ -180,12 +185,21 @@
                                                                     <th width="200"><input type="number" name="diskon" class="form-control" value="{{ $data_detail->diskon }}"  required></th>
                                                                     <th width="200"><input type="number" name="jumlah_harga" readonly class="form-control" value="{{ $data_detail->jumlah_harga }}" required></th>
                                                                     <th>
+                                                                        @php($total_uang+=$data_detail->jumlah_harga)
                                                                         <button type="submit" class="btn btn-warning">ubah</button>
                                                                         <a href="{{ url('detail-penjualan-barang/'.$data_detail->id.'/destroy') }}" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')">hapus</a>
                                                                     </th>
                                                                 </tr>
                                                             </form>
+
                                                             @endforeach
+                                                            <tr>
+                                                                <td colspan="3">
+
+                                                                </td>
+                                                                <td>Total item : {{ $total_item }}</td>
+                                                                <td>Total Uang : {{ $total_uang }}</td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 @endif
@@ -251,7 +265,7 @@
                 total = total - diskon;
             }
 
-            $('[name="jumlah_harga"]').val(total);
+            $('#tbl_jumlah').val(total);
         }
 
     </script>

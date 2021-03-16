@@ -27,10 +27,11 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Penawaran penjualan</a></li>
                         <li ><a href="#tab_2" data-toggle="tab">Pesanan penjualan</a></li>
-                        <li ><a href="#tab_3" data-toggle="tab">Penjualan</a></li>
-                        <li ><a href="#tab_4" data-toggle="tab">Pembayaran</a></li>
-                        <li ><a href="#tab_5" data-toggle="tab">Return Pembayaran</a></li>
-                        <li ><a href="#tab_6" data-toggle="tab">History Harga Penjualan</a></li>
+                        <li ><a href="#tab_3" data-toggle="tab">Diskon</a></li>
+                        <li ><a href="#tab_4" data-toggle="tab">Penjualan</a></li>
+                        <li ><a href="#tab_5" data-toggle="tab">Pembayaran</a></li>
+                        <li ><a href="#tab_6" data-toggle="tab">Return Pembayaran</a></li>
+                        <li ><a href="#tab_7" data-toggle="tab">History Harga Penjualan</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -118,6 +119,51 @@
                             </table>
                         </div>
                         <div class="tab-pane " id="tab_3">
+                            <a href="{{ url('p-diskon/create') }}" class="btn btn-primary">Tambah Diskon</a>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <td>No.</td>
+                                    <td>Group Klien</td>
+                                    <td>Jenis Diskon</td>
+                                    <td>Jumlah maksimal beli</td>
+                                    <td>Diskon Persen</td>
+                                    <td>Diskon Nominal</td>
+                                    <td>Aksi</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if(!empty($pDiskon))
+                                    @php($no++)
+                                    @foreach($pDiskon as $data)
+                                        <tr>
+                                            <td>No.</td>
+                                            <td>{{ $data->linkToDiskon->nama_group }}</td>
+                                            <td>
+                                                @if($data->jenis_diskon=='0')
+                                                    Berdasarkan jumlah pembelian
+                                                @else
+                                                    Diskon member
+                                                @endif
+                                            </td>
+                                            <td>{{ $data->jumlah_maks_beli }}</td>
+                                            <td>{{ $data->diskon_persen }}</td>
+                                            <td>{{ $data->diskon_nominal }}</td>
+                                            <td>
+                                                <form action="{{ url('p-diskon/'.$data->id) }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    @method('delete')
+                                                    <a href="{{ url('p-diskon/'.$data->id.'/edit') }}" class="btn btn-warning">Ubah</a>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ...?')">Hapus</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane " id="tab_4">
                             <a href="{{ url('penjualan-barang/create') }}" class="btn btn-primary pull-left">Penjualan Barang</a>
                             <a href="{{ url('komisi-sales') }}" class="btn btn-primary pull-right">Komisi Sales</a>
                             <table class="table table-bordered table-striped" style="margin-top: 10px">
