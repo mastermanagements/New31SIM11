@@ -312,7 +312,7 @@ Route::get('getKabupatenK/{id_provinsi}', 'Superadmin_ukm\Kompetitor@ResponseKab
 
 Route::get('Target-Perusahaan', 'karyawan\TargetPerusahaan@index');
 
-//TJP
+//Target puncak
 Route::get('buat-tjp', 'karyawan\TargetPerusahaan@create');
 
 Route::post('store-tjp', 'karyawan\TargetPerusahaan@store');
@@ -321,31 +321,41 @@ Route::get('ubah-tjp/{id_tjp}', 'karyawan\TargetPerusahaan@edit');
 
 Route::post('update-tjp', 'karyawan\TargetPerusahaan@update');
 
-Route::put('hapusTJP/{id_tjp}', 'karyawan\TargetPerusahaan@delete');
+Route::put('hapus-tjp/{id}', 'karyawan\TargetPerusahaan@delete');
 
-Route::get('getTJP/{id_tjps}', 'karyawan\TargetPerusahaan@ResponseTJP');
 
-//Target Tahunan
-Route::post('store-target-tahunan', 'karyawan\TargetPerusahaan@storeTtahunan');
+//Target eksekutif
+Route::get('buat-target-eks', 'karyawan\TargetPerusahaan@createTargetEks');
 
-Route::get('ubah-Ttahunan/{id_tt}', 'karyawan\TargetPerusahaan@editTtahunan');
+Route::post('store-target-eks', 'karyawan\TargetPerusahaan@storeTargetEks');
 
-Route::post('update-Ttahunan', 'karyawan\TargetPerusahaan@updateTtahunan');
+Route::get('ubah-target-eks/{id}', 'karyawan\TargetPerusahaan@editTargetEks');
 
-Route::put('hapusTtahunan/{id_tt}', 'karyawan\TargetPerusahaan@deleteTtahunan');
+Route::post('update-target-eks', 'karyawan\TargetPerusahaan@updateTargetEks');
 
-Route::get('getTtahunan/{id_tt}', 'karyawan\TargetPerusahaan@ResponseTtahunan');
+Route::put('hapus-target-eks/{id}', 'karyawan\TargetPerusahaan@deleteTargetEks');
 
-//Target Bulanan
-Route::post('store-target-bulanan', 'karyawan\TargetPerusahaan@storeTbulanan');
+//Target manager
+Route::get('buat-target-man', 'karyawan\TargetPerusahaan@createTargetMan');
 
-Route::get('ubah-Tbulanan/{id_tb}', 'karyawan\TargetPerusahaan@editTbulanan');
+Route::post('store-target-man', 'karyawan\TargetPerusahaan@storeTargetMan');
 
-Route::post('update-Tbulanan', 'karyawan\TargetPerusahaan@updateTbulanan');
+Route::get('ubah-target-man/{id}', 'karyawan\TargetPerusahaan@editTargetMan');
 
-Route::put('hapusTbulanan/{id_tb}', 'karyawan\TargetPerusahaan@deleteTbulanan');
+Route::post('update-target-man', 'karyawan\TargetPerusahaan@updateTargetMan');
 
-Route::get('getTbulanan/{id_tb}', 'karyawan\TargetPerusahaan@ResponseTbulanan');
+Route::put('hapus-target-man/{id}', 'karyawan\TargetPerusahaan@deleteTargetMan');
+
+//Target Supervisor
+Route::get('buat-target-sup', 'karyawan\TargetPerusahaan@createTargetSup');
+
+Route::post('store-target-sup', 'karyawan\TargetPerusahaan@storeTargetSup');
+
+Route::get('ubah-target-sup/{id}', 'karyawan\TargetPerusahaan@editTargetSup');
+
+Route::post('update-target-sup', 'karyawan\TargetPerusahaan@updateTargetSup');
+
+Route::put('hapus-target-sup/{id}', 'karyawan\TargetPerusahaan@deleteTargetSup');
 
 //--- Strategi Perusahaan ---
 Route::get('Strategi-Perusahaan', 'karyawan\StrategiPerusahaan@index');
