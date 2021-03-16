@@ -4,9 +4,11 @@ namespace App\Http\Controllers\karyawan;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Karyawan\TJP as TJP;
-use App\Model\Karyawan\TargetTahunan as TT;
-use App\Model\Karyawan\TargetBulanan as TB;
+use App\Model\Karyawan\TargetPuncak as TargetPuncak;
+use App\Model\Karyawan\TargetEksekutif as TargetEks;
+use App\Model\Karyawan\TargetManager as TargetMan;
+use App\Model\Karyawan\TargetSupervisor as TargetSup;
+use App\Model\Karyawan\TargetStaf as TargetStaf;
 use App\Model\Karyawan\Bagian as Bagian;
 use App\Model\Karyawan\Devisi as Divisi;
 use App\Model\Superadmin_ukm\U_jabatan_p as Jabatan;
@@ -34,19 +36,23 @@ class TargetPerusahaan extends Controller
 	/* -- menampilkan target jangka panjang, target tahunan & target bulanan--*/
 	public function index()
     {
-        $data_pass= [
-		'data_tjp'=> TJP::all()->where('id_perusahaan',$this->id_perusahaan),
-		'data_tt'=> TT::all()->where('id_perusahaan', $this->id_perusahaan),
-		'data_tb'=> TB::all()->where('id_perusahaan', $this->id_perusahaan),
-		'bagian_p'=>Bagian::all()->where('id_perusahaan', $this->id_perusahaan),
-		'divisi_p'=>Divisi::all()->where('id_perusahaan', $this->id_perusahaan),
-		'jabatan_p'=>Jabatan::all()->where('id_perusahaan', $this->id_perusahaan)
-        ];
-		//dd($data_pass['data_tjp']);
+    $data_pass= [
+        'tjp'=> TargetPuncak::all()->where('id_perusahaan', $this->id_perusahaan),
+        'target_eks'=> TargetEks::all()->where('id_perusahaan', $this->id_perusahaan),
+        'target_eks_group'=> TargetEks::where('id_perusahaan', $this->id_perusahaan)->groupBy('tahun','id_jabatan_p')->get(),
+        'target_man'=> TargetMan::all()->where('id_perusahaan', $this->id_perusahaan),
+        'target_man_group'=> TargetMan::where('id_perusahaan', $this->id_perusahaan)->groupBy('tahun','id_jabatan_p')->get(),
+        'target_sup'=> TargetSup::all()->where('id_perusahaan', $this->id_perusahaan),
+        'target_sup_group'=> TargetSup::where('id_perusahaan', $this->id_perusahaan)->groupBy('tahun','id_jabatan_p')->get(),
+        'bagian_p'=>Bagian::all()->where('id_perusahaan', $this->id_perusahaan),
+		    'divisi_p'=>Divisi::all()->where('id_perusahaan', $this->id_perusahaan),
+		    'jabatan_p'=>Jabatan::all()->where('id_perusahaan', $this->id_perusahaan)
+    ];
+		//dd($data_pass['target_eks_group']);
         return view('user.karyawan.section.TargetPerusahaan.page_default', $data_pass);
-		
+
     }
-	
+
 	/* -- target jangka panjang --*/
 	public function create()
     {
@@ -55,79 +61,82 @@ class TargetPerusahaan extends Controller
 	public function store(Request $req)
     { //dd($req->all());
         $this->validate($req,[
-		   'nm_tjp'=> 'required',
-           'periode'=> 'required',
+       'periode'=> 'required|integer',
 		   'thn_mulai'=> 'required',
 		   'thn_selesai'=> 'required',
-		   'isi_tjp'=> 'required'
+		   'target_puncak'=> 'required',
+       'jumlah_target'=> 'required|integer',
+       'satuan_target'=> 'required',
         ]);
-		$nm_tjp = $req->nm_tjp;
+        //assignment
 		$periode = $req->periode;
-        $thn_mulai = $req->thn_mulai;
-		//konversi tahun mulai integer to year
-		$thn_mulai = date($thn_mulai);
-		
+    $thn_mulai = $req->thn_mulai;
 		$thn_selesai = $req->thn_selesai;
-		//konversi tahun selesai integer to year
-		$thn_selesai = date($thn_selesai);
-		$isi_tjp = $req->isi_tjp;
-		
+		$target_puncak = $req->target_puncak;
+    $jumlah_target = $req->jumlah_target;
+    $satuan_target = $req->satuan_target;
 		//instansiasi objek
-        $model = new TJP;
-		$model->nm_tjp = $nm_tjp;
-        $model->periode = $periode;
+    $model = new TargetPuncak;
+    $model->periode = $periode;
 		$model->thn_mulai = $thn_mulai;
 		$model->thn_selesai = $thn_selesai;
-		$model->isi_tjp= $isi_tjp;
-        $model->id_perusahaan = $this->id_perusahaan;
-        $model->id_karyawan = $this->id_karyawan;
-		
+		$model->target_puncak= $target_puncak;
+    $model->jumlah_target = $req->jumlah_target;
+    $model->satuan_target = $req->satuan_target;
+    $model->id_perusahaan = $this->id_perusahaan;
+    $model->id_karyawan = $this->id_karyawan;
+
         if($model->save()){
             return redirect('Target-Perusahaan')->with('message_success', 'Ada telah menambahkan Target Jangka Panjang Perusahaan');
         }else{
             return redirect('Target-Perusahaan')->with('message_fail', 'Terjadi Kesalahan, Silahkan masukan ulang Target Jangka Panjang perusahaan anda');
         }
     }
-	
+
 	public function edit($id)
     {
-        if(empty($data_tjp = TJP::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+        if(empty($tjp = TargetPuncak::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
         $data = [
-          'data_tjp'=> $data_tjp
+          'tjp'=> $tjp
         ];
         return response()->json($data);
     }
-	
+
 	public function update(Request $req)
-    { 
+    {
         $this->validate($req,[
-            'nm_tjp_ubah' => 'required',
-			'periode_ubah'=>'required',
-            'thn_mulai_ubah'=> 'required',
-			'thn_selesai_ubah'=> 'required',
-			'isi_tjp_ubah'=> 'required',
-            'id_mtjp'=> 'required'
+      'periode_ubah' => 'required',
+			'thn_mulai_ubah'=>'required',
+      'thn_selesai_ubah'=> 'required',
+			'target_puncak_ubah'=> 'required',
+			'jumlah_target_ubah'=> 'required',
+      'satuan_target_ubah'=> 'required',
+      'id_tjp_ubah'=> 'required'
         ]);
-		
-		$nm_tjp = $req->nm_tjp_ubah;
+
 		$periode = $req->periode_ubah;
 		$thn_mulai = $req->thn_mulai_ubah;
 		$thn_selesai = $req->thn_selesai_ubah;
-		$isi_tjp = $req->isi_tjp_ubah;
-		
-        if(empty($model = TJP::where('id', $req->id_mtjp)->where('id_perusahaan', $this->id_perusahaan)->first())){
+		$target_puncak = $req->target_puncak_ubah;
+		$jumlah_target = $req->jumlah_target_ubah;
+    $satuan_target = $req->satuan_target_ubah;
+    $id_tjp = $req->id_tjp_ubah;
+
+
+        if(empty($model = TargetPuncak::where('id', $id_tjp)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
-		
-		$model->nm_tjp = $nm_tjp;
+
 		$model->periode =$periode;
-        $model->thn_mulai =$thn_mulai;
+    $model->thn_mulai =$thn_mulai;
 		$model->thn_selesai =$thn_selesai;
-		$model->isi_tjp =$isi_tjp;
-        $model->id_perusahaan = $this->id_perusahaan;
-        $model->id_karyawan = $this->id_karyawan;
+		$model->target_puncak =$target_puncak;
+    $model->jumlah_target = $jumlah_target;
+    $model->satuan_target = $satuan_target;
+    $model->id_perusahaan = $this->id_perusahaan;
+    $model->id_karyawan = $this->id_karyawan;
 		//dd($req->all());
         if($model->save())
         {
@@ -137,260 +146,368 @@ class TargetPerusahaan extends Controller
             return redirect('Target-Perusahaan')->with('message_fail','Terjadi kesalahan, Silahkan ubah ulang..!');
         }
     }
-	
+
 	public function delete(Request $req, $id)
     {
-        if(empty($model = TJP::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
-            return abort(404);
-        }
-        if($model->delete())
-        {
-           $res = [
-               'message'=> 'Anda baru saja menghapus data target jangka panjang perusahaan',
-               'status'=> true
-           ];
-           return response()->json($res);
-        }else
-        {
-            $res = [
-                'message'=> 'Terjadi Kesalahan, Silahkan hapus ulang data  anda',
-                'status'=> true
-            ];
-            return response()->json($res);
-        }
+      $model = TargetPuncak::find($id);
+      if($model->delete())
+      {
+        return redirect ('Target-Perusahaan')->with('message_sucess','Berhasil menghapus data target jangka panjang perusahaan');
+      }else
+      {
+          return redirect('Target-Perusahaan')->with('message_fail','Gagal menghapus data target jangka panjang perusahaan');
+      }
     }
 
-    public function getTJP($id=1)
+
+	/* -- target Eksekutif--*/
+  public function createTargetEks()
     {
-        $model = TJP::all()->where('id_tjps', $id);
-        return $model;
+      $data_jab = [
+          'jabatan_p' =>jabatan::all()->where('id_perusahaan', $this->id_perusahaan),
+          'bagian_p'=>Bagian::all()->where('id_perusahaan', $this->id_perusahaan)
+      ];
+        return view('user.karyawan.section.TargetPerusahaan.page_create_eks', $data_jab);
     }
 
-    public function ResponseTJP($id_tjps){
-        return response()->json($this->getTJP($id_tjps));
-    }
-	
-	
-	/* -- target tahunan--*/
-	public function storeTtahunan(Request $req)
+	public function storeTargetEks(Request $req)
     { //dd($req->all());
         $this->validate($req,[
-           'id_tjp'=> 'required',
 		   'tahun'=> 'required',
 		   'id_bagian_p' => 'required',
-		   'id_divisi_p' => 'required',
 		   'id_jabatan_p' => 'required',
-           'target_tahunan'=> 'required'
+       'target_eksekutif'=> 'required',
+       'jumlah_target'=> 'required',
+       'satuan_target'=> 'required'
         ]);
 
-        $id_tjp = $req->id_tjp;
-		$tahun = $req->tahun;
+    $tahun = $req->tahun;
 		$id_bagian_p = $req->id_bagian_p;
-		$id_divisi_p = $req->id_divisi_p;
 		$id_jabatan_p = $req->id_jabatan_p;
-        $target_tahunan = $req->target_tahunan;
+    $target_eksekutif = $req->target_eksekutif;
+    $jumlah_target = $req->jumlah_target;
+    $satuan_target = $req->satuan_target;
 
-        $model = new TT;
-        $model->id_tjp = $id_tjp;
+    $model = new TargetEks;
 		$model->tahun = $tahun;
 		$model->id_bagian_p = $id_bagian_p;
-        $model->id_divisi_p = $id_divisi_p;
 		$model->id_jabatan_p = $id_jabatan_p;
-		$model->target_tahunan = $target_tahunan;
-        $model->id_perusahaan = $this->id_perusahaan;
-        $model->id_karyawan = $this->id_karyawan;
+		$model->target_eksekutif = $target_eksekutif;
+    $model->jumlah_target = $jumlah_target;
+    $model->satuan_target = $satuan_target;
+    $model->id_perusahaan = $this->id_perusahaan;
+    $model->id_karyawan = $this->id_karyawan;
+
         if($model->save()){
             return redirect('Target-Perusahaan')->with('message_success', 'Ada telah menambahkan Target Tahunan baru');
         }else{
             return redirect('Target-Perusahaan')->with('message_fail', 'Terjadi Kesalahan, Silahkan masukan ulang Target Tahunan Anda');
         }
     }
-	
-	public function editTtahunan($id)
+
+    public function editTargetEks($id)
+      {
+          if(empty($target_eks = TargetEks::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+              return abort(404);
+          }
+          $data = [
+            'target_eks'=> $target_eks,
+          ];
+          return response()->json($data);
+      }
+
+	public function updateTargetEks(Request $req)
     {
-        if(empty($data_tt = TT::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
-            return abort(404);
-        }
-        $data = [
-          'data_tt'=> $data_tt
-        ];
-        return response()->json($data);
-		
-    }
-	
-	public function updateTtahunan(Request $req)
-    { 
         $this->validate($req,[
-            'id_tjp_ubah' => 'required',
-			'tahun_ubah'=>'required',
-            'id_bagian_p_ubah'=> 'required',
-			'id_divisi_p_ubah'=> 'required',
-			'id_jabatan_p_ubah'=> 'required',
-			'target_tahunan_ubah'=> 'required',
-            'id_Ttahunan'=> 'required'
-        ]);
-		
-		$id_tjp = $req->id_tjp_ubah;
-		$tahun = $req->tahun_ubah;
-		$id_bagian_p = $req->id_bagian_p_ubah;
-		$id_divisi_p = $req->id_divisi_p_ubah;
-		$id_jabatan_p = $req->id_jabatan_p_ubah;
-		$target_tahunan = $req->target_tahunan_ubah;
-		
-        if(empty($model = TT::where('id', $req->id_Ttahunan)->where('id_perusahaan', $this->id_perusahaan)->first())){
-            return abort(404);
-        }
-		//insert ke @ field di tabel TT dg asiggment value dari hasil req di atas
-		$model->id_tjp = $id_tjp;
-		$model->tahun =$tahun;
+          'tahun_ubah' => 'required',
+    			'id_bagian_p_ubah'=>'required',
+          'id_jabatan_p_ubah'=> 'required',
+    			'target_eksekutif_ubah'=> 'required',
+    			'jumlah_target_ubah'=> 'required',
+          'satuan_target_ubah'=> 'required',
+          'id_teks_ubah'=> 'required'
+            ]);
+
+    		$tahun = $req->tahun_ubah;
+    		$id_bagian_p = $req->id_bagian_p_ubah;
+    		$id_jabatan_p = $req->id_jabatan_p_ubah;
+    		$target_eksekutif = $req->target_eksekutif_ubah;
+    		$jumlah_target = $req->jumlah_target_ubah;
+        $satuan_target = $req->satuan_target_ubah;
+        $id_teks = $req->id_teks_ubah;
+
+
+            if(empty($model = TargetEks::where('id', $id_teks)->where('id_perusahaan', $this->id_perusahaan)->first())){
+                return abort(404);
+            }
+
+    		$model->tahun =$tahun;
         $model->id_bagian_p =$id_bagian_p;
-		$model->id_divisi_p =$id_divisi_p;
-		$model->id_jabatan_p =$id_jabatan_p;
-		$model->target_tahunan =$target_tahunan;
+    		$model->id_jabatan_p =$id_jabatan_p;
+    		$model->target_eksekutif =$target_eksekutif;
+        $model->jumlah_target = $jumlah_target;
+        $model->satuan_target = $satuan_target;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
-		//dd($req->all());
-        if($model->save())
-        {
-            return redirect('Target-Perusahaan')->with('message_sucess','Anda baru saja mengubah data Target Tahunan perusahaan');
-        }else
-        {
-            return redirect('Target-Perusahaan')->with('message_fail','Terjadi kesalahan, Silahkan ubah ulang..!');
-        }
+    		//dd($req->all());
+            if($model->save())
+            {
+                return redirect('Target-Perusahaan')->with('message_sucess','Berhasil mengubah Target Eksekutif perusahaan');
+            }else
+            {
+                return redirect('Target-Perusahaan')->with('message_fail','Terjadi kesalahan, Silahkan ubah ulang..!');
+            }
     }
-	
-	public function deleteTtahunan(Request $req, $id)
-    {
-        if(empty($model = TT::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
-            return abort(404);
-        }
+
+    public function deleteTargetEks(Request $req, $id)
+      {
+        $model = TargetEks::find($id);
         if($model->delete())
         {
-           $res = [
-               'message'=> 'Anda baru saja menghapus data target tahunan perusahaan',
-               'status'=> true
-           ];
-           return response()->json($res);
+          return redirect ('Target-Perusahaan')->with('message_sucess','Berhasil menghapus data target Eksekutif perusahaan');
         }else
         {
-            $res = [
-                'message'=> 'Terjadi Kesalahan, Silahkan hapus ulang data  anda',
-                'status'=> true
-            ];
-            return response()->json($res);
+            return redirect('Target-Perusahaan')->with('message_fail','Gagal menghapus data target Eksekutif perusahaan');
         }
-    }
-	
-	
-	public function getTtahunan($id=1)
+      }
+
+/* -- target Manajer--*/
+public function createTargetMan()
+  {
+    $data_jab = [
+        'target_eks' =>TargetEks::all()->where('id_perusahaan', $this->id_perusahaan),
+        'jabatan_p' =>Jabatan::all()->where('id_perusahaan', $this->id_perusahaan),
+        'bagian_p'=>Bagian::all()->where('id_perusahaan', $this->id_perusahaan)
+    ];
+      return view('user.karyawan.section.TargetPerusahaan.page_create_man', $data_jab);
+  }
+
+public function storeTargetMan(Request $req)
+  { //dd($req->all());
+      $this->validate($req,[
+     'id_target_eks' => 'required',
+     'tahun'=> 'required',
+     'id_bagian_p' => 'required',
+     'id_jabatan_p' => 'required',
+     'target_manager'=> 'required',
+     'jumlah_target'=> 'required',
+     'satuan_target'=> 'required'
+      ]);
+
+  $id_target_eks = $req->id_target_eks;
+  $tahun = $req->tahun;
+  $id_bagian_p = $req->id_bagian_p;
+  $id_jabatan_p = $req->id_jabatan_p;
+  $target_manager = $req->target_manager;
+  $jumlah_target = $req->jumlah_target;
+  $satuan_target = $req->satuan_target;
+
+  $model = new TargetMan;
+  $model->id_target_eks = $id_target_eks;
+  $model->tahun = $tahun;
+  $model->id_bagian_p = $id_bagian_p;
+  $model->id_jabatan_p = $id_jabatan_p;
+  $model->target_manager = $target_manager;
+  $model->jumlah_target = $jumlah_target;
+  $model->satuan_target = $satuan_target;
+  $model->id_perusahaan = $this->id_perusahaan;
+  $model->id_karyawan = $this->id_karyawan;
+
+      if($model->save()){
+          return redirect('Target-Perusahaan')->with('message_success', 'Berhasil menambah target Manager');
+      }else{
+          return redirect('Target-Perusahaan')->with('message_fail', 'Terjadi Kesalahan, Silahkan ulangi lagi');
+      }
+  }
+
+  public function editTargetMan($id)
     {
-        $model = TT::all()->where('id_tt', $id);
-        return $model;
-    }
-
-    public function ResponseTtahunan($id_tt){
-        return response()->json($this->getTtahunan($id_tt));
-    }
-
-	/* -- target bulanan --*/
-	public function storeTbulanan(Request $req)
-    { //dd($req->all());
-        $this->validate($req,[
-           'id_target_tahunan'=> 'required',
-		   'bulan'=> 'required',
-		   'target_bulanan' => 'required'
-        ]);
-
-        $id_target_tahunan = $req->id_target_tahunan;
-		$bulan = $req->bulan;
-		$target_bulanan = $req->target_bulanan;
-
-        $model = new TB;
-        $model->id_target_tahunan = $id_target_tahunan;
-		$model->bulan = $bulan;
-		$model->target_bulanan = $target_bulanan;
-        $model->id_perusahaan = $this->id_perusahaan;
-        $model->id_karyawan = $this->id_karyawan;
-        if($model->save()){
-            return redirect('Target-Perusahaan')->with('message_success', 'Ada telah menambahkan Target Bulanan baru');
-        }else{
-            return redirect('Target-Perusahaan')->with('message_fail', 'Terjadi Kesalahan, Silahkan masukan ulang Target Bulanan Anda');
-        }
-    }
-	
-	public function editTbulanan($id)
-    {
-        if(empty($data_tb = TB::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+        if(empty($target_man = TargetMan::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
         $data = [
-          'data_tb'=> $data_tb
+          'target_man'=> $target_man,
         ];
         return response()->json($data);
     }
-	
-	public function updateTbulanan(Request $req)
-    { 
-        $this->validate($req,[
-            'id_tt_ubah' => 'required',
-			'bulan_ubah'=>'required',
-			'target_bulanan_ubah'=> 'required',
-            'id_Tbulanan'=> 'required'
-        ]);
-		
-		$id_target_tahunan = $req->id_tt_ubah;
-		$bulan = $req->bulan_ubah;
-		$target_bulanan = $req->target_bulanan_ubah;
-		
-        if(empty($model = TB::where('id', $req->id_Tbulanan)->where('id_perusahaan', $this->id_perusahaan)->first())){
-            return abort(404);
-        }
-		//insert ke @ field di tabel TB dg asiggment value dari hasil req di atas
-		$model->id_target_tahunan = $id_target_tahunan;
-		$model->bulan =$bulan;
-		$model->target_bulanan =$target_bulanan;
-        $model->id_perusahaan = $this->id_perusahaan;
-        $model->id_karyawan = $this->id_karyawan;
-		//dd($req->all());
-		
-        if($model->save())
-        {
-            return redirect('Target-Perusahaan')->with('message_sucess','Anda baru saja mengubah data Target Bulanan perusahaan');
-        }else
-        {
-            return redirect('Target-Perusahaan')->with('message_fail','Terjadi kesalahan, Silahkan ubah ulang..!');
-        }
-    }
-	
-	public function deleteTbulanan(Request $req, $id)
+
+public function updateTargetMan(Request $req)
+  {
+      $this->validate($req,[
+        'id_target_eks_ubah' => 'required',
+        'tahun_ubah' => 'required',
+        'id_bagian_p_ubah'=>'required',
+        'id_jabatan_p_ubah'=> 'required',
+        'target_manager_ubah'=> 'required',
+        'jumlah_target_ubah'=> 'required',
+        'satuan_target_ubah'=> 'required',
+        'id_tman_ubah'=> 'required'
+          ]);
+
+      $id_target_eks = $req->id_target_eks_ubah;
+      $tahun = $req->tahun_ubah;
+      $id_bagian_p = $req->id_bagian_p_ubah;
+      $id_jabatan_p = $req->id_jabatan_p_ubah;
+      $target_manager = $req->target_manager_ubah;
+      $jumlah_target = $req->jumlah_target_ubah;
+      $satuan_target = $req->satuan_target_ubah;
+      $id_tman = $req->id_tman_ubah;
+
+
+          if(empty($model = TargetMan::where('id', $id_tman)->where('id_perusahaan', $this->id_perusahaan)->first())){
+              return abort(404);
+          }
+
+      $model->id_target_eks= $id_target_eks;
+      $model->tahun =$tahun;
+      $model->id_bagian_p =$id_bagian_p;
+      $model->id_jabatan_p =$id_jabatan_p;
+      $model->target_manager =$target_manager;
+      $model->jumlah_target = $jumlah_target;
+      $model->satuan_target = $satuan_target;
+      $model->id_perusahaan = $this->id_perusahaan;
+      $model->id_karyawan = $this->id_karyawan;
+      //dd($req->all());
+          if($model->save())
+          {
+              return redirect('Target-Perusahaan')->with('message_sucess','Berhasil mengubah Target Manager perusahaan');
+          }else
+          {
+              return redirect('Target-Perusahaan')->with('message_fail','Terjadi kesalahan, Silahkan ubah ulang..!');
+          }
+  }
+
+  public function deleteTargetMan(Request $req, $id)
     {
-        if(empty($model = TB::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
-            return abort(404);
-        }
-        if($model->delete())
-        {
-           $res = [
-               'message'=> 'Anda baru saja menghapus data target Bulanan perusahaan',
-               'status'=> true
-           ];
-           return response()->json($res);
-        }else
-        {
-            $res = [
-                'message'=> 'Terjadi Kesalahan, Silahkan hapus ulang data  anda',
-                'status'=> true
-            ];
-            return response()->json($res);
-        }
-    }
-	
-	public function getTbulanan($id=1)
-    {
-        $model = TB::all()->where('id_tb', $id);
-        return $model;
+      $model = TargetMan::find($id);
+      if($model->delete())
+      {
+        return redirect ('Target-Perusahaan')->with('message_sucess','Berhasil menghapus data target Manager perusahaan');
+      }else
+      {
+          return redirect('Target-Perusahaan')->with('message_fail','Gagal menghapus data target Manager perusahaan');
+      }
     }
 
-    public function ResponseTbulanan($id_tb){
-        return response()->json($this->getTbulanan($id_tb));
-    }
+
+    /* -- target Supervisor --*/
+    public function createTargetSup()
+      {
+        $data_jab = [
+            'target_man' =>TargetMan::all()->where('id_perusahaan', $this->id_perusahaan),
+            'jabatan_p' =>Jabatan::all()->where('id_perusahaan', $this->id_perusahaan),
+            'divisi_p'=>divisi::all()->where('id_perusahaan', $this->id_perusahaan)
+        ];
+          return view('user.karyawan.section.TargetPerusahaan.page_create_sup', $data_jab);
+      }
+
+    public function storeTargetSup(Request $req)
+      { //dd($req->all());
+          $this->validate($req,[
+         'id_target_man' => 'required',
+         'tahun'=> 'required',
+         'id_divisi_p' => 'required',
+         'id_jabatan_p' => 'required',
+         'target_supervisor'=> 'required',
+         'jumlah_target'=> 'required',
+         'satuan_target'=> 'required'
+          ]);
+
+      $id_target_man = $req->id_target_man;
+      $tahun = $req->tahun;
+      $id_divisi_p = $req->id_divisi_p;
+      $id_jabatan_p = $req->id_jabatan_p;
+      $target_supervisor = $req->target_supervisor;
+      $jumlah_target = $req->jumlah_target;
+      $satuan_target = $req->satuan_target;
+
+      $model = new TargetMan;
+      $model->id_target_man = $id_target_man;
+      $model->tahun = $tahun;
+      $model->id_divisi_p = $id_divisi_p;
+      $model->id_jabatan_p = $id_jabatan_p;
+      $model->target_supervisor = $target_supervisor;
+      $model->jumlah_target = $jumlah_target;
+      $model->satuan_target = $satuan_target;
+      $model->id_perusahaan = $this->id_perusahaan;
+      $model->id_karyawan = $this->id_karyawan;
+
+          if($model->save()){
+              return redirect('Target-Perusahaan')->with('message_success', 'Berhasil menambah target Supervisor');
+          }else{
+              return redirect('Target-Perusahaan')->with('message_fail', 'Terjadi Kesalahan, Silahkan ulangi lagi');
+          }
+      }
+
+      public function editTargetSup($id)
+        {
+            if(empty($target_sup = TargetSup::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+                return abort(404);
+            }
+            $data = [
+              'target_sup'=> $target_sup,
+            ];
+            return response()->json($data);
+        }
+
+    public function updateTargetSup(Request $req)
+      {
+          $this->validate($req,[
+            'id_target_man_ubah' => 'required',
+            'tahun_ubah' => 'required',
+            'id_divisi_p_ubah'=>'required',
+            'id_jabatan_p_ubah'=> 'required',
+            'target_supervisor_ubah'=> 'required',
+            'jumlah_target_ubah'=> 'required',
+            'satuan_target_ubah'=> 'required',
+            'id_tsup_ubah'=> 'required'
+              ]);
+
+          $id_target_man = $req->id_target_man_ubah;
+          $tahun = $req->tahun_ubah;
+          $id_divisi_p = $req->id_divisi_p_ubah;
+          $id_jabatan_p = $req->id_jabatan_p_ubah;
+          $target_supervisor = $req->target_supervisor_ubah;
+          $jumlah_target = $req->jumlah_target_ubah;
+          $satuan_target = $req->satuan_target_ubah;
+          $id_tsup = $req->id_tman_ubah;
+
+
+              if(empty($model = TargetSup::where('id', $id_sup)->where('id_perusahaan', $this->id_perusahaan)->first())){
+                  return abort(404);
+              }
+
+          $model->id_target_man= $id_target_man;
+          $model->tahun =$tahun;
+          $model->id_divisi_p =$id_divisi_p;
+          $model->id_jabatan_p =$id_jabatan_p;
+          $model->target_supervisor =$target_supervisor;
+          $model->jumlah_target = $jumlah_target;
+          $model->satuan_target = $satuan_target;
+          $model->id_perusahaan = $this->id_perusahaan;
+          $model->id_karyawan = $this->id_karyawan;
+          //dd($req->all());
+              if($model->save())
+              {
+                  return redirect('Target-Perusahaan')->with('message_sucess','Berhasil mengubah Target Supervisor perusahaan');
+              }else
+              {
+                  return redirect('Target-Perusahaan')->with('message_fail','Terjadi kesalahan, Silahkan ubah ulang..!');
+              }
+      }
+
+      public function deleteTargetSup(Request $req, $id)
+        {
+          $model = TargetSup::find($id);
+          if($model->delete())
+          {
+            return redirect ('Target-Perusahaan')->with('message_sucess','Berhasil menghapus data target Supervisor perusahaan');
+          }else
+          {
+              return redirect('Target-Perusahaan')->with('message_fail','Gagal menghapus data target Supervisor perusahaan');
+          }
+        }
+
+
+
 }

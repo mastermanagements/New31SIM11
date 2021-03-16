@@ -25,7 +25,7 @@
                 <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
             @endif
             <p></p>
-
+            
             <div class="col-md-12">
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">

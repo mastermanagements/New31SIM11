@@ -96,7 +96,7 @@
                                                 Direksi
                                             @elseif ($value->level_jabatan==1)
                                                 Manager
-                                            @elseif ($value->level_jabatan==1)
+                                            @elseif ($value->level_jabatan==2)
                                                 Supervisor
                                             @else
                                                 Staf

@@ -30,7 +30,7 @@ class Jabatan extends Controller
   public function index()
   {
       $datak = [
-        'jabatan'=>jabatans::all()->where('id_perusahaan', $this->id_perusahaan),
+        'jabatan'=>jabatans::where('id_perusahaan', $this->id_perusahaan)->orderBy('level_jabatan')->get(),
         'level_jabatan' => $this->level_jabatan
       ];
       return view('user.karyawan.section.Jabatan.page_default', $datak);

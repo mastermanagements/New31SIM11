@@ -24,12 +24,24 @@ class U_jabatan_p extends Model
         return $this->hasMany('App\Model\Karyawan\JobDecs', 'id_jabatan_p');
     }
 
-    public function Cf(){
+  public function Cf(){
         return $this->hasMany('App\Model\Penggajian\CompansableFators','id_jabatan');
     }
 
-    public function skorBaseItem()
+  public function skorBaseItem()
     {
         return $this->hasMany('App\Model\Penggajian\SkorPosisiCF','id_jabatan');
     }
+  public function getTargetEks()
+     {
+         return $this->hasMany('App\Model\Karyawan\TargetEksekutif', 'id_jabatan_p');
+     }
+  public function getTargetMan()
+      {
+          return $this->hasMany('App\Model\Karyawan\TargetManager', 'id_jabatan_p');
+      }
+  public function getTargetSup()
+      {
+          return $this->hasMany('App\Model\Karyawan\TargetSupervisor', 'id_jabatan_p');
+      }
 }
