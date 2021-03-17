@@ -51,12 +51,10 @@
                               <form action="{{ url('hapus-jobdesc/'. $daftar_jobdesc->id) }}" method="post">
                                   <input type="hidden" name="_method" value="put">
                                   {{ csrf_field() }}
-                                  <button type="submit" onclick="return confirm('apakah anda akan menghapus JobDecs ini .. ?')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                  <button type="submit" onclick="return confirm('apakah anda akan menghapus JobDecs ini?, Jika Anda menghapus data Jobdesc, maka data tugas, tanggung jawab dan wewenang pd jabatan yg sama akan terhapus juga.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
                                   <a href="#" onclick="ubahJobdesc({{ $daftar_jobdesc->id }})" class="btn btn-xs btn-primary pull-right" title="ubah jobdesc">
                                   <i class="fa fa-edit"></i></a>
                               </form>
-
-
 
                                 <div class="col-md-6">
                                   <div class="box-footer no-padding">
@@ -94,7 +92,6 @@
                                         @endif
                                     @endforeach
                                 </dl>
-
                               </ul>
                             </div>
                           </div>

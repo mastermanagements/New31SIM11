@@ -11,7 +11,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Target Jangka Panjang Perusahaan
+            Target Supervisor
         </h1>
     </section>
 
@@ -21,53 +21,69 @@
         <!--------------------------
           | Your Page Content Here |
           -------------------------->
-        <a href="{{ url('buat-tjp') }}" class="btn btn-primary">Buat Target Jangka Panjang Perusahaan Anda</a>
+        <a href="{{ url('buat-tjp') }}" class="btn btn-primary">Tambah</a>
         <p></p>
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Tambah  Target Jangka Panjang Perusahaan</h3>
+                        <h3 class="box-title">Formulir Tambah  Target Supervisor Perusahaan</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-tjp') }}" method="post">
+                    <form role="form" action="{{ url('store-target-sup') }}" method="post">
                         <div class="box-body">
                           <div class="form-group">
-                              <label for="exampleInputEmail1">Jangka Waktu</label>
-                              <input type="number" max="50" name="periode" class="form-control" id="exampleInputEmail1" placeholder="Berapa Tahun Anda Akan Mencapai Goal Tersebut?, Tulis angka Tahunnya" required>
-                              <small style="color: red">* Tidak Boleh Kosong</small>
+                              <label for="exampleInputEmail1">Pilih Target Manager </label>
+                              <select class="form-control select2" style="width: 100%;" name="id_target_eks" required>
+                                           <option>Pilih Target Manager</option>
+                                          @foreach($target_man as $value)
+                                              <option value="{{ $value->id }}">{{ $value->target_manager }}</option>
+                                          @endforeach
+                              </select>
+                              <small style="color: red" id="notify"></small>
                           </div>
                           <div class="form-group">
-                              <label>Tahun Mulai</label>
+                              <label>Tahun </label>
                               <div class="input-group date">
                               <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tahun" name="thn_mulai" required>
+                              <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tahun" name="tahun" required>
                               </div>
                               <!-- /.input group -->
                             <small style="color: red">* Tidak Boleh Kosong</small>
                           </div>
-                            <div class="form-group">
-                                <label>Tahun selesai</label>
-                                <div class="input-group date">
-                                  <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                  </div>
-                                  <input type="text" class="form-control pull-right" id="datepicker2" placeholder="Tahun" name="thn_selesai" required>
-                                </div>
-                                <!-- /.input group -->
-                                <small style="color: red">* Tidak Boleh Kosong</small>
-                              </div>
+                          <div class="form-group">
+                              <label for="exampleInputEmail1">Pilih Divisi</label>
+                              <select class="form-control select2" style="width: 100%;" name="id_divisi_p" required>
+                                           <option>Pilih Divisi</option>
+                                          @foreach($divisi_p as $value)
+                                              <option value="{{ $value->id }}">{{ $value->nm_devisi }}</option>
+                                          @endforeach
+                              </select>
+                              <small style="color: red" id="notify"></small>
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputEmail1">Pilih Jabatan</label>
+                              <select class="form-control select2" style="width: 100%;" name="id_jabatan_p" required>
+                                           <option>Pilih Jabatan</option>
+                                          @foreach($jabatan_p as $value)
+                                              @if($value->level_jabatan == 2)
+                                              <option value="{{ $value->id }}">{{ $value->nm_jabatan }}</option>
+                                              @endif
+                                          @endforeach
+                              </select>
+                              <small style="color: red" id="notify"></small>
+                          </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukan Target Jangka Panjang Perusahaan Anda</label>
-                                    <textarea class="form-control" placeholder="Masukan Target Jngka Panjang Perusahaan Anda" name="target_puncak" id="isi_tjp" required></textarea>
+                                    <label for="exampleInputEmail1">Masukan Target Supervisor Perusahaan Anda</label>
+                                    <input type="text" class="form-control" placeholder="Masukan Target Supervisor" name="target_supervisor"  required></input>
                                     <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Masukkan Jumlah Target Spesifik</label>
-                                    <input type="number" class="form-control" placeholder="Masukan Jumlah Target Anda dalam bentuk angka" name="jumlah_target"  required></input>
+                                    <input type="number" class="form-control" placeholder="Masukan Jumlah Target dalam bentuk angka" name="jumlah_target"  required></input>
                                     <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
                                 <div class="form-group">
@@ -90,7 +106,6 @@
     <!-- /.content -->
 </div>
 @stop
-
 
 @section('plugins')
      <!-- iCheck 1.0.1 -->
