@@ -77,7 +77,7 @@
                                     <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Satuan Target</label>
+                                    <label for="exampleInputEmail1">Satuan Target Per</label>
                                     <input type="text" class="form-control" placeholder="Masukan Satuan Target Anda" name="satuan_target"  required></input>
                                     <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
