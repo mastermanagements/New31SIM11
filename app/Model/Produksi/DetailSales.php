@@ -10,4 +10,8 @@ class DetailSales extends Model
     protected $table = 'p_detail_sales';
 
     protected $fillable = ['id_sales','id_barang','hpp','jumlah_jual','diskon','jumlah_harga','id_perusahaan','id_karyawan'];
+
+    public function linkToSales(){
+        return $this->belongsTo('App\Model\Produksi\PSO','id_sales');
+    }
 }
