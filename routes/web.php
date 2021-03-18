@@ -357,6 +357,17 @@ Route::post('update-target-sup', 'karyawan\TargetPerusahaan@updateTargetSup');
 
 Route::put('hapus-target-sup/{id}', 'karyawan\TargetPerusahaan@deleteTargetSup');
 
+//Target Staf
+Route::get('buat-target-staf', 'karyawan\TargetPerusahaan@createTargetStaf');
+
+Route::post('store-target-staf', 'karyawan\TargetPerusahaan@storeTargetStaf');
+
+Route::get('ubah-target-staf/{id}', 'karyawan\TargetPerusahaan@editTargetStaf');
+
+Route::post('update-target-staf', 'karyawan\TargetPerusahaan@updateTargetStafer');
+
+Route::put('hapus-target-staf/{id}', 'karyawan\TargetPerusahaan@deleteTargetStaf');
+
 //--- Strategi Perusahaan ---
 Route::get('Strategi-Perusahaan', 'karyawan\StrategiPerusahaan@index');
 

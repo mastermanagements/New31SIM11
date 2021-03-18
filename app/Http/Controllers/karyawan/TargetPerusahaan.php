@@ -11,6 +11,7 @@ use App\Model\Karyawan\TargetSupervisor as TargetSup;
 use App\Model\Karyawan\TargetStaf as TargetStaf;
 use App\Model\Karyawan\Bagian as Bagian;
 use App\Model\Karyawan\Devisi as Divisi;
+use App\Model\Superadmin_ukm\H_karyawan as Karyawan;
 use App\Model\Superadmin_ukm\U_jabatan_p as Jabatan;
 
 use Session;
@@ -44,11 +45,13 @@ class TargetPerusahaan extends Controller
         'target_man_group'=> TargetMan::where('id_perusahaan', $this->id_perusahaan)->groupBy('tahun','id_jabatan_p')->get(),
         'target_sup'=> TargetSup::all()->where('id_perusahaan', $this->id_perusahaan),
         'target_sup_group'=> TargetSup::where('id_perusahaan', $this->id_perusahaan)->groupBy('tahun','id_jabatan_p')->get(),
+        'target_staf'=> TargetStaf::all()->where('id_perusahaan', $this->id_perusahaan),
+        'target_staf_group'=> TargetStaf::where('id_perusahaan', $this->id_perusahaan)->groupBy('id_target_superv','bulan','nm_karyawan')->get(),
         'bagian_p'=>Bagian::all()->where('id_perusahaan', $this->id_perusahaan),
 		    'divisi_p'=>Divisi::all()->where('id_perusahaan', $this->id_perusahaan),
 		    'jabatan_p'=>Jabatan::all()->where('id_perusahaan', $this->id_perusahaan)
     ];
-		//dd($data_pass['target_eks_group']);
+		//dd($data_pass['target_staf_group']);
         return view('user.karyawan.section.TargetPerusahaan.page_default', $data_pass);
 
     }
@@ -421,7 +424,7 @@ public function updateTargetMan(Request $req)
       $jumlah_target = $req->jumlah_target;
       $satuan_target = $req->satuan_target;
 
-      $model = new TargetMan;
+      $model = new TargetSup;
       $model->id_target_man = $id_target_man;
       $model->tahun = $tahun;
       $model->id_divisi_p = $id_divisi_p;
@@ -470,10 +473,9 @@ public function updateTargetMan(Request $req)
           $target_supervisor = $req->target_supervisor_ubah;
           $jumlah_target = $req->jumlah_target_ubah;
           $satuan_target = $req->satuan_target_ubah;
-          $id_tsup = $req->id_tman_ubah;
+          $id_tsup = $req->id_tsup_ubah;
 
-
-              if(empty($model = TargetSup::where('id', $id_sup)->where('id_perusahaan', $this->id_perusahaan)->first())){
+              if(empty($model = TargetSup::where('id', $id_tsup)->where('id_perusahaan', $this->id_perusahaan)->first())){
                   return abort(404);
               }
 
@@ -508,6 +510,118 @@ public function updateTargetMan(Request $req)
           }
         }
 
+        /* -- target Staf --*/
+        public function createTargetStaf()
+          {
+            $data_jab = [
+                'target_sup' =>TargetSup::all()->where('id_perusahaan', $this->id_perusahaan),
+                'karyawan' =>Karyawan::all()->where('id_perusahaan', $this->id_perusahaan),
+                'jabatan_p' =>Jabatan::all()->where('id_perusahaan', $this->id_perusahaan),
+
+            ];
+              return view('user.karyawan.section.TargetPerusahaan.page_create_staf', $data_jab);
+          }
+
+        public function storeTargetStaf(Request $req)
+          { //dd($req->all());
+              $this->validate($req,[
+             'id_target_superv' => 'required',
+             'bulan'=> 'required',
+             'nm_karyawan' => 'required',
+             'target_staf'=> 'required',
+             'jumlah_target'=> 'required',
+             'satuan_target'=> 'required'
+              ]);
+
+          $id_target_superv = $req->id_target_superv;
+          $bulan = $req->bulan;
+          $nm_karyawan = $req->nm_karyawan;
+          $target_staf = $req->target_staf;
+          $jumlah_target = $req->jumlah_target;
+          $satuan_target = $req->satuan_target;
+
+          $model = new TargetStaf;
+          $model->id_target_superv = $id_target_superv;
+          $model->bulan = $bulan;
+          $model->nm_karyawan = $nm_karyawan;
+          $model->target_staf = $target_staf;
+          $model->jumlah_target = $jumlah_target;
+          $model->satuan_target = $satuan_target;
+          $model->id_perusahaan = $this->id_perusahaan;
+          $model->id_karyawan = $this->id_karyawan;
+
+              if($model->save()){
+                  return redirect('Target-Perusahaan')->with('message_success', 'Berhasil menambah target Staf');
+              }else{
+                  return redirect('Target-Perusahaan')->with('message_fail', 'Terjadi Kesalahan, Silahkan ulangi lagi');
+              }
+          }
+
+          public function editTargetStaf($id)
+            {
+                if(empty($target_staf = TargetStaf::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
+                    return abort(404);
+                }
+                $data = [
+                  'target_staf'=> $target_staf,
+                ];
+                return response()->json($data);
+            }
+
+        public function updateTargetStafer (Request $req)
+          {
+            //dd($req->all());
+              $this->validate($req,[
+                'id_target_superv_ubah' => 'required',
+                'bulan_ubah' => 'required',
+                'nm_karyawan_ubah'=>'required',
+                'target_staf_ubah'=> 'required',
+                'jumlah_target_ubah'=> 'required',
+                'satuan_target_ubah'=> 'required',
+                'id_tstaf_ubah'=> 'required'
+                  ]);
+
+              $id_target_superv = $req->id_target_superv_ubah;
+              $bulan = $req->bulan_ubah;
+              $nm_karyawan = $req->nm_karyawan_ubah;
+              $target_staf= $req->target_staf_ubah;
+              $jumlah_target = $req->jumlah_target_ubah;
+              $satuan_target = $req->satuan_target_ubah;
+              $id_tstaf = $req->id_tstaf_ubah;
+
+                  if(empty($model = TargetStaf::where('id', $id_tstaf)->where('id_perusahaan', $this->id_perusahaan)->first())){
+                      return abort(404);
+                  }
+
+              $model->id_target_superv = $id_target_superv;
+              $model->bulan = $bulan;
+              $model->nm_karyawan = $nm_karyawan;
+              $model->target_staf = $target_staf;
+              $model->jumlah_target = $jumlah_target;
+              $model->satuan_target = $satuan_target;
+              $model->id_perusahaan = $this->id_perusahaan;
+              $model->id_karyawan = $this->id_karyawan;
+              dd($model->all());
+                  if($model->save())
+                  {
+                      return redirect('Target-Perusahaan')->with('message_sucess','Berhasil mengubah Target Staf perusahaan');
+                  }else
+                  {
+                      return redirect('Target-Perusahaan')->with('message_fail','Terjadi kesalahan, Silahkan ubah ulang..!');
+                  }
+          }
+
+          public function deleteTargetStaf(Request $req, $id)
+            {
+              $model = TargetStaf::find($id);
+              if($model->delete())
+              {
+                return redirect ('Target-Perusahaan')->with('message_sucess','Berhasil menghapus data target Staf perusahaan');
+              }else
+              {
+                  return redirect('Target-Perusahaan')->with('message_fail','Gagal menghapus data target Staf perusahaan');
+              }
+            }
 
 
 }

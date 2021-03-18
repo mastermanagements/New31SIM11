@@ -38,7 +38,7 @@
                               <select class="form-control select2" style="width: 100%;" name="id_target_eks" required>
                                            <option>Pilih Target Eksekutif</option>
                                           @foreach($target_eks as $value)
-                                              <option value="{{ $value->id }}">{{ $value->target_eksekutif }}</option>
+                                              <option value="{{ $value->id }}">Target {{ $value->getJabatan->nm_jabatan }} Tahun {{ $value->tahun }}&nbsp;:&nbsp;{{ $value->target_eksekutif }} &nbsp; jumlah {{ $value->jumlah_target }} &nbsp; per {{ $value->satuan_target }}</option>
                                           @endforeach
                               </select>
                               <small style="color: red" id="notify"></small>
@@ -87,7 +87,7 @@
                                     <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Satuan Target</label>
+                                    <label for="exampleInputEmail1">Satuan Target Per</label>
                                     <input type="text" class="form-control" placeholder="Masukan Satuan Target Anda" name="satuan_target"  required></input>
                                     <small style="color: red">* Tidak boleh kosong</small>
                                 </div>

@@ -229,7 +229,7 @@
             </div>
             <!-- /.tab-pane 3-->
 
-            <!-- Target Manager -->
+            <!-- Target Supervisor -->
             <div class="tab-pane" id="tab_4">
                 <a href="{{ url('buat-target-sup') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
                 <p></p>
@@ -292,8 +292,81 @@
             @endforeach
           @endforeach
         </div>
-        <!-- /.tab-pane 3-->
+        <!-- /.tab-pane 5-->
+        <!-- Target Staf -->
+        <div class="tab-pane" id="tab_5">
+            <a href="{{ url('buat-target-staf') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+            <p></p>
+            @if(!empty($target_staf))
+              @foreach($target_sup as $supervisor)
+                @foreach($supervisor->getTargetStaf->groupBy('id_target_superv') as $super => $values)
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                      {{ $supervisor->tahun }}
+                     </h3>
+                      <div class="box-tools pull-right">
+                      <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Buka-tutup"><i class="fa fa-times"></i>
+                     </div>
+                      <!-- /.box-tools -->
+                </div>
+                @foreach($target_staf_group as $group)
+                @if ($group->id_target_superv == $supervisor->id)
+                    <div class="box-header">
+                        <h3 class="box-title">{{ $group->bulan  }} </h3>
+                    </div>
 
+                    <div class="box-header">
+                        <h3 class="box-title">{{ $group->getKaryawan->nama_ky  }} </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th style="width: 10px">No</th>
+                                <th>Target Staf</th>
+                                <th>Jumlah </th>
+                                <th>Satuan</th>
+                                <th>Aksi</th>
+                            </tr>
+                            @php($i=1)
+                            @foreach($target_staf as $targetStaf)
+                              @if($targetStaf->id_target_superv == $supervisor->id)
+                                @if($targetStaf->bulan == $group->bulan)
+                                  @if($targetStaf->nm_karyawan == $group->nm_karyawan)
+                                  <tr>
+                                      <td>{{ $i++ }}</td>
+                                      <td> {{ $targetStaf->target_staf }} </td>
+                                      <td><span class="badge bg-yellow">{{ $targetStaf->jumlah_target }} </span></td>
+                                      <td><span class="badge bg-green">{{ $targetStaf->satuan_target }} </span></td>
+                                      <td>
+                                        <form action="{{ url('hapus-target-staf/'. $targetStaf->id) }}" method="post">
+                                            <input type="hidden" name="_method" value="put">
+                                            {{ csrf_field() }}
+                                            <button type="submit" onclick="return confirm('Yakin mau menghapus target Staf?')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                            <a href="#" onclick="ubahTargetStaf({{ $targetStaf->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target Staf">
+                                            <i class="fa fa-edit"></i></a>
+                                        </form>
+                                      </td>
+                                  </tr>
+
+                                  @endif
+                               @endif
+                             @endif
+                           @endforeach
+                        </table>
+                    </div>
+                    <!--- /. box-body-->
+                  @endif
+                @endforeach
+
+            </div>
+          <!-- /.box success -->
+        @endforeach
+        @endforeach
+        @endif
+        </div>
+        <!-- /.tab-pane 5-->
             </div>
               <!-- /.tab-content -->
           </div>
@@ -380,15 +453,31 @@
  						$('[name="tahun_ubah"]').val(result.target_sup.tahun);
  						$('[name="id_divisi_p_ubah"]').val(result.target_sup.id_divisi_p).trigger('change');
  						$('[name="id_jabatan_p_ubah"]').val(result.target_sup.id_jabatan_p).trigger('change');
-             $('[name="target_supervisor_ubah"]').val(result.target_sup.target_manager);
+             $('[name="target_supervisor_ubah"]').val(result.target_sup.target_supervisor);
              $('[name="jumlah_target_ubah"]').val(result.target_sup.jumlah_target);
              $('[name="satuan_target_ubah"]').val(result.target_sup.satuan_target);
-             $('#modal-ubah-target_sup').modal('show');
+             $('#modal-ubah-target-sup').modal('show');
                      }
                  })
  			    };
 
-
+          ubahTargetStaf = function (id) {
+                 $.ajax({
+                     url: '{{ url('ubah-target-staf') }}/'+id,
+                     dataType : 'json',
+                     success:function (result) {
+              //console.log(result.data_target_eks.thn_mulai);
+            $('[name="id_tstaf_ubah"]').val(result.target_staf.id);
+            $('[name="id_target_superv_ubah"]').val(result.target_staf.id_target_superv).trigger('change');
+            $('[name="bulan_ubah"]').val(result.target_staf.bulan);
+            $('[name="nm_karyawan_ubah"]').val(result.target_staf.nm_karyawan).trigger('change');
+             $('[name="target_staf_ubah"]').val(result.target_staf.target_staf);
+             $('[name="jumlah_target_ubah"]').val(result.target_staf.jumlah_target);
+             $('[name="satuan_target_ubah"]').val(result.target_staf.satuan_target);
+             $('#modal-ubah-target-staf').modal('show');
+                     }
+                 })
+          };
     })
 
     </script>

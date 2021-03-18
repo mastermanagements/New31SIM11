@@ -11,7 +11,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Target Supervisor
+            Target Staf
         </h1>
     </section>
 
@@ -27,58 +27,47 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Tambah  Target Supervisor Perusahaan</h3>
+                        <h3 class="box-title">Formulir Tambah  Target Staf Perusahaan</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-target-sup') }}" method="post">
+                    <form role="form" action="{{ url('store-target-staf') }}" method="post">
                         <div class="box-body">
                           <div class="form-group">
-                              <label for="exampleInputEmail1">Target Manager </label>
-                              <select class="form-control select2" style="width: 100%;" name="id_target_man" required>
-                                           <option>Pilih Target Manager</option>
-                                          @foreach($target_man as $value)
-                                              <option value="{{ $value->id }}">Target {{ $value->getJabatan->nm_jabatan }} Tahun {{ $value->tahun }}&nbsp;:&nbsp;{{ $value->target_manager }} &nbsp; jumlah {{ $value->jumlah_target }} &nbsp; per {{ $value->satuan_target }}</option>
+                              <label for="exampleInputEmail1">Pilih Target Supervisor </label>
+                              <select class="form-control select2" style="width: 100%;" name="id_target_superv" required>
+                                           <option>Pilih Target Supervisor</option>
+                                          @foreach($target_sup as $value)
+                                              <option value="{{ $value->id }}">Target {{ $value->getJabatan->nm_jabatan }} Tahun {{ $value->tahun }}&nbsp;:&nbsp;{{ $value->target_supervisor }} &nbsp; jumlah {{ $value->jumlah_target }} &nbsp; per {{ $value->satuan_target }}</option>
                                           @endforeach
                               </select>
                               <small style="color: red" id="notify"></small>
                           </div>
                           <div class="form-group">
-                              <label>Tahun </label>
+                              <label>Bulan </label>
                               <div class="input-group date">
                               <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tahun" name="tahun" required>
+                              <input type="text" class="form-control pull-right" id="datepicker" placeholder="Bulan" name="bulan" required>
                               </div>
                               <!-- /.input group -->
                             <small style="color: red">* Tidak Boleh Kosong</small>
                           </div>
                           <div class="form-group">
-                              <label for="exampleInputEmail1">Divisi</label>
-                              <select class="form-control select2" style="width: 100%;" name="id_divisi_p" required>
-                                           <option>Pilih Divisi</option>
-                                          @foreach($divisi_p as $value)
-                                              <option value="{{ $value->id }}">{{ $value->nm_devisi }}</option>
+                              <label for="exampleInputEmail1">Karyawan</label>
+                              <select class="form-control select2" style="width: 100%;" name="nm_karyawan" required>
+                                           <option>Pilih Karyawan</option>
+                                          @foreach($karyawan as $value)
+                                              <option value="{{ $value->id }}">{{ $value->nama_ky }}</option>
                                           @endforeach
                               </select>
                               <small style="color: red" id="notify"></small>
                           </div>
-                          <div class="form-group">
-                              <label for="exampleInputEmail1"> Jabatan</label>
-                              <select class="form-control select2" style="width: 100%;" name="id_jabatan_p" required>
-                                           <option>Pilih Jabatan</option>
-                                          @foreach($jabatan_p as $value)
-                                              @if($value->level_jabatan == 2)
-                                              <option value="{{ $value->id }}">{{ $value->nm_jabatan }}</option>
-                                              @endif
-                                          @endforeach
-                              </select>
-                              <small style="color: red" id="notify"></small>
-                          </div>
+
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukan Target Supervisor Perusahaan Anda</label>
-                                    <input type="text" class="form-control" placeholder="Masukan Target Supervisor" name="target_supervisor"  required></input>
+                                    <label for="exampleInputEmail1">Masukan Target Karyawan</label>
+                                    <input type="text" class="form-control" placeholder="Masukan Target Supervisor" name="target_staf"  required></input>
                                     <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
                                 <div class="form-group">
@@ -117,15 +106,9 @@
 
     $('#datepicker').datepicker({
         autoclose: true,
-        format: 'yyyy',
-        viewMode: "years",
-        minViewMode: "years"
-    });
-    $('#datepicker2').datepicker({
-        autoclose: true,
-        format: 'yyyy',
-        viewMode: "years",
-        minViewMode: "years"
+        format: 'MM',
+        viewMode: "month",
+        minViewMode: "month"
     });
 
         window.onload = function() {
