@@ -188,7 +188,7 @@
                                             <td>{{ $item_Psales->no_sales }}</td>
                                             <td>{{ $item_Psales->linkToKlien->nm_klien }}</td>
                                             <td>{{ date('d-m-Y', strtotime($item_Psales->tgl_kirim)) }}</td>
-                                            <td>{{ $item_Psales->total }}</td>
+                                            <td>{{ $item_Psales->bayar }}</td>
                                             <td>
                                                 <form action="{{ url('penjualan-barang/'. $item_Psales->id) }}" method="post">
                                                     {{ csrf_field() }}
@@ -203,6 +203,15 @@
                                     @endif
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="tab-pane " id="tab_5">
+                            <h1>Pembayaran</h1>
+                        </div>
+                        <div class="tab-pane " id="tab_6">
+                            <h1>Return Pembayaran</h1>
+                        </div>
+                        <div class="tab-pane " id="tab_7">
+                            <h1>History Harga penjualan</h1>
                         </div>
                         <!-- /.tab-pane -->
                     </div>

@@ -841,6 +841,7 @@ Route::resource('p-diskon', 'produksi\PDiskon');
 
 # Penjualan
 Route::resource('penjualan-barang','produksi\PSales');
+Route::post('penjualan-barang/{id_p_sales}/detail','produksi\PSales@updateDetail');
 #detail penjualan
 Route::resource('detail-penjualan-barang','produksi\DetailSales');
 Route::get('detail-penjualan-barang/{id_detail_penjualan}/destroy','produksi\DetailSales@destroy');

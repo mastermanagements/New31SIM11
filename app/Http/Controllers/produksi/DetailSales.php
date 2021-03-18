@@ -95,7 +95,7 @@ class DetailSales extends Controller
         $model->hpp = $this->check_metode_jual($req);
 
         $model->jumlah_jual = $req->jumlah_jual;
-        $model->diskon = $diskon;
+        $model->diskon = $diskon_group;
         $model->jumlah_harga = $total;
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
         if($model->save()){

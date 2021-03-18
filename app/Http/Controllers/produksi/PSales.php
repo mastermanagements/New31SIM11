@@ -105,4 +105,30 @@ class PSales extends Controller
             return redirect('Penjualan')->where('message_fail','Data penjualan gagal dihapus');
         }
     }
+
+    public function updateDetail(Request $req, $id_p_sales){
+        $this->validate($req,[
+            'diskon_tambahan'=> 'required',
+            'pajak'=> 'required',
+            'biaya_tambahan' => 'required',
+            'jatuh_tempo' => 'required',
+            'total'=> 'required',
+            'hutang'=> 'required',
+        ]);
+
+        $model = PS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id_p_sales);
+        $model->diskon_tambahan = $req->diskon_tambahan;
+        $model->pajak = $req->pajak;
+        $model->bayar = $req->total;
+        $model->kurang_bayar = $req->hutang;
+        $model->biaya_tambahan = $req->biaya_tambahan;
+        $model->tgl_jatuh_tempo = $req->jatuh_tempo;
+        $model->keterangan = $req->ket;
+        if($model->save()){
+            return redirect('Penjualan')->with('message_success','Data penjualan telah diubah');
+        }
+        else{
+            return redirect('Penjualan')->where('message_fail','Data penjualan gagal diubah');
+        }
+    }
 }
