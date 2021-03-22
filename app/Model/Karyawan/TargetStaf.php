@@ -13,6 +13,10 @@ class TargetStaf extends Model
   {
     return $this->belongsTo('App\Model\Superadmin_ukm\H_karyawan','nm_karyawan');
   }
-  
+  public function getStrategiStaf()
+  {
+		return $this->hasOne('App\Model\Karyawan\StrategiStaf', 'id_tstaf');
+  }
+
 
 }

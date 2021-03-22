@@ -14,6 +14,7 @@ use App\Model\Karyawan\Devisi as Divisi;
 use App\Model\Superadmin_ukm\H_karyawan as Karyawan;
 use App\Model\Superadmin_ukm\U_jabatan_p as Jabatan;
 
+use Carbon\Carbon;
 use Session;
 
 class TargetPerusahaan extends Controller
@@ -46,12 +47,15 @@ class TargetPerusahaan extends Controller
         'target_sup'=> TargetSup::all()->where('id_perusahaan', $this->id_perusahaan),
         'target_sup_group'=> TargetSup::where('id_perusahaan', $this->id_perusahaan)->groupBy('tahun','id_jabatan_p')->get(),
         'target_staf'=> TargetStaf::all()->where('id_perusahaan', $this->id_perusahaan),
-        'target_staf_group'=> TargetStaf::where('id_perusahaan', $this->id_perusahaan)->groupBy('id_target_superv','bulan','nm_karyawan')->get(),
+        'target_staf_bln'=> TargetStaf::where('id_perusahaan', $this->id_perusahaan)->groupBy('id_target_superv','bulan')->get(),
+        'target_staf_ky'=> TargetStaf::where('id_perusahaan', $this->id_perusahaan)->groupBy('bulan','nm_karyawan')->get(),
         'bagian_p'=>Bagian::all()->where('id_perusahaan', $this->id_perusahaan),
 		    'divisi_p'=>Divisi::all()->where('id_perusahaan', $this->id_perusahaan),
-		    'jabatan_p'=>Jabatan::all()->where('id_perusahaan', $this->id_perusahaan)
+		    'jabatan_p'=>Jabatan::all()->where('id_perusahaan', $this->id_perusahaan),
+        'karyawan'=>Karyawan::all()->where('id_perusahaan', $this->id_perusahaan)
+        //'current_year'=>now()->year
     ];
-		//dd($data_pass['target_staf_group']);
+		//dd($data_pass['target_staf_ky']);
         return view('user.karyawan.section.TargetPerusahaan.page_default', $data_pass);
 
     }
@@ -568,7 +572,7 @@ public function updateTargetMan(Request $req)
                 return response()->json($data);
             }
 
-        public function updateTargetStafer (Request $req)
+        public function updateTargetStaf (Request $req)
           {
             //dd($req->all());
               $this->validate($req,[
@@ -601,7 +605,7 @@ public function updateTargetMan(Request $req)
               $model->satuan_target = $satuan_target;
               $model->id_perusahaan = $this->id_perusahaan;
               $model->id_karyawan = $this->id_karyawan;
-              dd($model->all());
+              //dd($model->all());
                   if($model->save())
                   {
                       return redirect('Target-Perusahaan')->with('message_sucess','Berhasil mengubah Target Staf perusahaan');

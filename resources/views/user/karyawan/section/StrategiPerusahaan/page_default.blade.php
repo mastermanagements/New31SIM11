@@ -2,10 +2,10 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+
 @stop
 
 @section('master_content')
-
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -20,260 +20,412 @@
         <!--------------------------
           | Your Page Content Here |
           -------------------------->
-        <p></p>
         <div class="row">
-
             @if(!empty(session('message_success')))
                 <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
             @elseif(!empty(session('message_fail')))
                 <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
             @endif
             <p></p>
-			<!---target jangka panjang--->
-			@foreach ($data_tjp as $tjp)
-				<div class="col-md-12">
-                    <div class="box box-default collapsed-box">
-						<div class="box-header with-border">
-						@if(!empty($tjp))
-                            <h3 class="box-title"><b> {{ $tjp->nm_tjp }}</b></h3>
-						@endif
-								<div class="box-tools pull-right">
-									<button type="button" class="btn btn-box-tool" onclick="tambahSJP({{ $tjp->id }})" title="Tambah Strategi Jangka Panjang"><i class="fa fa-plus"></i>
-									</button> 			
-									<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="Buka tutup isi"></i>
-									</button>   
-								</div>
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Strategi Jangka Panjang</a></li>
+                        <li><a href="#tab_2" data-toggle="tab">Strategi Eksekutif</a></li>
+                        <li><a href="#tab_3" data-toggle="tab">Strategi Manager</a></li>
+                        <li><a href="#tab_4" data-toggle="tab">Strategi Supervisor</a></li>
+                        <li><a href="#tab_5" data-toggle="tab">Strategi Staf</a></li>
+                        <li class="pull-right"><a href="{{ url('Target-Perusahaan') }}">Target Perusahaan</a></li>
+                    </ul>
+                    <div class="tab-content">
+                      <!-- Strategi Jangka Panjang Perusahaan -->
+                        <div class="tab-pane active" id="tab_1">
+                            @if(!empty($sjp))
+                            @foreach($sjp as $value)
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Strategi Jangka Panjang Perusahaan</h3>
+                                      <div class="box-tools pull-right">
+                                      <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Buka-tutup"><i class="fa fa-times"></i>
+                                     </div>
+                                      <!-- /.box-tools -->
+                                </div>
+                                <div class="box-body">
+                                    <ul>
+                                      <form action="{{ url('hapus-sjp/'. $value->id) }}" method="post">
+                                          <input type="hidden" name="_method" value="put">
+                                          {{ csrf_field() }}
+                                          <button type="submit" onclick="return confirm('apakah anda akan menghapus data target jangka panjang perusahaan anda?.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                          <a href="#" onclick="ubahSJP({{ $value->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target jangka panjang perusahaan">
+                                          <i class="fa fa-edit"></i></a>
+                                      </form>
+                                      <div class="col-md-12">
+                                        <div class="box-footer no-padding">
+                                          <ul class="nav nav-stacked">
+                                            <dl>
+                                                <dd>{!! $value->isi !!}</dd>
+                                            </dl>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </ul>
+                                </div>
+                                <!-- /.box body -->
                         </div>
-                        <!-- /.box -->
-						<div class="box-body">
-							<ul>
-								@if(!empty($tjp->getSJP->isi_sjp))	
-								<a href="#" onclick="hapusSJP({{ $tjp->getSJP->id }})" class="pull-right" title="hapus strategi Jangka Panjang" style="padding-left: 1%"><i class="fa fa-trash"></i></a> 
-								<a href="#" onclick="ubahSJP({{ $tjp->getSJP->id }})" class="pull-right" title="ubah strategi jangka panjang"><i class="fa fa-pencil"></i>  </a> </li>
-								<h4 class="box-title">
-									{!! $tjp->getSJP->isi_sjp !!}
-								</h4>
-								@endif	
-							</ul>
-						</div>
-					</div>
-				</div>
-				@foreach($tjp->getTargetTahunan->groupBy('tahun') as $tahune =>$values)
-				<div class="col-md-11">
-                    <div class="box box-success">
-                        <div class="box-header with-border">
-                            <h3 class="box-title"><b> {{ $tahune }}</b></h3>
-                        </div>   
+                          <!-- /.box success -->
+                        @endforeach
+                        @endif
+                      </div>
+                      <!-- /.tab-pane 1-->
+
+                      <div class="tab-pane" id="tab_2">
+                          @foreach($jabatan_p as $jabat)
+                            @foreach($jabat->getTargetEks->groupBy('id_jabatan_p') as $jabatan => $values)
+                              <div class="box box-success">
+                                  <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                        {{ $jabat->nm_jabatan }}
+                                    </h3>
+                                        <div class="box-tools pull-right">
+                                          <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Buka-tutup"><i class="fa fa-times"></i>
+                                       </div>
+                                        <!-- /.box-tools -->
+                                  </div>
+                                  <!-- ./box-header-->
+                                    @foreach($target_eks_group as $group)
+                                      @if ($group->id_jabatan_p == $jabat->id)
+                                      <div class="box-header">
+                                          <h3 class="box-title">{{ $group->tahun  }} </h3>
+                                      </div>
+                                        <div class="box-body">
+                                          @foreach($target_eks as $targetEks)
+                                            @foreach($sekutif as $strategiEks)
+                                              @if($strategiEks->id_teks == $targetEks->id)
+                                                @if($targetEks->tahun == $group->tahun)
+                                                  @if($targetEks->id_jabatan_p == $jabat->id)
+                                                    <ul>
+                                                      <li>
+                                                        <b>{{ $strategiEks->nama }}</b>
+                                                        <form action="{{ url('hapus-sekutif/'. $strategiEks->id) }}" method="post">
+                                                          <input type="hidden" name="_method" value="put">
+                                                          {{ csrf_field() }}
+                                                          <button type="submit" onclick="return confirm('apakah anda akan menghapus data strategi eksekutif perusahaan anda?.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                                            <a href="#" onclick="ubahSEks({{ $strategiEks->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target strategi eksekutif perusahaan">
+                                                              <i class="fa fa-edit"></i>
+                                                            </a>
+                                                        </form>
+                                                      </li>
+                                                    </ul>
+                                                      <div class="col-md-12">
+                                                        <div class="box-footer no-padding">
+                                                          <ul class="nav nav-stacked">
+                                                            <dl>
+                                                              <dd>{!! $strategiEks->isi !!}</dd>
+                                                            </dl>
+                                                          </ul>
+                                                        </div>
+                                                          <!--col-box-ffoter-->
+                                                      </div>
+                                                        <!--./col-md-12-->
+                                                  @endif
+                                                @endif
+                                              @endif
+                                            @endforeach
+                                          @endforeach
+                                        </div>
+                                          <!-- ./box-body-->
+                                      @endif
+                                    @endforeach
+                              </div>
+                              <!-- ./box box-success-->
+                            @endforeach
+                          @endforeach
+                      </div>
+                      <!-- /.tab-pane 2-->
+
+                      <div class="tab-pane" id="tab_3">
+                          @foreach($jabatan_p as $jabat)
+                            @foreach($jabat->getTargetMan->groupBy('id_jabatan_p') as $jabatan => $values)
+                              <div class="box box-success">
+                                <div class="box-header with-border">
+                                  <h3 class="box-title">
+                                      {{ $jabat->nm_jabatan }}
+                                  </h3>
+                                      <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Buka-tutup"><i class="fa fa-times"></i>
+                                     </div>
+                                      <!-- /.box-tools -->
+                                </div>
+                                 <!-- /.box-header-->
+                                 @foreach($target_man_group as $group)
+                                   @if ($group->id_jabatan_p == $jabat->id)
+                                   <div class="box-header">
+                                       <h3 class="box-title">{{ $group->tahun  }} </h3>
+                                   </div>
+                                     <div class="box-body">
+                                       @foreach($target_man as $targetMan)
+                                         @foreach($sman as $strategiMan)
+                                           @if($strategiMan->id_tman == $targetMan->id)
+                                             @if($targetMan->tahun == $group->tahun)
+                                               @if($targetMan->id_jabatan_p == $jabat->id)
+                                                 <ul>
+                                                   <li>
+                                                     <b>{{ $strategiMan->nama }}</b>
+                                                     <form action="{{ url('hapus-sman/'. $strategiMan->id) }}" method="post">
+                                                       <input type="hidden" name="_method" value="put">
+                                                       {{ csrf_field() }}
+                                                       <button type="submit" onclick="return confirm('apakah anda akan menghapus data strategi manager perusahaan anda?.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                                         <a href="#" onclick="ubahSMan({{ $strategiMan->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target strategi manager perusahaan">
+                                                           <i class="fa fa-edit"></i>
+                                                         </a>
+                                                     </form>
+                                                   </li>
+                                                 </ul>
+                                                   <div class="col-md-12">
+                                                     <div class="box-footer no-padding">
+                                                       <ul class="nav nav-stacked">
+                                                         <dl>
+                                                           <dd>{!! $strategiMan->isi !!}</dd>
+                                                         </dl>
+                                                       </ul>
+                                                     </div>
+                                                       <!--col-box-ffoter-->
+                                                   </div>
+                                                     <!--./col-md-12-->
+                                               @endif
+                                             @endif
+                                           @endif
+                                         @endforeach
+                                       @endforeach
+                                     </div>
+                                       <!-- ./box-body-->
+                                   @endif
+                                 @endforeach
+                              </div>
+                              <!-- ./box-success-->
+                            @endforeach
+                          @endforeach
+                      </div>
+                      <!-- /.tab-pane 4-->
+                      <div class="tab-pane" id="tab_4">
+                          @foreach($jabatan_p as $jabat)
+                            @foreach($jabat->getTargetSup->groupBy('id_jabatan_p') as $jabatan => $values)
+                              <div class="box box-success">
+                                <div class="box-header with-border">
+                                  <h3 class="box-title">
+                                      {{ $jabat->nm_jabatan }}
+                                  </h3>
+                                      <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Buka-tutup"><i class="fa fa-times"></i>
+                                     </div>
+                                      <!-- /.box-tools -->
+                                </div>
+                                 <!-- /.box-header-->
+                                 @foreach($target_sup_group as $group)
+                                   @if ($group->id_jabatan_p == $jabat->id)
+                                   <div class="box-header">
+                                       <h3 class="box-title">{{ $group->tahun  }} </h3>
+                                   </div>
+                                     <div class="box-body">
+                                       @foreach($target_sup as $targetSup)
+                                         @foreach($ssup as $strategiSup)
+                                           @if($strategiSup->id_tsup == $targetSup->id)
+                                             @if($targetSup->tahun == $group->tahun)
+                                               @if($targetSup->id_jabatan_p == $jabat->id)
+                                                 <ul>
+                                                   <li>
+                                                     <b>{{ $strategiSup->nama }}</b>
+                                                     <form action="{{ url('hapus-ssup/'. $strategiSup->id) }}" method="post">
+                                                       <input type="hidden" name="_method" value="put">
+                                                       {{ csrf_field() }}
+                                                       <button type="submit" onclick="return confirm('apakah anda akan menghapus data strategi supervisor perusahaan anda?.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                                         <a href="#" onclick="ubahSSup({{ $strategiSup->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target strategi supervisor perusahaan">
+                                                           <i class="fa fa-edit"></i>
+                                                         </a>
+                                                     </form>
+                                                   </li>
+                                                 </ul>
+                                                   <div class="col-md-12">
+                                                     <div class="box-footer no-padding">
+                                                       <ul class="nav nav-stacked">
+                                                         <dl>
+                                                           <dd>{!! $strategiSup->isi !!}</dd>
+                                                         </dl>
+                                                       </ul>
+                                                     </div>
+                                                       <!--col-box-ffoter-->
+                                                   </div>
+                                                     <!--./col-md-12-->
+                                               @endif
+                                             @endif
+                                           @endif
+                                         @endforeach
+                                       @endforeach
+                                     </div>
+                                       <!-- ./box-body-->
+                                   @endif
+                                 @endforeach
+                              </div>
+                              <!-- ./box-success-->
+                            @endforeach
+                          @endforeach
+                      </div>
+                      <!-- /.tab-pane 4-->
+                      <div class="tab-pane" id="tab_5">
+                        @if(!empty($target_staf))
+                          @foreach($target_sup as $supervisor)
+                            @foreach($supervisor->getTargetStaf->groupBy('id_target_superv') as $super => $values)
+                              <div class="box box-success">
+                                <div class="box-header with-border">
+                                  <h3 class="box-title">
+                                      {{ $supervisor->tahun }}
+                                  </h3>
+                                      <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Buka-tutup"><i class="fa fa-times"></i>
+                                     </div>
+                                      <!-- /.box-tools -->
+                                </div>
+                                 <!-- /.box-header-->
+                                 @foreach($target_sup_group as $group)
+                                   @if ($group->id_jabatan_p == $jabat->id)
+                                   <div class="box-header">
+                                       <h3 class="box-title">{{ $group->tahun  }} </h3>
+                                   </div>
+                                     <div class="box-body">
+                                       @foreach($target_sup as $targetSup)
+                                         @foreach($ssup as $strategiSup)
+                                           @if($strategiSup->id_tsup == $targetSup->id)
+                                             @if($targetSup->tahun == $group->tahun)
+                                               @if($targetSup->id_jabatan_p == $jabat->id)
+                                                 <ul>
+                                                   <li>
+                                                     <b>{{ $strategiSup->nama }}</b>
+                                                     <form action="{{ url('hapus-ssup/'. $strategiSup->id) }}" method="post">
+                                                       <input type="hidden" name="_method" value="put">
+                                                       {{ csrf_field() }}
+                                                       <button type="submit" onclick="return confirm('apakah anda akan menghapus data strategi supervisor perusahaan anda?.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                                         <a href="#" onclick="ubahSSup({{ $strategiSup->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target strategi supervisor perusahaan">
+                                                           <i class="fa fa-edit"></i>
+                                                         </a>
+                                                     </form>
+                                                   </li>
+                                                 </ul>
+                                                   <div class="col-md-12">
+                                                     <div class="box-footer no-padding">
+                                                       <ul class="nav nav-stacked">
+                                                         <dl>
+                                                           <dd>{!! $strategiSup->isi !!}</dd>
+                                                         </dl>
+                                                       </ul>
+                                                     </div>
+                                                       <!--col-box-ffoter-->
+                                                   </div>
+                                                     <!--./col-md-12-->
+                                               @endif
+                                             @endif
+                                           @endif
+                                         @endforeach
+                                       @endforeach
+                                     </div>
+                                       <!-- ./box-body-->
+                                   @endif
+                                 @endforeach
+                              </div>
+                              <!-- ./box-success-->
+                            @endforeach
+                          @endforeach
+                      </div>
+                      <!-- /.tab-pane 5-->
                     </div>
-                    <!-- /.box -->
+                    <!--- /.tab-content -->
                 </div>
-					@foreach($data_tt as $Ttahunan)
-						@if ($tahune == $Ttahunan->tahun)
-							<div class="col-md-10">
-								<div class="box box-default collapsed-box">
-									<div class="box-header with-border">
-										  <h4 class="box-title">
-											  <b>Departemen</b> : {{ $Ttahunan->getBagian->nm_bagian }}, &nbsp; 
-											  <b>Divisi</b> : {{ $Ttahunan->getDivisi->nm_devisi }}, &nbsp; 
-											  <b>Jabatan</b> : {{ $Ttahunan->getJabatan->nm_jabatan }}
-										  </h4>
-										@if ((!empty($tjp->getSJP->id)) && (!empty($Ttahunan->id)))
-											<div class="box-tools pull-right">
-												<button type="button" class="btn btn-box-tool" onclick="tambahStahunan('{{ $tjp->getSJP->id }}','{{ $Ttahunan->id }}' )" title="tambah Strategi Tahunan"><i class="fa fa-plus"></i></button> 	
-												<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="buka tutup isi"></i></button>   
-											</div>
-										@endif
-									</div>
-									<div class="box-body">
-										<ul>
-										@if(!empty($Ttahunan->getStrategiTahunan->isi_stahunan))
-											
-											<a href="#" onclick="hapusStahunan({{ $Ttahunan->getStrategiTahunan->id }})" class="pull-right" title="hapus strategi tahunan" style="padding-left: 1%"><i class="fa fa-trash"></i></a> 
-											<a href="#" onclick="ubahStahunan({{ $Ttahunan->getStrategiTahunan->id }})" class="pull-right" title="ubah strategi tahunan"><i class="fa fa-pencil"></i>  </a> </li>
-											<h4 class="box-title">
-											{!! $Ttahunan->getStrategiTahunan->isi_stahunan !!}
-											</h4>
-										@endif	
-										</ul>
-									</div>
-								</div>
-                            <!-- /.box -->
-							</div>
-							@foreach($data_tbulanan as $bulan)
-							@if ($bulan->id_target_tahunan == $Ttahunan->id)	
-							<div class="col-md-9">
-								<div class="box box-default collapsed-box">
-									<div class="box-header with-border">
-									<h4 class="box-title">
-									{{ $bulan->bulan}}
-									</h4>
-									
-										@if ((!empty ($Ttahunan->getStrategiTahunan->id) && ($bulan->id)))
-										<div class="box-tools pull-right">
-											<button type="button" class="btn btn-box-tool" onclick="tambahSbulanan('{{ $bulan->id }}','{{ $Ttahunan->getStrategiTahunan->id }}' )" title="tambah Strategi Bulanan"><i class="fa fa-plus"></i></button> <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-close" title="buka tutup isi"></i></button>				
-										</div>
-										@endif	
-									</div>
-									<div class="box-body">
-										<ul>
-											<a href="#" onclick="hapusSbulanan({{ $bulan->id }})" class="pull-right" title="hapus strategi bulanan" style="padding-left: 1%">
-											<i class="fa fa-trash"></i></a> 
-										
-											<a href="#" onclick="ubahSbulanan({{ $bulan->id }})" class="pull-right" title="ubah strategi bulanan">
-											<i class="fa fa-pencil"></i>  </a> </li>
-											<h4 class="box-title">
-										
-											@if(!empty($bulan->getStrategiBulanan->isi_sbulanan))
-												{!! $bulan->getStrategiBulanan->isi_sbulanan !!}
-											@endif
-										</h4>
-										</ul>
-									</div>
-								</div>
-								<!-- /.box -->
-							</div>
-							@endif
-							@endforeach
-						@endif
-					@endforeach
-				@endforeach
-			@endforeach
-		</div>
+                <!--- /.nav-content-custom -->
+            </div>
+            <!--- /.col-md-12 -->
+        </div>
+        <!--- /.row -->
     </section>
+    <!-- /.section-content -->
 </div>
-    <!-- /.content -->
-	@include('user.karyawan.section.StrategiPerusahaan.include.modal')
-	
+<!--- /.content-wrapper -->
+  @include('user.karyawan.section.StrategiPerusahaan.include.modal');
 @stop
+
 @section('plugins')
+    <!-- Select2 -->
+    <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    <script>
 
-   <!-- Select2 -->
-   <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-   <script>
-   $(function () {
-            $('.select2').select2();
-        });
+    $(function () {
+        $('.select2').select2();
+    });
+    $(document).ready(function () {
+        var ids;
 
-        $(document).ready(function () {
-            var ids;
-            
-			tambahSJP  = function (id) {
-                $('[name="id_tjp"]').val(id);
-                $('#modal-tambah-SJP').modal('show');
-            };
-			
-			ubahSJP = function (id) {
-                $.ajax({
-                    url: '{{ url('ubah-sjp') }}/'+id,
-                    dataType : 'json',
-                    success:function (result) {
-					    
-						CKEDITOR.instances.isi_sjp_ubah.setData(result.data_sjp.isi_sjp);
-                        $('[name="id_sjp"]').val(result.data_sjp.id);
-                        $('#modal-ubah-SJP').modal('show');
-                    }
-                })
-			};    
-			
-			hapusSJP = function (id) {
-                if(confirm("Apakah anda akan menghapus data ini...?")==true){
-                    $.ajax({
-                        url: '{{ url('hapusSJP') }}/'+id,
-                        type : 'post',
-                        data :{
-                            '_method': 'put',
-                            '_token' : '{{ csrf_token() }}'
-                        },
-                        success:function (result) {
-                            alert(result.message);
-                            window.location.reload()
-                        }
-                    })
-                }else {
-                    alert("Data ini tidak jadi dihapus");
-                }
-			}
-			
-			tambahStahunan  = function (id,id2) {
-			//alert("test")
-				$('[name="id_sjp"]').val(id);
-                $('[name="id_target_tahunan"]').val(id2);
-                $('#modal-tambah-Stahunan').modal('show');
-            }; 
-			
-			ubahStahunan = function (id) {
-                $.ajax({
-                    url: '{{ url('ubah-stahunan') }}/'+id,
-                    dataType : 'json',
-                    success:function (result) {
-					    
-						CKEDITOR.instances.isi_stahunan_ubah.setData(result.data_stahunan.isi_stahunan);
-                        $('[name="id_stahunan"]').val(result.data_stahunan.id);
-                        $('#modal-ubah-Stahunan').modal('show');
-                    }
-                })
-			};
-			
-			hapusStahunan = function (id) {
-                if(confirm("Apakah anda akan menghapus data ini...?")==true){
-                    $.ajax({
-                        url: '{{ url('hapusStahunan') }}/'+id,
-                        type : 'post',
-                        data :{
-                            '_method': 'put',
-                            '_token' : '{{ csrf_token() }}'
-                        },
-                        success:function (result) {
-                            alert(result.message);
-                            window.location.reload()
-                        }
-                    })
-                }else {
-                    alert("Data ini tidak jadi dihapus");
-                }
-			}
-			
-			tambahSbulanan  = function (id,id2) {
-			//alert("test")
-				$('[name="id_target_bulanan"]').val(id);
-                $('[name="id_stahunan"]').val(id2);
-                $('#modal-tambah-Sbulanan').modal('show');
-            };
-			
-			ubahSbulanan = function (id) {
-                $.ajax({
-                    url: '{{ url('ubah-sbulanan') }}/'+id,
-                    dataType : 'json',
-                    success:function (result) {
-					    
-						CKEDITOR.instances.isi_sbulanan_ubah.setData(result.data_sbulanan.isi_sbulanan);
-                        $('[name="id_sbulanan"]').val(result.data_sbulanan.id);
-                        $('#modal-ubah-Sbulanan').modal('show');
-                    }
-                })
-			};
-			
-			hapusSbulanan = function (id) {
-                if(confirm("Apakah anda akan menghapus data ini...?")==true){
-                    $.ajax({
-                        url: '{{ url('hapusSbulanan') }}/'+id,
-                        type : 'post',
-                        data :{
-                            '_method': 'put',
-                            '_token' : '{{ csrf_token() }}'
-                        },
-                        success:function (result) {
-                            alert(result.message);
-                            window.location.reload()
-                        }
-                    })
-                }else {
-                    alert("Data ini tidak jadi dihapus");
-                }
-			}
-     
-        })
-	
+      ubahSJP= function (id) {
+             $.ajax({
+                 url: '{{ url('ubah-sjp') }}/'+id,
+                 dataType : 'json',
+                 success:function (result) {
+
+        //console.log(result.sjp.id_tjpg);
+
+        $('[name="id_tjpg_ubah"]').val(result.sjp.id_tjpg);
+        CKEDITOR.instances.isi_ubah.setData(result.sjp.isi);
+        $('[name="id_spj_ubah"]').val(result.sjp.id);
+         $('#modal-ubah-sjp').modal('show');
+                 }
+             })
+      };
+
+      ubahSEks= function (id) {
+             $.ajax({
+                 url: '{{ url('ubah-sekutif') }}/'+id,
+                 dataType : 'json',
+                 success:function (result) {
+
+        //console.log(result.sjp.id_tjpg);
+        $('[name="id_seks_ubah"]').val(result.sekutif.id);
+        $('[name="id_teks_ubah"]').val(result.sekutif.id_teks);
+        $('[name="nama_ubah"]').val(result.sekutif.nama);
+        CKEDITOR.instances.isi_eks_ubah.setData(result.sekutif.isi);
+         $('#modal-ubah-sekutif').modal('show');
+                 }
+             })
+      };
+      ubahSMan= function (id) {
+             $.ajax({
+                 url: '{{ url('ubah-sman') }}/'+id,
+                 dataType : 'json',
+                 success:function (result) {
+
+        //console.log(result.sjp.id_tjpg);
+        $('[name="id_sman_ubah"]').val(result.sman.id);
+        $('[name="id_tman_ubah"]').val(result.sman.id_tman);
+        $('[name="nama_ubah"]').val(result.sman.nama);
+        CKEDITOR.instances.isi_man_ubah.setData(result.sman.isi);
+         $('#modal-ubah-man').modal('show');
+                 }
+             })
+      };
+      ubahSSup= function (id) {
+             $.ajax({
+                 url: '{{ url('ubah-ssup') }}/'+id,
+                 dataType : 'json',
+                 success:function (result) {
+
+        //console.log(result.sjp.id_tjpg);
+        $('[name="id_ssup_ubah"]').val(result.ssup.id);
+        $('[name="id_tsup_ubah"]').val(result.ssup.id_tsup);
+        $('[name="nama_ubah"]').val(result.ssup.nama);
+        CKEDITOR.instances.isi_sup_ubah.setData(result.ssup.isi);
+         $('#modal-ubah-sup').modal('show');
+                 }
+             })
+      };
+
+})
+
     </script>
 @stop
-
