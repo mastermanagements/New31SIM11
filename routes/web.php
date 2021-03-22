@@ -185,7 +185,7 @@ Route::put('delete-swot/{id}', 'karyawan\SWOT@delete');
 
 Route::get('ubah-swot/{id}', 'karyawan\SWOT@edit');
 
-Route::get('Strategi-Jangka-Panjang', 'karyawan\SJP@index');
+//Route::get('Strategi-Jangka-Panjang', 'karyawan\SJP@index');
 
 //--- struktur perusahaan ---
 
@@ -317,7 +317,7 @@ Route::get('buat-tjp', 'karyawan\TargetPerusahaan@create');
 
 Route::post('store-tjp', 'karyawan\TargetPerusahaan@store');
 
-Route::get('ubah-tjp/{id_tjp}', 'karyawan\TargetPerusahaan@edit');
+Route::get('ubah-tjp/{id}', 'karyawan\TargetPerusahaan@edit');
 
 Route::post('update-tjp', 'karyawan\TargetPerusahaan@update');
 
@@ -364,45 +364,59 @@ Route::post('store-target-staf', 'karyawan\TargetPerusahaan@storeTargetStaf');
 
 Route::get('ubah-target-staf/{id}', 'karyawan\TargetPerusahaan@editTargetStaf');
 
-Route::post('update-target-staf', 'karyawan\TargetPerusahaan@updateTargetStafer');
+Route::post('update-target-staf', 'karyawan\TargetPerusahaan@updateTargetStaf');
 
 Route::put('hapus-target-staf/{id}', 'karyawan\TargetPerusahaan@deleteTargetStaf');
 
 //--- Strategi Perusahaan ---
 Route::get('Strategi-Perusahaan', 'karyawan\StrategiPerusahaan@index');
 
-//SJP
-Route::post('store-sjp', 'karyawan\StrategiPerusahaan@storeSJP');
+//Strategi jangka panjang perusahaan
+Route::post('store-sjp', 'karyawan\StrategiPerusahaan@store');
 
-Route::get('ubah-sjp/{id_sjp}', 'karyawan\StrategiPerusahaan@editSJP');
+Route::get('ubah-sjp/{id}', 'karyawan\StrategiPerusahaan@edit');
 
-Route::post('update-sjp', 'karyawan\StrategiPerusahaan@updateSJP');
+Route::post('update-sjp', 'karyawan\StrategiPerusahaan@update');
 
-Route::put('hapusSJP/{id_sjp}', 'karyawan\StrategiPerusahaan@deleteSJP');
+Route::put('hapus-sjp/{id_sjp}', 'karyawan\StrategiPerusahaan@delete');
 
-Route::get('getSJP/{id_sjp}', 'karyawan\StrategiPerusahaan@ResponseSJP');
 
-//Stahunan
-Route::post('store-stahunan', 'karyawan\StrategiPerusahaan@storeStahunan');
+//Strategi Eksekutif
+Route::post('store-sekutif', 'karyawan\StrategiPerusahaan@storeSekutif');
 
-Route::get('ubah-stahunan/{id_stahunan}', 'karyawan\StrategiPerusahaan@editStahunan');
+Route::get('ubah-sekutif/{id}', 'karyawan\StrategiPerusahaan@editSekutif');
 
-Route::post('update-stahunan', 'karyawan\StrategiPerusahaan@updateStahunan');
+Route::post('update-sekutif', 'karyawan\StrategiPerusahaan@updateSekutif');
 
-Route::put('hapusStahunan/{id_stahunan}', 'karyawan\StrategiPerusahaan@deleteStahunan');
+Route::put('hapus-sekutif/{id}', 'karyawan\StrategiPerusahaan@deleteSekutif');
 
-Route::get('getStahunan/{id_st}', 'karyawan\StrategiPerusahaan@ResponseStahunan');
 
-//Sbulanan
-Route::post('store-sbulanan', 'karyawan\StrategiPerusahaan@storeSbulanan');
+//strategi manager
+Route::post('store-sman', 'karyawan\StrategiPerusahaan@storeSman');
 
-Route::get('ubah-sbulanan/{id_sbulanan}', 'karyawan\StrategiPerusahaan@editSbulanan');
+Route::get('ubah-sman/{id}', 'karyawan\StrategiPerusahaan@editSman');
 
-Route::post('update-sbulanan', 'karyawan\StrategiPerusahaan@updateSbulanan');
+Route::post('update-sman', 'karyawan\StrategiPerusahaan@updateSman');
 
-Route::put('hapusSbulanan/{id_sbulanan}', 'karyawan\StrategiPerusahaan@deleteSbulanan');
+Route::put('hapus-sman/{id}', 'karyawan\StrategiPerusahaan@deleteSman');
 
-Route::get('getSbulanan/{id_sb}', 'karyawan\StrategiPerusahaan@ResponseSbulanan');
+//strategi supervisor
+Route::post('store-ssup', 'karyawan\StrategiPerusahaan@storeSsup');
+
+Route::get('ubah-ssup/{id}', 'karyawan\StrategiPerusahaan@editSsup');
+
+Route::post('update-ssup', 'karyawan\StrategiPerusahaan@updateSsup');
+
+Route::put('hapus-ssup/{id}', 'karyawan\StrategiPerusahaan@deleteSsup');
+
+//strategi staf
+Route::post('store-sstaf', 'karyawan\StrategiPerusahaan@storeSstaf');
+
+Route::get('ubah-sstaf/{id}', 'karyawan\StrategiPerusahaan@editSstaf');
+
+Route::post('update-sstaf', 'karyawan\StrategiPerusahaan@updateSstaf');
+
+Route::put('hapus-sstaf/{id}', 'karyawan\StrategiPerusahaan@deleteSstaf');
 
 //--- Model Bisnis ---
 Route::get('Model-Bisnis', 'karyawan\ModelBisnis@index');

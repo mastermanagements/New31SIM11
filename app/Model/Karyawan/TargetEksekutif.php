@@ -19,5 +19,9 @@ class TargetEksekutif extends Model
   {
 		return $this->belongsTo('App\Model\Superadmin_ukm\U_jabatan_p', 'id_jabatan_p');
   }
+  public function getStrategiEks()
+  {
+		return $this->hasOne('App\Model\Karyawan\StrategiEks', 'id_teks');
+  }
 
 }

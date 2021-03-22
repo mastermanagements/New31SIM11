@@ -100,6 +100,10 @@ class H_karyawan extends Model
     public function getAbsensi(){
         return $this->hasMany('App\Model\Hrd\H_absensi','id_ky');
     }
+    public function getTargetStaf()
+    {
+        return $this->hasMany('App\Model\Karyawan\TargetStaf', 'nm_karyawan');
+    }
 
 
 }
