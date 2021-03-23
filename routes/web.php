@@ -91,22 +91,6 @@ Route::put('ijin-usaha-update/{id}', 'Superadmin_ukm\Ijin_usaha@update');
 
 Route::put('unggah-ijin-delete/{id}', 'Superadmin_ukm\Ijin_usaha@delete');
 
-/*Route::get('jabatan', 'Superadmin_ukm\Superadmin_UKM@jabatan_perusahaan');
-
-Route::get('pilih-usaha/{id}', 'Superadmin_ukm\Superadmin_UKM@jabatan_di_perusahaan');
-
-Route::get('pilih-usaha/{id}/daftar-jabatan', 'Superadmin_ukm\Superadmin_UKM@jabatan_di_perusahaan');
-
-Route::get('tambah-jabatan/{id_perusahaan}', 'Superadmin_ukm\Jabatan@create');
-
-Route::post('store-jabatan', 'Superadmin_ukm\Jabatan@store');
-
-Route::get('ubah-jabatan/{id_perusahaan}/{id_jabatan}', 'Superadmin_ukm\Jabatan@edit');
-
-Route::put('update-jabatan/{id_jabatan}', 'Superadmin_ukm\Jabatan@update');
-
-Route::put('jabatan-delete/{id_jabatan}', 'Superadmin_ukm\Jabatan@delete');*/
-
 Route::get('menu-perusahaan', 'Superadmin_ukm\Menu_perusahaan@daftar_perusahaan');
 
 Route::get('pengaturan-menu/{id}', 'Superadmin_ukm\Menu_perusahaan@daftar_menu');
@@ -425,11 +409,15 @@ Route::get('buat-model-bisnis', 'karyawan\ModelBisnis@create');
 
 Route::post('store-mb', 'karyawan\ModelBisnis@store');
 
-Route::get('ubah-model-bisnis/{id}', 'karyawan\ModelBisnis@edit');
+Route::get('ubah-mb/{id}', 'karyawan\ModelBisnis@edit');
 
-Route::put('ubah-mb/{id}', 'karyawan\ModelBisnis@update');
+Route::put('update-mb/{id}', 'karyawan\ModelBisnis@update');
 
-Route::put('hapus-model-bisnis/{id}', 'karyawan\ModelBisnis@delete');
+Route::put('hapus-mb/{id}', 'karyawan\ModelBisnis@delete');
+
+Route::get('getSubModelBisnis/{id_jenis_mb}', 'karyawan\ModelBisnis@ResponseSubModelBisnis');
+
+//Route::get('getKabupatenK/{id_provinsi}', 'Superadmin_ukm\Kompetitor@ResponseKabupaten');
 
 //======================================== Administrasi ================================================================
 //--- Klien ---

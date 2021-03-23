@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAModelBisnis extends Migration
+class CreateASubMb extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateAModelBisnis extends Migration
      */
     public function up()
     {
-        Schema::create('a_model_bisnis', function (Blueprint $table) {
+        Schema::create('a_sub_mb', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_jenis_mb')->unsigned();
-            $table->integer('id_sub_mb')->unsigned();
-            $table->text('isi');
-            $table->integer('id_perusahaan')->unsigned();
-            $table->integer('id_karyawan')->unsigned();
+            $table->string('sub_mb');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateAModelBisnis extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('a_model_bisnis');
+        Schema::dropIfExists('a_sub_mb');
     }
 }

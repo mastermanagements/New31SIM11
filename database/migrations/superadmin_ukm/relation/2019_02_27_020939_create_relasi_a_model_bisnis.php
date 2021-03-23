@@ -14,7 +14,8 @@ class CreateRelasiAModelBisnis extends Migration
     public function up()
     {
         Schema::table('a_model_bisnis', function (Blueprint $table) {
-            //
+            $table->foreign('id_jenis_mb')->references('id')->on('a_jenis_mb');
+            $table->foreign('id_sub_mb')->references('id')->on('a_sub_mb');
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
         });
