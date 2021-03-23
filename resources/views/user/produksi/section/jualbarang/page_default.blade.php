@@ -205,7 +205,99 @@
                             </table>
                         </div>
                         <div class="tab-pane " id="tab_5">
-                            <h1>Pembayaran</h1>
+                            <p>Pembayaran Pesanan Penjualan</p>
+                            <table id="example2" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Nomor. Pesanan</th>
+                                        <th>Klien</th>                                        
+                                        <th>Tanggal Transaksi</th>
+                                        <th>Tanggal Bayar</th>
+                                        <th>Jumlah DP</th>
+                                        <th>Jumlah Bayar</th>                                        
+                                        <th>Bukti</th>
+                                        <th>Konfirmasi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                @if(!empty($p_so))
+                                    @php($no=1)
+                                    <tbody>
+                                        @foreach($p_so as $data_so)
+
+                                            <tr>
+                                                <th>{{ $no++ }}</th>
+                                                <th>{{ $data_so->no_so }}</th>
+                                                <th>{{ $data_so->linkToKlien->nm_klien }}</th>
+                                                
+                                                <th>{{ date('d-m-Y', strtotime($data_so->tgl_so)) }}</th>
+                                                <th>@if(!empty($data_so->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($data_so->linkToTerimaBayar->tgl_bayar)) }} @endif  </th>
+                                                <th>{{  $data_so->dp_so }}</th>
+                                                <th>@if(!empty($data_so->linkToTerimaBayar)) {{ $data_so->linkToTerimaBayar->jumlah_bayar }} @endif</th>
+                                                <th><a href="#">Preview</a></th>
+                                                <th><a href="#">konfirm</a></th>
+                                                <th>
+                                                    <a href="{{ url('terima-bayar/0/'. $data_so->id) }}">Terima Pembayaran</a>
+                                                </th>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                @endif
+                            </table>
+                            <p>Pembayaran Penjualan</p>
+                            <table class="table table-bordered table-striped" style="margin-top: 10px">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nomor Order</th>                                        
+                                        <th>Tgl Jual</th>
+                                        <th>Klien</th>
+                                        <th>Tgl Transaksi</th>
+                                        <th>Tgl Bayar</th>                                      
+                                        <th>Jumlah Tagihan</th>
+                                        <th>Jumlah Bayar</th>
+                                        <th>Sisa</th>
+                                        <th>Penjualan</th>
+                                        <th>Bukti Bayar</th>
+                                        <th>Konfirm</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(!empty($PSales))
+                                        @php($no_p_sales=1)
+                                        @foreach($PSales as $item_Psales_)
+                                        <tr>
+                                            <th>{{ $no_p_sales }}</th>
+                                            <th>{{ $item_Psales_->no_sales }}</th>
+                                            <th>{{ date('d-m-Y', strtotime($item_Psales_->tgl_sales)) }}</th>
+                                            <th>{{ $item_Psales_->linkToKlien->nm_klien }}</th>
+                                            <th>{{ date('d-m-Y', strtotime($item_Psales_->tgl_kirim)) }}</th>
+                                            <th>@if(!empty($item_Psales_->linkToBayar)) {{ date('d-m-Y', strtotime($item_Psales_->tgl_bayar)) }} @endif</th>
+                                            <th>{{ $item_Psales_->bayar+$item_Psales_->kurang_bayar }}</th>
+                                            <th>@if(!empty($item_Psales_->linkToBayar)) {{ $item_Psales_->linkToBayar->jumlah_bayar }} @endif</th>
+                                            <th>{{ $item_Psales_->kurang_bayar }}</th>
+                                            <th>@if($item_Psales_->status == '0') Tunai @else Kredit @endif</th>
+                                            <th><a href="#">Preview</a> </th>
+                                            <th><a href="#">Yes</a> </th>
+                                            <th>
+                                                @if($item_Psales_->bayar+$item_Psales_->kurang_bayar>=$item_Psales_->bayar)
+                                                    Lunas
+                                                @else
+                                                    Belum Lunas
+                                                @endif
+                                            </th>
+                                            <th>
+                                                <a href="{{ url('terima-bayar/1/'. $item_Psales_->id) }}" >Terima Bayar</a>
+                                                <a href="#" >Rincian Bayar</a>
+                                            </th>
+                                        </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
                         </div>
                         <div class="tab-pane " id="tab_6">
                             <h1>Return Pembayaran</h1>

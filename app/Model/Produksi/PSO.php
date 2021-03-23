@@ -22,4 +22,8 @@ class PSO extends Model
     public function linkToPO(){
         return $this->belongsTo('App\Model\Produksi\TawarJual','id_po');
     }
+
+    public function linkToTerimaBayar(){
+        return $this->hasOne('App\Model\Produksi\PTerimaBayar','id_so','id');
+    }
 }
