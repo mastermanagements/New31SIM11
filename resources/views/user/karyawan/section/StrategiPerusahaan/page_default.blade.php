@@ -43,7 +43,7 @@
                         <div class="tab-pane active" id="tab_1">
                             @if(!empty($sjp))
                             @foreach($sjp as $value)
-                            <div class="box box-success">
+                            <div class="box box-primary collapsed-box">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Strategi Jangka Panjang Perusahaan</h3>
                                       <div class="box-tools pull-right">
@@ -73,7 +73,7 @@
                                 </div>
                                 <!-- /.box body -->
                         </div>
-                          <!-- /.box success -->
+                          <!-- /.box primary -->
                         @endforeach
                         @endif
                       </div>
@@ -82,7 +82,7 @@
                       <div class="tab-pane" id="tab_2">
                           @foreach($jabatan_p as $jabat)
                             @foreach($jabat->getTargetEks->groupBy('id_jabatan_p') as $jabatan => $values)
-                              <div class="box box-success">
+                              <div class="box box-primary collapsed-box">
                                   <div class="box-header with-border">
                                     <h3 class="box-title">
                                         {{ $jabat->nm_jabatan }}
@@ -138,7 +138,7 @@
                                       @endif
                                     @endforeach
                               </div>
-                              <!-- ./box box-success-->
+                              <!-- ./box box-primary-->
                             @endforeach
                           @endforeach
                       </div>
@@ -147,7 +147,7 @@
                       <div class="tab-pane" id="tab_3">
                           @foreach($jabatan_p as $jabat)
                             @foreach($jabat->getTargetMan->groupBy('id_jabatan_p') as $jabatan => $values)
-                              <div class="box box-success">
+                              <div class="box box-primary collapsed-box">
                                 <div class="box-header with-border">
                                   <h3 class="box-title">
                                       {{ $jabat->nm_jabatan }}
@@ -203,7 +203,7 @@
                                    @endif
                                  @endforeach
                               </div>
-                              <!-- ./box-success-->
+                              <!-- ./box-primary-->
                             @endforeach
                           @endforeach
                       </div>
@@ -211,7 +211,7 @@
                       <div class="tab-pane" id="tab_4">
                           @foreach($jabatan_p as $jabat)
                             @foreach($jabat->getTargetSup->groupBy('id_jabatan_p') as $jabatan => $values)
-                              <div class="box box-success">
+                              <div class="box box-primary collapsed-box">
                                 <div class="box-header with-border">
                                   <h3 class="box-title">
                                       {{ $jabat->nm_jabatan }}
@@ -267,16 +267,17 @@
                                    @endif
                                  @endforeach
                               </div>
-                              <!-- ./box-success-->
+                              <!-- ./box-primary-->
                             @endforeach
                           @endforeach
                       </div>
                       <!-- /.tab-pane 4-->
+
                       <div class="tab-pane" id="tab_5">
                         @if(!empty($target_staf))
                           @foreach($target_sup as $supervisor)
                             @foreach($supervisor->getTargetStaf->groupBy('id_target_superv') as $super => $values)
-                              <div class="box box-success">
+                              <div class="box box-primary collapsed-box">
                                 <div class="box-header with-border">
                                   <h3 class="box-title">
                                       {{ $supervisor->tahun }}
@@ -287,41 +288,50 @@
                                       <!-- /.box-tools -->
                                 </div>
                                  <!-- /.box-header-->
-                                 @foreach($target_sup_group as $group)
-                                   @if ($group->id_jabatan_p == $jabat->id)
-                                   <div class="box-header">
-                                       <h3 class="box-title">{{ $group->tahun  }} </h3>
-                                   </div>
-                                     <div class="box-body">
-                                       @foreach($target_sup as $targetSup)
-                                         @foreach($ssup as $strategiSup)
-                                           @if($strategiSup->id_tsup == $targetSup->id)
-                                             @if($targetSup->tahun == $group->tahun)
-                                               @if($targetSup->id_jabatan_p == $jabat->id)
-                                                 <ul>
-                                                   <li>
-                                                     <b>{{ $strategiSup->nama }}</b>
-                                                     <form action="{{ url('hapus-ssup/'. $strategiSup->id) }}" method="post">
-                                                       <input type="hidden" name="_method" value="put">
-                                                       {{ csrf_field() }}
-                                                       <button type="submit" onclick="return confirm('apakah anda akan menghapus data strategi supervisor perusahaan anda?.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
-                                                         <a href="#" onclick="ubahSSup({{ $strategiSup->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target strategi supervisor perusahaan">
-                                                           <i class="fa fa-edit"></i>
-                                                         </a>
-                                                     </form>
-                                                   </li>
-                                                 </ul>
-                                                   <div class="col-md-12">
-                                                     <div class="box-footer no-padding">
-                                                       <ul class="nav nav-stacked">
-                                                         <dl>
-                                                           <dd>{!! $strategiSup->isi !!}</dd>
-                                                         </dl>
-                                                       </ul>
-                                                     </div>
-                                                       <!--col-box-ffoter-->
-                                                   </div>
-                                                     <!--./col-md-12-->
+                                 @foreach($target_staf_bln as $group_bl)
+                                   @if ($group_bl->id_target_superv == $supervisor->id)
+                                      <div class="box-header">
+                                        <h3 class="box-title">{{ $group_bl->bulan }} </h3>
+                                      </div>
+                                      <!-- ./box box-default -->
+                                        @foreach($target_staf_ky as $group_ky)
+                                          @if ($group_ky->bulan == $group_bl->bulan)
+                                            <div class="box-header">
+                                              <li><h3 class="box-title">{{ $group_ky->getKaryawan->nama_ky  }} </h3></li>
+                                            </div>
+
+                                            <div class="box-body">
+                                              @foreach($target_staf as $targetStaf)
+                                                @foreach($sstaf as $strategiStaf)
+                                                  @if($strategiStaf->id_tstaf == $targetStaf->id)
+                                                    @if($targetStaf->nm_karyawan == $group_ky->nm_karyawan)
+                                                      @if($targetStaf->bulan == $group_bl->bulan)
+                                                        @if($targetStaf->id_target_superv == $supervisor->id)
+                                                        <ul>
+                                                            <li>
+                                                                <b>{{ $strategiStaf->nama }}</b>
+                                                                  <form action="{{ url('hapus-sstaf/'. $strategiStaf->id) }}" method="post">
+                                                                    <input type="hidden" name="_method" value="put">
+                                                                      {{ csrf_field() }}
+                                                                      <button type="submit" onclick="return confirm('apakah anda akan menghapus data strategi supervisor perusahaan anda?.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                                                      <a href="#" onclick="ubahSStaf({{ $strategiStaf->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target strategi supervisor perusahaan">
+                                                                        <i class="fa fa-edit"></i>
+                                                                      </a>
+                                                                    </form>
+                                                            </li>
+                                                        </ul>
+                                                          <div class="col-md-12">
+                                                              <div class="box-footer no-padding">
+                                                                  <ul class="nav nav-stacked">
+                                                                    <dl>
+                                                                      <dd>{!! $strategiStaf->isi !!}</dd>
+                                                                    </dl>
+                                                                  </ul>
+                                                              </div>
+                                                              <!--col-box-ffoter-->
+                                                         </div>
+                                                         <!--./col-md-12-->
+                                                  @endif
                                                @endif
                                              @endif
                                            @endif
@@ -329,12 +339,15 @@
                                        @endforeach
                                      </div>
                                        <!-- ./box-body-->
+                                       @endif
+                                     @endforeach
                                    @endif
                                  @endforeach
                               </div>
-                              <!-- ./box-success-->
+                              <!-- ./box-primary-->
                             @endforeach
                           @endforeach
+                        @endif
                       </div>
                       <!-- /.tab-pane 5-->
                     </div>
@@ -421,6 +434,21 @@
         $('[name="nama_ubah"]').val(result.ssup.nama);
         CKEDITOR.instances.isi_sup_ubah.setData(result.ssup.isi);
          $('#modal-ubah-sup').modal('show');
+                 }
+             })
+      };
+      ubahSStaf= function (id) {
+             $.ajax({
+                 url: '{{ url('ubah-sstaf') }}/'+id,
+                 dataType : 'json',
+                 success:function (result) {
+
+        //console.log(result.sjp.id_tjpg);
+        $('[name="id_sstaf_ubah"]').val(result.sstaf.id);
+        $('[name="id_tstaf_ubah"]').val(result.sstaf.id_tstaf);
+        $('[name="nama_ubah"]').val(result.sstaf.nama);
+        CKEDITOR.instances.isi_staf_ubah.setData(result.sstaf.isi);
+         $('#modal-ubah-staf').modal('show');
                  }
              })
       };

@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Karyawan\ModelBisnis as MB;
+use App\Model\Karyawan\JenisModelBisnis as JMB;
+use App\Model\Karyawan\SubModelBisnis as SMB;
 
 class ModelBisnis extends Controller
 {
     //
-
     private $id_karyawan;
     private $id_perusahaan;
 
@@ -32,29 +33,46 @@ class ModelBisnis extends Controller
     public function index()
     {
         $data= [
-            'model_bisnis'=> MB::all()->where('id_perusahaan', $this->id_perusahaan)
+            'model_bisnis'=> MB::all()->where('id_perusahaan', $this->id_perusahaan),
+            'jenis_mb'=>JMB::all()
         ];
         return view('user.karyawan.section.ModelBisnis.page_default', $data);
     }
 
     public function create()
     {
-        return view('user.karyawan.section.ModelBisnis.page_create');
+        $data= [
+          'jenis_mb'=>JMB::all()
+        ];
+        return view('user.karyawan.section.ModelBisnis.page_create',$data);
+    }
+
+    public function getSubModelBisnis($id=1)
+    {
+        $model = SMB::all()->where('id_jenis_mb', $id);
+        return $model;
+    }
+
+    public function ResponseSubModelBisnis($id_jenis_mb){
+        return response()->json($this->getSubModelBisnis($id_jenis_mb));
     }
 
     public function store(Request $req)
     {
         $this->validate($req,[
-           'nm_mb' => 'required',
-            'sasaran' => 'required'
+          'id_jenis_mb' => 'required',
+          'id_sub_mb' => 'required',
+          'isi' => 'required'
         ]);
 
-        $nm_mb = $req->nm_mb;
-        $sasaran = $req->sasaran;
+        $id_jenis_mb = $req->id_jenis_mb;
+        $id_sub_mb = $req->id_sub_mb;
+        $isi = $req->isi;
 
         $model= new MB;
-        $model->nm_mb=$nm_mb;
-        $model->sasaran=$sasaran;
+        $model->id_jenis_mb = $id_jenis_mb;
+        $model->id_sub_mb = $id_sub_mb;
+        $model->isi = $isi;
         $model->id_perusahaan=$this->id_perusahaan;
         $model->id_karyawan=$this->id_karyawan;
 
@@ -74,7 +92,9 @@ class ModelBisnis extends Controller
         }
 
         $data=[
-          'mb'=> $dataMB
+          'mb'=> $dataMB,
+          'jenis_mb'=>JMB::all(),
+          'sub_mb'=>SMB::all()
         ];
 
         return view('user.karyawan.section.ModelBisnis.page_edit', $data);
@@ -83,17 +103,19 @@ class ModelBisnis extends Controller
     public function update(Request $req, $id)
     {
         $this->validate($req,[
-            'nm_mb' => 'required',
-            'sasaran' => 'required'
+            'id_jenis_mb' => 'required',
+            'id_sub_mb' => 'required',
+            'isi' => 'required'
         ]);
-        $nm_mb = $req->nm_mb;
-        $sasaran = $req->sasaran;
+        $id_jenis_mb = $req->id_jenis_mb;
+        $id_sub_mb = $req->id_sub_mb;
+        $isi = $req->isi;
 
-        if(empty($model= MB::where('id',  $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
-            return abort(404);
-        }
-        $model->nm_mb=$nm_mb;
-        $model->sasaran=$sasaran;
+        $model = MB::find($id);
+
+        $model->id_jenis_mb=$id_jenis_mb;
+        $model->id_sub_mb=$id_sub_mb;
+        $model->isi = $isi;
         $model->id_perusahaan=$this->id_perusahaan;
         $model->id_karyawan=$this->id_karyawan;
 

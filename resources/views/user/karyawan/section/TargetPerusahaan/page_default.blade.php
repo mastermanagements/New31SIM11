@@ -526,7 +526,6 @@
                 $('#modal-tambah-strategi-staf').modal('show');
             };
 
-
     })
     </script>
 @stop
