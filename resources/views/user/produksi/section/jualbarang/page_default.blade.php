@@ -238,7 +238,8 @@
                                                 <th><a href="#">Preview</a></th>
                                                 <th><a href="#">konfirm</a></th>
                                                 <th>
-                                                    <a href="{{ url('terima-bayar/0/'. $data_so->id) }}">Terima Pembayaran</a>
+                                                    <a href="{{ url('terima-bayar/0/'. $data_so->id) }}">Terima Pembayaran</a> <br>
+                                                    <a href="{{ url('terima-bayar/0/'. $data_so->id.'/rincian') }}">Rincian Pembayaran</a>
                                                 </th>
                                             </tr>
                                         @endforeach
@@ -275,9 +276,9 @@
                                             <th>{{ date('d-m-Y', strtotime($item_Psales_->tgl_sales)) }}</th>
                                             <th>{{ $item_Psales_->linkToKlien->nm_klien }}</th>
                                             <th>{{ date('d-m-Y', strtotime($item_Psales_->tgl_kirim)) }}</th>
-                                            <th>@if(!empty($item_Psales_->linkToBayar)) {{ date('d-m-Y', strtotime($item_Psales_->tgl_bayar)) }} @endif</th>
+                                            <th>@if(!empty($item_Psales_->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($item_Psales_->linkToTerimaBayar->tgl_bayar)) }} @endif</th>
                                             <th>{{ $item_Psales_->bayar+$item_Psales_->kurang_bayar }}</th>
-                                            <th>@if(!empty($item_Psales_->linkToBayar)) {{ $item_Psales_->linkToBayar->jumlah_bayar }} @endif</th>
+                                            <th>@if(!empty($item_Psales_->linkToTerimaBayar)) {{ $item_Psales_->linkToTerimaBayar->jumlah_bayar }} @endif</th>
                                             <th>{{ $item_Psales_->kurang_bayar }}</th>
                                             <th>@if($item_Psales_->status == '0') Tunai @else Kredit @endif</th>
                                             <th><a href="#">Preview</a> </th>
@@ -291,7 +292,7 @@
                                             </th>
                                             <th>
                                                 <a href="{{ url('terima-bayar/1/'. $item_Psales_->id) }}" >Terima Bayar</a>
-                                                <a href="#" >Rincian Bayar</a>
+                                                <a href="{{ url('terima-bayar/1/'. $item_Psales_->id.'/rincian') }}" >Rincian Bayar</a>
                                             </th>
                                         </tr>
                                         @endforeach
@@ -305,7 +306,7 @@
                         <div class="tab-pane " id="tab_7">
                             <h1>History Harga penjualan</h1>
                         </div>
-                        <!-- /.tab-pane -->
+                        <!-- /.tab-pane -->php
                     </div>
                     <!-- /.tab-content -->
                 </div>

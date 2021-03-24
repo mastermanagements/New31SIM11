@@ -26,4 +26,7 @@ class PSO extends Model
     public function linkToTerimaBayar(){
         return $this->hasOne('App\Model\Produksi\PTerimaBayar','id_so','id');
     }
+    public function linkToMannyTerimaBayar(){
+        return $this->hasMany('App\Model\Produksi\PTerimaBayar','id_so','id');
+    }
 }

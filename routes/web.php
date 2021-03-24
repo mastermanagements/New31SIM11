@@ -857,6 +857,8 @@ Route::post('penjualan-barang/{id_p_sales}/detail','produksi\PSales@updateDetail
 Route::resource('detail-penjualan-barang','produksi\DetailSales');
 Route::get('detail-penjualan-barang/{id_detail_penjualan}/destroy','produksi\DetailSales@destroy');
 Route::get('terima-bayar/{jenis_bayar}/{id}','produksi\TerimaBayar@form_terima_bayar');
+Route::get('terima-bayar/{jenis_bayar}/{id}/rincian','produksi\TerimaBayar@rincian');
+Route::get('terima-bayar/{jenis_bayar}/{id}/edit','produksi\TerimaBayar@edit');
 Route::resource('terima-bayar','produksi\TerimaBayar');
 
 //--- Jasa ---

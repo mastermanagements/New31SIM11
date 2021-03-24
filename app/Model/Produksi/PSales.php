@@ -38,7 +38,11 @@ class PSales extends Model
         return $this->hasMany('App\Model\Produksi\DetailSales','id_sales','id');
     }
 
-    public function linkToBayar(){
+    public function linkToTerimaBayar(){
         return $this->hasOne('App\Model\Produksi\PTerimaBayar','id_sales','id');
+    }
+
+    public function linkToMannyTerimaBayar(){
+        return $this->hasMany('App\Model\Produksi\PTerimaBayar','id_sales','id');
     }
 }
