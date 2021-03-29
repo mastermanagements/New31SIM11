@@ -853,6 +853,7 @@ Route::resource('p-diskon', 'produksi\PDiskon');
 # Penjualan
 Route::resource('penjualan-barang','produksi\PSales');
 Route::post('penjualan-barang/{id_p_sales}/detail','produksi\PSales@updateDetail');
+Route::get('penjualan-barang/{id_p_sales}/complain','produksi\PSales@complain');
 #detail penjualan
 Route::resource('detail-penjualan-barang','produksi\DetailSales');
 Route::get('detail-penjualan-barang/{id_detail_penjualan}/destroy','produksi\DetailSales@destroy');
@@ -861,7 +862,15 @@ Route::get('terima-bayar/{jenis_bayar}/{id}/rincian','produksi\TerimaBayar@rinci
 Route::get('terima-bayar/{jenis_bayar}/{id}/edit','produksi\TerimaBayar@edit');
 Route::resource('terima-bayar','produksi\TerimaBayar');
 
+#complain barang jual
+Route::resource('complain-barang-jual','produksi\ComplainBarangJual');
 //--- Jasa ---
+Route::resource('return-barang-jual','produksi\ReturnBarangJual');
+Route::get('cetak-return-barang-jual/{id}','produksi\ReturnBarangJual@cetak');
+
+# Akun Penjualan
+Route::resource('pengaturan-akun-penjualan','produksi\AkunPenjualan');
+Route::get('pengaturan-akun-penjualan/{id}/delete','produksi\AkunPenjualan@destroy');
 
 Route::get('Jasa', 'produksi\Jasa@index');
 

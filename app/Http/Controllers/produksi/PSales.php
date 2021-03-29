@@ -35,6 +35,19 @@ class PSales extends Controller
         return view('user.produksi.section.jualbarang.penjualan.page_show', $pass);
     }
 
+    public function complain($id_p_sales){
+        $model = PS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id_p_sales);
+        $pass = [
+            'data'=> $model,
+            'barang'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'klien'=> klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'pesanan_jual' => PSO::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'komisi_sales' => komisi_sales::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+
+        ];
+        return view('user.produksi.section.jualbarang.penjualan.page_complain', $pass);
+    }
+
     public function store(Request $req){
         $this->validate($req,[
             'no_sales'=> 'required',
@@ -131,4 +144,5 @@ class PSales extends Controller
             return redirect('Penjualan')->where('message_fail','Data penjualan gagal diubah');
         }
     }
+
 }

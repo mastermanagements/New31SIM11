@@ -14,4 +14,8 @@ class DetailSales extends Model
     public function linkToSales(){
         return $this->belongsTo('App\Model\Produksi\PSO','id_sales');
     }
+
+    public function linkToComplainBarangJual(){
+        return $this->hasOne('App\Model\Produksi\ComplainBarangJual','id_detail_sales','id');
+    }
 }

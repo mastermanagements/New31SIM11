@@ -38,11 +38,19 @@ class PSales extends Model
         return $this->hasMany('App\Model\Produksi\DetailSales','id_sales','id');
     }
 
+    public function linkToMannyComplainJual(){
+        return $this->hasMany('App\Model\Produksi\ComplainBarangJual','id_sales','id');
+    }
+
     public function linkToTerimaBayar(){
         return $this->hasOne('App\Model\Produksi\PTerimaBayar','id_sales','id');
     }
 
     public function linkToMannyTerimaBayar(){
         return $this->hasMany('App\Model\Produksi\PTerimaBayar','id_sales','id');
+    }
+
+    public function linkToReturnBarangJual(){
+        return $this->hasOne('App\Model\Produksi\ReturnBarangJual','id_complain_barang','id');
     }
 }

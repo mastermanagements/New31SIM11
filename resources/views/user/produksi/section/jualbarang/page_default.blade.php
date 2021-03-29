@@ -32,6 +32,7 @@
                         <li ><a href="#tab_5" data-toggle="tab">Pembayaran</a></li>
                         <li ><a href="#tab_6" data-toggle="tab">Return Pembayaran</a></li>
                         <li ><a href="#tab_7" data-toggle="tab">History Harga Penjualan</a></li>
+                        <li ><a href="#tab_8" data-toggle="tab">Pengaturan Akun Penjualan</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -194,6 +195,7 @@
                                                     {{ csrf_field() }}
                                                     @method('delete')
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id) }}" class="btn btn-primary">Detail barang</a>
+                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/complain') }}" class="btn btn-primary">Complain</a>
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/edit') }}" class="btn btn-warning">ubah</a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>
                                                 </form>
@@ -302,11 +304,86 @@
                         </div>
                         <div class="tab-pane " id="tab_6">
                             <h1>Return Pembayaran</h1>
+                            <table  class="table table-bordered table-striped"  style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>No. Faktur</th>
+                                        <th>Klien</th>
+                                        <th>Tgl Transaksi</th>
+                                        <th>Jumlah Barang</th>
+                                        <th>Total Return</th>
+                                        <th>Konfirm</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(!empty($PSales))
+                                        @php($no_complain=1)
+                                        @foreach($PSales as $data_barang_complain)
+                                            <tr>
+                                                <th>{{ $no_complain++ }}</th>
+                                                <th>{{ $data_barang_complain->no_sales }}</th>
+                                                <th>{{ $data_barang_complain->linkToKlien->nm_klien }}</th>
+                                                <th>{{ $data_barang_complain->tgl_sales }}</th>
+                                                <th>{{ $data_barang_complain->linkToMannyComplainJual->where('status_complain','1')->count('id') }}</th>
+                                                <th>{{ $data_barang_complain->linkToMannyComplainJual->where('status_complain','1')->sum('total_return') }}</th>
+                                                <th>Yes</th>
+                                                <th>
+                                                    <a href="{{ url('return-barang-jual/'. $data_barang_complain->id) }}">Return</a>
+                                                    <a href="{{ url('cetak-return-barang-jual/'. $data_barang_complain->id) }}">Print</a>
+                                                    <a href="">Konfirm</a>
+                                                </th>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
                         </div>
                         <div class="tab-pane " id="tab_7">
                             <h1>History Harga penjualan</h1>
                         </div>
-                        <!-- /.tab-pane -->php
+                        <div class="tab-pane " id="tab_8">
+                            <a href="{{ url('pengaturan-akun-penjualan/create') }}">Tamba Akun Penjualan</a>
+                            <table class="table table-bordered " style="width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Jenis Transaksi</th>
+                                    <th>Keterangan transaksi</th>
+                                    <th>Kode & Nama Akun</th>
+                                    <th>Posisi</th>
+                                </tr>
+                                </thead>
+                                @if(!empty($akun_penjualan))
+                                    @php($no=1)
+                                    @foreach($akun_penjualan as $data)
+                                        @php($rowspan = 0)
+                                        @if(!empty($data->linkToOneKetTransaksi->dataAkun))
+                                            @if($rows=$data->linkToOneKetTransaksi->dataAkun->count())
+                                                @php($rowspan=$rows+1)
+                                            @endif
+                                        @endif
+                                        <tr>
+                                            <th rowspan="{{ $rowspan }}">{{ $no++ }}</th>
+                                            <th rowspan="{{ $rowspan }}">{{ $jenis_jurnal[$data->jenis_jurnal] }}<br><a href="{{ url('pengaturan-akun-penjualan/'.$data->id.'/edit') }}">ubah</a> <a href="{{ url('pengaturan-akun-penjualan/'.$data->id.'/delete') }}" onclick="return confirm('Apakah anda akan menghapus akun penjualan ini.');">hapus</a> </th>
+                                            <th rowspan="{{ $rowspan }}">{{ $data->linkToOneKetTransaksi->nm_transaksi }}</th>
+                                        </tr>
+                                        @if(!empty($data->linkToOneKetTransaksi->dataAkun))
+                                            @if($data_ket=$data->linkToOneKetTransaksi->dataAkun)
+                                                @foreach($data_ket as $data)
+                                                    <tr>
+                                                        <td>{{ $data->transaksi->kode_akun_aktif }} {{ $data->transaksi->nm_akun_aktif }}</td>
+                                                        <td>@if($data->posisi_akun=='0') D @else K @endif</td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </table>
+                        </div>
+                        <!-- /.tab-pane -->
                     </div>
                     <!-- /.tab-content -->
                 </div>
