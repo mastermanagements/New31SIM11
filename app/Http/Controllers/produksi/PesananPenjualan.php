@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Administrasi\Klien as klien;
 use App\Model\Produksi\TawarJual as TJ;
 use App\Model\Produksi\PSO;
+use App\Http\utils\JenisAkunPenjualan;
 use Session;
 class PesananPenjualan extends Controller
 {
@@ -103,6 +104,17 @@ class PesananPenjualan extends Controller
         ]);
 
         $total = $req->sub_total;
+        $total_pajak = 0;
+        #Check Akun Penjualan
+        $check_akun_penjualan = JenisAkunPenjualan::CheckAkunPenjualan();
+        #check akun pembelian kalau kosong == false
+        if($check_akun_penjualan==false){
+            return redirect()->back()->with('message_fail','Isilah terlebih dahulu akun penjualan');
+        }
+
+        # Set Rule
+        $jenis_akun_penjualan = JenisAkunPenjualan::rule($req, 1);
+
         if($req->diskon_tambahan != 0){
             $diskon = $total * ($req->diskon_tambahan/100);
             $total = $total - $diskon;
@@ -110,7 +122,9 @@ class PesananPenjualan extends Controller
 
         if($req->pajak != 0 ){
             $pajak = ($req->pajak / 100);
-            $total = $total + $pajak;
+            $total_pajak = $total + $pajak;
+            # Set pajak true jika pajak tidak 0
+            JenisAkunPenjualan::$status_pajak = true;
         }
 
         $model = PSO::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id_so);
@@ -120,9 +134,18 @@ class PesananPenjualan extends Controller
         $model->kurang_bayar = $req->kurang_bayar;
         $model->total = $total;
 
-
-
         if($model->save()){
+            if(is_array($jenis_akun_penjualan) == true){
+                $req->merge([
+                    'total_sebelum_pajak'=>$total_pajak,
+                    'total'=> $total,
+                    'tgl_order'=> $model->tgl_so,
+                    'no_order'=>$model->no_so,
+                    'id_pesanan'=> $model->id
+                ]);
+                JenisAkunPenjualan::$new_request = $req;
+                JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
+            }
             return redirect('detail-pSo/'. $model->id)->with('message_success', 'Berhasil menyimpan data');
         }else{
             return redirect('detail-pSo/'. $model->id)->with('message_fail', 'Gagal menyimpan data');

@@ -23,6 +23,7 @@ class DetailSo extends Controller
     }
 
     public function store(Request $req){
+
         $this->validate($req,[
            'id_so' => 'required',
            'id_barang' => 'required',
@@ -49,7 +50,6 @@ class DetailSo extends Controller
     }
 
     public function update(Request $req, $id){
-
         $this->validate($req,[
             'id_so' => 'required',
             'id_barang' => 'required',

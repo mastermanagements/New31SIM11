@@ -7,26 +7,16 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Keuangan\KetTransaksi;
 use App\Model\Produksi\AkunPenjualan as AP;
+use App\Http\utils\JenisAkunPenjualan;
 
 class AkunPenjualan extends Controller
 {
     //
-    private $jenis_jurnal = [
-        'Pesanan Penjualan tunai',
-        'Pesanan Penjualan transfer',
-        'Pesanan Penjualan tunai dengan pajak',
-        'Pesanan Penjualan transfer dg pajak',
-        'Penjualan tunai tanpa pajak',
-        'Penjualan tunai dengan pajak',
-        'Penjualan kredit tanpa pajak',
-        'Penjualan kredit dengan pajak',
-        'Potongan penjualan tunai',
-        'Beban angkut penjualan',
-        'Return penjualan mengambalikan kas',
-        'Return penjualan kurangi piutang',
-        'Return penjualan kurangi piutang',
-        'Return penjualan mengembalikan barang',
-    ];
+    private $jenis_jurnal ;
+    public function __construct()
+    {
+        $this->jenis_jurnal = JenisAkunPenjualan::$jenis_jurnal;
+    }
 
     public function create(){
         $data = [

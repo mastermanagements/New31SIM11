@@ -10,6 +10,7 @@ use App\Model\Produksi\PSO;
 use App\Model\Produksi\PSales as PS;
 use App\Model\Produksi\Barang;
 use Session;
+use App\Http\utils\JenisAkunPenjualan;
 
 class PSales extends Controller
 {
@@ -128,6 +129,14 @@ class PSales extends Controller
             'total'=> 'required',
             'hutang'=> 'required',
         ]);
+        dd($req->all());
+
+        $check_data_penjualan = JenisAkunPenjualan::CheckAkunPenjualan();
+        #check akun pembelian kalau kosong == false
+        if($check_data_penjualan==false){
+            return redirect()->back()->with('message_fail','Isilah terlebih dahulu akun penjualan');
+        }
+
 
         $model = PS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id_p_sales);
         $model->diskon_tambahan = $req->diskon_tambahan;
@@ -137,7 +146,34 @@ class PSales extends Controller
         $model->biaya_tambahan = $req->biaya_tambahan;
         $model->tgl_jatuh_tempo = $req->jatuh_tempo;
         $model->keterangan = $req->ket;
+
+        #Ambil Jenis Jurnal
+        $jenis_jurnal = 0;
+        $jenis_akun_penjualan = JenisAkunPenjualan::rule($req->all(), 2);
+
+        if ($model->pajak !=0){
+            JenisAkunPenjualan::$status_pajak = true;
+        }
+
+        if ($model->ongkir){
+            JenisAkunPenjualan::$status_ongkir = true;
+        }
+
         if($model->save()){
+
+            if(is_array($jenis_akun_penjualan) == true){
+                $req->merge([
+                    'ongkir'=> $req->onkir,
+                    'total_sebelum_pajak'=>$model->pajak,
+                    'total'=> $model->total,
+                    'tgl_order'=> $model->tgl_sales,
+                    'no_order'=>$model->no_sales,
+                    'id_penjualan'=> $model->id
+                ]);
+                JenisAkunPenjualan::$new_request = $req;
+                JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
+            }
+
             return redirect('Penjualan')->with('message_success','Data penjualan telah diubah');
         }
         else{
