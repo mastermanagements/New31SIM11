@@ -59,7 +59,7 @@
                                                              {{--{{ csrf_field() }}--}}
                                                              {{--<input type="hidden" name="_method" value="put">--}}
                                                              {{--<a href="{{ url('harga-jual-satuan/'.$data->id.'/edit') }}" class="btn btn-sm btn-warning">ubah</a>--}}
-                                                             {{--<button type="submit" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')" class="btn btn-sm btn-danger">hapus</button>--}}
+                                                             {{--<button type="submit" onclick="return confirm('Apakah anda akan menghapus data ini coy ... ?')" class="btn btn-sm btn-danger">hapus</button>--}}
                                                          {{--</form>--}}
                                                      {{--</td>--}}
                                                  {{--</tr>--}}

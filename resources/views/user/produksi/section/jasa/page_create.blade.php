@@ -2,12 +2,9 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    {{--<link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">--}}
+    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
 
 @stop
-
 
 @section('master_content')
 <div class="content-wrapper">
@@ -30,56 +27,70 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('store-jasa') }}" method="post" enctype="multipart/form-data">
+                    <form role="form" action="{{ url('Jasa') }}" method="post" enctype="multipart/form-data">
+
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Ketegori Jasa</label>
-                                <select class="form-control select2" style="width: 100%;" name="id_kategori" required>
-                                    @if(empty($kategori_jasa))
-                                        <option>Kategori Jasa Masih Kosong</option>
-                                    @else
-                                        @foreach($kategori_jasa as $value)
-                                            <option value="{{ $value->id }}">{{ $value->nm_kategori_p }}</option>
+                              <div class="form-group">
+                                  <label for="exampleInputEmail1">Nama Layanan</label>
+                                  <input type="text" name="nm_layanan" class="form-control" placeholder="nama layanan" required/>
+                                  <small style="color: red">* Tidak Boleh Kosong</small>
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleInputEmail1">Per</label>
+                                  <input type="number" name="peritem" class="form-control" placeholder="misal: per 1 kg, tulis: 1" required/>
+                                  <small style="color: red">* Tidak Boleh Kosong</small>
+                              </div>
+                                <label for="exampleInputEmail1">Satuan</label>
+                                <select class="form-control select2" style="width: 100%;" name="id_satuan" required >
+                                        @foreach($satuan as $value)
+                                            <option value="{{ $value->id }}">{{ $value->satuan }}</option>
                                         @endforeach
-                                    @endif
                                 </select>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Sub Ketegori Jasa</label>
-                                <select class="form-control select2" style="width: 100%;" name="id_subkategori_produk" required>
-                                    <option value="0">Kategori Belum dipilih</option>
-                                </select>
-                                <small style="color: orange">* Isi Jika Perlu</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Sub Sub Ketegori Jasa</label>
-                                <select class="form-control select2" style="width: 100%;" name="id_subsubkategori_produk" required>
-                                    <option value="0">Sub Kategori Belum dipilih</option>
-                                </select>
-                                <small style="color: orange">* Isi Jika Perlu</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Nama Jasa</label>
-                                <input type="text" name="nm_jasa" class="form-control" placeholder="nama jasa" required/>
+                                <label for="exampleInputEmail1">Lama Pengerjaan</label>
+                                <input type="number" min="0" name="waktu_kerja" class="form-control" placeholder="Lama waktu pengerjaan layanan, misal: 3 hari, Tulis: 3" required/>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Harga jasa</label>
-                                <input type="number" min="0" name="harga_jasa" class="form-control" placeholder="Harga Jasa" required/>
+                              <label for="exampleInputEmail1">Satuan Waktu pengerjaan</label>
+                              <select class="form-control select2" style="width: 100%;" name="satuan_waktu" required>
+                                      @foreach($satuan as $value)
+                                          <option value="{{ $value->id }}">{{ $value->satuan }}</option>
+                                      @endforeach
+                              </select>
+                              <small style="color: red">* Tidak Boleh Kosong</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Waktu Penyelesaian</label>
+                                <div class="form-group">
+                                    @foreach($waktu_selesai as $key => $value)
+                                        <label>
+                                            <input type="radio"  name="waktu_selesai" class="minimal" value="{{ $key }}" required>
+                                            {{ $value }}
+                                        </label>
+                                    @endforeach
+                                    <p></p>
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Biaya</label>
+                                <input type="number" min="0" name="biaya" class="form-control" placeholder="Biaya Layanan" required/>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Rincian Jasa</label>
-                                <textarea name="rincian_jasa" class="form-control" required></textarea>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+                                <label for="exampleInputEmail1">Keterangan</label>
+                                <textarea name="ket" class="form-control"></textarea>
                             </div>
 
                         </div>
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            {{ csrf_field() }}
+                          {{csrf_field()}}
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
@@ -92,28 +103,20 @@
 @stop
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    {{--<script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>--}}
+
     <script>
 
         window.onload = function() {
-            CKEDITOR.replace( 'rincian_jasa',{
-                height: 600
+            CKEDITOR.replace( 'ket',{
+                height: 100
             } );
         };
-
-//        $('#datepicker').datepicker({
-//            autoclose: true,
-//            format: 'dd-mm-yyyy'
-//        });
-//        $('#datepicker1').datepicker({
-//            autoclose: true,
-//            format: 'dd-mm-yyyy'
-//        });
 
         $(function () {
             $('.select2').select2()
         });
+
+
     </script>
-    @include('user.produksi.section.jasa.JS.JS')
+
 @stop

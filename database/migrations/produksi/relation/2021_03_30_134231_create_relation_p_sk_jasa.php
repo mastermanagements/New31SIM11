@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelationPJualJasa extends Migration
+class CreateRelationPSkJasa extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateRelationPJualJasa extends Migration
      */
     public function up()
     {
-        Schema::table('p_jual_jasa', function (Blueprint $table) {
-            $table->foreign('id_jasa')->references('id')->on('p_jasa');
-            $table->foreign('id_klien')->references('id')->on('a_klien');
+        Schema::table('p_sk_jasa', function (Blueprint $table) {
+          $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+          $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
         });
     }
 
@@ -26,8 +26,8 @@ class CreateRelationPJualJasa extends Migration
      */
     public function down()
     {
-        Schema::table('p_jual_jasa', function (Blueprint $table) {
-            //
-        });
+      Schema::table('p_sk_jasa', function (Blueprint $table) {
+        
+      });
     }
 }

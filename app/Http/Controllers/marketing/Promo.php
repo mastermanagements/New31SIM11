@@ -12,7 +12,7 @@ use App\Model\Marketing\DetailPromo;
 
 class Promo extends Controller
 {
-    //
+
 
     public function store(Request $req){
         $this->validate($req,[
@@ -32,11 +32,16 @@ class Promo extends Controller
         $model->tgl_dibuat = $req->tgl_awal_promo;
         $model->tgl_berlaku = $req->tgl_akhir_promo;
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
-        if($model->save()){
-            return redirect('Barang')->with('message_sucess','Even telah dibuat')->with('tab6','tab6');
-        }else{
-            return redirect('Barang')->with('message_error','Even gagal dibuat')->with('tab6','tab6');
+        $model->id_karyawan = Session::get('id_karyawan');
+
+        if(($req->jenis_promo == 0) AND ($model->save()))
+        {
+            return redirect('Barang')->with('message_sucess','Promo Barang telah dibuat')->with('tab6','tab6');
+        }elseif(($req->jenis_promo == 1) AND ($model->save())){
+            return redirect('Jasa')->with('message_sucess','Promo Jasa telah dibuat')->with('tab6','tab6');
         }
+
+
     }
 
     public function edit($id){
@@ -49,10 +54,12 @@ class Promo extends Controller
             '_token'=>'required'
         ]);
         $model = prom::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
-        if($model->delete()){
-            return redirect('Barang')->with('message_sucess','Even telah dihapus')->with('tab6','tab6');
-        }else{
-            return redirect('Barang')->with('message_error','Even gagal dihapus')->with('tab6','tab6');
+
+        if(($model->jenis_promo == 0) AND ($model->delete()))
+        {
+            return redirect('Barang')->with('tab6','tab6')->with('message_sucess','Promo Barang telah dihapus');
+        }elseif(($model->jenis_promo == 1) AND ($model->delete())){
+            return redirect('Jasa')->with('tab6','tab6')->with('message_sucess','Promo Jasa telah dihapus');
         }
     }
 
@@ -75,15 +82,18 @@ class Promo extends Controller
         $model->tgl_dibuat = $req->tgl_awal_promo;
         $model->tgl_berlaku = $req->tgl_akhir_promo;
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
-        if($model->save()){
-            return redirect('Barang')->with('message_sucess','Even telah dibuat')->with('tab6','tab6');
-        }else{
-            return redirect('Barang')->with('message_error','Even gagal dibuat')->with('tab6','tab6');
+        $model->id_karyawan = Session::get('id_karyawan');
+
+        if(($req->jenis_promo == 0) AND ($model->save()))
+        {
+            return redirect('Barang')->with('message_sucess','Promo Barang telah diupdate')->with('tab6','tab6');
+        }elseif(($req->jenis_promo == 1) AND ($model->save())){
+            return redirect('Jasa')->with('message_sucess','Promo Jasa telah diupdate')->with('tab6','tab6');
         }
     }
 
 
-    public function barang_promo($id){
+    public function rincian_promo($id){
         try{
             $model = prom::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
 
@@ -91,16 +101,18 @@ class Promo extends Controller
             $jasa = null;
             if($model->jenis_promo==0){
                 $barang = Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+                return view('user.produksi.section.promosi.barang.page_create', ['detail_promo'=> $model,'data'=> $model,'barang'=> $barang]);
             }else{
                 $jasa = Jasa::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+                return view('user.produksi.section.promosi.jasa.page_create', ['detail_promo'=> $model,'data'=> $model,'jasa'=> $jasa]);
             }
-            return view('user.produksi.section.barang.promosi.page_create', ['detail_promo'=> $model,'data'=> $model,'barang'=> $barang,'jasa'=> $jasa]);
+
         }   catch (Throwable $e){
             return false;
         }
     }
 
-    public function barang_promo_store(Request $req, $id){
+    public function rincian_promo_store(Request $req, $id){
         $this->validate($req,[
            '_token'=> 'required',
             'diskon'=> 'required',
@@ -118,10 +130,12 @@ class Promo extends Controller
         $model_detail_promo->minimum_beli = $req->minimum_beli;
         $model_detail_promo->id_promo = $id;
         $model_detail_promo->id_perusahaan= Session::get('id_perusahaan_karyawan');
+        $model_detail_promo->id_karyawan = Session::get('id_karyawan');
+
         if($model_detail_promo->save()){
-            return redirect()->back()->with('message_success','barang promo telah ditambahkan');
+            return redirect()->back()->with('message_success','promo telah ditambahkan');
         }else{
-            return redirect()->back()->with('message_error','barang promo gagal ditambahkan');
+            return redirect()->back()->with('message_error','promo gagal ditambahkan');
         }
     }
 
@@ -142,6 +156,8 @@ class Promo extends Controller
         $model_detail_promo->diskon = $req->diskon;
         $model_detail_promo->minimum_beli = $req->minimum_beli;
         $model_detail_promo->id_perusahaan= Session::get('id_perusahaan_karyawan');
+        $model_detail_promo->id_karyawan= Session::get('id_karyawan');
+
         if($model_detail_promo->save()){
             return redirect()->back()->with('message_success','barang promo telah diubah');
         }else{

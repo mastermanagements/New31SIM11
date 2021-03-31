@@ -858,37 +858,16 @@ Route::post('penjualan-barang/{id_p_sales}/detail','produksi\PSales@updateDetail
 #detail penjualan
 Route::resource('detail-penjualan-barang','produksi\DetailSales');
 Route::get('detail-penjualan-barang/{id_detail_penjualan}/destroy','produksi\DetailSales@destroy');
+
 //--- Jasa ---
 
-Route::get('Jasa', 'produksi\Jasa@index');
+Route::resource('Jasa','produksi\Jasa');
 
-Route::get('tambah-jasa', 'produksi\Jasa@create');
+Route::resource('Proses-Bisnis','produksi\ProsesBisnis',['except'=>['index', 'show']]);
 
-Route::post('store-jasa', 'produksi\Jasa@store');
+Route::resource('SK-Jasa','produksi\SKJasa',['except'=>['index', 'show']]);
 
-Route::get('ubah-jasa/{id}', 'produksi\Jasa@edit');
 
-Route::put('update-jasa/{id}', 'produksi\Jasa@update');
-
-Route::put('delete-jasa/{id}', 'produksi\Jasa@destroy');
-
-Route::post('cari-jasa', 'produksi\Jasa@Cari_jasa');
-
-//--- Jual jasa ---
-
-Route::get('Jual-Jasa', 'produksi\Jualjasa@index');
-
-Route::get('tambah-jual-jasa', 'produksi\Jualjasa@create');
-
-Route::post('store-jual-jasa', 'produksi\Jualjasa@store');
-
-Route::get('ubah-jual-jasa/{id}', 'produksi\Jualjasa@edit');
-
-Route::put('update-jual-jasa/{id}', 'produksi\Jualjasa@update');
-
-Route::put('delete-jual-jasa/{id}', 'produksi\Jualjasa@delete');
-
-Route::post('cari-jual-jasa', 'produksi\Jualjasa@cari_jual_jasa');
 
 //--- Proyek ---
 
@@ -2331,13 +2310,15 @@ Route::get('ubah-stok-opname/{id}', 'produksi\StokOpname@UbahHistoryStokUpname')
 Route::post('ubah-perbaikan-stok/{id}', 'produksi\StokOpname@update_perbaikan_stok');
 
 #Todo Promo
-
+//promo barang
 Route::resource('promo-crud', 'marketing\Promo');
+//detail barang promo barang & jasa digabung
 Route::post('delete-promo/{id}', 'marketing\Promo@delete_promo');
-Route::get('barang-promo/{id}', 'marketing\Promo@barang_promo');
-Route::post('tambah-promo/{id_promo}', 'marketing\Promo@barang_promo_store');
+Route::get('rincian-promo/{id}', 'marketing\Promo@rincian_promo');
+Route::post('tambah-rincian-promo/{id_promo}', 'marketing\Promo@rincian_promo_store');
 Route::put('ubah-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo_update');
 Route::get('hapus-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo_delete');
+
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}', 'globals\ProvinsiDanKabupaten@ResponseKabupaten');
