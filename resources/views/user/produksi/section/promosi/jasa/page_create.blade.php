@@ -14,7 +14,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Daftar Barang Promosi
+            Daftar Rincian Promosi Jasa
         </h1>
     </section>
 
@@ -26,40 +26,33 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Barang Promosi</h3>
+                        <h3 class="box-title">Formulir Rincian Promosi Jasa</h3>
+                        <h3 class="box-title"><a href="{{ url('Jasa') }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Back to Jasa</a></h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
 
                         <div class="box-body">
                            <div class="col-md-12">
-                               <form role="form" action="{{ url('tambah-promo/'.$data->id) }}" method="post">
+                               <form role="form" action="{{ url('tambah-rincian-promo/'.$data->id) }}" method="post">
                                    {{ csrf_field() }}
                                    <table style="width: 100%; margin-bottom: 10px">
                                        <tr>
-                                           <td>Nama Barang</td>
+                                           <td>Nama Layanan</td>
                                            <td>Harga Satuan</td>
                                            <td>Diskon</td>
                                            <td>Jumlah Minimum beli</td>
                                        </tr>
                                        <tr>
-                                           <td>@if(!empty($barang))
-                                               <select class="form-control select2" name="id_barang" style="width: 100%" required>
-                                                       @foreach($barang as $data)
-                                                            <option value="{{ $data->id }}">{{ $data->nm_barang }}</option>
+                                           <td>@if(!empty($jasa))
+                                               <select class="form-control select2" name="id_jasa" style="width: 100%" required>
+                                                       @foreach($jasa as $data)
+                                                            <option value="{{ $data->id }}">{{ $data->nm_layanan }}</option>
                                                        @endforeach
 
                                                </select>
                                                @endif
-                                               @if(!empty($jasa))
-                                                   <select class="form-control select2" name="id_jasa" style="width: 100%" required>
 
-                                                       @foreach($jasa as $data)
-                                                           <option value="{{ $data->id }}">{{ $data->nm_jasa }}</option>
-                                                       @endforeach
-
-                                                   </select>
-                                               @endif
                                            </td>
                                            <td>
                                                <input type="text" class="form-control" name="hpp"  value="0" disabled required>
@@ -79,14 +72,14 @@
                            </div>
                             <div class="col-md-12">
                                 @if(!empty($detail_promo->linkToDetailBarang))
-                                    <h4>detail Barang Promo</h4>
+                                    <h4>detail Jasa Promo</h4>
                                     {{ csrf_field() }}
                                     <table style="width: 100%; margin-bottom: 10px">
                                         <tr>
-                                            <td>Nama Barang</td>
+                                            <td>Nama Layanan</td>
                                             <td>Harga Satuan</td>
                                             <td>Diskon</td>
-                                            <td>Jumlah Minimum beli</td>
+                                            <td>Jumlah Minimum Order</td>
                                             <td>aksi</td>
                                         </tr>
                                         @foreach($detail_promo->linkToDetailBarang as $data_detail_promo)
@@ -96,18 +89,10 @@
                                                         {{ csrf_field() }}
 
                                                         <td><input type="hidden" name="_method" value="put">
-                                                            @if(!empty($barang))
-                                                                <select class="form-control select2" name="id_barang" style="width: 100%" required>
-                                                                    @foreach($barang as $data)
-                                                                        <option value="{{ $data->id }}" @if($data_detail_promo->id_barang==$data->id) selected @endif>{{ $data->nm_barang }}</option>
-                                                                    @endforeach
-
-                                                                </select>
-                                                            @endif
                                                             @if(!empty($jasa))
                                                                 <select class="form-control select2" name="id_jasa" style="width: 100%" required>
                                                                     @foreach($jasa as $data)
-                                                                        <option value="{{ $data->id }}" @if($data_detail_promo->id_jasa==$data->id) selected @endif>{{ $data->nm_jasa }}</option>
+                                                                        <option value="{{ $data->id }}" @if($data_detail_promo->id_jasa==$data->id) selected @endif>{{ $data->nm_layanan }}</option>
                                                                     @endforeach
 
                                                                 </select>
@@ -124,7 +109,7 @@
                                                         </td>
                                                         <td>
                                                             <button type="submit" class="btn btn-warning">ubah</button>
-                                                            <a href="#" onclick="if(confirm('Apakah anda yakin akan menghapus data barang ini .. ?')){ window.location.href='{{  url('hapus-detail-promo/'.$data_detail_promo->id) }}'  }else { alert('proses hapus dihentikan')} " class="btn btn-danger">hapus</a>
+                                                            <a href="#" onclick="if(confirm('Apakah anda yakin akan menghapus data layanan ini .. ?')){ window.location.href='{{  url('hapus-detail-promo/'.$data_detail_promo->id) }}'  }else { alert('proses hapus dihentikan')} " class="btn btn-danger">hapus</a>
                                                         </td>
                                                     </form>
                                                 </tr>

@@ -96,7 +96,7 @@
                                                                         <td>{{ $no++ }}</td>
                                                                         <td>{{ $data->barcode }}</td>
                                                                         <td>{{ $data->kd_barang }} {{ $data->nm_barang }}</td>
-                                                                        <td>{{ $data->linkToSatuan->satuan_brg }}</td>
+                                                                        <td>{{ $data->linkToSatuan->satuan }}</td>
                                                                         <td>{{ $data->getkategori->nm_kategori_p }}</td>
                                                                         <td>{!!  substr($data->spec_barang,0,100) !!}</td>
                                                                         <td>{!! substr($data->desc_barang,0,100) !!}</td>
@@ -246,7 +246,7 @@
                                            <td>{{ $data_barang_konversi->linkToBarangAsal->linkToSatuan->satuan_brg }}</td>
                                            <td>{{ $data_barang_konversi->linkToBarangAsal->stok_akhir }}</td>
                                            <td>{{ $data_barang_konversi->linkToBarangTujuan->nm_barang }}</td>
-                                           <td>{{ $data_barang_konversi->linkToBarangTujuan->linkToSatuan->satuan_brg }}</td>
+                                           <td>{{ $data_barang_konversi->linkToBarangTujuan->linkToSatuan->satuan }}</td>
                                            <td>{{ $data_barang_konversi->jumlah_konversi_satuan }}</td>
                                            <td>
                                                <form action="{{ url('atur-konversi/'.$data_barang_konversi->id.'/delete') }}" method="post">
@@ -283,10 +283,10 @@
                                            <tr>
                                                <td>{{ $i++ }}</td>
                                                <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->nm_barang }}</td>
-                                               <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan_brg }}</td>
+                                               <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan }}</td>
                                                <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->stok_akhir }}</td>
                                                <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->nm_barang }}</td>
-                                               <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->linkToSatuan->satuan_brg }}</td>
+                                               <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->linkToSatuan->satuan }}</td>
                                                <td>{{ $data_barang_konvesi->jum_brg_dikonversi }}</td>
                                            </tr>
                                        @endforeach
@@ -360,7 +360,7 @@
                                                                 {{ csrf_field() }}
                                                                 <a href="#" onclick="onPromoEdit({{ $data_promo->id }})" class="btn btn-warning">ubah</a>
                                                                 <button type="submit" class="btn btn-danger">hapus</button>
-                                                                <a href="#" onclick="window.location.href='{{ url('barang-promo/'.$data_promo->id) }}'" class="btn btn-default">Barang Promo</a>
+                                                                <a href="#" onclick="window.location.href='{{ url('rincian-promo/'.$data_promo->id) }}'" class="btn btn-default">Rincian Promo</a>
                                                             </form>
                                                         </td>
                                                     </tr>
@@ -376,13 +376,14 @@
                 </div>
                 <!-- nav-tabs-custom -->
             </div>
+                <!--tambah promo barang--->
                 <div class="modal fade" id="modal-default">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Form Promo</h4>
+                                <h4 class="modal-title">Form Promo Barang</h4>
                             </div>
                             <form action="{{ url('promo-crud') }}" method="post" id="form_promo">
                                 {{ csrf_field() }}
@@ -398,10 +399,9 @@
                                             <div class="form-group">
                                                 <label>Jenis Promo</label>
                                                 <select name="jenis_promo" class="form-control" id="jenis_promo" required>
-                                                    @foreach($metode_promo as $key=> $promo)
-                                                        <option value="{{ $key }}">{{ $promo }}</option>
-                                                    @endforeach
+                                                        <option value="0">Promo Barang</option>
                                                 </select>
+
                                             </div>
                                             <div class="form-group">
                                                 <label>Tanggal Dibuat</label>

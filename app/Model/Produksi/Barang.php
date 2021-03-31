@@ -27,7 +27,7 @@ class Barang extends Model
     }
 
     public function linkToSatuan(){
-        return $this->belongsTo('App\Model\Produksi\SatuanBarang', 'id_satuan');
+        return $this->belongsTo('App\Model\Produksi\Satuan', 'id_satuan');
     }
 
     public function linkToHargaJualSatuan(){
