@@ -30,7 +30,6 @@
                     <form role="form" action="{{ url('Jasa') }}" method="post" enctype="multipart/form-data">
 
                         <div class="box-body">
-                            <div class="form-group">
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Nama Layanan</label>
                                   <input type="text" name="nm_layanan" class="form-control" placeholder="nama layanan" required/>
@@ -41,6 +40,7 @@
                                   <input type="number" name="peritem" class="form-control" placeholder="misal: per 1 kg, tulis: 1" required/>
                                   <small style="color: red">* Tidak Boleh Kosong</small>
                               </div>
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Satuan</label>
                                 <select class="form-control select2" style="width: 100%;" name="id_satuan" required >
                                         @foreach($satuan as $value)

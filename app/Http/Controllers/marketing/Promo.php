@@ -119,7 +119,9 @@ class Promo extends Controller
             'minimum_beli'=> 'required',
         ]);
         $model = prom::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+
         $model_detail_promo =new DetailPromo();
+
         if($model->jenis_promo==0){
             $model_detail_promo->id_barang = $req->id_barang;
         }else{

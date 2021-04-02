@@ -351,8 +351,8 @@
                                                     <tr>
                                                         <td>{{ $no++ }}</td>
                                                         <td>{{ $data_promo->nama_promo }}</td>
-                                                        <td>{{ $data_promo->tgl_dibuat }}</td>
-                                                        <td>{{ $data_promo->tgl_berlaku }}</td>
+                                                        <td>{{ tanggalView($data_promo->tgl_dibuat) }}</td>
+                                                        <td>{{ tanggalView($data_promo->tgl_berlaku) }}</td>
                                                         <td>{{ $data_promo->syarat }}</td>
                                                         <td>{{ $data_promo->fasilitas_promo }}</td>
                                                         <td>
