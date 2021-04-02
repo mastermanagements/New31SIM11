@@ -867,8 +867,13 @@ Route::resource('Proses-Bisnis','produksi\ProsesBisnis',['except'=>['index', 'sh
 
 Route::resource('SK-Jasa','produksi\SKJasa',['except'=>['index', 'show']]);
 
+Route::resource('Order-Jasa', 'produksi\OrderJasa');
 
-
+Route::get('rincian-orderjasa/{id}', 'produksi\OrderJasa@rincian_orderjasa');
+Route::post('tambah-rincian-orderjasa/{id_order_jasa}', 'produksi\OrderJasa@rincian_orderjasa_store');
+Route::put('ubah-detail-orderjasa/{id_detail_orderjasa}', 'produksi\OrderJasa@rincian_orderjasa_update');
+Route::put('tambah-dp-orderjasa/{id_order_jasa}', 'produksi\OrderJasa@uangmuka_orderjasa_store');
+Route::get('hapus-detail-orderjasa/{id_detail_orderjasa}', 'produksi\OrderJasa@rincian_orderjasa_delete');
 //--- Proyek ---
 
 Route::get('Proyek', 'produksi\Proyek@index');

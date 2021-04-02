@@ -73,9 +73,7 @@ class Jasa extends Controller
 
     public function store(Request $request)
     { //dd($req->all());
-
       $this->validate($request,[
-
           'nm_layanan'=> 'required',
           'peritem' => 'required',
           'id_satuan'=> 'required',

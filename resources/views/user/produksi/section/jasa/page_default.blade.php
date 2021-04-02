@@ -261,8 +261,8 @@
                                                     <tr>
                                                         <td>{{ $no++ }}</td>
                                                         <td>{{ $pro_jas->nama_promo }}</td>
-                                                        <td>{{ $pro_jas->tgl_dibuat }}</td>
-                                                        <td>{{ $pro_jas->tgl_berlaku }}</td>
+                                                        <td>{{ tanggalView($pro_jas->tgl_dibuat) }}</td>
+                                                        <td>{{ tanggalView($pro_jas->tgl_berlaku) }}</td>
                                                         <td>{{ $pro_jas->syarat }}</td>
                                                         <td>{{ $pro_jas->fasilitas_promo }}</td>
                                                         <td>

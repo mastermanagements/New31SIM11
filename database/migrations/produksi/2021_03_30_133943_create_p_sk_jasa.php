@@ -15,7 +15,7 @@ class CreatePSkJasa extends Migration
     {
         Schema::create('p_sk_jasa', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('jenis_sk',['0','1']);
+            $table->enum('jenis_sk',['0','1'])->comment('0=Nota Order, 1=Nota Tagihan');
             $table->text('sk');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();

@@ -27,7 +27,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Rincian Promosi Jasa</h3>
-                        <h3 class="box-title"><a href="{{ url('Jasa') }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Back to Jasa</a></h3>
+                        <h3 class="box-title"><a href="{{ url('Jasa') }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ke Halaman Jasa</a></h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -71,7 +71,7 @@
                                </form>
                            </div>
                             <div class="col-md-12">
-                                @if(!empty($detail_promo->linkToDetailBarang))
+                                @if(!empty($detail_promo->linkToDetailJasa))
                                     <h4>detail Jasa Promo</h4>
                                     {{ csrf_field() }}
                                     <table style="width: 100%; margin-bottom: 10px">
@@ -82,7 +82,7 @@
                                             <td>Jumlah Minimum Order</td>
                                             <td>aksi</td>
                                         </tr>
-                                        @foreach($detail_promo->linkToDetailBarang as $data_detail_promo)
+                                        @foreach($detail_promo->linkToDetailJasa as $data_detail_promo)
 
                                                 <tr>
                                                     <form role="form" action="{{ url('ubah-detail-promo/'.$data_detail_promo->id) }}" method="post">
