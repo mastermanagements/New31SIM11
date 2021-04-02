@@ -176,6 +176,7 @@ return [
         App\Providers\ComposerServiceProvider::class,
 		    App\Providers\BulanServiceProvider::class,
 		    App\Providers\TahunServiceProvider::class,
+        App\Providers\TanggalKonversiServiceProvider::class,
     ],
 
     /*
@@ -226,6 +227,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 		    'Bulan' => App\Http\Helpers\Bulan::class,
 		    'Tahun' => App\Http\Helpers\Tahun::class,
+        'tanggalKonversi' => App\Http\Helpers\TanggalKonversi::class,
     ],
 
 ];
