@@ -94,7 +94,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
             'info'        : true,
             'autoWidth'   : false
         })
-    })
+
+        get_harga = function(functionNumber,segment) {
+            var id_barang = $('[name="id_barang"]').val();
+            $.ajax({
+                url : "{{ url('getHargaBarang') }}",
+                type : 'post',
+                data : {
+                    '_token':'{{csrf_token()}}',
+                    'id_barang': id_barang,
+                    'number_call_function':functionNumber
+                },
+
+                success: function (result) {
+                    console.log(segment);
+                    if(segment == undefined){
+                        $('#show_harga').val(result.harga);
+                    }else{
+                        $('#show_harga'+segment).val(result.harga);
+                    }
+                }
+
+            });
+        }
+    });
 </script>
 </body>
 </html>

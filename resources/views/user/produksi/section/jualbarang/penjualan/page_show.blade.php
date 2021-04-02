@@ -237,7 +237,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Jatuh tempo</label>
-                                                                <input type="date" name="jatuh_tempo" class="form-control" required/>
+                                                                <input type="date" name="jatuh_tempo" class="form-control" @if(!empty($data->tgl_jatuh_tempo)) value="{{$data->tgl_jatuh_tempo}}"  @else value="{{$data->tgl_jatuh_tempo}}" @endif required/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
@@ -254,6 +254,17 @@
                                                             <div class="form-group">
                                                                 <label>Hutang</label>
                                                                 <input type="number" class="form-control" name="hutang" @if(!empty($data->kurang_bayar)) value="{{$data->kurang_bayar}}"  @else value="0" @endif>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Metode pembayaran</label>
+                                                                <select class="form-control" name="metode_bayar">
+                                                                    <option disabled>Pilih metode pembayaran</option>
+                                                                    @foreach ($metode_pembayaran as $key=> $item)
+                                                                        <option value="{{ $key }}">{{ $item }}</option>
+                                                                    @endforeach
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">

@@ -712,7 +712,7 @@ Route::put('delete-pengumuman/{id}', 'administrasi\Pengumuman@delete');
 //--- Barang ---
 
 Route::get('Barang', 'produksi\Barang@index');
-
+Route::post('getHargaBarang', 'produksi\Barang@respons_harga_barang');
 Route::get('tambah-barang', 'produksi\Barang@create');
 
 Route::post('store-barang', 'produksi\Barang@store');

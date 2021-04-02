@@ -15,6 +15,11 @@ use App\Http\utils\JenisAkunPenjualan;
 class PSales extends Controller
 {
     //
+    private $metode_bayar = [
+        'Tunai',
+        'Kredit',
+        'Transfer Bank',
+    ];
     public function create(){
         $pass = [
             'klien'=> klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
@@ -31,6 +36,7 @@ class PSales extends Controller
             'pesanan_jual' => PSO::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'komisi_sales' => komisi_sales::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'data'=> $model,
+            'metode_pembayaran'=>$this->metode_bayar,
             'barang'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         return view('user.produksi.section.jualbarang.penjualan.page_show', $pass);
@@ -129,7 +135,7 @@ class PSales extends Controller
             'total'=> 'required',
             'hutang'=> 'required',
         ]);
-        dd($req->all());
+
 
         $check_data_penjualan = JenisAkunPenjualan::CheckAkunPenjualan();
         #check akun pembelian kalau kosong == false
@@ -149,8 +155,8 @@ class PSales extends Controller
 
         #Ambil Jenis Jurnal
         $jenis_jurnal = 0;
-        $jenis_akun_penjualan = JenisAkunPenjualan::rule($req->all(), 2);
-
+        $n_req=$req->merge( ['ongkir'=> $model->ongkir]);
+        $jenis_akun_penjualan = JenisAkunPenjualan::rule($n_req, 2);
         if ($model->pajak !=0){
             JenisAkunPenjualan::$status_pajak = true;
         }
@@ -158,7 +164,6 @@ class PSales extends Controller
         if ($model->ongkir){
             JenisAkunPenjualan::$status_ongkir = true;
         }
-
         if($model->save()){
 
             if(is_array($jenis_akun_penjualan) == true){

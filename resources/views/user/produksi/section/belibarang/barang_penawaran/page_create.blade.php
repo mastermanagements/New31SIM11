@@ -45,7 +45,7 @@
                                        <tr>
                                            <td>
                                                @if(!empty($barang))
-                                               <select class="form-control select2" name="id_barang" style="width: 100%" onclick="" required>
+                                               <select class="form-control select2" name="id_barang" style="width: 100%"  onchange="get_harga(1)" required>
                                                        @foreach($barang as $datas)
                                                             <option value="{{ $datas->id }}">{{ $datas->nm_barang }}</option>
                                                        @endforeach
@@ -53,7 +53,7 @@
                                                @endif
                                            </td>
                                            <td>
-                                               <input type="text" class="form-control" name="harga_lama" value="0" disabled required>
+                                               <input type="text" class="form-control" name="harga_lama" value="0" id="show_harga" disabled required>
                                            </td>
                                            <td>
                                                <input type="text" class="form-control" name="harga_baru" placeholder="harga_baru"  required>
@@ -82,7 +82,7 @@
                                             <td>Aksi</td>
                                         </tr>
                                             @php($no=1)
-                                            @foreach($data->linkToDetail as $data_tb)
+                                            @foreach($data->linkToDetail as $keys=> $data_tb)
                                                 <tr>
                                                     <form role="form" action="{{ url('ubah-pembelian-penawaran-barang/'.$data_tb->id) }}" method="post" >
 
@@ -91,7 +91,7 @@
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="_method" value="put">
                                                         @if(!empty($barang))
-                                                            <select class="form-control select2" name="id_barang" style="width: 100%" required>
+                                                            <select class="form-control select2" name="id_barang" style="width: 100%" onchange="get_harga(1,'{{$keys}}')" required>
                                                                 @foreach($barang as $datas)
                                                                     <option value="{{ $datas->id }}" @if($datas->id==$data_tb->id_barang) selected @endif>{{ $datas->nm_barang }}</option>
                                                                 @endforeach
@@ -99,7 +99,7 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <input type="text" class="form-control" name="harga_lama" value="0" disabled required>
+                                                        <input type="text" class="form-control" name="harga_lama" id="show_harga{{ $keys }}" value="0" disabled required>
                                                     </td>
                                                     <td>
                                                         <input type="text" class="form-control" name="harga_baru" value="{{ $data_tb->hpp_baru }}"  required>

@@ -93,7 +93,7 @@ class JenisAkunPenjualan
             }
 
             # Beban angkut pembelian
-            if($request['onkir'] !=0){
+            if($request['ongkir'] !=0){
                 $jenis_array= [
                   9=>'Beban angkut penjualan',
                 ];
@@ -186,6 +186,5 @@ class JenisAkunPenjualan
         }
         return $new_array;
     }
-
 
 }
