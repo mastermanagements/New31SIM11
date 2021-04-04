@@ -15,11 +15,13 @@ use App\Http\utils\JenisAkunPenjualan;
 class PSales extends Controller
 {
     //
-    private $metode_bayar = [
-        'Tunai',
-        'Kredit',
-        'Transfer Bank',
-    ];
+    public $metode_bayar;
+
+    public function __construct()
+    {
+        $this->metode_bayar = JenisAkunPenjualan::$metode_pembayaran;
+    }
+
     public function create(){
         $pass = [
             'klien'=> klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),

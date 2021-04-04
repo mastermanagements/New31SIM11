@@ -96,7 +96,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         })
 
         get_harga = function(functionNumber,segment) {
-            var id_barang = $('[name="id_barang"]').val();
+            if(segment == undefined){
+                var id_barang = $('[name="id_barang"]').val();
+            }else{
+                var id_barang = $('#id_barang'+segment).val();
+            }
             $.ajax({
                 url : "{{ url('getHargaBarang') }}",
                 type : 'post',

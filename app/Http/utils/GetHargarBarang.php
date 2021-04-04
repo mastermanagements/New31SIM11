@@ -12,6 +12,7 @@ use App\Model\Produksi\DetailPO;
 use Session;
 use stdClass;
 use Zend\Diactoros\Request;
+use App\Model\Produksi\Barang;
 
 class GetHargarBarang
 {
@@ -31,7 +32,17 @@ class GetHargarBarang
     public static function harga_pesanan_pembelian(){
         $model = DetailPO::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->orderBy('id','desc')->where('id_barang',self::$id_barang)->first();
         if(!empty($model)){
-            return self::format($model->hpp_baru);
+            return self::format($model->hpp);
+        }else{
+            return self::format();
+        }
+    }
+
+    #Todo Ambiil harga Hpp dari data barang
+    public static function harga_penjualan_barang(){
+        $model = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->orderBy('id','desc')->where('id',self::$id_barang)->first();
+        if(!empty($model)){
+            return self::format($model->hpp);
         }else{
             return self::format();
         }
@@ -40,8 +51,10 @@ class GetHargarBarang
     public static function callFunction($numberFunction=0){
         if($numberFunction==1){
            return self::harga_penawaran_pembelian();
-        }else if($numberFunction==1){
+        }else if($numberFunction==2){
             return self::harga_pesanan_pembelian();
+        }else if($numberFunction==3){
+            return self::harga_penjualan_barang();
         }
     }
 

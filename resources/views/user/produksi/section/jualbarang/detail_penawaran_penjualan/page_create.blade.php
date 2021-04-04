@@ -38,7 +38,7 @@
                                             <input type="hidden" name="id_tawar_jual" value="{{ $id_tawar_jual }}">
                                             <div class="form-group">
                                                 <label for="id_barang">Barang</label>
-                                                <select class="form-control select2" style="width: 100%;" name="id_barang" required>
+                                                <select class="form-control select2" style="width: 100%;" name="id_barang" onchange="get_harga(3)" required>
                                                     <option disabled>Pilih Barang</option>
                                                     @if(!empty($barang))
                                                         @foreach($barang as $data)
@@ -57,7 +57,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Harga Satuan</label>
-                                                <input type="number" class="form-control" name="hpp" value="0" required>
+                                                <input type="number" class="form-control" name="hpp" value="0" id="show_harga" required>
                                                 <small style="color: red">* Tidak Boleh Kosong</small>
                                             </div>
                                             <div class="form-group">
@@ -97,21 +97,21 @@
                                                 <th>Total</th>
                                                 <th>Aksi</th>
                                             </tr>
-                                          @foreach($data_jual->linkToDetailTawarBeli as $item)
+                                          @foreach($data_jual->linkToDetailTawarBeli as $keys=> $item)
                                               <form action="{{ url('detail-barang-Tpenjualan/'. $item->id) }}" method="post">
 
                                                 <tr>
                                                     <th>@method('put') {{ csrf_field() }} {{ $no++ }}</th>
                                                     <th>
                                                         @if(!empty($barang))
-                                                            <select class="form-control select2" style="width: 100%;" name="id_barang" required>
+                                                            <select class="form-control select2" style="width: 100%;"  name="id_barang" onchange="get_harga(3,'{{$keys}}')" id="id_barang{{$keys}}" required>
                                                             @foreach($barang as $data)
                                                                 <option value="{{ $data->id }}" @if($item->linkToBarang->id==$item->id_barang) selected @endif>{{ $data->nm_barang }}</option>
                                                             @endforeach
                                                             </select>
                                                         @endif
                                                     </th>
-                                                    <th><input type="number" name="n_hpp" class="form-control" value="{{ $item->hpp }}"></th>
+                                                    <th><input type="number" name="n_hpp" class="form-control" id="show_harga{{$keys}}" value="{{ $item->hpp }}"></th>
                                                     <th><input type="number" name="n_jumlah_barang" class="form-control" value="{{ $item->jumlah_barang }}"></th>
                                                     <th><input type="number" name="n_diskon" class="form-control" value="{{ $item->diskon }}"></th>
                                                     <th><input type="number" name="n_total" class="form-control" value="{{ $item->total_tj }}" readonly></th>

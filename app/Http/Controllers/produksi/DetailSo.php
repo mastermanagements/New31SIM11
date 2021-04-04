@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\utils\JenisAkunPenjualan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Produksi\PSO;
@@ -12,12 +13,18 @@ use App\Model\Produksi\DetailSO as DSO;
 class DetailSo extends Controller
 {
     //
+    public $metode_pembayaran;
+    public function __construct()
+    {
+        $this->metode_pembayaran = JenisAkunPenjualan::$metode_pembayaran;
+    }
 
     public function show($id_so){
         $data = [
             'data'=> PSO::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id_so),
             'klien'=> Klien::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
-            'barang'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'barang'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'metode_pembayaran' => $this->metode_pembayaran
         ];
         return view('user.produksi.section.jualbarang.detail_so.page_create', $data);
     }

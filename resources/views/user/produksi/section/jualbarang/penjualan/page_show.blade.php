@@ -125,7 +125,7 @@
                                                         <tr>
                                                             <th width="300">
                                                                 {{ csrf_field() }}
-                                                                <select class="form-control select2" style="width: 100%;" name="id_barang" required>
+                                                                <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3)" required>
                                                                     <option disabled>Pilih Barang</option>
                                                                     @if(!empty($barang))
                                                                         @foreach($barang as $data_barang)
@@ -134,7 +134,7 @@
                                                                     @endif
                                                                 </select>
                                                             </th>
-                                                            <th><input type="number" name="hpp" class="form-control" required></th>
+                                                            <th><input type="number" name="hpp" class="form-control" id="show_harga" required></th>
                                                             <th><input type="number" name="jumlah_jual" class="form-control" required></th>
                                                             <th><input type="number" name="diskon" class="form-control" required></th>
                                                             <th><input type="number" name="jumlah_harga" readonly class="form-control" id="tbl_jumlah" required></th>
@@ -162,7 +162,7 @@
                                                         @php($total_item = 0)
                                                         @php($total_uang = 0)
                                                         @php($total_diskon = 0)
-                                                        @foreach($data->linkToDetailSales as $data_detail)
+                                                        @foreach($data->linkToDetailSales as $keys=> $data_detail)
 
 
                                                             <form action="{{ url('detail-penjualan-barang/'. $data_detail->id) }}" method="post">
@@ -171,7 +171,7 @@
 
                                                                         @method('put')
                                                                         {{ csrf_field() }}
-                                                                        <select class="form-control select2" style="width: 100%;" name="id_barang" required>
+                                                                        <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3,'{{$keys}}')" id="id_barang{{$keys}}"  required>
                                                                             <option disabled>Pilih Barang</option>
                                                                             @if(!empty($barang))
                                                                                 @foreach($barang as $data_barang)
@@ -180,7 +180,7 @@
                                                                             @endif
                                                                         </select>
                                                                     </th>
-                                                                    <th width="200"><input type="number" name="hpp" class="form-control" value="{{ $data_detail->hpp }}" required></th>
+                                                                    <th width="200"><input type="number" name="hpp" class="form-control" id="show_harga{{$keys}}" value="{{ $data_detail->hpp }}" required></th>
                                                                     <th width="200"><input type="number" name="jumlah_jual" class="form-control" value="{{ $data_detail->jumlah_jual }}" required></th>
                                                                     <th width="200"><input type="number" name="diskon" class="form-control" value="{{ $data_detail->diskon }}"  required></th>
                                                                     <th width="200"><input type="number" name="jumlah_harga" readonly class="form-control" value="{{ $data_detail->jumlah_harga }}" required></th>

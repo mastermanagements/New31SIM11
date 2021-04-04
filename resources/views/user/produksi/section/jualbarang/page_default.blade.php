@@ -31,7 +31,7 @@
                         <li ><a href="#tab_4" data-toggle="tab">Penjualan</a></li>
                         <li ><a href="#tab_5" data-toggle="tab">Pembayaran</a></li>
                         <li ><a href="#tab_6" data-toggle="tab">Return Pembayaran</a></li>
-                        <li ><a href="#tab_7" data-toggle="tab">History Harga Penjualan</a></li>
+                        {{--<li ><a href="#tab_7" data-toggle="tab">History Harga Penjualan</a></li>--}}
                         <li ><a href="#tab_8" data-toggle="tab">Pengaturan Akun Penjualan</a></li>
                     </ul>
                     <div class="tab-content">

@@ -37,6 +37,13 @@ class JenisAkunPenjualan
         'Return penjualan mengembalikan barang',
     ];
 
+    # Metode Pembayaran
+    public static $metode_pembayaran = [
+        'Tunai',
+        'Kredit',
+        'Transfer Bank',
+    ];
+
     # Check Akun pembelian
     public static function CheckAkunPenjualan()
     {
@@ -53,11 +60,38 @@ class JenisAkunPenjualan
         $initial_jenis = array();
         self::$metode_transaksi = $metode_transaksi;
         if($metode_transaksi == 1){ // Pesanan penjualan
-             # Pesanan pembelian transfer
-             $jenis_array = [
-                  0=>'Pesanan Penjualan tunai',
-             ];
-             array_push($initial_jenis, $jenis_array);//add to initial_jenis
+            # Pesanan penjualan tunai tampa pajak
+            if($request['metode_bayar']==0 && $request['pajak']==0){
+                $jenis_array = [
+                    0 => 'Pesanan Penjualan tunai',
+                ];
+                array_push($initial_jenis, $jenis_array);//add to initial_jenis
+            }
+
+            # Pesanan transfer dengan pajak
+            if($request['metode_bayar']==2 && $request['pajak']==0){
+                $jenis_array= [
+                    2=>'Pesanan Penjualan transfer',
+                ];
+                array_push($initial_jenis, $jenis_array);//add to initial_jenis
+            }
+
+            # Pesanan penjualan tunai dengan pajak
+            if($request['metode_bayar']==0 && $request['pajak']!=0){
+                $jenis_array = [
+                    2 => 'Pesanan Penjualan tunai dengan pajak',
+                ];
+                array_push($initial_jenis, $jenis_array);//add to initial_jenis
+            }
+
+            #Pesanan Penjualan transfer dg pajak
+            if($request['metode_bayar']==2 && $request['pajak']!=0){
+                $jenis_array = [
+                    3 => 'Pesanan Penjualan transfer dg pajak',
+                ];
+                array_push($initial_jenis, $jenis_array);//add to initial_jenis
+            }
+
         }else if($metode_transaksi == 2){ // Penjualan
 
             # Pembelian tunai tanpa pajak (metode bayar : 0 = Tunai)

@@ -75,7 +75,7 @@
 
 
                                 </form>
-                            </div>
+
                             <div class="col-md-12">
                                 <form role="form" action="{{ url('tambah-barang-pembelian/'.$data->id) }}" method="post" >
                                 <div class="col-md-12 row" style="margin-top:10px">
@@ -92,7 +92,7 @@
                                             <tr>
                                                 <td>
                                                     @if(!empty($barang))
-                                                        <select class="form-control select2" name="id_barang" style="width: 100%" required>
+                                                        <select class="form-control select2" name="id_barang" style="width: 100%" onchange="get_harga(2)" required>
                                                             @foreach($barang as $datas)
                                                                 <option value="{{ $datas->id }}">{{ $datas->nm_barang }}</option>
                                                             @endforeach
@@ -101,7 +101,7 @@
                                                 </td>
                                                 <td>
                                                     <input type="hidden" class="form-control" name="id_po" value="{{ $data->id }}"  required>
-                                                    <input type="text" class="form-control" name="hpp" value="0"  required>
+                                                    <input type="text" class="form-control" name="hpp" id="show_harga" value="0"  required>
                                                 </td>
                                                 <td>
                                                     <input type="number" class="form-control" name="diskon" placeholder="diskon" value="0" required>
@@ -117,8 +117,10 @@
                                         </table>
                                         <div class="form-group">
                                             <button class="btn btn-primary">Tambah barang</button>
-                                        </div>       
+                                        </div>
+                                </div>
                                 </form>
+
                                 @if(!empty($data->linkToDetailPO))
                                     @php($banyak_item=0)
                                     @php($sub_item=0)
@@ -133,7 +135,7 @@
                                                     <td>Jumlah</td>
                                                     <td>Aksi</td>
                                                 </tr>
-                                                @foreach($data->linkToDetailPO as $data_pesanan)
+                                                @foreach($data->linkToDetailPO as $keys => $data_pesanan)
                                                     @php($banyak_item++)
                                                     <form action="{{ url('ubah-barang-pembelian/'.$data_pesanan->id) }}" method="post">
                                                         <tr>
@@ -141,7 +143,7 @@
                                                             <td width="200">
                                                             {{ csrf_field() }}
                                                             @if(!empty($barang))
-                                                                <select class="form-control select2" name="id_barang" style="width: 100%" required>
+                                                                <select class="form-control select2" name="id_barang" style="width: 100%" onchange="get_harga(2,'{{$keys}}')" id="id_barang{{$keys}}" required>
                                                                     @foreach($barang as $datas)
                                                                         <option value="{{ $datas->id }}" @if($data_pesanan->id_barang==$datas->id) selected @endif>{{ $datas->nm_barang }}</option>
                                                                     @endforeach
@@ -149,7 +151,7 @@
                                                             @endif
                                                             </td>
                                                             <td width="150">
-                                                                <input type="text" class="form-control" name="hpp" value="{{ $data_pesanan->hpp }}"  required>
+                                                                <input type="text" class="form-control" name="hpp" value="{{ $data_pesanan->hpp }}" id="show_harga{{$keys}}" required>
                                                             </td>
                                                             <td width="150">
                                                                 <input type="text" class="form-control" name="diskon" placeholder="diskon" value="{{ $data_pesanan->diskon_item*100 }}" required>
@@ -220,17 +222,15 @@
                                        <div class="col-md-12">
                                            <label><input type="checkbox" value="on" name="jurnal_otomatis"> Buat jurnal otomatis </label>  <button class="btn btn-primary"> Simpan Pesanan pembelian </button>
                                        </div>
+
                                 </form>
+                        </div>
                                 {{--</form>--}}
+                            </div>
                             </div>
                         </div>
                         <!-- /.box-body -->
 
-
-
-                    </div>
-                </div>
-            </div>
         </section>
         <!-- /.content -->
     </div>

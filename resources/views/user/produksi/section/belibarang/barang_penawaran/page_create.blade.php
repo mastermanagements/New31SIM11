@@ -91,7 +91,7 @@
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="_method" value="put">
                                                         @if(!empty($barang))
-                                                            <select class="form-control select2" name="id_barang" style="width: 100%" onchange="get_harga(1,'{{$keys}}')" required>
+                                                            <select class="form-control select2" name="id_barang" style="width: 100%" onchange="get_harga(1,'{{$keys}}')" id="id_barang{{$keys}}" required>
                                                                 @foreach($barang as $datas)
                                                                     <option value="{{ $datas->id }}" @if($datas->id==$data_tb->id_barang) selected @endif>{{ $datas->nm_barang }}</option>
                                                                 @endforeach

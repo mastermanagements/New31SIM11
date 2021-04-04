@@ -114,7 +114,7 @@ class PesananPenjualan extends Controller
 
         # Set Rule
         $jenis_akun_penjualan = JenisAkunPenjualan::rule($req, 1);
-
+        dd($jenis_akun_penjualan);
         if($req->diskon_tambahan != 0){
             $diskon = $total * ($req->diskon_tambahan/100);
             $total = $total - $diskon;
@@ -132,6 +132,7 @@ class PesananPenjualan extends Controller
         $model->pajak = $req->pajak;
         $model->dp_so = $req->uang_muka;
         $model->kurang_bayar = $req->kurang_bayar;
+        $model->metode_bayar = $req->metode_bayar;
         $model->total = $total;
 
         if($model->save()){
