@@ -30,6 +30,7 @@ class ReturnPembelian extends Controller
     }
 
     public function store(Request $req){
+//dd($req->all());
         $this->validate($req, [
             'id_cek_barang'=> 'required',
             'jenis_return'=> 'required',

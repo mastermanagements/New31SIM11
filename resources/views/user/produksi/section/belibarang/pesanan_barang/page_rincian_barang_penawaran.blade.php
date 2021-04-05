@@ -26,7 +26,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Pesanan Pembelian</h3>
+                        <h3 class="box-title">Rincian Pesanan Pembelian</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -38,7 +38,7 @@
                                    {{ csrf_field() }}
                                    <div class="form-group">
                                        <label>No. PO</label>
-                                       <input type="text" name="no_po" class="form-control" required>
+                                       <input type="text" name="no_po" class="form-control" value="{{ $no_surat }}" required>
                                    </div>
                                    <div class="form-group">
                                        <label>Tanggal. PO</label>
@@ -106,7 +106,7 @@
                            </div>
                             <div class="col-md-12">
                                 @if(!empty($barang_penawaran))
-                                <h4>detail barang penawaran</h4>
+                                <h4>Detail barang penawaran</h4>
                                 {{ csrf_field() }}
                                     <table style="width: 100%; margin-bottom: 10px">
                                     <tr>
@@ -132,7 +132,7 @@
                                                 </td>
                                              
                                                 <td>
-                                                    <input type="text" class="form-control" name="diskon[]" value="0" required>
+                                                    <input type="text" class="form-control" name="diskon[]" value="{{ $data_tb->diskon }}" required>
                                                 </td>
                                                 <td>
                                                     <input type="text" class="form-control" name="hpp[]" value="{{ $data_tb->hpp_baru }}" readonly required>

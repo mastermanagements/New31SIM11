@@ -15,4 +15,8 @@ class DetailPO extends Model
         # code...
         return $this->belongsTo('App\Model\Produksi\Barang','id_barang');
     }
+
+    public function getDetailCekBarang(){
+        return $this->hasOne('App\Model\Produksi\Detail_Cek_Barang','id_detail_po','id');
+    }
 }

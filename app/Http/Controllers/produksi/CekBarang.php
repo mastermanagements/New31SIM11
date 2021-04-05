@@ -56,8 +56,8 @@ class CekBarang extends Controller
 
     public function update(Request $req, $id)
     {
+//        dd($req->all());
         # code...
-       
         $this->validate($req, [
             'id_barang'=>'required',
             'hpp'=> 'required',
@@ -69,7 +69,7 @@ class CekBarang extends Controller
         ]);
 
         $current_date = date('Y-m-d');
- 
+
         $model = Cek_Barang::updateOrCreate(
             [
                 'id_order'=> $id,
@@ -80,7 +80,6 @@ class CekBarang extends Controller
                 'tgl_konfirm_cek'=> $current_date,
             ]
         );
-        // dd($req->all());
         if($model){
         foreach ($req->id_barang as $key => $value) {
                 # code...
@@ -89,7 +88,8 @@ class CekBarang extends Controller
                         'id_order'=> $id,
                         'id_perusahaan'=>Session::get('id_perusahaan_karyawan'),
                         'id_barang'=> $value,
-                        'id_cek_barang'=> $model->id
+                        'id_cek_barang'=> $model->id,
+                        'id_detail_po'=> $req->id_detail_barang[$key]
                     ],
                     [
                         'hpp'=>  $req->hpp[$key],

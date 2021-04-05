@@ -28,10 +28,11 @@ class PesananPembelian extends Controller
     #Todo Rincian Barang Penawaran
     public function RincianBarangPenawaran($id)
     {
+        $no_surat = SettingNoSurat::no_po();
         $model = TawarBeli::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
         $supplier = Supplier::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
         $barang_penawaran = TawarBeli::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
-       return view('user.produksi.section.belibarang.pesanan_barang.page_rincian_barang_penawaran', ['penawaran_pembelian' => $model, 'supplier' => $supplier, 'barang_penawaran' => $barang_penawaran]);
+       return view('user.produksi.section.belibarang.pesanan_barang.page_rincian_barang_penawaran', ['penawaran_pembelian' => $model, 'supplier' => $supplier, 'barang_penawaran' => $barang_penawaran,'no_surat'=>$no_surat]);
     }
 
     public function store(Request $req)
@@ -303,6 +304,7 @@ class PesananPembelian extends Controller
 
     public function ubah_Pesanan_pembelian_po(Request $req, $id)
     {
+        dd($req->all());
         $this->validate($req, [
             'diskon_tambahan' => 'required',
             'pajak' => 'required',

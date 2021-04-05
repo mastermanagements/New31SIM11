@@ -103,7 +103,8 @@
                                                         <td>{{ $no++ }}</td>
                                                         <td>
                                                             {{ csrf_field() }}
-                                                            <input type="hidden" name="id_barang[]" value="{{ $data_tb->id }}">
+                                                            <input type="hidden" name="id_barang[]" value="{{ $data_tb->id_barang }}">
+                                                            <input type="hidden" name="id_detail_barang[]" value="{{ $data_tb->id }}">
                                                             {{  $data_tb->linkToBarang->nm_barang }}
                                                         </td>
                                                         <td>
@@ -124,30 +125,30 @@
                                                         <td>
                                                             <select class="form-control" name="cek_jumlah[]" required>
                                                                @foreach ($kondisi as $key=> $item)
-                                                                   <option value="{{ $key }}">{{ $item }}</option>
+                                                                   <option value="{{ $key }}" @if(!empty($data_tb->getDetailCekBarang)) @if($data_tb->getDetailCekBarang->cek_jumlah == $key) selected @endif @endif>{{ $item }}</option>
                                                                @endforeach
                                                             </select>
                                                         </td>
                                                         <td>
                                                             <select class="form-control" name="cek_kondisi[]" required>
-                                                                @foreach ($kondisi as $key=> $item)
-                                                                   <option value="{{ $key }}">{{ $item }}</option>
+                                                                @foreach ($kondisi as $keys=> $items)
+                                                                   <option value="{{ $keys }}" @if(!empty($data_tb->getDetailCekBarang)) @if($data_tb->getDetailCekBarang->cek_kualitas == $keys) selected @endif @endif>{{ $items }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <textarea class="form-control" name='ket[]'></textarea>
+                                                            <textarea class="form-control" name='ket[]'>@if(!empty($data_tb->getDetailCekBarang)) {{ $data_tb->getDetailCekBarang->ket }} @endif</textarea>
                                                             <p></p>
                                                         </td>
                                                         <td>
                                                                  <select class="form-control" name="respon[]" required>
-                                                                    @foreach ($respon as $key=> $item)
-                                                                        <option value="{{ $key }}">{{ $item }}</option>
+                                                                    @foreach ($respon as $keys=> $item)
+                                                                        <option value="{{ $keys }}" @if(!empty($data_tb->getDetailCekBarang)) @if($data_tb->getDetailCekBarang->status_return == $keys) selected @endif @endif>{{ $item }}</option>
                                                                     @endforeach
                                                                 </select>
                                                         </td>
                                                         <td>
-                                                            <textarea class="form-control" name='alasan[]'></textarea>
+                                                            <textarea class="form-control" name='alasan[]'> @if(!empty($data_tb->getDetailCekBarang)) {{ $data_tb->getDetailCekBarang->alasan_ditolak }} @endif</textarea>
                                                             <p></p>
                                                         </td>
                                                         {{-- <td>
@@ -169,6 +170,7 @@
                                                   
                                                     @endif
                                                 {{-- </form>      --}}
+
                                                     @if($data_order->id_po ==0)
 
                                                             @if(!empty($data_order->linkToCekBarangDetail))
@@ -185,6 +187,8 @@
                                                                             <td>{{ $no++ }}</td>
                                                                             <td>
                                                                                 {{ csrf_field() }}
+                                                                                <input type="hidden" name="id_detail_barang[]" value="{{ $data_tb->id_detail_po }}">
+
                                                                                 <select name="id_barang[]" class="form-control" readonly>
                                                                                     <option disabled>Pilih barang</option>
                                                                                     @foreach ($barang as $item)
@@ -227,7 +231,7 @@
                                                                                 </select>
                                                                             </td>
                                                                             <td>
-                                                                                <textarea class="form-control" name='ket[]' readonly>@if(!empty($data_tb->ket)) {{ $data_tb->ket }} @endif</textarea>
+                                                                                <textarea class="form-control" name='ket[]' readonly>{{ $data_tb->ket }}</textarea>
                                                                                 <p></p>
                                                                             </td>
                                                                             <td>
