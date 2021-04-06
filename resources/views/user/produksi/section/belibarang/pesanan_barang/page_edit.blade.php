@@ -14,7 +14,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Tambah Barang Pesanan Pembelian
+                Tambah Barang Rincian Pesanan Pembelian
             </h1>
         </section>
 
@@ -176,7 +176,7 @@
                                                         Banyak Item: {{ $banyak_item }}
                                                     </td>
                                                     <td >
-                                                        Sub Total: {{ $sub_item }}
+                                                        Sub Total: <label id="sub_total">{{ $sub_item }}</label>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -193,13 +193,13 @@
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Diskon Tambahan</label>
-                                                       <input type="number" name="diskon_tambahan" @if(!empty($data->diskon_tambahan)) value="{{ $data->diskon_tambahan }}" @else value="0" @endif class="form-control" required>
+                                                       <input type="number" id="diskon_tambahan" name="diskon_tambahan" @if(!empty($data->diskon_tambahan)) value="{{ $data->diskon_tambahan }}" @else value="0" @endif class="form-control" required>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Pajak</label>
-                                                       <input type="number" name="pajak" class="form-control" @if(!empty($data->pajak)) value="{{ number_format($data->pajak,2,',','.') }}" @else  value="0" @endif >
+                                                       <input type="number" id="pajak_tambahan" name="pajak" class="form-control" @if(!empty($data->pajak)) value="{{ number_format($data->pajak,2,',','.') }}" @else  value="0" @endif >
                                                    </div>
                                                </div>
                                            </div>
@@ -207,20 +207,21 @@
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Uang Muka</label>
-                                                       <input type="number" name="uang_muka" class="form-control" @if(!empty($data->dp_po)) value="{{ $data->dp_po }}" @else value="0" @endif required>
+                                                       <input type="number" id="uang_muka" name="uang_muka" class="form-control" @if(!empty($data->dp_po)) value="{{ number_format($data->dp_po,0,'','') }}" @else value="0" @endif required>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Kurang Bayar</label>
                                                        <input type="hidden" name="sub_total" value="{{ $sub_item }}">
-                                                       <input type="number" name="kurang_bayar" class="form-control" @if(!empty($data->kurang_bayar)) value="{{ $data->kurang_bayar }}" @endif required>
+                                                       <input type="number" id="kurang_bayar" name="kurang_bayar" class="form-control" @if(!empty($data->kurang_bayar)) value="{{ $data->kurang_bayar }}" @endif required>
                                                    </div>
                                                </div>
                                            </div>
                                        </div>
                                        <div class="col-md-12">
                                            <label><input type="checkbox" value="on" name="jurnal_otomatis"> Buat jurnal otomatis </label>  <button class="btn btn-primary"> Simpan Pesanan pembelian </button>
+                                           <label class="pull-right" id="final_total"></label>
                                        </div>
 
                                 </form>

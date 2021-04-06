@@ -130,7 +130,7 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td><p>Jumlah Item : {{ $no-1 }}</p></td>
-                                                    <td><p>Sub Total :{{ $sub_total }}</p></td>
+                                                    <td><p>Sub Total : <label id="sub_total">{{ number_format($sub_total,0,'','')}}</label></p></td>
                                                 </tr>
                                              <div class="form-group">
                                                 <button type="submit" class="btn btn-primary"> Simpan Barang </button>
@@ -219,7 +219,7 @@
                                                         <td></td>
                                                         <td></td>
                                                         <td><p>Jumlah Item : {{ $no-1 }}</p></td>
-                                                        <td><p>Sub Total :{{ $sub_total }}</p></td>
+                                                        <td><p>Sub Total :<label id="sub_total">{{ number_format($sub_total,0,'','') }}</label></p></td>
                                                     </tr>
                                                       @endif
                                             
@@ -236,20 +236,20 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Uang Muka Pembelian</label>
-                                                    <input type="text" name="dp_po" value="{{ $data_order->linkToPO->dp_po }}" class="form-control" readonly required>
+                                                    <input type="text" id="uang_muka" name="dp_po" value="{{ number_format($data_order->linkToPO->dp_po,0,'','') }}" class="form-control" readonly required>
                                                 </div>
                                             </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Diskon Tambahan</label>
                                                        <input type="hidden" name="sub_total" value="{{ $sub_total }}">
-                                                       <input type="text" name="diskon_tambahan" value="@if(!empty($data_order->diskon_tambahan)){{ $data_order->diskon_tambahan }}@else {{ '0' }} @endif " class="form-control" required>
+                                                       <input type="text" id="diskon_tambahan" name="diskon_tambahan" value="@if(!empty($data_order->diskon_tambahan)){{ $data_order->diskon_tambahan }}@else {{ '0' }} @endif " class="form-control" required>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Pajak</label>
-                                                       <input type="text" name="pajak" value="@if(!empty($data_order->pajak)) {{ $data_order->pajak }} @else 0 @endif" class="form-control" required>
+                                                       <input type="text" id="pajak_tambahan" name="pajak" value="@if(!empty($data_order->pajak)) {{ $data_order->pajak }} @else 0 @endif" class="form-control" required>
                                                    </div>
                                                </div>
                                            </div>
@@ -257,7 +257,7 @@
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Ongkos Kirim</label>
-                                                       <input type="text" name="onkir" value=" @if(!empty($data_order->ongkir)) {{ $data_order->ongkir }} @else 0 @endif " class="form-control" required>
+                                                       <input type="text" id="ongkir" name="onkir" value=" @if(!empty($data_order->ongkir)) {{ number_format($data_order->ongkir,0,'','') }} @else 0 @endif " class="form-control" required>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
@@ -282,13 +282,13 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Bayar</label>
-                                                        <input class="form-control" name="bayar" value="{{ $data_order->bayar }}" required>
+                                                        <input class="form-control" id="bayar" name="bayar" value="{{ number_format($data_order->bayar,0,'','') }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Hutang</label>
-                                                        <input type="text" name="kurang_bayar" value="{{ $data_order->kurang_bayar }}" class="form-control" disabled required>
+                                                        <input type="text" id="kurang_bayar" name="kurang_bayar" value="{{ number_format($data_order->kurang_bayar,0,'','') }}" class="form-control" disabled required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -303,6 +303,7 @@
                                        </div>
                                        <div class="col-md-12">
                                           <label><input type="checkbox" value="on" name="jurnal_otomatis"> Buat jurnal otomatis </label> <button type="submit" onclick="return confirm('Pastikan yang anda isi telah sesuai atau tidak')" class="btn btn-primary"> Simpan daftar pembelian </button>
+                                        <label class="pull-right" id="final_total"></label>
                                        </div>
                                 </form>
                             </div>
@@ -315,20 +316,20 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Uang Muka Pembelian</label>
-                                                    <input type="text" name="dp_po" class="form-control" value="{{ $data_order->dp_po }}" required>
+                                                    <input type="text" id="uang_muka" name="dp_po" class="form-control" value="{{ $data_order->dp_po }}" required>
                                                 </div>
                                             </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Diskon Tambahan</label>
                                                        <input type="hidden" name="sub_total" value="{{ $sub_total }}">
-                                                       <input type="text" name="diskon_tambahan" value="{{ $data_order->diskon_tambahan }}" class="form-control" required>
+                                                       <input type="text" id="diskon_tambahan" name="diskon_tambahan" value="{{ $data_order->diskon_tambahan }}" class="form-control" required>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Pajak</label>
-                                                       <input type="text" name="pajak" value="{{ $data_order->pajak }}" class="form-control" required>
+                                                       <input type="text" id="pajak_tambahan" name="pajak" value="{{ $data_order->pajak }}" class="form-control" required>
                                                    </div>
                                                </div>
                                            </div>
@@ -336,7 +337,7 @@
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Ongkos Kirim</label>
-                                                       <input type="text" name="onkir" value="{{$data_order->ongkir}}" class="form-control" required>
+                                                       <input type="text" id="ongkir" name="onkir" value="{{number_format($data_order->ongkir,0,'','')}}" class="form-control" required>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
@@ -361,13 +362,13 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Bayar</label>
-                                                        <input class="form-control" name="bayar" value="{{ $data_order->bayar }}" required>
+                                                        <input class="form-control" id="bayar" name="bayar" value="{{ $data_order->bayar }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4" id="hutang" style="display: @if($data_order->metode_bayar=="0") none @else show @endif;"  >
                                                     <div class="form-group">
                                                         <label>Hutang</label>
-                                                        <input type="number" name="kurang_bayar" value="{{ $data_order->kurang_bayar }}" class="form-control" required>
+                                                        <input type="number" id="kurang_bayar" name="kurang_bayar" value="{{ $data_order->kurang_bayar }}" class="form-control" required>
                                                     </div>
                                                 </div>
                                             </div>
