@@ -874,6 +874,22 @@ Route::post('tambah-rincian-orderjasa/{id_order_jasa}', 'produksi\OrderJasa@rinc
 Route::put('ubah-detail-orderjasa/{id_detail_orderjasa}', 'produksi\OrderJasa@rincian_orderjasa_update');
 Route::put('tambah-dp-orderjasa/{id_order_jasa}', 'produksi\OrderJasa@uangmuka_orderjasa_store');
 Route::get('hapus-detail-orderjasa/{id_detail_orderjasa}', 'produksi\OrderJasa@rincian_orderjasa_delete');
+Route::put('ubah-status-service/{id}', 'produksi\OrderJasa@ubah_status_service');
+
+Route::post('store-doservice', 'produksi\OrderJasa@store_doservice');
+
+Route::get('ubah-PLAwal/{id_pl}', 'produksi\OrderJasa@editPLAwal');
+Route::post('update-PLAwal', 'produksi\OrderJasa@updatePLAwal');
+
+Route::get('ubah-PLSelesai/{id_pl}', 'produksi\OrderJasa@editPLSelesai');
+Route::post('update-PLSelesai', 'produksi\OrderJasa@updatePLSelesai');
+
+Route::get('ubah-PLConfirm/{id_pl}', 'produksi\OrderJasa@editPLConfirm');
+Route::post('update-PLConfirm', 'produksi\OrderJasa@updatePLConfirm');
+
+Route::get('ubah-PLStatusAkhir/{id_pl}', 'produksi\OrderJasa@editPLStatusAkhir');
+Route::post('update-PLStatusAkhir', 'produksi\OrderJasa@updatePLStatusAkhir');
+
 //--- Proyek ---
 
 Route::get('Proyek', 'produksi\Proyek@index');

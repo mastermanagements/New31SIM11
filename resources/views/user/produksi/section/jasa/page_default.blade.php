@@ -140,7 +140,7 @@
                                                       <tbody>
                                                       @php($no = 1)
                                                           @foreach($proses_bisnis as $probis)
-                                                            @if(empty($probis->proses_bisnis))
+                                                            @if(!empty($probis->proses_bisnis))
                                                               <tr>
                                                                   <td>{{ $no++ }}</td>
                                                                   <td>{{ $probis->proses_bisnis }}</td>

@@ -16,4 +16,7 @@ class DetailOrderJasa extends Model
   public function getBarang(){
     return $this->belongsTo('App\Model\Produksi\Barang', 'id_barang');
   }
+  public function getOrderJasa(){
+    return $this->belongsTo('App\Model\Produksi\OrderJasa', 'id_order_jasa');
+  }
 }
