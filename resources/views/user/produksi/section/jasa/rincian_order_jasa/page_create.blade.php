@@ -3,6 +3,9 @@
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 @stop
 
 @section('master_content')
@@ -28,8 +31,6 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                       <div class="box-body">
-
-
                           <div class="row">
                               <form role="form" action="{{ url('tambah-rincian-orderjasa/'.$order_jasa->id) }}" method="post" enctype="multipart/form-data">
                               {{ csrf_field() }}
@@ -48,7 +49,7 @@
                                               </select>
                                               <small style="color: red">* Tidak Boleh Kosong</small>
                                           </div>
-                                          @if ($perusahaan['jenis_jasa'] == 1)
+                                          @if ($order_jasa->getPerusahaan->jenis_jasa == '1')
                                             <div class="form-group">
                                                 <label for="id_barang">Barang</label>
                                                 <select class="form-control select2" style="width: 100%;" name="id_barang">
@@ -105,13 +106,13 @@
                                           <tr>
                                               <th>No</th>
                                               <th>Nama Layanan</th>
-                                              @if ($perusahaan['jenis_jasa'] == 1)
+                                              @if ($order_jasa->getPerusahaan->jenis_jasa == '1')
                                                 <th>Nama Barang</th>
                                               @endif
                                               <th>Jumlah Order</th>
-                                              <th>Biaya</th>
+                                              <th>Biaya Satuan</th>
                                               <th>Diskon(%)</th>
-                                              <th>Total Biaya</th>
+                                              <th>Sub total</th>
                                               <th>Keterangan</th>
                                               <th>Aksi</th>
                                           </tr>
@@ -130,17 +131,15 @@
                                                           </select>
                                                       @endif
                                                   </td>
-                                                  @if ($perusahaan['jenis_jasa'] == 1)
+                                                  @if ($order_jasa->getPerusahaan->jenis_jasa == '1')
                                                   <td>
                                                       <select class="form-control select2" style="width: 100%;" name="id_barang">
-                                                      @if(!empty($barang))
-                                                          <option>Pilih barang</option>
-                                                          @else
+
                                                             @foreach($barang as $data)
                                                               <option value="{{ $data->id }}" @if($item->getBarang->id==$item->id_barang) selected @endif>{{ $data->nm_barang }}</option>
                                                             @endforeach
                                                           </select>
-                                                      @endif
+
                                                   </td>
                                                   @endif
                                                     <td><input type="number" name="qty" class="form-control" value="{{ $item->qty }}"></td>
@@ -148,10 +147,17 @@
                                                       <td><input type="number" name="diskon" class="form-control" value="{{ $item->diskon }}"></td>
                                                   <td><input type="number" name="total_biaya" class="form-control" value="{{ $item->total_biaya }}" readonly></td>
                                                   <td><textarea name="ket">{{ $item->ket }}</textarea></td>
+                                                  @if($item->status_service == 0)
+                                                  <td><button type="submit" class="btn btn-warning">ubah</button></td>
+                                                  <td><a href="#" onclick="if(confirm('Apakah anda yakin akan menghapus data  ini .. ?')){ window.location.href='{{  url('hapus-detail-orderjasa/'.$item->id) }}'  }else { alert('proses hapus dihentikan')} " class="btn btn-danger">hapus</a></td>
+                                                  @else
+                                                  <td><button  class="btn btn-warning" disabled>ubah</button></td>
+                                                  <td><a class="btn btn-danger" disabled>hapus</a></td>
+                                                  @endif
                                                   <td>
-                                                      <button type="submit" class="btn btn-warning">ubah</button>
-                                                      <a href="#" onclick="if(confirm('Apakah anda yakin akan menghapus data  ini .. ?')){ window.location.href='{{  url('hapus-detail-orderjasa/'.$item->id) }}'  }else { alert('proses hapus dihentikan')} " class="btn btn-danger">hapus</a>
+                                                    <input type="checkbox" name="status_service" onchange="ubahStatusService({{ $item->id }})" @if($item->status_service==1) checked value="1" @endif data-toggle="toggle" data-size="mini" data-width="100" data-on="Sedang diproses" data-off="Belum diproses">
                                                   </td>
+
                                               </tr>
 
                                             </form>
@@ -170,7 +176,7 @@
                                             <th>Uang Muka</th>
                                             <td><input type="number" name="uang_muka" class="form-control" value="{{ $order_jasa->uang_muka }}"></td>
                                             <td>
-                                                &nbsp;&nbsp;<button type="submit" class="btn btn-primary">Tambah/Ubah</button>
+                                                &nbsp;&nbsp;<button type="submit" class="btn btn-primary">Tambah</button>
                                             </td>
                                           </tr>
                                         </form>
@@ -198,6 +204,9 @@
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+
+    <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>
 
                 $('[name="qty"]').keyup(function () {
@@ -222,6 +231,35 @@
                     }
                     $('[name="total_biaya"]').val(total_sebdis);
                 }
+
+
+
+                    //iCheck for checkbox and radio inputs
+                    $('input[type="radio"].minimal').iCheck({
+                        checkboxClass: 'icheckbox_minimal-blue',
+                        radioClass   : 'iradio_minimal-blue'
+                    })
+
+                    $(document).ready(function () {
+
+
+                        ubahStatusService= function (id) {
+                            $.ajax({
+                                url : "{{ url('ubah-status-service') }}/"+id,
+                                type : 'post',
+                                data : {
+                                    'id': id,
+                                    '_method': 'put',
+                                    '_token' : '{{ csrf_token() }}'
+                                },
+                                success :function (result) {
+                                    alert(result.message);
+                                }
+                            })
+                        }
+                   });
+
+
 
     </script>
 

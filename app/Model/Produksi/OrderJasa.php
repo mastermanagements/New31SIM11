@@ -19,6 +19,9 @@ class OrderJasa extends Model
     public function getDetailOrderJasa(){
       return $this->hasMany('App\Model\Produksi\DetailOrderJasa', 'id_order_jasa','id');
     }
-    
+    public function getPerusahaan(){
+        return $this->belongsTo('App\Model\Superadmin_ukm\U_usaha','id_perusahaan');
+    }
+
 
 }
