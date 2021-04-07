@@ -10,7 +10,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Detail Penjualan barang
+                Detail Penjualan barang s
             </h1>
         </section>
 
@@ -201,7 +201,7 @@
                                                                 </td>
                                                                 <td>Total item  : <label id="total_item">{{ $total_item }}</label></td>
                                                                 <td>Total diskon: <label id="total_diskon">{{ $total_diskon }}</label></td>
-                                                                <td>Total Uang  : <label id="total_uang">{{ $total_uang }}</label></td>
+                                                                <td>Total Uang  : <label id="sub_total">{{ $total_uang }}</label></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -215,45 +215,34 @@
                                                             <div class="form-group">
                                                                 {{ csrf_field() }}
                                                                 <label>Diskon Tambahan</label>
-                                                                <input type="number" name="diskon_tambahan" class="form-control" @if(!empty($data->diskon_tambahan)) value="{{ $data->diskon_tambahan }}" @else value="0" @endif required/>
+                                                                <input type="number" id="diskon_tambahan" name="diskon_tambahan" class="form-control" @if(!empty($data->diskon_tambahan)) value="{{ $data->diskon_tambahan }}" @else value="0" @endif required/>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Pajak</label>
-                                                                <input type="number" name="pajak" class="form-control"  @if(!empty($data->pajak)) value="{{ $data->pajak }}" @else value="0" @endif required/>
+                                                                <input type="number" id="pajak_tambahan" name="pajak" class="form-control"  @if(!empty($data->pajak)) value="{{ $data->pajak }}" @else value="0" @endif required/>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Biaya tambahan lain</label>
-                                                                <input type="number" name="biaya_tambahan" class="form-control"  @if(!empty($data->biaya_tambahan)) value="{{ $data->biaya_tambahan }}" @else value="0" @endif  required/>
+                                                                <input type="number" id="biaya_tambahan" name="biaya_tambahan" class="form-control"  @if(!empty($data->biaya_tambahan)) value="{{ $data->biaya_tambahan }}" @else value="0" @endif  required/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="color:#fff;">-</label>
-                                                                <input type="number" id="total_setelah_didiskon" class="form-control" readonly />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label style="color: #fff;">-</label>
-                                                                <input type="number" id="total_setelah_pajak" class="form-control" readonly />
-                                                            </div>
                                                             <div class="form-group">
                                                                 <label>Jatuh tempo</label>
                                                                 <input type="date" name="jatuh_tempo" class="form-control" @if(!empty($data->tgl_jatuh_tempo)) value="{{$data->tgl_jatuh_tempo}}"  @else value="{{$data->tgl_jatuh_tempo}}" @endif required/>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label>Total Keseluruhan</label>
-                                                                <input type="number" name="total" id="total_keseluruhan" @if(!empty($data->bayar)) value="{{$data->bayar}}"  @else value="{{$total_uang}}" @endif class="form-control">
-                                                            </div>
-                                                        </div>
+
                                                         <div class="col-md-6">
+                                                            <div class="form-group">
                                                             <label>Uang Muka</label>
-                                                            <input type="number"  class="form-control" @if(!empty($data->dp_so)) value="{{$data->dp_so}}"  @else value="{{$total_uang}}" @endif>
+                                                            <input type="number" id="uang_muka" class="form-control" @if(!empty($data->dp_so)) value="{{$data->dp_so}}"  @else value="{{$total_uang}}" @endif>
+                                                            </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>Hutang</label>
-                                                                <input type="number" class="form-control" name="hutang" @if(!empty($data->kurang_bayar)) value="{{$data->kurang_bayar}}"  @else value="0" @endif>
+                                                                <input type="number" readonly id="kurang_bayar" class="form-control" name="hutang" @if(!empty($data->kurang_bayar)) value="{{$data->kurang_bayar}}"  @else value="0" @endif>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
@@ -271,6 +260,12 @@
                                                             <div class="form-group">
                                                                 <label>Keterangan</label>
                                                                 <textarea name="ket" class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Total Keseluruhan</label>
+                                                                <input type="text" name="total" id="total_keseluruhan" @if(!empty($data->bayar)) value="{{number_format($data->bayar,0,'','')}}" @endif class="form-control" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
@@ -342,42 +337,6 @@
             $('#tbl_jumlah').val(total);
         }
 
-        $(document).ready(function () {
-            var total_detail_ces = parseInt($('#total_uang').text());
-
-            $('[name="diskon_tambahan"]').keyup(function(){
-                var nilai_diskon = $(this).val();
-                var sub_total = $('#total_uang').text();
-                var diskon_tambahan = 0;
-                var total_detail=0;
-                if(nilai_diskon !=0){
-                    diskon_tambahan = parseInt(sub_total)*(nilai_diskon/100);
-                    total_detail = parseInt(sub_total)-diskon_tambahan;
-                }
-
-                $('#total_setelah_didiskon').val(total_detail);
-                total_detail_ces = total_detail;
-                $('#total_keseluruhan').val(total_detail_ces);
-            });
-
-            $('[name="pajak"]').keyup(function(){
-                var vpajak = $(this).val();
-                var total_pajak = total_detail_ces;
-                if(vpajak != 0){
-                    var pajak_new = total_pajak*(vpajak/100);
-                    total_pajak = total_pajak + pajak_new;
-                }
-                $('#total_setelah_pajak').val(total_pajak);
-                total_detail_ces = total_pajak;
-                $('#total_keseluruhan').val(total_pajak);
-            });
-
-            $('[name="biaya_tambahan"]').keyup(function () {
-                var total_plus_bTambahan =0;
-                total_plus_bTambahan  = Number(total_detail_ces)+Number($(this).val());
-               $('#total_keseluruhan').val(total_plus_bTambahan);
-            })
-        })
     </script>
 
 @stop

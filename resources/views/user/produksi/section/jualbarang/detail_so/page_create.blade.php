@@ -10,7 +10,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Pesanan Penjualan
+               Rincian Pesanan Penjualan
             </h1>
         </section>
 
@@ -211,7 +211,7 @@
                                                                     Total item: {{ $jumlah_item }}
                                                                 </td>
                                                                 <td>
-                                                                    Total uang: {{ $jumlah_uang }}
+                                                                    Total uang: <label id="sub_total">{{ $jumlah_uang }}</label>
                                                                 </td>
                                                             </tr>
                                                             </tfoot>
@@ -252,7 +252,7 @@
                                                                 Total item: {{ $jumlah_item }}
                                                             </td>
                                                             <td>
-                                                                Total uang: {{ $jumlah_uang }}
+                                                                Total uang: <label id="sub_total">{{ $jumlah_uang }}</label>
                                                             </td>
                                                         </tr>
                                                         </tfoot>
@@ -270,21 +270,21 @@
                                                                 {{ csrf_field() }}
                                                                 <input name="sub_total" type="hidden" value="{{ $jumlah_uang }}">
                                                                 <label>Diskon Tambahan</label>
-                                                                <input type="number" class="form-control" name="diskon_tambahan" value="{{ $data->diskon_tambahan }}">
+                                                                <input type="number" id="diskon_tambahan" class="form-control" name="diskon_tambahan" value="{{ $data->diskon_tambahan }}">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Pajak</label>
-                                                                <input type="number" class="form-control" name="pajak" value="{{ $data->pajak }}">
+                                                                <input type="number" id="pajak_tambahan" class="form-control" name="pajak" value="{{ $data->pajak }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>Uang Muka</label>
-                                                                <input type="number" class="form-control" name="uang_muka" value="{{ $data->dp_so }}">
+                                                                <input type="number" id="uang_muka" class="form-control" name="uang_muka" value="{{ $data->dp_so }}">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Kurang Bayar</label>
-                                                                <input type="number" class="form-control" name="kurang_bayar" value="{{ $data->kurang_bayar }}">
+                                                                <input type="number" id="kurang_bayar" id="" class="form-control" name="kurang_bayar" value="{{ $data->kurang_bayar }}" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
@@ -300,6 +300,7 @@
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal penjualan otomatis  </label> <button type="submit" class="btn btn-primary"> Proses </button>
+                                                            <label id="final_total" class="pull-right"></label>
                                                         </div>
                                                     </form>
                                                 </div>

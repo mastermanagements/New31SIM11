@@ -141,6 +141,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             calculate_total_akhir();
         });
 
+        $('#biaya_tambahan').keyup(function () {
+            calculate_total_akhir();
+        });
+
         calculate_total_akhir = function(){
             var sub_total = $('#sub_total').text();
             var diskon_tambahan = $('#diskon_tambahan').val();
@@ -148,14 +152,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
             var uang_muka = $('#uang_muka').val();
             var ongkir = $('#ongkir').val();
             var bayar = $('#bayar').val();
+            var biaya_tambahan = $('#biaya_tambahan').val();
+            var hutang = 0;
             var total = sub_total;
-
+            if(typeof uang_muka !='undefined') {
+                if (uang_muka != 0) {
+                    hutang = total - parseInt(uang_muka);
+                    $('#kurang_bayar').val(hutang);
+                }
+            }
             // Hitung jika ada diskon
-            if(diskon_tambahan !=0){
-                var n_diskon = total * (diskon_tambahan/100);
-                total = total - n_diskon;
-            }else{
-                total = total - 0;
+            if(typeof biaya_tambahan !='undefined') {
+                if (diskon_tambahan != 0) {
+                    var n_diskon = total * (diskon_tambahan / 100);
+                    total = total - n_diskon;
+                } else {
+                    total = total - 0;
+                }
+            }
+
+            if(typeof biaya_tambahan !='undefined') {
+                if (biaya_tambahan != 0) {
+                    total = total + parseInt(biaya_tambahan);
+                }
             }
 
             if(typeof ongkir !='undefined'){
@@ -165,7 +184,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     total = total + 0;
                 }
             }
-            console.log(total)
             // Tambahkah dengan nilai uang muka
 //            total = parseInt(total)+parseInt(uang_muka);
 
@@ -183,21 +201,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     $('#kurang_bayar').val(total);
                 }
             }
-
-            if(typeof uang_muka !='undefined') {
-                if (uang_muka != 0) {
-                    hutang = total - uang_muka;
-                    $('#kurang_bayar').val(hutang);
-                }
-            }
             // Kurang Bayar
-            var hutang = 0;
+
 
             if(total <= 0){
                 alert('Total Bayar tidak boleh melebihi jumlah total');
                 $('#final_total').text("Total Akhir "+total);
             }else{
-                $('#final_total').text("Total Akhir "+total);
+                $('#final_total').text("Total Akhir "+(total-hutang));
+                console.log(parseInt(total-hutang));
+                $('[name="total"]').val(parseInt(total-hutang));
             }
         }
     });
