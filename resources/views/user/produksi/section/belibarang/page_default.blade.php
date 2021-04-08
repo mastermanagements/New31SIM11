@@ -101,21 +101,21 @@
                                             <th>{{ $data_pesanan_pembelian->tgl_po }}</th>
                                             <th>{{ $data_pesanan_pembelian->no_po }}</th>
                                             <th>{{ $data_pesanan_pembelian->linkToSupplier->nama_suplier }}</th>
-                                            @php($sub_total =($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga')))
-                                            @if($data_pesanan_pembelian->diskon_tambahan !=0)    
-                                                @php($besar_diskon_tambahan = $sub_total*($data_pesanan_pembelian->diskon_tambahan/100))
-                                            @else
-                                                @php($besar_diskon_tambahan = 0)
-                                            @endif
-                                            @if($data_pesanan_pembelian->pajak !=0)
-                                                @php($besar_pajak =($sub_total-$besar_diskon_tambahan)*($data_pesanan_pembelian->pajak/100))
-                                            @else
-                                                @php($besar_pajak =0)
-                                            @endif
+                                            {{--@php($sub_total =($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga')))--}}
+                                            {{--@if($data_pesanan_pembelian->diskon_tambahan !=0)    --}}
+                                                {{--@php($besar_diskon_tambahan = $sub_total*($data_pesanan_pembelian->diskon_tambahan/100))--}}
+                                            {{--@else--}}
+                                                {{--@php($besar_diskon_tambahan = 0)--}}
+                                            {{--@endif--}}
+                                            {{--@if($data_pesanan_pembelian->pajak !=0)--}}
+                                                {{--@php($besar_pajak =($sub_total-$besar_diskon_tambahan)*($data_pesanan_pembelian->pajak/100))--}}
+                                            {{--@else--}}
+                                                {{--@php($besar_pajak =0)--}}
+                                            {{--@endif--}}
                                             
-                                            <th>{{ 
-                                                    $sub_total-$besar_diskon_tambahan+$besar_pajak
-                                                }}</th>
+                                            <th>
+                                                {{ $data_pesanan_pembelian->total }}
+                                            </th>
                                             <th>    
                                                 <form action="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/hapus') }}" method="post">
                                                     {{ csrf_field() }}
@@ -156,7 +156,7 @@
                                                 <td>{{ $item->no_order }}</td>
                                                 <td>{{ $item->linkToSuppliers->nama_suplier }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
-                                                <td>{{ number_format($item->total,2,',','.') }}</td>
+                                                <td>ss{{ number_format($item->total,2,',','.') }}</td>
                                                 <td>
                                                     <div class="btn-group open">
                                                         <button type="button" class="btn btn-default">Menu</button>

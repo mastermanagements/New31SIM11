@@ -243,13 +243,14 @@
                                                    <div class="form-group">
                                                        <label>Diskon Tambahan</label>
                                                        <input type="hidden" name="sub_total" value="{{ $sub_total }}">
-                                                       <input type="text" id="diskon_tambahan" name="diskon_tambahan" value="@if(!empty($data_order->diskon_tambahan)){{ $data_order->diskon_tambahan }}@else {{ '0' }} @endif " class="form-control" required>
+                                                       <input type="hidden" name="id_pesanan" value="{{ $data_order->linkToPO->id }}">
+                                                       <input type="text" id="diskon_tambahan" name="diskon_tambahan" value="@if(!empty($data_order->linkToPO->diskon_tambahan)){{ $data_order->linkToPO->diskon_tambahan }}@else {{ '0' }} @endif " class="form-control" required readonly>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Pajak</label>
-                                                       <input type="text" id="pajak_tambahan" name="pajak" value="@if(!empty($data_order->pajak)) {{ $data_order->pajak }} @else 0 @endif" class="form-control" required>
+                                                       <input type="text" id="pajak_tambahan" name="pajak" value="@if(!empty($data_order->linkToPO->pajak)) {{ $data_order->linkToPO->pajak }} @else {{ "0" }} @endif" class="form-control" required readonly>
                                                    </div>
                                                </div>
                                            </div>
@@ -257,13 +258,13 @@
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Ongkos Kirim</label>
-                                                       <input type="text" id="ongkir" name="onkir" value=" @if(!empty($data_order->ongkir)) {{ number_format($data_order->ongkir,0,'','') }} @else 0 @endif " class="form-control" required>
+                                                       <input type="text" id="ongkir" name="onkir" value="@if(!empty($data_order->linkToPO->ongkir)) {{ number_format($data_order->linkToPO->ongkir,0,'','') }} @else 0 @endif" class="form-control" required readonly>
                                                    </div>
                                                </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Jatuh Tempo</label>
-                                                       <input type="date" name="tgl_jatuh_tempo" value="{{ $data_order->tgl_jatuh_tempo }}" class="form-control" required>
+                                                       <input type="text" name="tgl_jatuh_tempo" value="@if(!empty($data_order->linkToPO)){{ date('m-d-Y', strtotime($data_order->linkToPO->tgl_krm)) }} @endif" class="form-control" required>
                                                    </div>
                                                </div>
                                            </div>
@@ -288,7 +289,7 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Hutang</label>
-                                                        <input type="text" id="kurang_bayar" name="kurang_bayar" value="{{ number_format($data_order->kurang_bayar,0,'','') }}" class="form-control" disabled required>
+                                                        <input type="text" id="kurang_bayar" name="kurang_bayar" value="{{ number_format($data_order->linkToPO->kurang_bayar,0,'','') }}" class="form-control" disabled required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -303,7 +304,8 @@
                                        </div>
                                        <div class="col-md-12">
                                           <label><input type="checkbox" value="on" name="jurnal_otomatis"> Buat jurnal otomatis </label> <button type="submit" onclick="return confirm('Pastikan yang anda isi telah sesuai atau tidak')" class="btn btn-primary"> Simpan daftar pembelian </button>
-                                        <label class="pull-right" id="final_total"></label>
+                                        <label class="pull-right" id="final_total">Total :{{ number_format($data_order->total,0,'','') }}</label>
+                                           <input type="hidden" id="total" name="total" value="{{ number_format($data_order->total,0,'','') }}">
                                        </div>
                                 </form>
                             </div>
@@ -316,7 +318,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Uang Muka Pembelian</label>
-                                                    <input type="text" id="uang_muka" name="dp_po" class="form-control" value="{{ $data_order->dp_po }}" required>
+                                                    <input type="text" id="uang_muka" name="dp_po" class="form-control" value="{{ $data_order->dp_po }}" required read>
                                                 </div>
                                             </div>
                                                <div class="col-md-6">

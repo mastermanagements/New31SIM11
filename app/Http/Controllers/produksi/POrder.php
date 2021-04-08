@@ -234,17 +234,16 @@ class POrder extends Controller
         $pajak = 0;
         $diskon_tambahan = 0;
 
-        if($req->diskon_tambahan !=0){
-            $diskon_tambahan = $req->sub_total*($req->diskon_tambahan/100);
-        }
-
+//        if($req->diskon_tambahan !=0){
+//            $diskon_tambahan = $req->sub_total*($req->diskon_tambahan/100);
+//       }
 //      $total = ($req->sub_total+$diskon_tambahan+$pajak)-($req->bayar+$req->dp_po+(int)$req->onkir);
-        $sub_total = $req->sub_total-$diskon_tambahan;
-        $total_sebelum_pajak = (($req->bayar+$req->dp_po)-((int)$req->onkir));
-        $total = ($req->bayar+$req->dp_po)-(($sub_total)+(int)$req->onkir);
+//        $sub_total = $req->sub_total-$diskon_tambahan;
+//        $total_sebelum_pajak = (($req->bayar+$req->dp_po)-((int)$req->onkir));
+//        $total = ($req->bayar+$req->dp_po)-(($sub_total)+(int)$req->onkir);
 
         if($req->pajak !=0){
-            $pajak = $total*($req->pajak/100);
+//            $pajak = $total*($req->pajak/100);
             JenisAkunPembelian::$status_pajak = true;
         }
 
@@ -252,20 +251,22 @@ class POrder extends Controller
            JenisAkunPembelian::$status_ongkir =true;
         }
 
+        // Total di ambil dari req->total yang telah diproses dalam ajax dari front end
+        $total = $req->total;
+
         $model->diskon_tambahan = $req->diskon_tambahan;
         $model->pajak = $req->pajak;
         $model->dp_po = $req->dp_po;
         $model->bayar = $req->bayar;
         $model->kurang_bayar = $req->kurang_bayar;
         $model->metode_bayar = $req->metode_bayar;
-        $model->tgl_jatuh_tempo = $req->tgl_jatuh_tempo;
+        $model->tgl_jatuh_tempo = date('Y-m-d', strtotime($req->tgl_jatuh_tempo));
         $model->ongkir = $req->onkir;
         $keterangan = "";
         $model->ket = $keterangan;
         $model->total = $total;
-
         if($model->save()){
-            # Insert Data Ke Jurnal
+            #Insert Data Ke Jurnal
             if(is_array($jenis_akun_pembelian) == true){
                 $req->merge([
                     'ongkir'=> $req->onkir,
