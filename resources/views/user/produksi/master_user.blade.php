@@ -155,25 +155,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
             var biaya_tambahan = $('#biaya_tambahan').val();
             var hutang = 0;
             var total = sub_total;
-            if(typeof uang_muka !='undefined') {
-                if (uang_muka != 0) {
-                    hutang = total - parseInt(uang_muka);
-                    $('#kurang_bayar').val(hutang);
-                }
-            }
+
             // Hitung jika ada diskon
-            if(typeof biaya_tambahan !='undefined') {
+            if(typeof diskon_tambahan !='undefined') {
                 if (diskon_tambahan != 0) {
                     var n_diskon = total * (diskon_tambahan / 100);
                     total = total - n_diskon;
-                } else {
-                    total = total - 0;
                 }
             }
+
+            if(typeof uang_muka !='undefined') {
+                if (uang_muka != 0) {
+                    hutang = total - parseInt(uang_muka);
+                    total = hutang;
+                    $('#kurang_bayar').val(hutang);
+                }
+            }
+
 
             if(typeof biaya_tambahan !='undefined') {
                 if (biaya_tambahan != 0) {
                     total = total + parseInt(biaya_tambahan);
+                }
+            }
+
+//             Hitung jika ada pajak
+            if(typeof pajak !='undefined') {
+                if (pajak != 0) {
+                    var n_pajak = total * (pajak / 100);
+                    total = total + n_pajak;
                 }
             }
 
@@ -182,16 +192,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     total = total + ongkir;
                 }else{
                     total = total + 0;
-                }
-            }
-            // Tambahkah dengan nilai uang muka
-//            total = parseInt(total)+parseInt(uang_muka);
-
-            // Hitung jika ada pajak
-            if(typeof pajak !='undefined') {
-                if (pajak != 0) {
-                    var n_pajak = total * (pajak / 100);
-                    total = total + n_pajak;
                 }
             }
 
@@ -208,9 +208,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 alert('Total Bayar tidak boleh melebihi jumlah total');
                 $('#final_total').text("Total Akhir "+total);
             }else{
-                $('#final_total').text("Total Akhir "+(total-hutang));
-                console.log(parseInt(total-hutang));
-                $('[name="total"]').val(parseInt(total-hutang));
+                $('#final_total').text("Total Akhir "+(total));
+                $('[name="total"]').val(parseInt(total));
             }
         }
     });

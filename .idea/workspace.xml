@@ -125,8 +125,7 @@
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/routes/web.php" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/routes/web.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/webpack.mix.js" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/webpack.mix.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/master_user.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/master_user.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
@@ -1537,11 +1536,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="master_user.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="master_user.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/master_user.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="212" column="31" lean-forward="false" selection-start-line="212" selection-start-column="26" selection-end-line="212" selection-end-column="31" />
+            <state relative-caret-position="295">
+              <caret line="201" column="17" lean-forward="true" selection-start-line="201" selection-start-column="17" selection-end-line="201" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -1550,8 +1549,8 @@
       <file leaf-file-name="page_default.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7548">
-              <caret line="153" column="68" lean-forward="true" selection-start-line="153" selection-start-column="68" selection-end-line="153" selection-end-column="68" />
+            <state relative-caret-position="-120">
+              <caret line="152" column="48" lean-forward="true" selection-start-line="152" selection-start-column="48" selection-end-line="152" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -1560,40 +1559,8 @@
       <file leaf-file-name="page_rincian_barang.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="307" column="91" lean-forward="true" selection-start-line="307" selection-start-column="91" selection-end-line="307" selection-end-column="91" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="POrder.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-188">
-              <caret line="265" column="18" lean-forward="false" selection-start-line="265" selection-start-column="18" selection-end-line="265" selection-end-column="18" />
-              <folding>
-                <element signature="e#49#94#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="POrder.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Model/Produksi/POrder.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PesananPembelian.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Model/Produksi/PesananPembelian.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="11" column="82" lean-forward="false" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="82" />
+            <state relative-caret-position="188">
+              <caret line="238" column="84" lean-forward="false" selection-start-line="238" selection-start-column="75" selection-end-line="238" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -1749,10 +1716,10 @@
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/detail_penawaran_penjualan/page_create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/detail_so/page_create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/penjualan/page_show.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/master_user.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/master_user.blade.php" />
       </list>
     </option>
   </component>
@@ -2473,14 +2440,7 @@
       <workItem from="1617685308849" duration="5058000" />
       <workItem from="1617762771802" duration="5159000" />
       <workItem from="1617769827175" duration="4811000" />
-      <workItem from="1617851603310" duration="5520000" />
-    </task>
-    <task id="LOCAL-00156" summary="- Laporan Neraca Selesai">
-      <created>1605502870957</created>
-      <option name="number" value="00156" />
-      <option name="presentableId" value="LOCAL-00156" />
-      <option name="project" value="LOCAL" />
-      <updated>1605502870963</updated>
+      <workItem from="1617851603310" duration="7131000" />
     </task>
     <task id="LOCAL-00157" summary="- Perancangan Arus Kas&#10; - Remake array labar rugi u/ compatible dengan arus kas&#10; - compare 2 array dengan key tahun lalu dan tahun berjalan&#10; - Kalkulasi terhadap 2 array dengan same key">
       <created>1607321413538</created>
@@ -2818,11 +2778,18 @@
       <option name="project" value="LOCAL" />
       <updated>1617774563619</updated>
     </task>
-    <option name="localTasksCounter" value="205" />
+    <task id="LOCAL-00205" summary="- Revisi Rumus total Pembelian">
+      <created>1617858535389</created>
+      <option name="number" value="00205" />
+      <option name="presentableId" value="LOCAL-00205" />
+      <option name="project" value="LOCAL" />
+      <updated>1617858535390</updated>
+    </task>
+    <option name="localTasksCounter" value="206" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2539552000" />
+    <option name="totallyTimeSpent" value="2541163000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2900,7 +2867,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- Perancangan Pembelian selesai" />
     <MESSAGE value="- perbaikan hasil hitungan total" />
     <MESSAGE value="- Penawaran Pembelian berdasarkan nota penawaran pembelian" />
     <MESSAGE value="- Perancangan Pembelian" />
@@ -2925,7 +2891,8 @@
     <MESSAGE value="- Revisi Pembelian cek barang&#10;- revisi Pembelian status return&#10;- Revisi Return Barang" />
     <MESSAGE value="- Menghitung total final pesanan barang non penawaran dan penawaran&#10;- Menghitung total final order barang non pesanan barang dan pesanan barang" />
     <MESSAGE value="- Revisi Hitung total akhir Penawaran Penjualan&#10;- Revisi Hitung total akhir Penawaran Pesanan&#10;- Revisi Hitung total akhir Penjualan" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Revisi Hitung total akhir Penawaran Penjualan&#10;- Revisi Hitung total akhir Penawaran Pesanan&#10;- Revisi Hitung total akhir Penjualan" />
+    <MESSAGE value="- Revisi Rumus total Pembelian" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Revisi Rumus total Pembelian" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3262,14 +3229,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/master_user.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="212" column="31" lean-forward="false" selection-start-line="212" selection-start-column="26" selection-end-line="212" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Model/Produksi/POrder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="526">
@@ -3278,29 +3237,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7548">
-          <caret line="153" column="68" lean-forward="true" selection-start-line="153" selection-start-column="68" selection-end-line="153" selection-end-column="68" />
+        <state relative-caret-position="136">
+          <caret line="4" column="45" lean-forward="true" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="307" column="91" lean-forward="true" selection-start-line="307" selection-start-column="91" selection-end-line="307" selection-end-column="91" />
+        <state relative-caret-position="188">
+          <caret line="238" column="84" lean-forward="false" selection-start-line="238" selection-start-column="75" selection-end-line="238" selection-end-column="84" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-188">
-          <caret line="265" column="18" lean-forward="false" selection-start-line="265" selection-start-column="18" selection-end-line="265" selection-end-column="18" />
-          <folding>
-            <element signature="e#49#94#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="-120">
+          <caret line="152" column="48" lean-forward="true" selection-start-line="152" selection-start-column="48" selection-end-line="152" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/master_user.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="201" column="17" lean-forward="true" selection-start-line="201" selection-start-column="17" selection-end-line="201" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>

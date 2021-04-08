@@ -156,7 +156,7 @@
                                                 <td>{{ $item->no_order }}</td>
                                                 <td>{{ $item->linkToSuppliers->nama_suplier }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
-                                                <td>ss{{ number_format($item->total,2,',','.') }}</td>
+                                                <td>{{ number_format($item->total,2,',','.') }}</td>
                                                 <td>
                                                     <div class="btn-group open">
                                                         <button type="button" class="btn btn-default">Menu</button>
