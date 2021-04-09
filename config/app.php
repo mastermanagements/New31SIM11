@@ -177,6 +177,7 @@ return [
 		    App\Providers\BulanServiceProvider::class,
 		    App\Providers\TahunServiceProvider::class,
         App\Providers\TanggalKonversiServiceProvider::class,
+        App\Providers\RupiahServiceProvider::class,
     ],
 
     /*
@@ -228,6 +229,7 @@ return [
 		    'Bulan' => App\Http\Helpers\Bulan::class,
 		    'Tahun' => App\Http\Helpers\Tahun::class,
         'tanggalKonversi' => App\Http\Helpers\TanggalKonversi::class,
+        'Rupiah' => App\Http\Helpers\Rupiah::class,
     ],
 
 ];
