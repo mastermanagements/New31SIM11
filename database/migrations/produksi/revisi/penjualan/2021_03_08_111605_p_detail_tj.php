@@ -22,7 +22,11 @@ class PDetailTj extends Migration
             $table->integer('jumlah_barang')->default(0);
             $table->integer('diskon')->unsigned();
             $table->integer('id_perusahaan')->unsigned();
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->integer('id_karyawan')->unsigned();
+
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
+            $table->foreign('id_tawar_jual')->references('id')->on('p_tawar_jual');
             $table->timestamps();
         });
     }

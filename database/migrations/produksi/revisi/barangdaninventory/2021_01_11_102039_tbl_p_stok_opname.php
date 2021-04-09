@@ -15,15 +15,17 @@ class TblPStokOpname extends Migration
     {
         Schema::create('p_stok_opname', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_barang')->unsigned();
             $table->date('tgl_so');
+            $table->integer('id_barang')->unsigned();
             $table->decimal('stok_akhir');
             $table->decimal('bukti_fisik');
             $table->decimal('selisih');
             $table->string('petugas');
             $table->integer('id_perusahaan')->unsigned();
+            $table->integer('id_karyawan')->unsigned();
             $table->foreign('id_barang')->references('id')->on('p_barang')->onDelete('cascade');
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
             $table->timestamps();
         });
     }

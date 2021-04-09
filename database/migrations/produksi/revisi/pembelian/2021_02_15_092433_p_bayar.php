@@ -21,15 +21,21 @@ class PBayar extends Migration
             $table->integer('id_return_barang')->default(0)->unsigned();
             $table->date('tgl_bayar');
             $table->enum('metode_bayar',['-','0','1','2'])->default('-')->comment('0=transfer bak, 1=cek, 2= langsung, 3=return barang');
-            $table->string('bank_asal')->nullable();
-            $table->string('rek_asal')->nullable();
-            $table->string('bank_tujuan')->nullable();
-            $table->string('no_rek_tujuan')->nullable();
+            $table->integer('bank_asal')->unsigned();
+            $table->integer('bank_tujuan')->unsigned();
             $table->decimal('jumlah_bayar',12,2)->default(0);
             $table->string('bukti_bayar')->default(0);
-            $table->enum('kirim_bukti',['0','1'])->default('0');
+            $table->enum('kirim_bukti',['0','1'])->default('0')->comment('0= blm konfirm pembayaran, 1 = sdh konfirm pembayaran');
             $table->integer('id_perusahaan')->unsigned();
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->integer('id_karyawan')->unsigned();
+
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
+            $table->foreign('id_po')->references('id')->on('p_po');
+            $table->foreign('id_order')->references('id')->on('p_order');
+            $table->foreign('id_return_barang')->references('id')->on('p_return_pembelian');
+            $table->foreign('bank_asal')->references('id')->on('p_rek_ukm');
+            $table->foreign('bank_tujuan')->references('id')->on('p_rek_supplier');
             $table->timestamps();
         });
     }

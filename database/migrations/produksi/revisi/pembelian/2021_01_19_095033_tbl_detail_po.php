@@ -16,16 +16,17 @@ class TblDetailPo extends Migration
         Schema::create('p_detail_po', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_po')->unsigned();
-            $table->foreign('id_po')->references('id')->on('tbl_p_po')->onDelete('cascade');
-
             $table->integer('id_barang')->unsigned();
-            $table->integer('hpp')->unsigned();
-            $table->integer('jumlah_beli')->unsigned();
-            $table->integer('diskon_item')->unsigned()->default(0);
-            $table->integer('jumlah_harga')->unsigned();
-
+            $table->integer('harga_beli');//yg lama  hpp ini diganti dg harga_beli, biar tidak rancu
+            $table->integer('jumlah_beli')->default(0);
+            $table->integer('diskon_item')->default(0);
+            $table->decimal('jumlah_harga',12,2)->default(0);
             $table->integer('id_perusahaan')->unsigned();
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->integer('id_karyawan')->unsigned();
+            $table->foreign('id_barang')->references('id')->on('p_barang');
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_po')->references('id')->on('p_po')->onDelete('cascade');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
 
             $table->timestamps();
         });

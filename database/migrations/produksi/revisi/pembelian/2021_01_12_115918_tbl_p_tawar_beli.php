@@ -21,8 +21,10 @@ class TblPTawarBeli extends Migration
             $table->date('tgl_kirim');
             $table->integer('id_supplier')->unsigned();
             $table->integer('id_perusahaan')->unsigned();
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->integer('id_karyawan')->unsigned();
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_supplier')->references('id')->on('p_supplier')->onDelete('cascade');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
 
             $table->timestamps();
         });
