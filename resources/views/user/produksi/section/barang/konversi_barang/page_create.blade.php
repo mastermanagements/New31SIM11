@@ -38,7 +38,7 @@
                                     <option>Pilih Barang Asal</option>
                                     @if(!empty($data))
                                         @foreach($data as $data_barang_asal)
-                                            <option value="{{ $data_barang_asal->id }}">{{ $data_barang_asal->nm_barang }} {{ $data_barang_asal->linkToSatuan->satuan_brg }}</option>
+                                            <option value="{{ $data_barang_asal->id }}">{{ $data_barang_asal->nm_barang }} {{ $data_barang_asal->linkToSatuan->satuan }}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -49,7 +49,7 @@
                                     <option>Pilih Barang Tujuan</option>
                                     @if(!empty($data))
                                         @foreach($data as $data_barang_tujuan)
-                                            <option value="{{ $data_barang_tujuan->id }}">{{ $data_barang_tujuan->nm_barang }} {{ $data_barang_tujuan->linkToSatuan->satuan_brg }}</option>
+                                            <option value="{{ $data_barang_tujuan->id }}">{{ $data_barang_tujuan->nm_barang }} {{ $data_barang_tujuan->linkToSatuan->satuan }}</option>
                                         @endforeach
                                     @endif
                                 </select>

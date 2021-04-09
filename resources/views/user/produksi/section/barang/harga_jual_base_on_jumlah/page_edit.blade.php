@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="_method" value="put">
-                                <label for="exampleInputEmail1">Jumlah Masimal penjualan</label>
+                                <label for="exampleInputEmail1">Jumlah Masimal Pembelian</label>
                                 {{ csrf_field() }}
                                 <input type="hidden" name="id_HBJ" value="{{ $data->id }}" required>
                                 <input type="number" minlength="0" maxlength="100" value="{{ $data->jumlah_maks_brg }}" name="jumlah_maks_brg" class="form-control" required/>

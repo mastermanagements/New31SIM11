@@ -3,8 +3,6 @@
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
     <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
 @stop
 
@@ -26,7 +24,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Barang</h3>
+                        <h3 class="box-title">Formulir Tambah Barang</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -35,10 +33,11 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Ketegori Barang</label>
                                 <select class="form-control select2" style="width: 100%;" name="id_kategori" required>
-                                    @if(empty($kategori_jasa))
-                                        <option>Kategori Jasa Masih Kosong</option>
+                                    @if(empty($kategori_produk))
+                                        <option>Kategori Produk Masih Kosong</option>
                                     @else
-                                        @foreach($kategori_jasa as $value)
+                                        <option>Pilih Kategori Barang</option>
+                                        @foreach($kategori_produk as $value)
                                             <option value="{{ $value->id }}">{{ $value->nm_kategori_p }}</option>
                                         @endforeach
                                     @endif
@@ -47,32 +46,30 @@
                             </div>
                             <div class="form-group">
 
-                                <label for="exampleInputEmail1">Sub Ketegori Jasa</label>
+                                <label for="exampleInputEmail1">Sub Kategori Barang</label>
 
-                                <label for="exampleInputEmail1">Sub Ketegori Barang</label>
-
-                                <select class="form-control select2" style="width: 100%;" name="id_subkategori_produk" required>
+                                <select class="form-control select2" style="width: 100%;" name="id_subkategori_produk"/>
                                     <option value="0">Kategori Belum dipilih</option>
                                 </select>
                                 <small style="color: orange">* Isi Jika Perlu</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Sub Sub Ketegori Barang</label>
-                                <select class="form-control select2" style="width: 100%;" name="id_subsubkategori_produk" required>
+                                <label for="exampleInputEmail1">Sub Sub Kategori Barang</label>
+                                <select class="form-control select2" style="width: 100%;" name="id_subsubkategori_produk"/>
                                     <option value="0">Sub Kategori Belum dipilih</option>
                                 </select>
                                 <small style="color: orange">* Isi Jika Perlu</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Kode Barang</label>
-                                <input type="text" name="kd_barang" class="form-control" placeholder="Kode Barang" required/>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+                                <input type="text" name="kd_barang" class="form-control" placeholder="Kode Barang"/>
+                                  <small style="color: orange">* Isi Jika Perlu</small>
                             </div>
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label for="exampleInputEmail1">Barcode</label>
-                                <input type="text" name="barcode" class="form-control" placeholder="Barcode" required/>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
-                            </div>
+                                <input type="text" name="barcode" class="form-control" placeholder="Barcode"/>
+                                  <small style="color: orange">* Isi Jika Perlu</small>
+                            </div>-->
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nama Barang</label>
                                 <input type="text" name="nm_barang" class="form-control" placeholder="nama barang" required/>
@@ -83,57 +80,43 @@
                                 <select class="form-control select2" style="width: 100%;" name="id_satuan" required>
                                     <option >Pilih Satuan </option>
                                     @foreach($satuan as $data)
-                                     <option value="{{ $data->id }}">{{ $data->satuan_brg }}</option>
+                                     <option value="{{ $data->id }}">{{ $data->satuan }}</option>
                                     @endforeach
                                 </select>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Speksifikasi Barang</label>
-                                <textarea name="spec_barang" class="form-control" required></textarea>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+                                <input type="text" name="spec_barang" class="form-control" placeholder="Spesifikasi barang">
+                                <small style="color: orange">* Isi Jika Perlu</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Merk Barang</label>
+                                <input type="text" name="merk_barang" class="form-control" placeholder="Merk barang">
+                                <small style="color: orange">* Isi Jika Perlu</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Deskripsi Barang</label>
-                                <textarea name="desc_barang" class="form-control" required></textarea>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+                                <textarea name="desc_barang" class="form-control" ></textarea>
+                                  <small style="color: orange">* Isi Jika Perlu</small>
                             </div>
-                            {{--<div class="form-group">--}}
-                                {{--<label>Tanggal Expired </label>--}}
 
-                                {{--<div class="input-group date">--}}
-                                    {{--<div class="input-group-addon">--}}
-                                        {{--<i class="fa fa-calendar"></i>--}}
-                                    {{--</div>--}}
-                                    {{--<input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal Barang Expired" name="expired_date" >--}}
-                                {{--</div>--}}
-                                {{--<!-- /.input group -->--}}
-                                {{--<small style="color: orange">* Isi Jika Perlu</small>--}}
-                            {{--</div>--}}
                             <div class="form-group">
                                 <label for="exampleInputEmail1">No Rak</label>
-                                <input type="number" min="0" name="no_rak" class="form-control" placeholder="Nomor Rak" required/>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+                                <input type="number" min="0" name="no_rak" class="form-control" placeholder="Nomor Rak"/>
+                                <small style="color: orange">* Isi Jika Perlu</small>
                             </div>
-                            {{--<div class="form-group">--}}
-                                {{--<label for="exampleInputEmail1">Stok Awal</label>--}}
-                                {{--<input type="number" min="0" name="stok_awal" class="form-control" placeholder="Stok Awal" required/>--}}
-                                {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
-                            {{--</div>--}}
+
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Stok Minimum</label>
-                                <input type="number" min="0" name="stok_minimum" class="form-control" placeholder="Stok Awal" required/>
+                                <input type="number" min="0" name="stok_minimum" class="form-control" placeholder="Stok Minimal" value="0" required/>
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Stok Akhir</label>
-                                <input type="number" min="0" name="stok_akhir" class="form-control" placeholder="Stok Akhir" required/>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
-                            </div>
+
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Hpp (Harga Pokok Penjualan)</label>
-                                <input type="number" min="0" name="hpp" class="form-control" placeholder="Harga Pokok Penjualan"/>
-                                <small style="color: orange">* Isi Jika Perlu</small>
+                                <input type="number" min="0" name="hpp" class="form-control" placeholder="Harga Pokok Penjualan" value="0" required/>
+                              <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
 
                             <div class="form-group">
@@ -148,7 +131,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Gambar Barang</label>
                                 <input type="file"  name="gambar" class="form-control" placeholder="Gambar" />
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+                                  <small style="color: orange">* Isi Jika Perlu</small>
                             </div>
                         </div>
                         <!-- /.box-body -->
@@ -167,27 +150,13 @@
 @stop
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script>
 
-        window.onload = function() {
-            CKEDITOR.replace( 'spec_barang',{
-                height: 200
-            } );
+    <script>
             CKEDITOR.replace( 'desc_barang',{
-                height: 200
+                height: 100
             } );
         };
 
-        $('#datepicker').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy'
-        });
-//        $('#datepicker1').datepicker({
-//            autoclose: true,
-//            format: 'dd-mm-yyyy'
-//        });
 
         $(function () {
             $('.select2').select2()

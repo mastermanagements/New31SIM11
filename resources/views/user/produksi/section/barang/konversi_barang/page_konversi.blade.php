@@ -40,11 +40,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Nama Barang Asal</label> <br>
-                                <input type="text" class="form-control" value="{{ $data->linkToBarangAsal->nm_barang }} {{ $data->linkToBarangAsal->linkToSatuan->satuan_brg }}" readonly>
+                                <input type="text" class="form-control" value="{{ $data->linkToBarangAsal->nm_barang }} {{ $data->linkToBarangAsal->linkToSatuan->satuan }}" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Nama Barang Tujuan</label> <br>
-                                <input type="text" class="form-control" value="{{ $data->linkToBarangTujuan->nm_barang }} {{ $data->linkToBarangTujuan->linkToSatuan->satuan_brg }}" readonly>
+                                <input type="text" class="form-control" value="{{ $data->linkToBarangTujuan->nm_barang }} {{ $data->linkToBarangTujuan->linkToSatuan->satuan}}" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Jumlah Satuan Konversi</label> <br>
