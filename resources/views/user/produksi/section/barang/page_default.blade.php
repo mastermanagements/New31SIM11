@@ -31,7 +31,7 @@
                     <ul class="nav nav-tabs">
                         <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Daftar Barang  </a></li>
                         <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Daftar Harga Barang </a></li>
-                        <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Koversi Satuan </a></li>
+                        <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Konversi Satuan </a></li>
                         <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Promosi Barang </a></li>
                         <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Daftar Konversi Barang </a></li>
                         <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
@@ -76,11 +76,12 @@
                                                             <thead>
                                                             <tr>
                                                                 <th>No.</th>
-                                                                <th>Barcode</th>
-                                                                <th>Kode-Nama Barang</th>
+                                                                <th>Kode</th>
+                                                                <th>Nama Barang</th>
                                                                 <th>Satuan</th>
-                                                                <th>Kategori Barang</th>
+                                                                <th>Kategori</th>
                                                                 <th>Spesifikasi</th>
+                                                                <th>Merk</th>
                                                                 <th>Deskripsi</th>
                                                                 <th>No Rak</th>
                                                                 <th>Stok Minimum</th>
@@ -94,21 +95,22 @@
                                                                 @foreach($data_barang as $data)
                                                                     <tr>
                                                                         <td>{{ $no++ }}</td>
-                                                                        <td>{{ $data->barcode }}</td>
-                                                                        <td>{{ $data->kd_barang }} {{ $data->nm_barang }}</td>
+                                                                        <td>{{ $data->kd_barang }}</td>
+                                                                        <td>{{ $data->nm_barang }}</td>
                                                                         <td>{{ $data->linkToSatuan->satuan }}</td>
                                                                         <td>{{ $data->getkategori->nm_kategori_p }}</td>
-                                                                        <td>{!!  substr($data->spec_barang,0,100) !!}</td>
+                                                                        <td>{{ $data->spec_barang }}</td>
+                                                                        <td>{{ $data->merk_barang }}</td>
                                                                         <td>{!! substr($data->desc_barang,0,100) !!}</td>
                                                                         <td>{{ $data->no_rak }}</td>
                                                                         <td>{{ $data->stok_minimum }}</td>
-                                                                        <td>{{ $data->hpp }}</td>
+                                                                        <td>{{ Rupiah($data->hpp) }}</td>
                                                                         <td>
 
                                                                                 @if($data->metode_jual == '0')
-                                                                                   <a href="#" onclick='window.location.href="{{ url('harga-jual-satuan/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> berdasarkan satu harga</a>
+                                                                                   <a href="#" onclick='window.location.href="{{ url('harga-jual-satuan/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> Satu harga</a>
                                                                                 @else
-                                                                                    <a href="#" onclick='window.location.href="{{ url('harga-jual-baseon-jumlah/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> berdasarkan jumlah barang</a>
+                                                                                    <a href="#" onclick='window.location.href="{{ url('harga-jual-baseon-jumlah/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> Jumlah Beli</a>
                                                                                 @endif
                                                                         </td>
                                                                         <th>
@@ -146,7 +148,7 @@
                                             <tr>
                                                 <td>#</td>
                                                 <td>Nama Barang</td>
-                                                <td>Harga HPP</td>
+                                                <td>HPP</td>
                                                 <td>Harga Jual</td>
                                                 <td>Aksi</td>
                                             </tr>
@@ -159,8 +161,8 @@
                                                         <tr>
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $data_satuan->linkToBarang->nm_barang }}</td>
-                                                            <td>{{ $data_satuan->linkToBarang->hpp }}</td>
-                                                            <td>{{ $data_satuan->harga_jual }}</td>
+                                                            <td>{{ Rupiah($data_satuan->linkToBarang->hpp) }}</td>
+                                                            <td>{{ Rupiah($data_satuan->harga_jual) }}</td>
                                                             <td>
                                                                 <form action="{{ url('harga-jual-satuan/'.$data_satuan->id.'/delete') }}" method="post">
                                                                     {{ csrf_field() }}
@@ -179,7 +181,7 @@
 
                                 </div>
                                 <div class="col-md-12">
-                                    <h4 style="font-weight: bold">Daftar Harga Barang Berdsarkan Jumlah</h4>
+                                    <h4 style="font-weight: bold">Daftar Harga Barang Berdasarkan Jumlah Pembelian</h4>
                                 @if(!empty($data_barang))
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
@@ -187,7 +189,7 @@
                                                 <td>#</td>
                                                 <td>Nama Barang</td>
                                                 <td>Harga HPP</td>
-                                                <td>Harga Jumlah Maks</td>
+                                                <td>Jumlah Maks Pembelian</td>
                                                 <td>Harga Jual</td>
                                                 <td>Aksi</td>
                                             </tr>
@@ -200,9 +202,9 @@
                                                         <tr>
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $data_bJumlah->linkToBarang->nm_barang }}</td>
-                                                            <td>{{ $data_bJumlah->linkToBarang->hpp }}</td>
+                                                            <td>{{ Rupiah($data_bJumlah->linkToBarang->hpp) }}</td>
                                                             <td>{{ $data_bJumlah->jumlah_maks_brg }}</td>
-                                                            <td>{{ $data_bJumlah->harga_jual }}</td>
+                                                            <td>{{ Rupiah($data_bJumlah->harga_jual) }}</td>
                                                             <td>
                                                                 <form action="{{ url('harga-jual-baseon-jumlah/'.$data_bJumlah->id.'/delete') }}" method="post">
                                                                     {{ csrf_field() }}
@@ -230,7 +232,6 @@
                                         <td>No</td>
                                         <td>Barang Asal</td>
                                         <td>Satuan Asal</td>
-                                        <td>Barang</td>
                                         <td>Barang Tujuan</td>
                                         <td>Satuan Tujuan</td>
                                         <td>Jumlah Konversi</td>
@@ -242,9 +243,9 @@
                                @foreach($konvesi_barang as $data_barang_konversi)
                                        <tr>
                                            <td>{{ $i++ }}</td>
-                                           <td>{{ $data_barang_konversi->linkToBarangAsal->nm_barang }}</td>
-                                           <td>{{ $data_barang_konversi->linkToBarangAsal->linkToSatuan->satuan_brg }}</td>
-                                           <td>{{ $data_barang_konversi->linkToBarangAsal->stok_akhir }}</td>
+                                           <td>@if(!empty($data_barang_konversi)){{ $data_barang_konversi->linkToBarangAsal->nm_barang }}@endif</td>
+                                           <td>@if(!empty($data_barang_konversi)){{ $data_barang_konversi->linkToBarangAsal->linkToSatuan->satuan }}@endif</td>
+
                                            <td>{{ $data_barang_konversi->linkToBarangTujuan->nm_barang }}</td>
                                            <td>{{ $data_barang_konversi->linkToBarangTujuan->linkToSatuan->satuan }}</td>
                                            <td>{{ $data_barang_konversi->jumlah_konversi_satuan }}</td>
@@ -282,11 +283,12 @@
                                        @foreach($history_konversi_barang as $data_barang_konvesi)
                                            <tr>
                                                <td>{{ $i++ }}</td>
-                                               <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->nm_barang }}</td>
-                                               <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan }}</td>
-                                               <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->stok_akhir }}</td>
-                                               <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->nm_barang }}</td>
-                                               <td>{{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->linkToSatuan->satuan }}</td>
+                                               <td>{{ tanggalView($data_barang_konvesi->tgl_konversi)}}</td>
+                                               <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->nm_barang)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->nm_barang }}@endif</td>
+                                               <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan }}@endif</td>
+
+                                               <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->nm_barang)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->nm_barang }}@endif</td>
+                                               <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->linkToSatuan->satuan)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->linkToSatuan->satuan }}@endif</td>
                                                <td>{{ $data_barang_konvesi->jum_brg_dikonversi }}</td>
                                            </tr>
                                        @endforeach

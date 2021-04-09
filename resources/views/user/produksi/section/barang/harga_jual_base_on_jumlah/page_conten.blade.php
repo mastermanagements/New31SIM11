@@ -53,9 +53,9 @@
                                                  <tr>
                                                      <td>{{ $no++ }}</td>
                                                      <td>{{ $data->linkToBarang->nm_barang }}</td>
-                                                     <td>{{ $data->linkToBarang->hpp }}</td>
+                                                     <td>{{ Rupiah($data->linkToBarang->hpp) }}</td>
                                                      <td>{{ $data->jumlah_maks_brg }}</td>
-                                                     <td>{{ $data->harga_jual }}</td>
+                                                     <td>{{ Rupiah($data->harga_jual) }}</td>
                                                      <td>
                                                          <form action="{{ url('harga-jual-baseon-jumlah/'.$data->id.'/delete') }}" method="post">
                                                              {{ csrf_field() }}
@@ -81,14 +81,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Form Jumlah Barang</h4>
+                    <h4 class="modal-title">Form Tambah Harga Jual Berdasarkan Jumlah Maksimal Pembelian</h4>
                 </div>
                 <form action="{{ url('banyak-barang') }}" method="post">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Banyak Barang</label>
+                                    <label for="exampleInputEmail1">Banyak Harga Barang Yang akan di input</label>
                                     {{ csrf_field() }}
                                     <input type="hidden" name="id_barang" required>
                                     <input type="number" minlength="0" maxlength="100" name="jumlah_barang" class="form-control" required/>
@@ -112,7 +112,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Form Ubah Harga Satuan Barang Berdasarkan Jumlah</h4>
+                    <h4 class="modal-title">Form Ubah Harga Satuan Barang Berdasarkan Jumlah Pembelian</h4>
                 </div>
                 <form action="#" id="form-ubah" method="post">
                     <div class="modal-body">
@@ -120,7 +120,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <input type="hidden" name="_method" value="put">
-                                    <label for="exampleInputEmail1">Jumlah Masimal penjualan</label>
+                                    <label for="exampleInputEmail1">Jumlah Masimal Pembelian</label>
                                     {{ csrf_field() }}
                                     <input type="hidden" name="id_HBJ" required>
                                     <input type="number" minlength="0" maxlength="100" name="jumlah_maks_brg" class="form-control" required/>

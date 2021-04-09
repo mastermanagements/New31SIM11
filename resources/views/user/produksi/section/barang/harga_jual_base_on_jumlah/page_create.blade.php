@@ -38,7 +38,7 @@
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">HPP :{{ $data->hpp }}</label>
+                                <label for="exampleInputEmail1">HPP :{{ Rupiah($data->hpp) }}</label>
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="row">
