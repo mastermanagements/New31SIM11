@@ -13,22 +13,26 @@ class TblPo extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_p_po', function (Blueprint $table) {
+        Schema::create('p_po', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_tawar_beli')->nullable();
             $table->date('tgl_po');
             $table->string('no_po');
-            $table->integer('id_supplier');
-            $table->date('tgl_krm');
+            $table->integer('id_supplier')->unsigned();
+            $table->date('tgl_krm')->nullable();
             $table->integer('diskon_tambahan')->nullable();
             $table->integer('pajak')->nullable();
-            $table->decimal('dp_po');
-            $table->decimal('kurang_bayar',12,2);
+            $table->decimal('dp_po',12,2)->default(0);
+            $table->decimal('kurang_bayar',12,2)->nullable()->default(0);
             $table->text('ket');
             $table->enum('status_po',['0','1'])->default(0)->comment('0=open, 1=close');
+            $table->decimal('total',12,2)->default(0);
             $table->integer('id_perusahaan')->unsigned();
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
+            $table->foreign('id_supplier')->references('id')->on('p_supplier');
         });
     }
 

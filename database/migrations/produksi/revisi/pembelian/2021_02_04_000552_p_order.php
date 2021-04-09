@@ -17,22 +17,28 @@ class POrder extends Migration
             $table->increments('id');
             $table->integer('id_po')->unsigned()->default(0);
             $table->date('tgl_order');
-            $table->integer('no_order')->nullable();
+            $table->string('no_order',50);
             $table->integer('id_supplier')->unsigned();
             $table->date('tgl_tiba');
             $table->integer('diskon_tambahan')->unsigned();
             $table->integer('pajak');
-            $table->decimal('dp_po',12,2);
+            $table->decimal('dp_po',12,2)->nullable()->default(0);
             $table->decimal('bayar',12,2);
-            $table->decimal('kurang_bayar',12,2);
+            $table->decimal('kurang_bayar',12,2)->nullable()->default(0);
             $table->enum('metode_bayar',['0','1'])->default(0)->comment('0=tunai,1 = kredit/hutang/cicil');
-            $table->date('tgl_jatuh_tempo');
-            $table->date('expired_date');
-            $table->decimal('ongkir',12,2);
-            $table->text('ket');
-
+            $table->date('tgl_jatuh_tempo')->nullable();
+            $table->date('expired_date')->nullable();
+            $table->decimal('ongkir',12,2)->nullable();
+            $table->text('ket')->nullable();
+            $table->decimal('total',12,2)->default(0);
+            //$table->enum('status_bayar',['0','1'])->default(0)->comment('0=lunas,1 = belum lunas');
             $table->integer('id_perusahaan')->unsigned();
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->integer('id_karyawan')->unsigned();
+
+            $table->foreign('id_po')->references('id')->on('p_po')->onDelete('cascade');
+            $table->foreign('id_supplier')->references('id')->on('p_supplier')->onDelete('cascade');
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
             $table->timestamps();
         });
     }

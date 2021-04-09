@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PHargaJualBaseonJumlah extends Migration
+class TblPItemMasukKeluar extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,20 @@ class PHargaJualBaseonJumlah extends Migration
      */
     public function up()
     {
-        Schema::create('p_harga_jual_baseon_jumlah', function (Blueprint $table) {
+        Schema::create('p_item_masuk_keluar', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('jenis_item',['0','1'])->default(0)->comment('0: item masuk, 1:item keluar');
+            $table->date('tgl');
             $table->integer('id_barang')->unsigned();
-            $table->integer('jumlah_maks_brg')->unsigned();
-            $table->decimal('harga_jual');
-            $table->integer('id_karyawan')->unsigned();
+            $table->text('ket');
+            $table->decimal('jumlah_brg');
             $table->integer('id_perusahaan')->unsigned();
-            $table->integer('no_urut')->unsigned();
+            $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
             $table->foreign('id_barang')->references('id')->on('p_barang')->onDelete('cascade');
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
+
         });
     }
 
@@ -34,6 +37,6 @@ class PHargaJualBaseonJumlah extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('p_harga_jual_baseon_jumlah');
+        Schema::dropIfExists('p_item_masuk_keluar');
     }
 }

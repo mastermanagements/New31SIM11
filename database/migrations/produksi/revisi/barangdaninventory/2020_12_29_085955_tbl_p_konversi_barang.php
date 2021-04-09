@@ -19,9 +19,11 @@ class TblPKonversiBarang extends Migration
             $table->integer('id_barang_tujuan')->unsigned();
             $table->integer('jumlah_konversi_satuan')->unsigned();
             $table->integer('id_perusahaan')->unsigned();
+            $table->integer('id_karyawan')->unsigned();
             $table->foreign('id_barang_asal')->references('id')->on('p_barang')->onDelete('cascade');
             $table->foreign('id_barang_tujuan')->references('id')->on('p_barang')->onDelete('cascade');
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
             $table->timestamps();
         });
     }

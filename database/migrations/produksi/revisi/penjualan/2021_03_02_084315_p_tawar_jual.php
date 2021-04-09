@@ -16,15 +16,17 @@ class PTawarJual extends Migration
         Schema::create('p_tawar_jual', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_promo')->default(0);
-            $table->string('no_tawar')->nullable();
+            $table->string('no_tawar',40)->nullable();
             $table->date('tgl_tawar');
             $table->date('tgl_berlaku');
             $table->date('tgl_krm');
             $table->integer('id_klien')->unsigned();
-            $table->text('ket');
+            $table->text('ket')->nullable();
             $table->integer('id_perusahaan')->unsigned();
-            $table->integer('id_karyawan');
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->integer('id_karyawan')->unsigned();
+            
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
             $table->timestamps();
         });
     }

@@ -22,8 +22,12 @@ class PDetailSales extends Migration
             $table->integer('diskon')->default(0);
             $table->decimal('jumlah_harga', 12,2)->default(0);
             $table->integer('id_perusahaan')->unsigned();
-            $table->integer('id_karyawan')->default(0);
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->integer('id_karyawan')->unsigned();
+
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
+            $table->foreign('id_sales')->references('id')->on('p_sales');
+            $table->foreign('id_barang')->references('id')->on('p_barang');
             $table->timestamps();
         });
     }

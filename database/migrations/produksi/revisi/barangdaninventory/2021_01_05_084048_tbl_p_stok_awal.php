@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PDetailOrder extends Migration
+class TblPStokAwal extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class PDetailOrder extends Migration
      */
     public function up()
     {
-        Schema::create('p_detail_order', function (Blueprint $table) {
+        Schema::create('p_stok_awal', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_order')->unsigned();
             $table->integer('id_barang')->unsigned();
-            $table->integer('hpp');
-            $table->integer('jumlah_beli');
-            $table->integer('diskon_item');
-            $table->decimal('jumlah_harga',12,2);
+            $table->decimal('jumlah_brg');
+            $table->date('expired_date');
             $table->integer('id_perusahaan')->unsigned();
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
+            $table->foreign('id_barang')->references('id')->on('p_barang')->onDelete('cascade');
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
         });
     }
 
@@ -34,6 +34,6 @@ class PDetailOrder extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('p_detail_order');
+        Schema::dropIfExists('p_stok_awal');
     }
 }
