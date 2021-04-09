@@ -97,7 +97,7 @@ class Barang extends Controller
     public function create()
     {
         $data = [
-            'kategori_jasa'=> kategori_produk::all(),
+            'kategori_produk'=> kategori_produk::all(),
             'metode_jual'=>$this->metode_penjualan,
             'satuan' => Sb::all()
         ];
@@ -116,10 +116,8 @@ class Barang extends Controller
          $this->validate($request,[
             'id_kategori' => 'required',
             'nm_barang' => 'required',
-            'spec_barang' => 'required',
-            'desc_barang' => 'required',
+            'id_satuan' => 'required',
             'stok_minimum' => 'required',
-//            'stok_barang' => 'required',
             'hpp' => 'required',
         ]);
 
@@ -129,6 +127,7 @@ class Barang extends Controller
          $nm_barang = $request->nm_barang;
          $spec_barang= $request->spec_barang;
          $desc_barang= $request->desc_barang;
+         $merk_barang= $request->merk_barang;
          $stok_minimum= $request->stok_minimum;
          $kd_barang = $request->kd_barang;
          $barcode = $request->barcode;
@@ -147,16 +146,17 @@ class Barang extends Controller
          $model->nm_barang= $nm_barang;
          $model->id_satuan= $id_satuan;
          $model->spec_barang= $spec_barang;
+         $model->merk_barang= $merk_barang;
          $model->desc_barang= $desc_barang;
 
 //         $model->expired_date= $expired_date;
          $model->no_rak= $no_rak;
 //         $model->stok_awal= $stok_awal;
          $model->stok_minimum= $stok_minimum;
-        $model->hpp= $hpp;
-        $model->metode_jual= $request->metode_jual;
-        $model->stok_akhir= $request->stok_akhir;
-        $model->gambar= '';
+         $model->hpp= $hpp;
+         $model->metode_jual= $request->metode_jual;
+         $model->stok_akhir= 0;
+         $model->gambar= '';
          $model->id_perusahaan= $this->id_perusahaan;
          $model->id_karyawan= $this->id_karyawan;
 
@@ -190,7 +190,7 @@ class Barang extends Controller
         }
 
         $data = [
-            'kategori_jasa'=> kategori_produk::all(),
+            'kategori_produk'=> kategori_produk::all(),
             'data_barang' => $data_barang,
             'metode_jual'=>$this->metode_penjualan,
             'satuan' => Sb::all()
@@ -208,21 +208,20 @@ class Barang extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'id_kategori' => 'required',
-            'nm_barang' => 'required',
-            'spec_barang' => 'required',
-            'desc_barang' => 'required',
-//            'stok_barang' => 'required',
-//            'harga_jual' => 'required',
+          'id_kategori' => 'required',
+          'nm_barang' => 'required',
+          'id_satuan' => 'required',
+          'stok_minimum' => 'required',
+          'hpp' => 'required'
+
         ]);
-
-
 
         $id_kategori = $request->id_kategori;
         $id_subkategori = $request->id_subkategori_produk;
         $id_subsubkategori = $request->id_subsubkategori_produk;
         $nm_barang = $request->nm_barang;
         $spec_barang= $request->spec_barang;
+        $merk_barang= $request->merk_barang;
         $desc_barang= $request->desc_barang;
         $expired_date= date('Y-m-d', strtotime($request->expired_date));
         $stok_minimum= $request->stok_minimum;
@@ -241,12 +240,13 @@ class Barang extends Controller
         $model->nm_barang= $nm_barang;
         $model->id_satuan= $id_satuan;
         $model->spec_barang= $spec_barang;
+        $model->merk_barang= $merk_barang;
         $model->desc_barang= $desc_barang;
         $model->no_rak= $no_rak;
         $model->stok_minimum= $stok_minimum;
         $model->hpp= $hpp;
         $model->metode_jual= $request->metode_jual;
-        $model->stok_akhir= $request->stok_akhir;
+        $model->stok_akhir= 0;
         $model->gambar= '';
         $model->id_perusahaan= $this->id_perusahaan;
         $model->id_karyawan= $this->id_karyawan;
