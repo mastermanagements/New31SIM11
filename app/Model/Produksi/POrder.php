@@ -10,7 +10,7 @@ class POrder extends Model
 
     protected $table = 'p_order';
 
-    protected $fillable = ['id_po','tgl_order','no_order','id_supplier','tgl_tiba','diskon_tambahan','pajak','dp_po','bayar','kurang_bayar','metode_bayar','tgl_jatuh_tempo','ongkir','ket','total','id_perusahaan'];
+    protected $fillable = ['id_po','tgl_order','no_order','id_supplier','tgl_tiba','diskon_tambahan','pajak','dp_po','bayar','kurang_bayar','metode_bayar','tgl_jatuh_tempo','expired_date','ongkir','ket','total','id_perusahaan','id_karyawan'];
 
     public function linkToPO()
     {

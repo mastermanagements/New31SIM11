@@ -8,5 +8,5 @@ class Satuan extends Model
 {
   protected $table="p_satuan";
 
-  protected $fillable = ['jenis_satuan','satuan'];
+  protected $fillable = ['satuan'];
 }

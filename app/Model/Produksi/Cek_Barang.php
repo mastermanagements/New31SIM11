@@ -9,7 +9,7 @@ class Cek_Barang extends Model
     //
     protected $table = 'p_cek_barang';
 
-    protected $fillable = ['id_order','tgl_tiba','tgl_konfirm_cek','tgl_status_return','id_perusahaan'];
+    protected $fillable = ['id_order','tgl_tiba','tgl_konfirm_cek','tgl_status_return','id_perusahaan','id_karyawan'];
 
     public function linkToOrder()
     {

@@ -28,6 +28,7 @@ class PSales extends Model
         'status_bayar',
         'id_komisi_sales',
         'id_perusahaan',
+        'id_karyawan'
     ];
 
     public function linkToKlien(){
