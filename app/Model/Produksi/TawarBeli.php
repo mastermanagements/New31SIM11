@@ -9,7 +9,7 @@ class TawarBeli extends Model
     //
     protected $table = 'p_tawar_beli';
 
-    protected $fillable = ['no_tawar','tgl_tawar','tgl_berlaku','tgl_kirim','id_supplier','id_perusahaan'];
+    protected $fillable = ['no_tawar','tgl_tawar','tgl_berlaku','tgl_kirim','id_supplier','id_perusahaan','id_karyawan'];
 
     public function linkToDetail(){
         return $this->hasMany('App\Model\Produksi\DetailTB','id_tawar','id');
