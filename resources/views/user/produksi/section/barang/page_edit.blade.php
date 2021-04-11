@@ -46,16 +46,20 @@
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Sub Ketegori Barang</label>
-                                    <select class="form-control select2" style="width: 100%;" name="id_subkategori_produk">
-                                        <option value="0">Kategori Belum dipilih</option>
-                                    </select>
-                                    <small style="color: orange">* Isi Jika Perlu</small>
+                                    <label for="exampleInputEmail1">Sub Kategori Barang</label>
+                                      <select class="form-control select2" style="width: 100%;" name="id_subkategori_produk" required>
+                                          @foreach($subkategori_produk as $value)
+                                              <option value="{{ $value->id }}" @if($data_barang->id == $value->id) selected @endif>{{ $value->nm_subkategori_produk }}</option>
+                                          @endforeach
+                                      </select>
+                                      <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Sub Sub Kategori Barang</label>
-                                    <select class="form-control select2" style="width: 100%;" name="id_subsubkategori_produk">
-                                        <option value="0">Sub Kategori Belum dipilih</option>
+                                    <select class="form-control select2" style="width: 100%;" name="id_subsubkategori_produk" required>
+                                      @foreach($subsubkategori_produk as $value)
+                                          <option value="{{ $value->id }}" @if($data_barang->id == $value->id) selected @endif>{{ $value->nm_subsub_kategori_produk }}</option>
+                                      @endforeach
                                     </select>
                                     <small style="color: orange">* Isi Jika Perlu</small>
                                 </div>
@@ -110,7 +114,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Hpp (Harga Pokok Penjualan)</label>
-                                    <input type="number" min="0" name="hpp" value="{{ $data_barang->hpp }}" class="form-control" placeholder="Harga Pokok Penjualan" required/>
+                                    <input type="text" min="0" name="hpp" id="rupiah" value="{{ rupiahView($data_barang->hpp) }}" class="form-control" placeholder="Harga Pokok Penjualan" required/>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
                                 <div class="form-group">
@@ -163,4 +167,5 @@
         });
     </script>
     @include('user.produksi.section.barang.JS.JS')
+    @include('user.global.rupiah_input')
 @stop

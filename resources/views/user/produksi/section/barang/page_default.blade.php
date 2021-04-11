@@ -32,9 +32,9 @@
                         <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Daftar Barang  </a></li>
                         <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Daftar Harga Barang </a></li>
                         <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Konversi Satuan </a></li>
-                        <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Promosi Barang </a></li>
                         <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Daftar Konversi Barang </a></li>
                         <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
+                          <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Promosi Barang </a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane @if(Session::get('tab1') == 'tab1') active @else '' @endif" id="tab_1">
@@ -104,7 +104,7 @@
                                                                         <td>{!! substr($data->desc_barang,0,100) !!}</td>
                                                                         <td>{{ $data->no_rak }}</td>
                                                                         <td>{{ $data->stok_minimum }}</td>
-                                                                        <td>{{ Rupiah($data->hpp) }}</td>
+                                                                        <td>{{ rupiahView($data->hpp) }}</td>
                                                                         <td>
 
                                                                                 @if($data->metode_jual == '0')
@@ -148,8 +148,10 @@
                                             <tr>
                                                 <td>#</td>
                                                 <td>Nama Barang</td>
+                                                <td>Satuan</td>
                                                 <td>HPP</td>
                                                 <td>Harga Jual</td>
+                                                <td>Keuntungan</td>
                                                 <td>Aksi</td>
                                             </tr>
                                             </thead>
@@ -161,8 +163,10 @@
                                                         <tr>
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $data_satuan->linkToBarang->nm_barang }}</td>
-                                                            <td>{{ Rupiah($data_satuan->linkToBarang->hpp) }}</td>
-                                                            <td>{{ Rupiah($data_satuan->harga_jual) }}</td>
+                                                            <td>{{ $data_satuan->linkToBarang->linkToSatuan->satuan }}</td>
+                                                            <td>{{ rupiahView($data_satuan->linkToBarang->hpp) }}</td>
+                                                            <td>{{ rupiahView($data_satuan->harga_jual) }}</td>
+                                                            <td>{{ rupiahView($data_satuan->harga_jual - $data_satuan->linkToBarang->hpp)  }}</td>
                                                             <td>
                                                                 <form action="{{ url('harga-jual-satuan/'.$data_satuan->id.'/delete') }}" method="post">
                                                                     {{ csrf_field() }}
@@ -177,8 +181,6 @@
                                             @endif
                                             </tbody>
                                         </table>
-
-
                                 </div>
                                 <div class="col-md-12">
                                     <h4 style="font-weight: bold">Daftar Harga Barang Berdasarkan Jumlah Pembelian</h4>
@@ -188,9 +190,11 @@
                                             <tr>
                                                 <td>#</td>
                                                 <td>Nama Barang</td>
+                                                <td>Satuan</td>
                                                 <td>Harga HPP</td>
                                                 <td>Jumlah Maks Pembelian</td>
                                                 <td>Harga Jual</td>
+                                                <td>Keuntungan</td>
                                                 <td>Aksi</td>
                                             </tr>
                                             </thead>
@@ -202,9 +206,11 @@
                                                         <tr>
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $data_bJumlah->linkToBarang->nm_barang }}</td>
-                                                            <td>{{ Rupiah($data_bJumlah->linkToBarang->hpp) }}</td>
+                                                            <td>{{ $data_bJumlah->linkToBarang->linkToSatuan->satuan }}</td>
+                                                            <td>{{ rupiahView($data_bJumlah->linkToBarang->hpp) }}</td>
                                                             <td>{{ $data_bJumlah->jumlah_maks_brg }}</td>
-                                                            <td>{{ Rupiah($data_bJumlah->harga_jual) }}</td>
+                                                            <td>{{ rupiahView($data_bJumlah->harga_jual) }}</td>
+                                                            <td>{{ rupiahView($data_bJumlah->harga_jual - $data_bJumlah->linkToBarang->hpp) }}</td>
                                                             <td>
                                                                 <form action="{{ url('harga-jual-baseon-jumlah/'.$data_bJumlah->id.'/delete') }}" method="post">
                                                                     {{ csrf_field() }}
@@ -224,8 +230,14 @@
                             </div>
                         </div>
                         <div class="tab-pane @if(Session::get('tab3') == 'tab3') active @else '' @endif" id="tab_3">
-                           <a href="{{ url('atur-konversi/create') }}" class="btn btn-flat btn-primary">Tambah Konversi</a>
-                           <a href="{{ url('atur-konversi/history') }}" class="btn btn-flat btn-warning pull-right">History</a>
+                          <div class="alert alert-warning alert-dismissible">
+                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                              Konversi barang digunakan untuk memisahkan pembelian barang dengan satuan yang sama tapi dijual dengan satuan yang berbeda.
+                              Misalnya: Pembelian Barang dari supplier berupa satuan Dos, kemudian dijual dalam satuan Dos dan Pcs. Setiap kali membuka
+                              Barang dalam satuan Dos untuk dijual eceran, maka dilakukan konversi barang terlebih dahulu.
+                          </div>
+                           <a href="{{ url('atur-konversi/create') }}" class="btn btn-flat btn-primary">Tambah Konversi Satuan Barang</a>
+                           <!--<a href="{{ url('atur-konversi/history') }}" class="btn btn-flat btn-warning pull-right">History</a>-->
                             <table id="example1" class="table table-bordered table-striped" style="width: 100%">
                                 <thead>
                                     <tr>
@@ -264,38 +276,40 @@
                            </table>
                         </div>
                         <div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
-                            <div class="row">
-                               <div class="col-md-12">
-                                   <table id="example1" class="table table-bordered table-striped" style="width: 100%">
-                                       <thead>
-                                       <tr>
-                                           <td>No</td>
-                                           <td>Tanggal Konversi</td>
-                                           <td>Nama Barang Asal</td>
-                                           <td>Satuan Barang Asal</td>
-                                           <td>Nama Barang Tujuan</td>
-                                           <td>Satuan Barang Tujuan</td>
-                                           <td>Jumlah Konversi</td>
-                                       </tr>
-                                       </thead>
-                                       <tbody>
-                                       @php($i=1)
-                                       @foreach($history_konversi_barang as $data_barang_konvesi)
-                                           <tr>
-                                               <td>{{ $i++ }}</td>
-                                               <td>{{ tanggalView($data_barang_konvesi->tgl_konversi)}}</td>
-                                               <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->nm_barang)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->nm_barang }}@endif</td>
-                                               <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan }}@endif</td>
+                          <div class="row">
+                             <div class="box-body">
+                                 <table id="example2" class="table table-bordered table-striped" style="width: 100%">
+                                     <thead>
+                                     <tr>
+                                         <td>No</td>
+                                         <td>Tanggal Konversi</td>
+                                         <td>Nama Barang Asal</td>
+                                         <td>Satuan Barang Asal</td>
+                                         <td>Nama Barang Tujuan</td>
+                                         <td>Satuan Barang Tujuan</td>
+                                         <td>Jumlah Konversi</td>
+                                         <td>Petugas</td>
+                                     </tr>
+                                     </thead>
+                                     <tbody>
+                                     @php($i=1)
+                                     @foreach($history_konversi_barang as $data_barang_konvesi)
+                                         <tr>
+                                             <td>{{ $i++ }}</td>
+                                             <td>{{ tanggalView($data_barang_konvesi->tgl_konversi)}}</td>
+                                             <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->nm_barang)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->nm_barang }}@endif</td>
+                                             <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan }}@endif</td>
 
-                                               <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->nm_barang)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->nm_barang }}@endif</td>
-                                               <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->linkToSatuan->satuan)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->linkToSatuan->satuan }}@endif</td>
-                                               <td>{{ $data_barang_konvesi->jum_brg_dikonversi }}</td>
-                                           </tr>
-                                       @endforeach
-                                       </tbody>
-                                   </table>
-                               </div>
-                            </div>
+                                             <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->nm_barang)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->nm_barang }}@endif</td>
+                                             <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->linkToSatuan->satuan)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->linkToSatuan->satuan }}@endif</td>
+                                             <td>{{ $data_barang_konvesi->jum_brg_dikonversi }} {{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan }}</td>
+                                             <td>{{ $data_barang_konvesi->linkToKaryawan->nama_ky}} </td>
+                                         </tr>
+                                     @endforeach
+                                     </tbody>
+                                 </table>
+                             </div>
+                          </div>
                         </div>
                         <div class="tab-pane @if(Session::get('tab5') == 'tab5') active @else '' @endif" id="tab_5">
                             <div class="row">

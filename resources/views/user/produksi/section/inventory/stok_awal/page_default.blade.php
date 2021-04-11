@@ -27,13 +27,17 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap;">
-                                <h4>Stok Awal <a href="{{ url('inventory/create') }}" class="btn btn-success pull-right" style="margin-bottom: 10px">Tambah Stok Barang</a></h4>
+                                <h4>Stok Awal Barang <a href="{{ url('inventory/create') }}" class="btn btn-success pull-right" style="margin-bottom: 10px">Tambah Stok Awal</a></h4><br>
+                                <div class="alert alert-warning alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    Tambah stok awal barang hanya dilakukan sekali saja, pertama kali menggunakan aplikasi ini!.
+                                </div>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <td>No.</td>
                                             <td>Nama Barang</td>
-                                            <td>Jumlah Stok</td>
+                                            <td>Jumlah Stok Awal</td>
                                             <td>Expired Date</td>
                                             <td>Aksi</td>
                                         </tr>

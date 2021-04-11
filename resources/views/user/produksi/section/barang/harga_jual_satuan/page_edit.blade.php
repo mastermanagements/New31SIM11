@@ -37,7 +37,7 @@
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">HPP :{{ Rupiah($data->linkToBarang->hpp) }}</label>
+                                <label for="exampleInputEmail1">HPP :{{ rupiahView($data->linkToBarang->hpp) }}</label>
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="form-group">
@@ -46,15 +46,16 @@
                                 <input type="number" minlength="0" maxlength="100" name="persentase" class="form-control" required/>
                                 <input type="hidden" name="hpp" class="form-control" value="{{ $data->linkToBarang->hpp }}"/>
                             </div>
+
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Besarnya Keuntungan</label>
-                                <input type="text" name="nilai_persen" class="form-control" readonly/>
+                                <input type="text" name="nilai_persen" value="{{ rupiahview($untung) }}" class="form-control" readonly/>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Jual Barang</label>
                                 {{ csrf_field() }}
                                 <input type="hidden" name="id_barang" value="{{ $data->linkToBarang->id }}">
-                                <input type="text" name="harga_jual" value="{{ Rupiah($data->harga_jual) }}" class="form-control" required readonly/>
+                                <input type="text" name="harga_jual" value="{{ rupiahview($data->harga_jual) }}" class="form-control" required readonly/>
                             </div>
                         </div>
                         <!-- /.box-body -->

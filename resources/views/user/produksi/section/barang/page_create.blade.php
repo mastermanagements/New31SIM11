@@ -31,7 +31,7 @@
                     <form role="form" action="{{ url('store-barang') }}" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Ketegori Barang</label>
+                                <label for="exampleInputEmail1">Kategori Barang</label>
                                 <select class="form-control select2" style="width: 100%;" name="id_kategori" required>
                                     @if(empty($kategori_produk))
                                         <option>Kategori Produk Masih Kosong</option>
@@ -48,17 +48,17 @@
 
                                 <label for="exampleInputEmail1">Sub Kategori Barang</label>
 
-                                <select class="form-control select2" style="width: 100%;" name="id_subkategori_produk"/>
+                                <select class="form-control select2" style="width: 100%;" name="id_subkategori_produk" required>
                                     <option value="0">Kategori Belum dipilih</option>
                                 </select>
-                                <small style="color: orange">* Isi Jika Perlu</small>
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Sub Sub Kategori Barang</label>
-                                <select class="form-control select2" style="width: 100%;" name="id_subsubkategori_produk"/>
+                                <select class="form-control select2" style="width: 100%;" name="id_subsubkategori_produk" required>
                                     <option value="0">Sub Kategori Belum dipilih</option>
                                 </select>
-                                <small style="color: orange">* Isi Jika Perlu</small>
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Kode Barang</label>
@@ -86,7 +86,7 @@
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Speksifikasi Barang</label>
+                                <label for="exampleInputEmail1">Spesifikasi Barang</label>
                                 <input type="text" name="spec_barang" class="form-control" placeholder="Spesifikasi barang">
                                 <small style="color: orange">* Isi Jika Perlu</small>
                             </div>
@@ -102,7 +102,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">No Rak</label>
+                                <label for="exampleInputEmail1">No Rak/Gudang</label>
                                 <input type="number" min="0" name="no_rak" class="form-control" placeholder="Nomor Rak"/>
                                 <small style="color: orange">* Isi Jika Perlu</small>
                             </div>
@@ -115,7 +115,7 @@
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Hpp (Harga Pokok Penjualan)</label>
-                                <input type="number" min="0" name="hpp" class="form-control" placeholder="Harga Pokok Penjualan" value="0" required/>
+                                <input type="text" name="hpp" id="rupiah" class="form-control" placeholder="Harga Pokok Penjualan" required/>
                               <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
 
@@ -149,6 +149,7 @@
 </div>
 @stop
 @section('plugins')
+
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 
     <script>
@@ -161,6 +162,9 @@
         $(function () {
             $('.select2').select2()
         });
+
+
     </script>
     @include('user.produksi.section.barang.JS.JS')
+    @include('user.global.rupiah_input')
 @stop

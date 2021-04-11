@@ -37,7 +37,7 @@
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">HPP :{{ Rupiah($data->hpp) }}</label>
+                                <label for="exampleInputEmail1">HPP : {{ rupiahView($data->hpp) }}</label>
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="form-group">
@@ -77,6 +77,8 @@
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
+
+
         $('[name="persentase"]').keyup(function () {
             var persentase = ($('[name="hpp"]').val()/100) * $(this).val();
             var harga_jual =parseInt($('[name="hpp"]').val()) + persentase;

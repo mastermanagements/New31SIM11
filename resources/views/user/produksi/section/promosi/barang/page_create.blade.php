@@ -54,7 +54,7 @@
                                                @endif
                                            </td>
                                            <td>
-                                               <input type="text" class="form-control" name="hpp"  value="0" disabled required>
+                                               <input type="text" class="form-control" name="hpp"  disabled required>
                                            </td>
                                            <td>
                                                <input type="number" class="form-control" name="diskon" placeholder="diskon %"  required>
