@@ -26,7 +26,7 @@ class ReviTblBarang extends Migration
             $table->string('spec_barang')->nullable();
             $table->string('merk_barang',50)->nullable();
             $table->text('desc_barang')->nullable();
-            $table->string('no_rak',10)->nullable();
+            $table->string('no_rak',50)->nullable();
             $table->integer('stok_minimum')->default('0');
             $table->integer('stok_akhir')->default('0');
             $table->decimal('hpp',12, 2);
