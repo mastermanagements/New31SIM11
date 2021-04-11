@@ -16,8 +16,8 @@ class TblPStokAwal extends Migration
         Schema::create('p_stok_awal', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_barang')->unsigned();
-            $table->decimal('jumlah_brg');
-            $table->date('expired_date');
+            $table->integer('jumlah_brg');
+            $table->date('expired_date')->nullable();
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();

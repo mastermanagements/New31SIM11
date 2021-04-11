@@ -26,7 +26,7 @@
             <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Form Konversi Barang</h3>
+                        <h3 class="box-title"> Proses Konversi Barang</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -35,19 +35,31 @@
                             <div class="form-group">
                                 <input type="hidden" name="_method" value="put">
                                 <input type="hidden" name="id_konversi" value="{{ $data->id }}">
-                                <label>Nama Barang Asal</label> <br>
+                                <label>Tanggal Konversi</label> <br>
                                 <input name="tgl_konversi" type="date" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Nama Barang Asal</label> <br>
-                                <input type="text" class="form-control" value="{{ $data->linkToBarangAsal->nm_barang }} {{ $data->linkToBarangAsal->linkToSatuan->satuan }}" readonly>
+                                <input type="text" class="form-control" value="{{ $data->linkToBarangAsal->nm_barang }}, Satuan: {{ $data->linkToBarangAsal->linkToSatuan->satuan }}" readonly>
                             </div>
+                            <div class="form-group">
+                                <label>Gudang/No Rak & Sisa Barang Asal</label> <br>
+                                <input type="text" class="form-control" value="{{ $data->linkToBarangAsal->no_rak }}, Sisa: {{ $data->linkToBarangAsal->stok_akhir}} {{ $data->linkToBarangAsal->linkToSatuan->satuan }}" readonly>
+
+                            </div>
+
                             <div class="form-group">
                                 <label>Nama Barang Tujuan</label> <br>
-                                <input type="text" class="form-control" value="{{ $data->linkToBarangTujuan->nm_barang }} {{ $data->linkToBarangTujuan->linkToSatuan->satuan}}" readonly>
+                                <input type="text" class="form-control" value="{{ $data->linkToBarangTujuan->nm_barang }}, Satuan: {{ $data->linkToBarangTujuan->linkToSatuan->satuan}}" readonly>
                             </div>
                             <div class="form-group">
-                                <label>Jumlah Satuan Konversi</label> <br>
+                                <label>Gudang/No Rak  & Sisa Sisa Barang Tujuan </label> <br>
+                                <input type="text" class="form-control" value="{{ $data->linkToBarangTujuan->no_rak }}, Sisa: {{ $data->linkToBarangTujuan->stok_akhir}} {{ $data->linkToBarangTujuan->linkToSatuan->satuan}}" readonly>
+                                
+                            </div>
+
+                            <div class="form-group">
+                                <label>Jumlah Barang Yang Akan Di Konversi</label> <br>
                                 <input type="number" class="form-control" name="jum_brg_dikonversi" value="0" required>
                             </div>
                         </div>

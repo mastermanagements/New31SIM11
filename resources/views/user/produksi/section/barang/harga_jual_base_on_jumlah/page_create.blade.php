@@ -38,7 +38,7 @@
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">HPP :{{ Rupiah($data->hpp) }}</label>
+                                <label for="exampleInputEmail1">HPP : {{ rupiahView($data->hpp) }}</label>
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="row">
@@ -52,7 +52,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Harga Jual</label>
-                                            <input type="number" min="0" class="form-control" value="0" name="harga_jual[]" required>
+                                            <input type="text" min="0" class="form-control" value="0" name="harga_jual[]" required>
                                         </div>
                                     </div>
                                 @endfor
@@ -79,6 +79,8 @@
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
+
+
         $('[name="persentase"]').keyup(function () {
             var persentase = ($('[name="hpp"]').val()/100) * $(this).val();
             var harga_jual =parseInt($('[name="hpp"]').val()) + persentase;

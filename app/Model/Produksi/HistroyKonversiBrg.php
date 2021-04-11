@@ -14,4 +14,7 @@ class HistroyKonversiBrg extends Model
     public function linkToKonversiBarang(){
         return $this->belongsTo('App\Model\Produksi\AturKonversi','id_konversi_brg');
     }
+    public function linkToKaryawan(){
+        return $this->belongsTo('App\Model\Hrd\H_Karyawan','id_karyawan');
+    }
 }

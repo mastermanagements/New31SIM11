@@ -53,9 +53,9 @@
                                                  <tr>
                                                      <td>{{ $no++ }}</td>
                                                      <td>{{ $data->linkToBarang->nm_barang }}</td>
-                                                     <td>{{ Rupiah($data->linkToBarang->hpp) }}</td>
+                                                     <td>{{ rupiahView($data->linkToBarang->hpp) }}</td>
                                                      <td>{{ $data->jumlah_maks_brg }}</td>
-                                                     <td>{{ Rupiah($data->harga_jual) }}</td>
+                                                     <td>{{ rupiahView($data->harga_jual) }}</td>
                                                      <td>
                                                          <form action="{{ url('harga-jual-baseon-jumlah/'.$data->id.'/delete') }}" method="post">
                                                              {{ csrf_field() }}

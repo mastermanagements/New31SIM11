@@ -17,6 +17,8 @@ class TblPHistoryKonversiBarang extends Migration
             $table->increments('id');
             $table->integer('id_konversi_brg')->unsigned();
             $table->date('tgl_konversi');
+            $table->string('no_rak_asal',50)->nullable();
+            $table->string('no_rak_tujuan',50)->nullable();
             $table->integer('jum_brg_dikonversi');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();

@@ -29,18 +29,20 @@ class StokAwal extends Controller
     public function store(Request $req){
         $this->validate($req,[
             'id_barang'=>'required',
-            'jumlah_brg'=>'required',
-            'expired_date'=>'required',
+            'jumlah_brg'=>'required'
+
         ]);
 
         $model = stok_awal::updateOrCreate(
             [
                 'id_barang'=> $req->id_barang,
-                'id_perusahaan'=>Session::get('id_perusahaan_karyawan')
+                'id_perusahaan'=>Session::get('id_perusahaan_karyawan'),
+
             ],
             [
                 'jumlah_brg'=>$req->jumlah_brg,
                 'expired_date'=>$req->expired_date,
+                'id_karyawan'=>Session::get('id_karyawan'),
             ]
         );
 
