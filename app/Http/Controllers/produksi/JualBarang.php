@@ -56,7 +56,9 @@ class JualBarang extends Controller
             'PSales'=> PSales::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'pDiskon'=> PDiskon::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'akun_penjualan'=>AkunPenjualan::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
-            'jenis_jurnal'=>$this->jenis_jurnal
+            'jenis_jurnal'=>$this->jenis_jurnal,
+            'klien'=> klien::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
+            'barang'=> barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get()
         ];
         return view('user.produksi.section.jualbarang.page_default', $data);
     }

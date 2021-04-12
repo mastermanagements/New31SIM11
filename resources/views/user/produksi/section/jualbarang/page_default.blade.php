@@ -31,8 +31,8 @@
                         <li ><a href="#tab_4" data-toggle="tab">Penjualan</a></li>
                         <li ><a href="#tab_5" data-toggle="tab">Pembayaran</a></li>
                         <li ><a href="#tab_6" data-toggle="tab">Return Pembayaran</a></li>
-                        {{--<li ><a href="#tab_7" data-toggle="tab">History Harga Penjualan</a></li>--}}
-                        <li ><a href="#tab_8" data-toggle="tab">Pengaturan Akun Penjualan</a></li>
+                        <li ><a href="#tab_7" data-toggle="tab">Pengaturan Akun Penjualan</a></li>
+                        <li ><a href="#tab_8" data-toggle="tab">History Harga Penjualan</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -340,10 +340,8 @@
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="tab-pane " id="tab_7">
-                            <h1>History Harga penjualan</h1>
-                        </div>
-                        <div class="tab-pane " id="tab_8">
                             <a href="{{ url('pengaturan-akun-penjualan/create') }}">Tamba Akun Penjualan</a>
                             <table class="table table-bordered " style="width: 100%;">
                                 <thead>
@@ -384,6 +382,66 @@
                             </table>
                         </div>
                         <!-- /.tab-pane -->
+                        <div class="tab-pane " id="tab_8">
+                           <div class="row">
+                               <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Klien</label>
+                                        <select class="form-control select2" name="id_klien" style="width: 100%">
+                                            <option disabled>Pilih Klien</option>
+                                            @if(!empty($klien))
+                                                @foreach($klien as $data_klien)
+                                                    <option>{{ $data_klien->nm_klien }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                   <div class="form-group">
+                                        <label>Dari Tanggal</label>
+                                        <input type="date" class="form-control" name="tgl_awal">
+                                    </div>
+                               </div>
+                               <div class="col-md-6">
+                                   <div class="form-group">
+                                       <label>Nama Barang</label>
+                                       <select class="form-control select2" name="id_barang" id="barang_id" style="width: 100%">
+                                           <option disabled>Pilih barang</option>
+                                           @if(!empty($barang))
+                                               @foreach($barang as $data_barang)
+                                                   <option>{{ $data_barang->nm_barang }}</option>
+                                               @endforeach
+                                           @endif
+                                       </select>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Sampai Tanggal</label>
+                                       <input type="date" class="form-control" name="tgl_akhir" id="akhir_tgl">
+                                   </div>
+                               </div>
+                               <div class="col-md-12">
+                                   <div class="form-group">
+                                       <button type="button" class="btn btn-primary pull-left" onclick="load_data_history()">Tampilkan</button>
+                                   </div>
+                               </div>
+                               <div class="col-md-12" style="margin-top: 10px">
+                                   <table class="table table-bordered table-striped" id="table_history" style="width: 100%;margin-top: 10px">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Tgl Transaksi</th>
+                                                <th>No. Faktur</th>
+                                                <th>Nama Barang</th>
+                                                <th>Spek</th>
+                                                <th>Klien</th>
+                                                <th>Jumlah Barang</th>
+                                                <th>Satuan</th>
+                                                <th>Harga Jual</th>
+                                            </tr>
+                                        </thead>
+                                   </table>
+                               </div>
+                           </div>
+                        </div>
                     </div>
                     <!-- /.tab-content -->
                 </div>
@@ -394,10 +452,49 @@
     </section>
     <!-- /.content -->
 </div>
-
 @stop
 
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
+    <script>
+        var tabel_history = $('#table_history').DataTable({
+            data :[],
+            column:[
+                {'data':'0'},
+                {'data':'1'},
+                {'data':'2'},
+                {'data':'3'},
+                {'data':'4'},
+            ],
+            {{--drawCallback: buttonBuild("{{ $thn_proses }}"),--}}
+            filter: false,
+            pagging : true,
+            searching: false,
+            info : true,
+            ordering : false,
+            processing : true,
+            retrieve: true
+        })
+        load_data_history=function(){
+            $.ajax({
+                url:"{{ url('riwayat-harga-penjualan') }}",
+                type: "post",
+                data: {
+                    '_token':"{{ csrf_token() }}",
+                    '_method':"post",
+                    'id_klien': $('[name="id_klien"]').val(),
+                    'tgl_awal': $('[name="tgl_awal"]').val(),
+                    'barang_id': $('[name="id_barang"]').val(),
+                    'tgl_akhir': $('[name="tgl_akhir"]').val(),
+                },
+                success: function (result) {
+                    console.log(result);
+                    tabel_history.clear().draw();
+                    tabel_history.rows.add(result).draw();
+                }
+            })
+        }
+    </script>
 @stop
+

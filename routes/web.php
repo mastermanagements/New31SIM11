@@ -842,6 +842,8 @@ Route::get('Penjualan', 'produksi\JualBarang@index');
 //Route::put('update-penjualan/{id}', 'produksi\JualBarang@update');
 //
 //Route::put('hapus-penjualan/{id}', 'produksi\JualBarang@destory');
+# History Penjulan
+Route::resource('riwayat-harga-penjualan','produksi\HistoryPenjualan');
 
 # Komisi Sales
 
