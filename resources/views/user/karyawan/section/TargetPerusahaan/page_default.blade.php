@@ -37,7 +37,7 @@
                         <li><a href="#tab_3" data-toggle="tab">Target Manager</a></li>
                         <li><a href="#tab_4" data-toggle="tab">Target Supervisor</a></li>
                         <li><a href="#tab_5" data-toggle="tab">Target Staf</a></li>
-                        <li class="pull-right"><a href="{{ url('Strategi-Perusahaan') }}">Strategi Perusahaan</a></li>
+                        <h5 class="pull-right"><a href="{{ url('Strategi-Perusahaan') }}">Strategi Perusahaan</a>&nbsp;&nbsp;</h5>
                     </ul>
                     <div class="tab-content">
                       <!-- Target Jangka Panjang Perusahaan -->
