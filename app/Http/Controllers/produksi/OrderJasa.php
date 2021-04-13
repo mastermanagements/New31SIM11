@@ -90,7 +90,7 @@ class OrderJasa extends Controller
      //$model->status_service = $request->status_service;
      $model->id_karyawan = $this->id_karyawan;
      $model->id_perusahaan = $this->id_perusahaan;
-
+     //dd($model);
      if($model->save())
      {
         return redirect('Order-Jasa')->with('message_success','Berhasil tambah order jasa');

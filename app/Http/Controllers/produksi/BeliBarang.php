@@ -22,7 +22,7 @@ class BeliBarang extends Controller
     private $id_karyawan;
     private $id_perusahaan;
 
-    # Tanggapan Supplier 
+    # Tanggapan Supplier
     private $tanggapan = [
         'Menerima',
         'Menolak'
@@ -60,6 +60,26 @@ class BeliBarang extends Controller
             'akun_pembelian'=> AkunPembelian::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'jenis_jurnal'=> JenisAkunPembelian::$jenis_akun
         ];
+        //tab1 tawar beli di nonaktifkan
+        if (empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6'))){
+            Session::flash('tab2','tab2');
+        }
+
+        if(!empty(Session::get('tab3'))){
+            Session::flash('tab3',Session::get('tab3'));
+        }
+
+        if(!empty(Session::get('tab4'))){
+            Session::flash('tab4',Session::get('tab4'));
+        }
+
+        if(!empty(Session::get('tab5'))){
+            Session::flash('tab5',Session::get('tab5'));
+        }
+        if(!empty(Session::get('tab6'))){
+            Session::flash('tab6',Session::get('tab6'));
+        }
+
         return view('user.produksi.section.belibarang.page_default', $data);
     }
 

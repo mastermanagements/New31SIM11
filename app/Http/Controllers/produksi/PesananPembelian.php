@@ -17,6 +17,20 @@ use App\Http\utils\JenisAkunPembelian;
 
 class PesananPembelian extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware(function($req, $next){
+          if(empty(Session::get('id_karyawan')) && empty(Session::get('id_perusahaan_karyawan')))
+          {
+              Session::flush();
+              return redirect('login-karyawan')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
+          }
+          $this->id_karyawan = Session::get('id_karyawan');
+          $this->id_perusahaan = Session::get('id_perusahaan_karyawan');
+          return $next($req);
+      });
+  }
+
     public function index()
     {
         $no_surat = SettingNoSurat::no_po();
@@ -35,29 +49,33 @@ class PesananPembelian extends Controller
     }
 
     public function store(Request $req)
-    {
+    { //dd($req->all());
         $this->validate($req, [
             'no_po' => 'required',
             'tgl_po' => 'required',
             'id_supplier' => 'required',
         ]);
 
-      
+        $tgl_po = tanggalController($req->tgl_po);
+        $tgl_kirim = tanggalController($req->tgl_dikirim);
+
         $model = PB::updateOrCreate(
             [
                 'no_po' => $req->no_po,
-                'id_perusahaan' => Session::get('id_perusahaan_karyawan')
+                'id_perusahaan' => $this->id_karyawan
             ],
             [
-                'id_tawar_beli' => $req->id_tawar_beli,
-                'tgl_po' => $req->tgl_po,
+              // 'id_tawar_beli' => $req->id_tawar_beli,
+                'tgl_po' => $tgl_po,
                 'id_supplier' => $req->id_supplier,
-                'tgl_krm' => $req->tgl_dikirim,
+                'tgl_krm' => $tgl_kirim,
+                'id_karyawan' => Session::get('id_karyawan')
+
             ]
         );
-
+        //dd($model);
         if ($model) {
-            if (!empty($model->id_tawar_beli)) {
+            /*if (!empty($model->id_tawar_beli)) {
                 foreach ($req->id_barang as $key => $id_barang) {
 
                     $n_request = new Request([
@@ -76,7 +94,12 @@ class PesananPembelian extends Controller
         } else {
             return redirect()->back()->with('message_error', 'gagal,membuat nota pesanan pembelian');
         }
-       
+            */
+            return redirect('Pembelian')->with('message_success', 'anda telah membuat nota pesanan pembelian')->with('tab2','tab2');
+        } else {
+            return redirect('Pembelian')->with('message_error', 'gagal,membuat nota pesanan pembelian')->with('tab2','tab2');
+        }
+
     }
 
     public function edit($id)
@@ -89,29 +112,31 @@ class PesananPembelian extends Controller
     }
 
     public function update(Request $req, $id)
-    {
+    { //dd($req->all());
         $this->validate($req, [
             'no_po' => 'required',
             'tgl_po' => 'required',
             'id_supplier' => 'required',
+            'tgl_krm' => 'required',
         ]);
 
 
         $model = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
-        $model->id_tawar_beli = $req->id_tawar_beli;
+        //$model->id_tawar_beli = $req->id_tawar_beli;
         $model->no_po = $req->no_po;
-        $model->tgl_po = $req->tgl_po;
+        $model->tgl_po = tanggalController($req->tgl_po);
         $model->id_supplier = $req->id_supplier;
-        $model->tgl_krm = $req->tgl_dikirim;
-        $model->diskon_tambahan = $req->diskon_tambahan;
+        $model->tgl_krm = tanggalController($req->tgl_krm);
+        /*$model->diskon_tambahan = $req->diskon_tambahan;
         $model->pajak = $req->pajak;
         $model->dp_po = $req->uang_muka;
-        $model->kurang_bayar = $req->kurang_bayar;
+        $model->kurang_bayar = $req->kurang_bayar;*/
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        $model->id_karyawan = Session::get('id_karyawan');
         if ($model->save()) {
-            return redirect('Pembelian')->with('message_success', 'anda telah mengubah nota pesanan pembelian');
+            return redirect('Pembelian')->with('message_success', 'anda telah mengubah nota pesanan pembelian')->with('tab2','tab2');
         } else {
-            return redirect('Pembelian')->with('message_error', 'gagal, mengubah pesanan pembelian');
+            return redirect('Pembelian')->with('message_error', 'gagal, mengubah pesanan pembelian')->with('tab2','tab2');
         }
     }
 
@@ -166,7 +191,7 @@ class PesananPembelian extends Controller
 
         return response()->json(['data'=> $array]);
     }
- 
+
     private function data_order()
     {
         $model_order = POrder::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
@@ -211,7 +236,7 @@ class PesananPembelian extends Controller
             $column[] = $status;
             $column[] = "<a href='".url('bayar/'.$data->id.'/bayar-order/1')."' class='btn btn-primary'> bayar</a><a href='".url('rincian-pembayaran/'.$data->id)."' target='_blank' class='btn btn-primary'> rincian</a>";
             $array[] = $column;
-        }    
+        }
         return response()->json(['data'=>$array]);
     }
 
@@ -226,19 +251,19 @@ class PesananPembelian extends Controller
            return $this->data_order();
         }
     }
-   
+
     public function tambah_Pesanan_pembelian(Request $req, $id)
     {
 
         $this->validate($req, [
             'id_barang' => 'required',
             'id_po' => 'required',
-            'hpp' => 'required',
+            'harga_beli' => 'required',
             'jumlah_beli' => 'required',
         ]);
 
 
-        $total_harga = $req->jumlah_beli * $req->hpp;
+        $total_harga = $req->jumlah_beli * $req->harga_beli;
         if ($req->diskon != 0)
         {
             $total_setelah_diskon = $req->diskon / 100;
@@ -254,10 +279,11 @@ class PesananPembelian extends Controller
                 'id_perusahaan' => Session::get('id_perusahaan_karyawan')
             ],
             [
-                'hpp' => $req->hpp,
+                'harga_beli' => $req->harga_beli,
                 'jumlah_beli' => $req->jumlah_beli,
-                'diskon_item' => $total_setelah_diskon,
+                'diskon_item' => $req->diskon,
                 'jumlah_harga' => $jumlah_harga,
+                'id_karyawan' => $this->id_karyawan
             ]
         );
 
@@ -271,95 +297,144 @@ class PesananPembelian extends Controller
     }
 
     public function ubah_Pesanan_pembelian(Request $req, $id)
-    {
+    { //dd($req->all());
 
         $this->validate($req, [
-            'id_barang' => 'required',
-            'hpp' => 'required',
+          'id_barang' => 'required',
            'jumlah_beli' => 'required',
+           'harga_beli'=>'required'
         ]);
 
+        $id_barang = $req->id_barang;
+        $harga_beli = rupiahController($req->harga_beli);
+        $jumlah_beli = $req->jumlah_beli;
+        $diskon_item = rupiahController($req->diskon_item);
+        $persen_diskon_item = $diskon_item/$harga_beli*100;
+        $total_diskon = $diskon_item * $jumlah_beli;
+
+        $sub_total = ($harga_beli  * $jumlah_beli) - $total_diskon;
 
         $model_po = DetailPO::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
-        $model_po->id_barang = $req->id_barang;
-        $model_po->hpp = $req->hpp;
-        $model_po->jumlah_beli = $req->jumlah_beli;
-        $total_harga = $req->jumlah_beli * $req->hpp;
-        if ($req->diskon != 0) {
-            $total_setelah_diskon = $req->diskon / 100;
-        } else {
-            $total_setelah_diskon = $req->diskon;
-        }
-        $model_po->diskon_item = $total_setelah_diskon;
-        $jumlah_harga = $total_harga - ($total_harga * $total_setelah_diskon);
-        $model_po->jumlah_harga = $jumlah_harga;
+        //request
+
+        $model_po->id_barang = $id_barang;
+        $model_po->harga_beli = $harga_beli;
+        $model_po->jumlah_beli = $jumlah_beli;
+        $model_po->diskon_item = $persen_diskon_item ;
+        $model_po->jumlah_harga = $sub_total;
         $model_po->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        $model_po->id_karyawan = $this->id_karyawan;
+
         if ($model_po->save()) {
-            return redirect()->back()->with('message_success', 'anda telah mengubah item baru');
+            return redirect('Pembelian')->with('message_success', 'anda telah mengubah item baru')->with('tab2','tab2');
         } else {
-            return redirect()->back()->with('message_success', 'gagal mengubah item baru');
+            return redirect('Pembelian')->with('message_success', 'gagal mengubah item baru')->with('tab2','tab2');
         }
     }
 
     public function ubah_Pesanan_pembelian_po(Request $req, $id)
-    {
+    { //dd($req->all());
         $this->validate($req, [
             'diskon_tambahan' => 'required',
             'pajak' => 'required',
             'uang_muka' => 'required',
             'kurang_bayar' => 'required',
         ]);
-        $total_pajak = 0;
-        $total_diskon = 0;
 
-        $check_data_pembelian = JenisAkunPembelian::CheckAkunPembelian();
-        #check akun pembelian kalau kosong == false
-        if($check_data_pembelian==false){
-            return redirect()->back()->with('message_fail','Isilah terlebih dahulu akun pembelian');
+        //request assignment
+        $diskon_tambahan = rupiahController($req->diskon_tambahan);
+        $pajak = $req->pajak;
+        $dp_po = rupiahController($req->uang_muka);
+        //$kurang_bayar = rupiahController($req->kurang_bayar);
+        $ket = $req->ket;
+        $sub_total = $req->sub_total;
+
+        $total_pajak = $sub_total *($pajak / 100);
+        //jika ada diskon tambahan tanpa pajak
+        if ($diskon_tambahan !== 0 AND $pajak == 0) {
+            $total_po = $sub_total - $diskon_tambahan;
+        //jika ada diskon tambahan dan ada pajak
+        } elseif($diskon_tambahan !== 0 AND $pajak !== 0){
+            $total_po = $sub_total - $total_pajak - $diskon_tambahan;
+         //jika tdk ada diskon tambahan dan ada pajak
+        } elseif($diskon_tambahan == 0 AND $pajak !== 0){
+          $total_po = $sub_total - $total_pajak;
+          //jika diskon tambahan dan pajak =0
+        }elseif($diskon_tambahan == 0 AND $pajak == 0) {
+          $total_po = $sub_total;
+          }
+        //cek uang Muka
+        if($dp_po !==0) {
+          $kurang_bayar = $total_po - $dp_po;
         }
 
-        $jenis_akun_pembelian = JenisAkunPembelian::rule($req->all(), 1);
+        //cek checkbox value on false
+        if ($req->jurnal_totomatis == 'on') {
+          // update po + insert jurnal umum
+          $check_data_pembelian = JenisAkunPembelian::CheckAkunPembelian();
+          #check akun pembelian kalau kosong == false
+          if($check_data_pembelian==false){
+          return redirect('Pembelian')->with('message_fail','Isilah terlebih dahulu akun pembelian')->with('tab2','tab2');
+          }
 
-        $model = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
-        $model->diskon_tambahan = $req->diskon_tambahan;
+          $jenis_akun_pembelian = JenisAkunPembelian::rule($req->all(), 1);
 
-        if ($req->diskon_tambahan != 0) {
-            $diskon = $req->diskon_tambahan / 100;
-            $total_diskon = $req->sub_total * $diskon;
-        }
+          $model = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
 
-        $total = $req->sub_total - $total_diskon;
-        $total_akhir = $total;
 
-        if ($req->pajak != 0) {
-            $total_pajak = $total_akhir*($req->pajak / 100);
-            JenisAkunPembelian::$status_pajak = true;
-        }
+          if ($pajak != 0) {
+              JenisAkunPembelian::$status_pajak = true;
+          }
 
-        $model->pajak = $req->pajak;
-        $model->dp_po = $req->uang_muka;
-        $model->kurang_bayar = $req->kurang_bayar;
-        $model->ket = $req->ket;
-        $model->total =$total_akhir;
-        $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+          $model->diskon_tambahan = $diskon_tambahan;
+          $model->pajak = $pajak;
+          $model->dp_po = $uang_muka;
+          $model->kurang_bayar = $kurang_bayar;
+          $model->ket = $ket;
+          $model->total =$total_po_net;
+          $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+          $model->id_karyawan = Session::get('id_karyawan');
 
-        if ($model->save()) {
-            # Insert Data Ke Jurnal
-            if(is_array($jenis_akun_pembelian) == true){
-                $req->merge([
-                    'total_sebelum_pajak'=>$total_pajak,
-                    'total'=> $total_akhir,
-                    'tgl_order'=> $model->tgl_po,
-                    'no_order'=>$model->no_po,
-                    'id_pesanan'=> $model->id
-                ]);
-                JenisAkunPembelian::$new_request = $req;
-                JenisAkunPembelian::get_akun_pembelian($jenis_akun_pembelian);
+          if ($model->save()) {
+              # Insert Data Ke Jurnal
+              if(is_array($jenis_akun_pembelian) == true){
+                  $req->merge([
+                      'total_sebelum_pajak'=>$total_pajak,
+                      'total'=> $total_po_net,
+                      'tgl_order'=> $model->tgl_po,
+                      'no_order'=>$model->no_po,
+                      'id_pesanan'=> $model->id
+                  ]);
+                  JenisAkunPembelian::$new_request = $req;
+                  JenisAkunPembelian::get_akun_pembelian($jenis_akun_pembelian);
+              }
+                  return redirect('Pembelian')->with('message_success', 'anda telah membuat nota pesanan pembelian');
+                } else {
+                    return redirect('Pembelian')->with('message_error', 'gagal,membuat nota pesanan pembelian');
+                }
+
+          } else {
+
+            $model = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
+            //insert values to table
+            $model->diskon_tambahan = $diskon_tambahan;
+            $model->pajak = $pajak;
+            $model->dp_po = $dp_po;
+            $model->kurang_bayar = $kurang_bayar;
+            $model->ket = $ket;
+            $model->total = $total_po;
+            $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+            $model->id_karyawan = Session::get('id_karyawan');
+
+            if ($model->save()) {
+                return redirect('Pembelian')->with('message_success', 'berhasil memuat nota pesanan pembelian')->with('tab2','tab2');
+            } else {
+                return redirect('Pembelian')->with('message_error', 'gagal,membuat nota pesanan pembelian')->with('tab2','tab2');
             }
-            return redirect('Pembelian')->with('message_success', 'anda telah membuat nota pesanan pembelian');
-        } else {
-            return redirect('Pembelian')->with('message_error', 'gagal,membuat nota pesanan pembelian');
-        }
+
+          }
+
+
     }
 
     public function hapus_Pesanan_pembelian(Request $req, $id)
