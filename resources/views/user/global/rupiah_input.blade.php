@@ -1,6 +1,6 @@
 <script>
     var rupiah = document.getElementById("rupiah");
-    
+
     rupiah.addEventListener("keyup", function(e) {
       // tambahkan 'Rp.' pada saat form di ketik
       // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
@@ -24,4 +24,5 @@
       rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
       return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
     }
+
 </script>

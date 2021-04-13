@@ -20,11 +20,11 @@ class TblPo extends Migration
             $table->string('no_po');
             $table->integer('id_supplier')->unsigned();
             $table->date('tgl_krm')->nullable();
-            $table->integer('diskon_tambahan')->nullable();
+            $table->decimal('diskon_tambahan',12,2)->nullable();
             $table->integer('pajak')->nullable();
-            $table->decimal('dp_po',12,2)->default(0);
+            $table->decimal('dp_po',12,2)->nullable()->default(0);
             $table->decimal('kurang_bayar',12,2)->nullable()->default(0);
-            $table->text('ket');
+            $table->text('ket')->nullable();
             $table->enum('status_po',['0','1'])->default(0)->comment('0=open, 1=close');
             $table->decimal('total',12,2)->default(0);
             $table->integer('id_perusahaan')->unsigned();

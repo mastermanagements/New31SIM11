@@ -26,16 +26,17 @@
                 <div class="nav-tabs-custom">
 
                     <ul class="nav nav-tabs">
-                        <li class="active" ><a href="#tab_1" data-toggle="tab">Penawaran pembelian</a></li>
-                        <li ><a href="#tab_2" data-toggle="tab">Pesanan pembelian</a></li>
-                        <li ><a href="#tab_3" data-toggle="tab">Pembelian</a></li>
-                        <li ><a href="#tab_4" data-toggle="tab">Pembayaran</a></li>
-                        <li ><a href="#tab_5" data-toggle="tab">Return pembelian</a></li>
-                        <li ><a href="#tab_6" data-toggle="tab">Pengaturan akun pembelian</a></li>
+                      <!--  <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Penawaran pembelian </a></li>-->
+                        <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Pesanan pembelian</a></li>
+                        <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Pembelian</a></li>
+                        <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Pembayaran</a></li>
+                        <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Return pembelian</a></li>
+                        <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Pengaturan akun pembelian</a></li>
+
                     </ul>
 
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
+                        <!--<div class="tab-pane @if(Session::get('tab1') == 'tab1') active @else '' @endif" id="tab_1">
                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> Tambah Penawaran Pembelian</a>
                             <p></p>
                             <table id="example2" class="table table-bordered table-striped">
@@ -71,57 +72,44 @@
                                     @endif
                                 </tbody>
                             </table>
-                        </div>
+                        </div>-->
 
-                        <div class="tab-pane " id="tab_2">
-                           <p style="margin-bottom: 10px;">Daftar Pesanan pembelian  <a href="{{ url('pesanan-pembelian') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Pesanan Pembelian</a>
-                           </p>
+                        <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
+                           <p style="margin-bottom: 10px;"><b>Daftar Pesanan pembelian </b> <a href="{{ url('pesanan-pembelian') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah Pesanan Pembelian</a>
+                           </p><br>
                             <table id="example3" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Tanggal</th>
+                                    <th>Tanggal Pesanan</th>
                                     <th>Nomor Penawaran</th>
                                     <th>Supplier</th>
-                                    <th>Total</th>
+                                    <th>Tanggal DiKirim</th>
+                                    <th>Total Pesanan</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @if(!empty($pesanan_pembelian))
                                     @php($i=1)
-                                    
+
                                     @foreach($pesanan_pembelian as $data_pesanan_pembelian)
-                                        @php($sub_total =0)
-                                        @php($besar_diskon_tambahan =0)
-                                        @php($besar_pajak =0)
-                                        @php($pajak =0)
+
                                         <tr>
                                             <th>{{ $i++ }}</th>
                                             <th>{{ $data_pesanan_pembelian->tgl_po }}</th>
                                             <th>{{ $data_pesanan_pembelian->no_po }}</th>
                                             <th>{{ $data_pesanan_pembelian->linkToSupplier->nama_suplier }}</th>
-                                            @php($sub_total =($data_pesanan_pembelian->linkToDetailPO->sum('jumlah_harga')))
-                                            @if($data_pesanan_pembelian->diskon_tambahan !=0)    
-                                                @php($besar_diskon_tambahan = $sub_total*($data_pesanan_pembelian->diskon_tambahan/100))
-                                            @else
-                                                @php($besar_diskon_tambahan = 0)
-                                            @endif
-                                            @if($data_pesanan_pembelian->pajak !=0)
-                                                @php($besar_pajak =($sub_total-$besar_diskon_tambahan)*($data_pesanan_pembelian->pajak/100))
-                                            @else
-                                                @php($besar_pajak =0)
-                                            @endif
-                                            
-                                            <th>{{ 
-                                                    $sub_total-$besar_diskon_tambahan+$besar_pajak
+                                            <th>{{ $data_pesanan_pembelian->tgl_krm }}</th>
+                                            <th>{{
+                                                    rupiahView($data_pesanan_pembelian->total)
                                                 }}</th>
-                                            <th>    
+                                            <th>
                                                 <form action="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/hapus') }}" method="post">
                                                     {{ csrf_field() }}
-                                                    <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Tambah Barang </a>
-                                                    <a href="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/edit') }}" class="btn btn-warning"> Ubah Pesanan</a>
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus nota ini ...?')"> Hapus pesanan</button>
+                                                    <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Rincian Barang </a>
+                                                    <a href="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/edit') }}" class="btn btn-warning"> Ubah</a>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus nota ini ...?')"> Hapus</button>
                                                 </form>
                                             </th>
                                         </tr>
@@ -131,7 +119,7 @@
                             </table>
                         </div>
 
-                        <div class="tab-pane" id="tab_3">
+                          <div class="tab-pane @if(Session::get('tab3') == 'tab3') active @else '' @endif" id="tab_3">
                             <a href="{{ url('Oder/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Pembelian</a>
                             <p></p>
                             <table id="example1" class="table table-bordered table-striped">
@@ -175,7 +163,7 @@
                                                     <form action="{{ url('Oder/'.$item->id) }}" method="post">
                                                         {{ csrf_field() }}
                                                         @method('delete')
-                                                        <a href="{{  url('Oder/'.$item->id.'/edit') }}" class="btn btn-warning">ubah</a>   
+                                                        <a href="{{  url('Oder/'.$item->id.'/edit') }}" class="btn btn-warning">ubah</a>
                                                         <button class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')">hapus</button>
 
                                                     </form>
@@ -187,7 +175,7 @@
                             </table>
                         </div>
 
-                        <div class="tab-pane " id="tab_4">
+                          <div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
                             <div class="form-group">
                                 <label>Pilih Jenis Pembayaran</label>
                                 <select class="form-control" name="jenis_pembayaran">
@@ -217,7 +205,7 @@
                                         <tbody>
 
                                         </tbody>
-                                    </table>                                   
+                                    </table>
                                 </div>
                                 <div class="col-md-12" id="container_order" style="display: none; overflow-x: scroll;">
                                     <table class="table table-bordered table-striped" id="tbl_order" style="width: 500px;">
@@ -232,7 +220,7 @@
                                                 <th> Jumlah Bayar </th>
                                                 <th> Sisa </th>
                                                 <th> Pembelian </th>
-                                                <th> Bukti Bayar </th>                                                
+                                                <th> Bukti Bayar </th>
                                                 <th> Konfirmasi </th>
                                                 <th> Status </th>
                                                 <th> Aksi </th>
@@ -246,7 +234,7 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane " id="tab_5">
+                        <div class="tab-pane @if(Session::get('tab5') == 'tab5') active @else '' @endif" id="tab_5">
                             <div class="row">
                                 <div class="col-md-12" >
                                     <table class="table table-bordered table-striped" style="width: 100%;">
@@ -274,8 +262,8 @@
                                                     <td>{{ $item->linkToCekBarangDetail->where('status_return','1')->count('id') }}</td>
                                                     <td>{{ number_format($item->linkToCekBarangDetail->where('status_return','1')->sum('jumlah_harga'),2,',','.') }}</td>
                                                     <td></td>
-                                                    <td><a href="{{ url('return-barang/'.$item->id) }}" class="btn btn-success"> return </a> 
-                                                        <a href="{{ url('preview-return-barang/'.$item->id) }}" class="btn btn-success"> preview </a> 
+                                                    <td><a href="{{ url('return-barang/'.$item->id) }}" class="btn btn-success"> return </a>
+                                                        <a href="{{ url('preview-return-barang/'.$item->id) }}" class="btn btn-success"> preview </a>
                                                         <a href="#" class="btn btn-success"> konfirmasi </a></td>
                                                 </tr>
                                             @endforeach
@@ -285,7 +273,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane " id="tab_6">
+                          <div class="tab-pane @if(Session::get('tab6') == 'tab6') active @else '' @endif" id="tab_6">
                             <a href="{{ url('akun-pembelian/create') }}" class="btn btn-primary">Tambah Akun Pembelian</a>
                             <div class="row">
                                 <div class="col-md-12">
@@ -358,7 +346,7 @@
                                         <input type="date" class="form-control" name="tgl_tawar"  required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Tanggal Belaku</label>
+                                        <label>Tanggal berberlaku</label>
                                         <input type="date" class="form-control" name="tgl_berlaku"  required>
                                     </div>
                                     <div class="form-group">
@@ -374,6 +362,10 @@
                                                 @endforeach
                                             @endif
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tanggal Penawaran dikirim</label>
+                                        <input type="date" class="form-control" name="tgl_kirim"  required>
                                     </div>
                                 </div>
                             </div>
@@ -484,7 +476,7 @@
                       id_tabel = '#tbl_order';
                       $('#container_po').hide();
                       $('#container_order').show();
-                  }  
+                  }
 
                    var t= $(''+id_tabel).DataTable({
                         column:[

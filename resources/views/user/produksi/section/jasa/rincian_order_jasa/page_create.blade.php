@@ -26,7 +26,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Rincian Order Jasa</h3>
-                        <h3 class="box-title"><a href="{{ url('Order-Jasa') }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ke Halaman Order Jasa</a></h3>
+                         <h5 class="pull-right"><a href="{{ url('Order-Jasa')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->

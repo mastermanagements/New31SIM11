@@ -26,7 +26,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah Pembelian</h3>
+                        <h3 class="box-title">Tambah Pembelian Barang</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -40,12 +40,12 @@
                                        <input type="text" name="no_order" class="form-control" value="{{ $no_surat }}" required>
                                    </div>
                                    <div class="form-group">
-                                       <label>Tanggal. PO</label>
+                                       <label>Tanggal Pembelian</label>
                                        <input type="date" name="tgl_order" class="form-control" required>
                                    </div>
                                    <div class="form-group">
                                        <label>No. Pesanan Pembelian</label>
-                                       <select class="form-control select2" name="id_po" style="width: 100%" 
+                                       <select class="form-control select2" name="id_po" style="width: 100%"
                                             {{-- onchange="if(confirm('Apakah anda akan mengambil data barang penawaran dari kode surat ini ... ?')){ return window.location.href='{{ url('rincian-penawaran') }}/'+$(this).val() }else{ alert('Data Barang tidak dapat diambil') }" --}}
                                             >
                                            @if(!empty($pesana_pembelian))
