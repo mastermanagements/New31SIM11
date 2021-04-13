@@ -845,6 +845,9 @@ Route::get('Penjualan', 'produksi\JualBarang@index');
 # History Penjulan
 Route::resource('riwayat-harga-penjualan','produksi\HistoryPenjualan');
 
+# Setting kasir
+Route::resource('setting-kasir','produksi\SettingKasir');
+
 # Komisi Sales
 
 Route::resource('komisi-sales','produksi\KomisiSales');

@@ -13,6 +13,7 @@ use App\Model\Produksi\PSales;
 use App\Model\Produksi\PDiskon;
 use App\Model\Produksi\ComplainBarangJual;
 use App\Model\Produksi\AkunPenjualan;
+use App\Model\Produksi\SettingKasir;
 class JualBarang extends Controller
 {
     private $id_karyawan;
@@ -58,7 +59,8 @@ class JualBarang extends Controller
             'akun_penjualan'=>AkunPenjualan::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'jenis_jurnal'=>$this->jenis_jurnal,
             'klien'=> klien::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
-            'barang'=> barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get()
+            'barang'=> barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
+            'SettingKasir'=> SettingKasir::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         return view('user.produksi.section.jualbarang.page_default', $data);
     }

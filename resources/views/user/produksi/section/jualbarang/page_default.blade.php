@@ -33,6 +33,7 @@
                         <li ><a href="#tab_6" data-toggle="tab">Return Pembayaran</a></li>
                         <li ><a href="#tab_7" data-toggle="tab">Pengaturan Akun Penjualan</a></li>
                         <li ><a href="#tab_8" data-toggle="tab">History Harga Penjualan</a></li>
+                        <li ><a href="#tab_9" data-toggle="tab">Setting Kasir</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -441,6 +442,43 @@
                                    </table>
                                </div>
                            </div>
+                        </div>
+                        <div class="tab-pane " id="tab_9">
+                            <h3>Setting kasir</h3>
+                            <a href="{{ url('setting-kasir/create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Tambah Setting Kas Kasir</a>
+                            <table class="table table-bordered " style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Karyawan</th>
+                                        <th>Shift</th>
+                                        <th>AKun Kas</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if($SettingKasir)
+                                        @php($n_sk=1);
+                                        @foreach($SettingKasir as $dsk)
+                                            <tr>
+                                                <th>{{ $n_sk++ }}</th>
+                                                <th>{{ $dsk->linkToKaryawan->nama_ky }}</th>
+                                                <th>{{ $dsk->shift }}</th>
+                                                <th>AKun Kas</th>
+                                                <th>
+                                                    <form action="{{ url('setting-kasir/'.$dsk->id) }}" method="post">
+                                                        @method('delete')
+                                                        {{ csrf_field() }}
+                                                        <a href="#" class="btn btn-primary">Detail Akun</a>
+                                                        <a href="{{ url('setting-kasir/'.$dsk->id.'/edit') }}" class="btn btn-warning">Ubah</a>
+                                                        <button class="btn btn-danger" typeof="submit">hapus</button>
+                                                    </form>
+                                                </th>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <!-- /.tab-content -->
