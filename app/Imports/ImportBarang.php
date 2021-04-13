@@ -4,7 +4,7 @@ namespace App\Imports;
 
 use App\Model\Produksi\Barang;
 use Maatwebsite\Excel\Concerns\ToModel;
-use App\Model\Produksi\SatuanBarang;
+use App\Model\Produksi\Satuan;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Session;
 
@@ -17,8 +17,8 @@ class ImportBarang implements ToModel, WithStartRow
     */
     public function model(array $row)
     {
-        $model_saatuan = SatuanBarang::where('satuan_brg','like','%'.$row[3].'%')->first();
-
+        $model_saatuan = Satuan::where('satuan','like','%'.$row[3].'%')->first();
+        //dd($model_saatuan);
         return Barang::updateOrCreate(
             [
                 'id_kategori_produk'=> 1,
@@ -29,9 +29,11 @@ class ImportBarang implements ToModel, WithStartRow
             ],
             [
                 'spec_barang'=> $row[4],
-                'desc_barang'=> $row[5],
-                'stok_minimum'=> $row[6],
-                'hpp'=> $row[7],
+                'merk_barang'=> $row[5],
+                'desc_barang'=> $row[6],
+                'no_rak'=> $row[7],
+                'stok_minimum'=> $row[8],
+                'hpp'=> $row[9],
                 'id_karyawan'=> Session::get('id_karyawan'),
             ]
         );
