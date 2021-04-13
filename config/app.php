@@ -161,6 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -178,6 +179,8 @@ return [
 		    App\Providers\TahunServiceProvider::class,
         App\Providers\TanggalKonversiServiceProvider::class,
         App\Providers\RupiahServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -230,6 +233,7 @@ return [
 		    'Tahun' => App\Http\Helpers\Tahun::class,
         'tanggalKonversi' => App\Http\Helpers\TanggalKonversi::class,
         'Rupiah' => App\Http\Helpers\Rupiah::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
