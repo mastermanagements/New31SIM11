@@ -469,7 +469,7 @@
                                                     <form action="{{ url('setting-kasir/'.$dsk->id) }}" method="post">
                                                         @method('delete')
                                                         {{ csrf_field() }}
-                                                        <a href="#" class="btn btn-primary">Detail Akun</a>
+                                                        <a href="{{ url('setting-akun-kasir/'.$dsk->id) }}" class="btn btn-primary">Detail Akun</a>
                                                         <a href="{{ url('setting-kasir/'.$dsk->id.'/edit') }}" class="btn btn-warning">Ubah</a>
                                                         <button class="btn btn-danger" typeof="submit">hapus</button>
                                                     </form>

@@ -847,6 +847,8 @@ Route::resource('riwayat-harga-penjualan','produksi\HistoryPenjualan');
 
 # Setting kasir
 Route::resource('setting-kasir','produksi\SettingKasir');
+Route::resource('setting-akun-kasir','produksi\SettingAkungKasir');
+Route::get('setting-akun-kasir/{id}/delete','produksi\SettingAkungKasir@delete');
 
 # Komisi Sales
 

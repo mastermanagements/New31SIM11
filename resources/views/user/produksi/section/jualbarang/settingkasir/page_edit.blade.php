@@ -10,7 +10,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Tambah Setting Kas Kasir
+            Ubah Setting Kas Kasir
         </h1>
     </section>
 

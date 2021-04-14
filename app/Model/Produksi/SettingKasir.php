@@ -14,4 +14,8 @@ class SettingKasir extends Model
     public function linkToKaryawan(){
         return $this->belongsTo('App\Model\Superadmin_ukm\H_karyawan','kasir');
     }
+
+    public function linkToSettingAkunKasir(){
+        return $this->hasMany('App\Model\Produksi\SettingAkunKasir','id_shift_kasir','id');
+    }
 }

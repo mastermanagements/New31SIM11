@@ -8,6 +8,7 @@ use App\Model\Superadmin_ukm\H_karyawan;
 use Session;
 use App\Model\Produksi\SettingKasir as SK;
 
+
 class SettingKasir extends Controller
 {
     //
@@ -65,7 +66,6 @@ class SettingKasir extends Controller
 
     public function destroy (Request $req, $id){
         $model = SK::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
-        dd($model);
         if($model->delete()){
             return redirect('Penjualan')->with('message_success','setting pengaturan kasir telah dihapus');
         }else{
