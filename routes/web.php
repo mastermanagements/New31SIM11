@@ -850,6 +850,9 @@ Route::resource('setting-kasir','produksi\SettingKasir');
 Route::resource('setting-akun-kasir','produksi\SettingAkungKasir');
 Route::get('setting-akun-kasir/{id}/delete','produksi\SettingAkungKasir@delete');
 
+Route::resource('kerja-kasir','produksi\KerjaKasir');
+Route::post('kerja-kasir/masuk-kerja','produksi\KerjaKasir@show_shift_kerja');
+
 # Komisi Sales
 
 Route::resource('komisi-sales','produksi\KomisiSales');

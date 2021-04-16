@@ -14,6 +14,7 @@ use App\Model\Produksi\PDiskon;
 use App\Model\Produksi\ComplainBarangJual;
 use App\Model\Produksi\AkunPenjualan;
 use App\Model\Produksi\SettingKasir;
+use App\Model\Produksi\KerjaKasir;
 class JualBarang extends Controller
 {
     private $id_karyawan;
@@ -60,7 +61,8 @@ class JualBarang extends Controller
             'jenis_jurnal'=>$this->jenis_jurnal,
             'klien'=> klien::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
             'barang'=> barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
-            'SettingKasir'=> SettingKasir::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'SettingKasir'=> SettingKasir::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'KerjaKasir' => KerjaKasir::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         return view('user.produksi.section.jualbarang.page_default', $data);
     }

@@ -34,6 +34,7 @@
                         <li ><a href="#tab_7" data-toggle="tab">Pengaturan Akun Penjualan</a></li>
                         <li ><a href="#tab_8" data-toggle="tab">History Harga Penjualan</a></li>
                         <li ><a href="#tab_9" data-toggle="tab">Setting Kasir</a></li>
+                        <li ><a href="#tab_10" data-toggle="tab">Kasir</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -458,13 +459,19 @@
                                 </thead>
                                 <tbody>
                                     @if($SettingKasir)
-                                        @php($n_sk=1);
+                                        @php($n_sk=1)
                                         @foreach($SettingKasir as $dsk)
                                             <tr>
                                                 <th>{{ $n_sk++ }}</th>
                                                 <th>{{ $dsk->linkToKaryawan->nama_ky }}</th>
                                                 <th>{{ $dsk->shift }}</th>
-                                                <th>AKun Kas</th>
+                                                <th>
+                                                    @if(!empty($dsk->linkToSettingAkunKasir))
+                                                        @foreach($dsk->linkToSettingAkunKasir as $data)
+                                                            <label>{{ $data->linkToAkunAktif->kode_akun_aktif }} : {{ $data->linkToAkunAktif->nm_akun_aktif }}</label><br>
+                                                        @endforeach
+                                                    @endif
+                                                </th>
                                                 <th>
                                                     <form action="{{ url('setting-kasir/'.$dsk->id) }}" method="post">
                                                         @method('delete')
@@ -479,6 +486,74 @@
                                     @endif
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="tab-pane" id="tab_10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form action="kerja-kasir/masuk-kerja" method="post">
+                                        <div class="form-group">
+                                            {{ csrf_field() }}
+                                            <label>Shift Kasir</label>
+                                            <select class="form-control select2" style="width: 100%;" name="id_shift_karyawan">
+                                                <option>Pilih Sift</option>
+                                                @if(!empty($SettingKasir))
+                                                    @foreach($SettingKasir as $dsk)
+                                                        <option value="{{$dsk->id}}">{{ $dsk->linkToKaryawan->nama_ky }} Shift ke:{{ $dsk->shift }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-12">
+                                    <table  class="table table-bordered table-striped"  style="width: 100%">
+                                        <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Tgl</th>
+                                            <th>Mulai</th>
+                                            <th>Selesai</th>
+                                            <th>Karyawan</th>
+                                            <th>Shift</th>
+                                            <th>Total pemasukan</th>
+                                            <th>Total Pengeluaran</th>
+                                            <th>Disetor</th>
+                                            <th>Penerima</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @if(!empty($KerjaKasir))
+                                            @php($no_kerja = 1)
+                                            @foreach($KerjaKasir as $dkk)
+                                                    <tr>
+                                                        <th>{{ $no_kerja++ }}</th>
+                                                        <th>{{ date('d-m-Y', strtotime($dkk->tgl_mulai)) }}</th>
+                                                        <th>{{ $dkk->jam_mulai }}</th>
+                                                        <th>{{ $dkk->jam_selesai }}</th>
+                                                        <th>{{ $dkk->linkToKasir->linkToKaryawan->nama_ky }}</th>
+                                                        <th>{{ $dkk->linkToKasir->shift }}</th>
+                                                        <th>0</th>
+                                                        <th>0</th>
+                                                        <th>0</th>
+                                                        <th>{{ $dkk->linkToKaryawan->nama_ky }}</th>
+                                                        <th>
+                                                            <button class="btn btn-primary">Rincian</button>
+                                                            <button class="btn btn-primary">Edit</button>
+                                                            <button class="btn btn-primary">Tutup Shift</button>
+                                                        </th>
+                                                    </tr>
+                                           @endforeach
+                                        @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                     <!-- /.tab-content -->
