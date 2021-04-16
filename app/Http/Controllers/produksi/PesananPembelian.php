@@ -17,19 +17,7 @@ use App\Http\utils\JenisAkunPembelian;
 
 class PesananPembelian extends Controller
 {
-  public function __construct()
-  {
-      $this->middleware(function($req, $next){
-          if(empty(Session::get('id_karyawan')) && empty(Session::get('id_perusahaan_karyawan')))
-          {
-              Session::flush();
-              return redirect('login-karyawan')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
-          }
-          $this->id_karyawan = Session::get('id_karyawan');
-          $this->id_perusahaan = Session::get('id_perusahaan_karyawan');
-          return $next($req);
-      });
-  }
+
 
     public function index()
     {
@@ -253,8 +241,7 @@ class PesananPembelian extends Controller
     }
 
     public function tambah_Pesanan_pembelian(Request $req, $id)
-    {
-
+    { //dd($req->all());
         $this->validate($req, [
             'id_barang' => 'required',
             'id_po' => 'required',
@@ -263,29 +250,26 @@ class PesananPembelian extends Controller
         ]);
 
 
-        $total_harga = $req->jumlah_beli * $req->harga_beli;
+        $harga_peritem = $req->jumlah_beli * $req->harga_beli;
         if ($req->diskon != 0)
         {
-            $total_setelah_diskon = $req->diskon / 100;
+            $nilai_diskon = $req->diskon / 100;
         } else {
-            $total_setelah_diskon = $req->diskon;
+            $nilai_diskon = 0;
         }
-        $jumlah_harga = $total_harga - ($total_harga * $total_setelah_diskon);
+        $jumlah_harga = $harga_peritem - ($harga_peritem * $nilai_diskon);
 
-        $model_po = DetailPO::updateOrCreate(
-            [
-                'id_po' => $id,
-                'id_barang' => $req->id_barang,
-                'id_perusahaan' => Session::get('id_perusahaan_karyawan')
-            ],
-            [
-                'harga_beli' => $req->harga_beli,
-                'jumlah_beli' => $req->jumlah_beli,
-                'diskon_item' => $req->diskon,
-                'jumlah_harga' => $jumlah_harga,
-                'id_karyawan' => $this->id_karyawan
-            ]
-        );
+        $model_po = new DetailPO;
+
+        $model_po->id_po = $id;
+        $model_po->id_barang = $req->id_barang;
+        $model_po->harga_beli = $req->harga_beli;
+        $model_po->jumlah_beli = $req->jumlah_beli;
+        $model_po->diskon_item = $req->diskon;
+        $model_po->jumlah_harga = $jumlah_harga;
+        $model_po->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        $model_po->id_karyawan = Session::get('id_karyawan');
+        $model_po->save();
 
         if ($model_po) {
             if ($req->redirect == true) {
@@ -307,7 +291,7 @@ class PesananPembelian extends Controller
 
         $id_barang = $req->id_barang;
         $harga_beli = rupiahController($req->harga_beli);
-        $jumlah_beli = $req->jumlah_beli;
+        $jumlah_beli = rupiahController($req->jumlah_beli);
         $diskon_item = rupiahController($req->diskon_item);
         $persen_diskon_item = $diskon_item/$harga_beli*100;
         $total_diskon = $diskon_item * $jumlah_beli;
@@ -355,18 +339,17 @@ class PesananPembelian extends Controller
             $total_po = $sub_total - $diskon_tambahan;
         //jika ada diskon tambahan dan ada pajak
         } elseif($diskon_tambahan !== 0 AND $pajak !== 0){
-            $total_po = $sub_total - $total_pajak - $diskon_tambahan;
+            $total_po = $sub_total + $total_pajak - $diskon_tambahan;
          //jika tdk ada diskon tambahan dan ada pajak
         } elseif($diskon_tambahan == 0 AND $pajak !== 0){
-          $total_po = $sub_total - $total_pajak;
+          $total_po = $sub_total + $total_pajak;
           //jika diskon tambahan dan pajak =0
         }elseif($diskon_tambahan == 0 AND $pajak == 0) {
           $total_po = $sub_total;
           }
-        //cek uang Muka
-        if($dp_po !==0) {
+        //krg bayar = total_po - uang_muka
+
           $kurang_bayar = $total_po - $dp_po;
-        }
 
         //cek checkbox value on false
         if ($req->jurnal_totomatis == 'on') {

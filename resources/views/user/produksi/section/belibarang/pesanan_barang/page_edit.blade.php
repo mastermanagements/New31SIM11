@@ -14,7 +14,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Tambah Rincian Barang Pada Pesanan Pembelian
+                Rincian Pesanan Pembelian Barang
             </h1>
         </section>
 
@@ -26,56 +26,12 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Rincian Pesanan Pembelian</h3>
+                            <h3 class="box-title">Rincian Pesanan Pembelian dengan Nomor PO : <font color="#FF00GG">{{ $data->no_po }}</font> </h3>
                              <h5 class="pull-right"><a href="{{ url('Pembelian')}}">Kembali ke Halaman utama</a></h5>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-
                         <div class="box-body">
-                            <!--<div class="col-md-12" style="margin-top:10px">
-                                <form role="form" action="{{ url('pesanan-pembelian') }}" method="post" >
-                                    {{ csrf_field() }}
-                                    <div class="form-group">
-                                        <label>No. PO</label>
-                                        <input type="text" name="no_po" class="form-control" value="{{ $data->no_po }}" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Tanggal. PO</label>
-                                        <input type="date" name="tgl_po" class="form-control"  value="{{ $data->tgl_po }}" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Penawaran Pembelian</label>
-                                        <select class="form-control select2" name="id_tawar_beli" style="width: 100%">
-                                            @if(!empty($penawaran_pembelian))
-                                                <option value="0" @if($data->id_tawar_beli==0) selected @endif>Pilihan Penawaran pembelian</option>
-                                                @foreach($penawaran_pembelian as $data_penawaran)
-                                                    <option value="{{ $data_penawaran->id }}" @if($data->id_tawar_beli==$data_penawaran->id) selected @endif>{{ $data_penawaran->no_tawar }}</option>
-                                                @endforeach
-                                            @endif
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Supplier</label>
-                                        <select class="form-control select2" name="id_supplier"  required style="width: 100%">
-                                            @if(!empty($supplier))
-                                                <option>Pilihan supplier</option>
-                                                @foreach($supplier as $data_supplier)
-                                                    <option value="{{ $data->id }}" @if($data->id_supplier==$data_supplier->id) selected @endif>{{ $data_supplier->nama_suplier }}</option>
-                                                @endforeach
-                                            @endif
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Tanggal Dikirim</label>
-                                        <input type="date" name="tgl_dikirim" class="form-control" value="{{ $data->tgl_krm }}" required>
-                                    </div>
-                                    {{--<div class="form-group">--}}
-                                        {{--<button class="btn btn-primary">Simpan</button>--}}
-                                    {{--</div>--}}
-
-                                </form>
-                            </div>-->
                             <div class="col-md-12">
                                 <form role="form" action="{{ url('tambah-barang-pembelian/'.$data->id) }}" method="post" >
                                 <div class="col-md-12 row" style="margin-top:10px">
@@ -175,7 +131,7 @@
 
                                                             <td>
                                                                 <button type="submit" class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                                                                <a href="{{ url('hapus-barang-pembelian/'.$data_pesanan->id) }}" class="btn btn-danger"><i class="fa fa-eraser"></i></a>
+                                                                <a href="{{ url('hapus-barang-pembelian/'.$data_pesanan->id) }}" class="btn btn-danger" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')"><i class="fa fa-eraser"></i></a>
                                                             </td>
                                                         </tr>
                                                     </form>
@@ -202,24 +158,20 @@
                                                  <div class="form-group">
                                                      <label>Uang Muka</label>
                                                      <input type="text"  id="rupiah" name="uang_muka" @if(!empty($data->dp_po)) value="{{ rupiahView($data->dp_po) }}" @else value="0" @endif class="form-control" required>
-
                                                  </div>
                                              </div>
-
                                                <div class="col-md-6">
                                                    <div class="form-group">
                                                        <label>Pajak (dalam %, misal: 10 %, tulis : 10)</label>
                                                        <input type="number" name="pajak" class="form-control" @if(!empty($data->pajak)) value="{{ $data->pajak }}" @else  value="0" @endif >
                                                    </div>
                                                </div>
-
                                            </div>
-
                                            <div class="row">
                                              <div class="col-md-6">
                                                  <div class="form-group">
                                                      <label>Diskon Tambahan (Nominal)</label>
-                                                     <input type="text" name="diskon_tambahan" @if(!empty($data->diskon_tambahan)) value="{{ rupiahView($data->diskon_tambahan) }}" @else value="0" @endif class="form-control" required>
+                                                     <input type="text" id="rupiah2" name="diskon_tambahan" @if(!empty($data->diskon_tambahan)) value="{{ rupiahView($data->diskon_tambahan) }}" @else value="0" @endif class="form-control" required>
                                                  </div>
                                              </div>
                                                <div class="col-md-6">
@@ -247,20 +199,22 @@
                                            <label><input type="checkbox" value="on" name="jurnal_otomatis"> Buat jurnal otomatis </label>  <button class="btn btn-primary"> Simpan Pesanan pembelian </button>
                                        </div>
                                 </form>
-                                {{--</form>--}}
-                            </div>
-                        </div>
+                          </div>
                         <!-- /.box-body -->
-
                     </div>
-                </div>
-            </div>
+                  <!-- /.box-primary-->
+              </div>
+              <!--./col-md-12-->
+          </div>
+          <!--./row-->
         </section>
         <!-- /.content -->
     </div>
+  <!--./content-wrapper-->
 @stop
 @section('plugins')
     @include('user.global.rupiah_input')
+    @include('user.global.rupiah_input2')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
