@@ -21,6 +21,7 @@ class PDetailOrder extends Migration
             $table->integer('jumlah_beli')->default(0);
             $table->integer('diskon_item')->default(0);
             $table->decimal('jumlah_harga',12,2)->default(0);
+            $table->date('expired_date')->nullable();
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
 

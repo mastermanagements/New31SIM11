@@ -28,6 +28,7 @@ class HargaJualBaseOnJumlah extends Controller
     }
 
     public function store(Request $req){
+      //dd($req->all());
         $id_barang = $req->id_barang;
        foreach ($req->jumlah_maks_brg as $key=> $jumlah_maks_brg){
             $harga_jual = $req->harga_jual[$key];

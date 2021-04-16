@@ -816,9 +816,17 @@ Route::put('hapus-pembelian/{id}', 'produksi\BeliBarang@delete');
 # Todo P Order
 
 Route::resource('Oder', 'produksi\POrder');
-Route::put('Order/{id}/simpan', 'produksi\POrder@detail_order');
+
+Route::post('Order/{id}/simpan', 'produksi\POrder@tambahDetailOrder');
+
 Route::post('Order/{id}/simpan-rincian-pembelian', 'produksi\POrder@simpan_rincian_pembelian');
+
 Route::post('Order/ubah-rincian-pembelian/{id_detail_pembelian}', 'produksi\POrder@ubah_detail_order');
+
+Route::get('hapus-detail-order/{id_detail_order}', 'produksi\POrder@hapusDetailOrder');
+
+Route::get('hapus-detail-order/{id_detail_order}', 'produksi\POrder@hapusDetailOrder');
+
 Route::resource('cek-barang', 'produksi\CekBarang');
 
 //---- Penawaran --------

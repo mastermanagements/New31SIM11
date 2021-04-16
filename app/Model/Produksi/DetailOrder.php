@@ -9,7 +9,7 @@ class DetailOrder extends Model
     //
     protected $table = 'p_detail_order';
 
-    protected $fillable = ['id_order','id_barang','harga_beli','jumlah_beli','diskon_item','jumlah_harga','id_perusahaan','id_karyawan'];
+    protected $fillable = ['id_order','id_barang','harga_beli','jumlah_beli','diskon_item','jumlah_harga','expired_date','id_perusahaan','id_karyawan'];
 
     public function linkToBarang()
     {

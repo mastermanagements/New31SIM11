@@ -17,7 +17,7 @@ class TblDetailPo extends Migration
             $table->increments('id');
             $table->integer('id_po')->unsigned();
             $table->integer('id_barang')->unsigned();
-            $table->integer('harga_beli');//yg lama  hpp ini diganti dg harga_beli, biar tidak rancu
+            $table->decimal('harga_beli',12,2);//yg lama  hpp ini diganti dg harga_beli, biar tidak rancu
             $table->integer('jumlah_beli')->default(0);
             $table->integer('diskon_item')->default(0);
             $table->decimal('jumlah_harga',12,2)->default(0);

@@ -77,6 +77,7 @@
                         <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
                            <p style="margin-bottom: 10px;"><b>Daftar Pesanan pembelian </b> <a href="{{ url('pesanan-pembelian') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah Pesanan Pembelian</a>
                            </p><br>
+                      
                             <table id="example3" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
@@ -97,7 +98,7 @@
 
                                         <tr>
                                             <th>{{ $i++ }}</th>
-                                            <th>{{ $data_pesanan_pembelian->tgl_po }}</th>
+                                            <th>{{ tanggalView($data_pesanan_pembelian->tgl_po) }}</th>
                                             <th>{{ $data_pesanan_pembelian->no_po }}</th>
                                             <th>{{ $data_pesanan_pembelian->linkToSupplier->nama_suplier }}</th>
                                             <th>{{ $data_pesanan_pembelian->tgl_krm }}</th>
@@ -153,11 +154,11 @@
                                                             <span class="sr-only">Toggle Dropdown</span>
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
-                                                            <li> <a href="{{  url('Oder/'.$item->id) }}">tambahkan barang</a>   </li>
-                                                            <li> <a href="{{  url('cek-barang/'.$item->id) }}">cek barang</a>   </li>
-                                                            <li> <a href="{{  url('status-return/'.$item->id) }}">status return</a></li>
+                                                            <li> <a href="{{  url('Oder/'.$item->id) }}">Rincian barang</a>   </li>
+                                                            <li> <a href="{{  url('cek-barang/'.$item->id) }}">Cek barang</a>   </li>
+                                                            <li> <a href="{{  url('status-return/'.$item->id) }}">Status return</a></li>
                                                             <li class="divider"></li>
-                                                            <li><a href="#">cetak</a></li>
+                                                            <li><a href="#">Cetak</a></li>
                                                         </ul>
                                                     </div>
                                                     <form action="{{ url('Oder/'.$item->id) }}" method="post">

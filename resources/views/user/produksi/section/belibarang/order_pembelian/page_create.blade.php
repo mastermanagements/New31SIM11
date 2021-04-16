@@ -40,8 +40,13 @@
                                        <input type="text" name="no_order" class="form-control" value="{{ $no_surat }}" required>
                                    </div>
                                    <div class="form-group">
-                                       <label>Tanggal Pembelian</label>
-                                       <input type="date" name="tgl_order" class="form-control" required>
+                                        <label>Tanggal Pembelian</label>
+                                       <div class="input-group date">
+                                           <div class="input-group-addon">
+                                               <i class="fa fa-calendar"></i>
+                                           </div>
+                                           <input type="text" name="tgl_order" class="form-control" id="datepicker" value="{{ date('d-m-Y') }}" required>
+                                       </div>
                                    </div>
                                    <div class="form-group">
                                        <label>No. Pesanan Pembelian</label>
@@ -68,8 +73,13 @@
                                        </select>
                                    </div>
                                    <div class="form-group">
-                                       <label>Tanggal Barang tiba</label>
-                                       <input type="date" name="tgl_tiba" class="form-control" required>
+                                       <label>Tanggal Barang Tiba</label>
+                                       <div class="input-group date">
+                                           <div class="input-group-addon">
+                                               <i class="fa fa-calendar"></i>
+                                           </div>
+                                       <input type="text" name="tgl_tiba" class="form-control" id="datepicker2" required>
+                                     </div>
                                    </div>
                                    <div class="form-group">
                                        <button class="btn btn-primary">Simpan</button>
@@ -126,11 +136,19 @@
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
-        $('[name="persentase"]').keyup(function () {
+        /*$('[name="persentase"]').keyup(function () {
             var persentase = ($('[name="hpp"]').val()/100) * $(this).val();
             var harga_jual =parseInt($('[name="hpp"]').val()) + persentase;
             $('[name="harga_jual"]').val(harga_jual);
-        })
+        })*/
+        $('#datepicker').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy'
+        });
+        $('#datepicker2').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy'
+        });
     </script>
 
 @stop
