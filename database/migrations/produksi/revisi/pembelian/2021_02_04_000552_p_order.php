@@ -30,6 +30,7 @@ class POrder extends Migration
             $table->decimal('ongkir',12,2)->nullable();
             $table->text('ket')->nullable();
             $table->decimal('total',12,2)->default(0);
+            $table->enum('status_cekbarang',['0','1'])->default(0)->comment('0=velum dicek,1 = sudah dicek');
             //$table->enum('status_bayar',['0','1'])->default(0)->comment('0=lunas,1 = belum lunas');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();

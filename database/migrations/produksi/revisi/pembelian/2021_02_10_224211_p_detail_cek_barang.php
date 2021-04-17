@@ -25,7 +25,7 @@ class PDetailCekBarang extends Migration
             $table->enum('cek_jumlah', ['0','1'])->comment('0=sesuai, 1=tidak sesuai');
             $table->enum('cek_kualitas', ['0','1'])->comment('0=sesuai, 1=tidak sesuai');
             $table->text('ket')->nullable();
-            $table->enum('status_return',['0','1'])->comment('0=diterima, 1=ditolak');
+            $table->enum('status_return',['0','1'])->comment('0=diterima, 1=ditolak')->nullable();
             $table->text('alasan_ditolak')->nullable();
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();

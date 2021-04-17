@@ -77,7 +77,7 @@
                         <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
                            <p style="margin-bottom: 10px;"><b>Daftar Pesanan pembelian </b> <a href="{{ url('pesanan-pembelian') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah Pesanan Pembelian</a>
                            </p><br>
-                      
+
                             <table id="example3" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
@@ -101,7 +101,7 @@
                                             <th>{{ tanggalView($data_pesanan_pembelian->tgl_po) }}</th>
                                             <th>{{ $data_pesanan_pembelian->no_po }}</th>
                                             <th>{{ $data_pesanan_pembelian->linkToSupplier->nama_suplier }}</th>
-                                            <th>{{ $data_pesanan_pembelian->tgl_krm }}</th>
+                                            <th>{{ tanggalView($data_pesanan_pembelian->tgl_krm )}}</th>
                                             <th>{{
                                                     rupiahView($data_pesanan_pembelian->total)
                                                 }}</th>
@@ -144,7 +144,7 @@
                                                 <td>{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
                                                 <td>{{ $item->no_order }}</td>
                                                 <td>{{ $item->linkToSuppliers->nama_suplier }}</td>
-                                                <td>{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($item->tgl_tiba)) }}</td>
                                                 <td>{{ number_format($item->total,2,',','.') }}</td>
                                                 <td>
                                                     <div class="btn-group open">

@@ -329,27 +329,17 @@ class PesananPembelian extends Controller
         $diskon_tambahan = rupiahController($req->diskon_tambahan);
         $pajak = $req->pajak;
         $dp_po = rupiahController($req->uang_muka);
-        //$kurang_bayar = rupiahController($req->kurang_bayar);
         $ket = $req->ket;
+
+        //sub_total = total_belanja_po
         $sub_total = $req->sub_total;
 
         $total_pajak = $sub_total *($pajak / 100);
-        //jika ada diskon tambahan tanpa pajak
-        if ($diskon_tambahan !== 0 AND $pajak == 0) {
-            $total_po = $sub_total - $diskon_tambahan;
-        //jika ada diskon tambahan dan ada pajak
-        } elseif($diskon_tambahan !== 0 AND $pajak !== 0){
-            $total_po = $sub_total + $total_pajak - $diskon_tambahan;
-         //jika tdk ada diskon tambahan dan ada pajak
-        } elseif($diskon_tambahan == 0 AND $pajak !== 0){
-          $total_po = $sub_total + $total_pajak;
-          //jika diskon tambahan dan pajak =0
-        }elseif($diskon_tambahan == 0 AND $pajak == 0) {
-          $total_po = $sub_total;
-          }
-        //krg bayar = total_po - uang_muka
+        //total_po = sub_total + pajak -diskon_tambahan   :
+        $total_po = $sub_total + $total_pajak - $diskon_tambahan ;
 
-          $kurang_bayar = $total_po - $dp_po;
+        //krg bayar = total_po - uang_muka
+        $kurang_bayar = $total_po - $dp_po;
 
         //cek checkbox value on false
         if ($req->jurnal_totomatis == 'on') {
@@ -391,11 +381,12 @@ class PesananPembelian extends Controller
                   JenisAkunPembelian::$new_request = $req;
                   JenisAkunPembelian::get_akun_pembelian($jenis_akun_pembelian);
               }
-                  return redirect('Pembelian')->with('message_success', 'anda telah membuat nota pesanan pembelian');
+                  return redirect('Pembelian')->with('message_success', 'anda telah membuat nota pesanan pembelian')->with('tab2','tab2');
                 } else {
-                    return redirect('Pembelian')->with('message_error', 'gagal,membuat nota pesanan pembelian');
+                    return redirect('Pembelian')->with('message_error', 'gagal,membuat nota pesanan pembelian')->with('tab2','tab2');
                 }
 
+            //jika tanpa jurnal otomatis
           } else {
 
             $model = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
