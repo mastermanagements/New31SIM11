@@ -26,7 +26,7 @@ class CekBarang extends Controller
 
     private $respon = [
         'Terima',
-        'Tidak Diterima'
+        'Di Tolak'
     ];
 
     public function show($id){
@@ -37,7 +37,9 @@ class CekBarang extends Controller
             'barang'=>Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
             'metode_pembayaran'=> $this->metode_bayar,
             'kondisi'=>$this->kondisi
+
         ];
+      //  dd($data['detail_cek_brg']);
         return view('user.produksi.section.belibarang.cek_barang.page_rincian_barang', $data);
     }
 
@@ -51,16 +53,17 @@ class CekBarang extends Controller
             'kondisi'=>$this->kondisi,
             'respon'=>$this->respon
         ];
+        //dd($data['detail_cek_brg']);
         return view('user.produksi.section.belibarang.status_return.page_rincian_barang', $data);
     }
 
     public function update(Request $req, $id)
-    {
+    { //dd($req->all());
         # code...
-       
+
         $this->validate($req, [
             'id_barang'=>'required',
-            'hpp'=> 'required',
+            'harga_beli'=> 'required',
             'diskon_item'=> 'required',
             'jumlah_beli'=>'required',
             'jumlah_harga'=> 'required',
@@ -69,15 +72,15 @@ class CekBarang extends Controller
         ]);
 
         $current_date = date('Y-m-d');
- 
+
         $model = Cek_Barang::updateOrCreate(
             [
                 'id_order'=> $id,
                 'id_perusahaan'=>Session::get('id_perusahaan_karyawan'),
             ],
             [
-                'tgl_tiba'=> $req->tgl_tiba,
                 'tgl_konfirm_cek'=> $current_date,
+                'id_karyawan'=> Session::get('id_karyawan')
             ]
         );
         // dd($req->all());
@@ -92,19 +95,30 @@ class CekBarang extends Controller
                         'id_cek_barang'=> $model->id
                     ],
                     [
-                        'hpp'=>  $req->hpp[$key],
+                        'harga_beli'=>  rupiahController($req->harga_beli[$key]),
                         'diskon_item'=> $req->diskon_item[$key],
-                        'jumlah_beli'=> $req->jumlah_beli[$key],
-                        'jumlah_harga'=> $req->jumlah_harga[$key],
+                        'jumlah_beli'=> rupiahController($req->jumlah_beli[$key]),
+                        'jumlah_harga'=> rupiahController($req->jumlah_harga[$key]),
                         'cek_jumlah'=> $req->cek_jumlah[$key],
                         'cek_kualitas'=> $req->cek_kondisi[$key],
                         'status_return'=> $req->respon[$key],
                         'alasan_ditolak'=> $req->alasan[$key],
                         'ket'=> $req->ket[$key],
-                ]
+                        'id_karyawan'=> Session::get('id_karyawan')
+                    ]
+
                 );
+              //  dd($req->all());
             }
         }
-        return redirect()->back()->with('message_success','Data proses return telah selesai');
+        //
+          if($model_detail_barang){
+                $model_o = p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
+                $model_o->status_cekbarang = '1';
+                $model_o->save();
+          }
+
+
+        return redirect('Pembelian')->with('message_success','Update Status Retrun Barang berhasil')->with('tab3','tab3');
     }
 }

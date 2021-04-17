@@ -18,8 +18,11 @@ class Cek_Barang extends Model
 
     public function linkToReturnPembelian()
     {
-        # code...
         return $this->hasOne('App\Model\Produksi\ReturnPembelian','id_cek_barang','id');
+    }
+    public function linkToKaryawan()
+    {
+        return $this->belongsTo('App\Model\Hrd\H_Karyawan','id_karyawan');
     }
 
 }

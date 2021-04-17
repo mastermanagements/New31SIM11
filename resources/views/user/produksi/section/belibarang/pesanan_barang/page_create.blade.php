@@ -62,11 +62,12 @@
                                    <div class="form-group">
                                        <label>Supplier</label>
                                        <select class="form-control select2" name="id_supplier" style="width: 100%" required>
-                                           @if(!empty($supplier))
-                                               <option>Pilihan supplier</option>
-                                               @foreach($supplier as $data)
-                                                     <option value="{{ $data->id }}">{{ $data->nama_suplier }} </option>
-                                               @endforeach
+                                           @if(empty($supplier))
+                                               isi dulu data supplier !!
+                                               @else
+                                                   @foreach($supplier as $data)
+                                                         <option value="{{ $data->id }}">{{ $data->nama_suplier }} </option>
+                                                   @endforeach
                                            @endif
                                        </select>
                                    </div>

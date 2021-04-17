@@ -150,15 +150,15 @@ class POrder extends Controller
 
         $model =p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         $model->no_order = $req->no_order;
-        $model->tgl_order = $req->tgl_order;
+        $model->tgl_order = tanggalController($req->tgl_order);
         $model->id_po = $req->id_po;
         $model->id_supplier = $req->id_supplier;
-        $model->tgl_tiba = $req->tgl_tiba;
+        $model->tgl_tiba = tanggalController($req->tgl_tiba);
 
         if($model->save()){
-            return redirect('Pembelian')->with('message_success','data pembelian telah disimpan');
+            return redirect('Pembelian')->with('message_success','data pembelian telah disimpan')->with('tab3','tab3');
         }else{
-            return redirect('Pembelian')->with('message_error','data pembelian gagal disimpan');
+            return redirect('Pembelian')->with('message_error','data pembelian gagal disimpan')->with('tab3','tab3');
         }
     }
 
@@ -257,78 +257,108 @@ class POrder extends Controller
     public function simpan_rincian_pembelian(Request $req, $id)
     { //dd($req->all());
         $this->validate($req,[
-            'tgl_jatuh_tempo'=> 'required',
-            'pajak'=> 'required',
-            'onkir'=> 'required',
             'bayar'=> 'required',
-            // 'kurang_bayar'=>'required',
-            'diskon_tambahan'=> 'required',
             'sub_total'=>'required'
         ]);
 
+        //request assignment
+        $diskon_tambahan = rupiahController($req->diskon_tambahan);
+        $pajak = $req->pajak;
+        $ongkir = rupiahController($req->onkir);
+        $bayar = rupiahController($req->bayar);
+        $dp_po = rupiahController($req->uang_muka);
+        $metode_bayar = $req->metode_bayar;
+        $tgl_jatuh_tempo = tanggalController($req->tgl_jatuh_tempo);
+        $ket = $req->ket;
+
+        //$sub_total = total_belanja
+        $sub_total = $req->sub_total;
+
+        $total_pajak = $sub_total *($pajak / 100);
+
+        //ketentuan mencari total_order (total_o) = sub_total + pajak + ongkir - diskon_tambahan
+        $total_o = ($sub_total + $total_pajak + $ongkir) - $diskon_tambahan;
+
+        //hutang/krg_bayar = sub_total - (bayar + uang_muka)
+        $kurang_bayar = $total_o - ($bayar + $dp_po );
+
+        //cek checkbox value on false
+        if ($req->jurnal_totomatis == 'on') {
+        // update p_order + insert jurnal umum
         $check_data_pembelian = JenisAkunPembelian::CheckAkunPembelian();
         #check akun pembelian kalau kosong == false
-        if($check_data_pembelian==false){
-            return redirect()->back()->with('message_fail','Isilah terlebih dahulu akun pembelian');
-        }
+          if($check_data_pembelian==false){
+              return redirect()->back()->with('message_fail','Isilah terlebih dahulu akun pembelian');
+          }
 
-        #Ambil Jenis Jurnal
-        $jenis_jurnal = 0;
-        $jenis_akun_pembelian = JenisAkunPembelian::rule($req->all(), 2);
+          #Ambil Jenis Jurnal
+          $jenis_jurnal = 0;
+          $jenis_akun_pembelian = JenisAkunPembelian::rule($req->all(), 2);
 
-        $model = p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+          $model = p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
 
-        $pajak = 0;
-        $diskon_tambahan = 0;
+          if($req->pajak !=0){
+              $pajak = $total*($req->pajak/100);
+              JenisAkunPembelian::$status_pajak = true;
+          }
 
-        if($req->diskon_tambahan !=0){
-            $diskon_tambahan = $req->sub_total*($req->diskon_tambahan/100);
-        }
+          if($req->onkir !=0){
+             JenisAkunPembelian::$status_ongkir =true;
+          }
 
-//      $total = ($req->sub_total+$diskon_tambahan+$pajak)-($req->bayar+$req->dp_po+(int)$req->onkir);
-        $sub_total = $req->sub_total-$diskon_tambahan;
-        $total_sebelum_pajak = (($req->bayar+$req->dp_po)-((int)$req->onkir));
-        $total = ($req->bayar+$req->dp_po)-(($sub_total)+(int)$req->onkir);
+          $model->diskon_tambahan = $diskon_tambahan;
+          $model->pajak = $pajak;
+          $model->dp_po = $dp_po;
+          $model->bayar = $bayar;
+          $model->kurang_bayar = $kurang_bayar;
+          $model->metode_bayar = $metode_bayar;
+          $model->tgl_jatuh_tempo = $tgl_jatuh_tempo;
+          $model->ongkir = $ongkir;
+          $model->ket = $ket;
+          $model->total = $total_o;
+          $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+          $model->id_karyawan = Session::get('id_karyawan');
 
-        if($req->pajak !=0){
-            $pajak = $total*($req->pajak/100);
-            JenisAkunPembelian::$status_pajak = true;
-        }
+          if($model->save()){
+              # Insert Data Ke Jurnal
+              if(is_array($jenis_akun_pembelian) == true){
+                  $req->merge([
+                      'ongkir'=> $ongkir,
+                      'total_sebelum_pajak'=>$pajak,
+                      'total'=> $total_o,
+                      'tgl_order'=> $model->tgl_order,
+                      'no_order'=>$model->no_order,
+                      'id_pembelian'=> $model->id
+                  ]);
+                  JenisAkunPembelian::$new_request = $req;
+                  JenisAkunPembelian::get_akun_pembelian($jenis_akun_pembelian);
+              }
 
-        if($req->onkir !=0){
-           JenisAkunPembelian::$status_ongkir =true;
-        }
+              return redirect()->back()->with('message_success','data pembelian telah disimpan');
+              }else{
+                  return redirect()->back()->with('message_error','data pembelian gagal disimpan');
+              }
+          //jika tanpa jurnal otomatis
+        } else{
+              $model = p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+              $model->diskon_tambahan = $diskon_tambahan;
+              $model->pajak = $pajak;
+              $model->dp_po = $dp_po;
+              $model->bayar = $bayar;
+              $model->kurang_bayar = $kurang_bayar;
+              $model->metode_bayar = $metode_bayar;
+              $model->tgl_jatuh_tempo = $tgl_jatuh_tempo;
+              $model->ongkir = $ongkir;
+              $model->ket = $ket;
+              $model->total = $total_o;
+              $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+              $model->id_karyawan = Session::get('id_karyawan');
 
-        $model->diskon_tambahan = $req->diskon_tambahan;
-        $model->pajak = $req->pajak;
-        $model->dp_po = $req->dp_po;
-        $model->bayar = $req->bayar;
-        $model->kurang_bayar = $req->kurang_bayar;
-        $model->metode_bayar = $req->metode_bayar;
-        $model->tgl_jatuh_tempo = $req->tgl_jatuh_tempo;
-        $model->ongkir = $req->onkir;
-        $keterangan = "";
-        $model->ket = $keterangan;
-        $model->total = $total;
-
-        if($model->save()){
-            # Insert Data Ke Jurnal
-            if(is_array($jenis_akun_pembelian) == true){
-                $req->merge([
-                    'ongkir'=> $req->onkir,
-                    'total_sebelum_pajak'=>$pajak,
-                    'total'=> $total,
-                    'tgl_order'=> $model->tgl_order,
-                    'no_order'=>$model->no_order,
-                    'id_pembelian'=> $model->id
-                ]);
-                JenisAkunPembelian::$new_request = $req;
-                JenisAkunPembelian::get_akun_pembelian($jenis_akun_pembelian);
-            }
-
-            return redirect()->back()->with('message_success','data pembelian telah disimpan');
-        }else{
-            return redirect()->back()->with('message_error','data pembelian gagal disimpan');
+              if ($model->save()) {
+                  return redirect('Pembelian')->with('message_success', 'berhasil memuat nota pesanan pembelian')->with('tab3','tab3');
+              } else {
+                  return redirect('Pembelian')->with('message_error', 'gagal,membuat nota pesanan pembelian')->with('tab3','tab3');
+              }
         }
     }
 

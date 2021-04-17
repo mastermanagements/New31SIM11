@@ -170,7 +170,7 @@
                                            <div class="row">
                                              <div class="col-md-6">
                                                  <div class="form-group">
-                                                     <label>Diskon Tambahan (Nominal)</label>
+                                                     <label>Diskon Tambahan (Bilangan)</label>
                                                      <input type="text" id="rupiah2" name="diskon_tambahan" @if(!empty($data->diskon_tambahan)) value="{{ rupiahView($data->diskon_tambahan) }}" @else value="0" @endif class="form-control" required>
                                                  </div>
                                              </div>
