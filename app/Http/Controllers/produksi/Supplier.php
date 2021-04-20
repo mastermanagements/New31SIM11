@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Produksi\Supplier as suppries;
+use App\Model\Produksi\RekSupplier as rek_sup;
 
 class Supplier extends Controller
 {
@@ -31,7 +32,8 @@ class Supplier extends Controller
 
     public function index(){
         $data=[
-            'data_supplier'=> suppries::all()->where('id_perusahaan', $this->id_perusahaan)->sortByDesc('created_at')
+            'data_supplier'=> suppries::all()->where('id_perusahaan', $this->id_perusahaan)->sortByDesc('created_at'),
+            'rek_supplier'=> rek_sup::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.produksi.section.supplier.page_default', $data);
     }
@@ -68,7 +70,7 @@ class Supplier extends Controller
         }
     }
 
-    public function edit($id){
+    public function edit(Request $req, $id){
         if(empty($data=suppries::where('id',$id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }

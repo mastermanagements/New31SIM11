@@ -99,6 +99,18 @@ Route::post('store_request_menu', 'Superadmin_ukm\Menu_perusahaan@store_menu');
 
 Route::post('delete_request_menu', 'Superadmin_ukm\Menu_perusahaan@delete_menu');
 
+Route::get('rek-ukm', 'Superadmin_ukm\Superadmin_UKM@rek_ukm');
+
+Route::get('tambah-rek-ukm', 'Superadmin_ukm\RekUkm@create');
+
+Route::post('store-rek-ukm', 'Superadmin_ukm\RekUkm@store');
+
+Route::get('edit-rek-ukm/{id}', 'Superadmin_ukm\RekUkm@edit');
+
+Route::put('update-rek-ukm/{id}', 'Superadmin_ukm\RekUkm@update');
+
+Route::put('delete-rek-ukm/{id}', 'Superadmin_ukm\RekUkm@destroy');
+
 //=========================== Pengguna Karyawan ========================================================================
 
 Route::get('pengguna-karyawan', 'Superadmin_ukm\PenggunaKaryawan@karyawan');
@@ -758,6 +770,8 @@ Route::get('ubah-supplier/{id}', 'produksi\Supplier@edit');
 Route::put('update-supplier/{id}', 'produksi\Supplier@update');
 
 Route::put('hapus-supplier/{id}', 'produksi\Supplier@delete');
+
+Route::resource('RekSupplier', 'produksi\RekSupplier',['except'=>['index', 'show']]);
 
 
 # Todo Penawaran Pembelian

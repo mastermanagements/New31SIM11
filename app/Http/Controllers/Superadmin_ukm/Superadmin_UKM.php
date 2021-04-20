@@ -18,7 +18,7 @@ use App\Model\Superadmin_ukm\A_visi_p as visi_p;
 use App\Model\Superadmin_ukm\A_misi_p as misi_p;
 use App\Model\Superadmin_ukm\U_Akta as akta_p;
 use App\Model\Superadmin_ukm\U_ijin_usaha as ijin;
-
+use App\Model\Produksi\RekUkm as rek_ukm;
 
 class Superadmin_UKM extends Controller
 {
@@ -185,6 +185,7 @@ class Superadmin_UKM extends Controller
             'misi' => misi_p::where('id_user_ukm', $this->id_superadmin)->paginate(6),
             'akta' => akta_p::where('id_user_ukm', $this->id_superadmin)->paginate(6),
             'ijin' => ijin::all()->where('id_user_ukm', $this->id_superadmin),
+            'rek_ukm' => rek_ukm::all()->where('id_user_ukm', $this->id_superadmin)
         ];
         return $data;
     }
@@ -291,5 +292,16 @@ class Superadmin_UKM extends Controller
             'jabatan'=> jabatans::all()->where('id_perusahaan', $id)
         ];
         return view('user.superadmin_ukm.master.section.jabatan_perusahaan.include.jabatan_content', $pass_data);
+    }
+
+    public function rek_ukm()
+    {
+        $pass_data=[
+            'data_user'=> $this->getFavoriteData()['data_user'],
+            'profil_user_ukm'=> $this->getFavoriteData()['profil_user_ukm'],
+            'rek_ukm'=> $this->getFavoriteData()['rek_ukm'],
+            'content_menu'=>'rek_ukm'
+        ];
+        return view('user.superadmin_ukm.master.section.pengaturan_awal.page_default', $pass_data);
     }
 }

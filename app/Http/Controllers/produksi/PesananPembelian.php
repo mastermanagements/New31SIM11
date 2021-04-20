@@ -149,6 +149,7 @@ class PesananPembelian extends Controller
 
     private function data_pesanan(){
         $model_pb = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+
         $array = [];
         $no=1;
         $bukti_bayar = "";
@@ -161,6 +162,16 @@ class PesananPembelian extends Controller
                 $tgl_bayar = date('d-m-Y', strtotime($data->linkToBayar->tgl_bayar));
                 $konfirmasi = "yes";
                 $bukti_bayar = "<a href='".url('bayar/'.$data->linkToBayar->id.'/bayar-po/1')."' class='btn btn-primary'> Bukti Bayar</a>";
+                //on off tombol bayar
+                if($data->dp_po == $data->linkToBayar->jumlah_bayar){
+                    $tombol_bayar = "<a href='".url('bayar/'.$data->id.'/bayar-po/0')."' class='btn btn-primary'> Bayar</a>";
+                }
+
+
+
+            }
+            if(!empty($data->linkToBayar->jumlah_bayar)){
+                $jumlah_bayar = rupiahview($data->linkToBayar->jumlah_bayar);
             }
 
             $column = [];
@@ -169,11 +180,11 @@ class PesananPembelian extends Controller
             $column[] = $data->linkToSupplier->nama_suplier;
             $column[] = $data->tgl_po;
             $column[] = $tgl_bayar;
-            $column[] = $data->dp_po;
-            $column[] = $data->linkToDetailPO->sum('jumlah_harga');
+            $column[] = rupiahview($data->dp_po);
+            $column[] = $jumlah_bayar;
             $column[] = $bukti_bayar;
             $column[] = $konfirmasi;
-            $column[] = "<a href='".url('bayar/'.$data->id.'/bayar-po/0')."' class='btn btn-primary'> bayar</a>";
+            $column[] = $tombol_bayar;
             $array[] = $column;
         }
 
@@ -197,7 +208,7 @@ class PesananPembelian extends Controller
                 $bukti_bayar = "<a href='".url('bayar/'.$data->linkToBayar->id.'/bayar-order/1')."' class='btn btn-primary'> Bukti Bayar</a>";
 
                 #cari sisa hutang
-                $sisa_hutang = $data->bayar+$data->kurang_bayar;
+                $sisa_hutang = $data->kurang_bayar;
                 if($sisa_hutang==$data->linkToBayar->jumlah_bayar){
                     $status = "lunas";
                 }
@@ -208,10 +219,9 @@ class PesananPembelian extends Controller
             $column[] = $data->no_order;
             $column[] = $data->linkToSuppliers->nama_suplier;
             $column[] = $data->tgl_order;
-            $column[] = $tgl_bayar;
-            $column[] = $data->total;
-            $column[] = $data->bayar;
-            $column[] = $data->kurang_bayar;
+            $column[] = rupiahView($data->total);
+            $column[] = rupiahView($data->bayar);
+            $column[] = rupiahView($data->kurang_bayar);
             $metode_bayar = '';
             if($data->metode_bayar == '0'){
                 $metode_bayar = 'Tunai';
@@ -219,6 +229,7 @@ class PesananPembelian extends Controller
                 $metode_bayar = 'Kredit';
             }
             $column[] = $metode_bayar;
+            $column[] = $tgl_bayar;
             $column[] = $bukti_bayar;
             $column[] = $konfirmasi;
             $column[] = $status;

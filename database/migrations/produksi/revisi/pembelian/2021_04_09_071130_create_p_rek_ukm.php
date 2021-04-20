@@ -20,10 +20,10 @@ class CreatePRekUkm extends Migration
             $table->string('atas_nama');
             $table->string('kcp')->nullable();
             $table->integer('id_perusahaan')->unsigned();
-            $table->integer('id_karyawan')->unsigned();
+            $table->integer('id_user_ukm')->unsigned();
 
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
-            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
+            $table->foreign('id_user_ukm')->references('id')->on('u_user_ukm');
             $table->timestamps();
         });
     }

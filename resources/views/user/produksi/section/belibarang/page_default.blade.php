@@ -180,7 +180,7 @@
                             <div class="form-group">
                                 <label>Pilih Jenis Pembayaran</label>
                                 <select class="form-control" name="jenis_pembayaran">
-                                    <option disabled>Pilih jenis pembayaran</option>
+                                    <option>Pilih jenis pembayaran</option>
                                     @foreach($jenis_pembayaran as $key => $value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
@@ -216,11 +216,12 @@
                                                 <th> No. Transaksi </th>
                                                 <th> Supplier </th>
                                                 <th> Tgl Transaksi </th>
-                                                <th> Tgl Bayar </th>
+
                                                 <th> Jumlah Tagihan </th>
                                                 <th> Jumlah Bayar </th>
                                                 <th> Sisa </th>
                                                 <th> Pembelian </th>
+                                                <th> Tgl Bayar </th>
                                                 <th> Bukti Bayar </th>
                                                 <th> Konfirmasi </th>
                                                 <th> Status </th>
