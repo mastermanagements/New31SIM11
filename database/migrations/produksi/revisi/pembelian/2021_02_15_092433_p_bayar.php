@@ -15,10 +15,10 @@ class PBayar extends Migration
     {
         Schema::create('p_bayar', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('jenis_barang',['-','0','1','2'])->default('-')->comment('0=bayar PO, 1=bayar order, 2= return brg beli');
-            $table->integer('id_po')->default(0)->unsigned();
-            $table->integer('id_order')->default(0)->unsigned();
-            $table->integer('id_return_barang')->default(0)->unsigned();
+            $table->enum('jenis_bayar',['-','0','1','2'])->default('-')->comment('0=bayar PO, 1=bayar order, 2= return brg beli');
+            $table->integer('id_po')->nullable();
+            $table->integer('id_order')->nullable();
+            $table->integer('id_return_barang')->nullable();
             $table->date('tgl_bayar');
             $table->enum('metode_bayar',['-','0','1','2'])->default('-')->comment('0=transfer bak, 1=cek, 2= langsung, 3=return barang');
             $table->integer('bank_asal')->unsigned();
