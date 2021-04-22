@@ -2364,7 +2364,7 @@ Route::get('hapus-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo
 
 //Manufaktur
 Route::resource('manufaktur','manufaktur\manufaktur');
-//Route::resource('sop-produksi','manufaktur/Soproduksi');
+Route::resource('sop-produksi','manufaktur\ProsesProduksi');
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}', 'globals\ProvinsiDanKabupaten@ResponseKabupaten');
