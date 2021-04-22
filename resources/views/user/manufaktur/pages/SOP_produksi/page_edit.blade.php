@@ -36,7 +36,7 @@
                                 {{ csrf_field() }}
                                 @method('put')
                                 <label>Nama SOP</label>
-                                <input type="text" name="nama_sop" value="{{ $p_sop->nama_sop }}" class="form-control"/>
+                                <input type="text" name="nama_sop" value="{{ $p_sop->nama_sop }}" class="form-control" required/>
                             </div>
                         </div>
 

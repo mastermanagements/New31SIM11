@@ -112,8 +112,6 @@
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/resources/views/webview/index.blade.php" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/resources/views/webview/pricing.blade.php" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/resources/views/webview/trainers.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Models/User.php" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Models/User.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Providers/RouteServiceProvider.php" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Providers/RouteServiceProvider.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/composer.json" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/composer.json" />
@@ -128,11 +126,9 @@
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/routes/web.php" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/routes/web.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/webpack.mix.js" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/webpack.mix.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/Manufaktur.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/Manufaktur.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Manufaktur/P_SOP_Produksi.php" afterPath="$PROJECT_DIR$/app/Model/Manufaktur/P_SOP_Produksi.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1564,6 +1560,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="page_edit.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="38" column="127" lean-forward="false" selection-start-line="38" selection-start-column="127" selection-end-line="38" selection-end-column="127" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page_create.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="37" column="96" lean-forward="false" selection-start-line="37" selection-start-column="96" selection-end-line="37" selection-end-column="96" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -1574,11 +1590,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProsesProduksi.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProsesProduksi.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="66" column="90" lean-forward="false" selection-start-line="66" selection-start-column="90" selection-end-line="66" selection-end-column="90" />
+            <state relative-caret-position="322">
+              <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
               <folding>
                 <element signature="e#51#79#0#PHP" expanded="true" />
               </folding>
@@ -1735,12 +1751,12 @@
         <option value="$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_101028_p_tambah_produksi.php" />
         <option value="$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_101114_p_tenaga_produksi.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/Manufaktur/P_SOP_Produksi.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/manufaktur/Manufaktur.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php" />
       </list>
     </option>
   </component>
@@ -2491,14 +2507,7 @@
       <workItem from="1619056026468" duration="275000" />
       <workItem from="1619057426533" duration="6086000" />
       <workItem from="1619070613235" duration="18000" />
-      <workItem from="1619070653393" duration="3523000" />
-    </task>
-    <task id="LOCAL-00163" summary="- Migrasi revisi tabel barang&#10;- Revisi CRUD Barang">
-      <created>1608527332825</created>
-      <option name="number" value="00163" />
-      <option name="presentableId" value="LOCAL-00163" />
-      <option name="project" value="LOCAL" />
-      <updated>1608527332825</updated>
+      <workItem from="1619070653393" duration="3572000" />
     </task>
     <task id="LOCAL-00164" summary="- perubahan tampilan barang&#10;- Crud harga barang satuan&#10;- migrasi harga barang satuan&#10;- modif interface sesuai document revisi">
       <created>1608612449722</created>
@@ -2836,11 +2845,18 @@
       <option name="project" value="LOCAL" />
       <updated>1619063613575</updated>
     </task>
-    <option name="localTasksCounter" value="212" />
+    <task id="LOCAL-00212" summary="- Perancangan dan CRUD Produksi">
+      <created>1619074804715</created>
+      <option name="number" value="00212" />
+      <option name="presentableId" value="LOCAL-00212" />
+      <option name="project" value="LOCAL" />
+      <updated>1619074804715</updated>
+    </task>
+    <option name="localTasksCounter" value="213" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2600108000" />
+    <option name="totallyTimeSpent" value="2600157000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -3256,26 +3272,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-52">
-          <caret line="33" column="37" lean-forward="false" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/Manufaktur.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="36" column="45" lean-forward="false" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -3285,16 +3285,6 @@
         <state relative-caret-position="-748">
           <caret line="2" column="33" lean-forward="true" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="14" column="70" lean-forward="true" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3308,11 +3298,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="66" column="90" lean-forward="false" selection-start-line="66" selection-start-column="90" selection-end-line="66" selection-end-column="90" />
+        <state relative-caret-position="322">
+          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
           <folding>
             <element signature="e#51#79#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="14" column="70" lean-forward="true" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="38" column="127" lean-forward="false" selection-start-line="38" selection-start-column="127" selection-end-line="38" selection-end-column="127" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="37" column="96" lean-forward="false" selection-start-line="37" selection-start-column="96" selection-end-line="37" selection-end-column="96" />
+          <folding />
         </state>
       </provider>
     </entry>

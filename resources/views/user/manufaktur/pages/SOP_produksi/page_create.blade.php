@@ -35,7 +35,7 @@
                             <div class="form-group">
                                 {{ csrf_field() }}
                                 <label>Nama SOP</label>
-                                <input type="text" name="nama_sop" class="form-control"/>
+                                <input type="text" name="nama_sop" class="form-control" required/>
                             </div>
                         </div>
 

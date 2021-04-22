@@ -17,7 +17,7 @@ class ProsesProduksi extends Controller
     public function store(Request $req)
     {
         $this->validate($req,[
-            'nama_sop'=>''
+            'nama_sop'=>'required'
         ]);
 
         $data = $req->except(['_token']);
@@ -41,7 +41,7 @@ class ProsesProduksi extends Controller
     public function update(Request $req, $id)
     {
         $this->validate($req,[
-            'nama_sop'=>''
+            'nama_sop'=>'required'
         ]);
         $model = P_SOP_Produksi::findOrFail($id);
         $data = $req->except(['_token']);
@@ -57,9 +57,6 @@ class ProsesProduksi extends Controller
 
     public function destroy(Request $req, $id)
     {
-        $this->validate($req,[
-            'nama_sop'=>''
-        ]);
         $model = P_SOP_Produksi::findOrFail($id);
         if($model->delete()){
             return redirect('manufaktur')->with('message_success','Sop Produksi telah dihapus');
