@@ -21,7 +21,9 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Return pembelian</h3>
+
+                        <h3 class="box-title">Return Pembelian Barang Nomor Order : <font color="#FF00GG">{{ $data->no_order }}</font>, Supplier : <font color="#DE8F06">{{ $data->linkToSuppliers->nama_suplier }}</font>  </h3>
+                        <h5 class="pull-right"><a href="{{ url('Pembelian')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -30,74 +32,112 @@
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="hidden" name="id_cek_barang" value="{{ $data->linkToCekBarang->id }}">
-                                        <label for="no_order">No Order</label>
-                                        <input type="text" class="form-control" name="no_order" value="{{ $data->no_order }}" disabled/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="supplier">Supplier</label>
-                                        <input type="text" class="form-control" name="supplier" value="{{ $data->linkToSuppliers->nama_suplier }}" disabled/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tgl_transaksi">Tanggal Transaksi</label>
-                                        <input type="text" class="form-control" name="tgl_transaksi" value="{{ date('d/m/y', strtotime($data->tgl_order)) }}" disabled/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="jenis_return">Bentuk return</label>
-                                        <input type="text" class="form-control" readonly
-                                            @if(!empty($data->linkToCekBarang->linkToReturnPembelian))
-                                                value="{{ $bentuk_return[$data->linkToCekBarang->linkToReturnPembelian->jenis_return] }}"                                       
-                                            @endif
-                                        >
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tgl_return">Tanggal Return</label>
-                                        <input type="date" class="form-control" name="tgl_return" readonly
-                                        @if (!empty($data->linkToCekBarang->linkToReturnPembelian))
-                                           value="{{ $data->linkToCekBarang->linkToReturnPembelian->tgl_return }}"
-                                        @endif 
-                                    required/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ongkir_return">Ongkos Kirim</label>
-                                        <input type="number" class="form-control" name="ongkir_return" 
-                                            @if (!empty($data->linkToCekBarang->linkToReturnPembelian))
-                                                value="{{ $data->linkToCekBarang->linkToReturnPembelian->ongkir_return }}"
-                                            @endif  
-                                        readonly required />
-                                    </div>
+                                  <table>
+                                      <tr>
+                                          <th>Bentuk Return</th>
+                                          <th>:</th>
+                                          <th>
+                                            @php($jenis_return = $data->linkToReturnBeli->jenis_return)
+                                              @if($jenis_return == 0)
+                                                Return Barang
+                                              @elseif($jenis_return == 1)
+                                                Return Uang
+                                              @else
+                                                Potong Hutang
+                                              @endif
+
+                                          </th>
+                                      </tr>
+                                      <tr>
+                                          <th>Tanggal Return</th>
+                                          <th>:</th>
+                                          <th>{{ tanggalView($data->linkToReturnBeli->tgl_return)}}</th>
+                                      </tr>
+                                      <tr>
+                                          <th>Ongkos Kirim</th>
+                                          <th>:</th>
+                                          <th>{{ rupiahView($data->linkToReturnBeli->ongkir_return) }}</th>
+                                      </tr>
+                                      <tr>
+                                          <th>Petugas</th>
+                                          <th>:</th>
+                                          <th>{{ $data->linkToReturnBeli->linkToKaryawan->nama_ky }}</th>
+                                      </tr>
+
+                                  </table>
+
                                 </div>
                                 <div class="col-md-12">
                                     <table id="example1" class="table table-bordered table-striped"  style="width: 100%; margin-bottom: 10px; overflow-y:scroll; ">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Harga Satuan</th>
-                                                <th>Diskon</th>
-                                                <th>Jumlah Barang</th>
-                                                <th>Alasan Return</th>
+                                              <th rowspan="2">No</th>
+                                              <th rowspan="2">Nama Barang</th>
+                                              <th rowspan="2"> Tgl Transaksi </th>
+                                              <th rowspan="2"> Jumlah Beli</th>
+                                              <th rowspan="2"> Harga Satuan </th>
+                                              <th rowspan="2"> Diskon (%)</th>
+                                              <th colspan="2"> Barang Kurang</th>
+                                              <th colspan="2"> Barang Rusak</th>
+                                              <th rowspan="2"> Total Harga return </th>
+                                              <th rowspan="2">Alasan Return</th>
+                                              <th rowspan="2">Respon Supplier</th>
+
+                                            </tr>
+                                            <tr>
+                                              <th>Jumlah</th>
+                                              <th>Harga</th>
+                                              <th>Jumlah</th>
+                                              <th>Harga</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if (!empty($data->linkToCekBarangDetail))
-                                            @php($no=1)
-                                                @foreach ($data->linkToCekBarangDetail->where('status_return','1') as $item)
-                                                    <tr>
-                                                        <th>{{ $no++ }}</th>
-                                                        <th>{{ $item->linkToBarang->nm_barang }}</th>
-                                                        <th>{{ number_format($item->hpp,2,',','.') }}</th>
-                                                        <th>{{ $item->diskon }}</th>
-                                                        <th>{{ $item->jumlah_beli }}</th>
-                                                        <th>{{ $item->alasan_ditolak }}</th>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
+                                          @if (!empty($data))
+                                          @php($no=1)
+                                          @php($jum_brg_no_sesuai=0)
+                                          @php($kualitas_brg_no_sesuai=0)
+                                          @php($nilai_diskon=0)
+                                          @php($nilai_diskon_b=0)
+                                          @php($total_beli=0)
+                                          @php($harga_jum_no_sesuai=0)
+                                          @php($harga_kualitas_no_sesuai=0)
+                                          @php($total_harga_return=0)
+                                              @foreach ($data->linkToCekBarangDetail->where('status_return','0') as $item)
+                                                  <tr>
+                                                      <td>{{ $no++ }}</td>
+                                                      <td>{{ $item->linkToBarang->nm_barang }}</td>
+                                                      <td>{{ tanggalView($item->linkToOrder->tgl_order) }}</td>
+                                                      <td>{{ rupiahView($item->jumlah_beli) }}</td>
+                                                      <td>{{ rupiahView($item->harga_beli) }}</td>
+                                                      <td>{{ $item->diskon_item }}</td>
+                                                          @php($jum_brg_no_sesuai += $item->jum_no_sesuai)
+                                                          @php($kualitas_brg_no_sesuai += $item->jum_kualitas_no_sesuai)
+                                                          <!-- harga brg jumlah kurng-->
+                                                          @php($total_beli_a = $item->jum_no_sesuai * $item->harga_beli)
+                                                          @php($nilai_diskon =$total_beli_a * $item->diskon_item/100)
+                                                          @php($harga_jum_no_sesuai += $total_beli_a - $nilai_diskon)
+                                                          <!-- harga brg kualitas kurng-->
+                                                          @php($total_beli_b = $item->jum_kualitas_no_sesuai * $item->harga_beli)
+                                                          @php($nilai_diskon_b =$total_beli_b * $item->diskon_item/100)
+                                                          @php($harga_kualitas_no_sesuai += $total_beli_b - $nilai_diskon_b)
+
+                                                          <td align="center">{{ $jum_brg_no_sesuai  }}</td>
+                                                          <td align="right">{{ rupiahView($harga_jum_no_sesuai) }}</td>
+                                                          <td align="center">{{ $kualitas_brg_no_sesuai  }}</td>
+                                                          <td align="right">{{ rupiahView($harga_kualitas_no_sesuai) }}</td>
+                                                          <td align="right">{{ rupiahView( $harga_jum_no_sesuai + $harga_kualitas_no_sesuai)  }}</td>
+                                                          <td>{{ $item->ket }}</td>
+                                                          <td>{{ $item->alasan_ditolak }}</td>
+
+
+                                                  </tr>
+                                              @endforeach
+                                          @endif
                                         </tbody>
+
                                     </table>
                                 </div>
-                             
+
                             </div>
                         </form>
                     </div>

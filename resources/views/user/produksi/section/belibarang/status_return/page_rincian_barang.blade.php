@@ -33,6 +33,7 @@
                     <!-- form start -->
 
                         <div class="box-body">
+                            @if($data_order->respon_supplier == 0)
                             <form role="form" action="{{ url('cek-barang/'.$data_order->id) }}" method="post" >
 
                                         {{ csrf_field() }}
@@ -49,11 +50,13 @@
                                                 <th>No.</th>
                                                 <th style="width:140px;">Nama Barang</th>
                                                 <th style="width:100px;">Harga Beli</th>
-                                                <th style="width:70px;">Diskon</th>
-                                                <th style="width:50px;">Qty</th>
-                                                <th style="width:120px;">Jumlah</th>
-                                                <th>Jumlah barang</th>
-                                                <th>Kondisi barang</th>
+                                                <th style="width:70px;">Diskon(%)</th>
+                                                <th style="width:40px;">Qty</th>
+                                                <th style="width:100px;">Jumlah</th>
+                                                <th>Qty sesuai</th>
+                                                <th>Qty tidak sesuai</th>
+                                                <th>Quality sesuai</th>
+                                                <th>Quality tidak sesuai</th>
                                                 <th>Keterangan</th>
                                                 <th style="width:90px;">Respon</th>
                                                 <th>Alasan</th>
@@ -61,9 +64,10 @@
                                            </tr>
                                           @if(!empty($data_order->linkToCekBarangDetail))
                                               @foreach($data_order->linkToCekBarangDetail as $data_tb)
-                                                @if($data_tb->cek_jumlah=='1' OR $data_tb->cek_kualitas =='1')
-                                                    <tr>
 
+                                                @if($data_tb->jum_no_sesuai !==0 OR $data_tb->jum_kualitas_no_sesuai !==0)
+
+                                                    <tr>
                                                         <td>{{ $no++ }}</td>
 
                                                         <td>
@@ -82,45 +86,83 @@
                                                               <input type="hidden" name="jumlah_beli[]" value="{{ $data_tb->jumlah_beli}}">
                                                         </td>
                                                         <td>
-                                                            @php($sub_total+=$data_tb->jumlah_harga*$data_tb->jumlah_beli)
-                                                            {{ rupiahView($data_tb->jumlah_harga*$data_tb->jumlah_beli) }}
-                                                              <input type="hidden" name="jumlah_harga[]" value="{{ $data_tb->jumlah_harga*$data_tb->jumlah_beli}}">
+
+                                                            {{ rupiahView($data_tb->jumlah_harga) }}
+                                                              <input type="hidden" name="jumlah_harga[]" value="{{ $data_tb->jumlah_harga }}">
                                                         </td>
                                                         <td>
-                                                            @if($data_tb->cek_jumlah =='0') Sesuai @else Tidak Sesuai @endif
-                                                              <input type="hidden" name="cek_jumlah[]" value="{{ $data_tb->cek_jumlah}}">
+                                                            {{ $data_tb->jum_sesuai }}
+                                                              <input type="hidden" name="jum_sesuai[]" value="{{ $data_tb->jum_sesuai}}">
                                                         </td>
                                                         <td>
-                                                            @if($data_tb->cek_kondisi =='0') Sesuai @else Tidak Sesuai @endif
-                                                              <input type="hidden" name="cek_kondisi[]" value="{{ $data_tb->cek_kondisi}}">
+                                                           {{ $data_tb->jum_no_sesuai }}
+                                                            <input type="hidden" name="jum_no_sesuai[]" value="{{ $data_tb->jum_no_sesuai}}">
+                                                        </td>
+                                                        <td>
+                                                            {{ $data_tb->jum_kualitas_sesuai }}
+                                                              <input type="hidden" name="jum_kualitas_sesuai[]" value="{{ $data_tb->jum_kualitas_sesuai}}">
+                                                        </td>
+                                                        <td>
+                                                            {{ $data_tb->jum_kualitas_no_sesuai }}
+                                                              <input type="hidden" name="jum_kualitas_no_sesuai[]" value="{{ $data_tb->jum_kualitas_no_sesuai}}">
                                                         </td>
                                                         <td>
                                                             {{ $data_tb->ket }}
                                                             <input type="hidden" name="ket[]" value="{{ $data_tb->ket}}">
 
                                                         </td>
+
+                                                          @if(empty($data_tb->status_return))
+                                                          <td>
+                                                                   <select class="form-control" name="respon[]" required>
+                                                                      @foreach ($respon as $key=> $item)
+                                                                          <option value="{{ $key }}">{{ $item }}</option>
+                                                                      @endforeach
+                                                                  </select>
+                                                          </td>
+                                                          @else
+                                                            <td>
+
+                                                              @if($data_tb->status_return_return =0)
+                                                                Diterima
+                                                              @else
+                                                                Ditolak
+                                                              @endif
+                                                            </td>
+                                                        @endif
                                                         <td>
-                                                                 <select class="form-control" name="respon[]" required>
-                                                                    @foreach ($respon as $key=> $item)
-                                                                        <option value="{{ $key }}">{{ $item }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                        </td>
-                                                        <td>
-                                                            <textarea class="form-control" name='alasan[]'></textarea>
+                                                          @if(empty($data_tb->alasan_ditolak ))
+                                                            <textarea class="form-control" name='alasan[]'>{{ $data_tb->alasan_ditolak}}</textarea>
+
                                                             <p></p>
+                                                          @else
+                                                          {{ $data_tb->alasan_ditolak}}
+                                                          @endif
                                                         </td>
                                                     </tr>
                                                 @endif
                                             @endforeach
-                                        @endif
 
-                                         </table>
-                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary"> Simpan </button>
-                                         </div>
+                                          @endif
+
+                                               </table>
+                                               @if(empty($data_tb->status_return))
+                                               <div class="form-group">
+                                                  <button type="submit" class="btn btn-primary"> Simpan </button>
+                                               </div>
+                                               @else
+                                               <div class="form-group">
+                                                  <button disabled type="submit" class="btn btn-primary"> Simpan </button>
+                                               </div>
+                                              @endif
                                 </div>
                             </form>
+                            @else
+                                <div class="box-header with-border">
+                                    <h5 class="box-title">
+                                      Status respon supplier terhadap claim barang sudah selesai dilakukan..! </h5>
+                                </div>
+                            @endif
                         </div>
                         <!-- /.box-body -->
                 </div>

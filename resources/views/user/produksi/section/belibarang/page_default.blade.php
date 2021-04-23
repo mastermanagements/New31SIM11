@@ -216,7 +216,6 @@
                                                 <th> No. Transaksi </th>
                                                 <th> Supplier </th>
                                                 <th> Tgl Transaksi </th>
-
                                                 <th> Jumlah Tagihan </th>
                                                 <th> Jumlah Bayar </th>
                                                 <th> Sisa </th>
@@ -242,32 +241,68 @@
                                     <table class="table table-bordered table-striped" style="width: 100%;">
                                         <thead>
                                         <tr>
-                                            <th> No.</th>
-                                            <th> No. Order </th>
-                                            <th> Supplier </th>
-                                            <th> Tgl Transaksi </th>
-                                            <th> Jumlah Barang </th>
-                                            <th> Total return </th>
-                                            <th> Konfirmasi </th>
-                                            <th> Aksi </th>
+                                            <th valign="middle" rowspan="2" > No.</th>
+                                            <th valign="middle" rowspan="2"> No. Order </th>
+                                            <th rowspan="2"> Supplier </th>
+                                            <th rowspan="2"> Tgl Transaksi </th>
+                                            <th colspan="2"> Barang Kurang</th>
+                                            <th colspan="2"> Barang Rusak</th>
+                                            <th rowspan="2"> Total Harga return </th>
+                                            <!--<th rowspan="2"> Konfirmasi </th>-->
+                                            <th rowspan="2"> Aksi </th>
+                                        </tr>
+                                        <tr>
+                                          <th>Jumlah</th>
+                                          <th>Harga</th>
+                                          <th>Jumlah</th>
+                                          <th>Harga</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @if(!empty($data_pembelian))
+                                        @if(!empty($detail_cek_brg) AND !empty($detail_cek_brg_group))
                                             @php($no=1)
-                                            @foreach ($data_pembelian as $item)
+                                            @php($jum_brg_no_sesuai=0)
+                                            @php($kualitas_brg_no_sesuai=0)
+                                            @php($nilai_diskon=0)
+                                            @php($nilai_diskon_b=0)
+                                            @php($total_beli=0)
+                                            @php($harga_jum_no_sesuai=0)
+                                            @php($harga_kualitas_no_sesuai=0)
+                                            @php($total_harga_return=0)
+
+                                            @foreach ($detail_cek_brg_group as $group)
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
-                                                    <td>{{ $item->no_order }}</td>
-                                                    <td>{{ $item->linkToSuppliers->nama_suplier }}</td>
-                                                    <td>{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
-                                                    <td>{{ $item->linkToCekBarangDetail->where('status_return','1')->count('id') }}</td>
-                                                    <td>{{ number_format($item->linkToCekBarangDetail->where('status_return','1')->sum('jumlah_harga'),2,',','.') }}</td>
-                                                    <td></td>
-                                                    <td><a href="{{ url('return-barang/'.$item->id) }}" class="btn btn-success"> return </a>
-                                                        <a href="{{ url('preview-return-barang/'.$item->id) }}" class="btn btn-success"> preview </a>
-                                                        <a href="#" class="btn btn-success"> konfirmasi </a></td>
+                                                    <td>{{ $group->linkToOrder->no_order }}</td>
+                                                    <td>{{ $group->linkToOrder->linkToSuppliers->nama_suplier }}</td>
+                                                    <td>{{ tanggalView($group->linkToOrder->tgl_order) }}</td>
+                                                      @foreach($detail_cek_brg as $item)
+                                                        @if($item->id_order == $group->id_order)
+                                                              @php($jum_brg_no_sesuai += $item->jum_no_sesuai)
+                                                              @php($kualitas_brg_no_sesuai += $item->jum_kualitas_no_sesuai)
+                                                                <!-- harga brg jumlah kurng-->
+                                                              @php($total_beli_a = $item->jum_no_sesuai * $item->harga_beli)
+                                                              @php($nilai_diskon =$total_beli_a * $item->diskon_item/100)
+                                                              @php($harga_jum_no_sesuai += $total_beli_a - $nilai_diskon)
+                                                              <!-- harga brg kualitas kurng-->
+                                                              @php($total_beli_b = $item->jum_kualitas_no_sesuai * $item->harga_beli)
+                                                              @php($nilai_diskon_b =$total_beli_b * $item->diskon_item/100)
+                                                              @php($harga_kualitas_no_sesuai += $total_beli_b - $nilai_diskon_b)
+                                                          @endif
+                                                        @endforeach
+                                                    <td align="center">{{ $jum_brg_no_sesuai  }}</td>
+                                                    <td align="right">{{ rupiahView($harga_jum_no_sesuai) }}</td>
+                                                    <td align="center">{{ $kualitas_brg_no_sesuai  }}</td>
+                                                    <td align="right">{{ rupiahView($harga_kualitas_no_sesuai) }}</td>
+                                                    <td align="right">{{ rupiahView( $harga_jum_no_sesuai + $harga_kualitas_no_sesuai)  }}</td>
+                                                    <!--<td></td>-->
+                                                    <td>
+                                                        <a href="{{ url('return-barang/'.$group->id_order) }}" class="btn btn-success"> Return </a>
+                                                        <a href="{{ url('preview-return-barang/'.$group->id_order) }}" class="btn btn-success"> Preview </a>
+                                                        <!--<a href="#" class="btn btn-success"> konfirmasi </a>-->
+                                                    </td>
                                                 </tr>
+
                                             @endforeach
                                         @endif
                                         </tbody>

@@ -22,8 +22,12 @@ class PDetailCekBarang extends Migration
             $table->integer('jumlah_beli');
             $table->integer('diskon_item')->nullable();
             $table->decimal('jumlah_harga',12,2);
-            $table->enum('cek_jumlah', ['0','1'])->comment('0=sesuai, 1=tidak sesuai');
-            $table->enum('cek_kualitas', ['0','1'])->comment('0=sesuai, 1=tidak sesuai');
+            //$table->enum('cek_jumlah', ['0','1'])->comment('0=sesuai, 1=tidak sesuai');
+            $table->integer('jum_sesuai');
+            $table->integer('jum_no_sesuai');
+            //$table->enum('cek_kualitas', ['0','1'])->comment('0=sesuai, 1=tidak sesuai');
+            $table->integer('jum_kualitas_sesuai');
+            $table->integer('jum_kualitas_no_sesuai');
             $table->text('ket')->nullable();
             $table->enum('status_return',['0','1'])->comment('0=diterima, 1=ditolak')->nullable();
             $table->text('alasan_ditolak')->nullable();

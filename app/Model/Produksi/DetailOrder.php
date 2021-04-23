@@ -20,5 +20,9 @@ class DetailOrder extends Model
     public function linkToOrder(){
         return $this->belongsTo('App\Model\Produksi\POrder','id_order');
     }
+    public function linkToDetailCek(){
+        return $this->hasOne('App\Model\Produksi\Detail_Cek_Barang','id_order');
+    }
+
 
 }

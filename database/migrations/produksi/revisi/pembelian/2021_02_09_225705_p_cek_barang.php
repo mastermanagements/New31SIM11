@@ -17,7 +17,7 @@ class PCekBarang extends Migration
             $table->increments('id');
             $table->integer('id_order')->unsigned();
             $table->datetime('tgl_konfirm_cek')->nullable();
-            $table->date('tgl_status_return')->nullable();
+            $table->date('tgl_respon_supplier')->nullable();
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');

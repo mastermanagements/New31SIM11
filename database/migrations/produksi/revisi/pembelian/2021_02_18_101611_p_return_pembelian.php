@@ -15,7 +15,8 @@ class PReturnPembelian extends Migration
     {
         Schema::create('p_return_pembelian', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_cek_barang')->unsigned();
+            //$table->integer('id_cek_barang')->unsigned();
+            $table->integer('id_order')->unsigned();
             $table->date('tgl_return');
             $table->enum('jenis_return',['-','0','1','2'])->default('-')->comment('0=return barang, 1=return uang, 2=potong hutang');
             $table->decimal('ongkir_return',12,2)->default(0);
@@ -24,7 +25,7 @@ class PReturnPembelian extends Migration
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
 
-            $table->foreign('id_cek_barang')->references('id')->on('p_cek_barang')->onDelete('cascade');
+            $table->foreign('id_order')->references('id')->on('p_order')->onDelete('cascade');
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
             $table->timestamps();

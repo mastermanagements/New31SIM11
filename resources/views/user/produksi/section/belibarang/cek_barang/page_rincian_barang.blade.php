@@ -37,12 +37,9 @@
 
                             @if($data_order->status_cekbarang == '0')
 
-                            <form role="form" action="{{ url('cek-barang/'.$data_order->id) }}" method="post" >
+                            <form role="form" action="{{ url('cek-barang') }}" method="post" >
 
                                   {{ csrf_field() }}
-
-                                  <input type="hidden" name="_method" value="put">
-
                                  <div class="col-md-12">
                                   @php($no=1)
                                   @php($sub_total=0)
@@ -56,13 +53,13 @@
                                                 <th style="width:70px;">Diskon</th>
                                                 <th style="width:60px;">Banyak</th>
                                                 <th style="width:130px;">Jumlah</th>
-                                                <th>Jumlah barang</th>
-                                                <th>Kondisi barang</th>
+                                                <th>Qty sesuai</th>
+                                                <th>Qty tidak sesuai</th>
+                                                <th>Quality sesuai</th>
+                                                <th>Quality tidak sesuai</th>
                                                 <th>Keterangan</th>
 
                                            </tr>
-
-
 
                                                      @if(!empty($data_order))
                                                          @foreach ($data_order->linkToDetailOrder as $data_tb)
@@ -85,6 +82,7 @@
                                                                             <td>
                                                                                 <input type="text" class="form-control" name="harga_beli[]" value="{{ rupiahView($data_tb->harga_beli) }}" readonly required>
                                                                                   <input type="hidden" class="form-control" name="tgl_tiba" value="{{ $data_order->tgl_tiba }}" readonly required>
+                                                                                  <input type="hidden" class="form-control" name="id_order" value="{{ $data_order->id }}" required>
                                                                             </td>
                                                                             <td>
                                                                                 <input type="number" class="form-control" name="diskon_item[]" value="{{ $data_tb->diskon_item }}" readonly required>
@@ -94,26 +92,25 @@
 
                                                                             </td>
                                                                             <td>
-                                                                                @php($sub_total+=$data_tb->jumlah_harga*$data_tb->jumlah_beli)
-                                                                                <input type="text" class="form-control" name="jumlah_harga[]" value="{{ rupiahView($data_tb->jumlah_harga*$data_tb->jumlah_beli) }}" readonly required >
+
+                                                                                <input type="text" class="form-control" name="jumlah_harga[]" value="{{ rupiahView($data_tb->jumlah_harga) }}" readonly required >
                                                                             </td>
 
                                                                             <td>
-                                                                              <select class="form-control" name="cek_jumlah[]" required>
-                                                                                  @foreach ($kondisi as $key=> $item)
-                                                                                     <option value="{{ $key }}" @if(!empty($data_tb->cek_jumlah)) @if($data_tb->cek_jumlah==$key) selected @endif @endif>{{ $item }}</option>
-                                                                                  @endforeach
-                                                                              </select>
+                                                                                <input type="number" class="form-control" name="jum_sesuai[]"  required>
                                                                             </td>
                                                                             <td>
-                                                                                <select class="form-control" name="cek_kondisi[]" required>
-                                                                                    @foreach ($kondisi as $key=> $item)
-                                                                                       <option value="{{ $key }}" @if(!empty($data_tb->cek_kualitas)) @if($data_tb->cek_kualitas==$key) selected @endif @endif>{{ $item }}</option>
-                                                                                    @endforeach
-                                                                                </select>
+                                                                                <input type="number" class="form-control" name="jum_no_sesuai[]" required>
                                                                             </td>
                                                                             <td>
-                                                                                <textarea class="form-control" name='ket[]' >@if(!empty($data_tb->ket)) {{ $data_tb->ket }} @endif</textarea>
+                                                                                <input type="number" class="form-control" name="jum_kualitas_sesuai[]"  required>
+                                                                            </td>
+                                                                            <td>
+                                                                                <input type="number" class="form-control" name="jum_kualitas_no_sesuai[]"  required>
+                                                                            </td>
+
+                                                                            <td>
+                                                                                <textarea class="form-control" name='ket[]'></textarea>
                                                                                 <p></p>
                                                                             </td>
 
