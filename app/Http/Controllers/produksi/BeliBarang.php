@@ -11,6 +11,7 @@ use App\Model\Produksi\Barang as barangs;
 use App\Model\Produksi\TawarBeli;
 use App\Model\Produksi\PesananPembelian;
 use App\Model\Produksi\POrder;
+use App\Model\Produksi\Detail_Cek_Barang as dcb;
 use App\Http\utils\SettingNoSurat;
 use App\Model\Produksi\AkunPembelian;
 use App\Http\utils\JenisAkunPembelian;
@@ -50,16 +51,20 @@ class BeliBarang extends Controller
     public function index(){
         $no_surat = SettingNoSurat::no_kode_po();
         $data=[
-            'data_pembelian'=> POrder::all()->where('id_perusahaan', $this->id_perusahaan)->sortByDesc('created_at')
-            ,'suppliers' => suppliers::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan')),
+            'data_pembelian'=> POrder::all()->where('id_perusahaan', $this->id_perusahaan)->sortByDesc('created_at'),
+            'suppliers' => suppliers::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan')),
             'tawar_beli'=> TawarBeli::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan')),
             'pesanan_pembelian'=> PesananPembelian::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'tanggapan'=> $this->tanggapan,
             'jenis_pembayaran'=> $this->jenis_pembayran,
             'no_surat_penawaran'=> $no_surat,
             'akun_pembelian'=> AkunPembelian::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
-            'jenis_jurnal'=> JenisAkunPembelian::$jenis_akun
+            'detail_cek'=> PesananPembelian::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'jenis_jurnal'=> JenisAkunPembelian::$jenis_akun,
+            'detail_cek_brg'=>dcb::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'detail_cek_brg_group'=>dcb::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->groupBy('id_order')->get()
         ];
+        //dd($data['detail_cek_brg_group']);
         //tab1 tawar beli di nonaktifkan
         if (empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6'))){
             Session::flash('tab2','tab2');
