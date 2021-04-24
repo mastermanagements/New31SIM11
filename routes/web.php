@@ -2389,6 +2389,10 @@ Route::post('tambah-rincian-promo/{id_promo}', 'marketing\Promo@rincian_promo_st
 Route::put('ubah-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo_update');
 Route::get('hapus-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo_delete');
 
+//Manufaktur
+Route::resource('manufaktur','manufaktur\manufaktur');
+Route::resource('sop-produksi','manufaktur\ProsesProduksi');
+
 
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}', 'globals\ProvinsiDanKabupaten@ResponseKabupaten');

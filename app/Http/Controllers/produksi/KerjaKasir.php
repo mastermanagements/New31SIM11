@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Produksi\SettingKasir;
 use Session;
 use App\Model\Produksi\KerjaKasir as KK;
+use App\Model\Produksi\JumlahKas;
 
 class KerjaKasir extends Controller
 {
@@ -38,7 +39,23 @@ class KerjaKasir extends Controller
         $model->penerima = $req->penerima;
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
         $model->id_karyawan = Session::get('id_karyawan');
+
         if ($model->save()){
+            if(!empty($model->linkToKasir->linkToSettingAkunKasir)){
+                foreach ($model->linkToKasir->linkToSettingAkunKasir as $data){
+                    $model_jumlah_kas = JumlahKas::updateOrCreate(
+                        [
+                            'id_kerja_kasir'=> $model->id,
+                            'id_akun_aktif'=> $data->id_akun_aktif,
+                            'id_perusahaan'=> Session::get('id_perusahaan_karyawan')
+                        ],
+                        [
+                            'jumlah_aktir'=> $model->jumlah_aktir,
+                            'id_karyawan'=> Session::get('id_karyawan')
+                        ]
+                    );
+                }
+            }
             return redirect('Penjualan')->with('message_success', 'Anda telah berhasil menambah data memulai kerja kasir');
         }else{
             return redirect('Penjualan')->with('message_fail', 'Gagal menambah data kerja kasir');
