@@ -58,7 +58,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <form action="{{ url('komisi-sales/'. $data->id) }}" method="post">
+                                                <form action="{{ url('komisi-sales/'. $data->id.'/destroy') }}" method="post">
                                                     @method('delete')
                                                     {{ csrf_field() }}
                                                     <a href="{{ url('komisi-sales/'.$data->id.'/edit') }}" class="btn btn-warning">Ubah</a>

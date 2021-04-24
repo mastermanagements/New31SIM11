@@ -76,8 +76,8 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Alamat Perusahaan</label>
                                 <textarea class="form-control"  name="alamat_perusahaan"  id="alamat_perusahaan">{{ $data_klien->alamat_perusahaan }}</textarea>
-                            </div>    
-                            
+                            </div>
+
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Telp Perusahaan</label>
                                 <input type="text" name="telp_perusahaan" class="form-control"  value="{{ $data_klien->telp_perusahaan }}" id="exampleInputEmail1">
@@ -86,7 +86,7 @@
                                 <label for="exampleInputEmail1">Jabatan</label>
                                 <input type="text" name="jabatan" class="form-control"  value="{{ $data_klien->jabatan }}" id="exampleInputEmail1">
                             </div>
-							<input type="hidden" name="jenis_klien" class="form-control"  value="{{ $data_klien->jenis_klien }}" id="exampleInputEmail1">
+							                     <input type="hidden" name="jenis_klien" class="form-control"  value="{{ $data_klien->jenis_klien }}" id="exampleInputEmail1">
                         </div>
                         <!-- /.box-body -->
 
@@ -103,4 +103,3 @@
     <!-- /.content -->
 </div>
 @stop
-

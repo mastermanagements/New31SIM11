@@ -48,12 +48,13 @@ class AkunPembelian extends Controller
             ],
             [
               'jenis_transaksi'=>'0',
+              'id_karyawan'=> Session::get('id_karyawan')
             ]
         );
         if($model->save()){
-            return redirect('Pembelian')->with('message_success','Akun Pembelian telah disimpan');
+            return redirect('Pembelian')->with('message_success','Akun Pembelian telah disimpan')->with('tab6','tab6');
         }else{
-            return redirect('Pembelian')->with('message_error','Gagal menambahkan akun pembelian');
+            return redirect('Pembelian')->with('message_error','Gagal menambahkan akun pembelian')->with('tab6','tab6');
         }
     }
 
@@ -79,18 +80,18 @@ class AkunPembelian extends Controller
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
         $model->jenis_transaksi = '0';
         if($model->save()){
-            return redirect('Pembelian')->with('message_success','Anda telah berhasil mengubah data akun pembelian');
+            return redirect('Pembelian')->with('message_success','Anda telah berhasil mengubah data akun pembelian')->with('tab6','tab6');
         }else{
-            return redirect('Pembelian')->with('message_error','Gagal, mengubah data akun pembelian');
+            return redirect('Pembelian')->with('message_error','Gagal, mengubah data akun pembelian')->with('tab6','tab6');
         }
     }
 
     public function delete($id){
         $model = AkunP::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->delete()){
-            return redirect('Pembelian')->with('message_success','Anda telah berhasil menghapus data akun pembelian');
+            return redirect('Pembelian')->with('message_success','Anda telah berhasil menghapus data akun pembelian')->with('tab6','tab6');
         }else{
-            return redirect('Pembelian')->with('message_error','Gagal, menghapus data akun pembelian');
+            return redirect('Pembelian')->with('message_error','Gagal, menghapus data akun pembelian')->with('tab6','tab6');
         }
     }
 }

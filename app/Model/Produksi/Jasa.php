@@ -6,18 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jasa extends Model
 {
-    //
-    protected $table="p_jasa";
+  protected $table="p_jasa";
 
-    protected $fillable = ["id_kategori_produk","id_subkategori_produk","id_subsubkategori_produk","nm_jasa","harga_jasa","rincian_jasa","id_perusahaan","id_karyawan"];
+  protected $fillable = ['nm_layanan','peritem','id_satuan','waktu_kerja','satuan_waktu','waktu_selesai','biaya','ket','id_perusahaan','id_karyawan'];
 
-    public function getkategori(){
-        return $this->belongsTo('App\Model\Superadmin_sim\P_kategori_produk','id_kategori_produk');
-    }
-    public function getsubkategori(){
-        return $this->belongsTo('App\Model\Superadmin_sim\P_subkategori_produk','id_subkategori_produk');
-    }
-    public function getsubsubkategori(){
-        return $this->belongsTo('App\Model\Superadmin_sim\P_subsubkategori_produk','id_subsubkategori_produk');
-    }
+  public function getSatuan(){
+      return $this->belongsTo('App\Model\Produksi\Satuan','id_satuan');
+  }
+  public function getSatuanWaktu(){
+      return $this->belongsTo('App\Model\Produksi\Satuan','satuan_waktu');
+  }
 }

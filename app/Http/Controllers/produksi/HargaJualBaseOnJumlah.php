@@ -28,6 +28,7 @@ class HargaJualBaseOnJumlah extends Controller
     }
 
     public function store(Request $req){
+      //dd($req->all());
         $id_barang = $req->id_barang;
        foreach ($req->jumlah_maks_brg as $key=> $jumlah_maks_brg){
             $harga_jual = $req->harga_jual[$key];
@@ -48,7 +49,10 @@ class HargaJualBaseOnJumlah extends Controller
 
     public function show($id){
         $data = HjB::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->findOrFail($id);
-        return view('user.produksi.section.barang.harga_jual_base_on_jumlah.page_edit',['data'=> $data]);
+        $hpp = Barang::where('id',$data->id_barang)->first()->hpp;
+        $untung = $data->harga_jual - $hpp;
+
+        return view('user.produksi.section.barang.harga_jual_base_on_jumlah.page_edit',['data'=> $data], ['untung'=> $untung]);
     }
 
     public function update(Request $req, $id){
@@ -60,7 +64,7 @@ class HargaJualBaseOnJumlah extends Controller
         ]);
         $model = HjB::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->findOrFail($req->id_HBJ);
         $model->jumlah_maks_brg =$req->jumlah_maks_brg;
-        $model->harga_jual =$req->harga_jual;
+        $model->harga_jual =rupiahController($req->harga_jual);
         if($model->save()){
             return redirect('Barang')->with('message_success','Jumlah Barang dan Harga telah diubah')->with('tab','tab2');
         }else{

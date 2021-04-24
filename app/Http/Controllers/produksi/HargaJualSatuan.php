@@ -53,7 +53,13 @@ class HargaJualSatuan extends Controller
 
     public function edit($id){
         $data = harga_jual::where('id_perusahaan', Session('id_perusahaan_karyawan'))->findOrFail($id);
-        return view('user.produksi.section.barang.harga_jual_satuan.page_edit',['data'=> $data]);
+        $hpp = Barang::where('id',$data->id_barang)->first()->hpp;
+        $untung = $data->harga_jual - $hpp;
+      //  $prosen = $data->harga_jual - $hpp;
+        //dd($data->harga_jual);
+        //dd($hpp);
+        //dd($prosen);
+        return view('user.produksi.section.barang.harga_jual_satuan.page_edit',['data'=> $data], ['untung'=> $untung]);
     }
 
     public function destroy($id){

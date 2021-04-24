@@ -22,15 +22,15 @@
                 <div class="box-header with-border">
                     <i class="fa fa-text-width"></i>
                     <h3 class="box-title">{{ $title }}</h3>
-                    <a href="{{ url('Akun') }}" class="btn btn-xs btn-primary pull-right" style="margin-left: 5px">Pengaturan Akun</a>
-                    <a href="{{ url('daftar-akun') }}" class="btn btn-xs btn-success pull-right">Daftar Akun</a>
+                    <a href="{{ url('Akun') }}" class="btn btn-xs btn-primary pull-right" style="margin-left: 5px">Ke Halaman Awal</a>
+                    <a href="{{ url('daftar-akun') }}" class="btn btn-xs btn-success pull-right">Lihat daftar Akun Anda</a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     @if($menu=="peng_akun")
                         <form action="{{ url('store_master_akun_to_ukm') }}" method="post">
                         {{ csrf_field() }}
-                        <button type="submit" class="form-control">Aktifkan Akun Master</button>
+                        <button type="submit" class="form-control"><font color="#DE5B06">Klik Untuk mentransfer daftar akun ini ke akun UKM Anda</font></button>
                         @foreach($master_akun as $masterAkn)
                     <ul>
                         <p>{{ $masterAkn->kode_m_akun }}:{{ $masterAkn->nm_m_akun }}
@@ -69,7 +69,7 @@
 
                         <form action="{{ url('tambah-ke-akun-aktif') }}" method="post">
                             {{ csrf_field() }}
-                            <button type="submit" class="form-control"><i class="fa fa-repeat"></i> Aktifkan Daftar Akun </button>
+                            <button type="submit" class="form-control"><i class="fa fa-repeat"></i> <font color="#DE5B06">Aktifkan Akun UKM Anda</font></button>
                             @foreach($akun_ukm as $akun_ukm)
 
                             <ul>
@@ -223,4 +223,3 @@
        }
    </script>
 @stop
-

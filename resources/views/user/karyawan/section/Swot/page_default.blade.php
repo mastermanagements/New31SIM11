@@ -38,7 +38,7 @@
                 @foreach($data_swot as $value)
                     @if($value_tahun->tahun_swot == $value->tahun_swot)
                         <div class="col-md-6">
-                            <div class="box @if($value->kategori_swot=="Strenght") box-primary @elseif($value->kategori_swot=="Weakness") box-warning @elseif($value->kategori_swot=="Opportunity") box-success @else  box-danger  @endif collapsed-box">
+                            <div class="box @if($value->kategori_swot=="strenght") box-primary @elseif($value->kategori_swot=="weakness") box-warning @elseif($value->kategori_swot=="opportunity") box-success @else  box-danger  @endif collapsed-box">
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><b>{{ $value->kategori_swot }}</b></h3>
 

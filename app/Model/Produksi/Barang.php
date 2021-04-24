@@ -8,11 +8,8 @@ class Barang extends Model
 {
     protected $table="p_barang";
 
-    protected $fillable = ['id_kategori_produk', 'id_subkategori_produk','id_subsubkategori_produk','kd_barang','barcode','nm_barang','id_satuan','spec_barang','desc_barang'
-//        ,'expired_date'
-        ,'no_rak'
-//        ,'stok_awal'
-        ,'stok_minimum','stok_akhir','hpp','metode_jual','gambar','id_perusahaan','id_karyawan'];
+    protected $fillable = ['id_kategori_produk', 'id_subkategori_produk','id_subsubkategori_produk','jenis_barang','kd_barang','barcode','nm_barang','id_satuan','spec_barang','merk_barang','desc_barang'
+        ,'no_rak','stok_minimum','stok_akhir','hpp','metode_jual','gambar','id_perusahaan','id_karyawan'];
 
     public function getkategori(){
         return $this->belongsTo('App\Model\Superadmin_sim\P_kategori_produk','id_kategori_produk');
@@ -27,7 +24,7 @@ class Barang extends Model
     }
 
     public function linkToSatuan(){
-        return $this->belongsTo('App\Model\Produksi\SatuanBarang', 'id_satuan');
+        return $this->belongsTo('App\Model\Produksi\Satuan', 'id_satuan');
     }
 
     public function linkToHargaJualSatuan(){

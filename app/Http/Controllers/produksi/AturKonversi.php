@@ -42,7 +42,8 @@ class AturKonversi extends Controller
             $model->id_barang_asal = $req->id_barang_asal;
             $model->id_barang_tujuan = $req->id_barang_tujuan;
             $model->jumlah_konversi_satuan = $req->jumlah_konversi_satuan;
-            $model->id_perusahaan =Session::get('id_perusahaan_karyawan');
+            $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+            $model->id_karyawan = Session::get('id_karyawan');
 
             if($model->save()){
                 return redirect('Barang')->with('message_success','Barang konversi telah ditambahkan')->with('tab3','tab3');
@@ -84,6 +85,7 @@ class AturKonversi extends Controller
             $model->id_barang_tujuan = $req->id_barang_tujuan;
             $model->jumlah_konversi_satuan = $req->jumlah_konversi_satuan;
             $model->id_perusahaan =Session::get('id_perusahaan_karyawan');
+            $model->id_karyawan = Session::get('id_karyawan');
 
             if($model->save()){
                 return redirect('Barang')->with('message_success','Barang konversi telah ditambahkan')->with('tab3','tab3');
@@ -117,22 +119,31 @@ class AturKonversi extends Controller
 
         try{
             $model_konversi = p_konversi_barang::findOrFail($req->id_konversi);
-            $model = p_history_konversi_brg::updateOrCreate(
-              [
-                  'id_konversi_brg'=>$model_konversi->id,
-                  'id_perusahaan'=>Session::get('id_perusahaan_karyawan')
-              ],
-              [
-                 'tgl_konversi'=>  $req->tgl_konversi,
-                  'jum_brg_dikonversi'=>$req->jum_brg_dikonversi
-              ]
-            );
+            //
+            $stok_akhir_asal_brg = $model_konversi ->linkToBarangAsal->stok_akhir;
+            $no_rak_asal = $model_konversi ->linkToBarangAsal->no_rak;
+            $no_rak_tujuan = $model_konversi ->linkToBarangTujuan->no_rak;
 
+            $jum_brg_dikonversi = $req->jum_brg_dikonversi;
+
+            if($jum_brg_dikonversi > $stok_akhir_asal_brg){
+                return redirect('Barang')->with('message_fail','Konversi gagal, Jumlah Barang yang akan dikonversi tidak boleh lebih besar dari sisa barang asal!')->with('tab4','tab4');
+            }else{
+            $model = new p_history_konversi_brg();
+
+            $model->id_konversi_brg = $model_konversi->id;
+            $model->tgl_konversi = $req->tgl_konversi;
+            $model->no_rak_asal = $no_rak_asal;
+            $model->no_rak_tujuan = $no_rak_tujuan;
+            $model->jum_brg_dikonversi = $jum_brg_dikonversi;
+            $model->id_perusahaan =Session::get('id_perusahaan_karyawan');
+            $model->id_karyawan = Session::get('id_karyawan');
+            }
             if($model->save()){
                 $this->konversi_formula($model);
-                return redirect('Barang')->with('message_success','Barang telah dikonversi')->with('tab4','tab4');
+                return redirect('Barang')->with('message_success','Barang Berhasil dikonversi')->with('tab4','tab4');
             }else{
-                return redirect('Barang')->with('message_success','Barang telah dikonversi')->with('tab4','tab4');
+                return redirect('Barang')->with('message_fail','Barang gagal dikonversi')->with('tab4','tab4');
             }
 
         }catch (Throwable $e){
@@ -151,7 +162,7 @@ class AturKonversi extends Controller
         $total_stok_konversi = ($stok_barang_asal-$konversi_nilai)/$model->linkToKonversiBarang->jumlah_konversi_satuan;
         $ubah_stok_barang_asal->stok_akhir = $total_stok_konversi;
         if($ubah_stok_barang_asal->save()){
-            $ubah_stok_barang_tujuan->stok_akhir = $konversi_nilai;
+            $ubah_stok_barang_tujuan->stok_akhir += $konversi_nilai;
             $ubah_stok_barang_tujuan->save();
         }
         return true;

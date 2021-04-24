@@ -15,7 +15,8 @@ class CreateRelationPJasa extends Migration
     {
         Schema::table('p_jasa', function (Blueprint $table) {
             //
-            $table->foreign('id_kategori_produk')->references('id')->on('p_kategori_produk');
+            $table->foreign('id_satuan')->references('id')->on('p_satuan');
+            $table->foreign('satuan_waktu')->references('id')->on('p_satuan');
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
         });

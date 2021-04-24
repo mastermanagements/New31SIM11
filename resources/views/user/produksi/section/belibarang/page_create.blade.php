@@ -104,12 +104,10 @@
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
-
-
-                $('#datepicker').datepicker({
-                    autoclose: true,
-                    format: 'dd-mm-yyyy'
-                });
+          $('#datepicker').datepicker({
+              autoclose: true,
+              format: 'dd-mm-yyyy'
+            });
 
         $(function () {
             $('.select2').select2()

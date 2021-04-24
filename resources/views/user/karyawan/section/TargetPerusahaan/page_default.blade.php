@@ -28,7 +28,6 @@
                 <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
             @endif
             <p></p>
-
             <div class="col-md-12">
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
@@ -38,6 +37,7 @@
                         <li><a href="#tab_3" data-toggle="tab">Target Manager</a></li>
                         <li><a href="#tab_4" data-toggle="tab">Target Supervisor</a></li>
                         <li><a href="#tab_5" data-toggle="tab">Target Staf</a></li>
+                        <h5 class="pull-right"><a href="{{ url('Strategi-Perusahaan') }}">Strategi Perusahaan</a>&nbsp;&nbsp;</h5>
                     </ul>
                     <div class="tab-content">
                       <!-- Target Jangka Panjang Perusahaan -->
@@ -46,7 +46,7 @@
                             <p></p>
                             @if(!empty($tjp))
                             @foreach($tjp as $value)
-                            <div class="box box-success">
+                            <div class="box box-primary collapsed-box">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Target Jangka Panjang Perusahaan</h3>
                                       <div class="box-tools pull-right">
@@ -62,6 +62,8 @@
                                           <button type="submit" onclick="return confirm('apakah anda akan menghapus data target jangka panjang perusahaan anda?.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
                                           <a href="#" onclick="ubahTJP({{ $value->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target jangka panjang perusahaan">
                                           <i class="fa fa-edit"></i></a>
+                                          <a href="#" onclick="tambahSJP({{ $value->id }})" class="btn btn-xs btn-primary pull-right" title="Masukkan strategi untuk target ini">
+                                          <i class="fa fa-plus"></i></a>
                                       </form>
                                       <div class="col-md-8">
                                         <div class="box-footer no-padding">
@@ -93,7 +95,7 @@
                             </div>
                             <!-- /.box body -->
                         </div>
-                          <!-- /.box success -->
+                          <!-- /.box primary -->
                         @endforeach
                         @endif
                     </div>
@@ -105,7 +107,7 @@
                         <p></p>
                         @foreach($jabatan_p as $jabat)
                           @foreach($jabat->getTargetEks->groupBy('id_jabatan_p') as $jabatan => $values)
-                        <div class="box box-success">
+                        <div class="box box-primary collapsed-box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">
                                   {{ $jabat->nm_jabatan }}
@@ -116,7 +118,7 @@
                                   <!-- /.box-tools -->
                             </div>
                             @foreach($target_eks_group as $group)
-                            @if ($group->id_jabatan_p == $jabat->id)
+                              @if ($group->id_jabatan_p == $jabat->id)
                                 <div class="box-header">
                                     <h3 class="box-title">{{ $group->tahun  }} </h3>
                                 </div>
@@ -143,9 +145,13 @@
                                               <form action="{{ url('hapus-target-eks/'. $targetEks->id) }}" method="post">
                                                   <input type="hidden" name="_method" value="put">
                                                   {{ csrf_field() }}
-                                                  <button type="submit" onclick="return confirm('Yakin mau menghapus target Eksekutif ?, Jika anda menghapus data ini, maka target Manager, Supervisor dan Staf yg berhubungan dengan target eksekutif akan ikut terhapus.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                                  <button type="submit" onclick="return confirm('Yakin mau menghapus target Eksekutif ?, Jika anda menghapus data ini, maka target Manager, Supervisor dan Staf yg berhubungan dengan target eksekutif akan ikut terhapus.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> &nbsp;
                                                   <a href="#" onclick="ubahTargetEks({{ $targetEks->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target Eksekutif">
                                                   <i class="fa fa-edit"></i></a>
+                                                  @if(empty($targetEks->getStrategiEks->id_teks))
+                                                  <a href="#" onclick="tambahSEks({{ $targetEks->id }})" class="btn btn-xs btn-primary pull-right" title="Masukkan strategi untuk target ini">
+                                                  <i class="fa fa-plus"></i></a>
+                                                  @endif
                                               </form>
                                             </td>
                                         </tr>
@@ -158,7 +164,7 @@
                                 @endif
                               @endforeach
                         </div>
-                      <!-- /.box success -->
+                      <!-- /.box primary -->
                     @endforeach
                   @endforeach
                 </div>
@@ -170,7 +176,7 @@
                     <p></p>
                     @foreach($jabatan_p as $jabat)
                       @foreach($jabat->getTargetMan->groupBy('id_jabatan_p') as $jabatan => $values)
-                    <div class="box box-success">
+                    <div class="box box-primary collapsed-box">
                         <div class="box-header with-border">
                             <h3 class="box-title">
                               {{ $jabat->nm_jabatan }}
@@ -211,6 +217,10 @@
                                               <button type="submit" onclick="return confirm('Yakin mau menghapus target Manager ?, Jika anda menghapus data ini, maka target Supervisor dan Staf yg berhubungan dengan target manager akan ikut terhapus.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
                                               <a href="#" onclick="ubahTargetMan({{ $targetMan->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target Manager">
                                               <i class="fa fa-edit"></i></a>
+                                              @if(empty($targetMan->getStrategiMan->id_tman))
+                                              <a href="#" onclick="tambahSman({{ $targetMan->id }})" class="btn btn-xs btn-primary pull-right" title="Masukkan strategi untuk target ini">
+                                              <i class="fa fa-plus"></i></a>
+                                              @endif
                                           </form>
                                         </td>
                                     </tr>
@@ -223,11 +233,11 @@
                             @endif
                           @endforeach
                     </div>
-                  <!-- /.box success -->
+                  <!-- /.box primary -->
                 @endforeach
-              @endforeach
-            </div>
-            <!-- /.tab-pane 3-->
+                @endforeach
+                </div>
+                <!-- /.tab-pane 3-->
 
             <!-- Target Supervisor -->
             <div class="tab-pane" id="tab_4">
@@ -235,7 +245,7 @@
                 <p></p>
                 @foreach($jabatan_p as $jabat)
                   @foreach($jabat->getTargetSup->groupBy('id_jabatan_p') as $jabatan => $values)
-                <div class="box box-success">
+                <div class="box box-primary collapsed-box">
                     <div class="box-header with-border">
                         <h3 class="box-title">
                           {{ $jabat->nm_jabatan }}
@@ -276,6 +286,10 @@
                                           <button type="submit" onclick="return confirm('Yakin mau menghapus target Supervisor ?, Jika anda menghapus data ini, maka target Staf yg berhubungan dengan target ager akan ikut terhapus.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
                                           <a href="#" onclick="ubahTargetSup({{ $targetSup->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target Supervisor">
                                           <i class="fa fa-edit"></i></a>
+                                          @if(empty($targetSup->getStrategiSup->id_tsup))
+                                          <a href="#" onclick="tambahSsup({{ $targetSup->id }})" class="btn btn-xs btn-primary pull-right" title="Masukkan strategi untuk target ini">
+                                          <i class="fa fa-plus"></i></a>
+                                          @endif
                                       </form>
                                     </td>
                                 </tr>
@@ -288,93 +302,103 @@
                         @endif
                       @endforeach
                 </div>
-              <!-- /.box success -->
-            @endforeach
-          @endforeach
-        </div>
-        <!-- /.tab-pane 5-->
-        <!-- Target Staf -->
-        <div class="tab-pane" id="tab_5">
+              <!-- /.box primary -->
+                @endforeach
+              @endforeach
+            </div>
+            <!-- /.tab-pane 4-->
+            <!-- Target Staf -->
+            <div class="tab-pane" id="tab_5">
             <a href="{{ url('buat-target-staf') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
             <p></p>
             @if(!empty($target_staf))
               @foreach($target_sup as $supervisor)
                 @foreach($supervisor->getTargetStaf->groupBy('id_target_superv') as $super => $values)
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">
-                      {{ $supervisor->tahun }}
-                     </h3>
-                      <div class="box-tools pull-right">
-                      <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Buka-tutup"><i class="fa fa-times"></i>
-                     </div>
-                      <!-- /.box-tools -->
-                </div>
-                @foreach($target_staf_group as $group)
-                @if ($group->id_target_superv == $supervisor->id)
-                    <div class="box-header">
-                        <h3 class="box-title">{{ $group->bulan  }} </h3>
-                    </div>
+                  <div class="box box-primary collapsed-box">
+                      <div class="box-header with-border">
+                          <h3 class="box-title">
+                              {{ $supervisor->tahun }}
+                          </h3>
+                          <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Buka-tutup"><i class="fa fa-times"></i>
+                          </div>
+                          <!-- /.box-tools -->
+                       </div>
+                        @foreach($target_staf_bln as $group_bl)
+                          @if ($group_bl->id_target_superv == $supervisor->id)
 
-                    <div class="box-header">
-                        <h3 class="box-title">{{ $group->getKaryawan->nama_ky  }} </h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body no-padding">
-                        <table class="table table-condensed">
-                            <tr>
-                                <th style="width: 10px">No</th>
-                                <th>Target Staf</th>
-                                <th>Jumlah </th>
-                                <th>Satuan</th>
-                                <th>Aksi</th>
-                            </tr>
-                            @php($i=1)
-                            @foreach($target_staf as $targetStaf)
-                              @if($targetStaf->id_target_superv == $supervisor->id)
-                                @if($targetStaf->bulan == $group->bulan)
-                                  @if($targetStaf->nm_karyawan == $group->nm_karyawan)
-                                  <tr>
-                                      <td>{{ $i++ }}</td>
-                                      <td> {{ $targetStaf->target_staf }} </td>
-                                      <td><span class="badge bg-yellow">{{ $targetStaf->jumlah_target }} </span></td>
-                                      <td><span class="badge bg-green">{{ $targetStaf->satuan_target }} </span></td>
-                                      <td>
-                                        <form action="{{ url('hapus-target-staf/'. $targetStaf->id) }}" method="post">
-                                            <input type="hidden" name="_method" value="put">
-                                            {{ csrf_field() }}
-                                            <button type="submit" onclick="return confirm('Yakin mau menghapus target Staf?')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
-                                            <a href="#" onclick="ubahTargetStaf({{ $targetStaf->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target Staf">
-                                            <i class="fa fa-edit"></i></a>
-                                        </form>
-                                      </td>
-                                  </tr>
-
-                                  @endif
-                               @endif
-                             @endif
-                           @endforeach
-                        </table>
-                    </div>
-                    <!--- /. box-body-->
-                  @endif
+                            <div class="box-header">
+                               <h3 class="box-title">{{ $group_bl->bulan }} </h3>
+                            </div>
+                          <!-- ./box box-default -->
+                             @foreach($target_staf_ky as $group_ky)
+                              @if ($group_ky->bulan == $group_bl->bulan)
+                                <div class="box-header">
+                                  <li><h3 class="box-title">{{ $group_ky->getKaryawan->nama_ky  }} </h3></li>
+                                </div>
+                                  <div class="box-body no-padding">
+                                    <table class="table table-condensed">
+                                        <tr>
+                                            <th style="width: 10px">No</th>
+                                            <th>Target Staf</th>
+                                            <th>Jumlah </th>
+                                            <th>Satuan</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                        @php($i=1)
+                                        @foreach($target_staf as $targetStaf)
+                                          @if($targetStaf->nm_karyawan == $group_ky->nm_karyawan)
+                                            @if($targetStaf->bulan == $group_bl->bulan)
+                                              @if($targetStaf->id_target_superv == $supervisor->id)
+                                                <tr>
+                                                    <td>{{ $i++ }}</td>
+                                                    <td> {{ $targetStaf->target_staf }} </td>
+                                                    <td><span class="badge bg-yellow">{{ $targetStaf->jumlah_target }} </span></td>
+                                                    <td><span class="badge bg-green">{{ $targetStaf->satuan_target }} </span></td>
+                                                    <td>
+                                                      <form action="{{ url('hapus-target-staf/'. $targetStaf->id) }}" method="post">
+                                                          <input type="hidden" name="_method" value="put">
+                                                          {{ csrf_field() }}
+                                                          <button type="submit" onclick="return confirm('Yakin mau menghapus target Staf?')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> <label> </label>
+                                                            <a href="#" onclick="ubahTargetStaf({{ $targetStaf->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target Staf">
+                                                              <i class="fa fa-edit"></i></a>
+                                                           @if(empty($targetStaf->getStrategiStaf->id_tstaf))
+                                                              <a href="#" onclick="tambahSstaf({{ $targetStaf->id }})" class="btn btn-xs btn-primary pull-right" title="Masukkan strategi untuk target ini">
+                                                              <i class="fa fa-plus"></i></a>
+                                                           @endif
+                                                      </form>
+                                                    </td>
+                                                  </tr>
+                                              @endif
+                                            @endif
+                                          @endif
+                                        @endforeach
+                                      </table>
+                                  </div>
+                                    <!--- /. box-body-->
+                              @endif
+                            @endforeach
+                          @endif
+                        @endforeach
+                  </div>
+                  <!-- /.box primary -->
                 @endforeach
-
+              @endforeach
+            @endif
             </div>
-          <!-- /.box success -->
-        @endforeach
-        @endforeach
-        @endif
-        </div>
-        <!-- /.tab-pane 5-->
+            <!-- /.tab-pane 5-->
             </div>
               <!-- /.tab-content -->
           </div>
           <!-- nav-tabs-custom -->
         </div>
+        <!--- /.col-md-12 -->
     </section>
     <!-- /.content -->
 </div>
+<!-- /.row -->
+</div>
+<!-- /.row -->
 	@include('user.karyawan.section.TargetPerusahaan.include.modal')
 @stop
 
@@ -386,14 +410,16 @@
         $(function () {
             $('.select2').select2();
         });
+
         $(document).ready(function () {
+            //$.event.addProp('dataTransfer');
             var ids;
          ubahTJP = function (id) {
                 $.ajax({
                     url: '{{ url('ubah-tjp') }}/'+id,
                     dataType : 'json',
                     success:function (result) {
-					    //console.log(result.data_target_eks.thn_mulai);
+					    //console.log(result.tjp.target_puncak);
 						$('[name="$id_tjp_ubah"]').val(result.tjp.id);
 						$('[name="periode_ubah"]').val(result.tjp.periode);
 						$('[name="thn_mulai_ubah"]').val(result.tjp.thn_mulai);
@@ -478,7 +504,28 @@
                      }
                  })
           };
-    })
 
+          tambahSJP  = function (id) {
+				        $('[name="id_tjp"]').val(id);
+                $('#modal-tambah-strategi-jp').modal('show');
+            };
+         tambahSEks  = function (id) {
+  				      $('[name="id_teks"]').val(id);
+                $('#modal-tambah-strategi-eks').modal('show');
+            };
+         tambahSman  = function (id) {
+               $('[name="id_tman"]').val(id);
+              $('#modal-tambah-strategi-man').modal('show');
+          };
+        tambahSsup  = function (id) {
+              $('[name="id_tsup"]').val(id);
+               $('#modal-tambah-strategi-sup').modal('show');
+           };
+        tambahSstaf  = function (id) {
+                $('[name="id_tstaf"]').val(id);
+                $('#modal-tambah-strategi-staf').modal('show');
+            };
+
+    })
     </script>
 @stop

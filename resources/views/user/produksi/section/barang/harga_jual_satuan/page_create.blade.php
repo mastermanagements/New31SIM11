@@ -37,14 +37,18 @@
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">HPP :{{ $data->hpp }}</label>
+                                <label for="exampleInputEmail1">HPP : {{ rupiahView($data->hpp) }}</label>
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Persentase Keuntungan</label>
+                                <label for="exampleInputEmail1">Persentase Keuntungan (%)</label>
                                 {{ csrf_field() }}
                                 <input type="number" minlength="0" maxlength="100" name="persentase" class="form-control" required/>
                                 <input type="hidden" name="hpp" class="form-control" value="{{ $data->hpp }}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Besarnya Keuntungan</label>
+                                <input type="text" name="nilai_persen" class="form-control" readonly/>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Jual Barang</label>
@@ -73,10 +77,13 @@
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
+
+
         $('[name="persentase"]').keyup(function () {
             var persentase = ($('[name="hpp"]').val()/100) * $(this).val();
             var harga_jual =parseInt($('[name="hpp"]').val()) + persentase;
             $('[name="harga_jual"]').val(harga_jual);
+            $('[name="nilai_persen"]').val(persentase);
         })
     </script>
 

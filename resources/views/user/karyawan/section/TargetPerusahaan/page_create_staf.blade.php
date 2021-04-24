@@ -104,11 +104,13 @@
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
 
+
     $('#datepicker').datepicker({
         autoclose: true,
         format: 'MM',
         viewMode: "month",
-        minViewMode: "month"
+        minViewMode: "month",
+        language: "Indonesian"
     });
 
         window.onload = function() {

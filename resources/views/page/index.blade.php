@@ -16,7 +16,7 @@
             window.scrollTo(0, 1);
         }
     </script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <!---script src='https://www.google.com/recaptcha/api.js'></script>-->
     <!-- Custom Theme files -->
     <link href="{{ asset('frontend/css/bootstrap.css') }}" type="text/css" rel="stylesheet" media="all">
     <link href="{{ asset('frontend/css/style.css') }}" type="text/css" rel="stylesheet" media="all">
@@ -24,9 +24,9 @@
     <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- //Custom Theme files -->
     <!-- online-fonts -->
-    <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    <!--<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">-->
 </head>
 
 <body>
