@@ -25,16 +25,18 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Penawaran penjualan</a></li>
-                        <li ><a href="#tab_2" data-toggle="tab">Pesanan penjualan</a></li>
-                        <li ><a href="#tab_3" data-toggle="tab">Diskon</a></li>
-                        <li ><a href="#tab_4" data-toggle="tab">Penjualan</a></li>
-                        <li ><a href="#tab_5" data-toggle="tab">Pembayaran</a></li>
-                        <li ><a href="#tab_6" data-toggle="tab">Return Pembayaran</a></li>
-                        <li ><a href="#tab_7" data-toggle="tab">History Harga Penjualan</a></li>
+                        <!--<li class="active"><a href="#tab_1" data-toggle="tab">Penawaran penjualan</a></li>-->
+
+                        <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Pesanan penjualan</a></li>
+                        <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Diskon</a></li>
+                        <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Penjualan</a></li>
+                        <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Pembayaran</a></li>
+                        <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Return Pembayaran</a></li>
+                        <li class="@if(Session::get('tab6') == 'tab7') active @else '' @endif"><a href="#tab_7" data-toggle="tab"><i class="fa fa-book"></i> History Harga Penjualan</a></li>
+                        <li class="@if(Session::get('tab6') == 'tab8') active @else '' @endif"><a href="#tab_8" data-toggle="tab"><i class="fa fa-book"></i> Jurnal Otomatis Penjualan</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
+                        <!--<div class="tab-pane active" id="tab_1">
                             <a href="{{ url('penawaran-penjualan') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
                             <p></p>
                             <table id="example1" class="table table-bordered table-striped">
@@ -78,9 +80,11 @@
                                 @endif
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="tab-pane " id="tab_2">
-                            <a href="{{ url('pesanan-penjualan/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                        </div>-->
+                        <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
+
+                            <p style="margin-bottom: 10px;"><b>Daftar Pesanan Penjualan </b> <a href="{{ url('pesanan-penjualan/create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah Pesanan Pembelian</a>
+                            </p><br>
                             <table id="example2" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -118,7 +122,7 @@
                                 @endif
                             </table>
                         </div>
-                        <div class="tab-pane " id="tab_3">
+                        <div class="tab-pane @if(Session::get('tab3') == 'tab3') active @else '' @endif" id="tab_3">
                             <a href="{{ url('p-diskon/create') }}" class="btn btn-primary">Tambah Diskon</a>
                             <table class="table table-bordered table-striped">
                                 <thead>
@@ -163,7 +167,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tab-pane " id="tab_4">
+                        <div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
                             <a href="{{ url('penjualan-barang/create') }}" class="btn btn-primary pull-left">Penjualan Barang</a>
                             <a href="{{ url('komisi-sales') }}" class="btn btn-primary pull-right">Komisi Sales</a>
                             <table class="table table-bordered table-striped" style="margin-top: 10px">
