@@ -10,10 +10,18 @@ use App\Model\Produksi\PSO;
 use App\Model\Produksi\PSales as PS;
 use App\Model\Produksi\Barang;
 use Session;
+use App\Http\utils\JenisAkunPenjualan;
 
 class PSales extends Controller
 {
     //
+    public $metode_bayar;
+
+    public function __construct()
+    {
+        $this->metode_bayar = JenisAkunPenjualan::$metode_pembayaran;
+    }
+
     public function create(){
         $pass = [
             'klien'=> klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
@@ -30,9 +38,23 @@ class PSales extends Controller
             'pesanan_jual' => PSO::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'komisi_sales' => komisi_sales::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'data'=> $model,
+            'metode_pembayaran'=>$this->metode_bayar,
             'barang'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         return view('user.produksi.section.jualbarang.penjualan.page_show', $pass);
+    }
+
+    public function complain($id_p_sales){
+        $model = PS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id_p_sales);
+        $pass = [
+            'data'=> $model,
+            'barang'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'klien'=> klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'pesanan_jual' => PSO::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'komisi_sales' => komisi_sales::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+
+        ];
+        return view('user.produksi.section.jualbarang.penjualan.page_complain', $pass);
     }
 
     public function store(Request $req){
@@ -116,6 +138,14 @@ class PSales extends Controller
             'hutang'=> 'required',
         ]);
 
+
+        $check_data_penjualan = JenisAkunPenjualan::CheckAkunPenjualan();
+        #check akun pembelian kalau kosong == false
+        if($check_data_penjualan==false){
+            return redirect()->back()->with('message_fail','Isilah terlebih dahulu akun penjualan');
+        }
+
+
         $model = PS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id_p_sales);
         $model->diskon_tambahan = $req->diskon_tambahan;
         $model->pajak = $req->pajak;
@@ -124,11 +154,38 @@ class PSales extends Controller
         $model->biaya_tambahan = $req->biaya_tambahan;
         $model->tgl_jatuh_tempo = $req->jatuh_tempo;
         $model->keterangan = $req->ket;
+
+        #Ambil Jenis Jurnal
+        $jenis_jurnal = 0;
+        $n_req=$req->merge( ['ongkir'=> $model->ongkir]);
+        $jenis_akun_penjualan = JenisAkunPenjualan::rule($n_req, 2);
+        if ($model->pajak !=0){
+            JenisAkunPenjualan::$status_pajak = true;
+        }
+
+        if ($model->ongkir){
+            JenisAkunPenjualan::$status_ongkir = true;
+        }
         if($model->save()){
+
+            if(is_array($jenis_akun_penjualan) == true){
+                $req->merge([
+                    'ongkir'=> $req->onkir,
+                    'total_sebelum_pajak'=>$model->pajak,
+                    'total'=> $model->total,
+                    'tgl_order'=> $model->tgl_sales,
+                    'no_order'=>$model->no_sales,
+                    'id_penjualan'=> $model->id
+                ]);
+                JenisAkunPenjualan::$new_request = $req;
+                JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
+            }
+
             return redirect('Penjualan')->with('message_success','Data penjualan telah diubah');
         }
         else{
             return redirect('Penjualan')->where('message_fail','Data penjualan gagal diubah');
         }
     }
+
 }

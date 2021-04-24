@@ -26,7 +26,6 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <!--<li class="active"><a href="#tab_1" data-toggle="tab">Penawaran penjualan</a></li>-->
-
                         <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Pesanan penjualan</a></li>
                         <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Diskon</a></li>
                         <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Penjualan</a></li>
@@ -198,6 +197,7 @@
                                                     {{ csrf_field() }}
                                                     @method('delete')
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id) }}" class="btn btn-primary">Detail barang</a>
+                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/complain') }}" class="btn btn-primary">Complain</a>
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/edit') }}" class="btn btn-warning">ubah</a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>
                                                 </form>
@@ -209,15 +209,352 @@
                             </table>
                         </div>
                         <div class="tab-pane " id="tab_5">
-                            <h1>Pembayaran</h1>
+                            <p>Pembayaran Pesanan Penjualan</p>
+                            <table id="example2" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Nomor. Pesanan</th>
+                                        <th>Klien</th>                                        
+                                        <th>Tanggal Transaksi</th>
+                                        <th>Tanggal Bayar</th>
+                                        <th>Jumlah DP</th>
+                                        <th>Jumlah Bayar</th>                                        
+                                        <th>Bukti</th>
+                                        <th>Konfirmasi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                @if(!empty($p_so))
+                                    @php($no=1)
+                                    <tbody>
+                                        @foreach($p_so as $data_so)
+
+                                            <tr>
+                                                <th>{{ $no++ }}</th>
+                                                <th>{{ $data_so->no_so }}</th>
+                                                <th>{{ $data_so->linkToKlien->nm_klien }}</th>
+                                                
+                                                <th>{{ date('d-m-Y', strtotime($data_so->tgl_so)) }}</th>
+                                                <th>@if(!empty($data_so->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($data_so->linkToTerimaBayar->tgl_bayar)) }} @endif  </th>
+                                                <th>{{  $data_so->dp_so }}</th>
+                                                <th>@if(!empty($data_so->linkToTerimaBayar)) {{ $data_so->linkToTerimaBayar->jumlah_bayar }} @endif</th>
+                                                <th><a href="#">Preview</a></th>
+                                                <th><a href="#">konfirm</a></th>
+                                                <th>
+                                                    <a href="{{ url('terima-bayar/0/'. $data_so->id) }}">Terima Pembayaran</a> <br>
+                                                    <a href="{{ url('terima-bayar/0/'. $data_so->id.'/rincian') }}">Rincian Pembayaran</a>
+                                                </th>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                @endif
+                            </table>
+                            <p>Pembayaran Penjualan</p>
+                            <table class="table table-bordered table-striped" style="margin-top: 10px">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nomor Order</th>                                        
+                                        <th>Tgl Jual</th>
+                                        <th>Klien</th>
+                                        <th>Tgl Transaksi</th>
+                                        <th>Tgl Bayar</th>                                      
+                                        <th>Jumlah Tagihan</th>
+                                        <th>Jumlah Bayar</th>
+                                        <th>Sisa</th>
+                                        <th>Penjualan</th>
+                                        <th>Bukti Bayar</th>
+                                        <th>Konfirm</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(!empty($PSales))
+                                        @php($no_p_sales=1)
+                                        @foreach($PSales as $item_Psales_)
+                                        <tr>
+                                            <th>{{ $no_p_sales }}</th>
+                                            <th>{{ $item_Psales_->no_sales }}</th>
+                                            <th>{{ date('d-m-Y', strtotime($item_Psales_->tgl_sales)) }}</th>
+                                            <th>{{ $item_Psales_->linkToKlien->nm_klien }}</th>
+                                            <th>{{ date('d-m-Y', strtotime($item_Psales_->tgl_kirim)) }}</th>
+                                            <th>@if(!empty($item_Psales_->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($item_Psales_->linkToTerimaBayar->tgl_bayar)) }} @endif</th>
+                                            <th>{{ $item_Psales_->bayar+$item_Psales_->kurang_bayar }}</th>
+                                            <th>@if(!empty($item_Psales_->linkToTerimaBayar)) {{ $item_Psales_->linkToTerimaBayar->jumlah_bayar }} @endif</th>
+                                            <th>{{ $item_Psales_->kurang_bayar }}</th>
+                                            <th>@if($item_Psales_->status == '0') Tunai @else Kredit @endif</th>
+                                            <th><a href="#">Preview</a> </th>
+                                            <th><a href="#">Yes</a> </th>
+                                            <th>
+                                                @if($item_Psales_->bayar+$item_Psales_->kurang_bayar>=$item_Psales_->bayar)
+                                                    Lunas
+                                                @else
+                                                    Belum Lunas
+                                                @endif
+                                            </th>
+                                            <th>
+                                                <a href="{{ url('terima-bayar/1/'. $item_Psales_->id) }}" >Terima Bayar</a>
+                                                <a href="{{ url('terima-bayar/1/'. $item_Psales_->id.'/rincian') }}" >Rincian Bayar</a>
+                                            </th>
+                                        </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
                         </div>
                         <div class="tab-pane " id="tab_6">
                             <h1>Return Pembayaran</h1>
+                            <table  class="table table-bordered table-striped"  style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>No. Faktur</th>
+                                        <th>Klien</th>
+                                        <th>Tgl Transaksi</th>
+                                        <th>Jumlah Barang</th>
+                                        <th>Total Return</th>
+                                        <th>Konfirm</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(!empty($PSales))
+                                        @php($no_complain=1)
+                                        @foreach($PSales as $data_barang_complain)
+                                            <tr>
+                                                <th>{{ $no_complain++ }}</th>
+                                                <th>{{ $data_barang_complain->no_sales }}</th>
+                                                <th>{{ $data_barang_complain->linkToKlien->nm_klien }}</th>
+                                                <th>{{ $data_barang_complain->tgl_sales }}</th>
+                                                <th>{{ $data_barang_complain->linkToMannyComplainJual->where('status_complain','1')->count('id') }}</th>
+                                                <th>{{ $data_barang_complain->linkToMannyComplainJual->where('status_complain','1')->sum('total_return') }}</th>
+                                                <th>Yes</th>
+                                                <th>
+                                                    <a href="{{ url('return-barang-jual/'. $data_barang_complain->id) }}">Return</a>
+                                                    <a href="{{ url('cetak-return-barang-jual/'. $data_barang_complain->id) }}">Print</a>
+                                                    <a href="">Konfirm</a>
+                                                </th>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
                         </div>
+
                         <div class="tab-pane " id="tab_7">
-                            <h1>History Harga penjualan</h1>
+                            <a href="{{ url('pengaturan-akun-penjualan/create') }}">Tamba Akun Penjualan</a>
+                            <table class="table table-bordered " style="width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Jenis Transaksi</th>
+                                    <th>Keterangan transaksi</th>
+                                    <th>Kode & Nama Akun</th>
+                                    <th>Posisi</th>
+                                </tr>
+                                </thead>
+                                @if(!empty($akun_penjualan))
+                                    @php($no=1)
+                                    @foreach($akun_penjualan as $data)
+                                        @php($rowspan = 0)
+                                        @if(!empty($data->linkToOneKetTransaksi->dataAkun))
+                                            @if($rows=$data->linkToOneKetTransaksi->dataAkun->count())
+                                                @php($rowspan=$rows+1)
+                                            @endif
+                                        @endif
+                                        <tr>
+                                            <th rowspan="{{ $rowspan }}">{{ $no++ }}</th>
+                                            <th rowspan="{{ $rowspan }}">{{ $jenis_jurnal[$data->jenis_jurnal] }}<br><a href="{{ url('pengaturan-akun-penjualan/'.$data->id.'/edit') }}">ubah</a> <a href="{{ url('pengaturan-akun-penjualan/'.$data->id.'/delete') }}" onclick="return confirm('Apakah anda akan menghapus akun penjualan ini.');">hapus</a> </th>
+                                            <th rowspan="{{ $rowspan }}">{{ $data->linkToOneKetTransaksi->nm_transaksi }}</th>
+                                        </tr>
+                                        @if(!empty($data->linkToOneKetTransaksi->dataAkun))
+                                            @if($data_ket=$data->linkToOneKetTransaksi->dataAkun)
+                                                @foreach($data_ket as $data)
+                                                    <tr>
+                                                        <td>{{ $data->transaksi->kode_akun_aktif }} {{ $data->transaksi->nm_akun_aktif }}</td>
+                                                        <td>@if($data->posisi_akun=='0') D @else K @endif</td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </table>
                         </div>
                         <!-- /.tab-pane -->
+                        <div class="tab-pane " id="tab_8">
+                           <div class="row">
+                               <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Klien</label>
+                                        <select class="form-control select2" name="id_klien" style="width: 100%">
+                                            <option disabled>Pilih Klien</option>
+                                            @if(!empty($klien))
+                                                @foreach($klien as $data_klien)
+                                                    <option>{{ $data_klien->nm_klien }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                   <div class="form-group">
+                                        <label>Dari Tanggal</label>
+                                        <input type="date" class="form-control" name="tgl_awal">
+                                    </div>
+                               </div>
+                               <div class="col-md-6">
+                                   <div class="form-group">
+                                       <label>Nama Barang</label>
+                                       <select class="form-control select2" name="id_barang" id="barang_id" style="width: 100%">
+                                           <option disabled>Pilih barang</option>
+                                           @if(!empty($barang))
+                                               @foreach($barang as $data_barang)
+                                                   <option>{{ $data_barang->nm_barang }}</option>
+                                               @endforeach
+                                           @endif
+                                       </select>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Sampai Tanggal</label>
+                                       <input type="date" class="form-control" name="tgl_akhir" id="akhir_tgl">
+                                   </div>
+                               </div>
+                               <div class="col-md-12">
+                                   <div class="form-group">
+                                       <button type="button" class="btn btn-primary pull-left" onclick="load_data_history()">Tampilkan</button>
+                                   </div>
+                               </div>
+                               <div class="col-md-12" style="margin-top: 10px">
+                                   <table class="table table-bordered table-striped" id="table_history" style="width: 100%;margin-top: 10px">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Tgl Transaksi</th>
+                                                <th>No. Faktur</th>
+                                                <th>Nama Barang</th>
+                                                <th>Spek</th>
+                                                <th>Klien</th>
+                                                <th>Jumlah Barang</th>
+                                                <th>Satuan</th>
+                                                <th>Harga Jual</th>
+                                            </tr>
+                                        </thead>
+                                   </table>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="tab-pane " id="tab_9">
+                            <h3>Setting kasir</h3>
+                            <a href="{{ url('setting-kasir/create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Tambah Setting Kas Kasir</a>
+                            <table class="table table-bordered " style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Karyawan</th>
+                                        <th>Shift</th>
+                                        <th>AKun Kas</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if($SettingKasir)
+                                        @php($n_sk=1)
+                                        @foreach($SettingKasir as $dsk)
+                                            <tr>
+                                                <th>{{ $n_sk++ }}</th>
+                                                <th>{{ $dsk->linkToKaryawan->nama_ky }}</th>
+                                                <th>{{ $dsk->shift }}</th>
+                                                <th>
+                                                    @if(!empty($dsk->linkToSettingAkunKasir))
+                                                        @foreach($dsk->linkToSettingAkunKasir as $data)
+                                                            <label>{{ $data->linkToAkunAktif->kode_akun_aktif }} : {{ $data->linkToAkunAktif->nm_akun_aktif }}</label><br>
+                                                        @endforeach
+                                                    @endif
+                                                </th>
+                                                <th>
+                                                    <form action="{{ url('setting-kasir/'.$dsk->id) }}" method="post">
+                                                        @method('delete')
+                                                        {{ csrf_field() }}
+                                                        <a href="{{ url('setting-akun-kasir/'.$dsk->id) }}" class="btn btn-primary">Detail Akun</a>
+                                                        <a href="{{ url('setting-kasir/'.$dsk->id.'/edit') }}" class="btn btn-warning">Ubah</a>
+                                                        <button class="btn btn-danger" typeof="submit">hapus</button>
+                                                    </form>
+                                                </th>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="tab_10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form action="kerja-kasir/masuk-kerja" method="post">
+                                        <div class="form-group">
+                                            {{ csrf_field() }}
+                                            <label>Shift Kasir</label>
+                                            <select class="form-control select2" style="width: 100%;" name="id_shift_karyawan">
+                                                <option>Pilih Sift</option>
+                                                @if(!empty($SettingKasir))
+                                                    @foreach($SettingKasir as $dsk)
+                                                        <option value="{{$dsk->id}}">{{ $dsk->linkToKaryawan->nama_ky }} Shift ke:{{ $dsk->shift }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-12">
+                                    <table  class="table table-bordered table-striped"  style="width: 100%">
+                                        <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Tgl</th>
+                                            <th>Mulai</th>
+                                            <th>Selesai</th>
+                                            <th>Karyawan</th>
+                                            <th>Shift</th>
+                                            <th>Total pemasukan</th>
+                                            <th>Total Pengeluaran</th>
+                                            <th>Disetor</th>
+                                            <th>Penerima</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @if(!empty($KerjaKasir))
+                                            @php($no_kerja = 1)
+                                            @foreach($KerjaKasir as $dkk)
+                                                    <tr>
+                                                        <th>{{ $no_kerja++ }}</th>
+                                                        <th>{{ date('d-m-Y', strtotime($dkk->tgl_mulai)) }}</th>
+                                                        <th>{{ $dkk->jam_mulai }}</th>
+                                                        <th>{{ $dkk->jam_selesai }}</th>
+                                                        <th>{{ $dkk->linkToKasir->linkToKaryawan->nama_ky }}</th>
+                                                        <th>{{ $dkk->linkToKasir->shift }}</th>
+                                                        <th>0</th>
+                                                        <th>0</th>
+                                                        <th>0</th>
+                                                        <th>{{ $dkk->linkToKaryawan->nama_ky }}</th>
+                                                        <th>
+                                                            <button class="btn btn-primary">Rincian</button>
+                                                            <button class="btn btn-primary">Edit</button>
+                                                            <button class="btn btn-primary">Tutup Shift</button>
+                                                        </th>
+                                                    </tr>
+                                           @endforeach
+                                        @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
                     <!-- /.tab-content -->
                 </div>
@@ -228,10 +565,49 @@
     </section>
     <!-- /.content -->
 </div>
-
 @stop
 
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
+    <script>
+        var tabel_history = $('#table_history').DataTable({
+            data :[],
+            column:[
+                {'data':'0'},
+                {'data':'1'},
+                {'data':'2'},
+                {'data':'3'},
+                {'data':'4'},
+            ],
+            {{--drawCallback: buttonBuild("{{ $thn_proses }}"),--}}
+            filter: false,
+            pagging : true,
+            searching: false,
+            info : true,
+            ordering : false,
+            processing : true,
+            retrieve: true
+        })
+        load_data_history=function(){
+            $.ajax({
+                url:"{{ url('riwayat-harga-penjualan') }}",
+                type: "post",
+                data: {
+                    '_token':"{{ csrf_token() }}",
+                    '_method':"post",
+                    'id_klien': $('[name="id_klien"]').val(),
+                    'tgl_awal': $('[name="tgl_awal"]').val(),
+                    'barang_id': $('[name="id_barang"]').val(),
+                    'tgl_akhir': $('[name="tgl_akhir"]').val(),
+                },
+                success: function (result) {
+                    console.log(result);
+                    tabel_history.clear().draw();
+                    tabel_history.rows.add(result).draw();
+                }
+            })
+        }
+    </script>
 @stop
+

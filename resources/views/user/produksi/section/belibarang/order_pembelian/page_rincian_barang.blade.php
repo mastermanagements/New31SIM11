@@ -144,6 +144,7 @@
                                                 @endforeach
 
                                                 <tr>
+
                                                     <th colspan="2">Total</th>
                                                     <th colspan="3">&nbsp;&nbsp;&nbsp;{{ $total_qty }} item</th>
                                                     <th colspan="1"> &nbsp;&nbsp;&nbsp;{{ rupiahView($total_diskon) }}</th>
@@ -155,6 +156,7 @@
 
                                     </div>
 
+
                                 </div>
                                 <!---update p_order-->
                                 <br>
@@ -165,6 +167,7 @@
                                            <div class="row">
                                               <div class="col-md-6">
                                                 <div class="form-group">
+
                                                     <label>Uang Muka PO</label>
                                                     @if(!empty($data_order->linkToPO) AND ($data_order->dp_po == 0))
                                                         <input type="text"  id="rupiah" readonly name="uang_muka" @if(!empty($data_order->linkToPO->dp_po)) value="{{ rupiahView($data_order->linkToPO->dp_po) }}" @else value="0" @endif class="form-control" required>
@@ -185,12 +188,15 @@
                                                <div class="form-group">
                                                    <label>Diskon Tambahan (Bilangan)</label>
                                                    <input type="text" id="rupiah2" name="diskon_tambahan" class="form-control" @if(!empty($data_order->diskon_tambahan)) value="{{ rupiahView($data_order->diskon_tambahan) }}" @else  value="0" @endif >
+
                                                </div>
                                            </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
+
                                                        <label>Ongkos Kirim</label>
                                                        <input type="text" id="rupiah3" name="onkir" class="form-control" @if(!empty($data_order->ongkir)) value="{{ rupiahView($data_order->ongkir) }}" @else  value="0" @endif >
+
                                                    </div>
                                                </div>
 
@@ -210,19 +216,25 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Bayar</label>
+
                                                         <input class="form-control" name="bayar" value="{{ rupiahView($data_order->bayar) }}" required>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6" id="hutang" style="display: @if($data_order->metode_bayar=="0") none @else show @endif;">
                                                     <div class="form-group">
                                                         <label>Hutang</label>
+
                                                         <input type="text" id="rupiah4" name="kurang_bayar" @if(!empty($data_order->kurang_bayar)) value="{{ rupiahView($data_order->kurang_bayar) }}" @else value="0" @endif class="form-control">
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6" id="jatuh_tempo" style="display: @if($data_order->metode_bayar=="0") none @else show @endif;">
                                                     <div class="form-group">
+
                                                         <label>Jatuh Tempo</label>
                                                         <input type="text" name="tgl_jatuh_tempo" id="datepicker2" value="{{ $data_order->tgl_jatuh_tempo }}" class="form-control">
+
                                                     </div>
                                                 </div>
                                             </div>

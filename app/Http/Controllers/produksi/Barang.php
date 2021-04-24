@@ -16,6 +16,7 @@ use App\Model\Produksi\Satuan as Sb;
 use App\Model\Produksi\HistroyKonversiBrg as p_history_konversi_brg;
 use Illuminate\Support\Facades\DB;
 use App\Model\Marketing\Promo;
+use App\Http\utils\GetHargarBarang;
 
 class Barang extends Controller
 {
@@ -31,6 +32,16 @@ class Barang extends Controller
       'Promo Barang',
       'Promo Jasa'
     ];
+
+    public function respons_harga_barang(Request $req){
+        $this->validate($req, [
+           'id_barang'=> 'required',
+           'number_call_function' => 'required'
+        ]);
+        GetHargarBarang::$id_barang = $req->id_barang;
+        $obj = GetHargarBarang::callFunction($req->number_call_function);
+        return response()->json($obj);
+    }
 
     public function __construct()
     {

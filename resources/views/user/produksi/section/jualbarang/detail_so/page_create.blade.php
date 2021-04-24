@@ -10,7 +10,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Pesanan Penjualan
+               Rincian Pesanan Penjualan
             </h1>
         </section>
 
@@ -124,7 +124,7 @@
                                                                 <td># <input type="hidden" name="id_so" value="{{ $data->id }}"></td>
                                                                 <td>
                                                                     @if(!empty($barang))
-                                                                        <select class="form-control select2" style="width: 100%;" name="id_barang" required>
+                                                                        <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3)"  required>
                                                                             @foreach($barang as $item)
                                                                                 <option value="{{ $item->id }}" >{{ $item->nm_barang }}</option>
                                                                             @endforeach
@@ -132,7 +132,7 @@
                                                                     @endif
                                                                 </td>
                                                                 <td>
-                                                                    <input type="number" name="hpp" class="form-control" value="0">
+                                                                    <input type="number" name="hpp" class="form-control" value="0" id="show_harga">
                                                                 </td>
                                                                 <td>
                                                                     <input type="number" name="jumlah_jual" class="form-control" value="0">
@@ -152,7 +152,7 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                                @if(!empty($data->linkToDetailPSO))
+                                            @if(!empty($data->linkToDetailPSO))
                                                     <div class="col-md-12">
                                                         <table style="width: 100%;">
                                                             <thead>
@@ -168,13 +168,13 @@
                                                             </thead>
                                                             <tbody>
 
-                                                            @foreach($data->linkToDetailPSO as $n_data)
+                                                            @foreach($data->linkToDetailPSO as $keys=> $n_data)
                                                                 <form action="{{ url('detail-pSo/'. $n_data->id) }}" method="post">
                                                                     <tr>
                                                                         <td>{{ $no++ }} @php($jumlah_item++)<input type="hidden" name="id_so" value="{{ $n_data->id_so }}"> @method('put') {{ csrf_field() }}</td>
                                                                         <td>
                                                                             @if(!empty($barang))
-                                                                                <select class="form-control select2" style="width: 100%;" name="id_barang" required>
+                                                                                <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3,'{{$keys}}')" id="id_barang{{$keys}}" required>
                                                                                     @foreach($barang as $item)
                                                                                         <option value="{{ $item->id }}" @if($n_data->id_barang == $item->id) selected @endif>{{ $item->nm_barang }}</option>
                                                                                     @endforeach
@@ -182,7 +182,7 @@
                                                                             @endif
                                                                         </td>
                                                                         <td>
-                                                                            <input type="number" name="hpp" class="form-control" value="{{ $n_data->hpp }}">
+                                                                            <input type="number" name="hpp" class="form-control" value="{{ $n_data->hpp }}" id="show_harga{{$keys}}" >
                                                                         </td>
                                                                         <td>
                                                                             <input type="number" name="jumlah_jual" class="form-control" value="{{ $n_data->jumlah_jual }}">
@@ -211,7 +211,7 @@
                                                                     Total item: {{ $jumlah_item }}
                                                                 </td>
                                                                 <td>
-                                                                    Total uang: {{ $jumlah_uang }}
+                                                                    Total uang: <label id="sub_total">{{ $jumlah_uang }}</label>
                                                                 </td>
                                                             </tr>
                                                             </tfoot>
@@ -252,7 +252,7 @@
                                                                 Total item: {{ $jumlah_item }}
                                                             </td>
                                                             <td>
-                                                                Total uang: {{ $jumlah_uang }}
+                                                                Total uang: <label id="sub_total">{{ $jumlah_uang }}</label>
                                                             </td>
                                                         </tr>
                                                         </tfoot>
@@ -270,25 +270,37 @@
                                                                 {{ csrf_field() }}
                                                                 <input name="sub_total" type="hidden" value="{{ $jumlah_uang }}">
                                                                 <label>Diskon Tambahan</label>
-                                                                <input type="number" class="form-control" name="diskon_tambahan" value="{{ $data->diskon_tambahan }}">
+                                                                <input type="number" id="diskon_tambahan" class="form-control" name="diskon_tambahan" value="{{ $data->diskon_tambahan }}">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Pajak</label>
-                                                                <input type="number" class="form-control" name="pajak" value="{{ $data->pajak }}">
+                                                                <input type="number" id="pajak_tambahan" class="form-control" name="pajak" value="{{ $data->pajak }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>Uang Muka</label>
-                                                                <input type="number" class="form-control" name="uang_muka" value="{{ $data->dp_so }}">
+                                                                <input type="number" id="uang_muka" class="form-control" name="uang_muka" value="{{ $data->dp_so }}">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Kurang Bayar</label>
-                                                                <input type="number" class="form-control" name="kurang_bayar" value="{{ $data->kurang_bayar }}">
+                                                                <input type="number" id="kurang_bayar" id="" class="form-control" name="kurang_bayar" value="{{ $data->kurang_bayar }}" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Metode pembayaran</label>
+                                                                <select class="form-control" name="metode_bayar">
+                                                                    <option disabled>Pilih metode pembayaran</option>
+                                                                    @foreach ($metode_pembayaran as $key=> $item)
+                                                                        <option value="{{ $key }}">{{ $item }}</option>
+                                                                    @endforeach
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal penjualan otomatis  </label> <button type="submit" class="btn btn-primary"> Proses </button>
+                                                            <label id="final_total" class="pull-right"></label>
                                                         </div>
                                                     </form>
                                                 </div>

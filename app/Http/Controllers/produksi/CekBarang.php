@@ -120,8 +120,6 @@ class CekBarang extends Controller
 
     //proses status return : update p_detail_cek_brg, update p_cek_brg.tgl_respon_supplier, p_order.respon_supplier =1
     public function update(Request $req, $id)
-    { //dd($req->all());
-        # code...
 
         $this->validate($req, [
             'id_barang'=>'required',
@@ -149,7 +147,7 @@ class CekBarang extends Controller
                 'id_karyawan'=> Session::get('id_karyawan')
             ]
         );
-      //  dd($req->all());
+
         if($model){
         foreach ($req->id_barang as $key => $value) {
                 # code...
@@ -158,7 +156,8 @@ class CekBarang extends Controller
                         'id_order'=> $id,
                         'id_perusahaan'=>Session::get('id_perusahaan_karyawan'),
                         'id_barang'=> $value,
-                        'id_cek_barang'=> $model->id
+                        'id_cek_barang'=> $model->id,
+                        'id_detail_po'=> $req->id_detail_barang[$key]
                     ],
                     [
                         'harga_beli'=>  rupiahController($req->harga_beli[$key]),

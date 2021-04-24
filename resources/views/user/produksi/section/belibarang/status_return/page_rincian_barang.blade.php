@@ -109,7 +109,6 @@
                                                         <td>
                                                             {{ $data_tb->ket }}
                                                             <input type="hidden" name="ket[]" value="{{ $data_tb->ket}}">
-
                                                         </td>
 
                                                           @if(empty($data_tb->status_return))
@@ -133,7 +132,6 @@
                                                         <td>
                                                           @if(empty($data_tb->alasan_ditolak ))
                                                             <textarea class="form-control" name='alasan[]'>{{ $data_tb->alasan_ditolak}}</textarea>
-
                                                             <p></p>
                                                           @else
                                                           {{ $data_tb->alasan_ditolak}}

@@ -101,6 +101,7 @@
                                             <th>{{ tanggalView($data_pesanan_pembelian->tgl_po) }}</th>
                                             <th>{{ $data_pesanan_pembelian->no_po }}</th>
                                             <th>{{ $data_pesanan_pembelian->linkToSupplier->nama_suplier }}</th>
+
                                             <th>{{ tanggalView($data_pesanan_pembelian->tgl_krm )}}</th>
                                             <th>{{
                                                     rupiahView($data_pesanan_pembelian->total)
@@ -111,6 +112,7 @@
                                                     <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Rincian Barang </a>
                                                     <a href="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/edit') }}" class="btn btn-warning"> Ubah</a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus nota ini ...?')"> Hapus</button>
+
                                                 </form>
                                             </th>
                                         </tr>

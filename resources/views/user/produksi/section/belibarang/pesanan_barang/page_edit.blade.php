@@ -48,7 +48,7 @@
                                             <tr>
                                                 <td>
                                                     @if(!empty($barang))
-                                                        <select class="form-control select2" name="id_barang" style="width: 100%" required>
+                                                        <select class="form-control select2" name="id_barang" style="width: 100%" onchange="get_harga(2)" required>
                                                             @foreach($barang as $datas)
                                                                 <option value="{{ $datas->id }}">{{ $datas->nm_barang }}, {{ $datas->linkToSatuan->satuan }}</option>
                                                             @endforeach
@@ -76,6 +76,7 @@
                                             <button class="btn btn-primary">Tambah barang</button>
                                         </div>
                                 </form>
+
                                 @if(!empty($data->linkToDetailPO))
                                     @php($total_qty=0)
                                     @php($sub_item=0)
@@ -100,7 +101,7 @@
                                                             <td width="200">
                                                             {{ csrf_field() }}
                                                             @if(!empty($barang))
-                                                                <select class="form-control select2" name="id_barang" style="width: 100%" required>
+                                                                <select class="form-control select2" name="id_barang" style="width: 100%" onchange="get_harga(2,'{{$keys}}')" id="id_barang{{$keys}}" required>
                                                                     @foreach($barang as $datas)
                                                                         <option value="{{ $datas->id }}" @if($data_pesanan->id_barang==$datas->id) selected @endif>{{ $datas->nm_barang }}</option>
                                                                     @endforeach
@@ -108,11 +109,13 @@
                                                             @endif
                                                             </td>
                                                             <td width="150">
+
                                                                 <input type="text" class="form-control" name="harga_beli" value="{{ rupiahView($data_pesanan->harga_beli) }}"  required>
                                                             </td>
                                                             <td width="100">
                                                                 @php($total_qty += $data_pesanan->jumlah_beli)
                                                                 <input type="number" class="form-control" name="jumlah_beli" value="{{ $data_pesanan->jumlah_beli }}"  required>
+
                                                             </td>
                                                             <td width="150">
                                                                 @php($diskon_item = $data_pesanan->harga_beli * $data_pesanan->diskon_item/100)
@@ -176,6 +179,7 @@
                                              </div>
                                                <div class="col-md-6">
                                                    <div class="form-group">
+
                                                        <label>Kurang Bayar</label>
                                                        <input type="hidden" name="sub_total" value="{{ $sub_item }}">
                                                        <input type="text" readonly name="kurang_bayar" class="form-control" @if(!empty($data->kurang_bayar)) value="{{ rupiahView($data->kurang_bayar) }}" @endif required>
@@ -197,7 +201,9 @@
                                        </div>
                                        <div class="col-md-12">
                                            <label><input type="checkbox" value="on" name="jurnal_otomatis"> Buat jurnal otomatis </label>  <button class="btn btn-primary"> Simpan Pesanan pembelian </button>
+                                           <label class="pull-right" id="final_total"></label>
                                        </div>
+
                                 </form>
                           </div>
                         <!-- /.box-body -->
