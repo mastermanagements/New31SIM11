@@ -40,7 +40,7 @@ class JualBarang extends Controller
             'pDiskon'=> PDiskon::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         //tab1 tawar jual  di nonaktifkan dl
-        if (empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6'))){
+        if (empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6')) && empty(Session::get('tab6'))){
             Session::flash('tab2','tab2');
         }
 
@@ -57,6 +57,9 @@ class JualBarang extends Controller
         }
         if(!empty(Session::get('tab6'))){
             Session::flash('tab6',Session::get('tab6'));
+        }
+        if(!empty(Session::get('tab7'))){
+            Session::flash('tab7',Session::get('tab7'));
         }
 
         return view('user.produksi.section.jualbarang.page_default', $data);
@@ -144,9 +147,9 @@ class JualBarang extends Controller
             $model->jumlah_barang = $jumlah_barang;
 
         if( $model->save()){
-            return redirect('Penjualan')->with('message_success', 'Data berhasil diubah...!');
+            return redirect('Penjualan')->with('message_success', 'Data berhasil diubah...!')->with('tab2','tab2');
         }else{
-            return redirect('Penjualan')->with('message_success', 'Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('Penjualan')->with('message_success', 'Terjadi Kesalahan, Silahkan coba lagi')->with('tab2','tab2');
         }
     }
 
