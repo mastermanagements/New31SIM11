@@ -18,7 +18,8 @@ class PAkunPembelian extends Migration
             $table->integer('jenis_jurnal')->default(0);
             $table->integer('id_ket_transaksi')->unsigned();
             $table->enum('jenis_transaksi',['0','1'])->default(0)->comment('0=penerimaan');
-            $table->integer('id_akun_aktif')->unsigned();
+            //$table->integer('id_akun_aktif')->unsigned();
+            $table->integer('id_akun_aktif')->default(0);
             $table->enum('posisi_akun',['0','1'])->default(0);
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();

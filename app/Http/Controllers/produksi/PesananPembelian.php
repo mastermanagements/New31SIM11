@@ -50,7 +50,7 @@ class PesananPembelian extends Controller
         $model = PB::updateOrCreate(
             [
                 'no_po' => $req->no_po,
-                'id_perusahaan' => $this->id_karyawan
+                'id_perusahaan' => Session::get('id_perusahaan_karyawan')
             ],
             [
               // 'id_tawar_beli' => $req->id_tawar_beli,
