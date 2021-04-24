@@ -5,8 +5,8 @@ namespace App\Http\Controllers\keuangan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
-use App\Model\Keuangan\Akun as akun_master;
-use App\Model\Keuangan\AkunAktifUkm as AAU;
+use App\Model\Keuangan\Akun as akun_master; //k_akun_ukm
+use App\Model\Keuangan\AkunAktifUkm as AAU; //k_akun_aktif_ukm
 
 class AkunAktifUkm extends Controller
 {

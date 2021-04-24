@@ -26,7 +26,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Pesanan Pembelian</h3>
+                        <h3 class="box-title">Tambah Pesanan Pembelian</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -41,9 +41,14 @@
                                    </div>
                                    <div class="form-group">
                                        <label>Tanggal. PO</label>
-                                       <input type="date" name="tgl_po" class="form-control" required>
+                                       <div class="input-group date">
+                                           <div class="input-group-addon">
+                                               <i class="fa fa-calendar"></i>
+                                           </div>
+                                           <input type="text" name="tgl_po" class="form-control" id="datepicker" value="{{ date('d-m-Y') }}" required>
+                                       </div>
                                    </div>
-                                   <div class="form-group">
+                                   <!--<div class="form-group">
                                        <label>Penawaran Pembelian</label>
                                        <select class="form-control select2" name="id_tawar_beli" style="width: 100%" onchange="if(confirm('Apakah anda akan mengambil data barang penawaran dari kode surat ini ... ?')){ return window.location.href='{{ url('rincian-penawaran') }}/'+$(this).val() }else{ alert('Data Barang tidak dapat diambil') }">
                                            @if(!empty($penawaran_pembelian))
@@ -53,54 +58,31 @@
                                                @endforeach
                                            @endif
                                        </select>
-                                   </div>
+                                   </div>-->
                                    <div class="form-group">
                                        <label>Supplier</label>
-                                       <select class="form-control select2" name="id_supplier"  required style="width: 100%">
-                                           @if(!empty($supplier))
-                                               <option>Pilihan supplier</option>
-                                               @foreach($supplier as $data)
-                                                     <option value="{{ $data->id }}">{{ $data->nama_suplier }}</option>
-                                               @endforeach
+                                       <select class="form-control select2" name="id_supplier" style="width: 100%" required>
+                                           @if(empty($supplier))
+                                               isi dulu data supplier !!
+                                               @else
+                                                   @foreach($supplier as $data)
+                                                         <option value="{{ $data->id }}">{{ $data->nama_suplier }} </option>
+                                                   @endforeach
                                            @endif
                                        </select>
                                    </div>
                                    <div class="form-group">
-                                       <label>Tanggal Dikirim</label>
-                                       <input type="date" name="tgl_dikirim" class="form-control" required>
+                                       <label>Tanggal Barang Dikirim</label>
+                                       <div class="input-group date">
+                                           <div class="input-group-addon">
+                                               <i class="fa fa-calendar"></i>
+                                           </div>
+                                       <input type="text" name="tgl_dikirim" class="form-control" id="datepicker2" required>
+                                     </div>
                                    </div>
                                    <div class="form-group">
                                        <button class="btn btn-primary">Simpan</button>
                                    </div>
-                                   {{--<div class="row">--}}
-                                       {{--<div class="col-md-6">--}}
-                                           {{--<div class="form-group">--}}
-                                               {{--<label>Diskon Tambahan</label>--}}
-                                               {{--<input type="number" name="diskon_tambahan" class="form-control" required>--}}
-                                           {{--</div>--}}
-                                       {{--</div>--}}
-                                       {{--<div class="col-md-6">--}}
-                                           {{--<div class="form-group">--}}
-                                               {{--<label>Pajak</label>--}}
-                                               {{--<input type="number" name="pajak" class="form-control" required>--}}
-                                           {{--</div>--}}
-                                       {{--</div>--}}
-                                   {{--</div>--}}
-                                   {{--<div class="row">--}}
-                                       {{--<div class="col-md-6">--}}
-                                           {{--<div class="form-group">--}}
-                                               {{--<label>Uang Muka</label>--}}
-                                               {{--<input type="number" name="uang_muka" class="form-control" required>--}}
-                                           {{--</div>--}}
-                                       {{--</div>--}}
-                                       {{--<div class="col-md-6">--}}
-                                           {{--<div class="form-group">--}}
-                                               {{--<label>Kurang Bayar</label>--}}
-                                               {{--<input type="number" name="kurang_bayar" class="form-control" required>--}}
-                                           {{--</div>--}}
-                                       {{--</div>--}}
-                                   {{--</div>--}}
-
                                </form>
                            </div>
                             <div class="col-md-12">
@@ -124,11 +106,16 @@
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
-        $('[name="persentase"]').keyup(function () {
-            var persentase = ($('[name="hpp"]').val()/100) * $(this).val();
-            var harga_jual =parseInt($('[name="hpp"]').val()) + persentase;
-            $('[name="harga_jual"]').val(harga_jual);
-        })
+
+        $('#datepicker').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy'
+        });
+        $('#datepicker2').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy'
+        });
+
     </script>
 
 @stop

@@ -9,7 +9,7 @@ class StokAwal extends Model
     //
     protected $table='p_stok_awal';
 
-    protected $fillable = ['id_barang','id_perusahaan','jumlah_brg','expired_date'];
+    protected $fillable = ['id_barang','jumlah_brg','expired_date','id_perusahaan','id_karyawan'];
 
     public function linkToBarang(){
         return $this->belongsTo('App\Model\Produksi\Barang', 'id_barang');

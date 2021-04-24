@@ -1,9 +1,9 @@
 @extends('user.karyawan.master_user')
 
 @section('skin')
-   <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
+<link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
 
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 @stop
 
 
@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Model Bisnis
+            Bisnis Model Canvas
         </h1>
     </section>
 
@@ -27,24 +27,56 @@
             <div class="col-md-12">
                 <div class="box box-warning">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Model Bisnis</h3>
+                        <h3 class="box-title">Formulir Ubah Model Bisnis Canvas</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('ubah-mb/'.$mb->id) }}" method="post">
+                      <form role="form" method="post" action="{{ url('update-mb/'.$mb->id) }}" enctype="multipart/form-data">
                         <div class="box-body">
+                          <div class="form-group">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nama Model Bisnis</label>
-                                <input type="text" name="nm_mb" class="form-control" id="exampleInputEmail1" value="{{ $mb->nm_mb }}" required>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Sasaran</label>
-                                <textarea class="form-control" placeholder="Masukan sasaran Anda" name="sasaran" id="sasaran" required>
-                                {!! $mb->sasaran !!}
-                                    </textarea>
+                                  <label for="exampleInputFile">Elemen Model Bisnis</label>
+                                    @if(empty($mb->id_jenis_mb))
+                                       <select class="form-control select2" style="width: 100%;" name="id_jenis_mb" required>
+                                            <option>Pilih mb</option>
+                                            @foreach($jenis_mb as $value)
+                                             <option value="{{ $value->id }}">{{ $value->nama_mb }}</option>
+                                            @endforeach
+                                        </select>
+                                        @else
+                                          <select class="form-control select2" style="width: 100%;" name="id_jenis_mb" required>
+                                                <option>Pilih mb </option>
+                                                @foreach($jenis_mb as $value)
+                                                    <option value="{{ $value->id }}" @if($mb->id_jenis_mb == $value->id) selected @endif>{{ $value->nama_mb }}</option>
+                                                @endforeach
+                                          </select>
+                                          @endif
+                                    <small style="color:red;">* Tidak boleh kosong</small>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleInputFile">Sub Model Bisnis</label>
+                                      @if(empty($mb->id_sub_mb))
+                                        <select class="form-control select2" style="width: 100%;" name="id_sub_mb" required>
+                                            <option>Pilih sub mb</option>
+                                        </select>
+                                        @else
+                                        <select class="form-control select2" style="width: 100%;" name="id_sub_mb" required>
+                                            <option>Pilih sub</option>
+                                            @foreach($sub_mb as $value)
+                                                <option value="{{ $value->id }}" @if($mb->id_sub_mb == $value->id) selected @endif>{{ $value->sub_mb }}</option>
+                                            @endforeach
+                                        </select>
+                                        @endif
+                                        <small style="color:red;">* Tidak boleh kosong</small>
+                                  </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail1">Uraian</label>
+                                <textarea class="form-control" placeholder="Masukan uraian bisnis model anda" name="isi" id="isi" required>
+                                  {!! $mb->isi !!}
+                                </textarea>
                                 <small style="color: red">* Tidak boleh kosong</small>
                             </div>
+                            <input type="hidden" name="id"value="">
                         </div>
                         <!-- /.box-body -->
 
@@ -64,27 +96,30 @@
 
 
 @section('plugins')
-     <!-- iCheck 1.0.1 -->
-    <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
-    <!-- SlimScroll -->
-    <script src="{{ asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-    <script>
+<script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+<!-- SlimScroll -->
+<script src="{{ asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+<script>
+    //Initialize Select2 Elements
+   $(function () {
+       $('.select2').select2();
 
-        window.onload = function() {
-            CKEDITOR.replace( 'sasaran',{
-                height: 600
-            } );
-        };
-
-        //Initialize Select2 Elements
-//        $(function () {
-//
-//            //iCheck for checkbox and radio inputs
-//            $('input[type="radio"].minimal').iCheck({
-//                checkboxClass: 'icheckbox_minimal-blue',
-//                radioClass   : 'iradio_minimal-blue'
-//            })
-//
-//        })
-    </script>
+       $('[name="id_jenis_mb"]').change(function () {
+           $.ajax({
+               url:"{{ url('getSubModelBisnis') }}/" + $(this).val(),
+               dataType: "json",
+               success: function (result) {
+                   var option="<option>Pilih Sub Model Bisnis</option>";
+                   $.each(result, function (id, val) {
+                       option+="<option value="+val.id+">"+val.sub_mb+"</option>";
+                   });
+                   $('[name="id_sub_mb"]').html(option);
+               }
+           })
+       })
+   })
+   CKEDITOR.replace( 'isi',{
+        height: 100
+   } );
+</script>
 @stop

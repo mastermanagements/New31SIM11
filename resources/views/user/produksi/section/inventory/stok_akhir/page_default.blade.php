@@ -48,7 +48,7 @@
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
                                                     <td>{{ $data->nm_barang }}</td>
-                                                    <td>{{ $data->linkToSatuan->satuan_brg }}</td>
+                                                    <td>{{ $data->linkToSatuan->satuan }}</td>
                                                     <td>{{ $data->stok_akhir }}</td>
                                                     <td>
                                                         @if($data->stok_akhir <= 5)

@@ -9,5 +9,10 @@ class ModelBisnis extends Model
     //
     protected $table="a_model_bisnis";
 
-    protected $fillable=['nm_mb','sasaran','id_perusahaan','id_karyawan'];
+    protected $fillable=['id_jenis_mb','id_sub_mb','isi','id_perusahaan','id_karyawan'];
+
+    public function getSubModelBisnis()
+    {
+      return $this->belongsTo('App\Model\Karyawan\SubModelBisnis', 'id_sub_mb');
+    }
 }

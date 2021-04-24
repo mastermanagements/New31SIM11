@@ -15,8 +15,9 @@ class CreateAModelBisnis extends Migration
     {
         Schema::create('a_model_bisnis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nm_mb');
-            $table->text('sasaran');
+            $table->integer('id_jenis_mb')->unsigned();
+            $table->integer('id_sub_mb')->unsigned();
+            $table->text('isi');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();
