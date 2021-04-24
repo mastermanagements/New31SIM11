@@ -46,7 +46,7 @@
                                         <input type="text" class="form-control" name="nm_transaksi" required>
                                         <small style="color: red">* Tidak Boleh Kosong</small>
                                     </div>
-                                        <table id="example3" class="table table-bordered table-hover">
+                                        <table id="#example2" class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>Kode Akun/Nama Akun</th>
