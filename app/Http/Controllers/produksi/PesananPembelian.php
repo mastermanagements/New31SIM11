@@ -298,17 +298,17 @@ class PesananPembelian extends Controller
         $this->validate($req, [
           'id_barang' => 'required',
            'jumlah_beli' => 'required',
-           'harga_beli'=>'required'
+           'harga_beli'=>'required',
+           'diskon_item'=>'required'
         ]);
 
         $id_barang = $req->id_barang;
         $harga_beli = rupiahController($req->harga_beli);
         $jumlah_beli = rupiahController($req->jumlah_beli);
-        $diskon_item = rupiahController($req->diskon_item);
-        $persen_diskon_item = $diskon_item/$harga_beli*100;
-        $total_diskon = $diskon_item * $jumlah_beli;
+        $diskon_item = $req->diskon_item;
+        $nilai_diskon = $harga_beli*$diskon_item/100;
 
-        $sub_total = ($harga_beli  * $jumlah_beli) - $total_diskon;
+        $sub_total = ($harga_beli  * $jumlah_beli) - $nilai_diskon;
 
         $model_po = DetailPO::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
         //request
@@ -316,10 +316,10 @@ class PesananPembelian extends Controller
         $model_po->id_barang = $id_barang;
         $model_po->harga_beli = $harga_beli;
         $model_po->jumlah_beli = $jumlah_beli;
-        $model_po->diskon_item = $persen_diskon_item ;
+        $model_po->diskon_item = $diskon_item ;
         $model_po->jumlah_harga = $sub_total;
         $model_po->id_perusahaan = Session::get('id_perusahaan_karyawan');
-        $model_po->id_karyawan = $this->id_karyawan;
+        $model_po->id_karyawan = Session::get('id_karyawan');
 
         if ($model_po->save()) {
             return redirect('Pembelian')->with('message_success', 'anda telah mengubah item baru')->with('tab2','tab2');
@@ -331,8 +331,8 @@ class PesananPembelian extends Controller
     public function ubah_Pesanan_pembelian_po(Request $req, $id)
     { //dd($req->all());
         $this->validate($req, [
-            'diskon_tambahan' => 'required',
-            'pajak' => 'required',
+            //'diskon_tambahan' => 'required',
+            //'pajak' => 'required',
             'uang_muka' => 'required',
             'kurang_bayar' => 'required',
         ]);
@@ -373,10 +373,10 @@ class PesananPembelian extends Controller
 
           $model->diskon_tambahan = $diskon_tambahan;
           $model->pajak = $pajak;
-          $model->dp_po = $uang_muka;
+          $model->dp_po = $dp_po;
           $model->kurang_bayar = $kurang_bayar;
           $model->ket = $ket;
-          $model->total =$total_po_net;
+          $model->total =$total_po;
           $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
           $model->id_karyawan = Session::get('id_karyawan');
 
@@ -385,7 +385,7 @@ class PesananPembelian extends Controller
               if(is_array($jenis_akun_pembelian) == true){
                   $req->merge([
                       'total_sebelum_pajak'=>$total_pajak,
-                      'total'=> $total_po_net,
+                      'total'=> $total_po,
                       'tgl_order'=> $model->tgl_po,
                       'no_order'=>$model->no_po,
                       'id_pesanan'=> $model->id

@@ -82,15 +82,17 @@
                         </div>-->
                         <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
 
-                            <p style="margin-bottom: 10px;"><b>Daftar Pesanan Penjualan </b> <a href="{{ url('pesanan-penjualan/create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah Pesanan Pembelian</a>
+                            <p style="margin-bottom: 10px;"><b>Daftar Pesanan Penjualan </b> <a href="{{ url('pesanan-penjualan/create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah Pesanan Penjualan</a>
                             </p><br>
-                            <table id="example2" class="table table-bordered table-striped">
+                            <table id="example3" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
                                         <th>Tanggal</th>
-                                        <th>Nomor. Pesanan</th>
+                                        <th>Nomor Pesanan Penjualan</th>
+                                        <th>Nomor Pesanan Pembelian</th>
                                         <th>Klien</th>
+                                        <th>Tanggal Dikirim</th>
                                         <th>Total</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -101,20 +103,22 @@
                                         @foreach($p_so as $data)
 
                                             <tr>
-                                                <th>{{ $no++ }}</th>
-                                                <th>{{ date('d-m-Y', strtotime($data->tgl_so)) }}</th>
-                                                <th>{{ $data->no_so }}</th>
-                                                <th>{{ $data->linkToKlien->nm_klien }}</th>
-                                                <th>{{ $data->total }}</th>
-                                                <th>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($data->tgl_so)) }}</td>
+                                                <td>{{ $data->no_so }}</td>
+                                                <td>{{ $data->no_po }}</td>
+                                                <td>{{ $data->linkToKlien->nm_klien }}</td>
+                                                <td>{{ tanggalView($data->tgl_dikirim) }}</td>
+                                                <td>{{ rupiahView($data->total) }}</td>
+                                                <td>
                                                     <form action="{{ url('pesanan-penjualan/'.$data->id) }}" method="post" >
                                                         {{ csrf_field() }}
                                                         @method('delete')
-                                                        <a href="{{ url('detail-pSo/'.$data->id) }}" class="btn btn-primary">detail barang</a>
-                                                        <a href="{{ url('pesanan-penjualan/'.$data->id.'/edit') }}" class="btn btn-warning">ubah</a>
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data nota pesanan ini...?')">hapus</button>
+                                                        <a href="{{ url('detail-pSo/'.$data->id) }}" class="btn btn-primary">Rincian  Barang</a>
+                                                        <a href="{{ url('pesanan-penjualan/'.$data->id.'/edit') }}" class="btn btn-warning">Ubah</a>
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data nota pesanan ini...?')">Hapus</button>
                                                     </form>
-                                                </th>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -215,11 +219,11 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Nomor. Pesanan</th>
-                                        <th>Klien</th>                                        
+                                        <th>Klien</th>
                                         <th>Tanggal Transaksi</th>
                                         <th>Tanggal Bayar</th>
                                         <th>Jumlah DP</th>
-                                        <th>Jumlah Bayar</th>                                        
+                                        <th>Jumlah Bayar</th>
                                         <th>Bukti</th>
                                         <th>Konfirmasi</th>
                                         <th>Aksi</th>
@@ -234,7 +238,7 @@
                                                 <th>{{ $no++ }}</th>
                                                 <th>{{ $data_so->no_so }}</th>
                                                 <th>{{ $data_so->linkToKlien->nm_klien }}</th>
-                                                
+
                                                 <th>{{ date('d-m-Y', strtotime($data_so->tgl_so)) }}</th>
                                                 <th>@if(!empty($data_so->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($data_so->linkToTerimaBayar->tgl_bayar)) }} @endif  </th>
                                                 <th>{{  $data_so->dp_so }}</th>
@@ -255,11 +259,11 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nomor Order</th>                                        
+                                        <th>Nomor Order</th>
                                         <th>Tgl Jual</th>
                                         <th>Klien</th>
                                         <th>Tgl Transaksi</th>
-                                        <th>Tgl Bayar</th>                                      
+                                        <th>Tgl Bayar</th>
                                         <th>Jumlah Tagihan</th>
                                         <th>Jumlah Bayar</th>
                                         <th>Sisa</th>
@@ -610,4 +614,3 @@
         }
     </script>
 @stop
-

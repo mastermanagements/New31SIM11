@@ -6,326 +6,221 @@
 @stop
 
 @section('master_content')
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-               Rincian Pesanan Penjualan
-            </h1>
-        </section>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Rincian Pesanan Penjualan Barang
+        </h1>
+    </section>
 
-        <!-- Main content -->
-        <section class="content container-fluid">
+    <!-- Main content -->
+    <section class="content container-fluid">
 
-            <p></p>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Formulir Pesanan Penjualan</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <!-- form start -->
-                        <div class="box-body">
-
-                                <div class="row">
-
-                                        <div class="col-md-12">
-
-                                            <form role="form" action="{{ url('pesanan-penjualan/'.$data->id) }}" method="post" enctype="multipart/form-data">
-
-                                                {{ csrf_field() }}
-                                            @method('put')
-                                            <div class="form-group">
-                                                <label>No Pesanan</label>
-                                                <input type="text" class="form-control" name="no_so" value="{{ $data->no_so }}" readonly>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Tanggal Pesanan</label>
-                                                <div class="input-group date">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <input type="text" class="form-control pull-right" id="datepicker2" value="{{ date('d-m-Y', strtotime($data->tgl_so)) }}" placeholder="Tanggal Pesanan" name="tgl_so" readonly>
-                                                </div>
-                                                <!-- /.input group -->
-                                                <small style="color: red">* Tidak Boleh Kosong</small>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">No. PO</label>
-                                                <select class="form-control select2" style="width: 100%;" name="id_po" disabled >
-                                                    <option value="null">Pilihan Penawaran Penjualan</option>
-                                                    @if(!empty($tawar_jual))
-                                                        @foreach($tawar_jual as $value)
-                                                            <option value="{{ $value->id }}" @if($value->id==$data->id_po) selected @endif>{{ $value->no_tawar }}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
-
-                                                <small style="color: red">* Tidak Boleh Kosong</small>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Klien</label>
-                                                <select class="form-control select2" style="width: 100%;" name="id_klien" disabled>
-                                                    @if(empty($klien))
-                                                        <option>Klien masih kosong</option>
-                                                    @else
-                                                        @foreach($klien as $value)
-                                                            <option value="{{ $value->id }}" @if($value->id==$data->id_klien) selected @endif>{{ $value->nm_klien }}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
-                                                <small style="color: red">* Tidak Boleh Kosong</small>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Tanggal Barang Kirim</label>
-                                                <div class="input-group date">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <input type="text" class="form-control pull-right" id="datepicker3" value="{{ date('d-m-Y', strtotime($data->tgl_dikirim)) }}" placeholder="Tanggal kirim sampai dengan" name="tgl_krm" readonly >
-                                                </div>
-                                                <!-- /.input group -->
-                                                <small style="color: red">* Tidak Boleh Kosong</small>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="keterangan">Keterangan</label>
-
-                                                <textarea class="form-control" name="ket" readonly>{{ $data->ket }}</textarea>
-                                            </div>
-                                            {{--<div class="form-group">--}}
-                                                {{--<button type="submit" class="btn btn-primary">Submit</button>--}}
-                                            {{--</div>--}}
-                                            </form>
-                                            @php($jumlah_item = 0)
-                                            @php($jumlah_uang = 0)
-                                            @php($no = 1)
-                                            @if(empty($data->linkToPO))
-                                                <div class="col-md-12">
-                                                <hr>
-                                                <form action="{{ url('detail-pSo') }}" method="post">
-                                                    {{ csrf_field() }}
-                                                     <table style="width: 100%;">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>No</td>
-                                                            <td>Nama</td>
-                                                            <td>Harga Beli</td>
-                                                            <td>Banyaknya</td>
-                                                            <td>Diskon</td>
-                                                            <td>Jumlah</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-                                                            <tr>
-                                                                <td># <input type="hidden" name="id_so" value="{{ $data->id }}"></td>
-                                                                <td>
-                                                                    @if(!empty($barang))
-                                                                        <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3)"  required>
-                                                                            @foreach($barang as $item)
-                                                                                <option value="{{ $item->id }}" >{{ $item->nm_barang }}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    @endif
-                                                                </td>
-                                                                <td>
-                                                                    <input type="number" name="hpp" class="form-control" value="0" id="show_harga">
-                                                                </td>
-                                                                <td>
-                                                                    <input type="number" name="jumlah_jual" class="form-control" value="0">
-                                                                </td>
-                                                                <td>
-                                                                    <input type="number" name="diskon_item" class="form-control" value="0">
-                                                                </td>
-                                                                <td>
-                                                                    <input type="number" name="jumlah_harga" id="jumlah_harga" class="form-control" value="0" readonly>
-                                                                </td>
-                                                            </tr>
-
-                                                    </tbody>
-                                                </table>
-                                                    <div class="form-group" style="margin-top: 20px">
-                                                        <button type="submit" class="btn btn-primary">Simpan</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            @if(!empty($data->linkToDetailPSO))
-                                                    <div class="col-md-12">
-                                                        <table style="width: 100%;">
-                                                            <thead>
-                                                            <tr>
-                                                                <td>No</td>
-                                                                <td>Nama</td>
-                                                                <td>Harga Beli</td>
-                                                                <td>Banyaknya</td>
-                                                                <td>Diskon</td>
-                                                                <td>Jumlah</td>
-                                                                <td>Aksi</td>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-
-                                                            @foreach($data->linkToDetailPSO as $keys=> $n_data)
-                                                                <form action="{{ url('detail-pSo/'. $n_data->id) }}" method="post">
-                                                                    <tr>
-                                                                        <td>{{ $no++ }} @php($jumlah_item++)<input type="hidden" name="id_so" value="{{ $n_data->id_so }}"> @method('put') {{ csrf_field() }}</td>
-                                                                        <td>
-                                                                            @if(!empty($barang))
-                                                                                <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3,'{{$keys}}')" id="id_barang{{$keys}}" required>
-                                                                                    @foreach($barang as $item)
-                                                                                        <option value="{{ $item->id }}" @if($n_data->id_barang == $item->id) selected @endif>{{ $item->nm_barang }}</option>
-                                                                                    @endforeach
-                                                                                </select>
-                                                                            @endif
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="number" name="hpp" class="form-control" value="{{ $n_data->hpp }}" id="show_harga{{$keys}}" >
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="number" name="jumlah_jual" class="form-control" value="{{ $n_data->jumlah_jual }}">
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="number" name="diskon_item" class="form-control" value="{{ $n_data->diskon }}">
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="number" name="jumlah_harga" class="form-control" value="{{ $n_data->jumlah_harga }}" readonly>
-                                                                            @php($jumlah_uang += $n_data->jumlah_harga)
-                                                                        </td>
-                                                                        <td>
-                                                                            <button type="submit" class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                                                                            <a href="{{ url('detail-pSo/'.$n_data->id.'/delete') }}" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')"> <i class="fa fa-eraser"></i> </a>
-                                                                        </td>
-                                                                    </tr>
-                                                                </form>
-                                                            @endforeach
-                                                            </tbody>
-                                                            <tfoot>
-                                                            <tr>
-                                                                <td colspan="4">
-
-                                                                </td>
-                                                                <td>
-                                                                    Total item: {{ $jumlah_item }}
-                                                                </td>
-                                                                <td>
-                                                                    Total uang: <label id="sub_total">{{ $jumlah_uang }}</label>
-                                                                </td>
-                                                            </tr>
-                                                            </tfoot>
-                                                        </table>
-                                                    </div>
-                                                @endif
-                                            @else
-                                                @if(!empty($data->linkToPO->linkToDetailTawarBeli))
-                                                    <table style="width: 100%;">
-                                                        <thead>
-                                                        <tr>
-                                                            <td>No</td>
-                                                            <td>Nama</td>
-                                                            <td>Harga Beli</td>
-                                                            <td>Banyaknya</td>
-                                                            <td>Diskon</td>
-                                                            <td>Jumlah</td>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-
-                                                        @foreach($data->linkToPO->linkToDetailTawarBeli as $n_data)
-                                                           <tr>
-                                                               <th>{{ $no++ }} @php($jumlah_item++)</th>
-                                                               <th>{{ $n_data->linkToBarang->nm_barang }}</th>
-                                                               <th>{{ $n_data->hpp }}</th>
-                                                               <th>{{ $n_data->jumlah_barang }}</th>
-                                                               <th>{{ $n_data->diskon }}</th>
-                                                               <th>{{ $n_data->total_tj }}  @php($jumlah_uang += $n_data->total_tj)</th>
-                                                           </tr>
-                                                        @endforeach
-                                                        </tbody>
-                                                        <tfoot>
-                                                        <tr>
-                                                            <td colspan="4">
-                                                            </td>
-                                                            <td>
-                                                                Total item: {{ $jumlah_item }}
-                                                            </td>
-                                                            <td>
-                                                                Total uang: <label id="sub_total">{{ $jumlah_uang }}</label>
-                                                            </td>
-                                                        </tr>
-                                                        </tfoot>
-                                                    </table>
-                                                @endif
-                                            @endif
-
-
-                                            <div class="col-md-12">
-                                                <hr>
-                                                <div class="row">
-                                                    <form action="{{ url('pesanan-penjualan/'.$data->id) }}" method="post">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                {{ csrf_field() }}
-                                                                <input name="sub_total" type="hidden" value="{{ $jumlah_uang }}">
-                                                                <label>Diskon Tambahan</label>
-                                                                <input type="number" id="diskon_tambahan" class="form-control" name="diskon_tambahan" value="{{ $data->diskon_tambahan }}">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Pajak</label>
-                                                                <input type="number" id="pajak_tambahan" class="form-control" name="pajak" value="{{ $data->pajak }}">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label>Uang Muka</label>
-                                                                <input type="number" id="uang_muka" class="form-control" name="uang_muka" value="{{ $data->dp_so }}">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Kurang Bayar</label>
-                                                                <input type="number" id="kurang_bayar" id="" class="form-control" name="kurang_bayar" value="{{ $data->kurang_bayar }}" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label>Metode pembayaran</label>
-                                                                <select class="form-control" name="metode_bayar">
-                                                                    <option disabled>Pilih metode pembayaran</option>
-                                                                    @foreach ($metode_pembayaran as $key=> $item)
-                                                                        <option value="{{ $key }}">{{ $item }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal penjualan otomatis  </label> <button type="submit" class="btn btn-primary"> Proses </button>
-                                                            <label id="final_total" class="pull-right"></label>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                </div>
-
-                        </div>
-                        <!-- /.box-body -->
-
-                        <div class="box-footer">
-                            {{ csrf_field() }}
-
-                        </div>
-
+        <p></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Rincian Pesanan Penjualan dengan Nomor SO : <font color="#FF00GG">{{ $data->no_so }}</font> </h3>
+                         <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
                     </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <div class="col-md-12">
+                            <form role="form" action="{{ url('detail-pSo') }}" method="post">
+                            <div class="col-md-12 row" style="margin-top:10px">
+
+                                    {{ csrf_field() }}
+
+                                    <table style="width: 100%; margin-bottom: 10px">
+                                        <tr>
+                                            <th>Nama Barang</th>
+                                            <th>Harga Jual</th>
+                                            <th>Banyaknya</th>
+                                            <th>Diskon (misal: 10 %, tulis : 10)</td>
+                                            <th>Sub Total</th>
+                                        </tr>
+                                        <tr>
+                                            <input type="hidden" name="id_so" value="{{ $data->id }}">
+                                            <td>
+                                                @if(!empty($barang))
+                                                    <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3)"  required>
+                                                        @foreach($barang as $item)
+                                                            <option value="{{ $item->id }}" >{{ $item->nm_barang }}, {{ $item->linkToSatuan->satuan }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <input type="number" name="hpp" class="form-control" value="0" id="show_harga">
+                                            </td>
+                                            <td>
+                                                <input type="number" name="jumlah_jual" class="form-control" value="0">
+                                            </td>
+                                            <td>
+                                                <input type="number" name="diskon_item" class="form-control" value="0">
+                                            </td>
+                                            <td>
+                                                <input type="number" name="jumlah_harga" id="jumlah_harga" class="form-control" value="0" readonly>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary">Tambah Barang</button>
+                                    </div>
+                            </form>
+
+                                    <h3>Daftar Pesanan Penjualan </h3>
+
+                                        <table style="width: 100%; margin-bottom: 10px">
+                                            <thead>
+                                              <tr>
+                                                <th>Nama Barang</th>
+                                                <th>Harga Jual</th>
+                                                <th>QTY</th>
+                                                <th>Diskon (%)</th>
+                                                <th>Nilai Diskon</th>
+                                                <th>Sub Total Diskon</th>
+                                                <th>Sub Total PO</th>
+                                                <th>Aksi</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                            @php($total_qty=0)
+                                            @php($jumlah_uang=0)
+                                            @php($total_diskon=0)
+                                            @php($subtotal_diskon=0)
+                                            @foreach($data->linkToDetailPSO as $keys=> $n_data)
+                                            <form action="{{ url('detail-pSo/'. $n_data->id) }}" method="post">
+                                              @method('put') {{ csrf_field() }}
+                                                <tr>
+
+                                                    <td width="190">
+                                                        @if(!empty($barang))
+                                                            <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3,'{{$keys}}')" id="id_barang{{$keys}}" required>
+                                                                @foreach($barang as $item)
+                                                                    <option value="{{ $item->id }}" @if($n_data->id_barang == $item->id) selected @endif>{{ $item->nm_barang }}, {{$item->linkToSatuan->satuan}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        @endif
+                                                    </td>
+                                                    <td width="130">
+                                                        <input type="hidden" name="id_so" value="{{ $n_data->id_so }}">
+                                                        <input type="text" name="hpp" class="form-control" value="{{ rupiahView($n_data->hpp) }}" id="show_harga{{$keys}}" >
+                                                    </td>
+                                                    <td width="70">
+                                                          @php($total_qty += $n_data->jumlah_jual)
+                                                        <input type="text" name="jumlah_jual" class="form-control" value="{{ rupiahView($n_data->jumlah_jual) }}">
+                                                    </td>
+                                                    <td width="50">
+                                                        <input type="text" class="form-control" name="diskon_item"  value="{{ $n_data->diskon_item }}" required>
+                                                    </td>
+                                                      <td width="130">
+                                                      @php($diskon_item = $n_data->hpp * $n_data->diskon_item/100)
+                                                        <input type="text"  class="form-control" readonly value="{{ rupiahView($diskon_item) }}">
+                                                    </td>
+                                                    <td>
+                                                      @php($subtotal_diskon =(($n_data->hpp * $n_data->diskon_item/100) * $n_data->jumlah_jual))
+                                                      @php($total_diskon += (($n_data->hpp * $n_data->diskon_item/100) * $n_data->jumlah_jual))
+
+                                                        <input type="text" class="form-control"   placeholder="diskon per item" value="{{ rupiahView($subtotal_diskon) }}" readonly >
+                                                    </td>
+                                                      <td width="140">
+                                                        <input type="text" name="jumlah_harga" class="form-control" value="{{ rupiahView($n_data->jumlah_harga) }}" readonly>
+                                                        @php($jumlah_uang += $n_data->jumlah_harga)
+                                                    </td>
+                                                    <td>
+                                                        <button type="submit" class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                                                        <a href="{{ url('detail-pSo/'.$n_data->id.'/delete') }}" class="btn btn-danger" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')"><i class="fa fa-eraser"></i></a>
+                                                    </td>
+
+                                                </tr>
+                                            </form>
+                                        @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <th colspan="2">Total</th>
+                                                <th colspan="3">&nbsp;&nbsp;&nbsp;{{ $total_qty }} item</th>
+                                                <th colspan="1"> &nbsp;&nbsp;&nbsp;{{ rupiahView($total_diskon) }}</th>
+                                                <th>  &nbsp;&nbsp;&nbsp;{{ rupiahView($jumlah_uang) }}</th>
+                                            </tr>
+                                          </tfoot>
+                                        </table>
+                            </div>
+
+                            </div>
+                            <form action="{{ url('pesanan-penjualan/'.$data->id) }}" method="post">
+                                {{ csrf_field() }}
+                                  <input name="sub_total" type="hidden" value="{{ $jumlah_uang }}">
+                                   <div class="col-md-12">
+                                       <div class="row">
+                                         <div class="col-md-6">
+                                             <div class="form-group">
+                                                 <label>Diskon Tambahan (Bilangan)</label>
+                                                 <input type="text" id="rupiah2" name="diskon_tambahan" @if(!empty($data->diskon_tambahan)) value="{{ rupiahView($data->diskon_tambahan) }}" @else value="0" @endif class="form-control" required>
+                                             </div>
+
+                                         </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label>Pajak (dalam %, misal: 10 %, tulis : 10)</label>
+                                                   <input type="number" name="pajak" class="form-control" @if(!empty($data->pajak)) value="{{ $data->pajak }}" @else  value="0" @endif >
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                         <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label>Uang Muka</label>
+                                                   <input type="text"  id="rupiah" name="uang_muka" @if(!empty($data->dp_po)) value="{{ rupiahView($data->dp_so) }}" @else value="0" @endif class="form-control" required>
+                                               </div>
+                                         </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label>Kurang Bayar</label>
+
+                                                   <input type="text" readonly name="kurang_bayar" class="form-control" @if(!empty($data->kurang_bayar)) value="{{ rupiahView($data->kurang_bayar) }}" @endif required>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label>Keterangan</label>
+                                                   <textarea name="ket" class="form-control">@if(!empty($data->ket))  {!! $data->ket !!} @endif</textarea>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label>Total Net</label>
+                                                   <input type="text"  readonly class="form-control" @if(!empty($data->total)) value="{{ rupiahView($data->total) }}" @endif >
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="col-md-12">
+                                       <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal penjualan otomatis  </label> <button type="submit" class="btn btn-primary"> Proses </button>
+                                       <label id="final_total" class="pull-right"></label>
+                                   </div>
+                            </form>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-            </div>
-        </section>
-        <!-- /.content -->
-    </div>
+              <!-- /.box-primary-->
+          </div>
+          <!--./col-md-12-->
+      </div>
+      <!--./row-->
+    </section>
+    <!-- /.content -->
+</div>
+<!--./content-wrapper-->
 @stop
 
 @section('plugins')
+@include('user.global.rupiah_input')
+@include('user.global.rupiah_input2')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
@@ -337,15 +232,7 @@
             format: 'dd-mm-yyyy'
         });
 
-        $('#datepicker2').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy'
-        });
 
-        $('#datepicker3').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy'
-        });
 
         $('[name="hpp"]').keyup(function () {
             calculate_total();

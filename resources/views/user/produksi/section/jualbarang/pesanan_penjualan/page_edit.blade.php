@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Pesanan Penjualan</h3>
+                        <h3 class="box-title">Formulir Ubah Pesanan Penjualan</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -33,10 +33,6 @@
                               {{ csrf_field() }}
                                 <div class="col-md-12">
                                     @method('put')
-                                    <div class="form-group">
-                                        <label>No Pesanan</label>
-                                        <input type="text" class="form-control" name="no_so" value="{{ $data->no_so }}">
-                                    </div>
                                     <div class="form-group">
                                         <label>Tanggal Pesanan</label>
                                         <div class="input-group date">
@@ -49,6 +45,15 @@
                                         <small style="color: red">* Tidak Boleh Kosong</small>
                                     </div>
                                     <div class="form-group">
+                                        <label>No Pesanan Penjualan</label>
+                                        <input type="text" class="form-control" name="no_so" value="{{ $data->no_so }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>No Pesanan Pembelian</label>
+                                        <input type="text" class="form-control" name="no_po" value="{{ $data->no_po }}">
+                                    </div>
+
+                                    <!--<div class="form-group">
                                         <label for="exampleInputEmail1">No. PO</label>
                                         <select class="form-control select2" style="width: 100%;" name="id_po" >
                                             <option value="null">Pilihan Penawaran Penjualan</option>
@@ -59,7 +64,7 @@
                                             @endif
                                         </select>
                                         <small style="color: red">* Tidak Boleh Kosong</small>
-                                    </div>
+                                    </div>-->
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Klien</label>
                                         <select class="form-control select2" style="width: 100%;" name="id_klien" required>
@@ -84,11 +89,6 @@
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="keterangan">Keterangan</label>
-                                        <textarea class="form-control" name="ket">{{ $data->ket }}</textarea>
-                                    </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
@@ -102,7 +102,6 @@
                             {{ csrf_field() }}
 
                         </div>
-
                 </div>
             </div>
         </div>

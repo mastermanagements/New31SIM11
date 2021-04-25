@@ -21,8 +21,8 @@ class PDiskon extends Controller
         $this->validate($req,[
            'jenis_diskon'=> 'required',
            'jumlah_maks_beli' => 'required',
-           'diskon_persen' => 'required',
-           'diskon_nominal'=>'required',
+           //'diskon_persen' => 'required',
+          // 'diskon_nominal'=>'required',
            'id_group'=>'required',
         ]);
 
@@ -35,9 +35,9 @@ class PDiskon extends Controller
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
 
         if($model->save()){
-            return redirect('Penjualan')->with('message_success', 'Diskon telah ditambahkan');
+            return redirect('Penjualan')->with('message_success', 'Diskon telah ditambahkan')->with('tab3','tab3');
         }else{
-            return redirect('Penjualan')->with('message_fail', 'Diskon gagal ditambahkan');
+            return redirect('Penjualan')->with('message_fail', 'Diskon gagal ditambahkan')->with('tab3','tab3');
         }
     }
 
