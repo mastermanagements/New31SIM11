@@ -28,8 +28,9 @@ class PComplainBarang extends Migration
             $table->text('alasan_ditolah')->nullable();
             $table->enum('konfirm_klien',['0','1'])->default(0);
             $table->integer('id_perusahaan')->unsigned();
-            $table->integer('id_karyawan')->default(0);
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->integer('id_karyawan')->unsigned();
+
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->timestamps();
         });
     }

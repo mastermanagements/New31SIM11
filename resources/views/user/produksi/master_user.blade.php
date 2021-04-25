@@ -82,21 +82,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
-<script>
-    $(function () {
-        $('#example1').DataTable();
-        $('#example3').DataTable();
-        $('#example2').DataTable();
-        $('#example4').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-
-    })
-
-</script>
+     <script>
+         $(function () {
+             $('#example1').DataTable();
+             $('#example3').DataTable();
+             $('#example2').DataTable({
+                 'paging'      : true,
+                 'lengthChange': false,
+                 'searching'   : false,
+                 'ordering'    : true,
+                 'info'        : true,
+                 'autoWidth'   : false
+             })
+             get_harga = function(functionNumber,segment) {
+                 if(segment == undefined){
+                     var id_barang = $('[name="id_barang"]').val();
+                 }else{
+                     var id_barang = $('#id_barang'+segment).val();
+                 }
+                 $.ajax({
+                     url : "{{ url('getHargaBarang') }}",
+                     type : 'post',
+                     data : {
+                         '_token':'{{csrf_token()}}',
+                         'id_barang': id_barang,
+                         'number_call_function':functionNumber
+                     },
+                     success: function (result) {
+                         console.log(segment);
+                         if(segment == undefined){
+                             $('#show_harga').val(result.harga);
+                         }else{
+                             $('#show_harga'+segment).val(result.harga);
+                         }
+                     }
+                 });
+             }
+         });
+     </script>
 </body>
 </html>

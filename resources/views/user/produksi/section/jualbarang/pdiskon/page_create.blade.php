@@ -52,7 +52,7 @@
                                         <input type="number" class="form-control" name="jumlah_maks_beli">
                                     </div>
                                     <div class="form-group">
-                                        <label>Diskon Persen</label>
+                                        <label>Diskon Persen (%)</label>
                                         <input type="number" class="form-control" name="diskon_persen">
                                     </div>
                                     <div class="form-group">
