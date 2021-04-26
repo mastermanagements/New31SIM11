@@ -30,8 +30,10 @@ class TawarBeli extends Controller
         $model->no_tawar = $req->no_tawar;
         $model->tgl_tawar = $req->tgl_tawar;
         $model->tgl_berlaku = $req->tgl_berlaku;
+        $model->tgl_kirim = $req->tgl_kirim;
         $model->id_supplier = $req->id_supplier;
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        $model->id_karyawan = Session::get('id_karyawan');
 
         if($model->save()){
             return redirect('Pembelian')->with('message_success','penawaran pembelian sudah dibuat');
@@ -127,5 +129,5 @@ class TawarBeli extends Controller
     }
 
 
-    
+
 }

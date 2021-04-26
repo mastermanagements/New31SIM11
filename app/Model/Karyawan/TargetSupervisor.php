@@ -18,5 +18,9 @@ class TargetSupervisor extends Model
   {
     return $this->belongsTo('App\Model\Superadmin_ukm\U_jabatan_p', 'id_jabatan_p');
   }
+  public function getStrategiSup()
+  {
+		return $this->hasOne('App\Model\Karyawan\StrategiSupervisor', 'id_tsup');
+  }
 
 }

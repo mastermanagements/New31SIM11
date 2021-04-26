@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Superadmin_sim\K_master_akun as kmA;
-use App\Model\Keuangan\Akun as akun_master;
-use App\Model\Keuangan\SubAkun as SB;
+use App\Model\Keuangan\Akun as akun_master; //k_akun_ukm
+use App\Model\Keuangan\SubAkun as SB;//k_sub_akun_ukm
 use App\Model\Superadmin_sim\K_master_sub_akun as KmsA;
-use App\Model\Keuangan\SubSubAkun as ssA;
+use App\Model\Keuangan\SubSubAkun as ssA; //k_subsub_akun_ukm
 
 
 class Akun extends Controller
@@ -36,7 +36,7 @@ class Akun extends Controller
     {
         $data = [
           'master_akun'=>kmA::all(),
-          'title'=> 'Pengaturan Akun',
+          'title'=> 'Menu pengaturan Akun',
           'menu'=>'peng_akun'
         ];
         return view('user.keuangan.section.akun.page_default', $data);
@@ -79,7 +79,7 @@ class Akun extends Controller
     {
         $data = [
             'akun_ukm'=>akun_master::all()->where('id_perusahaan', $this->id_perusahaan),
-            'title'=> 'Daftar Akun',
+            'title'=> 'Daftar Akun UKM',
             'menu'=>'Daf_akun'
         ];
         return view('user.keuangan.section.akun.page_default', $data);

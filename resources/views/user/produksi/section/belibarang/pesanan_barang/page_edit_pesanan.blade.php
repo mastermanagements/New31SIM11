@@ -26,7 +26,7 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Pesanan Pembelian</h3>
+                            <h3 class="box-title">Ubah Pesanan Pembelian</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
@@ -42,9 +42,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal. PO</label>
-                                        <input type="date" name="tgl_po" class="form-control"  value="{{ $data->tgl_po }}" required>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" name="tgl_po" class="form-control" id="datepicker" value="{{ tanggalView($data->tgl_po) }}" required>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
+
+                                    <!--<div class="form-group">
                                         <label>Penawaran Pembelian</label>
                                         <select class="form-control select2" name="id_tawar_beli" style="width: 100%">
                                             @if(!empty($penawaran_pembelian))
@@ -54,24 +60,29 @@
                                                 @endforeach
                                             @endif
                                         </select>
-                                    </div>
+                                    </div>-->
                                     <div class="form-group">
                                         <label>Supplier</label>
                                         <select class="form-control select2" name="id_supplier"  required style="width: 100%">
                                             @if(!empty($supplier))
                                                 <option>Pilihan supplier</option>
                                                 @foreach($supplier as $data_supplier)
-                                                    <option value="{{ $data->id }}" @if($data->id_supplier==$data_supplier->id) selected @endif>{{ $data_supplier->nama_suplier }}</option>
+                                                    <option value="{{ $data_supplier->id }}" @if($data->id_supplier==$data_supplier->id) selected @endif>{{ $data_supplier->nama_suplier }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Tanggal Dikirim</label>
-                                        <input type="date" name="tgl_dikirim" class="form-control" value="{{ $data->tgl_krm }}" required>
+                                        <label>Tanggal Kirim</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" name="tgl_krm" class="form-control" id="datepicker2" value="{{ tanggalView($data->tgl_krm) }}" required>
+                                        </div>
                                     </div>
 
-                                <div class="col-md-12">
+                                <!--<div class="col-md-12">
                                  <div class="col-md-12 row" style="margin-top:10px">
 
                                         {{ csrf_field() }}
@@ -152,12 +163,10 @@
                                                    </div>
                                                </div>
                                            </div>
-                                       </div>
+                                       </div>-->
                                        <div class="col-md-12">
                                          <button class="btn btn-primary pull-left"> Simpan Pesanan pembelian </button>
                                        </div>
-
-                                {{--</form>--}}
                                 </form>
                             </div>
                         </div>
@@ -175,11 +184,14 @@
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
-        $('[name="persentase"]').keyup(function () {
-            var persentase = ($('[name="hpp"]').val()/100) * $(this).val();
-            var harga_jual =parseInt($('[name="hpp"]').val()) + persentase;
-            $('[name="harga_jual"]').val(harga_jual);
-        })
+      $('#datepicker').datepicker({
+          autoclose: true,
+          format: 'dd-mm-yyyy'
+      });
+      $('#datepicker2').datepicker({
+          autoclose: true,
+          format: 'dd-mm-yyyy'
+      });
     </script>
 
 @stop

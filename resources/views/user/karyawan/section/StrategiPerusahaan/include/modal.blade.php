@@ -1,39 +1,7 @@
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
-<!---modal tambah strategi tahunan--->
-<div class="modal fade" id="modal-tambah-SJP">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <form action="{{ url('store-sjp') }}" method="post">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulir Tambah Strategi Jangka Panjang Perusahaan</h4>
-                </div>
-                <div class="modal-body">
-					<div class="form-group">
-                        <label for="exampleInputEmail1">Masukan Strategi Jangka Panjang</label>
-                        <textarea class="form-control"  name="isi_sjp" id="isi_sjp" required></textarea>
-                        <small style="color: red">* Tidak boleh kosong</small>
-						<input type="text" name="id_tjp">
-					</div>
-					
-					<div class="modal-footer">
-                    {{ csrf_field() }}
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
-                    <button type="submit" id="submitSJP" class="btn btn-primary">Simpan</button>
-					</div>
-				</form>
-			</div>
-        <!-- /.modal-content -->
-		</div>
-    <!-- /.modal-dialog -->
-	</div>
-</div>
-<!---end modal tambah strategi tahunan--->
-
 <!---modal ubah sjp--->
-<div class="modal fade" id="modal-ubah-SJP">
+<div class="modal fade" id="modal-ubah-sjp">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form action="{{ url('update-sjp')}}" method="post">
@@ -42,178 +10,195 @@
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Formulir Ubah Strategi Jangka Panjang Perusahaan</h4>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Isi Strategi Jangka Panjang Perusahaan</label>
-                        <textarea class="form-control"  name="isi_sjp_ubah"  required></textarea>
-                         <input type="text" name="id_sjp">
-                        <small style="color: red" id="notify"></small>
-                    </div>
-                </div>
+              <div class="modal-body">
+                <div class="form-group">
+    							<label for="exampleInputEmail1">Strategi Jangka Panjang Perusahaan</label>
+    							<textarea class="form-control"  name="isi_ubah" id="isi_ubah"  required></textarea>
+    							<small style="color: red" id="notify"></small>
+                  <input type="hidden" name="id_tjpg_ubah">
+                  <input type="hidden" name="id_sjp_ubah">
+    						</div>
                 <div class="modal-footer">
                     {{ csrf_field() }}
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
                     <button type="submit" id="submitUbahSJP" class="btn btn-primary">Simpan</button>
                 </div>
-            </form>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+              </div>
+          <!-- /.modal-body -->
+          </form>
+      </div>
+     <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-<!---end modal ubah sjp--->
-
-<!---modal tambah strategi tahunan --->
-<div class="modal fade" id="modal-tambah-Stahunan">
+<!---modal ubah sekutif--->
+<div class="modal fade" id="modal-ubah-sekutif">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="{{ url('store-stahunan') }}" method="post">
+            <form action="{{ url('update-sekutif')}}" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulir Tambah Strategi Tahunan Perusahaan</h4>
+                    <h4 class="modal-title">Formulir Ubah Strategi Eksekutif Perusahaan</h4>
                 </div>
-                <div class="modal-body">
-					<div class="form-group">
-                        <label for="exampleInputEmail1">Masukan Strategi Tahunan</label>
-                        <textarea class="form-control" placeholder="Masukan Strategi Anda" name="isi_stahunan" id="isi_stahunan" required></textarea>
-                        <small style="color: red">* Tidak boleh kosong</small>
-						<input type="text" name="id_sjp">
-						<input type="text" name="id_target_tahunan">
-					</div>
-					<div class="modal-footer">
-                    {{ csrf_field() }}
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
-                    <button type="submit" id="submitStahunan" class="btn btn-primary">Simpan</button>
-					</div>
-				</form>
-			</div>
-        <!-- /.modal-content -->
-		</div>
-    <!-- /.modal-dialog -->
-	</div>	
-</div>
-<!-- /.modal -->
-<!---end modal tambah strategi tahunan --->
-
-<!---modal ubah strategi tahunan--->
-<div class="modal fade" id="modal-ubah-Stahunan">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <form action="{{ url('update-stahunan')}}" method="post">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulir Ubah Strategi Tahunan Perusahaan</h4>
+              <div class="modal-body">
+                <div>
+                    <label>Nama Strategi Eksekutf</label>
+                    <input type="text" name="nama_ubah" class="form-control" required></input>
+                    <small style="color: red" id="notify"></small>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Isi Strategi Tahunan</label>
-                        <textarea class="form-control"  name="isi_stahunan_ubah"  required></textarea>
-                        <input type="text" name="id_stahunan">
-                        <small style="color: red" id="notify"></small>
-                    </div>
-                </div>
+                <div class="form-group">
+    							 <label for="exampleInputEmail1">Strategi Eksekutif Perusahaan</label>
+    							 <textarea class="form-control"  name="isi_eks_ubah" id="isi_eks_ubah"  required></textarea>
+    							 <small style="color: red" id="notify"></small>
+                   <input type="hidden" name="id_teks_ubah">
+                   <input type="hidden" name="id_seks_ubah">
+    						</div>
                 <div class="modal-footer">
                     {{ csrf_field() }}
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
-                    <button type="submit" id="submitUbahStahunan" class="btn btn-primary">Simpan</button>
+                    <button type="submit" id="submitUbahSekutif" class="btn btn-primary">Simpan</button>
                 </div>
-            </form>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+              </div>
+          <!-- /.modal-body -->
+          </form>
+      </div>
+     <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-<!---end modal ubah strategi tahunan--->
 
-<!---modal tambah strategi bulanan--->
-<div class="modal fade" id="modal-tambah-Sbulanan">
+<!---modal ubah manager--->
+<div class="modal fade" id="modal-ubah-man">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="{{ url('store-sbulanan') }}" method="post">
+            <form action="{{ url('update-sman')}}" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulir Tambah Strategi Bulanan Perusahaan</h4>
+                    <h4 class="modal-title">Formulir Ubah Strategi Manager Perusahaan</h4>
                 </div>
-                <div class="modal-body">
-					<div class="form-group">
-                        <label for="exampleInputEmail1">Masukan Strategi Bulanan</label>
-                        <textarea class="form-control" placeholder="Masukan Strategi Anda" name="isi_sbulanan" id="isi_sbulanan" required></textarea>
-                        <small style="color: red">* Tidak boleh kosong</small>
-						<input type="text" name="id_target_bulanan">
-						<input type="text" name="id_stahunan">
-					</div>
-					<div class="modal-footer">
-                    {{ csrf_field() }}
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
-                    <button type="submit" id="submitSJP" class="btn btn-primary">Simpan</button>
-					</div>
-				</form>
-			</div>
-        <!-- /.modal-content -->
-		</div>
-    <!-- /.modal-dialog -->
-	</div>
-</div>	
-<!-- /.modal -->
-<!---end modal tambah strategi bulanan--->
-<!---modal ubah strategi bulanan--->
-<div class="modal fade" id="modal-ubah-Sbulanan">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <form action="{{ url('update-sbulanan')}}" method="post">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulir Ubah Strategi Bulanan Perusahaan</h4>
+              <div class="modal-body">
+                <div>
+                    <label>Nama Strategi Manager</label>
+                    <input type="text" name="nama_ubah" class="form-control" required></input>
+                    <small style="color: red" id="notify"></small>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Isi Strategi Bulanan</label>
-                        <textarea class="form-control"  name="isi_sbulanan_ubah"  required></textarea>
-                        <input type="text" name="id_sbulanan">
-                        <small style="color: red" id="notify"></small>
-                    </div>
-                </div>
+                <div class="form-group">
+    							 <label for="exampleInputEmail1">Strategi Manager Perusahaan</label>
+    							 <textarea class="form-control"  name="isi_man_ubah" id="isi_man_ubah"  required></textarea>
+    							 <small style="color: red" id="notify"></small>
+                   <input type="hidden" name="id_tman_ubah">
+                   <input type="hidden" name="id_sman_ubah">
+    						</div>
                 <div class="modal-footer">
                     {{ csrf_field() }}
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
-                    <button type="submit" id="submitUbahSbulanan" class="btn btn-primary">Simpan</button>
+                    <button type="submit" id="submitUbahSman" class="btn btn-primary">Simpan</button>
                 </div>
-            </form>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+              </div>
+          <!-- /.modal-body -->
+          </form>
+      </div>
+     <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-<!---end modal ubah strategi bulanan--->
+<!---modal ubah supervisor--->
+<div class="modal fade" id="modal-ubah-sup">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="{{ url('update-ssup')}}" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Formulir Ubah Strategi Supervisor Perusahaan</h4>
+                </div>
+              <div class="modal-body">
+                <div>
+                    <label>Nama Strategi Supervisor</label>
+                    <input type="text" name="nama_ubah" class="form-control" required></input>
+                    <small style="color: red" id="notify"></small>
+                </div>
+                <div class="form-group">
+    							 <label for="exampleInputEmail1">Strategi Supervisor Perusahaan</label>
+    							 <textarea class="form-control"  name="isi_sup_ubah" id="isi_sup_ubah"  required></textarea>
+    							 <small style="color: red" id="notify"></small>
+                   <input type="hidden" name="id_tsup_ubah">
+                   <input type="hidden" name="id_ssup_ubah">
+    						</div>
+                <div class="modal-footer">
+                    {{ csrf_field() }}
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
+                    <button type="submit" id="submitUbahSsup" class="btn btn-primary">Simpan</button>
+                </div>
+              </div>
+          <!-- /.modal-body -->
+          </form>
+      </div>
+     <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!---modal ubah supervisor--->
+<div class="modal fade" id="modal-ubah-staf">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="{{ url('update-sstaf')}}" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Formulir Ubah Strategi Staf Perusahaan</h4>
+                </div>
+              <div class="modal-body">
+                <div>
+                    <label>Nama Strategi Staf</label>
+                    <input type="text" name="nama_ubah" class="form-control" required></input>
+                    <small style="color: red" id="notify"></small>
+                </div>
+                <div class="form-group">
+    							 <label for="exampleInputEmail1">Strategi Staf Perusahaan</label>
+    							 <textarea class="form-control"  name="isi_staf_ubah" id="isi_staf_ubah"  required></textarea>
+    							 <small style="color: red" id="notify"></small>
+                   <input type="hidden" name="id_tstaf_ubah">
+                   <input type="hidden" name="id_sstaf_ubah">
+    						</div>
+                <div class="modal-footer">
+                    {{ csrf_field() }}
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
+                    <button type="submit" id="submitUbahSstaf" class="btn btn-primary">Simpan</button>
+                </div>
+              </div>
+          <!-- /.modal-body -->
+          </form>
+      </div>
+     <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 <script>
-
        window.onload = function() {
-           CKEDITOR.replace( 'isi_sjp',{
-                height: 400
-           } );
-		   CKEDITOR.replace( 'isi_sjp_ubah',{
-                height: 400
-           } );
-		   CKEDITOR.replace( 'isi_stahunan',{
-                height: 300
-           } );
-		   CKEDITOR.replace( 'isi_stahunan_ubah',{
+           CKEDITOR.replace( 'isi_ubah',{
                 height: 200
            } );
-		   CKEDITOR.replace( 'isi_sbulanan',{
-                height: 300
+           CKEDITOR.replace( 'isi_eks_ubah',{
+                height: 200
            } );
-		   CKEDITOR.replace( 'isi_sbulanan_ubah',{
+           CKEDITOR.replace( 'isi_man_ubah',{
+                height: 200
+           } );
+           CKEDITOR.replace( 'isi_sup_ubah',{
+                height: 200
+           } );
+           CKEDITOR.replace( 'isi_staf_ubah',{
                 height: 200
            } );
        };
-	  
-</script>
 
+</script>

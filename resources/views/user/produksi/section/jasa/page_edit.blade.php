@@ -2,9 +2,7 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    {{--<link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">--}}
+      <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
 
 @stop
 
@@ -26,53 +24,76 @@
                 <div class="col-md-12">
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Formulir Jasa</h3>
+                            <h3 class="box-title">Formulir Ubah Layanan Jasa</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ url('update-jasa/'.$data_jasa->id) }}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{ url('Jasa/'.$data_jasa->id) }}" method="post" enctype="multipart/form-data">
+                          {{ csrf_field() }}
+                          @method('put')
                             <div class="box-body">
-
+                              <div class="form-group">
+                                  <label for="exampleInputEmail1">Nama Layanan</label>
+                                  <input type="text" name="nm_layanan" class="form-control" placeholder="Layanan"   value="{{ $data_jasa->nm_layanan }}" required/>
+                                  <small style="color: red">* Tidak Boleh Kosong</small>
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleInputEmail1">Quantity</label>
+                                  <input type="number" min="0" name="peritem" class="form-control" placeholder="Jumlah layanan per"   value="{{ $data_jasa->peritem }}" required/>
+                                  <small style="color: red">* Tidak Boleh Kosong</small>
+                              </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Ketegori Jasa</label>
-                                    <select class="form-control select2" style="width: 100%;" name="id_kategori" required>
-                                        @if(empty($kategori_jasa))
-                                            <option>Kategori Jasa Masih Kosong</option>
+                                    <label for="exampleInputEmail1">Satuan Layanan</label>
+                                    <select class="form-control select2" style="width: 100%;" name="id_satuan" required>
+                                        @if(empty($satuan))
+                                            <option>Satuan Layanan Masih Kosong</option>
                                         @else
-                                            @foreach($kategori_jasa as $value)
-                                                <option value="{{ $value->id }}" @if($data_jasa->id_kategori_produk==$value->id) selected @endif>{{ $value->nm_kategori_p }}</option>
+                                            @foreach($satuan as $value)
+                                                <option value="{{ $value->id }}" @if($data_jasa->id_satuan==$value->id) selected @endif>{{ $value->satuan }}</option>
                                             @endforeach
                                         @endif
                                     </select>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Sub Ketegori Jasa</label>
-                                    <select class="form-control select2" style="width: 100%;" name="id_subkategori_produk" required>
-                                        <option value="0">Kategori Belum dipilih</option>
+                                    <label for="exampleInputEmail1">Lama Pengerjaan</label>
+                                    <input type="number" min="0" name="waktu_kerja" class="form-control" placeholder="Lama waktu pengerjaan layanan, misal: 3 hari, Tulis: 3"   value="{{ $data_jasa->waktu_kerja }}" required/>
+                                    <small style="color: red">* Tidak Boleh Kosong</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Satuan Waktu Pengerjaan</label>
+                                    <select class="form-control select2" style="width: 100%;" name="satuan_waktu" required>
+                                        @if(empty($satuan))
+                                            <option>Satuan waktu pengerjaan Masih Kosong</option>
+                                        @else
+                                            @foreach($satuan as $value)
+                                                <option value="{{ $value->id }}" @if($data_jasa->satuan_waktu==$value->id) selected @endif>{{ $value->satuan }}</option>
+                                            @endforeach
+                                        @endif
                                     </select>
-                                    <small style="color: orange">* Isi Jika Perlu</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Sub Sub Ketegori Jasa</label>
-                                    <select class="form-control select2" style="width: 100%;" name="id_subsubkategori_produk" required>
-                                        <option value="0">Sub Kategori Belum dipilih</option>
-                                   </select>
-                                    <small style="color: orange">* Isi Jika Perlu</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Nama Jasa</label>
-                                    <input type="text" name="nm_jasa" class="form-control" placeholder="nama jasa"  value="{{ $data_jasa->nm_jasa }}" required/>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Harga jasa</label>
-                                    <input type="number" min="0" name="harga_jasa" class="form-control" placeholder="Harga Jasa"   value="{{ $data_jasa->harga_jasa }}" required/>
+                                    <label for="exampleInputEmail1">Kepastian waktu selesai</label>
+                                    <div class="form-group">
+                                        @foreach($waktu_selesai as $key => $value)
+                                            <label>
+                                                <input type="radio"  name="waktu_selesai" class="minimal" @if($key==$data_jasa->waktu_selesai) checked @endif value="{{ $key }}" required>
+                                                {{ $value }}
+                                            </label>
+                                        @endforeach
+                                        <p></p>
+                                        <small style="color: red">* Tidak Boleh Kosong</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Biaya</label>
+                                    <input type="number" min="0" name="biaya" class="form-control" placeholder="Biaya Layanan"   value="{{ $data_jasa->biaya }}" required/>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Rincian Jasa</label>
-                                    <textarea name="rincian_jasa" class="form-control" required>{!! $data_jasa->rincian_jasa  !!} </textarea>
+                                    <label for="exampleInputEmail1">Keterangan</label>
+                                    <textarea name="ket" class="form-control" id="ket">{!! $data_jasa->ket  !!} </textarea>
                                     <small style="color: red">* Tidak Boleh Kosong</small>
                                 </div>
 
@@ -80,8 +101,6 @@
                             <!-- /.box-body -->
 
                             <div class="box-footer">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="_method" value="put">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
@@ -94,28 +113,17 @@
 @stop
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    {{--<script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>--}}
+
     <script>
 
         window.onload = function() {
-            CKEDITOR.replace( 'rincian_jasa',{
-                height: 600
+            CKEDITOR.replace( 'ket',{
+                height: 100
             } );
         };
-
-        //        $('#datepicker').datepicker({
-        //            autoclose: true,
-        //            format: 'dd-mm-yyyy'
-        //        });
-        //        $('#datepicker1').datepicker({
-        //            autoclose: true,
-        //            format: 'dd-mm-yyyy'
-        //        });
 
         $(function () {
             $('.select2').select2()
         });
     </script>
-    @include('user.produksi.section.jasa.JS.JS')
 @stop

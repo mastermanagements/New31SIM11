@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Pembelian</h3>
+                        <h3 class="box-title">Formulir Seting Akun Pembelian</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->

@@ -34,7 +34,7 @@
                        <li @if($content_menu=="misi") class="active" @endif><a href="{{ url('misi') }}">Misi</a></li>
                        <li @if($content_menu=="akta") class="active" @endif><a href="{{ url('akta') }}" >Akta</a></li>
                        <li  @if($content_menu=="isi_usaha") class="active" @endif><a href="{{ url('izin-usaha') }}" >Izin Usaha</a></li>
-                       <!--<li  @if($content_menu=="jabatan") class="active" @endif><a href="{{ url('jabatan') }}" >Jabatan</a></li>-->
+                       <li  @if($content_menu=="rek_ukm") class="active" @endif><a href="{{ url('rek-ukm') }}" >Rekening Perusahaan</a></li>
                    </ul>
                    <div class="tab-content">
                        <div class="active tab-pane"
@@ -48,8 +48,8 @@
                             id="akta"
                             @elseif($content_menu=="isi_usaha")
                             id="isi_usaha"
-                            @elseif($content_menu=="jabatan")
-                            id="jabatan"
+                            @elseif($content_menu=="rek_ukm")
+                            id="rek_ukm"
                             @endif
                        >
                            @if($content_menu=="profil")
@@ -62,8 +62,8 @@
                                @include('user.superadmin_ukm.master.section.akta_perusahaan.include.akta_content')
                            @elseif($content_menu=="isi_usaha")
                                @include('user.superadmin_ukm.master.section.isin_usaha_perusahaan.include.isin_content')
-                           @elseif($content_menu=="jabatan")
-                               @include('user.superadmin_ukm.master.section.profil_perusahaan.include.profil_content')
+                           @elseif($content_menu=="rek_ukm")
+                               @include('user.superadmin_ukm.master.section.rek_ukm.include.rek_ukm_content')
                            @endif
                        </div>
                        <!-- /.tab-pane -->

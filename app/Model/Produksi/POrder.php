@@ -10,7 +10,7 @@ class POrder extends Model
 
     protected $table = 'p_order';
 
-    protected $fillable = ['id_po','tgl_order','no_order','id_supplier','tgl_tiba','diskon_tambahan','pajak','dp_po','bayar','kurang_bayar','metode_bayar','tgl_jatuh_tempo','ongkir','ket','total','id_perusahaan'];
+    protected $fillable = ['id_po','tgl_order','no_order','id_supplier','tgl_tiba','diskon_tambahan','pajak','dp_po','bayar','kurang_bayar','metode_bayar','tgl_jatuh_tempo','ongkir','ket','total','status_cekbarang','respon_supplier','id_perusahaan','id_karyawan'];
 
     public function linkToPO()
     {
@@ -43,5 +43,9 @@ class POrder extends Model
 
     public function linkToMannyBayar(){
         return $this->hasMany('App\Model\Produksi\Bayar','id_order', 'id');
+    }
+    public function linkToReturnBeli()
+    {
+        return $this->hasOne('App\Model\Produksi\ReturnPembelian','id_order');
     }
 }

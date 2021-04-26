@@ -15,9 +15,9 @@ class CreateTableUTargetStaf extends Migration
     {
         Schema::create('u_target_staf', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_target_superv')->unsigned();;
+            $table->integer('id_target_superv')->unsigned();
             $table->string('bulan', 50);
-            $table->integer('nm_karyawan')->unsigned();;
+            $table->integer('nm_karyawan')->unsigned();
             $table->string('target_staf');
             $table->integer('jumlah_target');
             $table->string('satuan_target',40);
