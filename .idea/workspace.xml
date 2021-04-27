@@ -112,6 +112,14 @@
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/resources/views/webview/index.blade.php" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/resources/views/webview/pricing.blade.php" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/resources/views/webview/trainers.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/BarangSOP.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/SOPProduksi.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/barang_produksi/page_create.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/barang_produksi/page_edit.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/barang_sop/page_create.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/barang_sop/page_edit.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/proses_produksi/page_create.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/proses_produksi/page_edit.blade.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Models/User.php" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Models/User.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Providers/RouteServiceProvider.php" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Providers/RouteServiceProvider.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/composer.json" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/composer.json" />
@@ -126,9 +134,16 @@
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/routes/web.php" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/routes/web.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/webpack.mix.js" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/webpack.mix.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/Manufaktur.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/Manufaktur.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksiBaru.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksiBaru.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Manufaktur/P_Proses_Bisnis.php" afterPath="$PROJECT_DIR$/app/Model/Manufaktur/P_Proses_Bisnis.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Manufaktur/P_SOP_Produksi.php" afterPath="$PROJECT_DIR$/app/Model/Manufaktur/P_SOP_Produksi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Manufaktur/P_barang_Sop.php" afterPath="$PROJECT_DIR$/app/Model/Manufaktur/P_barang_Sop.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Manufaktur/P_tambah_produksi.php" afterPath="$PROJECT_DIR$/app/Model/Manufaktur/P_tambah_produksi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/manufaktur/tab/produksi_baru.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/manufaktur/tab/produksi_baru.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <list id="eb6b5197-784c-493f-a59a-f4a3d129c2ff" name="Revert: Administrasi -&gt; Lanjut Surat Masuk Dan Keluar" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1537,67 +1552,13 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="default.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/default.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-748">
-              <caret line="2" column="33" lean-forward="true" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SOP_produksi.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="14" column="70" lean-forward="true" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page_edit.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="38" column="127" lean-forward="false" selection-start-line="38" selection-start-column="127" selection-end-line="38" selection-end-column="127" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page_create.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="37" column="96" lean-forward="false" selection-start-line="37" selection-start-column="96" selection-end-line="37" selection-end-column="96" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="2366" column="17" lean-forward="true" selection-start-line="2366" selection-start-column="17" selection-end-line="2366" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProsesProduksi.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="322">
-              <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-              <folding>
-                <element signature="e#51#79#0#PHP" expanded="true" />
-              </folding>
+              <caret line="2369" column="17" lean-forward="true" selection-start-line="2369" selection-start-column="17" selection-end-line="2369" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1605,8 +1566,42 @@
       <file leaf-file-name="Manufaktur.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/Manufaktur.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="25" />
+            <state relative-caret-position="70">
+              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+              <folding>
+                <element signature="e#51#79#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="produksi_baru.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/tab/produksi_baru.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="26" column="49" lean-forward="true" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProsesProduksiBaru.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksiBaru.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="89" column="93" lean-forward="false" selection-start-line="89" selection-start-column="93" selection-end-line="89" selection-end-column="93" />
+              <folding>
+                <element signature="e#51#79#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="P_tambah_produksi.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Model/Manufaktur/P_tambah_produksi.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="14" column="66" lean-forward="false" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -1623,7 +1618,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>detail-Pso</find>
       <find>get_akun_penjualan</find>
       <find>jatu</find>
       <find>metode</find>
@@ -1653,6 +1647,7 @@
       <find>total_setelah_didiskon</find>
       <find>Maatwebsite</find>
       <find>login</find>
+      <find>data_barang</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1706,17 +1701,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/CekBarang.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/cek_barang/page_rincian_barang.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit_pesanan.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_rincian_barang_penawaran.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/pesanan_barang/page_edit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/detail_penawaran_penjualan/page_create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/detail_so/page_create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/penjualan/page_show.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/order_pembelian/page_rincian_barang.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/POrder.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/master_user.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/JS/JS.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/Produksi/DetailSales.php" />
@@ -1738,7 +1722,6 @@
         <option value="$PROJECT_DIR$/database/migrations/produksi/revisi/2021_04_17_090130_p_jumlah_kas.php" />
         <option value="$PROJECT_DIR$/app/Model/Produksi/JumlahKas.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/KerjaKasir.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/tab/produksi_baru.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/manufaktur/tab/monitoring.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/manufaktur/tab/selesai_produksi.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/manufaktur/tab/setting_akun.blade.php" />
@@ -1750,13 +1733,25 @@
         <option value="$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_092353_p_sop_produksi.php" />
         <option value="$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_101028_p_tambah_produksi.php" />
         <option value="$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_101114_p_tenaga_produksi.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Model/Manufaktur/P_SOP_Produksi.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/manufaktur/Manufaktur.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php" />
         <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/manufaktur/SOPProduksi.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/proses_produksi/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/app/Model/Manufaktur/P_Proses_Bisnis.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/proses_produksi/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php" />
+        <option value="$PROJECT_DIR$/app/Model/Manufaktur/P_barang_Sop.php" />
+        <option value="$PROJECT_DIR$/app/Model/Manufaktur/P_SOP_Produksi.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/manufaktur/BarangSOP.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/barang_sop/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/manufaktur/Manufaktur.php" />
+        <option value="$PROJECT_DIR$/app/Model/Manufaktur/P_tambah_produksi.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/barang_produksi/page_create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/barang_produksi/page_edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/manufaktur/tab/produksi_baru.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksiBaru.php" />
       </list>
     </option>
   </component>
@@ -1924,6 +1919,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1940,7 +1936,14 @@
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Model" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
@@ -1985,7 +1988,7 @@
               <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="manufaktur" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="pages" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="SOP_produksi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="barang_produksi" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
@@ -2000,13 +2003,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;Man&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/manufaktur/Manufaktur.php&#10;me&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/Superadmin_ukm/Menu_perusahaan.php&#10;Menu&#9;null&#9;null&#10;p_jumlah&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/produksi/revisi/2021_04_17_090130_p_jumlah_kas.php&#10;Jual&#9;null&#9;null&#10;Setting&#9;null&#9;null&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;PORD&#9;null&#9;null&#10;POR&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/POrder.php&#10;CekBarang&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/CekBarang.php&#10;ReturnPembelian&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/ReturnPembelian.php&#10;Pesanan&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PesananPembelian.php&#10;pesanan&#9;null&#9;null&#10;Pso&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/PSO.php&#10;Sales&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Deta&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/DetailSo.php&#10;Jenis&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/JenisAkunPenjualan.php&#10;Detai&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/DetailSo.php&#10;POr&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/POrder.php&#10;Psales&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Bayar&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/Bayar.php&#10;Tawa&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/TawarJual.php&#10;POrde&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/POrder.php&#10;Order&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/POrder.php&#10;JenisPem&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/JenisAkunPembelian.php&#10;Psal&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/PSales.php&#10;PSales&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;PesananPenjualan&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PesananPenjualan.php&#10;PSO&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/PSO.php&#10;AkunPen&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/AkunPenjualan.php&#10;JualBara&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JualBarang.php&#10;AkunPenjualan&#9;null&#9;null&#10;Comp&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/ComplainBarangJual.php&#10;JualB&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JualBarang.php&#10;Penjualan&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PesananPenjualan.php&#10;deta&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/DetailSales.php&#10;pSa&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Psa&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/PSales.php&#10;Klie&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Administrasi/Klien.php&#10;Klien&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Klien.php&#10;PS&#9;null&#9;null&#10;Pesa&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PesananPenjualan.php&#10;page_create&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/resources/views/user/produksi/section/jualbarang/pesanan_penjualan/page_create.blade.php&#10;Login&#9;null&#9;null&#10;w&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;DetailTaw&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/DetailBarangTawar.php&#10;TawarJua&#9;null&#9;null&#10;TawarJ&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="Manu&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/manufaktur/Manufaktur.php&#10;Barang&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/manufaktur/BarangSOP.php&#10;Sop&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Manufaktur/P_SOP_Produksi.php&#10;web&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;we&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;Man&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/manufaktur/Manufaktur.php&#10;me&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/Superadmin_ukm/Menu_perusahaan.php&#10;Menu&#9;null&#9;null&#10;p_jumlah&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/database/migrations/produksi/revisi/2021_04_17_090130_p_jumlah_kas.php&#10;Jual&#9;null&#9;null&#10;Setting&#9;null&#9;null&#10;PORD&#9;null&#9;null&#10;POR&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/POrder.php&#10;CekBarang&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/CekBarang.php&#10;ReturnPembelian&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/ReturnPembelian.php&#10;Pesanan&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PesananPembelian.php&#10;pesanan&#9;null&#9;null&#10;Pso&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/PSO.php&#10;Sales&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Deta&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/DetailSo.php&#10;Jenis&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/JenisAkunPenjualan.php&#10;Detai&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/DetailSo.php&#10;POr&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/POrder.php&#10;Psales&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Bayar&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/Bayar.php&#10;Tawa&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/TawarJual.php&#10;POrde&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/POrder.php&#10;Order&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/POrder.php&#10;JenisPem&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/utils/JenisAkunPembelian.php&#10;Psal&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/PSales.php&#10;PSales&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;PesananPenjualan&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PesananPenjualan.php&#10;PSO&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/PSO.php&#10;AkunPen&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/AkunPenjualan.php&#10;JualBara&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JualBarang.php&#10;AkunPenjualan&#9;null&#9;null&#10;Comp&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/ComplainBarangJual.php&#10;JualB&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/JualBarang.php&#10;Penjualan&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PesananPenjualan.php&#10;deta&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/DetailSales.php&#10;pSa&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Psa&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Produksi/PSales.php&#10;Klie&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Model/Administrasi/Klien.php&#10;Klien&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/administrasi/Klien.php&#10;PS&#9;null&#9;null&#10;Pesa&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/PesananPenjualan.php&#10;page_create&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/resources/views/user/produksi/section/jualbarang/pesanan_penjualan/page_create.blade.php&#10;Login&#9;null&#9;null&#10;w&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/routes/web.php&#10;DetailTaw&#9;FILE&#9;file://E:/xampp173/htdocs/New31SIM11/app/Http/Controllers/produksi/DetailBarangTawar.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
@@ -2026,11 +2028,11 @@
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\progressProyek\crud\modal" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\manufaktur\pages" />
+      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\manufaktur\pages\proses_produksi" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\manufaktur\pages\SOP_produksi" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\manufaktur\tab" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\jualbarang\kerja_kasir" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\jualbarang\settingkasir\akunKasir" />
-      <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\jualbarang\settingkasir" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2507,14 +2509,10 @@
       <workItem from="1619056026468" duration="275000" />
       <workItem from="1619057426533" duration="6086000" />
       <workItem from="1619070613235" duration="18000" />
-      <workItem from="1619070653393" duration="3572000" />
-    </task>
-    <task id="LOCAL-00164" summary="- perubahan tampilan barang&#10;- Crud harga barang satuan&#10;- migrasi harga barang satuan&#10;- modif interface sesuai document revisi">
-      <created>1608612449722</created>
-      <option name="number" value="00164" />
-      <option name="presentableId" value="LOCAL-00164" />
-      <option name="project" value="LOCAL" />
-      <updated>1608612449724</updated>
+      <workItem from="1619070653393" duration="3655000" />
+      <workItem from="1619214811052" duration="9150000" />
+      <workItem from="1619242243376" duration="141000" />
+      <workItem from="1619399034691" duration="7066000" />
     </task>
     <task id="LOCAL-00165" summary="- Perancangan Daftar Harga Jual Per Jumlah Barang">
       <created>1608697819283</created>
@@ -2852,11 +2850,18 @@
       <option name="project" value="LOCAL" />
       <updated>1619074804715</updated>
     </task>
-    <option name="localTasksCounter" value="213" />
+    <task id="LOCAL-00213" summary="- Perancangan Proses SOP dan CRUD P SOP">
+      <created>1619074915436</created>
+      <option name="number" value="00213" />
+      <option name="presentableId" value="LOCAL-00213" />
+      <option name="project" value="LOCAL" />
+      <updated>1619074915436</updated>
+    </task>
+    <option name="localTasksCounter" value="214" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2600157000" />
+    <option name="totallyTimeSpent" value="2616597000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2869,7 +2874,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24583964" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2859304" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28125" sideWeight="0.52118003" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18078668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2878,7 +2883,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28125" sideWeight="0.47881997" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3903177" sideWeight="0.50554675" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4913658" sideWeight="0.50554675" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -2934,7 +2939,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- penawaran penjualan&#10;- detail penawaran penjualan barang&#10;- pesanan penjualan" />
     <MESSAGE value="- revisi penawaran penjualan&#10;- pesanan penjualan fix&#10;- detail pesanan penjualan" />
     <MESSAGE value="- Komisi Sales" />
     <MESSAGE value="- Komisi Sales fix" />
@@ -2959,7 +2963,8 @@
     <MESSAGE value="- Perancangan Kerja Kasir" />
     <MESSAGE value="- Perancangan Manukfatur" />
     <MESSAGE value="- Perancangan dan CRUD Produksi" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Perancangan dan CRUD Produksi" />
+    <MESSAGE value="- Perancangan Proses SOP dan CRUD P SOP" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Perancangan Proses SOP dan CRUD P SOP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2968,104 +2973,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/user/keuangan/section/transaksi/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2446">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/keuangan/section/transaksi/daftar_jurnal/js.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1972">
-          <caret line="58" column="55" lean-forward="false" selection-start-line="57" selection-start-column="13" selection-end-line="58" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Produksi/PSales.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="13" column="18" lean-forward="false" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/HistoryPenjualan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="34" column="177" lean-forward="false" selection-start-line="34" selection-start-column="177" selection-end-line="34" selection-end-column="177" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Produksi/DetailSales.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2142">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/produksi/revisi/2021_03_29_095615_p_akun_penjualan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="23" column="35" lean-forward="true" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Produksi/StokAwal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/produksi/revisi/2021_04_13_101855_p_shift_kasir.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/settingkasir/page_edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-131">
-          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/SettingKasir.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1888">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/settingkasir/akunKasir/page_detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="730">
-          <caret line="111" column="57" lean-forward="false" selection-start-line="111" selection-start-column="57" selection-end-line="111" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/settingkasir/page_create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1598">
-          <caret line="47" column="49" lean-forward="false" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/produksi/revisi/2021_04_13_102216_p_kas_kasir.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="21" column="104" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="21" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/SettingAkungKasir.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -3178,20 +3085,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="540" column="43" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="613" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/tab/produksi_baru.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="20" lean-forward="false" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/tab/monitoring.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3214,13 +3107,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_100848_p_barang_sop.php" />
-    <entry file="file://$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_101004_p_bahan_produksi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="21" column="54" lean-forward="false" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_100915_p_barang_sop.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -3242,13 +3128,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_101028_p_tambah_produksi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_101114_p_tenaga_produksi.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
@@ -3256,71 +3135,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Manufaktur/P_SOP_Produksi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="11" column="52" lean-forward="false" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/Manufaktur.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-748">
-          <caret line="2" column="33" lean-forward="true" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="2366" column="17" lean-forward="true" selection-start-line="2366" selection-start-column="17" selection-end-line="2366" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-          <folding>
-            <element signature="e#51#79#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="14" column="70" lean-forward="true" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/default.blade.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/SOP_produksi/page_edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="38" column="127" lean-forward="false" selection-start-line="38" selection-start-column="127" selection-end-line="38" selection-end-column="127" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3328,7 +3147,201 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="37" column="96" lean-forward="false" selection-start-line="37" selection-start-column="96" selection-end-line="37" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/SOPProduksi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/proses_produksi/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="32" column="78" lean-forward="false" selection-start-line="32" selection-start-column="78" selection-end-line="32" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/proses_produksi/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-155">
+          <caret line="38" column="93" lean-forward="false" selection-start-line="38" selection-start-column="93" selection-end-line="38" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Manufaktur/P_Proses_Bisnis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="10" column="38" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="511" column="87" lean-forward="false" selection-start-line="511" selection-start-column="44" selection-end-line="511" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/barang_sop/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Manufaktur/P_SOP_Produksi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="18" column="64" lean-forward="false" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Produksi/Barang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Manufaktur/P_barang_Sop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/tab/SOP_produksi.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#3930#0#Blade" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/barang_sop/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2006">
+          <caret line="66" column="20" lean-forward="true" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/BarangSOP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="55" column="25" lean-forward="false" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+          <folding>
+            <element signature="e#51#79#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_101004_p_bahan_produksi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="21" column="54" lean-forward="false" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/manufaktur/2021_04_22_101028_p_tambah_produksi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_Karyawan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-374">
+          <caret line="2" column="33" lean-forward="true" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/barang_produksi/page_create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="76" column="65" lean-forward="false" selection-start-line="76" selection-start-column="65" selection-end-line="76" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/pages/barang_produksi/page_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="34" column="100" lean-forward="false" selection-start-line="34" selection-start-column="100" selection-end-line="34" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Manufaktur/P_tambah_produksi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="66" lean-forward="false" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/Manufaktur.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <element signature="e#51#79#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="2369" column="17" lean-forward="true" selection-start-line="2369" selection-start-column="17" selection-end-line="2369" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/manufaktur/tab/produksi_baru.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="26" column="49" lean-forward="true" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/manufaktur/ProsesProduksiBaru.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="89" column="93" lean-forward="false" selection-start-line="89" selection-start-column="93" selection-end-line="89" selection-end-column="93" />
+          <folding>
+            <element signature="e#51#79#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -2393,7 +2393,12 @@ Route::get('hapus-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo
 
 //Manufaktur
 Route::resource('manufaktur','manufaktur\manufaktur');
-Route::resource('sop-produksi','manufaktur\ProsesProduksi');
+Route::resource('sop-produksi','manufaktur\SOPProduksi');
+Route::resource('proses-produksi','manufaktur\ProsesProduksi');
+Route::resource('barang-sop','manufaktur\BarangSOP');
+Route::resource('produksi-baru','manufaktur\ProsesProduksiBaru');
+
+Route::get('barang-sop/{id_barang_sop}/delete','manufaktur\BarangSOP@destroy');
 
 
 //================================= Global Route ======================================================================
