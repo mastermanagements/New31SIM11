@@ -889,7 +889,9 @@ Route::resource('penjualan-barang','produksi\PSales');
 Route::post('penjualan-barang/{id_p_sales}/detail','produksi\PSales@updateDetail');
 Route::get('penjualan-barang/{id_p_sales}/complain','produksi\PSales@complain');
 #detail penjualan
-Route::resource('detail-penjualan-barang','produksi\DetailSales');
+#pake resource post detail-penjualan-barang return 404 terus
+//Route::resource('detail-penjualan-barang','produksi\RincianSales');
+Route::post('detail-penjualan-barang','produksi\DetailSales@store');
 Route::get('detail-penjualan-barang/{id_detail_penjualan}/destroy','produksi\DetailSales@destroy');
 
 Route::get('terima-bayar/{jenis_bayar}/{id}','produksi\TerimaBayar@form_terima_bayar');

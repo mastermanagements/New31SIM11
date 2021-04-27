@@ -86,7 +86,20 @@
                                 <label for="exampleInputEmail1">Jabatan</label>
                                 <input type="text" name="jabatan" class="form-control"  value="{{ $data_klien->jabatan }}" id="exampleInputEmail1">
                             </div>
-							                     <input type="hidden" name="jenis_klien" class="form-control"  value="{{ $data_klien->jenis_klien }}" id="exampleInputEmail1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Group Klien</label>
+                                <select class="form-control select2" style="width: 100%;" name="id_group" required>
+                                    @if(empty($group_klien))
+                                        <option>data masih kosong</option>
+                                    @else
+                                        @foreach($group_klien as $value)
+                                            <option value="{{ $value->id }}">{{ $value->nama_group }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                <small style="color: red">* Tidak Boleh Kosong</small>
+                            </div>
+							               <input type="hidden" name="jenis_klien" class="form-control"  value="{{ $data_klien->jenis_klien }}" id="exampleInputEmail1">
                         </div>
                         <!-- /.box-body -->
 

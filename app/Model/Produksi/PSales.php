@@ -34,6 +34,9 @@ class PSales extends Model
     public function linkToKlien(){
         return $this->belongsTo('App\Model\Administrasi\Klien','id_klien');
     }
+    public function linkToSo(){
+        return $this->belongsTo('App\Model\Produksi\PSO','id_so');
+    }
 
     public function linkToDetailSales(){
         return $this->hasMany('App\Model\Produksi\DetailSales','id_sales','id');

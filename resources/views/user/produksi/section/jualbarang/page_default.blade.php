@@ -114,7 +114,7 @@
                                                     <form action="{{ url('pesanan-penjualan/'.$data->id) }}" method="post" >
                                                         {{ csrf_field() }}
                                                         @method('delete')
-                                                        <a href="{{ url('detail-pSo/'.$data->id) }}" class="btn btn-primary">Rincian  Barang</a>
+                                                        <a href="{{ url('detail-pSo/'.$data->id) }}" class="btn btn-primary">Rincian</a>
                                                         <a href="{{ url('pesanan-penjualan/'.$data->id.'/edit') }}" class="btn btn-warning">Ubah</a>
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data nota pesanan ini...?')">Hapus</button>
                                                     </form>
@@ -134,7 +134,7 @@
                                     <td>Group Klien</td>
                                     <td>Jenis Diskon</td>
                                     <td>Jumlah maksimal beli</td>
-                                    <td>Diskon Persen</td>
+                                    <td>Diskon (%)</td>
                                     <td>Diskon Nominal</td>
                                     <td>Aksi</td>
                                 </tr>
@@ -155,7 +155,7 @@
                                             </td>
                                             <td>{{ $data->jumlah_maks_beli }}</td>
                                             <td>{{ $data->diskon_persen }}</td>
-                                            <td>{{ $data->diskon_nominal }}</td>
+                                            <td>{{ rupiahView($data->diskon_nominal) }}</td>
                                             <td>
                                                 <form action="{{ url('p-diskon/'.$data->id) }}" method="post">
                                                     {{ csrf_field() }}
@@ -179,6 +179,7 @@
                                         <td>No</td>
                                         <td>Tgl Jual</td>
                                         <td>Nomor Order</td>
+                                        <td>Nomor Pesanan Penjualan</td>
                                         <td>Klien</td>
                                         <td>Tgl Kirim</td>
                                         <td>Total</td>
@@ -193,6 +194,12 @@
                                             <td>{{ $no_p_sales }}</td>
                                             <td>{{ date('d-m-Y', strtotime($item_Psales->tgl_sales)) }}</td>
                                             <td>{{ $item_Psales->no_sales }}</td>
+                                            @if(!empty($item_Psales->linkToSo->no_so))
+                                            <td>{{ $item_Psales->linkToSo->no_so }}</td>
+                                            @else
+                                            <td></td>
+                                            @endif
+
                                             <td>{{ $item_Psales->linkToKlien->nm_klien }}</td>
                                             <td>{{ date('d-m-Y', strtotime($item_Psales->tgl_kirim)) }}</td>
                                             <td>{{ $item_Psales->bayar }}</td>
@@ -200,7 +207,7 @@
                                                 <form action="{{ url('penjualan-barang/'. $item_Psales->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     @method('delete')
-                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id) }}" class="btn btn-primary">Detail barang</a>
+                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id) }}" class="btn btn-primary">Rincian Barang</a>
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/complain') }}" class="btn btn-primary">Complain</a>
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/edit') }}" class="btn btn-warning">ubah</a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>

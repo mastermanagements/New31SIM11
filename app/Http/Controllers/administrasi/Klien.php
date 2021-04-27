@@ -113,7 +113,7 @@ class Klien extends Controller
         $models->telp_perusahaan = $telp_perusahaan;
         $models->jabatan = $jabatan;
         $models->jenis_klien = $jenis_klien;
-		$models->id_sdk = $id_sdk;
+		$   $models->id_sdk = $id_sdk;
         $models->id_penanda_sdk = $id_penanda_sdk;
         $models->tambahan_sdk = $tambahan_sdk;
         $models->id_perusahaan = $this->id_perusahaan;
@@ -137,7 +137,8 @@ class Klien extends Controller
         }
 
         $data_klien = [
-            'data_klien' => $data
+            'data_klien' => $data,
+            'group_klien' => GroupKlien::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.administrasi.section.klien.page_edit', $data_klien);
     }
@@ -167,6 +168,7 @@ class Klien extends Controller
         $telp_perusahaan= $req->telp_perusahaan;
         $jabatan= $req->jabatan;
         $jenis_klien= $req->jenis_klien;
+        $id_group= $req->id_group;
 
         $models = kliens::find($id);
 
@@ -185,11 +187,12 @@ class Klien extends Controller
         $models->telp_perusahaan = $telp_perusahaan;
         $models->jabatan = $jabatan;
         $models->jenis_klien = $jenis_klien;
+        $models->id_group = $id_group;
         $models->id_perusahaan = $this->id_perusahaan;
         $models->id_karyawan = $this->id_karyawan;
 		//$models->updated_at = Carbon::now();
 
-        if($models->save()) 
+        if($models->save())
         {
             return redirect('Klien')->with('message_success','Anda telah mengubah data customer');
         }else
