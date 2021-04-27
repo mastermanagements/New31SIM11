@@ -26,13 +26,14 @@
                     <div class="box-body">
                         <!-- Custom Tabs -->
                         <a href="{{ url('komisi-sales/create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Tambah Komisi Penjualan</a>
-                        <table id="example1" class="table table-bordered table-striped">
+                        <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
+                        <table id="example4" class="table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <td>No</td>
                                 <td>Nama Karyawan</td>
                                 <td>Sistem Komisi</td>
-                                <td>Besaranya Komisi</td>
+                                <td align="center">Besaranya Komisi (%)</td>
                                 <td>Aksi</td>
                             </tr>
                             </thead>
@@ -45,14 +46,14 @@
                                             <td>{{ $data->linkToKaryawan->nama_ky }}</td>
                                             <td>
                                                 @if($data->jenis_komisi == '0')
-                                                    <label>komisi per harga barang</label>
+                                                    <label>komisi per barang</label>
                                                 @else
                                                     <label>komisi per faktur</label>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td align="center">
                                                 @if($data->persen_komisi !=0)
-                                                    {{ ($data->persen_komisi/100) }} %
+                                                    {{ $data->persen_komisi }}
                                                 @else
                                                     0
                                                 @endif

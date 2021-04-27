@@ -1,16 +1,12 @@
 @extends('user.produksi.master_user')
 
-@section('skin')
-    <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
-@stop
 
 @section('master_content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Ubah Diskon
+            Diskon
         </h1>
     </section>
 
@@ -22,7 +18,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Diskon</h3>
+                        <h3 class="box-title">Formulir Ubah Pengaturan Diskon Penjualan</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -50,16 +46,25 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Jumlah Maks Beli</label>
-                                        <input type="number" class="form-control" name="jumlah_maks_beli" value="{{ $pdiskon->jumlah_maks_beli }}">
+                                        <input type="number" id="rupiah" class="form-control" name="jumlah_maks_beli" value="{{ $pdiskon->jumlah_maks_beli }}">
                                     </div>
+                                </div>
+                                <div class="col-md-12">
+                                      <label><font color="#DE3106">Isi Salah Satu Saja (Diskon Persen atau Diskon Jumlah Uang):</font></label>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Diskon Persen</label>
                                         <input type="number" class="form-control" name="diskon_persen" value="{{ $pdiskon->diskon_persen }}">
                                     </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Diskon Nominal</label>
-                                        <input type="number" class="form-control" name="diskon_nominal" value="{{ $pdiskon->diskon_nominal }}">
+                                        <input type="number" class="form-control" id="rupiah2" name="diskon_nominal" value="{{ rupiahView($pdiskon->diskon_nominal) }}">
                                     </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
@@ -82,27 +87,6 @@
 @stop
 
 @section('plugins')
-    <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script>
-
-
-                $('#datepicker').datepicker({
-                    autoclose: true,
-                    format: 'dd-mm-yyyy'
-                });
-
-                $('#datepicker2').datepicker({
-                    autoclose: true,
-                    format: 'dd-mm-yyyy'
-                });
-
-                $('#datepicker3').datepicker({
-                    autoclose: true,
-                    format: 'dd-mm-yyyy'
-                });
-
-    </script>
-
+    @include('user.global.rupiah_input')
+    @include('user.global.rupiah_input2')
 @stop

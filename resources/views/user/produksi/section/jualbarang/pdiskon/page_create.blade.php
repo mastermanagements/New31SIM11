@@ -1,9 +1,5 @@
 @extends('user.produksi.master_user')
 
-@section('skin')
-    <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
-@stop
 
 @section('master_content')
 <div class="content-wrapper">
@@ -16,7 +12,6 @@
 
     <!-- Main content -->
     <section class="content container-fluid">
-
         <p></p>
         <div class="row">
             <div class="col-md-12">
@@ -49,29 +44,33 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Jumlah Maks Beli</label>
-                                        <input type="number" class="form-control" name="jumlah_maks_beli">
+                                        <input type="text" id="rupiah" class="form-control" name="jumlah_maks_beli">
                                     </div>
+                                </div>
+                                <div class="col-md-12">
+                                      <label><font color="#DE3106">Isi Salah Satu Saja (Diskon Persen atau Diskon Jumlah Uang):</font></label>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Diskon Persen (%)</label>
                                         <input type="number" class="form-control" name="diskon_persen">
                                     </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Diskon Nominal</label>
-                                        <input type="number" class="form-control" name="diskon_nominal">
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <input type="text" id="rupiah2" class="form-control" name="diskon_nominal">
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                              </div>
                             </div>
                           </form>
                         </div>
                         <!-- /.box-body -->
-
-                        <div class="box-footer">
-                            {{ csrf_field() }}
-                        </div>
-
                 </div>
             </div>
         </div>
@@ -81,27 +80,7 @@
 @stop
 
 @section('plugins')
-    <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script>
-
-
-                $('#datepicker').datepicker({
-                    autoclose: true,
-                    format: 'dd-mm-yyyy'
-                });
-
-                $('#datepicker2').datepicker({
-                    autoclose: true,
-                    format: 'dd-mm-yyyy'
-                });
-
-                $('#datepicker3').datepicker({
-                    autoclose: true,
-                    format: 'dd-mm-yyyy'
-                });
-
-    </script>
+  @include('user.global.rupiah_input')
+  @include('user.global.rupiah_input2')
 
 @stop
