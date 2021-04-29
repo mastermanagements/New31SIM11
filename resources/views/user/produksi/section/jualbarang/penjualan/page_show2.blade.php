@@ -10,7 +10,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Detail Penjualan barang
+                Rincian Penjualan Barang
             </h1>
         </section>
 
@@ -22,93 +22,18 @@
                 <div class="col-md-12">
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                          <h3 class="box-title">Rincian Penjualan dengan Nomor Faktur : <font color="#FF00GG">{{ $data->no_sales }}</font> </h3>
+                          <h3 class="box-title">Rincian Pesanan Penjualan dengan Nomor SO : <font color="#FF00GG">{{ $data->no_sales }}</font>, Klien: <font color="#FF00GG">{{ $data->linkToKlien->nm_klien }}</font> </h3>
                            <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
                         <div class="box-body">
                             <div class="row">
-                                <!--  <div class="col-md-12">
+                                <div class="col-md-12">
                                         <div class="row">
-                                          <div class="col-md-12">
-                                                <form role="form" action="{{ url('penjualan-barang/'.$data->id) }}" method="post" enctype="multipart/form-data">
-                                                    {{ csrf_field() }}
-                                                    @method('put')
 
-                                                    <div class="form-group">
-                                                    <label>No Faktur</label>
-                                                    <input type="text" class="form-control" name="no_sales" readonly value="{{ $data->no_sales }}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Tanggal Penjualan</label>
-                                                    <div class="input-group date">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker2" readonly placeholder="Tanggal Pesanan" value="{{ $data->tgl_sales }}" name="tgl_sales" >
-                                                    </div>
-
-                                                    <small style="color: red">* Tidak Boleh Kosong</small>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">No. Pesanan Penjualan</label>
-                                                    <select class="form-control select2" style="width: 100%;" name="id_so" disabled>
-                                                        <option value="null">Pilihan pesanan penjualan</option>
-                                                        @if(!empty($pesanan_jual))
-                                                            @foreach($pesanan_jual as $value)
-                                                                <option value="{{ $value->id }}" @if($value->id == $data->id_so) selected @endif>{{ $value->no_so }}</option>
-                                                            @endforeach
-                                                        @endif
-                                                    </select>
-                                                    <small style="color: red">* Tidak Boleh Kosong</small>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Klien</label>
-                                                    <select class="form-control select2" style="width: 100%;" name="id_klien" required disabled>
-                                                        @if(empty($klien))
-                                                            <option>Klien masih kosong</option>
-                                                        @else
-                                                            @foreach($klien as $value)
-                                                                <option value="{{ $value->id }}" @if($value->id== $data->id_klien) selected @endif>{{ $value->nm_klien }}</option>
-                                                            @endforeach
-                                                        @endif
-                                                    </select>
-                                                    <small style="color: red">* Tidak Boleh Kosong</small>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Tanggal Barang Kirim</label>
-                                                    <div class="input-group date">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker3" readonly="" placeholder="Tanggal kirim sampai dengan" value="{{ $data->tgl_kirim }}" name="tgl_kirim" >
-                                                    </div>
-
-                                                    <small style="color: red">* Tidak Boleh Kosong</small>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Salesman</label>
-                                                    <select class="form-control select2" style="width: 100%;" name="id_komisi_sales" required disabled>
-                                                        @if(empty($komisi_sales))
-                                                            <option>Klien masih kosong</option>
-                                                        @else
-                                                            @foreach($komisi_sales as $value)
-                                                                <option value="{{ $value->id }}" @if($value->id == $data->id_komisi_sales) selected @endif>{{ $value->linkToKaryawan->nama_ky }}</option>
-                                                            @endforeach
-                                                        @endif
-                                                    </select>
-                                                    <small style="color: red">* Tidak Boleh Kosong</small>
-                                                </div>
-
-                                                <div class="form-group">
-                                                  <label for="keterangan">Keterangan</label>
-                                                    <textarea class="form-control" name="ket" readonly>{{ $data->ket }}</textarea>
-                                                </div>
-                                                </form>
-                                            </div>-->
                                             <div class="col-md-12">
-                                                <hr>
+
                                                 <form action="{{ url('detail-penjualan-barang') }}" method="post">
                                                     <input type="hidden" name="id_sales" value="{{ $data->id }}">
                                                     <table style="width: 100%;">
@@ -135,9 +60,9 @@
                                                                     @endif
                                                                 </select>
                                                             </th>
-                                                            <th><input type="text"  name="hpp" class="form-control" id="show_harga" required></th>
+                                                            <th><input type="number" name="hpp" class="form-control" id="show_harga" required></th>
                                                             <th><input type="number" name="jumlah_jual" class="form-control" required></th>
-                                                            <th><input type="number" name="diskon" class="form-control" value="0" required></th>
+                                                            <th><input type="number" name="diskon" class="form-control" required></th>
                                                             <th><input type="number" name="jumlah_harga" readonly class="form-control" id="tbl_jumlah" required></th>
                                                             <th><button type="submit" class="btn btn-primary">Simpan</button></th>
                                                         </tr>
@@ -172,7 +97,7 @@
 
                                                                         @method('put')
                                                                         {{ csrf_field() }}
-                                                                        <select class="form-control select2" style="width: 100%;" name="id_barang"  required>
+                                                                        <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3,'{{$keys}}')" id="id_barang{{$keys}}"  required>
                                                                             <option disabled>Pilih Barang</option>
                                                                             @if(!empty($barang))
                                                                                 @foreach($barang as $data_barang)
@@ -181,10 +106,10 @@
                                                                             @endif
                                                                         </select>
                                                                     </th>
-                                                                    <th width="200"><input type="text" id="rupiah" name="hpp" class="form-control"  value="{{ rupiahView($data_detail->hpp) }}" required></th>
-                                                                    <th width="200"><input type="text" name="jumlah_jual" class="form-control" value="{{ rupiahView($data_detail->jumlah_jual) }}" required></th>
+                                                                    <th width="200"><input type="number" name="hpp" class="form-control" id="show_harga{{$keys}}" value="{{ $data_detail->hpp }}" required></th>
+                                                                    <th width="200"><input type="number" name="jumlah_jual" class="form-control" value="{{ $data_detail->jumlah_jual }}" required></th>
                                                                     <th width="200"><input type="number" name="diskon" class="form-control" value="{{ $data_detail->diskon }}"  required></th>
-                                                                    <th width="200"><input type="text" name="jumlah_harga" readonly class="form-control" value="{{ rupiahView($data_detail->jumlah_harga) }}" required></th>
+                                                                    <th width="200"><input type="number" name="jumlah_harga" readonly class="form-control" value="{{ $data_detail->jumlah_harga }}" required></th>
                                                                     <th>
                                                                         @php($total_uang+=$data_detail->jumlah_harga)
                                                                         @php($total_diskon+=$data_detail->diskon)
@@ -293,8 +218,6 @@
 @stop
 
 @section('plugins')
-@include('user.global.rupiah_input')
-@include('user.global.rupiah_input2')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>

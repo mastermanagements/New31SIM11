@@ -25,19 +25,17 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Penawaran penjualan</a></li>
-                        <li ><a href="#tab_2" data-toggle="tab">Pesanan penjualan</a></li>
-                        <li ><a href="#tab_3" data-toggle="tab">Diskon</a></li>
-                        <li ><a href="#tab_4" data-toggle="tab">Penjualan</a></li>
-                        <li ><a href="#tab_5" data-toggle="tab">Pembayaran</a></li>
-                        <li ><a href="#tab_6" data-toggle="tab">Return Pembayaran</a></li>
-                        <li ><a href="#tab_7" data-toggle="tab">Pengaturan Akun Penjualan</a></li>
-                        <li ><a href="#tab_8" data-toggle="tab">History Harga Penjualan</a></li>
-                        <li ><a href="#tab_9" data-toggle="tab">Setting Kasir</a></li>
-                        <li ><a href="#tab_10" data-toggle="tab">Kasir</a></li>
+                        <!--<li class="active"><a href="#tab_1" data-toggle="tab">Penawaran penjualan</a></li>-->
+                        <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Pesanan penjualan</a></li>
+                        <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Diskon</a></li>
+                        <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Penjualan</a></li>
+                        <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Pembayaran</a></li>
+                        <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Return Pembayaran</a></li>
+                        <li class="@if(Session::get('tab6') == 'tab7') active @else '' @endif"><a href="#tab_7" data-toggle="tab"><i class="fa fa-book"></i> History Harga Penjualan</a></li>
+                        <li class="@if(Session::get('tab6') == 'tab8') active @else '' @endif"><a href="#tab_8" data-toggle="tab"><i class="fa fa-book"></i> Jurnal Otomatis Penjualan</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
+                        <!--<div class="tab-pane active" id="tab_1">
                             <a href="{{ url('penawaran-penjualan') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
                             <p></p>
                             <table id="example1" class="table table-bordered table-striped">
@@ -81,16 +79,20 @@
                                 @endif
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="tab-pane " id="tab_2">
-                            <a href="{{ url('pesanan-penjualan/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
-                            <table id="example2" class="table table-bordered table-striped">
+                        </div>-->
+                        <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
+
+                            <p style="margin-bottom: 10px;"><b>Daftar Pesanan Penjualan </b> <a href="{{ url('pesanan-penjualan/create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah Pesanan Penjualan</a>
+                            </p><br>
+                            <table id="example3" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
                                         <th>Tanggal</th>
-                                        <th>Nomor. Pesanan</th>
+                                        <th>Nomor Pesanan Penjualan</th>
+                                        <th>Nomor Pesanan Pembelian</th>
                                         <th>Klien</th>
+                                        <th>Tanggal Dikirim</th>
                                         <th>Total</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -101,27 +103,29 @@
                                         @foreach($p_so as $data)
 
                                             <tr>
-                                                <th>{{ $no++ }}</th>
-                                                <th>{{ date('d-m-Y', strtotime($data->tgl_so)) }}</th>
-                                                <th>{{ $data->no_so }}</th>
-                                                <th>{{ $data->linkToKlien->nm_klien }}</th>
-                                                <th>{{ $data->total }}</th>
-                                                <th>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($data->tgl_so)) }}</td>
+                                                <td>{{ $data->no_so }}</td>
+                                                <td>{{ $data->no_po }}</td>
+                                                <td>{{ $data->linkToKlien->nm_klien }}</td>
+                                                <td>{{ tanggalView($data->tgl_dikirim) }}</td>
+                                                <td>{{ rupiahView($data->total) }}</td>
+                                                <td>
                                                     <form action="{{ url('pesanan-penjualan/'.$data->id) }}" method="post" >
                                                         {{ csrf_field() }}
                                                         @method('delete')
-                                                        <a href="{{ url('detail-pSo/'.$data->id) }}" class="btn btn-primary">detail barang</a>
-                                                        <a href="{{ url('pesanan-penjualan/'.$data->id.'/edit') }}" class="btn btn-warning">ubah</a>
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data nota pesanan ini...?')">hapus</button>
+                                                        <a href="{{ url('detail-pSo/'.$data->id) }}" class="btn btn-primary">Rincian</a>
+                                                        <a href="{{ url('pesanan-penjualan/'.$data->id.'/edit') }}" class="btn btn-warning">Ubah</a>
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data nota pesanan ini...?')">Hapus</button>
                                                     </form>
-                                                </th>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 @endif
                             </table>
                         </div>
-                        <div class="tab-pane " id="tab_3">
+                        <div class="tab-pane @if(Session::get('tab3') == 'tab3') active @else '' @endif" id="tab_3">
                             <a href="{{ url('p-diskon/create') }}" class="btn btn-primary">Tambah Diskon</a>
                             <table class="table table-bordered table-striped">
                                 <thead>
@@ -130,7 +134,7 @@
                                     <td>Group Klien</td>
                                     <td>Jenis Diskon</td>
                                     <td>Jumlah maksimal beli</td>
-                                    <td>Diskon Persen</td>
+                                    <td>Diskon (%)</td>
                                     <td>Diskon Nominal</td>
                                     <td>Aksi</td>
                                 </tr>
@@ -141,12 +145,7 @@
                                     @foreach($pDiskon as $data)
                                         <tr>
                                             <td>No.</td>
-                                            <td>
-                                              @if(!empty($data->linkToDiskon->nama_group))
-                                                {{ $data->linkToDiskon->nama_group }}
-                                              @endif
-
-                                            </td>
+                                            <td>{{ $data->linkToDiskon->nama_group }}</td>
                                             <td>
                                                 @if($data->jenis_diskon=='0')
                                                     Berdasarkan jumlah pembelian
@@ -156,7 +155,7 @@
                                             </td>
                                             <td>{{ $data->jumlah_maks_beli }}</td>
                                             <td>{{ $data->diskon_persen }}</td>
-                                            <td>{{ $data->diskon_nominal }}</td>
+                                            <td>{{ rupiahView($data->diskon_nominal) }}</td>
                                             <td>
                                                 <form action="{{ url('p-diskon/'.$data->id) }}" method="post">
                                                     {{ csrf_field() }}
@@ -171,7 +170,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tab-pane " id="tab_4">
+                        <div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
                             <a href="{{ url('penjualan-barang/create') }}" class="btn btn-primary pull-left">Penjualan Barang</a>
                             <a href="{{ url('komisi-sales') }}" class="btn btn-primary pull-right">Komisi Sales</a>
                             <table class="table table-bordered table-striped" style="margin-top: 10px">
@@ -180,6 +179,7 @@
                                         <td>No</td>
                                         <td>Tgl Jual</td>
                                         <td>Nomor Order</td>
+                                        <td>Nomor Pesanan Penjualan</td>
                                         <td>Klien</td>
                                         <td>Tgl Kirim</td>
                                         <td>Total</td>
@@ -194,6 +194,12 @@
                                             <td>{{ $no_p_sales }}</td>
                                             <td>{{ date('d-m-Y', strtotime($item_Psales->tgl_sales)) }}</td>
                                             <td>{{ $item_Psales->no_sales }}</td>
+                                            @if(!empty($item_Psales->linkToSo->no_so))
+                                            <td>{{ $item_Psales->linkToSo->no_so }}</td>
+                                            @else
+                                            <td></td>
+                                            @endif
+
                                             <td>{{ $item_Psales->linkToKlien->nm_klien }}</td>
                                             <td>{{ date('d-m-Y', strtotime($item_Psales->tgl_kirim)) }}</td>
                                             <td>{{ $item_Psales->bayar }}</td>
@@ -201,7 +207,7 @@
                                                 <form action="{{ url('penjualan-barang/'. $item_Psales->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     @method('delete')
-                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id) }}" class="btn btn-primary">Detail barang</a>
+                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id) }}" class="btn btn-primary">Rincian Barang</a>
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/complain') }}" class="btn btn-primary">Complain</a>
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/edit') }}" class="btn btn-warning">ubah</a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>

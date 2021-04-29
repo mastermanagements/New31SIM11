@@ -47,6 +47,7 @@
                                     <th>HP</th>
                                     <th>WA</th>
                                     <th>Email</th>
+                                    <th>Member</th>
 									<th>Detail</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -66,13 +67,18 @@
                                         <td>
                                             {{ $value->hp }}
                                         </td>
-										<td>
+										                     <td>
                                             {{ $value->wa }}
                                         </td>
-										<td>
+										                     <td>
                                             {{ $value->email }}
                                         </td>
-										<td>
+                                        <td>
+                                          @if(!empty($value->linkToMannyGroupKlien->nama_group))
+                                           {{ $value->linkToMannyGroupKlien->nama_group }}
+                                           @endif
+                                       </td>
+										                     <td>
                                             <a href="#" onclick="detailKlien('{{ $value->id }}')">
                                                 <span class="badge bg-red">Detail</span>
                                             </a>

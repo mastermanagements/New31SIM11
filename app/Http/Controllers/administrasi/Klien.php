@@ -113,7 +113,7 @@ class Klien extends Controller
         $models->telp_perusahaan = $telp_perusahaan;
         $models->jabatan = $jabatan;
         $models->jenis_klien = $jenis_klien;
-		$   $models->id_sdk = $id_sdk;
+		    $models->id_sdk = $id_sdk;
         $models->id_penanda_sdk = $id_penanda_sdk;
         $models->tambahan_sdk = $tambahan_sdk;
         $models->id_perusahaan = $this->id_perusahaan;
