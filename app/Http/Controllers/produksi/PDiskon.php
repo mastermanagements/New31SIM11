@@ -18,9 +18,10 @@ class PDiskon extends Controller
     }
 
     public function store(Request $req){
+      //dd($req->all());
         $this->validate($req,[
            'jenis_diskon'=> 'required',
-           'jumlah_maks_beli' => 'required',
+           //'jumlah_maks_beli' => 'required',
            //'diskon_persen' => 'required',
           // 'diskon_nominal'=>'required',
            'id_group'=>'required',
@@ -29,9 +30,13 @@ class PDiskon extends Controller
         $model = new PD();
         $model->id_group = $req->id_group;
         $model->jenis_diskon = $req->jenis_diskon;
+        if(!empty($req->jumlah_maks_beli)){
         $model->jumlah_maks_beli = rupiahController($req->jumlah_maks_beli);
+        }
         $model->diskon_persen = $req->diskon_persen;
+        if(!empty($req->diskon_nominal)){
         $model->diskon_nominal = rupiahController($req->diskon_nominal);
+        }
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
         $model->id_karyawan = Session::get('id_karyawan');
 

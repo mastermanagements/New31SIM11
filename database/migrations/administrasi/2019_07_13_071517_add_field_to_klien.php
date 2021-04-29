@@ -19,7 +19,8 @@ class AddFieldToKlien extends Migration
 			$table->integer('id_sdk')->after('jenis_klien')->nullable()->default('0');
 			$table->integer('id_penanda_sdk')->after('id_sdk')->nullable()->default('0');
 			$table->string('tambahan_sdk')->after('id_penanda_sdk')->nullable();
-      $table->string('id_group')->after('tambahan_sdk')->nullable();
+      $table->integer('id_group')->after('tambahan_sdk')->unsigned()->nullable();
+      $table->enum('status_diskon',['0','1'])->after('id_group')->comment('0=yes, 1=no')->unsigned()->nullable();
         });
     }
 
