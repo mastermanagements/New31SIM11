@@ -72,11 +72,11 @@ class Klien extends Controller
     { //validasi
        $this->validate($req, [
             'nm_klien' =>'required',
-            'alamat' =>'required',
-            'pekerjaan' =>'required',
+            //'alamat' =>'required',
+            //'pekerjaan' =>'required',
             'hp' =>'required',
-            'id_sdk' =>'required',
-            'id_penanda_sdk' =>'required'
+            //'id_sdk' =>'required',
+            //'id_penanda_sdk' =>'required'
         ]);
         $nm_klien = $req->nm_klien;
         $alamat = $req->alamat;
@@ -92,10 +92,10 @@ class Klien extends Controller
         $alamat_perusahaan= $req->alamat_perusahaan;
         $telp_perusahaan= $req->telp_perusahaan;
         $jabatan= $req->jabatan;
-		$jenis_klien= $req->jenis_klien;
-		$id_sdk = $req->id_sdk;
-		$id_penanda_sdk = $req->id_penanda_sdk;
-		$tambahan_sdk = $req->tambahan_sdk;
+    		$jenis_klien= $req->jenis_klien;
+    		$id_sdk = $req->id_sdk;
+    		$id_penanda_sdk = $req->id_penanda_sdk;
+    		$tambahan_sdk = $req->tambahan_sdk;
 
         $models = new kliens;
         $models->nm_klien = $nm_klien;
@@ -148,8 +148,8 @@ class Klien extends Controller
     {
         $this->validate($req, [
             'nm_klien' =>'required',
-            'alamat' =>'required',
-            'pekerjaan' =>'required',
+            //'alamat' =>'required',
+            //'pekerjaan' =>'required',
             'hp' =>'required'
         ]);
 
@@ -169,6 +169,7 @@ class Klien extends Controller
         $jabatan= $req->jabatan;
         $jenis_klien= $req->jenis_klien;
         $id_group= $req->id_group;
+        $status_diskon= $req->status_diskon;
 
         $models = kliens::find($id);
 
@@ -188,6 +189,7 @@ class Klien extends Controller
         $models->jabatan = $jabatan;
         $models->jenis_klien = $jenis_klien;
         $models->id_group = $id_group;
+        $models->status_diskon = $status_diskon;
         $models->id_perusahaan = $this->id_perusahaan;
         $models->id_karyawan = $this->id_karyawan;
 		//$models->updated_at = Carbon::now();

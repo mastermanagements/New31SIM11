@@ -86,7 +86,6 @@ class DetailSales extends Controller
             foreach($model_d as $d){
               #jika diskon nominal
               if($req->jumlah_jual <= $d->jumlah_maks_beli  && $d->diskon_persen =='0'){
-                //$diskon = $this->penentuan_diskon_sebenarnya($req,$model_d->diskon_nominal);
                 $diskon = $this->penentuan_diskon_sebenarnya($req,$d->diskon_nominal);
                 break;
 
@@ -105,19 +104,16 @@ class DetailSales extends Controller
             //dd($data_p_diskon);
         }
         if($data_p_diskon !=null){
-            # Cek Jenis diskon =0
-            //jika p_diskon.jenis_diskon berdasarkan jumlah pembelian brg
-            if($data_p_diskon->jenis_diskon =='0'){
-              //jika jenis_diskon berdsarkan member
+            # Cek Jenis diskon =1 (meber)
               if($data_p_diskon->jenis_diskon =='1'){
-                  if($data_p_diskon->diskon_persen == null){
+                  if($data_p_diskon->diskon_persen == '0'){
                       $diskon = $this->penentuan_diskon_sebenarnya($req,$data_p_diskon->diskon_nominal);
                   }else{
                       $diskon = $data_p_diskon->diskon_persen;
                       //dd($diskon);
                   }
               }
-            }
+
 
         }
 
@@ -168,28 +164,30 @@ class DetailSales extends Controller
 
     public function update(Request $req, $id){
         $this->validate($req,[
-            'id_barang'=> 'required',
+            //'id_barang'=> 'required',
             'hpp'=> 'required',
             'jumlah_jual'=> 'required',
             'diskon'=> 'required',
-            'jumlah_harga'=> 'required',
+            //'jumlah_harga'=> 'required',
         ]);
 
         $model = DS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrfail($id);
-        $diskon_group = $this->penentuan_diskon($req,$model->id_sales);
-        $total = 0;
-        $total =  $this->check_metode_jual($req)*$req->jumlah_jual;
-        if($diskon_group !=0){
-            $diskon = $total*($diskon_group/100);
-            $total = $total-$diskon;
-        }
+      
+            $hpp = rupiahController($req->hpp);
+            $diskon = $req->diskon;
+            $diskon_peritem = $hpp * ($diskon/100);
+
+            $diskon_total = $diskon_peritem * $req->jumlah_jual;
+
+            $total = $hpp*$req->jumlah_jual -$diskon_total;
 
         $model->id_barang = $req->id_barang;
-        $model->hpp =  $this->check_metode_jual($req);
+        $model->hpp =  $hpp;
         $model->jumlah_jual = $req->jumlah_jual;
-        $model->diskon = $diskon_group;
+        $model->diskon = $diskon;
         $model->jumlah_harga = $total;
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        $model->id_karyawan = Session::get('id_karyawan');
         if($model->save()){
             return redirect()->back()->with('message_success','Data Barang telah diubah');
         }else{

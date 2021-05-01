@@ -22,20 +22,22 @@
                 <div class="col-md-12">
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Complain Barang Penjualan</h3>
+                            <h6 class="box-title">Penerimaan Complain Barang No Transaksi: <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">{{ $data->linkToKlien->nm_klien }}
+                            </font></h6>
+                             <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
                         <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                        <div class="row">
+                          <div class="row">
+                                   <div class="col-md-12">
+                                        <!--<div class="row">
                                             <div class="col-md-12">
                                                 <form role="form" action="{{ url('penjualan-barang/'.$data->id) }}" method="post" enctype="multipart/form-data">
                                                     {{ csrf_field() }}
                                                     @method('put')
-                                                    <div class="row">
-                                                        <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>No Faktur</label>
                                                                 <input type="text" class="form-control" name="no_sales" readonly value="{{ $data->no_sales }}">
@@ -48,7 +50,7 @@
                                                                     </div>
                                                                     <input type="text" class="form-control pull-right" id="datepicker2" readonly placeholder="Tanggal Pesanan" value="{{ $data->tgl_sales }}" name="tgl_sales" >
                                                                 </div>
-                                                                <!-- /.input group -->
+
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">No. Pesanan Penjualan</label>
@@ -83,7 +85,7 @@
                                                                     </div>
                                                                     <input type="text" class="form-control pull-right" id="datepicker3" readonly="" placeholder="Tanggal kirim sampai dengan" value="{{ $data->tgl_kirim }}" name="tgl_kirim" >
                                                                 </div>
-                                                                <!-- /.input group -->
+
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Salesman</label>
@@ -98,11 +100,15 @@
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                      <!--./col-6-->
                                                     </div>
+                                                    <!--./row-->
                                                 </form>
                                             </div>
+                                            <!--./col-12-->
+
                                             <div class="col-md-12" style="overflow-x: scroll;">
-                                                <hr>
+                                              
                                                     @if(!empty($data->linkToDetailSales))
                                                         <table class="table-wrapper">
                                                         <thead>
@@ -179,12 +185,15 @@
                                                 @endif
                                             </div>
 
-                                        </div>
-
+                                        </div>-->
+                                      <!--./ row-->
                                 </div>
-                            </div>
+                              <!--./col-12-->
                         </div>
-                        <!-- /.box-body -->
+                        <!--./ row-->
+                    </div>
+
+                    <!-- /.box-body -->
 
 
                     </div>

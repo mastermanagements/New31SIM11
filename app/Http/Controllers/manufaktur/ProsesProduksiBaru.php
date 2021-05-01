@@ -33,6 +33,7 @@ class ProsesProduksiBaru extends Controller
     }
 
     public function store(Request $req){
+    //  dd($req->all());
          $this->validate($req,[
             'id_barang'=> 'required',
             'brg_dlm_proses' =>'required',

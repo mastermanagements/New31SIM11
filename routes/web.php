@@ -2363,7 +2363,7 @@ Route::get('hapus-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo
 
 
 //Manufaktur
-Route::resource('manufaktur','manufaktur\manufaktur');
+Route::resource('manufaktur','manufaktur\Manufaktur');
 Route::resource('sop-produksi','manufaktur\SOPProduksi');
 Route::resource('proses-produksi','manufaktur\ProsesProduksi');
 Route::resource('barang-sop','manufaktur\BarangSOP');

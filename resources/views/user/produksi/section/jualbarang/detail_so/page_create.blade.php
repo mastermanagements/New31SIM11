@@ -101,7 +101,7 @@
                                                         @if(!empty($barang))
                                                             <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3,'{{$keys}}')" id="id_barang{{$keys}}" required>
                                                                 @foreach($barang as $item)
-                                                                    <option value="{{ $item->id }}" @if($n_data->id_barang == $item->id) selected @endif>{{ $item->nm_barang }}, {{$item->linkToSatuan->satuan}}</option>
+                                                                    <option value="{{ $item->id }}" @if($n_data->id_barang == $item->id) selected @endif>{{ $item->nm_barang }}, {{$item->linkToSatuan->satuan}}, {{$item->spec}}</option>
                                                                 @endforeach
                                                             </select>
                                                         @endif
@@ -200,7 +200,7 @@
                                        </div>
                                    </div>
                                    <div class="col-md-12">
-                                       <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal penjualan otomatis  </label> <button type="submit" class="btn btn-primary"> Proses </button>
+                                       <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal pesanan penjualan otomatis  </label> <button type="submit" class="btn btn-primary"> Proses </button>
                                        <label id="final_total" class="pull-right"></label>
                                    </div>
                             </form>

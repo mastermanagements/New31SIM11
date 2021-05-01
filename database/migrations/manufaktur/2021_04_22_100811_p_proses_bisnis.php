@@ -13,7 +13,7 @@ class PProsesBisnis extends Migration
      */
     public function up()
     {
-        Schema::create('p_proses_bisnis', function (Blueprint $table) {
+        Schema::create('p_proses_bisnis_manuf', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_sop_pro')->unsigned();
             $table->string('proses_bisnis');

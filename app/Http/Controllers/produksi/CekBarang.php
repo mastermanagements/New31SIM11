@@ -120,7 +120,7 @@ class CekBarang extends Controller
 
     //proses status return : update p_detail_cek_brg, update p_cek_brg.tgl_respon_supplier, p_order.respon_supplier =1
     public function update(Request $req, $id)
-
+    {
         $this->validate($req, [
             'id_barang'=>'required',
             'harga_beli'=> 'required',
