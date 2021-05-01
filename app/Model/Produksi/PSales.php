@@ -20,6 +20,7 @@ class PSales extends Model
         'dp_so',
         'bayar',
         'kurang_bayar',
+        'metode_bayar',
         'tgl_jatuh_tempo',
         'biaya_tambahan',
         'ongkir',

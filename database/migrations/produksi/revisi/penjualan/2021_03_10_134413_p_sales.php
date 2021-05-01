@@ -25,6 +25,7 @@ class PSales extends Migration
             $table->decimal('dp_so')->nullable()->default(0);
             $table->decimal('bayar')->default(0);
             $table->decimal('kurang_bayar')->nullable()->default(0);
+            $table->enum('metode_bayar', ['0','1'])->default(0)->comment('0=Tunai, 1=Kredit');
             $table->date('tgl_jatuh_tempo')->nullable();
             $table->decimal('ongkir')->default(0)->nullable();
             $table->decimal('total')->default(0);

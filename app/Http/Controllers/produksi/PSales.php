@@ -138,62 +138,108 @@ class PSales extends Controller
 
     public function updateDetail(Request $req, $id_p_sales){
         $this->validate($req,[
-            'diskon_tambahan'=> 'required',
-            'pajak'=> 'required',
-            'biaya_tambahan' => 'required',
-            'jatuh_tempo' => 'required',
-            'total'=> 'required',
-            'hutang'=> 'required',
+            'bayar' => 'required',
+            'sub_total'=> 'required',
         ]);
+        //request assignment
+        $diskon_tambahan = rupiahController($req->diskon_tambahan);
+        $pajak = $req->pajak;
+        $ongkir = rupiahController($req->ongkir);
+        $bayar = rupiahController($req->bayar);
+        $dp_so = rupiahController($req->dp_so);
+        $metode_bayar = $req->metode_bayar;
+        $tgl_jatuh_tempo = tanggalController($req->tgl_jatuh_tempo);
+        $ket = $req->ket;
 
+        //$sub_total = total penjualan
+        $sub_total = $req->sub_total;
 
-        $check_data_penjualan = JenisAkunPenjualan::CheckAkunPenjualan();
-        #check akun pembelian kalau kosong == false
-        if($check_data_penjualan==false){
-            return redirect()->back()->with('message_fail','Isilah terlebih dahulu akun penjualan');
-        }
+        $total_pajak = $sub_total *($pajak / 100);
 
+        //ketentuan mencari total penjualan net = sub_total + pajak + ongkir - diskon_tambahan
+        $total_sales = ($sub_total + $total_pajak + $ongkir) - $diskon_tambahan;
 
+        //hutang/krg_bayar = sub_total - (bayar + uang_muka)
+        $kurang_bayar = $total_sales - ($bayar + $dp_so );
+
+        //cek checkbox value on false
+        if ($req->jurnal_totomatis == 'on') {
+          $check_data_penjualan = JenisAkunPenjualan::CheckAkunPenjualan();
+          #check akun penjualan kalau kosong == false
+          if($check_data_penjualan==false){
+              return redirect()->back()->with('message_fail','Isilah terlebih dahulu akun penjualan');
+          }
+
+          $model = PS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id_p_sales);
+          $model->diskon_tambahan = $diskon_tambahan;
+          $model->pajak = $pajak;
+          $model->dp_so = $dp_so;
+          $model->bayar = $bayar;
+          $model->kurang_bayar = $kurang_bayar;
+          $model->metode_bayar = $metode_bayar;
+          $model->ongkir = $ongkir;
+          $model->tgl_jatuh_tempo = $tgl_jatuh_tempo;
+          $model->total = $total_sales;
+          $model->keterangan = $req->ket;
+          $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+          $model->id_karyawan = Session::get('id_karyawan');
+
+          #Ambil Jenis Jurnal
+          $jenis_jurnal = 0;
+          $n_req=$req->merge( ['ongkir'=> $model->ongkir]);
+          $jenis_akun_penjualan = JenisAkunPenjualan::rule($n_req, 2);
+          if ($model->pajak !=0){
+              JenisAkunPenjualan::$status_pajak = true;
+          }
+
+          if ($model->ongkir){
+              JenisAkunPenjualan::$status_ongkir = true;
+
+          }
+          if($model->save()){
+
+              if(is_array($jenis_akun_penjualan) == true){
+                  $req->merge([
+                      'ongkir'=> $req->onkir,
+                      'total_sebelum_pajak'=>$model->pajak,
+                      'total'=> $model->total,
+                      'tgl_order'=> $model->tgl_sales,
+                      'no_order'=>$model->no_sales,
+                      'id_penjualan'=> $model->id
+                  ]);
+                  JenisAkunPenjualan::$new_request = $req;
+                  JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
+              }
+
+              return redirect('Penjualan')->with('message_success','Data penjualan telah diubah');
+          }
+          else{
+              return redirect('Penjualan')->where('message_fail','Data penjualan gagal diubah');
+          }
+
+      } else{
         $model = PS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id_p_sales);
-        $model->diskon_tambahan = $req->diskon_tambahan;
-        $model->pajak = $req->pajak;
-        $model->bayar = $req->total;
-        $model->kurang_bayar = $req->hutang;
-        $model->biaya_tambahan = $req->biaya_tambahan;
-        $model->tgl_jatuh_tempo = $req->jatuh_tempo;
+        //dd($req->all());
+        $model->diskon_tambahan = $diskon_tambahan;
+        $model->pajak = $pajak;
+        $model->dp_so = $dp_so;
+        $model->bayar = $bayar;
+        $model->kurang_bayar = $kurang_bayar;
+        $model->metode_bayar = $metode_bayar;
+        $model->ongkir = $ongkir;
+        $model->tgl_jatuh_tempo = $tgl_jatuh_tempo;
+        $model->total = $total_sales;
         $model->keterangan = $req->ket;
+        $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        $model->id_karyawan = Session::get('id_karyawan');
 
-        #Ambil Jenis Jurnal
-        $jenis_jurnal = 0;
-        $n_req=$req->merge( ['ongkir'=> $model->ongkir]);
-        $jenis_akun_penjualan = JenisAkunPenjualan::rule($n_req, 2);
-        if ($model->pajak !=0){
-            JenisAkunPenjualan::$status_pajak = true;
-        }
-
-        if ($model->ongkir){
-            JenisAkunPenjualan::$status_ongkir = true;
-        }
-        if($model->save()){
-
-            if(is_array($jenis_akun_penjualan) == true){
-                $req->merge([
-                    'ongkir'=> $req->onkir,
-                    'total_sebelum_pajak'=>$model->pajak,
-                    'total'=> $model->total,
-                    'tgl_order'=> $model->tgl_sales,
-                    'no_order'=>$model->no_sales,
-                    'id_penjualan'=> $model->id
-                ]);
-                JenisAkunPenjualan::$new_request = $req;
-                JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
+            if ($model->save()) {
+                return redirect('Penjualan')->with('message_success', 'berhasil input transaksi penjualan')->with('tab4','tab4');
+            } else {
+                return redirect('Penjualan')->with('message_error', 'gagal input transaksi penjualan')->with('tab4','tab4');
             }
+      }
 
-            return redirect('Penjualan')->with('message_success','Data penjualan telah diubah');
-        }
-        else{
-            return redirect('Penjualan')->where('message_fail','Data penjualan gagal diubah');
-        }
-    }
+  }
 
 }

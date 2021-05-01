@@ -217,7 +217,7 @@
                                                     <div class="form-group">
                                                         <label>Bayar</label>
 
-                                                        <input class="form-control" name="bayar" value="{{ rupiahView($data_order->bayar) }}" required>
+                                                        <input class="form-control" id="rupiah4" name="bayar" value="{{ rupiahView($data_order->bayar) }}" required>
 
                                                     </div>
                                                 </div>
@@ -225,7 +225,7 @@
                                                     <div class="form-group">
                                                         <label>Hutang</label>
 
-                                                        <input type="text" id="rupiah4" name="kurang_bayar" @if(!empty($data_order->kurang_bayar)) value="{{ rupiahView($data_order->kurang_bayar) }}" @else value="0" @endif class="form-control">
+                                                        <input type="text" id="rupiah5" name="kurang_bayar" readonly @if(!empty($data_order->kurang_bayar)) value="{{ rupiahView($data_order->kurang_bayar) }}" @else value="0" @endif class="form-control">
 
                                                     </div>
                                                 </div>
@@ -233,8 +233,8 @@
                                                     <div class="form-group">
 
                                                         <label>Jatuh Tempo</label>
-                                                        <input type="text" name="tgl_jatuh_tempo" id="datepicker2" value="{{ $data_order->tgl_jatuh_tempo }}" class="form-control">
 
+                                                        <input type="text" class="form-control" name="tgl_jatuh_tempo"  @if(!empty($data->tgl_jatuh_tempo)) value="{{ tanggalView($data->tgl_jatuh_tempo) }}" @endif required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -269,6 +269,7 @@
     @include('user.global.rupiah_input2')
     @include('user.global.rupiah_input3')
     @include('user.global.rupiah_input4')
+    @include('user.global.rupiah_input5')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
@@ -319,6 +320,10 @@
             format: 'dd-mm-yyyy'
         });
         $('#datepicker3').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy'
+        });
+        $('#datepicker4').datepicker({
             autoclose: true,
             format: 'dd-mm-yyyy'
         });

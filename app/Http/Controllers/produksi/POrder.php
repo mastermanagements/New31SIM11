@@ -276,11 +276,11 @@ class POrder extends Controller
 
         $total_pajak = $sub_total *($pajak / 100);
 
-        //ketentuan mencari total_order (total_o) = sub_total + pajak + ongkir - diskon_tambahan
-        $total_o = ($sub_total + $total_pajak + $ongkir) - $diskon_tambahan;
+        //ketentuan mencari total_order (total_order) = sub_total + pajak + ongkir - diskon_tambahan
+        $total_order = ($sub_total + $total_pajak + $ongkir) - $diskon_tambahan;
 
         //hutang/krg_bayar = sub_total - (bayar + uang_muka)
-        $kurang_bayar = $total_o - ($bayar + $dp_po );
+        $kurang_bayar = $total_order - ($bayar + $dp_po );
 
         //cek checkbox value on false
         if ($req->jurnal_totomatis == 'on') {
@@ -315,7 +315,7 @@ class POrder extends Controller
           $model->tgl_jatuh_tempo = $tgl_jatuh_tempo;
           $model->ongkir = $ongkir;
           $model->ket = $ket;
-          $model->total = $total_o;
+          $model->total = $total_order;
           $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
           $model->id_karyawan = Session::get('id_karyawan');
 
@@ -325,7 +325,7 @@ class POrder extends Controller
                   $req->merge([
                       'ongkir'=> $ongkir,
                       'total_sebelum_pajak'=>$pajak,
-                      'total'=> $total_o,
+                      'total'=> $total_order,
                       'tgl_order'=> $model->tgl_order,
                       'no_order'=>$model->no_order,
                       'id_pembelian'=> $model->id
@@ -350,7 +350,7 @@ class POrder extends Controller
               $model->tgl_jatuh_tempo = $tgl_jatuh_tempo;
               $model->ongkir = $ongkir;
               $model->ket = $ket;
-              $model->total = $total_o;
+              $model->total = $total_order;
               $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
               $model->id_karyawan = Session::get('id_karyawan');
 

@@ -18,7 +18,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Ubah Pengaturan Diskon Penjualan</h3>
+                        <h3 class="box-title">Formulir Ubah Diskon Penjualan</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -27,43 +27,73 @@
                           <div class="row">
                               {{ csrf_field() }}
                               @method('put')
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Jenis Diskon</label>
-                                        <input type="radio" name="jenis_diskon" value="0" @if($pdiskon->jenis_diskon=='0') checked @endif required> Berdasarkan Jumlah Pembelian
-                                        <input type="radio" name="jenis_diskon" value="1" @if($pdiskon->jenis_diskon=='1') checked @endif> Diskon Member
+                                <input type="hidden" name="id_group" value="{{ $pdiskon->id_group }}">
+                                <input type="hidden" name="jumlah_maks_beli" value="{{ $pdiskon->jumlah_maks_beli }}">
+                                @if($pdiskon->id_group ==0)
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Jenis Diskon</label>
+                                            <input type="radio" name="jenis_diskon" value="0" @if($pdiskon->jenis_diskon=='0') checked @endif required> Berdasarkan Jumlah Pembelian
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Jumlah Maks Beli</label>
+                                            <input type="number"  class="form-control" name="jumlah_maks_beli" value="{{ $pdiskon->jumlah_maks_beli }}">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Grup Klien</label>
-                                        <select class="select2 form-control" name="id_group" required>
-                                            <option disabled>Pilih Grup klien</option>
-                                            @if(!empty($group_klien))
-                                                @foreach($group_klien as $data)
-                                                    <option value="{{ $data->id }}" @if($pdiskon->id_group==$data->id) selected @endif>{{ $data->nama_group }}</option>
-                                                @endforeach
-                                            @endif
-                                        </select>
+                                    <div class="col-md-12">
+                                          <label><font color="#DE3106">Isi Salah Satu Saja (Diskon Persen atau Diskon Jumlah Uang):</font></label>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Jumlah Maks Beli</label>
-                                        <input type="number" id="rupiah" class="form-control" name="jumlah_maks_beli" value="{{ $pdiskon->jumlah_maks_beli }}">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Diskon Persen</label>
+                                            <input type="number" class="form-control" name="diskon_persen" value="{{ $pdiskon->diskon_persen }}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                      <label><font color="#DE3106">Isi Salah Satu Saja (Diskon Persen atau Diskon Jumlah Uang):</font></label>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Diskon Persen</label>
-                                        <input type="number" class="form-control" name="diskon_persen" value="{{ $pdiskon->diskon_persen }}">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Diskon Nominal</label>
+                                            <input type="number" class="form-control" id="rupiah2" name="diskon_nominal" value="{{ rupiahView($pdiskon->diskon_nominal) }}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Diskon Nominal</label>
-                                        <input type="number" class="form-control" id="rupiah2" name="diskon_nominal" value="{{ rupiahView($pdiskon->diskon_nominal) }}">
+                                @else
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Jenis Diskon</label>
+
+                                            <input type="radio" name="jenis_diskon" value="1" @if($pdiskon->jenis_diskon=='1') checked @endif> Diskon Member
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Grup Klien</label>
+                                            <select class="select2 form-control" name="id_group" required>
+                                                <option disabled>Pilih Grup klien</option>
+                                                @if(!empty($group_klien))
+                                                    @foreach($group_klien as $data)
+                                                        <option value="{{ $data->id }}" @if($pdiskon->id_group==$data->id) selected @endif>{{ $data->nama_group }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-12">
+                                          <label><font color="#DE3106">Isi Salah Satu Saja (Diskon Persen atau Diskon Jumlah Uang):</font></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Diskon Persen</label>
+                                            <input type="number" class="form-control" name="diskon_persen" value="{{ $pdiskon->diskon_persen }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Diskon Nominal</label>
+                                            <input type="text" class="form-control" id="rupiah2" name="diskon_nominal" value="{{ rupiahView($pdiskon->diskon_nominal) }}">
+                                        </div>
+                                    </div>
+                                @endif
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Submit</button>

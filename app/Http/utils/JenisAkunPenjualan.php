@@ -40,8 +40,8 @@ class JenisAkunPenjualan
     # Metode Pembayaran
     public static $metode_pembayaran = [
         'Tunai',
-        'Kredit',
-        'Transfer Bank',
+        'Kredit'
+        //'Transfer Bank',
     ];
 
     # Check Akun pembelian

@@ -29,75 +29,14 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Customer</a></li>
-                        <li><a href="#tab_2" data-toggle="tab">Leads</a></li>
-                        <li><a href="#tab_3" data-toggle="tab">Group Klien</a></li>
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Leads</a></li>
+                        <li><a href="#tab_2" data-toggle="tab">Customer</a></li>
+                        <li><a href="#tab_3" data-toggle="tab">Group Klien(Member)</a></li>
 
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <p></p>
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Nama</th>
-                                    <th>Alamat</th>
-                                    <th>Pekerjaan</th>
-                                    <th>HP</th>
-                                    <th>WA</th>
-                                    <th>Email</th>
-                                    <th>Member</th>
-									<th>Detail</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @php($i=1)
-                                @foreach($data_klien as $value)
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $value->nm_klien }}</td>
-                                        <td>
-                                            {{ $value->alamat }}
-                                        </td>
-                                        <td>
-                                            {{ $value->pekerjaan }}
-                                        </td>
-                                        <td>
-                                            {{ $value->hp }}
-                                        </td>
-										                     <td>
-                                            {{ $value->wa }}
-                                        </td>
-										                     <td>
-                                            {{ $value->email }}
-                                        </td>
-                                        <td>
-                                          @if(!empty($value->linkToMannyGroupKlien->nama_group))
-                                           {{ $value->linkToMannyGroupKlien->nama_group }}
-                                           @endif
-                                       </td>
-										                     <td>
-                                            <a href="#" onclick="detailKlien('{{ $value->id }}')">
-                                                <span class="badge bg-red">Detail</span>
-                                            </a>
-                                        </td>
-                                       <td>
-                                            <form action="{{ url('hapus-klien/'.$value->id) }}" method="post">
-                                                <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
-                                                {{ csrf_field() }}
-                                                <input type="hidden" name="_method" value="put"/>
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus Klien ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
-                                            </form>
-                                        </td>
-                                        </tr>
-                                       @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.tab-pane -->
-						<div class="tab-pane" id="tab_2">
                             <a href="{{ url('tambah-leads') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Leads </a>
                             <p></p>
                             <table id="example3" class="table table-bordered table-striped">
@@ -110,12 +49,12 @@
                                     <th>HP</th>
                                     <th>WA</th>
                                     <th>Email</th>
-									<th>Detail</th>
+									                  <th>Detail</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-								@php($a=1)
+								                @php($i=1)
                                 @foreach($data_leads as $value)
                                     <tr>
                                         <td>{{ $i++ }}</td>
@@ -129,25 +68,95 @@
                                         <td>
                                             {{ $value->hp }}
                                         </td>
-										<td>
+										                    <td>
                                             {{ $value->wa }}
                                         </td>
-										<td>
+										                    <td>
                                             {{ $value->email }}
                                         </td>
-										<td>
+										                    <td>
                                             <a href="#" onclick="detailKlien('{{ $value->id }}')">
                                                 <span class="badge bg-red">Detail</span>
                                             </a>
                                         </td>
                                         <td>
                                             <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
-											<button class="btn btn-primary" onclick="gantiLeads('{{ $value->id }}');" title="Ubah Status Customer"><i class="fa fa-file-picture-o"></i></button>
+											                        <button class="btn btn-primary" onclick="gantiLeads('{{ $value->id }}');" title="Ubah Status Customer"><i class="fa fa-file-picture-o"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
+
+                        </div>
+                        <!-- /.tab-pane -->
+						            <div class="tab-pane" id="tab_2">
+                          <table id="example1" class="table table-bordered table-striped">
+                              <thead>
+                              <tr>
+                                  <th>No.</th>
+                                  <th>Nama</th>
+                                  <th>Alamat</th>
+                                  <th>Pekerjaan</th>
+                                  <th>HP</th>
+                                  <th>WA</th>
+                                  <th>Email</th>
+                                  <th>Member</th>
+                                  <th>Diskon Berjenjang</th>
+                                  <th>Detail</th>
+                                  <th>Aksi</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              @php($i=1)
+                              @foreach($data_klien as $value)
+                                  <tr>
+                                      <td>{{ $i++ }}</td>
+                                      <td>{{ $value->nm_klien }}</td>
+                                      <td>
+                                          {{ $value->alamat }}
+                                      </td>
+                                      <td>
+                                          {{ $value->pekerjaan }}
+                                      </td>
+                                      <td>
+                                          {{ $value->hp }}
+                                      </td>
+                                       <td>
+                                          {{ $value->wa }}
+                                      </td>
+                                       <td>
+                                          {{ $value->email }}
+                                      </td>
+                                      <td>
+                                        @if(!empty($value->linkToMannyGroupKlien->nama_group))
+                                         {{ $value->linkToMannyGroupKlien->nama_group }}
+                                         @endif
+                                     </td>
+                                     <td>
+                                        @if($value->status_diskon =='0')
+                                          Ya
+                                        @else
+                                          Tidak
+                                        @endif
+                                    </td>
+                                       <td>
+                                          <a href="#" onclick="detailKlien('{{ $value->id }}')">
+                                              <span class="badge bg-red">Detail</span>
+                                          </a>
+                                      </td>
+                                     <td>
+                                          <form action="{{ url('hapus-klien/'.$value->id) }}" method="post">
+                                              <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                              {{ csrf_field() }}
+                                              <input type="hidden" name="_method" value="put"/>
+                                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus Klien ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+                                          </form>
+                                      </td>
+                                      </tr>
+                                     @endforeach
+                              </tbody>
+                          </table>
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_3">
