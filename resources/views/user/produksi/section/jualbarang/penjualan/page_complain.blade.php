@@ -100,15 +100,15 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                      <!--./col-6-->
+                                                      <!-./col-6
                                                     </div>
-                                                    <!--./row-->
-                                                </form>
+                                                    <!-./row
+                                                </form>-->
                                             </div>
                                             <!--./col-12-->
 
                                             <div class="col-md-12" style="overflow-x: scroll;">
-                                              
+
                                                     @if(!empty($data->linkToDetailSales))
                                                         <table class="table-wrapper">
                                                         <thead>
@@ -116,12 +116,12 @@
                                                                 <th>Barang</th>
                                                                 <th>Harga Jual</th>
                                                                 <th>Banyak</th>
-                                                                <th>Diskon</th>
+                                                                <th>Diskon(%)</th>
                                                                 <th>Jumlah</th>
                                                                 <th>Complain</th>
                                                                 <th>Keterangan</th>
-                                                                <th>Status Barang</th>
-                                                                <th>Alasan Ditolak</th>
+                                                                <th>Status Complain</th>
+                                                                <th>Keterangan</th>
                                                                 <th>Aksi</th>
                                                             </tr>
                                                         </thead>
@@ -131,50 +131,43 @@
                                                         @php($total_diskon = 0)
                                                         @foreach($data->linkToDetailSales as $data_detail)
                                                             <form action="{{ url('complain-barang-jual') }}" method="post">
+                                                                {{ csrf_field() }}
                                                                 <tr>
-                                                                    <th>
                                                                         <input type="hidden" name="id_detail_sales" value="{{ $data_detail->id }}">
                                                                         <input type="hidden" name="id_sales" value="{{ $data->id }}">
-                                                                        {{ csrf_field() }}
-                                                                        <select class="form-control select2" style="width: 100%;" name="id_barang" required>
-                                                                            <option disabled>Pilih Barang</option>
-                                                                            @if(!empty($barang))
-                                                                                @foreach($barang as $data_barang)
-                                                                                    <option value="{{ $data_barang->id }}" @if($data_barang->id==$data_detail->id_barang) selected @endif>{{ $data_barang->nm_barang }}</option>
-                                                                                @endforeach
-                                                                            @endif
-                                                                        </select>
-                                                                    </th>
-                                                                    <th ><input type="number" name="hpp" class="form-control" value="{{ $data_detail->hpp }}" required></th>
-                                                                    <th ><input type="number" name="jumlah_beli" class="form-control" value="{{ $data_detail->jumlah_jual }}" required></th>
-                                                                    <th ><input type="number" name="diskon_item" class="form-control" value="{{ $data_detail->diskon }}"  required></th>
-                                                                    <th ><input type="number" name="jumlah_harga" readonly class="form-control" value="{{ $data_detail->jumlah_harga }}" required></th>
-                                                                    <th>
+                                                                        <input type="hidden" name="id_barang" value="{{ $data_detail->id_barang }}">
+
+                                                                    <td width="150"><input type="text" class="form-control" value="{{ $data_detail->linkToBarang->nm_barang}}, {{$data_detail->linkToBarang->linkToSatuan->satuan}}, {{$data_detail->spec}}" readonly></td>
+                                                                    <td ><input type="text" name="hpp" class="form-control" value="{{ rupiahview($data_detail->hpp) }}" readonly></td>
+                                                                    <td width="60"><input type="text" name="jumlah_beli" class="form-control" value="{{ rupiahview($data_detail->jumlah_jual) }}" readonly></td>
+                                                                    <td width="70"><input type="number" name="diskon_item" class="form-control" value="{{ $data_detail->diskon }}"  readonly></td>
+                                                                    <td ><input type="text" name="jumlah_harga" readonly class="form-control" value="{{ rupiahview($data_detail->jumlah_harga) }}" readonly></td>
+                                                                    <td>
                                                                         @php($total_uang+=$data_detail->jumlah_harga)
                                                                         @php($total_diskon+=$data_detail->diskon)
                                                                         @php($total_item+=$data_detail->jumlah_jual)
                                                                         <div class="form-group">
-                                                                            <input type="text" class="form-control" name="complain_jumlah" value="@if(!empty($data_detail->linkToComplainBarangJual)) {{ $data_detail->linkToComplainBarangJual->complain_jumlah }} @endif" placeholder="Jumlah barang kurang">
+                                                                            <input type="text" class="form-control" name="complain_jumlah" value="@if(!empty($data_detail->linkToComplainBarangJual)) {{ $data_detail->linkToComplainBarangJual->complain_jumlah }} @endif" placeholder="Barang kurang">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <input type="text" class="form-control" name="complain_kualitas" value="@if(!empty($data_detail->linkToComplainBarangJual)) {{ $data_detail->linkToComplainBarangJual->complain_kualitas }} @endif" placeholder="Kondisi Barang">
+                                                                            <input type="text" class="form-control" name="complain_kualitas" value="@if(!empty($data_detail->linkToComplainBarangJual)) {{ $data_detail->linkToComplainBarangJual->complain_kualitas }} @endif" placeholder="Barang Rusak">
                                                                         </div>
-                                                                    </th>
-                                                                    <th>
+                                                                    </td>
+                                                                    <td>
                                                                         <textarea class="form-control" name="ket">@if(!empty($data_detail->linkToComplainBarangJual)) {{ $data_detail->linkToComplainBarangJual->ket }} @endif</textarea>
-                                                                    </th>
-                                                                    <th>
+                                                                    </td>
+                                                                    <td width="100">
                                                                         <select class="form-control" name="status_complain">
                                                                             <option value="0" @if(!empty($data_detail->linkToComplainBarangJual)) @if($data_detail->linkToComplainBarangJual->status_complain=='0') selected @endif @endif>Diterima</option>
                                                                             <option value="1" @if(!empty($data_detail->linkToComplainBarangJual)) @if($data_detail->linkToComplainBarangJual->status_complain=='1') selected @endif @endif>Ditolak</option>
                                                                         </select>
-                                                                    </th>
-                                                                    <th>
+                                                                    </td>
+                                                                    <td>
                                                                         <textarea class="form-control" name="alasan_ditolak">@if(!empty($data_detail->linkToComplainBarangJual)) {{ $data_detail->linkToComplainBarangJual->alasan_ditolak }} @endif</textarea>
-                                                                    </th>
-                                                                    <th>
+                                                                    </td>
+                                                                    <td>
                                                                         <button type="submit" class="btn btn-primary">Simpan</button>
-                                                                    </th>
+                                                                    </td>
                                                                 </tr>
                                                             </form>
 
@@ -185,7 +178,7 @@
                                                 @endif
                                             </div>
 
-                                        </div>-->
+                                        </div>
                                       <!--./ row-->
                                 </div>
                               <!--./col-12-->

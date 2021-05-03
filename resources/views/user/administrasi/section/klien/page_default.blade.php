@@ -32,7 +32,7 @@
                         <li class="active"><a href="#tab_1" data-toggle="tab">Leads</a></li>
                         <li><a href="#tab_2" data-toggle="tab">Customer</a></li>
                         <li><a href="#tab_3" data-toggle="tab">Group Klien(Member)</a></li>
-
+                        <li><a href="#tab_4" data-toggle="tab">Rekening Klien</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -147,6 +147,7 @@
                                       </td>
                                      <td>
                                           <form action="{{ url('hapus-klien/'.$value->id) }}" method="post">
+                                              <a href="#" class="btn btn-primary" onclick="tambahRekKlien({{ $value->id }})" title="Tambah Rekening"><i class="fa fa-plus"></i></a>
                                               <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
                                               {{ csrf_field() }}
                                               <input type="hidden" name="_method" value="put"/>
@@ -201,6 +202,47 @@
                                 </div>
                             </div>
                         </div>
+                        <!--./tab-3-->
+                        <div class="tab-pane" id="tab_4">
+
+                            <table id="example2" class="table table-bordered table-striped">
+                                <thead>
+                                  <tr>
+                                      <th>No.</th>
+                                      <th>Nama Bank</th>
+                                      <th>No Rekening</th>
+                                      <th>Atas Nama</th>
+                                      <th>Kantor Cabang</th>
+                                      <th>Aksi</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @php($i=1)
+                                  @foreach($rek_klien as $value)
+                                  <tr>
+                                      <td>{{ $i++ }}</td>
+                                      <td>{{ $value->nama_bank }}</td>
+                                      <td>{{ $value->no_rek }}</td>
+                                      <td>{{ $value->atas_nama }}</td>
+                                      <td>{{ $value->kcp }}</td>
+                                      <td>
+                                            <a href="{{ url('RekKlien/'.$value->id.'/edit') }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+
+                                            <form action="{{ url('RekKlien/'.$value->id) }}" method="post">
+                                              @method('delete')
+                                              {{ csrf_field() }}
+                                                  @if(empty($value->getBayarJual->bank_asal))
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus supplier ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+                                                @endif
+                                            </form>
+
+                                        </td>
+                                        </tr>
+                                       @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.tab-pane 2-->
                     </div>
                     <!-- /.tab-content -->
                 </div>
@@ -217,6 +259,7 @@
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     @include('user.administrasi.section.klien.modal.JS')
+    @include('user.administrasi.section.klien.modal.modal_rek_klien')
 
     <script>
         //Red color scheme for iCheck
@@ -224,6 +267,14 @@
             checkboxClass: 'icheckbox_minimal-red',
             radioClass   : 'iradio_minimal-red'
         })
+
+        $(document).ready(function () {
+                var ids;
+                tambahRekKlien = function (id) {
+                          $('[name="id_klien"]').val(id);
+                          $('#modal-tambah-rekKlien').modal('show');
+                      };
+          })
 
     </script>
 @stop

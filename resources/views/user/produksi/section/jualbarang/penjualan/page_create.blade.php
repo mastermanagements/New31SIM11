@@ -41,7 +41,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="datepicker2" placeholder="Tanggal Penjualan" name="tgl_sales" >
+                                            <input type="text" class="form-control pull-right" id="datepicker2" placeholder="Tanggal Penjualan" name="tgl_sales" value="{{ tanggalView(date('Y-m-d')) }}" >
                                         </div>
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>

@@ -440,7 +440,7 @@ Route::get('getPenanda/{id_sdk}', 'administrasi\Klien@ResponsePenanda');
 
 Route::post('ganti-jenis-klien-leads', 'administrasi\Klien@ganti_jenis_klien_leads');
 
-
+Route::resource('RekKlien', 'administrasi\RekKlien',['except'=>['index', 'show']]);
 //--- Surat ---
 Route::get('Surat', 'administrasi\Surat@index');
 
@@ -756,6 +756,8 @@ Route::get('ubah-supplier/{id}', 'produksi\Supplier@edit');
 Route::put('update-supplier/{id}', 'produksi\Supplier@update');
 
 Route::put('hapus-supplier/{id}', 'produksi\Supplier@delete');
+
+Route::resource('RekSupplier', 'produksi\RekSupplier',['except'=>['index', 'show']]);
 
 
 # Todo Penawaran Pembelian

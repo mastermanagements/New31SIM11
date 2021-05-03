@@ -18,14 +18,15 @@ class PComplainBarang extends Migration
             $table->integer('id_sales')->unsigned();
             $table->integer('id_detail_sales')->unsigned();
             $table->integer('id_barang')->unsigned();
-            $table->decimal('hpp',12,2)->default(0);
+            $table->decimal('hpp',19,2)->default(0);
             $table->integer('jumlah_beli')->default(0);
             $table->integer('diskon_item')->default(0);
             $table->integer('complain_jumlah')->default(0);
-            $table->string('complain_kualitas')->nullable();
+            $table->integer('complain_kualitas')->default(0);
+            $table->decimal('total_return',19,2)->default(0);
             $table->string('ket')->nullable();
             $table->enum('status_complain',['0','1'])->default(0);
-            $table->text('alasan_ditolah')->nullable();
+            $table->text('alasan_ditolak')->nullable();
             $table->enum('konfirm_klien',['0','1'])->default(0);
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();

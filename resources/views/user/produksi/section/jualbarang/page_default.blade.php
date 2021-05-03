@@ -1,4 +1,4 @@
-@extends('user.administrasi.master_user')
+@extends('user.produksi.master_user')
 
 
 
@@ -252,20 +252,20 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tab-pane " id="tab_5">
-                            <p>Pembayaran Pesanan Penjualan</p>
-                            <table id="example2" class="table table-bordered table-striped">
+                      <div class="tab-pane @if(Session::get('tab5') == 'tab5') active @else '' @endif" id="tab_5">
+                            <p><b>Pembayaran Pesanan Penjualan</b></p>
+                            <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>Nomor. Pesanan</th>
+                                        <th>Nomor Pesanan</th>
                                         <th>Klien</th>
                                         <th>Tanggal Transaksi</th>
                                         <th>Tanggal Bayar</th>
                                         <th>Jumlah DP</th>
                                         <th>Jumlah Bayar</th>
-                                        <th>Bukti</th>
-                                        <th>Konfirmasi</th>
+                                        <!--<th>Bukti</th>
+                                        <th>Konfirmasi</th>-->
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -275,42 +275,41 @@
                                         @foreach($p_so as $data_so)
 
                                             <tr>
-                                                <th>{{ $no++ }}</th>
-                                                <th>{{ $data_so->no_so }}</th>
-                                                <th>{{ $data_so->linkToKlien->nm_klien }}</th>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $data_so->no_so }}</td>
+                                                <td>{{ $data_so->linkToKlien->nm_klien }}</td>
 
-                                                <th>{{ date('d-m-Y', strtotime($data_so->tgl_so)) }}</th>
-                                                <th>@if(!empty($data_so->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($data_so->linkToTerimaBayar->tgl_bayar)) }} @endif  </th>
-                                                <th>{{  $data_so->dp_so }}</th>
-                                                <th>@if(!empty($data_so->linkToTerimaBayar)) {{ $data_so->linkToTerimaBayar->jumlah_bayar }} @endif</th>
-                                                <th><a href="#">Preview</a></th>
-                                                <th><a href="#">konfirm</a></th>
-                                                <th>
-                                                    <a href="{{ url('terima-bayar/0/'. $data_so->id) }}">Terima Pembayaran</a> <br>
-                                                    <a href="{{ url('terima-bayar/0/'. $data_so->id.'/rincian') }}">Rincian Pembayaran</a>
-                                                </th>
+                                                <td>{{ date('d-m-Y', strtotime($data_so->tgl_so)) }}</td>
+                                                <td>@if(!empty($data_so->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($data_so->linkToTerimaBayar->tgl_bayar)) }} @endif  </td>
+                                                <td>{{  rupiahView($data_so->dp_so) }}</td>
+                                                <td>@if(!empty($data_so->linkToTerimaBayar)) {{ rupiahView($data_so->linkToTerimaBayar->jumlah_bayar) }} @endif</td>
+                                                <!--<td><a href="#">Preview</a></td>
+                                                <td><a href="#">konfirm</a></td>-->
+                                                <td>
+                                                    <a href="{{ url('terima-bayar/0/'. $data_so->id) }}">Terima </a> &nbsp; &nbsp;
+                                                    <a href="{{ url('terima-bayar/0/'. $data_so->id.'/rincian') }}">Rincian </a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 @endif
                             </table>
-                            <p>Pembayaran Penjualan</p>
-                            <table class="table table-bordered table-striped" style="margin-top: 10px">
+                            <p><b>Pembayaran Penjualan</b></p>
+                            <table id="example3" class="table table-bordered table-striped" style="margin-top: 10px">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nomor Order</th>
-                                        <th>Tgl Jual</th>
-                                        <th>Klien</th>
+                                        <th>Nomor Transaksi</th>
                                         <th>Tgl Transaksi</th>
+                                        <th>Klien</th>
                                         <th>Tgl Bayar</th>
                                         <th>Jumlah Tagihan</th>
                                         <th>Jumlah Bayar</th>
                                         <th>Sisa</th>
                                         <th>Penjualan</th>
                                         <th>Bukti Bayar</th>
-                                        <th>Konfirm</th>
-                                        <th>Status</th>
+                                        <!--<th>Konfirm</th>
+                                        <th>Status</th>-->
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -319,29 +318,28 @@
                                         @php($no_p_sales=1)
                                         @foreach($PSales as $item_Psales_)
                                         <tr>
-                                            <th>{{ $no_p_sales }}</th>
-                                            <th>{{ $item_Psales_->no_sales }}</th>
-                                            <th>{{ date('d-m-Y', strtotime($item_Psales_->tgl_sales)) }}</th>
-                                            <th>{{ $item_Psales_->linkToKlien->nm_klien }}</th>
-                                            <th>{{ date('d-m-Y', strtotime($item_Psales_->tgl_kirim)) }}</th>
-                                            <th>@if(!empty($item_Psales_->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($item_Psales_->linkToTerimaBayar->tgl_bayar)) }} @endif</th>
-                                            <th>{{ $item_Psales_->bayar+$item_Psales_->kurang_bayar }}</th>
-                                            <th>@if(!empty($item_Psales_->linkToTerimaBayar)) {{ $item_Psales_->linkToTerimaBayar->jumlah_bayar }} @endif</th>
-                                            <th>{{ $item_Psales_->kurang_bayar }}</th>
-                                            <th>@if($item_Psales_->status == '0') Tunai @else Kredit @endif</th>
-                                            <th><a href="#">Preview</a> </th>
-                                            <th><a href="#">Yes</a> </th>
-                                            <th>
+                                            <td>{{ $no_p_sales++ }}</td>
+                                            <td>{{ $item_Psales_->no_sales }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($item_Psales_->tgl_sales)) }}</td>
+                                            <td>{{ $item_Psales_->linkToKlien->nm_klien }}</td>
+                                            <td>@if(!empty($item_Psales_->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($item_Psales_->linkToTerimaBayar->tgl_bayar)) }} @endif</td>
+                                            <td>{{ rupiahView($item_Psales_->bayar+$item_Psales_->kurang_bayar) }}</td>
+                                            <td>@if(!empty($item_Psales_->linkToTerimaBayar)) {{ rupiahView($item_Psales_->linkToTerimaBayar->jumlah_bayar) }} @endif</td>
+                                            <td>{{ rupiahView($item_Psales_->kurang_bayar) }}</td>
+                                            <td>@if($item_Psales_->metode_bayar == '0') Tunai @else Kredit @endif</td>
+                                            <td><a href="#">Preview</a> </td>
+                                            <!--<td><a href="#">Yes</a> </td>
+                                            <td>
                                                 @if($item_Psales_->bayar+$item_Psales_->kurang_bayar>=$item_Psales_->bayar)
                                                     Lunas
                                                 @else
                                                     Belum Lunas
                                                 @endif
-                                            </th>
-                                            <th>
+                                            </td>-->
+                                            <td>
                                                 <a href="{{ url('terima-bayar/1/'. $item_Psales_->id) }}" >Terima Bayar</a>
                                                 <a href="{{ url('terima-bayar/1/'. $item_Psales_->id.'/rincian') }}" >Rincian Bayar</a>
-                                            </th>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     @endif

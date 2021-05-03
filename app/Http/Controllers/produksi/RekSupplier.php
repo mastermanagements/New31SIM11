@@ -26,7 +26,7 @@ class RekSupplier extends Controller
           'nama_bank' => 'required',
           'no_rek' => 'required',
           'atas_nama' => 'required',
-          'kcp' => 'required',
+        //  'kcp' => 'required',
           'id_supplier' => 'required'
       ]);
 
@@ -70,7 +70,7 @@ class RekSupplier extends Controller
         'nama_bank' => 'required',
         'no_rek' => 'required',
         'atas_nama' => 'required',
-        'kcp' => 'required'
+      //  'kcp' => 'required'
       ]);
 
       $id_supplier = $req->id_supplier;

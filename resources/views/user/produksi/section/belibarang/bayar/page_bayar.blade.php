@@ -108,7 +108,7 @@
 
                                       <div class="form-group">
                                           <label>Jumlah Bayar</label>
-                                          <input type="text" name="jumlah_bayar" value="{{  rupiahView($data->dp_po) }}" class="form-control" readonly required/>
+                                          <input type="text" name="jumlah_bayar" value="{{ rupiahView($data->dp_po) }}" class="form-control" readonly required/>
                                       </div>
                                     </div>
                                 </div>
