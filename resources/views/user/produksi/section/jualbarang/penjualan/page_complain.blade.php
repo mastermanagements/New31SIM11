@@ -30,86 +30,9 @@
                         <!-- form start -->
                         <div class="box-body">
                           <div class="row">
-                                   <div class="col-md-12">
-                                        <!--<div class="row">
-                                            <div class="col-md-12">
-                                                <form role="form" action="{{ url('penjualan-barang/'.$data->id) }}" method="post" enctype="multipart/form-data">
-                                                    {{ csrf_field() }}
-                                                    @method('put')
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label>No Faktur</label>
-                                                                <input type="text" class="form-control" name="no_sales" readonly value="{{ $data->no_sales }}">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Tanggal Penjualan</label>
-                                                                <div class="input-group date">
-                                                                    <div class="input-group-addon">
-                                                                        <i class="fa fa-calendar"></i>
-                                                                    </div>
-                                                                    <input type="text" class="form-control pull-right" id="datepicker2" readonly placeholder="Tanggal Pesanan" value="{{ $data->tgl_sales }}" name="tgl_sales" >
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">No. Pesanan Penjualan</label>
-                                                                <select class="form-control select2" style="width: 100%;" name="id_so" disabled>
-                                                                    <option value="null">Pilihan pesanan penjualan</option>
-                                                                    @if(!empty($pesanan_jual))
-                                                                        @foreach($pesanan_jual as $value)
-                                                                            <option value="{{ $value->id }}" @if($value->id == $data->id_so) selected @endif>{{ $value->no_so }}</option>
-                                                                        @endforeach
-                                                                    @endif
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Klien</label>
-                                                                <select class="form-control select2" style="width: 100%;" name="id_klien" required disabled>
-                                                                    @if(empty($klien))
-                                                                        <option>Klien masih kosong</option>
-                                                                    @else
-                                                                        @foreach($klien as $value)
-                                                                            <option value="{{ $value->id }}" @if($value->id== $data->id_klien) selected @endif>{{ $value->nm_klien }}</option>
-                                                                        @endforeach
-                                                                    @endif
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Tanggal Barang Kirim</label>
-                                                                <div class="input-group date">
-                                                                    <div class="input-group-addon">
-                                                                        <i class="fa fa-calendar"></i>
-                                                                    </div>
-                                                                    <input type="text" class="form-control pull-right" id="datepicker3" readonly="" placeholder="Tanggal kirim sampai dengan" value="{{ $data->tgl_kirim }}" name="tgl_kirim" >
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Salesman</label>
-                                                                <select class="form-control select2" style="width: 100%;" name="id_komisi_sales" required disabled>
-                                                                    @if(empty($komisi_sales))
-                                                                        <option>Klien masih kosong</option>
-                                                                    @else
-                                                                        @foreach($komisi_sales as $value)
-                                                                            <option value="{{ $value->id }}" @if($value->id == $data->id_komisi_sales) selected @endif>{{ $value->linkToKaryawan->nama_ky }}</option>
-                                                                        @endforeach
-                                                                    @endif
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                      <!-./col-6
-                                                    </div>
-                                                    <!-./row
-                                                </form>-->
-                                            </div>
-                                            <!--./col-12-->
-
                                             <div class="col-md-12" style="overflow-x: scroll;">
 
-                                                    @if(!empty($data->linkToDetailSales))
+                                                     @if(!empty($data->linkToDetailSales))
                                                         <table class="table-wrapper">
                                                         <thead>
                                                             <tr>
@@ -130,6 +53,9 @@
                                                         @php($total_uang = 0)
                                                         @php($total_diskon = 0)
                                                         @foreach($data->linkToDetailSales as $data_detail)
+
+                                                          @if($data_detail->linkToComplainBarangJual == NULL)
+
                                                             <form action="{{ url('complain-barang-jual') }}" method="post">
                                                                 {{ csrf_field() }}
                                                                 <tr>
@@ -170,16 +96,69 @@
                                                                     </td>
                                                                 </tr>
                                                             </form>
+                                                              @endif
 
-                                                            @endforeach
-
+                                                          @endforeach
                                                         </tbody>
                                                     </table>
                                                 @endif
                                             </div>
+                                            <!--tampilkanhasil pengecekkan complain-->
+                                        <div class="col-md-12">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Hasil Penerimaan Complain Barang</h3>
+                                            </div>
 
-                                        </div>
-                                      <!--./ row-->
+                                            <div class="col-md-12" style="overflow-x: scroll;">
+                                                    @if(!empty($complain_barang))
+                                                      <table class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Barang</th>
+                                                                <th>Harga Jual</th>
+                                                                <th>Banyak</th>
+                                                                <th>Diskon(%)</th>
+                                                                <th>Barang Kurang</th>
+                                                                <th>Barang Rusak</th>
+                                                                <th>Total Complain</th>
+                                                                <th>Keterangan</th>
+                                                                <th>Status Complain</th>
+
+                                                                <th>Alasan Ditolak</th>
+                                                                <th>Penerima</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                      
+                                                        @foreach($complain_barang as $complain)
+                                                        @foreach($data->linkToDetailSales as $data_detail)
+                                                          @if($complain->id_detail_sales == $data_detail->id)
+
+                                                                <tr>
+                                                                    <td width="180">{{ $complain->linkToBarang->nm_barang}}, {{$complain->linkToBarang->linkToSatuan->satuan}}, {{$complain->spec}}</td>
+                                                                    <td width="100">{{ rupiahview($complain->hpp) }}</td>
+                                                                    <td width="70">{{ rupiahview($complain->jumlah_beli) }}</td>
+                                                                    <td width="70">{{ $complain->diskon_item }}</td>
+
+                                                                    <td width="130">{{ $complain->complain_jumlah }}</td>
+                                                                    <td width="130">{{ $complain->complain_kualitas	 }}</td>
+                                                                    <td width="150">{{ rupiahview($complain->total_return) }}</td>
+                                                                    <td width="100">{{ $complain->ket	 }}</td>
+                                                                    <td width="130">@if($complain->status_complain=='0') Diterima @elseif($complain->status_complain=='1') DiTolak @endif</td>
+                                                                    <td width="150">{{ $complain->alasan_ditolak	 }}</td>
+                                                                    <td width="100">{{ $complain->linkToKaryawan->nama_ky	 }}</td>
+                                                                </tr>
+
+                                                            @endif
+                                                          @endforeach
+                                                        @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                @endif
+                                            </div>
+                                          </div>
+                                      </div>
+                                    <!--./ row-->
                                 </div>
                               <!--./col-12-->
                         </div>

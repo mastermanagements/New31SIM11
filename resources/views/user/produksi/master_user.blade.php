@@ -87,10 +87,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
              $('#example1').DataTable();
              $('#example3').DataTable();
              $('#example2').DataTable({
-                 'paging'      : true,
+                 'paging'      : false,
                  'lengthChange': false,
                  'searching'   : false,
-                 'ordering'    : true,
+                 'ordering'    : false,
                  'info'        : true,
                  'autoWidth'   : false
              })

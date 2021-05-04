@@ -85,9 +85,7 @@ class TerimaBayar extends Controller
         $bukti_bayar=  $req->bukti_bayar;
 
             $nama_file_bukti= time()."-buktibayar.".$bukti_bayar->getClientOriginalExtension();
-
-
-
+            
         $model =new PTerimaBayar(
             [
                 'id_perusahaan'=> Session::get('id_perusahaan_karyawan'),
@@ -109,9 +107,9 @@ class TerimaBayar extends Controller
         {
           if($bukti_bayar->move(public_path('buktiBayar')))
             {
-            return redirect('Penjualan')->with('message_success','Berhasil menambah data karyawan')->with('tab5','tab5');
+            return redirect('Penjualan')->with('message_success','Berhasil menambah data pembayaran')->with('tab5','tab5');
             }else{
-                return redirect('Penjualan')->with('message_error','Gagal menyimpan data karyawann')->with('tab5','tab5');
+                return redirect('Penjualan')->with('message_error','Gagal menyimpan data pembayaran')->with('tab5','tab5');
             }
 
             return redirect('Penjualan')->with('message_success','Berhasil mengubah Data Karyawan');
@@ -181,12 +179,14 @@ class TerimaBayar extends Controller
         }
     }
 
-    public function destroy(Request $req, $id){
-        $model =PTerimaBayar::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
-        if($model->save()){
-            return redirect('terima-bayar/'.$model->jenis_bayar.'/'.$model->id.'/rincian')->with('message_success','Data telah disimpan');
+    public function destroy($id)
+    {
+        $model =PTerimaBayar::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findorFail($id);
+        //dd($model);
+        if($model->delete()){
+            return redirect('Penjualan')->with('message_success','Data telah disimpan')->with('tab5','tab5');
         }else{
-            return redirect('terima-bayar/'.$model->jenis_bayar.'/'.$model->id.'/rincian')->with('message_fail','Data gagal disimpan');
+            return redirect('Penjualan')->with('message_fail','Data gagal disimpan')->with('tab5','tab5');
         }
     }
 }

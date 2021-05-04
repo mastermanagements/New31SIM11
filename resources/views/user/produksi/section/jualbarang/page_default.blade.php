@@ -264,8 +264,8 @@
                                         <th>Tanggal Bayar</th>
                                         <th>Jumlah DP</th>
                                         <th>Jumlah Bayar</th>
-                                        <!--<th>Bukti</th>
-                                        <th>Konfirmasi</th>-->
+                                        <th>Bukti</th>
+                                        <!--<th>Konfirmasi</th>-->
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -283,8 +283,8 @@
                                                 <td>@if(!empty($data_so->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($data_so->linkToTerimaBayar->tgl_bayar)) }} @endif  </td>
                                                 <td>{{  rupiahView($data_so->dp_so) }}</td>
                                                 <td>@if(!empty($data_so->linkToTerimaBayar)) {{ rupiahView($data_so->linkToTerimaBayar->jumlah_bayar) }} @endif</td>
-                                                <!--<td><a href="#">Preview</a></td>
-                                                <td><a href="#">konfirm</a></td>-->
+                                                <td><a href="#">Preview</a></td>
+                                                <!--<td><a href="#">konfirm</a></td>-->
                                                 <td>
                                                     <a href="{{ url('terima-bayar/0/'. $data_so->id) }}">Terima </a> &nbsp; &nbsp;
                                                     <a href="{{ url('terima-bayar/0/'. $data_so->id.'/rincian') }}">Rincian </a>
@@ -302,12 +302,13 @@
                                         <th>Nomor Transaksi</th>
                                         <th>Tgl Transaksi</th>
                                         <th>Klien</th>
-                                        <th>Tgl Bayar</th>
-                                        <th>Jumlah Tagihan</th>
-                                        <th>Jumlah Bayar</th>
-                                        <th>Sisa</th>
+
                                         <th>Penjualan</th>
-                                        <th>Bukti Bayar</th>
+                                        <th>Jumlah Belanja</th>
+                                          <th>Tgl Jatuh Tempo</th>
+                                        <th>Jumlah Terbayar</th>
+                                        <th>Sisa Hutang</th>
+                                        <!--<th>Bukti Bayar</th>-->
                                         <!--<th>Konfirm</th>
                                         <th>Status</th>-->
                                         <th>Aksi</th>
@@ -316,19 +317,39 @@
                                 <tbody>
                                     @if(!empty($PSales))
                                         @php($no_p_sales=1)
-                                        @foreach($PSales as $item_Psales_)
+                                        @php($sisa_hutang=0)
+                                        @php($total_bayar=0)
+                                          @php($jumlah_terbayar=0)
+                                        @foreach($PSales->sortBy('metode_bayar',0) as $item_Psales_)
                                         <tr>
                                             <td>{{ $no_p_sales++ }}</td>
                                             <td>{{ $item_Psales_->no_sales }}</td>
                                             <td>{{ date('d-m-Y', strtotime($item_Psales_->tgl_sales)) }}</td>
                                             <td>{{ $item_Psales_->linkToKlien->nm_klien }}</td>
-                                            <td>@if(!empty($item_Psales_->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($item_Psales_->linkToTerimaBayar->tgl_bayar)) }} @endif</td>
-                                            <td>{{ rupiahView($item_Psales_->bayar+$item_Psales_->kurang_bayar) }}</td>
-                                            <td>@if(!empty($item_Psales_->linkToTerimaBayar)) {{ rupiahView($item_Psales_->linkToTerimaBayar->jumlah_bayar) }} @endif</td>
-                                            <td>{{ rupiahView($item_Psales_->kurang_bayar) }}</td>
                                             <td>@if($item_Psales_->metode_bayar == '0') Tunai @else Kredit @endif</td>
-                                            <td><a href="#">Preview</a> </td>
-                                            <!--<td><a href="#">Yes</a> </td>
+                                            <td>{{ rupiahView($item_Psales_->total) }}</td>
+                                            <td>@if(!empty($item_Psales_->tgl_jatuh_tempo)) {{  tanggalView($item_Psales_->tgl_jatuh_tempo)}} @endif </td>
+                                            @if($item_Psales_->metode_bayar =='0')
+                                                <!--jumlah_bayar = p_sales.bayar-->
+                                                @php($jumlah_terbayar= $item_Psales_->bayar)
+                                              @else
+                                                <!--jumlah terbayar = p_sales.bayar + sum(p_terima_bayar.jumlah_bayar)-->
+
+                                                    @php($total_bayar = $item_Psales_->linkToMannyTerimaBayar->sum('jumlah_bayar'))
+                                                    @php($jumlah_terbayar= $item_Psales_->bayar + $total_bayar)
+
+                                            @endif
+                                            <td>{{ rupiahView($jumlah_terbayar) }}</td>
+
+
+                                            <!--sisa hutang = p_sales.krg_bayar - sum(p_terima_bayar.jumlah_bayar)-->
+
+                                              @php($total_bayar = $item_Psales_->linkToMannyTerimaBayar->sum('jumlah_bayar'))
+                                              @php($sisa_hutang = $item_Psales_->kurang_bayar - $total_bayar)
+
+                                              <td>{{ rupiahView($sisa_hutang ) }}</td>
+                                            <!--<td><a href="#">Preview</a></td>
+                                            <td><a href="#">Yes</a> </td>
                                             <td>
                                                 @if($item_Psales_->bayar+$item_Psales_->kurang_bayar>=$item_Psales_->bayar)
                                                     Lunas
@@ -337,8 +358,8 @@
                                                 @endif
                                             </td>-->
                                             <td>
-                                                <a href="{{ url('terima-bayar/1/'. $item_Psales_->id) }}" >Terima Bayar</a>
-                                                <a href="{{ url('terima-bayar/1/'. $item_Psales_->id.'/rincian') }}" >Rincian Bayar</a>
+                                                <a href="{{ url('terima-bayar/1/'. $item_Psales_->id) }}" >Terima </a>
+                                                <a href="{{ url('terima-bayar/1/'. $item_Psales_->id.'/rincian') }}" >Rincian </a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -347,15 +368,16 @@
                             </table>
                         </div>
                         <div class="tab-pane " id="tab_6">
-                            <h1>Return Pembayaran</h1>
+                            <h4>Return Pembayaran</h4>
                             <table  class="table table-bordered table-striped"  style="width: 100%">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>No. Faktur</th>
                                         <th>Klien</th>
+                                        <th>No. Faktur</th>
                                         <th>Tgl Transaksi</th>
-                                        <th>Jumlah Barang</th>
+                                        <th>Nama Barang</th>
+                                        <th>Jumlah Return Barang</th>
                                         <th>Total Return</th>
                                         <th>Konfirm</th>
                                         <th>Aksi</th>
@@ -364,21 +386,23 @@
                                 <tbody>
                                     @if(!empty($PSales))
                                         @php($no_complain=1)
-                                        @foreach($PSales as $data_barang_complain)
+                                        @foreach($complain_jual as $barang_complain)
+                                          @if(($barang_complain->status_complain =='0')  AND ($barang_complain->complain_jumlah !=='0') AND ($barang_complain->complain_kualitas !=='0'))
                                             <tr>
-                                                <th>{{ $no_complain++ }}</th>
-                                                <th>{{ $data_barang_complain->no_sales }}</th>
-                                                <th>{{ $data_barang_complain->linkToKlien->nm_klien }}</th>
-                                                <th>{{ $data_barang_complain->tgl_sales }}</th>
-                                                <th>{{ $data_barang_complain->linkToMannyComplainJual->where('status_complain','1')->count('id') }}</th>
-                                                <th>{{ $data_barang_complain->linkToMannyComplainJual->where('status_complain','1')->sum('total_return') }}</th>
-                                                <th>Yes</th>
-                                                <th>
-                                                    <a href="{{ url('return-barang-jual/'. $data_barang_complain->id) }}">Return</a>
-                                                    <a href="{{ url('cetak-return-barang-jual/'. $data_barang_complain->id) }}">Print</a>
+                                                <td>{{ $no_complain++ }}</td>
+                                                <td>{{ $barang_complain->linkToSales->linkToKlien->nm_klien}}</td>
+                                                <td>{{ $barang_complain->linkToSales->no_sales }}</td>
+                                                <td>{{ tanggalView($barang_complain->linkToSales->tgl_sales) }}</td>
+                                                <td>{{ $barang_complain->linkToBarang->nm_barang }}</td>
+                                                <td>{{ $barang_complain->complain_jumlah + $barang_complain->complain_kualitas }}</td>
+                                               <td>{{ rupiahView($barang_complain->total_return) }}</td>
+                                                <td>
+                                                    <a href="{{ url('return-barang-jual/'. $barang_complain->id) }}">Return</a>
+                                                    <a href="{{ url('cetak-return-barang-jual/'. $barang_complain->id) }}">Print</a>
                                                     <a href="">Konfirm</a>
-                                                </th>
+                                                </td>
                                             </tr>
+                                           @endif
                                         @endforeach
                                     @endif
                                 </tbody>

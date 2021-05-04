@@ -29,8 +29,10 @@ class ComplainBarangJual extends Model
     public function linkToSales(){
         return $this->belongsTo('App\Model\Produksi\PSales','id_sales');
     }
-
     public function linkToBarang(){
         return $this->belongsTo('App\Model\Produksi\Barang','id_barang');
+    }
+    public function linkToKaryawan(){
+        return $this->belongsTo('App\Model\Hrd\H_Karyawan','id_karyawan');
     }
 }

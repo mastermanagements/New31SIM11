@@ -25,4 +25,10 @@ class PTerimaBayar extends Model
             'id_perusahaan',
             'id_karyawan',
         ];
+    public function linkToBankAsal(){
+      return $this->belongsTo('App\Model\Administrasi\RekKlien','bank_asal');
+    }
+    public function linkToBankTujuan(){
+      return $this->belongsTo('App\Model\Produksi\RekUkm','bank_tujuan');
+    }
 }

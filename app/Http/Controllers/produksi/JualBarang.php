@@ -15,6 +15,7 @@ use App\Model\Produksi\ComplainBarangJual;
 use App\Model\Produksi\AkunPenjualan;
 use App\Model\Produksi\SettingKasir;
 use App\Model\Produksi\KerjaKasir;
+use App\Model\Produksi\PTerimaBayar as terima_bayar;
 class JualBarang extends Controller
 {
     private $id_karyawan;
@@ -62,7 +63,9 @@ class JualBarang extends Controller
             'klien'=> klien::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
             'barang'=> barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
             'SettingKasir'=> SettingKasir::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
-            'KerjaKasir' => KerjaKasir::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'KerjaKasir' => KerjaKasir::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'complain_jual'=>ComplainBarangJual::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            //'terima_bayar'=>terima_bayar::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get()
         ];
         //tab1 tawar jual  di nonaktifkan dl
         if (empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6')) && empty(Session::get('tab6'))){
