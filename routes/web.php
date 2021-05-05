@@ -10,17 +10,17 @@ Route::get('pelatihan', 'fronendController@pelatihan');
 Route::get('event', 'fronendController@event');
 
 Route::get('registerApp', function () {
-	return view('user.superadmin_ukm.master.section.registered.registered');
+    return view('user.superadmin_ukm.master.section.registered.registered');
 });
 
 Route::get('login-page', function () {
-	return view('user.superadmin_ukm.master.section.registered.login');
+    return view('user.superadmin_ukm.master.section.registered.login');
 });
 
 Route::get('sign-out', 'Superadmin_ukm\LoginAndRegisterController@signOut');
 
 Route::get('dashboard', function () {
-	/*     dd(Session::get('id_superadmin_ukm'));
+    /*     dd(Session::get('id_superadmin_ukm'));
     if(empty($model_superadmin = App\Model\Superadmin_ukm\U_usaha::where("id_user_ukm",Session::get('id_superadmin_ukm'))->first()))
     {
         return abort(404);
@@ -1289,7 +1289,7 @@ Route::post('daftarkan_peserta', 'hrd\RencanaPelatihan@store_pelatihan');
 Route::post('batal_daftarkan_peserta', 'hrd\RencanaPelatihan@delete_pelatihan');
 
 Route::get('Buku-Penilaian', function () {
-	return view('user.hrd.section.penilaian_karyawan.PA.page_default');
+    return view('user.hrd.section.penilaian_karyawan.PA.page_default');
 });
 
 Route::get('Performance-Appraisal', 'hrd\BukuPenilaian@PA');
@@ -2365,10 +2365,26 @@ Route::get('hapus-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo
 //Manufaktur
 Route::resource('manufaktur','manufaktur\manufaktur');
 Route::resource('sop-produksi','manufaktur\SOPProduksi');
-Route::resource('proses-produksi','manufaktur\ProsesProduksi');
-Route::resource('barang-sop','manufaktur\BarangSOP');
-Route::resource('produksi-baru','manufaktur\ProsesProduksiBaru');
+Route::resource('proses-produksi','manufaktur\ProsesBisnis');
 
+
+Route::get('proses-produksi/{id_tambah_produksi}/begin-produksi','manufaktur\ProsesProduksi@begin_produksi');
+Route::resource('barang-sop','manufaktur\BarangSOP');
+Route::resource('produksi-baru','manufaktur\BarangProduksi');
+Route::put('quality-control/{id_tambah_produksi}','manufaktur\BarangProduksi@qualityControll');
+Route::post('quality-control/{id_tambah_produksi}/update','manufaktur\BarangProduksi@UpdateQualityControll');
+Route::get('quality-control/{id_tambah_produksi}/show','manufaktur\BarangProduksi@cek_stok');
+Route::post('quality-control-end-produksi','manufaktur\BarangProduksi@EndqualityControll');
+
+Route::resource('bahan-baku', 'manufaktur\BahanBaku');
+Route::get('bahan-baku/{id_bahan_baku}/delete', 'manufaktur\BahanBaku@delete');
+Route::resource('tenaga-produksi', 'manufaktur\TenagaProduksi');
+Route::get('tenaga-produksi/{id_tenaga_produksi}/delete', 'manufaktur\TenagaProduksi@destroy');
+Route::resource('item-biaya-overhead', 'manufaktur\ItemOverhead');
+Route::get('item-biaya-overhead/{id_tenaga_produksi}/delete', 'manufaktur\ItemOverhead@destroy');
+Route::resource('biaya-overhead', 'manufaktur\BiayaOverhead');
+Route::get('biaya-overhead/{id_biaya_overhead}/delete', 'manufaktur\BiayaOverhead@destroy');
+Route::resource('proses-pengerjaan','manufaktur\ProsesProduksi');
 Route::get('barang-sop/{id_barang_sop}/delete','manufaktur\BarangSOP@destroy');
 
 //================================= Global Route ======================================================================

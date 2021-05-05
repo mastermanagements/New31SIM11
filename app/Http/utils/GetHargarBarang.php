@@ -38,11 +38,21 @@ class GetHargarBarang
         }
     }
 
-    #Todo Ambiil harga Hpp dari data barang
+    #Todo Ambiil harga Hpp dari data hargaJual Satuan atau Harga Jual BaseOnJumlah
     public static function harga_penjualan_barang(){
         $model = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->orderBy('id','desc')->where('id',self::$id_barang)->first();
+        $hpp = 0;
         if(!empty($model)){
-            return self::format($model->hpp);
+            // HPP dari Harga Jual Satuan
+            if(!empty($model->linkToHargaJual)){
+                $hpp = $model->linkToHargaJual->harga_jual;
+            }
+            // HPP dari Harga Based On Jumlah
+            if(!empty($model->linkToHargaBaseOneJumlah)){
+                $hpp = $model->linkToHargaBaseOneJumlah->harga_jual;
+            }
+
+            return self::format($hpp);
         }else{
             return self::format();
         }

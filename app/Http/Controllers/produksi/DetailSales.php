@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Produksi\DetailSales as DS;
 use App\Model\Produksi\Barang;
 use Session;
+use App\Model\Produksi\PSales;
 use App\Model\Administrasi\GroupKlien;
 use App\Model\Administrasi\Klien;
 
@@ -36,8 +37,8 @@ class DetailSales extends Controller
     }
 
     private function penentuan_diskon($req,$id_sales){
-        $model = DS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id_sales);
-        $model_group_klien = $model->linkToSales->linkToKlien->linkToMannyGroupKlien;
+        $model = PSales::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id_sales);
+        $model_group_klien = $model->linkToKlien->linkToMannyGroupKlien;
         #initial diskon
         $diskon = 0;
         $data_p_diskon = null;
@@ -115,7 +116,7 @@ class DetailSales extends Controller
         ]);
 
         $model = DS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrfail($id);
-        $diskon_group = $this->penentuan_diskon($req,$req->id_sales);
+        $diskon_group = $this->penentuan_diskon($req,$model->id_sales);
         $total = 0;
         $total =  $this->check_metode_jual($req)*$req->jumlah_jual;
         if($diskon_group !=0){

@@ -10,7 +10,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Detail Penjualan barang s
+                Detail Penjualan barang
             </h1>
         </section>
 

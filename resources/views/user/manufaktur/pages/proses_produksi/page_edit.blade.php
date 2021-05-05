@@ -30,7 +30,7 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form  action="{{ url('proses-produksi/'.$proses_bisnis->id) }}" method="post" enctype="multipart/form-data">
+                    <form  action="{{ url('proses-bisnis/'.$proses_bisnis->id) }}" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
                                 {{ csrf_field() }}
