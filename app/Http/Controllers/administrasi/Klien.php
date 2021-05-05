@@ -5,6 +5,7 @@ namespace App\Http\Controllers\administrasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Administrasi\Klien as kliens;
+use App\Model\Administrasi\RekKlien as rek_klien;
 use App\Model\Marketing\SumberDataKlien as SDK;
 use App\Model\Marketing\PenandaSDK as penandaSDK;
 use App\Model\Marketing\HistoryKlien as historykliens;
@@ -41,7 +42,8 @@ class Klien extends Controller
 			'data_closeable' => kliens::where('jenis_klien', '4')->where('id_perusahaan', $this->id_perusahaan)->paginate(25),
 			'SDK'=>SDK::all(),
 			'penandaSDK'=>penandaSDK::all(),
-            'group_klien'=> GroupKlien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+      'group_klien'=> GroupKlien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+      'rek_klien'=> rek_klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
 		//dd($data_klien['penandaSDK']);
         return view('user.administrasi.section.klien.page_default', $data_klien);

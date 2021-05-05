@@ -18,13 +18,17 @@ class PTerimaBayar extends Model
             'tgl_bayar',
             'metode_bayar',
             'bank_asal',
-            'rek_asal',
-            'nama_asal',
             'bank_tujuan',
-            'no_rek_tujuan',
             'jumlah_bayar',
-            'terima_bukti',
+            'bukti_bayar',
+            //'terima_bukti',
             'id_perusahaan',
             'id_karyawan',
         ];
+    public function linkToBankAsal(){
+      return $this->belongsTo('App\Model\Administrasi\RekKlien','bank_asal');
+    }
+    public function linkToBankTujuan(){
+      return $this->belongsTo('App\Model\Produksi\RekUkm','bank_tujuan');
+    }
 }

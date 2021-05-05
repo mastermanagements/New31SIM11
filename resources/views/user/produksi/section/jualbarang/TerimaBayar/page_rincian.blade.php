@@ -16,47 +16,27 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Rincian Penjualan</h3>
-                    </div>
+                  <div class="box-header with-border">
+                      <h6 class="box-title">Rincian Pembayaran Penjualan dengan No Transaksi: <font color="#FF00GG">@if(!empty($data->no_so)){{ $data->no_so }}@else {{ $data->no_sales }} @endif</font>, &nbsp;Klien: <font color="#FF00GG">{{ $data->linkToKlien->nm_klien }}
+                      </font></h6>
+                       <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
+                  </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                       <div class="box-body">
                           <div class="row">
-                              <div class="col-md-12">
-                                <form role="form" action="{{ url('terima-bayar') }}" method="post" enctype="multipart/form-data">
-                                  {{ csrf_field() }}
 
-                                        <div class="form-group">
-                                            <label>No Transaksi</label>
-                                            <input type="text" class="form-control" name="no_transaksi" value="@if(!empty($data->no_so)){{ $data->no_so }}@else {{ $data->no_sales }} @endif" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Klien</label>
-                                            <input type="text" class="form-control" name="klien" value="{{ $data->linkToKlien->nm_klien }}" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Tgl Transaksi</label>
-                                            <input type="text" class="form-control" value="{{ date('d-m-Y', strtotime($data->tgl_so)) }}" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Total Bayar</label>
-                                            <input readonly type="text" name="tgl_bayar" class="form-control" value="{{ $data->linkToMannyTerimaBayar->sum('jumlah_bayar') }}">
-                                        </div>
-                                </form>
-                              </div>
                               <div class="col-md-12">
-                                  <hr>
-                                  <h4>Daftar rincian pembayaran</h4>
-                                  <table id="example2" class="table table-bordered table-striped">
+                                  <table id="example4" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
                                                 <th>Tanggal Bayar</th>
                                                 <th>Jenis Pembayaran</th>
-                                                <th>Bank & Rek Asal</th>
-                                                <th>Bank & Rek Tujuan</th>
+                                                <th>Bank Asal</th>
+                                                <th>Bank Tujuan</th>
                                                 <th>Jumlah Bayar</th>
+                                                <th>Bukti Bayar</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -75,26 +55,30 @@
                                                             Cek
                                                         @elseif($item_pso->metode_bayar=='2')
                                                             Langsung/Tunai
-                                                        @elseif($item_pso->metode_bayar=='3')
-                                                            Return Barang Jual
+                                                        <!--@elseif($item_pso->metode_bayar=='3')
+                                                            Return Barang Jual-->
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        {{ $item_pso->bank_asal }} {{ $item_pso->rek_asal }}
+                                                        {{ $item_pso->linkToBankAsal->nama_bank }}, {{ $item_pso->linkToBankAsal->no_rek }}, {{ $item_pso->linkToBankAsal->atas_nama }}
                                                     </td>
                                                     <td>
-                                                        {{ $item_pso->bank_tujuan }} {{ $item_pso->no_rek_tujuan }}
+                                                        {{ $item_pso->linkToBankTujuan->nama_bank }}, {{ $item_pso->linkToBankTujuan->no_rek }}, {{ $item_pso->linkToBankTujuan->atas_nama }}
                                                     </td>
                                                     <td>
-                                                        {{ number_format($item_pso->jumlah_bayar,2,',','.') }}
+                                                        {{ rupiahView($item_pso->jumlah_bayar) }}
                                                     </td>
                                                     <td>
-                                                        <form action="{{ url('terima-bayar/'.$item_pso->id) }}" method="post">
-                                                            {{ csrf_field() }}
-                                                            @method('delete')
-                                                            <a href="{{ url('terima-bayar/'.$item_pso->jenis_bayar.'/'.$item_pso->id.'/edit') }}" class="btn btn-warning">ubah</a>
-                                                            <button class="btn btn-danger" onclick="return confirm('Apakah anda akan menhapus data')">hapus</button>
-                                                        </form>
+                                                        <a href="{{ asset('buktiBayar/'.$item_pso->bukti_bayar) }}" >Preview</a>
+                                                    </td>
+                                                    <td>
+
+                                                      <form action="{{ url('terima-bayar/'.$item_pso->id) }}" method="post">
+                                                          {{ csrf_field() }}
+                                                          @method('delete')
+                                                          <!--<a href="{{ url('terima-bayar/'.$item_pso->jenis_bayar.'/'.$item_pso->id.'/edit') }}" class="btn btn-warning">ubah</a>-->
+                                                          <button class="btn btn-danger" onclick="return confirm('Apakah anda akan menhapus data')">hapus</button>
+                                                      </form>
                                                     </td>
                                                 </tr>
                                             @endforeach

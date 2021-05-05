@@ -24,7 +24,8 @@ class PTerimaBayar extends Migration
             $table->integer('bank_asal')->unsigned();
             $table->integer('bank_tujuan')->unsigned();
             $table->decimal('jumlah_bayar',12,2)->default(0);
-            $table->enum('terima_bukti',['-','0','1'])->default('-')->comment('-=default, 0=uang belum masuk, 1= uang sudah masuk');
+            $table->string('bukti_bayar')->nullable();
+            //$table->enum('terima_bukti',['-','0','1'])->default('-')->comment('-=default, 0=uang belum masuk, 1= uang sudah masuk');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
 

@@ -8,6 +8,7 @@ use Session;
 use App\Model\Produksi\PSales;
 use App\Model\Administrasi\Klien;
 use App\Model\Produksi\ReturnBarangJual as RBJ;
+use App\Model\Produksi\ComplainBarangJual as CBJ;
 
 class ReturnBarangJual extends Controller
 {
@@ -18,7 +19,7 @@ class ReturnBarangJual extends Controller
         'Return Uang'
     ];
     public function show($id){
-       $model = PSales::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+       $model = CBJ::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         $data = [
           'data'=> $model,
           'klien'=>Klien::all()->where('id_perusahaan',  Session::get('id_perusahaan_karyawan')),
@@ -39,10 +40,8 @@ class ReturnBarangJual extends Controller
 
     public function store(Request $req){
         $this->validate($req,[
-            'id_sales'=> 'required',
-            'no_order'=> 'required',
-            'tgl_sales'=> 'required',
-            'id_metode_return'=> 'required',
+            'id_complain_barang'=> 'required',
+            'jenis_return'=> 'required',
             'tgl_return'=> 'required',
             'ongkos_kirim'=> 'required',
         ]);
@@ -50,14 +49,16 @@ class ReturnBarangJual extends Controller
         $model= RBJ::updateOrCreate(
             [
                 'id_perusahaan'=>Session::get('id_perusahaan_karyawan'),
-                'id_complain_barang'=> $req->id_sales,
+                'id_complain_barang'=> $req->id_complain_barang,
             ],
             [
                 'tgl_return' =>date('Y-m-d', strtotime($req->tgl_return)),
-                'jenis_return' =>$req->id_metode_return,
-                'ongkir_return' =>$req->ongkos_kirim,
+                'jenis_return' =>$req->jenis_return,
+                'ongkir_return' =>rupiahController($req->ongkos_kirim),
+                'id_karyawan'=>Session::get('id_perusahaan_karyawan')
             ]
         );
+
 
         if ($model->save()){
             return redirect()->back()->with('message_success','Data return barang penjualan telah disimpan');
@@ -65,4 +66,19 @@ class ReturnBarangJual extends Controller
             return redirect()->back()->with('message_fail','Data return barang penjualan gagal disimpan');
         }
     }
+
+
+    public function ubahStatus(Request $req, $id){
+
+  		$model = CBJ::find($id);
+      $model->status_return ='1';
+      $model->id_karyawan = Session::get('id_perusahaan_karyawan');
+      $model->save();
+      //dd($model);
+  		if($model->save()){
+  			  return redirect('Penjualan')->with('message_success',' berhasil ubah status return')->with('tab6','tab6');
+  		} else{
+  		  return redirect('Penjualan')->with('message_fail','gagal ubah status return')>with('tab6','tab6');
+  		}
+  	}
 }

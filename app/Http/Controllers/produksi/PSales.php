@@ -9,6 +9,7 @@ use App\Model\Produksi\KomisiSales as komisi_sales;
 use App\Model\Produksi\PSO;
 use App\Model\Produksi\PSales as PS;
 use App\Model\Produksi\Barang;
+use App\Model\Produksi\ComplainBarangJual as CBJ;
 use App\Http\utils\SettingNoSuratSO;
 use Session;
 use App\Http\utils\JenisAkunPenjualan;
@@ -54,8 +55,9 @@ class PSales extends Controller
             'klien'=> klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'pesanan_jual' => PSO::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'komisi_sales' => komisi_sales::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
-
+            'complain_barang' => CBJ::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
+        //dd($pass['complain_barang']);
         return view('user.produksi.section.jualbarang.penjualan.page_complain', $pass);
     }
 
