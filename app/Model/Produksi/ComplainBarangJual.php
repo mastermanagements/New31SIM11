@@ -35,4 +35,7 @@ class ComplainBarangJual extends Model
     public function linkToKaryawan(){
         return $this->belongsTo('App\Model\Hrd\H_Karyawan','id_karyawan');
     }
+    public function linkToReturnJual(){
+        return $this->hasOne('App\Model\Produksi\ReturnBarangJual','id_complain_barang');
+    }
 }

@@ -47,6 +47,10 @@ class PSales extends Model
         return $this->hasMany('App\Model\Produksi\ComplainBarangJual','id_sales','id');
     }
 
+    public function linkToOneComplainJual(){
+        return $this->hasOne('App\Model\Produksi\ComplainBarangJual','id_sales','id');
+    }
+
     public function linkToTerimaBayar(){
         return $this->hasOne('App\Model\Produksi\PTerimaBayar','id_sales','id');
     }

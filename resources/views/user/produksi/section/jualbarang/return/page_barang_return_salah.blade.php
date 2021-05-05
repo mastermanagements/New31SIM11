@@ -16,11 +16,7 @@
 
         <!-- Main content -->
         <section class="content container-fluid">
-          @if(!empty(session('message_success')))
-              <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
-          @elseif(!empty(session('message_fail')))
-              <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
-          @endif
+
             <p></p>
             <div class="row">
                 <div class="col-md-12">

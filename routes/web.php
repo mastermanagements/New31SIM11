@@ -718,7 +718,7 @@ Route::get('ubah-pengumuman/{id}', 'administrasi\Pengumuman@edit');
 
 Route::put('update-pengumuman/{id}', 'administrasi\Pengumuman@update');
 
-Route::put('delete-pengumuman/{id}', 'administrasi\Pengumuman@delete');
+Route::put('delete-return-barang-jual/{id}', 'administrasi\Pengumuman@delete');
 
 
 //============================================ Produksi ================================================================
@@ -906,6 +906,7 @@ Route::resource('complain-barang-jual','produksi\ComplainBarangJual');
 //--- Jasa ---
 Route::resource('return-barang-jual','produksi\ReturnBarangJual');
 Route::get('cetak-return-barang-jual/{id}','produksi\ReturnBarangJual@cetak');
+Route::get('status-return-barang-jual/{id}', 'produksi\ReturnBarangJual@ubahStatus');
 
 # Akun Penjualan
 Route::resource('pengaturan-akun-penjualan','produksi\AkunPenjualan');

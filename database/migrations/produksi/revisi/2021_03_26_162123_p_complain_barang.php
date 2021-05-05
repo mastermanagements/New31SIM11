@@ -25,9 +25,10 @@ class PComplainBarang extends Migration
             $table->integer('complain_kualitas')->default(0);
             $table->decimal('total_return',19,2)->default(0);
             $table->string('ket')->nullable();
-            $table->enum('status_complain',['0','1'])->default(0);
+            $table->enum('status_complain',['0','1'])->default(0)->comment('0=Complain Di terima, 1= Complain Di Tolak');
             $table->text('alasan_ditolak')->nullable();
             $table->enum('konfirm_klien',['0','1'])->default(0);
+            $table->enum('status_return',['0','1'])->default(0)->comment('0=belum direturn, 1=selesai return');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
 

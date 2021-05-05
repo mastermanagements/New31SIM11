@@ -2,7 +2,7 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+
 @stop
 
 @section('master_content')
@@ -129,7 +129,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                      
+
                                                         @foreach($complain_barang as $complain)
                                                         @foreach($data->linkToDetailSales as $data_detail)
                                                           @if($complain->id_detail_sales == $data_detail->id)
@@ -178,86 +178,5 @@
 
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script>
-
-
-        $('#datepicker').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy'
-        });
-
-        $('#datepicker2').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy'
-        });
-
-        $('#datepicker3').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy'
-        });
-
-        $('[name="hpp"]').keyup(function(){
-            calculate_total();
-        })
-        $('[name="jumlah_jual"]').keyup(function(){
-            calculate_total();
-        })
-
-        $('[name="diskon"]').keyup(function(){
-            calculate_total();
-        })
-
-        calculate_total = function(){
-            var jumlah_harga = $('[name="hpp"]').val();
-            var jumlah_jual = $('[name="jumlah_jual"]').val();
-            var diskon = $('[name="diskon"]').val();
-            var total =jumlah_jual * jumlah_harga;
-            if(diskon !=0){
-                diskon = total * (diskon/100);
-                total = total - diskon;
-            }
-
-            $('#tbl_jumlah').val(total);
-        }
-
-        $(document).ready(function () {
-            var total_detail_ces = parseInt($('#total_uang').text());
-
-            $('[name="diskon_tambahan"]').keyup(function(){
-                var nilai_diskon = $(this).val();
-                var sub_total = $('#total_uang').text();
-                var diskon_tambahan = 0;
-                var total_detail=0;
-                if(nilai_diskon !=0){
-                    diskon_tambahan = parseInt(sub_total)*(nilai_diskon/100);
-                    total_detail = parseInt(sub_total)-diskon_tambahan;
-                }
-
-                $('#total_setelah_didiskon').val(total_detail);
-                total_detail_ces = total_detail;
-                $('#total_keseluruhan').val(total_detail_ces);
-            });
-
-            $('[name="pajak"]').keyup(function(){
-                var vpajak = $(this).val();
-                var total_pajak = total_detail_ces;
-                if(vpajak != 0){
-                    var pajak_new = total_pajak*(vpajak/100);
-                    total_pajak = total_pajak + pajak_new;
-                }
-                $('#total_setelah_pajak').val(total_pajak);
-                total_detail_ces = total_pajak;
-                $('#total_keseluruhan').val(total_pajak);
-            });
-
-            $('[name="biaya_tambahan"]').keyup(function () {
-                var total_plus_bTambahan =0;
-                total_plus_bTambahan  = Number(total_detail_ces)+Number($(this).val());
-               $('#total_keseluruhan').val(total_plus_bTambahan);
-            })
-        })
-    </script>
 
 @stop
