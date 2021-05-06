@@ -82,137 +82,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
-<script>
-    $(function () {
-        $('#example1').DataTable();
-        $('#example3').DataTable();
-        $('#example2').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })
-
-        get_harga = function(functionNumber,segment) {
-            if(segment == undefined){
-                var id_barang = $('[name="id_barang"]').val();
-            }else{
-                var id_barang = $('#id_barang'+segment).val();
-            }
-            $.ajax({
-                url : "{{ url('getHargaBarang') }}",
-                type : 'post',
-                data : {
-                    '_token':'{{csrf_token()}}',
-                    'id_barang': id_barang,
-                    'number_call_function':functionNumber
-                },
-
-                success: function (result) {
-                    console.log(segment);
-                    if(segment == undefined){
-                        $('#show_harga').val(result.harga);
-                    }else{
-                        $('#show_harga'+segment).val(result.harga);
-                    }
-                }
-            });
-        }
-
-        $('#diskon_tambahan').keyup(function () {
-            calculate_total_akhir();
-        });
-
-        $('#pajak_tambahan').keyup(function () {
-            calculate_total_akhir();
-        });
-
-        $('#uang_muka').keyup(function () {
-            calculate_total_akhir();
-        });
-
-        $('#ongkir').keyup(function () {
-            calculate_total_akhir();
-        });
-
-        $('#bayar').keyup(function () {
-            calculate_total_akhir();
-        });
-
-        $('#biaya_tambahan').keyup(function () {
-            calculate_total_akhir();
-        });
-
-        calculate_total_akhir = function(){
-            var sub_total = $('#sub_total').text();
-            var diskon_tambahan = $('#diskon_tambahan').val();
-            var pajak = $('#pajak_tambahan').val();
-            var uang_muka = $('#uang_muka').val();
-            var ongkir = $('#ongkir').val();
-            var bayar = $('#bayar').val();
-            var biaya_tambahan = $('#biaya_tambahan').val();
-            var hutang = 0;
-            var total = sub_total;
-
-            // Hitung jika ada diskon
-            if(typeof diskon_tambahan !='undefined') {
-                if (diskon_tambahan != 0) {
-                    var n_diskon = total * (diskon_tambahan / 100);
-                    total = total - n_diskon;
-                }
-            }
-
-            if(typeof uang_muka !='undefined') {
-                if (uang_muka != 0) {
-                    hutang = total - parseInt(uang_muka);
-                    total = hutang;
-                    $('#kurang_bayar').val(hutang);
-                }
-            }
-
-
-            if(typeof biaya_tambahan !='undefined') {
-                if (biaya_tambahan != 0) {
-                    total = total + parseInt(biaya_tambahan);
-                }
-            }
-
-//             Hitung jika ada pajak
-            if(typeof pajak !='undefined') {
-                if (pajak != 0) {
-                    var n_pajak = total * (pajak / 100);
-                    total = total + n_pajak;
-                }
-            }
-
-            if(typeof ongkir !='undefined'){
-                if(ongkir !=0){
-                    total = total + ongkir;
-                }else{
-                    total = total + 0;
-                }
-            }
-
-            if(typeof bayar !='undefined') {
-                if (bayar != 0) {
-                    total = total - bayar;
-                    $('#kurang_bayar').val(total);
-                }
-            }
-            // Kurang Bayar
-
-
-            if(total <= 0){
-                alert('Total Bayar tidak boleh melebihi jumlah total');
-                $('#final_total').text("Total Akhir "+total);
-            }else{
-                $('#final_total').text("Total Akhir "+(total));
-                $('[name="total"]').val(parseInt(total));
-            }
-        }
-    });
-</script>
+     <script>
+         $(function () {
+             $('#example1').DataTable();
+             $('#example3').DataTable();
+             $('#example2').DataTable({
+                 'paging'      : false,
+                 'lengthChange': false,
+                 'searching'   : false,
+                 'ordering'    : false,
+                 'info'        : true,
+                 'autoWidth'   : false
+             })
+             get_harga = function(functionNumber,segment) {
+                 if(segment == undefined){
+                     var id_barang = $('[name="id_barang"]').val();
+                 }else{
+                     var id_barang = $('#id_barang'+segment).val();
+                 }
+                 $.ajax({
+                     url : "{{ url('getHargaBarang') }}",
+                     type : 'post',
+                     data : {
+                         '_token':'{{csrf_token()}}',
+                         'id_barang': id_barang,
+                         'number_call_function':functionNumber
+                     },
+                     success: function (result) {
+                         console.log(segment);
+                         if(segment == undefined){
+                             $('#show_harga').val(result.harga);
+                         }else{
+                             $('#show_harga'+segment).val(result.harga);
+                         }
+                     }
+                 });
+             }
+         });
+     </script>
 </body>
 </html>

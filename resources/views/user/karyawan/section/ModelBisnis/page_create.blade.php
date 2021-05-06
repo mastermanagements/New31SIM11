@@ -1,9 +1,9 @@
 @extends('user.karyawan.master_user')
 
 @section('skin')
-   <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
+<link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
 
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 @stop
 
 
@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Model Bisnis
+            Bisnis Model Canvas
         </h1>
     </section>
 
@@ -27,32 +27,41 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Model Bisnis</h3>
+                        <h3 class="box-title">Formulir Tambah Bisnis Model Canvas</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" action="{{ url('store-mb') }}" method="post">
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Nama Model Bisnis</label>
-                                <input type="text" name="nm_mb" class="form-control" id="exampleInputEmail1" required>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
-                            </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Sasaran</label>
-                                    <textarea class="form-control" placeholder="Masukan sasaran Anda" name="sasaran" id="sasaran" required>
-
-                                    </textarea>
-                                    <small style="color: red">* Tidak boleh kosong</small>
-                                </div>
-                        </div>
-                        <!-- /.box-body -->
-
-                        <div class="box-footer">
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+                      <div class="box-body">
+                          <div class="form-group">
+                            <label for="exampleInputFile">Elemen Model Bisnis</label>
+                              <select class="form-control select2" style="width: 100%;" name="id_jenis_mb" required>
+                                <option>Pilih Elemen Model Bisnis</option>
+                                  @foreach($jenis_mb as $value)
+                                    <option value="{{ $value->id }}">{{ $value->nama_mb }}</option>
+                                  @endforeach
+                              </select>
+                              <small style="color: red">* Tidak boleh kosong</small>
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputFile">Sub Model Bisnis</label>
+                                <select class="form-control select2" style="width: 100%;" name="id_sub_mb" required>
+                                  <option>Pilih Sub Model Bisnis</option>
+                                </select>
+                                <small style="color: red">* Tidak boleh kosong</small>
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputEmail1">Isi</label>
+                                  <textarea class="form-control" placeholder="Masukan isi uraian model bisnis" name="isi" id="isi" required></textarea>
+                                  <small style="color: red">* Tidak boleh kosong</small>
+                          </div>
+                      </div>
+                      <!-- /.box-body -->
+                      <div class="box-footer">
+                          {{ csrf_field() }}
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                  </form>
                 </div>
             </div>
         </div>
@@ -61,29 +70,31 @@
 </div>
 @stop
 
-
 @section('plugins')
-     <!-- iCheck 1.0.1 -->
-    <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
-    <!-- SlimScroll -->
-    <script src="{{ asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-    <script>
+<script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+<!-- SlimScroll -->
+<script src="{{ asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+<script>
+    //Initialize Select2 Elements
+   $(function () {
+       $('.select2').select2();
 
-        window.onload = function() {
-            CKEDITOR.replace( 'sasaran',{
-                height: 600
-            } );
-        };
-
-        //Initialize Select2 Elements
-//        $(function () {
-//
-//            //iCheck for checkbox and radio inputs
-//            $('input[type="radio"].minimal').iCheck({
-//                checkboxClass: 'icheckbox_minimal-blue',
-//                radioClass   : 'iradio_minimal-blue'
-//            })
-//
-//        })
-    </script>
+       $('[name="id_jenis_mb"]').change(function () {
+           $.ajax({
+               url:"{{ url('getSubModelBisnis') }}/" + $(this).val(),
+               dataType: "json",
+               success: function (result) {
+                   var option="<option>Pilih Sub Model Bisnis</option>";
+                   $.each(result, function (id, val) {
+                       option+="<option value="+val.id+">"+val.sub_mb+"</option>";
+                   });
+                   $('[name="id_sub_mb"]').html(option);
+               }
+           })
+       })
+   })
+   CKEDITOR.replace( 'isi',{
+        height: 100
+   } );
+</script>
 @stop

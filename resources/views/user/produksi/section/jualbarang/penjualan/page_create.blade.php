@@ -33,7 +33,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>No Faktur</label>
-                                        <input type="text" class="form-control" name="no_sales">
+                                        <input type="text" class="form-control" name="no_sales" value="{{ $no_surat }}">
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Penjualan</label>
@@ -41,7 +41,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="datepicker2" placeholder="Tanggal Pesanan" name="tgl_sales" >
+                                            <input type="text" class="form-control pull-right" id="datepicker2" placeholder="Tanggal Penjualan" name="tgl_sales" value="{{ tanggalView(date('Y-m-d')) }}" >
                                         </div>
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
@@ -49,14 +49,15 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">No. Pesanan Penjualan</label>
                                         <select class="form-control select2" style="width: 100%;" name="id_so" >
-                                            <option value="null">Pilihan pesanan penjualan</option>
+                                            <option value="0">Pilihan pesanan penjualan</option>
                                             @if(!empty($pesanan_jual))
+
                                                 @foreach($pesanan_jual as $value)
                                                     <option value="{{ $value->id }}">{{ $value->no_so }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
-                                        <small style="color: red">* Tidak Boleh Kosong</small>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Klien</label>
@@ -77,10 +78,10 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="datepicker3" placeholder="Tanggal kirim sampai dengan" name="tgl_kirim" >
+                                            <input type="text" class="form-control pull-right" id="datepicker3" placeholder="Tanggal kirim sampai dengan" name="tgl_kirim">
                                         </div>
                                         <!-- /.input group -->
-                                        <small style="color: red">* Tidak Boleh Kosong</small>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Salesman</label>
@@ -88,17 +89,13 @@
                                             @if(empty($komisi_sales))
                                                 <option>Klien masih kosong</option>
                                             @else
+                                                    <option value="0">Pilih Salesman</option>
                                                 @foreach($komisi_sales as $value)
                                                     <option value="{{ $value->id }}">{{ $value->linkToKaryawan->nama_ky }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
-                                        <small style="color: red">* Tidak Boleh Kosong</small>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label for="keterangan">Keterangan</label>
-                                        <textarea class="form-control" name="ket"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Submit</button>

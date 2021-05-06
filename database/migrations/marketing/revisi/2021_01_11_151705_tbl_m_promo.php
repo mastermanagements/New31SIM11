@@ -22,7 +22,9 @@ class TblMPromo extends Migration
             $table->date('tgl_dibuat');
             $table->date('tgl_berlaku');
             $table->integer('id_perusahaan')->unsigned();
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->integer('id_karyawan')->unsigned();
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
             $table->timestamps();
         });
     }

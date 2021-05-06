@@ -26,30 +26,30 @@
             <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Tambah Tambah Konversi Barang</h3>
+                        <h3 class="box-title"> Tambah Konversi Barang</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" action="{{ url('atur-konversi') }}" method="post">
                         <div class="box-body">
                             <div class="form-group">
-                                <label>Nama Barang Asal</label> <br>
+                                <label>Nama Barang dan Satuan Asal</label> <br>
                                 <select name="id_barang_asal" class="form-control select2" style="width: 100%" required>
                                     <option>Pilih Barang Asal</option>
                                     @if(!empty($data))
                                         @foreach($data as $data_barang_asal)
-                                            <option value="{{ $data_barang_asal->id }}">{{ $data_barang_asal->nm_barang }} {{ $data_barang_asal->linkToSatuan->satuan_brg }}</option>
+                                            <option value="{{ $data_barang_asal->id }}">{{ $data_barang_asal->nm_barang }}, {{ $data_barang_asal->linkToSatuan->satuan }}</option>
                                         @endforeach
                                     @endif
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Nama Barang Tujuan</label> <br>
+                                <label>Nama Barang dan Satuan Tujuan</label> <br>
                                 <select name="id_barang_tujuan" class="form-control select2" style="width: 100%"  required>
                                     <option>Pilih Barang Tujuan</option>
                                     @if(!empty($data))
                                         @foreach($data as $data_barang_tujuan)
-                                            <option value="{{ $data_barang_tujuan->id }}">{{ $data_barang_tujuan->nm_barang }} {{ $data_barang_tujuan->linkToSatuan->satuan_brg }}</option>
+                                            <option value="{{ $data_barang_tujuan->id }}">{{ $data_barang_tujuan->nm_barang }}, {{ $data_barang_tujuan->linkToSatuan->satuan }}</option>
                                         @endforeach
                                     @endif
                                 </select>

@@ -30,7 +30,7 @@
                                             <option>Pilihan Barang</option>
                                             @if(!empty($barang))
                                                 @foreach($barang as $data)
-                                                    <option value="{{ $data->id }}">{{ $data->nm_barang }}</option>
+                                                    <option value="{{ $data->id }}">{{ $data->nm_barang }}, Satuan: {{ $data->linkToSatuan->satuan }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -45,7 +45,7 @@
                                         <label>
                                             Tanggal Expired
                                         </label>
-                                        <input type="date" name="expired_date" class="form-control" required/>
+                                        <input type="date" name="expired_date" class="form-control"/>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Simpan</button>

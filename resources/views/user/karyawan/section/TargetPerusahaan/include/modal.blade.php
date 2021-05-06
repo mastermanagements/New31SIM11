@@ -29,7 +29,7 @@
               <small style="color: red">* Tidak Boleh Kosong</small>
             </div>
             <div class="form-group">
-                <label>Tahun Mulai</label>
+                <label>Tahun Selesai</label>
                 <div class="input-group date">
                 <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
@@ -41,7 +41,7 @@
             </div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Target Jangka Panjang</label>
-							<textarea class="form-control"  name="target_puncak_ubah" id="target_puncak_ubah"  required></textarea>
+							<textarea class="form-control"  name="target_puncak_ke" id="target_puncak_ubah" required></textarea>
 							<small style="color: red" id="notify"></small>
 						</div>
             <div class="form-group">
@@ -355,6 +355,7 @@
                     <h4 class="modal-title">Formulir Ubah Target Staf Perusahaan</h4>
                 </div>
           <div class="modal-body">
+
             <div class="form-group">
                 <label for="exampleInputFile">Target Supervisor</label>
                     <select class="form-control select2" style="width: 100%;" name="id_target_superv_ubah" required>
@@ -372,7 +373,23 @@
 											@endforeach
                     </select>
               </div>
-
+              <div class="form-group">
+                  <label for="exampleInputFile">Karyawan</label>
+                      <select class="form-control select2" style="width: 100%;" name="nm_karyawan_ubah" required>
+                        <option value="0">Pilih Karyawan</option>
+                        @foreach($karyawan as $values)
+  												  @if(!empty($target_staf->nm_karyawan))
+  													<option value="{{ $values->id }}" {{ $values->id == $target_staf->nm_karyawan ? 'selected' : '' }}>
+                              {{ $values->nama_ky }}
+                            </option>
+  												  @else
+  													<option value="{{ $values->id }}"}}>
+                              {{ $values->nama_ky }}
+                            </option>
+  												  @endif
+  											@endforeach
+                      </select>
+            </div>
             <div class="form-group">
                 <label>Bulan </label>
                 <div class="input-group date">
@@ -399,7 +416,7 @@
               <label for="exampleInputEmail1">Satuan Target</label>
               <input type="text" class="form-control"  name="satuan_target_ubah" required>
               <small style="color: red" id="notify"></small>
-              <input type="text" name="id_tstaf_ubah">
+              <input type="hidden" name="id_tstaf_ubah">
             </div>
         </div>
         <div class="modal-footer">
@@ -415,15 +432,197 @@
 </div>
 <!-- /.modal -->
 
-<script>
+<!--- /.khusus untuk tambah strategi perusahaan di halaman target perusahaan --->
+<!---modal tambah strategi jangka panjang perusahaan--->
+<div class="modal fade" id="modal-tambah-strategi-jp">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="{{ url('store-sjp') }}" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Formulir Tambah Strategi Jangka Panjang Perusahaan</h4>
+                </div>
+                <div class="modal-body">
+					          <div class="form-group">
+                        <label for="exampleInputEmail1">Masukan Strategi Jangka Panjang Perusahaan</label>
+                        <textarea class="form-control"  name="isi" id="isi_sjp" required></textarea>
+                        <small style="color: red">* Tidak boleh kosong</small>
+						            <input type="hidden" name="id_tjp">
+					         </div>
+					         <div class="modal-footer">
+                        {{ csrf_field() }}
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
+                        <button type="submit" id="submitSJP" class="btn btn-primary">Simpan</button>
+                  </div>
+                </div>
+                <!-- /.modal-body -->
+              </form>
+          </div>
+          <!-- /.modal-content-->
+        </div>
+        <!---/.modal-dialog--->
+    </div>
+  <!---end modal tambah sjp-->
 
+<!---modal tambah strategi ekskeutif--->
+<div class="modal fade" id="modal-tambah-strategi-eks">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="{{ url('store-sekutif') }}" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Formulir Tambah Strategi Eksekutif Perusahaan</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                        <label for="exampleInputEmail1">Nama/Judul Strategi</label>
+                        <input type="text" class="form-control"  name="nama" required></input>
+                        <small style="color: red">* Tidak boleh kosong</small>
+                  </div>
+      					  <div class="form-group">
+                      <label for="exampleInputEmail1">Masukan Strategi Eksekutif Perusahaan</label>
+                      <textarea class="form-control"  name="isi" id="isi_eks" required></textarea>
+                      <small style="color: red">* Tidak boleh kosong</small>
+      					      <input type="hidden" name="id_teks">
+      					  </div>
+					        <div class="modal-footer">
+                    {{ csrf_field() }}
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
+                    <button type="submit" id="submitSEks" class="btn btn-primary">Simpan</button>
+					        </div>
+			          </div>
+                <!-- /.modal-body -->
+            </form>
+		    </div>
+        <!-- /.modal-content-->
+	   </div>
+    <!---/.modal-dialog--->
+ </div>
+ <!---end modal tambah sekutif-->
+
+ <!---modal tambah strategi manager--->
+ <div class="modal fade" id="modal-tambah-strategi-man">
+     <div class="modal-dialog modal-lg">
+         <div class="modal-content">
+             <form action="{{ url('store-sman') }}" method="post">
+                 <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span></button>
+                     <h4 class="modal-title">Formulir Tambah Strategi Manager Perusahaan</h4>
+                 </div>
+                 <div class="modal-body">
+                   <div class="form-group">
+                         <label for="exampleInputEmail1">Nama/Judul Strategi</label>
+                         <input type="text" class="form-control"  name="nama" required></input>
+                         <small style="color: red">* Tidak boleh kosong</small>
+                   </div>
+       					  <div class="form-group">
+                       <label for="exampleInputEmail1">Masukan Strategi Manager Perusahaan</label>
+                       <textarea class="form-control"  name="isi" id="isi_man" required></textarea>
+                       <small style="color: red">* Tidak boleh kosong</small>
+       					      <input type="hidden" name="id_tman">
+       					  </div>
+ 					        <div class="modal-footer">
+                     {{ csrf_field() }}
+                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
+                     <button type="submit" id="submitSMan" class="btn btn-primary">Simpan</button>
+ 					        </div>
+ 			          </div>
+                 <!-- /.modal-body -->
+             </form>
+ 		    </div>
+         <!-- /.modal-content-->
+ 	   </div>
+     <!---/.modal-dialog--->
+  </div>
+  <!---end modal tambah manager-->
+  <!---modal tambah strategi Supervisor--->
+  <div class="modal fade" id="modal-tambah-strategi-sup">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <form action="{{ url('store-ssup') }}" method="post">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Formulir Tambah Strategi Supervisor Perusahaan</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                          <label for="exampleInputEmail1">Nama/Judul Strategi</label>
+                          <input type="text" class="form-control"  name="nama" required></input>
+                          <small style="color: red">* Tidak boleh kosong</small>
+                    </div>
+                   <div class="form-group">
+                        <label for="exampleInputEmail1">Masukan Strategi Supervisor Perusahaan</label>
+                        <textarea class="form-control"  name="isi" id="isi_sup" required></textarea>
+                        <small style="color: red">* Tidak boleh kosong</small>
+                       <input type="hidden" name="id_tsup">
+                   </div>
+                   <div class="modal-footer">
+                      {{ csrf_field() }}
+                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
+                      <button type="submit" id="submitSSup" class="btn btn-primary">Simpan</button>
+                   </div>
+                 </div>
+                  <!-- /.modal-body -->
+              </form>
+         </div>
+          <!-- /.modal-content-->
+      </div>
+      <!---/.modal-dialog--->
+   </div>
+   <!---end modal tambah supervisor-->
+
+   <!---modal tambah strategi Staf--->
+   <div class="modal fade" id="modal-tambah-strategi-staf">
+       <div class="modal-dialog modal-lg">
+           <div class="modal-content">
+               <form action="{{ url('store-sstaf') }}" method="post">
+                   <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span></button>
+                       <h4 class="modal-title">Formulir Tambah Strategi Staf Perusahaan</h4>
+                   </div>
+                   <div class="modal-body">
+                     <div class="form-group">
+                           <label for="exampleInputEmail1">Nama/Judul Strategi</label>
+                           <input type="text" class="form-control"  name="nama" required></input>
+                           <small style="color: red">* Tidak boleh kosong</small>
+                     </div>
+                    <div class="form-group">
+                         <label for="exampleInputEmail1">Masukan Strategi Staf Perusahaan</label>
+                         <textarea class="form-control"  name="isi" id="isi_staf" required></textarea>
+                         <small style="color: red">* Tidak boleh kosong</small>
+                        <input type="hidden" name="id_tstaf">
+                    </div>
+                    <div class="modal-footer">
+                       {{ csrf_field() }}
+                       <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
+                       <button type="submit" id="submitSStaf" class="btn btn-primary">Simpan</button>
+                    </div>
+                  </div>
+                   <!-- /.modal-body -->
+               </form>
+          </div>
+           <!-- /.modal-content-->
+       </div>
+       <!---/.modal-dialog--->
+    </div>
+    <!---end modal tambah supervisor-->
+
+
+<script>
 
   window.onload = function() {
 
   CKEDITOR.replace( 'target_puncak_ubah',{
-                height: 100
+          height: 100
     } );
-
+  CKEDITOR.replace( 'isi_sjp',{
+          height: 200
+    } );
 
   };
 

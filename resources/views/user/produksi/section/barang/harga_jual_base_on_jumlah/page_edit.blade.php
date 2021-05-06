@@ -38,19 +38,24 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">HPP :{{ $data->linkToBarang->hpp }}</label>
+                                <input type="hidden" name="hpp" class="form-control" value="{{ $data->linkToBarang->hpp }}"/>
                                 {{--<small style="color: red">* Tidak Boleh Kosong</small>--}}
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="_method" value="put">
-                                <label for="exampleInputEmail1">Jumlah Masimal penjualan</label>
+                                <label for="exampleInputEmail1">Jumlah Masimal Pembelian</label>
                                 {{ csrf_field() }}
                                 <input type="hidden" name="id_HBJ" value="{{ $data->id }}" required>
                                 <input type="number" minlength="0" maxlength="100" value="{{ $data->jumlah_maks_brg }}" name="jumlah_maks_brg" class="form-control" required/>
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputEmail1">Besarnya Keuntungan</label>
+                                <input type="text" name="nilai_persen" value="{{ rupiahView($untung) }}" class="form-control" readonly/>
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Jual</label>
                                 {{ csrf_field() }}
-                                <input type="number" minlength="0" maxlength="100"  value="{{ $data->harga_jual }}" name="harga_jual" class="form-control" required/>
+                                <input type="text" id="rupiah" name="harga_jual" minlength="0" maxlength="100"  value="{{ rupiahView($data->harga_jual) }}" name="harga_jual" class="form-control" required/>
                             </div>
                         </div>
                         <!-- /.box-body -->
@@ -73,11 +78,12 @@
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
-        $('[name="persentase"]').keyup(function () {
-            var persentase = ($('[name="hpp"]').val()/100) * $(this).val();
-            var harga_jual =parseInt($('[name="hpp"]').val()) + persentase;
-            $('[name="harga_jual"]').val(harga_jual);
+        $('[name="harga_jual"]').keyup(function () {
+            var hpp = ($('[name="hpp"]');
+            var harga_jual = hpp - persentase;
+
+            $('[name="nilai_persen"]').val(harga_jual);
         })
     </script>
-
+    @include('user.global.rupiah_input')
 @stop

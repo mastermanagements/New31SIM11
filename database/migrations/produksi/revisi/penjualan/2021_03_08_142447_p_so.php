@@ -18,18 +18,18 @@ class PSo extends Migration
             $table->integer('id_tawar_beli')->default(0)->nullable();
             $table->date('tgl_so');
             $table->string('no_so');
-            //$table->string('no_po'); --> tdk ada salah copy paste di file excel
+            $table->string('no_po')->nullable();
             $table->integer('id_klien')->unsigned();
             $table->date('tgl_dikirim')->nullable();
-            $table->integer('diskon_tambahan')->nullable();
-            $table->integer('pajak')->nullable();
+            $table->integer('diskon_tambahan')->nullable()>default(0);
+            $table->integer('pajak')->nullable()>default(0);
             $table->decimal('dp_so',12,2)->default(0);
             $table->decimal('kurang_bayar',12,2)->default(0);
-            $table->text('ket');
+            $table->text('ket')->nullable();
             $table->enum('status',['0','1'])->default(0)->comment('0=open, 1=close');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
-          
+            
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
             $table->foreign('id_klien')->references('id')->on('a_klien');

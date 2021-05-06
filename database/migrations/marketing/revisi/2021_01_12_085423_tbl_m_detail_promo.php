@@ -22,8 +22,10 @@ class TblMDetailPromo extends Migration
             $table->integer('diskon')->unsigned()->default(0);
             $table->integer('minimum_beli')->unsigned()->default(0);
             $table->integer('id_perusahaan')->unsigned();
+            $table->integer('id_karyawan')->unsigned();
             $table->foreign('id_promo')->references('id')->on('m_promo')->onDelete('cascade');
-            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan')->onDelete('cascade');
+            $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
+            $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
             $table->timestamps();
         });
     }

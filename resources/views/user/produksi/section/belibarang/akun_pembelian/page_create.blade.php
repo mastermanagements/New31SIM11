@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Pembelian</h3>
+                        <h3 class="box-title">Formulir Seting Akun Pembelian</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -39,7 +39,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Catatan transaksi</label>
+                                <label for="exampleInputEmail1">Catatan transaksi (Jika tidak ada datanya, isi dulu di menu Keuangan Sub Menu Transaksi)</label>
                                 <select class="form-control select2" name="id_ket_transaksi">
                                     <option disabled>Pilihlah catatan transaksi</option>
                                     @foreach($keterangan_transaksi as $key=> $n_transaksi)

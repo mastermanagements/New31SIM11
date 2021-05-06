@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Pesanan Penjualan</h3>
+                        <h3 class="box-title">Formulir Tambah Pesanan Penjualan</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -35,7 +35,7 @@
 
                                     <div class="form-group">
                                         <label>No Pesanan</label>
-                                        <input type="text" class="form-control" name="no_so">
+                                        <input type="text" class="form-control" name="no_so" value="{{$no_surat}}">
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Pesanan</label>
@@ -48,7 +48,7 @@
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
                                     </div>
-                                    <div class="form-group">
+                                    <!--<div class="form-group">
                                         <label for="exampleInputEmail1">No. PO</label>
                                         <select class="form-control select2" style="width: 100%;" name="id_po" >
                                             <option value="null">Pilihan Penawaran Penjualan</option>
@@ -59,6 +59,10 @@
                                             @endif
                                         </select>
                                         <small style="color: red">* Tidak Boleh Kosong</small>
+                                    </div>-->
+                                    <div class="form-group">
+                                        <label>No Pesanan Pembelian</label>
+                                        <input type="text" class="form-control" name="no_po">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Klien</label>
@@ -83,11 +87,6 @@
                                         </div>
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="keterangan">Keterangan</label>
-                                        <textarea class="form-control" name="ket"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Submit</button>

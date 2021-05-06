@@ -8,13 +8,15 @@ use App\Model\Produksi\PesananPembelian;
 use Session;
 use App\Model\Produksi\Bayar as bayar_;
 use App\Model\Produksi\POrder;
+use App\Model\Produksi\RekUkm as rek_ukm;
+use App\Model\Produksi\RekSupplier as rek_sup;
 class Bayar extends Controller
 {
     //
     private $metode_bayar = [
       'Transfer Bank',
       'Cek',
-      'Langsung'
+      'Tunai'
     ];
 
     private $pembayaran = [
@@ -26,12 +28,12 @@ class Bayar extends Controller
         if($jenis_pembayaran==0){
             $url = 'bayar-po';
         }else{
-            $url = 'bayar-order';     
+            $url = 'bayar-order';
         }
         return $url;
     }
 
-    public function show_po($id, $jenis_pembayaran){        
+    public function show_po($id, $jenis_pembayaran){
         $data = [
             'metode_bayar'=> $this->metode_bayar,
             'label_jenis_pembayaran'=>$this->pembayaran[$jenis_pembayaran],
@@ -39,13 +41,15 @@ class Bayar extends Controller
             'data'=> $data=PesananPembelian::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->findOrFail($id),
             'id_po'=> $data->id,
             'url'=>$this->url($jenis_pembayaran),
-            'tgl_bayar'=> date('d-m-Y')
+            'tgl_bayar'=> date('d-m-Y'),
+            'rek_asal'=>rek_ukm::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->get(),
+            'rek_tujuan'=>rek_sup::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->get()
         ];
         return view('user.produksi.section.belibarang.bayar.page_bayar', $data);
     }
 
-    public function show_order($id, $jenis_pembayaran){        
-        
+    public function show_order($id, $jenis_pembayaran){
+
         $data_porder=POrder::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
 
         #inisialisasi jumlah bayar
@@ -70,12 +74,15 @@ class Bayar extends Controller
             'id_order'=> $data_porder->id,
             'url'=>$this->url($jenis_pembayaran),
             'jumlah_bayar'=> $jumlah_bayar,
-            'tgl_bayar'=> date('d-m-Y')
+            'tgl_bayar'=> date('d-m-Y'),
+            'rek_asal'=>rek_ukm::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->get(),
+            'rek_tujuan'=>rek_sup::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->get()
         ];
         return view('user.produksi.section.belibarang.bayar.page_order', $data);
     }
 
     public function bayar_po(Request $req){
+      //dd($req->all());
         $this->validate($req,[
             'id_po'=> 'required',
             'jenis_bayar'=> 'required',
@@ -83,9 +90,7 @@ class Bayar extends Controller
             'metode_bayar'=> 'required',
             'jumlah_bayar'=> 'required',
             'bank_asal'=> 'required',
-            'rek_asal'=> 'required',
             'bank_tujuan'=> 'required',
-            'rek_tujuan'=> 'required',
         ]);
 
         $model = new bayar_(
@@ -93,21 +98,19 @@ class Bayar extends Controller
                 'id_po'=> $req->id_po,
                 'metode_bayar'=> $req->metode_bayar,
                 'id_perusahaan'=> Session::get('id_perusahaan_karyawan'),
+                'id_karyawan'=> Session::get('id_karyawan'),
                 'jenis_bayar'=>$req->jenis_bayar,
-                'tgl_bayar'=> $req->tgl_bayar,
+                'tgl_bayar'=> tanggalController($req->tgl_bayar),
                 'bank_asal' => $req->bank_asal,
-                'rek_asal'=>$req->rek_asal,
                 'bank_tujuan'=> $req->bank_tujuan,
-                'no_rek_tujuan'=>$req->rek_tujuan,
-                'no_rek_tujuan'=>$req->rek_tujuan,
-                'jumlah_bayar'=> $req->jumlah_bayar,
+                'jumlah_bayar'=> rupiahController($req->jumlah_bayar),
             ]
         );
 
         if($model->save()){
-            return redirect('Pembelian')->with('message_success','Nota pembayaran telah disimpan');
+            return redirect('Pembelian')->with('message_success','Nota pembayaran telah disimpan')->with('tab4','tab4');
         }else{
-            return redirect('Pembelian')->with('message_fail','Nota pembayaran gagal disimpan');     
+            return redirect('Pembelian')->with('message_fail','Nota pembayaran gagal disimpan')->with('tab4','tab4');
         }
     }
 
@@ -117,6 +120,7 @@ class Bayar extends Controller
     }
 
     public function bayar_order(Request $req){
+      //dd($req->all());
         $this->validate($req,[
             'id_order'=> 'required',
             'jenis_bayar'=> 'required',
@@ -124,9 +128,8 @@ class Bayar extends Controller
             'metode_bayar'=> 'required',
             'jumlah_bayar'=> 'required',
             'bank_asal'=> 'required',
-            'rek_asal'=> 'required',
             'bank_tujuan'=> 'required',
-            'rek_tujuan'=> 'required',
+
         ]);
 
         $model = new bayar_(
@@ -134,21 +137,19 @@ class Bayar extends Controller
                 'id_order'=> $req->id_order,
                 'metode_bayar'=> $req->metode_bayar,
                 'id_perusahaan'=> Session::get('id_perusahaan_karyawan'),
+                'id_karyawan'=> Session::get('id_karyawan'),
                 'jenis_bayar'=>$req->jenis_bayar,
-                'tgl_bayar'=> $req->tgl_bayar,
+                'tgl_bayar'=> tanggalController($req->tgl_bayar),
                 'bank_asal' => $req->bank_asal,
-                'rek_asal'=>$req->rek_asal,
                 'bank_tujuan'=> $req->bank_tujuan,
-                'no_rek_tujuan'=>$req->rek_tujuan,
-                'no_rek_tujuan'=>$req->rek_tujuan,
-                'jumlah_bayar'=> $req->jumlah_bayar,
+                'jumlah_bayar'=> rupiahController($req->jumlah_bayar),
             ]
         );
-
-        if($model){
+      //  dd($model);
+          if($model->save()){
             return redirect('Pembelian')->with('message_success','Nota pembayaran telah disimpan');
         }else{
-            return redirect('Pembelian')->with('message_fail','Nota pembayaran gagal disimpan');     
+            return redirect('Pembelian')->with('message_fail','Nota pembayaran gagal disimpan');
         }
     }
 

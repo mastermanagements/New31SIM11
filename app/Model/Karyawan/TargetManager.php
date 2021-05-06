@@ -18,4 +18,8 @@ class TargetManager extends Model
   {
     return $this->belongsTo('App\Model\Superadmin_ukm\U_jabatan_p', 'id_jabatan_p');
   }
+  public function getStrategiMan()
+  {
+		return $this->hasOne('App\Model\Karyawan\StrategiManager', 'id_tman');
+  }
 }

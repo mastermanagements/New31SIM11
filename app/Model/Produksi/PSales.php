@@ -20,6 +20,7 @@ class PSales extends Model
         'dp_so',
         'bayar',
         'kurang_bayar',
+        'metode_bayar',
         'tgl_jatuh_tempo',
         'biaya_tambahan',
         'ongkir',
@@ -28,10 +29,14 @@ class PSales extends Model
         'status_bayar',
         'id_komisi_sales',
         'id_perusahaan',
+        'id_karyawan'
     ];
 
     public function linkToKlien(){
         return $this->belongsTo('App\Model\Administrasi\Klien','id_klien');
+    }
+    public function linkToSo(){
+        return $this->belongsTo('App\Model\Produksi\PSO','id_so');
     }
 
     public function linkToDetailSales(){
@@ -40,6 +45,10 @@ class PSales extends Model
 
     public function linkToMannyComplainJual(){
         return $this->hasMany('App\Model\Produksi\ComplainBarangJual','id_sales','id');
+    }
+
+    public function linkToOneComplainJual(){
+        return $this->hasOne('App\Model\Produksi\ComplainBarangJual','id_sales','id');
     }
 
     public function linkToTerimaBayar(){

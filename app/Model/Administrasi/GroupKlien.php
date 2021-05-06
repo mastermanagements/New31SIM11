@@ -13,5 +13,6 @@ class GroupKlien extends Model
 
     public function linkToPDiskon(){
         return $this->hasOne('App\Model\Produksi\PDiskon','id_group','id');
+
     }
 }

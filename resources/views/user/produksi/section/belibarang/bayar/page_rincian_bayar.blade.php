@@ -25,14 +25,15 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Rincian Bayar</h3>
+                        <h3 class="box-title">Rincian Pembayaran</h3>
+                        <h5 class="pull-right"><a href="{{ url('Pembelian')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <div class="box-body">
                        <div class="row">
                            <div class="col-md-12">
                                <table>
                                    <tr>
-                                       <th>No Transaksi</th>
+                                       <th>No. Transaksi</th>
                                        <th>:</th>
                                        <th>{{ $data->no_order }}</th>
                                    </tr>
@@ -49,7 +50,7 @@
                                    <tr>
                                        <th>Tota Belanja</th>
                                        <th>:</th>
-                                       <th>{{ number_format($data->linkToMannyBayar->sum('jumlah_bayar'),2,',','.') }}</th>
+                                       <th>{{ number_format($data->linkToMannyBayar->sum('jumlah_bayar'),0,',','.') }}</th>
                                    </tr>
                                </table>
                            </div>
@@ -72,15 +73,15 @@
                                             <tr>
                                                 <td>{{ $i++ }}</td>
                                                 <td>{{ $n_data->tgl_bayar }}</td>
-                                                <td>{{ $n_data->bank_asal }}, {{ $n_data->rek_asal }}</td>
-                                                <td>{{ $n_data->bank_tujuan }}, {{ $n_data->no_rek_tujuan }}</td>
-                                                <td>{{ number_format($n_data->jumlah_bayar,2,',','.') }} @php($total+=$n_data->jumlah_bayar)</td>
+                                                <td>{{ $n_data->linkToBankAsal->nama_bank }}, {{ $n_data->linkToBankAsal->no_rek }}, {{ $n_data->linkToBankAsal->atas_nama }}</td>
+                                                <td>{{ $n_data->linkToBankTujuan->nama_bank }}, {{ $n_data->linkToBankTujuan->no_rek }}, {{ $n_data->linkToBankTujuan->atas_nama }}</td>
+                                                <td>{{ number_format($n_data->jumlah_bayar,0,',','.') }} @php($total+=$n_data->jumlah_bayar)</td>
                                             </tr>
                                             @endforeach
                                             <tr>
                                                 <td></td>
                                                 <td colspan="3">Total</td>
-                                                <td>{{ number_format($total,2,',','.') }}</td>
+                                                <td>{{ number_format($total,0,',','.') }}</td>
                                             </tr>
                                         @endif
 

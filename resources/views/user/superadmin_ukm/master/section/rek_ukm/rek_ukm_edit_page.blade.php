@@ -71,7 +71,7 @@
                                    <label for="exampleInputEmail1">Kantor Cabang</label>
                                    <input name="kcp" class="form-control" placeholder="Kantor Cabang" value="{{ $rek_ukm->kcp }}">
                                </div>
-                          
+
                                <div class="box-footer">
                                    <input type="hidden" name="_method" value="put">
                                    {{ csrf_field() }}
@@ -112,8 +112,6 @@
                autoclose: true,
                format: 'dd-mm-yyyy'
            });
-
-
 
 
            //iCheck for checkbox and radio inputs

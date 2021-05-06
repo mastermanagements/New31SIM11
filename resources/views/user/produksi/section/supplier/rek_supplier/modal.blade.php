@@ -27,9 +27,9 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Kantor Cabang</label>
-                <input type="text" name="kcp" class="form-control" placeholder="Kantor Cabang" required>
+                <input type="text" name="kcp" class="form-control" placeholder="Kantor Cabang">
                 <input type="hidden" name="id_supplier">
-                <small style="color: red">* Tidak boleh kosong</small>
+
             </div>
                 <div class="modal-footer">
                   {{ csrf_field() }}

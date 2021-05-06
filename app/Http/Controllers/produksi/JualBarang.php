@@ -15,6 +15,7 @@ use App\Model\Produksi\ComplainBarangJual;
 use App\Model\Produksi\AkunPenjualan;
 use App\Model\Produksi\SettingKasir;
 use App\Model\Produksi\KerjaKasir;
+use App\Model\Produksi\PTerimaBayar as terima_bayar;
 class JualBarang extends Controller
 {
     private $id_karyawan;
@@ -62,8 +63,33 @@ class JualBarang extends Controller
             'klien'=> klien::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
             'barang'=> barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
             'SettingKasir'=> SettingKasir::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
-            'KerjaKasir' => KerjaKasir::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'KerjaKasir' => KerjaKasir::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'complain_jual'=>ComplainBarangJual::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            //'terima_bayar'=>terima_bayar::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get()
         ];
+        //tab1 tawar jual  di nonaktifkan dl
+        if (empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6')) && empty(Session::get('tab6'))){
+            Session::flash('tab2','tab2');
+        }
+
+        if(!empty(Session::get('tab3'))){
+            Session::flash('tab3',Session::get('tab3'));
+        }
+
+        if(!empty(Session::get('tab4'))){
+            Session::flash('tab4',Session::get('tab4'));
+        }
+
+        if(!empty(Session::get('tab5'))){
+            Session::flash('tab5',Session::get('tab5'));
+        }
+        if(!empty(Session::get('tab6'))){
+            Session::flash('tab6',Session::get('tab6'));
+        }
+        if(!empty(Session::get('tab7'))){
+            Session::flash('tab7',Session::get('tab7'));
+        }
+
         return view('user.produksi.section.jualbarang.page_default', $data);
     }
 
@@ -91,7 +117,7 @@ class JualBarang extends Controller
         $jumlah_barang = $req->jumlah_barang;
 
         $perusahaan = jualBarangs::where('id_perusahaan', $this->id_perusahaan)->first();
-		
+
         foreach ($id_barang as $key => $value)
         {
             $tgl_beli = date('Y-m-d', strtotime($req->tgl_jual));
@@ -149,9 +175,9 @@ class JualBarang extends Controller
             $model->jumlah_barang = $jumlah_barang;
 
         if( $model->save()){
-            return redirect('Penjualan')->with('message_success', 'Data berhasil diubah...!');
+            return redirect('Penjualan')->with('message_success', 'Data berhasil diubah...!')->with('tab2','tab2');
         }else{
-            return redirect('Penjualan')->with('message_success', 'Terjadi Kesalahan, Silahkan coba lagi');
+            return redirect('Penjualan')->with('message_success', 'Terjadi Kesalahan, Silahkan coba lagi')->with('tab2','tab2');
         }
     }
 

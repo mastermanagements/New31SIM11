@@ -19,7 +19,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Edit Customer/Leads/Prospect/Potential/Closeable</h3>
+                        <h3 class="box-title">Formulir Edit Customer</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -76,8 +76,8 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Alamat Perusahaan</label>
                                 <textarea class="form-control"  name="alamat_perusahaan"  id="alamat_perusahaan">{{ $data_klien->alamat_perusahaan }}</textarea>
-                            </div>    
-                            
+                            </div>
+
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Telp Perusahaan</label>
                                 <input type="text" name="telp_perusahaan" class="form-control"  value="{{ $data_klien->telp_perusahaan }}" id="exampleInputEmail1">
@@ -86,7 +86,25 @@
                                 <label for="exampleInputEmail1">Jabatan</label>
                                 <input type="text" name="jabatan" class="form-control"  value="{{ $data_klien->jabatan }}" id="exampleInputEmail1">
                             </div>
-							<input type="hidden" name="jenis_klien" class="form-control"  value="{{ $data_klien->jenis_klien }}" id="exampleInputEmail1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Group Klien</label>
+                                <select class="form-control select2" style="width: 100%;" name="id_group" required>
+                                    @if(empty($group_klien))
+                                        <option>data masih kosong</option>
+                                    @else
+                                        @foreach($group_klien as $value)
+                                            <option value="{{ $value->id }}">{{ $value->nama_group }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                <small style="color: red">* Tidak Boleh Kosong</small>
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Diskon Berjenjang</label>
+                              <input type="radio" class="minimal" name="status_diskon"  @if($value->status_diskon ='0') checked @endif value="0">Ya
+                              <input type="radio" name="status_diskon" @if($value->status_diskon ='1') checked @endif value="1">Tidak
+                            </div>
+							               <input type="hidden" name="jenis_klien" class="form-control"  value="{{ $data_klien->jenis_klien }}" id="exampleInputEmail1">
                         </div>
                         <!-- /.box-body -->
 
@@ -103,4 +121,3 @@
     <!-- /.content -->
 </div>
 @stop
-

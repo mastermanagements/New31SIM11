@@ -52,8 +52,8 @@
                                                  <tr>
                                                      <td>{{ $no++ }}</td>
                                                      <td>{{ $data->linkToBarang->nm_barang }}</td>
-                                                     <td>{{ $data->linkToBarang->hpp }}</td>
-                                                     <td>{{ $data->harga_jual }}</td>
+                                                     <td>{{ Rupiah($data->linkToBarang->hpp) }}</td>
+                                                     <td>{{ Rupiah($data->harga_jual) }}</td>
                                                      <td>
                                                          <form action="{{ url('harga-jual-satuan/'.$data->id.'/delete') }}" method="post">
                                                              {{ csrf_field() }}

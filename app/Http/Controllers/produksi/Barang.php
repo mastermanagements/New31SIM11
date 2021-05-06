@@ -9,8 +9,10 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Produksi\Barang as barangs;
 use App\Model\Superadmin_sim\P_kategori_produk as kategori_produk;
+use App\Model\Superadmin_sim\P_subkategori_produk as subkategori_produk;
+use App\Model\Superadmin_sim\P_subsubkategori_produk as subsubkategori_produk;
 use App\Model\Produksi\AturKonversi as p_konversi_barang;
-use App\Model\Produksi\SatuanBarang as Sb;
+use App\Model\Produksi\Satuan as Sb;
 use App\Model\Produksi\HistroyKonversiBrg as p_history_konversi_brg;
 use Illuminate\Support\Facades\DB;
 use App\Model\Marketing\Promo;
@@ -62,7 +64,7 @@ class Barang extends Controller
      */
 
     private function query_perusahaan(){
-       $data =  DB::select('SELECT u_perusahaan.* FROM h_karyawan 
+       $data =  DB::select('SELECT u_perusahaan.* FROM h_karyawan
                             join u_user_ukm on u_user_ukm.id=h_karyawan.id_user_ukm
                             join u_perusahaan on u_perusahaan.id_user_ukm = u_user_ukm.id
                             where h_karyawan.id_user_ukm ='.Session::get('id_superadmin_karyawan').' GROUP by u_perusahaan.id'
@@ -75,10 +77,10 @@ class Barang extends Controller
         $data=[
             'data_barang'=> barangs::all()->where('id_perusahaan', $this->id_perusahaan)->sortBy('created_at'),
             'konvesi_barang' => p_konversi_barang::all()->where('id_perusahaan', $this->id_perusahaan),
-            'history_konversi_barang' => p_history_konversi_brg::all()->where('id_perusahaan', $this->id_perusahaan),
+            'history_konversi_barang' => p_history_konversi_brg::all()->where('id_perusahaan', $this->id_perusahaan)->sortBy('created_at'),
             'data_perusahaan'=> $this->query_perusahaan(),
             'metode_promo'=>$this->metode_promo,
-            'promo'=>Promo::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'promo'=>Promo::where('id_perusahaan', $this->id_perusahaan)->where('jenis_promo','0')->get()
         ];
 
         if(empty(Session::get('tab')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6'))){
@@ -108,7 +110,7 @@ class Barang extends Controller
     public function create()
     {
         $data = [
-            'kategori_jasa'=> kategori_produk::all(),
+            'kategori_produk'=> kategori_produk::all(),
             'metode_jual'=>$this->metode_penjualan,
             'satuan' => Sb::all()
         ];
@@ -123,14 +125,12 @@ class Barang extends Controller
      */
     public function store(Request $request)
     {
-
+      //dd($request->all());
          $this->validate($request,[
             'id_kategori' => 'required',
             'nm_barang' => 'required',
-            'spec_barang' => 'required',
-            'desc_barang' => 'required',
+            'id_satuan' => 'required',
             'stok_minimum' => 'required',
-//            'stok_barang' => 'required',
             'hpp' => 'required',
         ]);
 
@@ -140,14 +140,13 @@ class Barang extends Controller
          $nm_barang = $request->nm_barang;
          $spec_barang= $request->spec_barang;
          $desc_barang= $request->desc_barang;
+         $merk_barang= $request->merk_barang;
          $stok_minimum= $request->stok_minimum;
          $kd_barang = $request->kd_barang;
          $barcode = $request->barcode;
          $id_satuan = $request->id_satuan;
          $no_rak = $request->no_rak;
-         $hpp = $request->hpp;
-
-
+         $hpp = rupiahController($request->hpp);
 
          $model =new barangs;
          $model->id_kategori_produk = $id_kategori;
@@ -158,16 +157,17 @@ class Barang extends Controller
          $model->nm_barang= $nm_barang;
          $model->id_satuan= $id_satuan;
          $model->spec_barang= $spec_barang;
+         $model->merk_barang= $merk_barang;
          $model->desc_barang= $desc_barang;
 
 //         $model->expired_date= $expired_date;
          $model->no_rak= $no_rak;
 //         $model->stok_awal= $stok_awal;
          $model->stok_minimum= $stok_minimum;
-        $model->hpp= $hpp;
-        $model->metode_jual= $request->metode_jual;
-        $model->stok_akhir= $request->stok_akhir;
-        $model->gambar= '';
+         $model->hpp= $hpp;
+         $model->metode_jual= $request->metode_jual;
+         $model->stok_akhir= 0;
+         $model->gambar= '';
          $model->id_perusahaan= $this->id_perusahaan;
          $model->id_karyawan= $this->id_karyawan;
 
@@ -201,7 +201,9 @@ class Barang extends Controller
         }
 
         $data = [
-            'kategori_jasa'=> kategori_produk::all(),
+            'kategori_produk'=> kategori_produk::all(),
+            'subkategori_produk'=> subkategori_produk::all(),
+            'subsubkategori_produk'=> subsubkategori_produk::all(),
             'data_barang' => $data_barang,
             'metode_jual'=>$this->metode_penjualan,
             'satuan' => Sb::all()
@@ -219,29 +221,27 @@ class Barang extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'id_kategori' => 'required',
-            'nm_barang' => 'required',
-            'spec_barang' => 'required',
-            'desc_barang' => 'required',
-//            'stok_barang' => 'required',
-//            'harga_jual' => 'required',
+          'id_kategori' => 'required',
+          'nm_barang' => 'required',
+          'id_satuan' => 'required',
+          'stok_minimum' => 'required',
+          'hpp' => 'required'
+
         ]);
-
-
 
         $id_kategori = $request->id_kategori;
         $id_subkategori = $request->id_subkategori_produk;
         $id_subsubkategori = $request->id_subsubkategori_produk;
         $nm_barang = $request->nm_barang;
         $spec_barang= $request->spec_barang;
+        $merk_barang= $request->merk_barang;
         $desc_barang= $request->desc_barang;
-        $expired_date= date('Y-m-d', strtotime($request->expired_date));
         $stok_minimum= $request->stok_minimum;
         $kd_barang = $request->kd_barang;
         $barcode = $request->barcode;
         $id_satuan = $request->id_satuan;
         $no_rak = $request->no_rak;
-        $hpp = $request->hpp;
+        $hpp = rupiahController($request->hpp);
 
         $model =barangs::find($id);
         $model->id_kategori_produk = $id_kategori;
@@ -252,12 +252,13 @@ class Barang extends Controller
         $model->nm_barang= $nm_barang;
         $model->id_satuan= $id_satuan;
         $model->spec_barang= $spec_barang;
+        $model->merk_barang= $merk_barang;
         $model->desc_barang= $desc_barang;
         $model->no_rak= $no_rak;
         $model->stok_minimum= $stok_minimum;
         $model->hpp= $hpp;
         $model->metode_jual= $request->metode_jual;
-        $model->stok_akhir= $request->stok_akhir;
+        $model->stok_akhir= 0;
         $model->gambar= '';
         $model->id_perusahaan= $this->id_perusahaan;
         $model->id_karyawan= $this->id_karyawan;
@@ -300,15 +301,16 @@ class Barang extends Controller
             $model_perusahaan_tujuan = barangs::updateOrCreate(
                 [
                     'id_perusahaan'=> $req->p_tujuan,
-                    'kd_barang'=>$data_barang->kd_barang
+                    'kd_barang'=>$data_barang->kd_barang,
+                    'nm_barang'=>$data_barang->nm_barang,
+                    'id_satuan'=>$data_barang->id_satuan
                 ],
                 [
+
                    'id_kategori_produk'=>$data_barang->id_kategori_produk,
                    'id_subkategori_produk'=>$data_barang->id_subkategori_produk,
                    'id_subsubkategori_produk'=>$data_barang->id_subsubkategori_produk,
                    'barcode'=>$data_barang->barcode,
-                   'nm_barang'=>$data_barang->nm_barang,
-                   'id_satuan'=>$data_barang->id_satuan,
                    'spec_barang'=>$data_barang->spec_barang,
                    'desc_barang'=>$data_barang->desc_barang,
                    'no_rak'=>'-',

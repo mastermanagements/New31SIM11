@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Bayar
+            Pembayaran Pesanan Pembelian
         </h1>
     </section>
 
@@ -25,7 +25,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Bayar</h3>
+                        <h3 class="box-title">Formulir Pembayaran</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -33,8 +33,8 @@
                         <div class="box-body">
                             <form action="{{ url($url) }}" method="POST" >
                                 {{ csrf_field() }}
-                                <div class="row"> 
-                                    <div class="col-md-12"> 
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <input type="hidden" name="id_po" @if(!empty($id_po)) value="{{ $id_po }}" @endif>
                                             <input type="hidden" name="id_order">
@@ -55,44 +55,61 @@
                                             <label>Tanggal Transaksi</label>
                                             <input type="text" class="form-control" value="{{ date('d-m-Y', strtotime($data->tgl_po)) }}" readonly>
                                         </div>
+
                                         <div class="form-group">
-                                            <label>Tanggal Bayar</label>
-                                            <input type="date" name="tgl_bayar" class="form-control"/>
+                                            <label>Tanggal Bayar </label>
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right" id="datepicker" name="tgl_bayar" >
+                                            </div>
+                                            <!-- /.input group -->
+                                            <small style="color: red">* Tidak Boleh Kosong</small>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Metode Bayar</label>
-                                            <select class="form-control" name="metode_bayar" required>
-                                                <option disabled>Pililah Metode Pembayaran</option>
-                                                @foreach($metode_bayar as $key=> $datas)
-                                                    <option value="{{ $key }}">{{ $datas }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>Jumlah Bayar</label>
-                                            <input type="number" name="jumlah_bayar" value="{{  $data->dp_po }}" class="form-control" readonly required/>
-                                        </div>    
-                                    </div>   
-                                    <div class="col-md-6">                 
-                                        <div class="form-group">
-                                            <label>Bank (asal)</label>
-                                            <input type="text" name="bank_asal" class="form-control" required/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>No. Rek (asal)</label>
-                                            <input type="text" name="rek_asal" class="form-control" required/>
-                                        </div>                            
+
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Bank(tujuan)</label>
-                                            <input type="text" name="bank_tujuan" class="form-control" required/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>No. Rek(tujuan)</label>
-                                            <input type="text" name="rek_tujuan" class="form-control" required/>
-                                        </div>
+                                      <div class="form-group">
+                                          <label for="exampleInputEmail1">Bank Asal</label>
+                                          <select class="form-control select2" style="width: 100%;" name="bank_asal" required>
+                                              @if(empty($rek_asal))
+                                                  <option>Data Rekening perusahaan masih kosong</option>
+                                              @else
+                                                  @foreach($rek_asal as $value)
+                                                      <option value="{{ $value->id }}">{{$value->nama_bank}}, No. Rek: {{$value->no_rek}}, A.N. {{ $value->atas_nama }}</option>
+                                                  @endforeach
+                                              @endif
+                                          </select>
+                                          <small style="color: red">* Tidak Boleh Kosong</small>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="exampleInputEmail1">Bank Tujuan</label>
+                                          <select class="form-control select2" style="width: 100%;" name="bank_tujuan" required>
+                                              @if(empty($rek_tujuan))
+                                                  <option>Data Rekening Supplier masih kosong</option>
+                                              @else
+                                                  @foreach($rek_tujuan as $value)
+                                                      <option value="{{ $value->id }}">{{$value->nama_bank}}, No. Rek: {{$value->no_rek}}, A.N. {{ $value->atas_nama }}</option>
+                                                  @endforeach
+                                              @endif
+                                          </select>
+                                          <small style="color: red">* Tidak Boleh Kosong</small>
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Metode Bayar</label>
+                                          <select class="form-control" name="metode_bayar" required>
+                                              <option disabled>Pililah Metode Pembayaran</option>
+                                              @foreach($metode_bayar as $key=> $datas)
+                                                  <option value="{{ $key }}">{{ $datas }}</option>
+                                              @endforeach
+                                          </select>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label>Jumlah Bayar</label>
+                                          <input type="text" name="jumlah_bayar" value="{{ rupiahView($data->dp_po) }}" class="form-control" readonly required/>
+                                      </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -115,11 +132,11 @@
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
-        $('[name="persentase"]').keyup(function () {
-            var persentase = ($('[name="hpp"]').val()/100) * $(this).val();
-            var harga_jual =parseInt($('[name="hpp"]').val()) + persentase;
-            $('[name="harga_jual"]').val(harga_jual);
-        })
+
+        $('#datepicker').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy'
+          });
     </script>
 
 @stop
