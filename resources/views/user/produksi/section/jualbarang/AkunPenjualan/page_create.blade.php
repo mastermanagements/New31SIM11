@@ -42,7 +42,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Catatan Transaksi</label>
+                                                <label>Catatan Transaksi (Jika tidak ada datanya, isi dulu di menu Keuangan Sub Menu Transaksi)</label>
                                                 <select class="form-control select2" name="id_ket_transaksi">
                                                     @if(!empty($akun_transaksi))
                                                         @foreach($akun_transaksi as $akun_transaksi)

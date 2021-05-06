@@ -211,18 +211,18 @@
                     <!--div./row-->
                     </div>
                         <div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
-                            <a href="{{ url('penjualan-barang/create') }}" class="btn btn-primary pull-left">Penjualan Barang</a>
+                            <a href="{{ url('penjualan-barang/create') }}" class="btn btn-primary pull-left">Tambah</a>
                             <a href="{{ url('komisi-sales') }}" class="btn btn-primary pull-right">Komisi Sales</a>
                             <table class="table table-bordered table-striped" style="margin-top: 10px">
                                 <thead>
                                     <tr>
-                                        <td>No</td>
-                                        <td>Tgl Jual</td>
-                                        <td>Nomor Order</td>
-                                        <td>Klien</td>
-                                        <td>Tgl Kirim</td>
-                                        <td>Total</td>
-                                        <td>Aksi</td>
+                                        <th>No</th>
+                                        <th>Tgl Jual</th>
+                                        <th>Nomor Order</th>
+                                        <th>Klien</th>
+                                        <th>Tgl Kirim</th>
+                                        <th>Total</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -235,7 +235,7 @@
                                             <td>{{ $item_Psales->no_sales }}</td>
                                             <td>{{ $item_Psales->linkToKlien->nm_klien }}</td>
                                             <td>{{ date('d-m-Y', strtotime($item_Psales->tgl_kirim)) }}</td>
-                                            <td>{{ $item_Psales->bayar }}</td>
+                                            <td>{{ rupiahView($item_Psales->total) }}</td>
                                             <td>
                                                 <form action="{{ url('penjualan-barang/'. $item_Psales->id) }}" method="post">
                                                     {{ csrf_field() }}
@@ -429,7 +429,7 @@
                             <div class="col-md-6">
                                  <div class="form-group">
                                      <label>Klien</label>
-                                     <select class="form-control select2" name="id_klien" style="width: 100%">
+                                     <select class="form-control select2" name="id_klien" style="width: 100%" required>
                                          <option disabled>Pilih Klien</option>
                                          @if(!empty($klien))
                                              @foreach($klien as $data_klien)
@@ -440,13 +440,13 @@
                                  </div>
                                 <div class="form-group">
                                      <label>Dari Tanggal</label>
-                                     <input type="date" class="form-control" name="tgl_awal">
+                                     <input type="date" class="form-control" name="tgl_awal" required>
                                  </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Nama Barang</label>
-                                    <select class="form-control select2" name="id_barang" id="barang_id" style="width: 100%">
+                                    <select class="form-control select2" name="id_barang" id="barang_id" style="width: 100%" required>
                                         <option disabled>Pilih barang</option>
                                         @if(!empty($barang))
                                             @foreach($barang as $data_barang)
@@ -457,7 +457,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Sampai Tanggal</label>
-                                    <input type="date" class="form-control" name="tgl_akhir" id="akhir_tgl">
+                                    <input type="date" class="form-control" name="tgl_akhir" id="akhir_tgl" required>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -486,7 +486,7 @@
                      </div>
                       <!-- /.tab-pane -->
                           <div class="tab-pane @if(Session::get('tab8') == 'tab8') active @else '' @endif" id="tab_8">
-                          <a href="{{ url('pengaturan-akun-penjualan/create') }}">Tamba Akun Penjualan</a>
+                          <a href="{{ url('pengaturan-akun-penjualan/create') }}">Tambah Akun Penjualan</a>
                           <table class="table table-bordered " style="width: 100%;">
                             <thead>
                               <tr>
@@ -508,7 +508,7 @@
                                       @endif
                                       <tr>
                                           <th rowspan="{{ $rowspan }}">{{ $no++ }}</th>
-                                          <th rowspan="{{ $rowspan }}">{{ $jenis_jurnal[$data->jenis_jurnal] }}<br><a href="{{ url('pengaturan-akun-penjualan/'.$data->id.'/edit') }}">ubah</a> <a href="{{ url('pengaturan-akun-penjualan/'.$data->id.'/delete') }}" onclick="return confirm('Apakah anda akan menghapus akun penjualan ini.');">hapus</a> </th>
+                                          <th rowspan="{{ $rowspan }}">{{ $jenis_jurnal[$data->jenis_jurnal] }}<br><a href="{{ url('pengaturan-akun-penjualan/'.$data->id.'/edit') }}">ubah &nbsp;&nbsp;</a> <a href="{{ url('pengaturan-akun-penjualan/'.$data->id.'/delete') }}" onclick="return confirm('Apakah anda akan menghapus akun penjualan ini.');">hapus</a> </th>
                                           <th rowspan="{{ $rowspan }}">{{ $data->linkToOneKetTransaksi->nm_transaksi }}</th>
                                       </tr>
                                       @if(!empty($data->linkToOneKetTransaksi->dataAkun))
