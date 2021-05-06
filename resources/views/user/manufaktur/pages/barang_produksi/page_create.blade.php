@@ -73,12 +73,12 @@
                                             <label>Tgl Mulai</label>
                                             <input type="date" class="form-control" name="tgl_mulai" value="{{ $current_date }}"> - <input type="time" class="form-control" name="jam_mulai" value="{{ $current_time }}">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Status Produks</label>
-                                            <input type="radio" name="status_produksi" value="0"> Produksi Baru
-                                            <input type="radio" name="status_produksi"  value="1"> Sdg Berlangsung
-                                            <input type="radio" name="status_produksi"  value="2"> Selesai Produksi
-                                        </div>
+                                        {{--<div class="form-group">--}}
+                                            {{--<label>Status Produks</label>--}}
+                                            {{--<input type="radio" name="status_produksi" value="0"> Produksi Baru--}}
+                                            {{--<input type="radio" name="status_produksi"  value="1"> Sdg Berlangsung--}}
+                                            {{--<input type="radio" name="status_produksi"  value="2"> Selesai Produksi--}}
+                                        {{--</div>--}}
                                         <div class="form-group">
                                             <label>Supervisor</label>
                                             <select class="form-control select2" name="id_supervisor_produksi" style="width: 100%">

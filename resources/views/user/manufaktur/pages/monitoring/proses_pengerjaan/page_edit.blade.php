@@ -14,7 +14,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Ubah Proses Produksi
+            Proses Pengerjaan
         </h1>
     </section>
 
@@ -26,30 +26,43 @@
             <div class="col-md-12">
                 <div class="box box-warning">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Proses Produksi</h3>
+                        <h3 class="box-title">Formulir Proses Pengerjaan</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form  action="{{ url('proses-bisnis/'.$proses_bisnis->id) }}" method="post" enctype="multipart/form-data">
                         <div class="box-body">
-                            <div class="form-group">
-                                {{ csrf_field() }}
-                                @method('put')
-                                <label>Proses Bisnis</label>
-                                <input type="hidden" name="id_sop_pro" class="form-control" value="{{ $proses_bisnis->id_sop_pro }}" required/>
-                                <input type="text" name="proses_bisnis" class="form-control" value="{{ $proses_bisnis->proses_bisnis }}"  required/>
-                            </div>
-                        </div>
+                            <div class="row">
+                                <form role="form" action="{{ url('proses-pengerjaan/'.$data_proses_produksi->id) }}" method="post" enctype="multipart/form-data">
 
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label>Keterangan</label>
-                                <textarea name="ket" class="form-control" >{{ $proses_bisnis->ket }}</textarea>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            {{ csrf_field() }} @method('put')
+                                            <label>Tanggal Selesai</label>
+                                            <input type="text" class="form-control" value="{{ date('d-m-Y', strtotime($current_date)) }}" readonly required/>
+                                        </div>
+                                        <div class="form-group">
+                                            {{ csrf_field() }} @method('put')
+                                            <input type="hidden" name="id_tambah_produksi" class="form-control" value="{{ $data_proses_produksi->id_tambah_produksi}}" readonly required/>
+                                            <label>Jam Selesai</label>
+                                            <input type="text" class="form-control" value="{{ $current_time }}" readonly required/>
+                                        </div>
+                                         <div class="form-group">
+                                            {{ csrf_field() }}
+                                            <label>Keterangan</label>
+                                            <textarea class="form-control" name="ket">{{ $data_proses_produksi->ket }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit">Simpan</button>
+                                        </div>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
 
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            {{ csrf_field() }}
+
                         </div>
 
                     </form>

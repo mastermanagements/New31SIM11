@@ -21,4 +21,8 @@ class P_tambah_produksi extends Model
     public function linkToSupervisor(){
         return $this->belongsTo('App\Model\Hrd\H_Karyawan','id_supervisor_produksi');
     }
+
+    public function linkToMannyProsesPengerjaan(){
+        return $this->hasMany('App\Model\Manufaktur\P_proses_produksi','id_tambah_produksi','id');
+    }
 }

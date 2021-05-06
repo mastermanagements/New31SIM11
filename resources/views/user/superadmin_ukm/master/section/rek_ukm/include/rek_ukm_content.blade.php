@@ -38,7 +38,7 @@
                                 @if(empty($value->getBayarBeli->bank_asal))
                               <form action="{{ url('delete-rek-ukm/'.$value->id) }}" method="post">
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus Ijin ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
-                            
+
                               </form>
                               @endif
                     </td>

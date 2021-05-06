@@ -29,7 +29,7 @@ class PSo extends Migration
             $table->enum('status',['0','1'])->default(0)->comment('0=open, 1=close');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
-
+            
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
             $table->foreign('id_klien')->references('id')->on('a_klien');

@@ -101,7 +101,6 @@
     <script src="{{ asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script>
 
-
         //Initialize Select2 Elements
        $(function () {
            $('.select2').select2();
@@ -111,8 +110,6 @@
                autoclose: true,
                format: 'dd-mm-yyyy'
            });
-
-
 
 
            //iCheck for checkbox and radio inputs

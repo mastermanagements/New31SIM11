@@ -172,7 +172,16 @@ class DetailSales extends Controller
         ]);
 
         $model = DS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrfail($id);
-      
+<<<<<<< HEAD
+        $diskon_group = $this->penentuan_diskon($req,$model->id_sales);
+        $total = 0;
+        $total =  $this->check_metode_jual($req)*$req->jumlah_jual;
+        if($diskon_group !=0){
+            $diskon = $total*($diskon_group/100);
+            $total = $total-$diskon;
+        }
+=======
+
             $hpp = rupiahController($req->hpp);
             $diskon = $req->diskon;
             $diskon_peritem = $hpp * ($diskon/100);
@@ -180,6 +189,7 @@ class DetailSales extends Controller
             $diskon_total = $diskon_peritem * $req->jumlah_jual;
 
             $total = $hpp*$req->jumlah_jual -$diskon_total;
+>>>>>>> master
 
         $model->id_barang = $req->id_barang;
         $model->hpp =  $hpp;
