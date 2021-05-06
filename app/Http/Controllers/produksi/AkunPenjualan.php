@@ -48,9 +48,9 @@ class AkunPenjualan extends Controller
         );
 
         if(!empty($model->save())){
-            return redirect('Penjualan')->with('message_success','Akun penjualan telah disimpan');
+            return redirect('Penjualan')->with('message_success','Akun penjualan telah disimpan')->with('tab8','tab8');
         }else{
-            return redirect('Penjualan')->with('message_fail','Akun penjualan gagal disimpan');
+            return redirect('Penjualan')->with('message_fail','Akun penjualan gagal disimpan')->with('tab8','tab8');
         }
     }
 

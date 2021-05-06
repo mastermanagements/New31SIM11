@@ -867,7 +867,7 @@ Route::get('Penjualan', 'produksi\JualBarang@index');
 //
 //Route::put('hapus-penjualan/{id}', 'produksi\JualBarang@destory');
 # History Penjulan
-Route::resource('riwayat-harga-penjualan','produksi\HistoryPenjualan');
+Route::resource('riwayat-harga-penjualan','produksi\HistoryPenjualan',['except'=>['index', 'show', 'edit', 'destroy']]);
 
 # Setting kasir
 Route::resource('setting-kasir','produksi\SettingKasir');

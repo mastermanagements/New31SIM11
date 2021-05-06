@@ -12,6 +12,12 @@ class HistoryPenjualan extends Controller
     //
     public function store(Request $req){
         $model = DetailSales::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        /* pake ini methodNotAllowed(array $others){throw new MethodNotAllowedHttpException($others);
+        $model = DetailSales::join('PSales', 'DetailSales.id_sales', '=', 'PSales.id')
+                   ->where('PSales.id_klien', '$req->id_klien')
+                   ->where('DetailSales.id_barang', '$req->id_barang')
+                   ->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+                   ->get(['DetailSales.*', 'PSales.id_klien']); */
         if(!empty($req->id_klien))
         {
             $model->where('id_klien', $req->id_klien);
@@ -41,7 +47,7 @@ class HistoryPenjualan extends Controller
                     $column[] = $data_model->_linkToSales->linkToKlien->nm_klien;
                     $column[] = $data_model->jumlah_jual;
                     $column[] = $data_model->linkToBarang->linkToSatuan->satuan_brg;
-                    $column[] = $data_model->jumlah_harga;
+                    $column[] = rupiahView($data_model->jumlah_harga);
                     $array[] = $column;
                 }
         }
