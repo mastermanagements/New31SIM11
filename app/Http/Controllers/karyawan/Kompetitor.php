@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\superadmin_ukm;
+namespace App\Http\Controllers\karyawan;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Superadmin_ukm\U_Kompetitor as kompetitors; 
+use App\Model\Superadmin_ukm\U_Kompetitor as kompetitors;
 use App\Model\Superadmin_sim\U_provinsi as provinsi;
 use App\Model\Superadmin_sim\U_kabupaten as kabupaten;
 
@@ -14,7 +14,7 @@ class Kompetitor extends Controller
 {
     private $id_perusahaan;
 	private $id_karyawan;
-	
+
 	//mengecek session yang aktif
 	public function __construct()
 	{
@@ -28,17 +28,17 @@ class Kompetitor extends Controller
 			$this->id_perusahaan = Session::get('id_perusahaan_karyawan');
 			return $next($req);
 		});
-	} 
+	}
 	//menampilkan halaman index peralatan
 	public function index(){
 		//dd('ucuch');
 		$data = [
 		 'data_kompetitor' => kompetitors::all()->where('id_perusahaan', $this->id_perusahaan)
 		 ];
-		
-			return view('user.karyawan.section.kompetitor.page_default', $data); 
+
+			return view('user.karyawan.section.kompetitor.page_default', $data);
 	}
-	
+
 	 public function create()
     {
 		$data_pass =[
@@ -46,7 +46,7 @@ class Kompetitor extends Controller
         ];
         return view('user.karyawan.section.kompetitor.page_create', $data_pass);
     }
-	
+
 	public function store(Request $req)
     {
        // dd($req->all());
@@ -57,7 +57,7 @@ class Kompetitor extends Controller
            'alamat' => 'required',
            'id_provinsi' => 'required',
            'id_kabupaten' => 'required',
-           
+
         ]);
 
         $nm_kompetitor = $req->nm_kompetitor;
@@ -106,7 +106,7 @@ class Kompetitor extends Controller
                 return redirect('Kompetitor')->with('message_fail','Terjadi kesalahan, silahkan ulangi lagi');
             }
     }
-	
+
 	public function edit($id)
     {
         if(empty($data_kompetitor =  kompetitors::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first()))
@@ -118,9 +118,9 @@ class Kompetitor extends Controller
 			'provinsi'=> provinsi::all(),
 			'kabupaten'=> kabupaten::all()
         ];
-		return view('user.karyawan.section.kompetitor.page_edit', $data); 
+		return view('user.karyawan.section.kompetitor.page_edit', $data);
     }
-	
+
 	//update
 	 public function update(Request $req, $id)
     {
@@ -153,7 +153,7 @@ class Kompetitor extends Controller
         $ig = $req->ig;
 
         //insert value ke tabel
-        
+
 		$model = kompetitors::find($id);
 		$model->nm_kompetitor = $nm_kompetitor;
         $model->badan_hukum = $badan_hukum;
@@ -182,20 +182,20 @@ class Kompetitor extends Controller
                 return redirect('Kompetitor')->with('message_fail','Terjadi kesalahan, silahkan ulangi lagi');
             }
     }
-	
+
 	//delete
 	public function delete(Request $req, $id){
-		
+
 		$model = kompetitors::find($id);
 		if($model->delete()){
 			return redirect('Kompetitor')->with('message_success','Berhasil Menghapus data kompetitor');
 		} else{
 			return redirect('Kompetitor')->with('message_fail','Gagal Menghapus data kompetitor');
-		}	
+		}
 	}
-	
+
 	public function detail($id){
-		
+
 		 if(empty($data_kompetitor =  kompetitors::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first()))
         {
             return abort(404);
@@ -204,10 +204,10 @@ class Kompetitor extends Controller
             'data_kompetitor'=> $data_kompetitor,
 			'provinsi'=> provinsi::all()
         ];
-		
-			return view('user.karyawan.section.kompetitor.detail_page', $data); 
+
+			return view('user.karyawan.section.kompetitor.detail_page', $data);
 	}
-	
+
 	 public function getProvinsi()
     {
         $model = provinsi::all();
