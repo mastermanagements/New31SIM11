@@ -344,19 +344,13 @@
                 </div>
                 <!-- nav-tabs-custom -->
             </div>
-
-
-
-
+            <!--col-md-12-->
         </div>
+        <!-- row -->
     </section>
-    <!-- /.content -->
-
-
-    <!-- /.modal -->
-
+    <!-- /.section -->
 </div>
-
+<!--content-wrapper-->
 @stop
 
 @section('plugins')

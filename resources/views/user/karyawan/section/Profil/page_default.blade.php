@@ -13,6 +13,7 @@
         <h1>
             Profil
         </h1>
+             <h5 class="pull-right"><a href="{{ url('Karyawan')}}">Kembali ke Halaman utama</a></h5>
     </section>
 
     <!-- Main content -->
@@ -26,6 +27,7 @@
 
                 <!-- Profile Image -->
                 <div class="box box-primary">
+
                     <div class="box-body box-profile">
                         @if(!empty($data_karyawan->pas_foto))
                             <img class="profile-user-img img-responsive img-circle" src="{{ asset('filePFoto/'.$data_karyawan->pas_foto) }}" alt="User profile picture">
@@ -302,4 +304,3 @@
 
     @include('user.karyawan.section.Profil.include.JS')
 @stop
-

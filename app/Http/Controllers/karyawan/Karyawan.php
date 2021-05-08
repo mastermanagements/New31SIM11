@@ -36,10 +36,12 @@ class Karyawan extends Controller
     }
 
 
-    public function index()
+    //public function index()
+    public function index($id)
     {
         $data =[
-            'data_karyawan' => karyawans::where('id', $this->id_karyawan)->where('id_perusahaan', $this->id_perusahaan)->first(),
+            //'data_karyawan' => karyawans::where('id', $this->id_karyawan)->where('id_perusahaan', $this->id_perusahaan)->first(),
+            'data_karyawan' => karyawans::where('id_perusahaan', $this->id_perusahaan)->findorFail($id),
             'provinsi'=> provinsi::all(),
             'status'=> $this->status
         ];

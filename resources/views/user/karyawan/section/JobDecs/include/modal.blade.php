@@ -1,4 +1,4 @@
-<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+  <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
 <!--tambah jobdesc-->
 <div class="modal fade" id="modal-tambah-jobdesc">
   <div class="modal-dialog modal-lg">

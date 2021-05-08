@@ -2,8 +2,9 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
 
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 @stop
 
 
@@ -13,7 +14,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-				SWOT (Strength, Weakness, Opportunitie, Threats)
+				          SWOT (Strength, Weakness, Opportunitie, Threats)
             </h1>
         </section>
 
@@ -33,18 +34,18 @@
                         <!-- form start -->
                         <form role="form" action="{{ url('update-swot/'. $data_swot->id) }}" method="post">
                             <div class="box-body">
-								<div class="form-group">
-									<label for="exampleInputEmail1">Pilih Tahun SWOT</label>
-									<select class="form-control select2" style="width: 100%;" name="tahun_swot" required>
-										<option disabled>Pilih </option>
-										@foreach(Tahun() as $tahun)
-										   <option value="{{ $tahun }}" @if($data_swot->tahun_swot == $tahun) selected @endif>
-											   {{ $tahun }}
-										   </option>
-										@endforeach
-									</select>
-									<small style="color: red" id="notify"></small>
-								</div>
+                              <div class="form-group">
+                                  <label>Tahun</label>
+
+                                  <div class="input-group date">
+                                      <div class="input-group-addon">
+                                          <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input type="text" class="form-control pull-right" id="datepicker"  name="tahun_swot" value="{{ $data_swot->tahun_swot}}" required>
+                                  </div>
+                                  <!-- /.input group -->
+                                  <small style="color: red">* Tidak boleh kosong</small>
+                              </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Kategori SWOT</label> &nbsp;
                                         <input type="text"  name="kategori_swot" class="form-control" id="exampleInputEmail1"  value="{{ $data_swot->kategori_swot }}" required readonly>
@@ -52,7 +53,7 @@
                                 </div>
 								<div class="form-group">
                                     <label for="exampleInputEmail1">Isi SWOT</label>
-                                    <textarea class="form-control" placeholder="Isi Swot" name="isi" id="isi" value="{{ $data_swot->isi }}" required>
+                                    <textarea  name="isi" class="form-control" id="isi" required>
                                         {!!  $data_swot->isi !!}
                                     </textarea>
                                     <small style="color: red">* Tidak boleh kosong</small>
@@ -78,27 +79,20 @@
 @section('plugins')
     <!-- iCheck 1.0.1 -->
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- SlimScroll -->
-    <script src="{{ asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
-        $(function () {
-            $('.select2').select2();
-        });
+
         window.onload = function() {
             CKEDITOR.replace( 'isi',{
-                height: 600
+                height: 175
             } );
         };
 
-        //Initialize Select2 Elements
-        //        $(function () {
-        //
-        //            //iCheck for checkbox and radio inputs
-        //            $('input[type="radio"].minimal').iCheck({
-        //                checkboxClass: 'icheckbox_minimal-blue',
-        //                radioClass   : 'iradio_minimal-blue'
-        //            })
-        //
-        //        })
+        $('#datepicker').datepicker({
+            autoclose: true,
+            format: 'yyyy',
+            viewMode: "years",
+            minViewMode: "years"
+        });
     </script>
 @stop

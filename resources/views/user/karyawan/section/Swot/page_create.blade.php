@@ -2,8 +2,8 @@
 
 @section('skin')
    <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
-
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+   <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+   <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
 @stop
 
 
@@ -35,17 +35,18 @@
                     <!-- form start -->
                     <form role="form" action="{{ url('store-swot') }}" method="post">
                         <div class="box-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Pilih Tahun</label>
-									<select class="form-control select2" style="width: 100%;" name="tahun_swot" required>
-										<option>Tahun</option>
-                                        @foreach(Tahun() as $tahun)
-                                            <option value="{{ $tahun }}">{{ $tahun }}</option>
-                                        @endforeach
-                 
-									</select>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
-                            </div>
+                          <div class="form-group">
+                              <label>Tahun</label>
+
+                              <div class="input-group date">
+                                  <div class="input-group-addon">
+                                      <i class="fa fa-calendar"></i>
+                                  </div>
+                                  <input type="text" class="form-control pull-right" id="datepicker"  name="tahun_swot" required>
+                              </div>
+                              <!-- /.input group -->
+                              <small style="color: red">* Tidak boleh kosong</small>
+                          </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Kategori SWOT</label>
                                 <div class="form-group">
@@ -85,15 +86,14 @@
 
 
 @section('plugins')
-     <!-- iCheck 1.0.1 -->
-    <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     <!-- SlimScroll -->
     <script src="{{ asset('component/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
 
         window.onload = function() {
             CKEDITOR.replace( 'isi',{
-                height: 600
+                height: 175
             } );
         };
 
@@ -107,5 +107,11 @@
             })
 
         })
+        $('#datepicker').datepicker({
+            autoclose: true,
+            format: 'yyyy',
+            viewMode: "years",
+            minViewMode: "years"
+        });
     </script>
 @stop

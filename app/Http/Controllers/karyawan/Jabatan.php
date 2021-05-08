@@ -27,14 +27,14 @@ class Jabatan extends Controller
       });
   }
 
-  public function index()
+  /*public function index()
   {
       $datak = [
         'jabatan'=>jabatans::where('id_perusahaan', $this->id_perusahaan)->orderBy('level_jabatan')->get(),
         'level_jabatan' => $this->level_jabatan
       ];
       return view('user.karyawan.section.Jabatan.page_default', $datak);
-  }
+  }*/
 
   public function edit($id){
       if(empty($model = jabatans::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
@@ -61,9 +61,9 @@ class Jabatan extends Controller
       $model->id_karyawan = $this->id_karyawan;
 
       if($model->save()){
-          return redirect('Jabatan')->with('message_success', 'Anda telah mengubah data jabatan');
+          return redirect('Bagian')->with('message_success', 'Anda telah mengubah data jabatan')->with('tab3','tab3');
       }else{
-          return redirect('Jabatan')->with('message_fail','Maaf, data jabatan tidak terubah');
+          return redirect('Bagian')->with('message_fail','Maaf, data jabatan tidak terubah')->with('tab3','tab3');
       }
   }
 
@@ -83,20 +83,20 @@ class Jabatan extends Controller
     $model->id_karyawan = $this->id_karyawan;
 
     if($model->save()){
-        return redirect('Jabatan')->with('message_success', 'Anda telah menambahakan data jabatan');
+        return redirect('Bagian')->with('message_success', 'Anda telah menambahakan data jabatan')->with('tab3','tab3');
     }else{
-        return redirect('Jabatan')->with('message_fail','Maaf, data jabatan tidak tersimpan');
+        return redirect('Bagian')->with('message_fail','Maaf, data jabatan tidak tersimpan')->with('tab3','tab3');
     }
   }
 
   public function delete(Request $req, $id)
   {
       $model = jabatans::find($id);
-
+      //dd($model);
       if($model->delete()){
-          return redirect('Jabatan')->with('message_success', 'Anda telah menghapus data jabatan');
+          return redirect('Bagian')->with('message_success', 'Anda telah menghapus data jabatan')->with('tab3','tab3');
       }else{
-          return redirect('Jabatan')->with('message_fail','Maaf, data jabatan gagal terhapus');
+          return redirect('Bagian')->with('message_fail','Maaf, data jabatan gagal terhapus')->with('tab3','tab3');
       }
   }
 

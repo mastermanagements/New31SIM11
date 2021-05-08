@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Hrd\H_aku as haku;
-use App\Model\Superadmin_UKM\H_karyawan as ky;
+use App\Model\Superadmin_ukm\H_karyawan as ky;
 use App\Model\Hrd\H_Kpi as kpi;
 use App\Model\Hrd\H_kpi_karyawan as kpi_ky;
 
