@@ -30,7 +30,8 @@
             <p></p>
             @foreach($data_jabatan as $jabatan)
                 <div class="col-md-12">
-                    <div class="box box-success">
+                    <div class="box box-primary collapsed-box">
+
                         <div class="box-header with-border">
                             <h3 class="box-title"> {{ $jabatan->nm_jabatan }}</h3>
 

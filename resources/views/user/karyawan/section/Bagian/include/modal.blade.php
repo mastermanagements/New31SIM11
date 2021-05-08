@@ -5,11 +5,11 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir Bagian Perusahaan</h4>
+                <h4 class="modal-title">Formulir Departemen Perusahaan</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Nama Bagian Perusahaan</label>
+                    <label for="exampleInputEmail1">Nama Departemen Perusahaan</label>
                     <input type="text" class="form-control" placeholder="Contoh: Manager HRD" name="nm_bagian">
                     <small style="color: red" id="notify"></small>
                 </div>

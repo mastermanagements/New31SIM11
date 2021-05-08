@@ -2,8 +2,7 @@
 
 @section('skin')
 <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-
-<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
 @stop
 
 
@@ -93,8 +92,10 @@
            })
        })
    })
-   CKEDITOR.replace( 'isi',{
-        height: 100
-   } );
+   window.onload = function() {
+       CKEDITOR.replace( 'isi',{
+           height: 100
+       } );
+   };
 </script>
 @stop

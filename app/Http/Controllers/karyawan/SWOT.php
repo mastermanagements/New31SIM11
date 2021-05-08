@@ -84,6 +84,7 @@ class SWOT extends Controller
 		  'tahun_swot'=> swots::select('tahun_swot')->where('id_perusahaan', $this->id_perusahaan),
 		  'data_swot'=>$data_swot
         ];
+        //dd($data_pass['data_swot']);
         return view('user.karyawan.section.Swot.page_edit', $data_pass);
     }
 
@@ -115,12 +116,12 @@ class SWOT extends Controller
         }
 
     }
-	
+
 	public function delete(Request $req, $id)
     {
         $model = swots::find($id);
         if($model->delete()){
-            return redirect('Swot')->with('message_success', 'Ada telah menghapus data SWOT');    
+            return redirect('Swot')->with('message_success', 'Ada telah menghapus data SWOT');
         }else{
             return redirect('Swot')->with('message_fail', 'Terjadi Kesalahan, Silahkan ulangi');
         }

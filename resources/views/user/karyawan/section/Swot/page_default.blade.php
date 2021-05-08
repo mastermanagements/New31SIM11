@@ -51,7 +51,7 @@
 
 									<!-- /.box-body 1-->
                                 <div class="box-body">
-                                    {!! $value->Isi  !!}
+                                    {!! $value->isi  !!}
                                     <form action="{{ url('delete-swot/'. $value->id) }}" method="post">
                                         <input type="hidden" name="_method" value="put">
                                         {{ csrf_field() }}

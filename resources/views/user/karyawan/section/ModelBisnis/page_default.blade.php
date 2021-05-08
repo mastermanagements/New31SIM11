@@ -16,7 +16,7 @@
         <!--------------------------
           | Your Page Content Here |
           -------------------------->
-        <a href="{{ url('buat-model-bisnis') }}" class="btn btn-primary">Buat Model Bisnis Perusahaan anda</a>
+        <a href="{{ url('buat-model-bisnis') }}" class="btn btn-primary">Tambah</a>
         <p></p>
         <div class="row">
             @if(!empty(session('message_success')))

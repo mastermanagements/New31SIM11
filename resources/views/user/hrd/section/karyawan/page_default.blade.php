@@ -90,8 +90,9 @@
                                         <li>
                                             <form style="padding: 10px 15px ">
                                                 Aksi
-                                                <a href="{{ url('hapus-karyawan/'. $value->id) }}" onclick="return confirm('Apakah anda akan menghapus karyawan ini...?')"><span class="pull-right badge bg-orange"><i class="fa fa-trash"></i></span></a>
-                                                <a href="{{ url('ubah-karyawan/'. $value->id) }}"><span class="pull-right badge bg-red"><i class="fa fa-pencil"></i></span></a>
+                                                <a href="{{ url('hapus-karyawan/'. $value->id) }}" onclick="return confirm('Apakah anda akan menghapus karyawan ini...?')"><span class="pull-right badge bg-orange"><i class="fa fa-trash">&nbsp;Hapus</i></span></a>
+                                                <a href="{{ url('ubah-karyawan/'. $value->id) }}"><span class="pull-right badge bg-red"><i class="fa fa-pencil">&nbsp;Ubah</i></span></a>
+                                                <a href="{{ url('profil/'. $value->id) }}"><span class="pull-right badge bg-red"><i class="fa fa-file-text-o">&nbsp;Detail</i></span></a>
                                             </form>
                                         </li>
                                     </ul>

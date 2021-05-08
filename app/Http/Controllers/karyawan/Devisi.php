@@ -4,9 +4,10 @@ namespace App\Http\Controllers\karyawan;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Session;
 use App\Model\Karyawan\Bagian as bagians;
 use App\Model\Karyawan\Devisi as devisis;
+use Session;
+
 class Devisi extends Controller
 {
     //
@@ -27,14 +28,14 @@ class Devisi extends Controller
         });
     }
 
-    public function index()
+    /*public function index()
     {
         $data= [
             'Bagian'=>bagians::where('id_perusahaan', $this->id_perusahaan)->paginate(9)
         ];
 
         return view('user.karyawan.section.Devisi.page_default', $data);
-    }
+    }*/
 
     public function store(Request $req)
     {
@@ -51,17 +52,16 @@ class Devisi extends Controller
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
 
-        if($model->save())
-        {
-            return redirect('Divisi')->with('message_sucess','Anda baru saja menambahkan devisi '.$nm_devisi);
-        }else
-        {
-            return redirect('Divisi')->with('message_fail','Terjadi kesalahan, Silahkan input ulang..!');
+        if($model->save()){
+            return redirect('Bagian')->with('message_success', 'Berhasil menambah data Divisi')->with('tab2','tab2');
+        }else{
+            return redirect('Bagian')->with('message_fail','Gagal menambah data Divisi')->with('tab2','tab2');
         }
+
     }
 
     public function edit($id)
-    { 
+    {
         if(empty($data_divisi = devisis::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
@@ -94,11 +94,12 @@ class Devisi extends Controller
 
         if($model->save())
         {
-            return redirect('Divisi')->with('message_sucess','Anda baru saja mengubah devisi '.$nm_devisi);
+            return redirect('Bagian')->with('message_success','Anda baru saja mengubah devisi')->with('tab2','tab2');
         }else
         {
-            return redirect('Divisi')->with('message_fail','Terjadi kesalahan, Silahkan ubah ulang..!');
+            return redirect('Bagian')->with('message_fail','Terjadi kesalahan, Silahkan ubah ulang..!')->with('tab2','tab2');
         }
+
     }
 
     public function delete(Request $req, $id)

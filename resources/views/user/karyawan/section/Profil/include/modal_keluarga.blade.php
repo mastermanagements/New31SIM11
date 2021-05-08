@@ -14,18 +14,25 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Status Ayah</label>
+
                     @foreach($status as $key => $value)
+                    @if(!empty($data_karyawan->getDataKeluarga->status_a))
                     <input type="radio"  name="status_a" class="minimal" value="{{ $key }}" @if($data_karyawan->getDataKeluarga->status_a==$key) checked @else  @endif  required> {{ $value }}
+                    @endif
                     @endforeach
+
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nama Ibu</label>
+
                     <input type="text" class="form-control" placeholder="" name="nm_ibu" value="@if(!empty($data_karyawan->getDataKeluarga->nm_ibu)) {{ $data_karyawan->getDataKeluarga->nm_ibu }} @endif" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Status Ibu</label>
                     @foreach($status as $key => $value)
+                    @if(!empty($data_karyawan->getDataKeluarga->status_i))
                         <input type="radio"  name="status_i" class="minimal" value="{{ $key }}" @if($data_karyawan->getDataKeluarga->status_i==$key) checked @else  @endif required> {{ $value }}
+                    @endif
                     @endforeach
                 </div>
                 <div class="form-group">
