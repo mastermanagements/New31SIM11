@@ -29,12 +29,14 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Daftar Barang  </a></li>
-                        <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Daftar Harga Barang </a></li>
-                        <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Konversi Satuan </a></li>
-                        <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Daftar Konversi Barang </a></li>
-                        <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
-                        <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Promosi Barang </a></li>
+                        <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Barang Jadi </a></li>
+                        <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Barang Mentah </a></li>
+                        <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Barang Dalam Proses</a></li>
+                        <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Harga Barang </a></li>
+                        <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Konversi Satuan </a></li>
+                        <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Daftar Konversi Barang</a></li>
+                        <li class="@if(Session::get('tab7') == 'tab4') active @else '' @endif"><a href="#tab_7" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
+
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane @if(Session::get('tab1') == 'tab1') active @else '' @endif" id="tab_1">
@@ -62,7 +64,7 @@
                                     <div class="col-md-12">
                                         <div class="box box-success">
                                             <div class="box-header with-border">
-                                                <h3 class="box-title">Tabel Barang</h3>
+                                                <h3 class="box-title">Tabel Barang Jadi</h3>
                                                 <div class="box-tools pull-right">
                                                     <a href="{{ url('import-barang') }}"  class="btn btn-primary" data-toggle="modal" data-target="#modal-import"> Import Barang </a>
                                                 </div>
@@ -92,7 +94,8 @@
                                                             </thead>
                                                             <tbody>
                                                             @php($no = 1)
-                                                                @foreach($data_barang as $data)
+                                                              @foreach($data_barang as $data)
+                                                                @if($data->jenis_barang =='0')
                                                                     <tr>
                                                                         <td>{{ $no++ }}</td>
                                                                         <td>{{ $data->kd_barang }}</td>
@@ -106,7 +109,6 @@
                                                                         <td>{{ $data->stok_minimum }}</td>
                                                                         <td>{{ rupiahView($data->hpp) }}</td>
                                                                         <td>
-
                                                                                 @if($data->metode_jual == '0')
                                                                                    <a href="#" onclick='window.location.href="{{ url('harga-jual-satuan/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> Satu harga</a>
                                                                                 @else
@@ -122,6 +124,7 @@
                                                                             </form>
                                                                         </th>
                                                                     </tr>
+                                                                  @endif
                                                                 @endforeach
                                                             </tbody>
                                                         </table>
@@ -139,97 +142,259 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
-                            <div class="row">
+                        <!--tab-pane-1-->
+
+                    <!--tab-pane-2-->
+                      <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
+                        <div class="row">
+                            @if(empty($data_barang))
+                                <div class="col-md-12"> <h4 align="center">Anda belum menambahkan Barang </h4></div>
+                            @else
                                 <div class="col-md-12">
-                                    <h4 style="font-weight: bold">Daftar Harga Barang Satuan</h4>
-                                        <table id="example3" class="table table-bordered table-striped" style="width: 100%">
-                                            <thead>
-                                            <tr>
-                                                <td>#</td>
-                                                <td>Nama Barang</td>
-                                                <td>Satuan</td>
-                                                <td>HPP</td>
-                                                <td>Harga Jual</td>
-                                                <td>Keuntungan</td>
-                                                <td>Aksi</td>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @php($no=1)
-                                            @if(!empty($data_barang))
-                                                @foreach($data_barang as $data_barangs )
-                                                    @foreach($data_barangs->linkToHargaJualSatuan as $data_satuan)
+                                    <div class="box box-success">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Tabel Barang Mentah</h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap; margin: 10px">
+                                                    <table id="example1" class="table table-bordered table-striped">
+                                                        <thead>
                                                         <tr>
-                                                            <td>{{ $no++ }}</td>
-                                                            <td>{{ $data_satuan->linkToBarang->nm_barang }}</td>
-                                                            <td>{{ $data_satuan->linkToBarang->linkToSatuan->satuan }}</td>
-                                                            <td>{{ rupiahView($data_satuan->linkToBarang->hpp) }}</td>
-                                                            <td>{{ rupiahView($data_satuan->harga_jual) }}</td>
-                                                            <td>{{ rupiahView($data_satuan->harga_jual - $data_satuan->linkToBarang->hpp)  }}</td>
-                                                            <td>
-                                                                <form action="{{ url('harga-jual-satuan/'.$data_satuan->id.'/delete') }}" method="post">
-                                                                    {{ csrf_field() }}
-                                                                    <input type="hidden" name="_method" value="put">
-                                                                    <a href="{{ url('harga-jual-satuan/'.$data_satuan->id.'/edit') }}" class="btn btn-sm btn-warning">ubah</a>
-                                                                    {{--<button type="submit" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')" class="btn btn-sm btn-danger">hapus</button>--}}
-                                                                </form>
-                                                            </td>
+                                                            <th>No.</th>
+                                                            <th>Kode</th>
+                                                            <th>Nama Barang</th>
+                                                            <th>Satuan</th>
+                                                            <th>Kategori</th>
+                                                            <th>Spesifikasi</th>
+                                                            <th>Merk</th>
+                                                            <th>Deskripsi</th>
+                                                            <th>No Rak</th>
+                                                            <th>Stok Minimum</th>
+                                                            <th>HPP</th>
+                                                            <th>Metode jual</th>
+                                                            <th>Aksi</th>
                                                         </tr>
-                                                    @endforeach
-                                                @endforeach
-                                            @endif
-                                            </tbody>
-                                        </table>
+                                                        </thead>
+                                                        <tbody>
+                                                        @php($no = 1)
+                                                          @foreach($data_barang as $data)
+                                                            @if($data->jenis_barang =='1')
+                                                                <tr>
+                                                                    <td>{{ $no++ }}</td>
+                                                                    <td>{{ $data->kd_barang }}</td>
+                                                                    <td>{{ $data->nm_barang }}</td>
+                                                                    <td>{{ $data->linkToSatuan->satuan }}</td>
+                                                                    <td>{{ $data->getkategori->nm_kategori_p }}</td>
+                                                                    <td>{{ $data->spec_barang }}</td>
+                                                                    <td>{{ $data->merk_barang }}</td>
+                                                                    <td>{!! substr($data->desc_barang,0,100) !!}</td>
+                                                                    <td>{{ $data->no_rak }}</td>
+                                                                    <td>{{ $data->stok_minimum }}</td>
+                                                                    <td>{{ rupiahView($data->hpp) }}</td>
+                                                                    <td>
+                                                                            @if($data->metode_jual == '0')
+                                                                               <a href="#" onclick='window.location.href="{{ url('harga-jual-satuan/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> Satu harga</a>
+                                                                            @else
+                                                                                <a href="#" onclick='window.location.href="{{ url('harga-jual-baseon-jumlah/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> Jumlah Beli</a>
+                                                                            @endif
+                                                                    </td>
+                                                                    <th>
+                                                                        <form action="{{ url('delete-barang/'.$data->id) }}" method="post">
+                                                                            <a href="{{ url('ubah-barang/'.$data->id) }}" type="button" class="btn btn-warning" title="ubah jasa">ubah</a>
+                                                                            {{ csrf_field() }}
+                                                                            <input type="hidden" name="_method" value="put">
+                                                                            <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data barang ini ... ?')" class="btn btn-danger" title="hapus proposal">hapus</button>
+                                                                        </form>
+                                                                    </th>
+                                                                </tr>
+                                                              @endif
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box -->
                                 </div>
-                                <div class="col-md-12">
-                                    <h4 style="font-weight: bold">Daftar Harga Barang Berdasarkan Jumlah Pembelian</h4>
-                                @if(!empty($data_barang))
-                                        <table id="example1" class="table table-bordered table-striped">
-                                            <thead>
-                                            <tr>
-                                                <td>#</td>
-                                                <td>Nama Barang</td>
-                                                <td>Satuan</td>
-                                                <td>Harga HPP</td>
-                                                <td>Jumlah Maks Pembelian</td>
-                                                <td>Harga Jual</td>
-                                                <td>Keuntungan</td>
-                                                <td>Aksi</td>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @php($no=1)
-                                            @foreach($data_barang as $data_barang_jumlah)
-                                                @if(!empty($data_barang_jumlah->linkToHargaBaseOnJumlah))
-                                                    @foreach($data_barang_jumlah->linkToHargaBaseOnJumlah as $data_bJumlah)
-                                                        <tr>
-                                                            <td>{{ $no++ }}</td>
-                                                            <td>{{ $data_bJumlah->linkToBarang->nm_barang }}</td>
-                                                            <td>{{ $data_bJumlah->linkToBarang->linkToSatuan->satuan }}</td>
-                                                            <td>{{ rupiahView($data_bJumlah->linkToBarang->hpp) }}</td>
-                                                            <td>{{ $data_bJumlah->jumlah_maks_brg }}</td>
-                                                            <td>{{ rupiahView($data_bJumlah->harga_jual) }}</td>
-                                                            <td>{{ rupiahView($data_bJumlah->harga_jual - $data_bJumlah->linkToBarang->hpp) }}</td>
-                                                            <td>
-                                                                <form action="{{ url('harga-jual-baseon-jumlah/'.$data_bJumlah->id.'/delete') }}" method="post">
-                                                                    {{ csrf_field() }}
-                                                                    <input type="hidden" name="_method" value="put">
-                                                                    <a href="{{ url('harga_jual_base_on_jumlah/'.$data_bJumlah->id) }}" onclick="ubah_barang_jumlah('{{ $data->id }}')" class="btn btn-sm btn-warning">ubah</a>
-                                                                    {{--<button type="submit" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')" class="btn btn-sm btn-danger">hapus</button>--}}
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    @endif
-                                </div>
-                            </div>
+                            @endif
                         </div>
-                        <div class="tab-pane @if(Session::get('tab3') == 'tab3') active @else '' @endif" id="tab_3">
+                      </div>
+                     <!--tab-pane-2-->
+                      <div class="tab-pane @if(Session::get('tab3') == 'tab3') active @else '' @endif" id="tab_3">
+                        <div class="row">
+                            @if(empty($data_barang))
+                                <div class="col-md-12"> <h4 align="center">Anda belum menambahkan Barang </h4></div>
+                            @else
+                                <div class="col-md-12">
+                                    <div class="box box-success">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Tabel Barang Dalam Proses</h3>                                          
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap; margin: 10px">
+                                                    <table id="example1" class="table table-bordered table-striped">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>No.</th>
+                                                            <th>Kode</th>
+                                                            <th>Nama Barang</th>
+                                                            <th>Satuan</th>
+                                                            <th>Kategori</th>
+                                                            <th>Spesifikasi</th>
+                                                            <th>Merk</th>
+                                                            <th>Deskripsi</th>
+                                                            <th>No Rak</th>
+                                                            <th>Stok Minimum</th>
+                                                            <th>HPP</th>
+                                                            <th>Metode jual</th>
+                                                            <th>Aksi</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @php($no = 1)
+                                                          @foreach($data_barang as $data)
+                                                            @if($data->jenis_barang =='2')
+                                                                <tr>
+                                                                    <td>{{ $no++ }}</td>
+                                                                    <td>{{ $data->kd_barang }}</td>
+                                                                    <td>{{ $data->nm_barang }}</td>
+                                                                    <td>{{ $data->linkToSatuan->satuan }}</td>
+                                                                    <td>{{ $data->getkategori->nm_kategori_p }}</td>
+                                                                    <td>{{ $data->spec_barang }}</td>
+                                                                    <td>{{ $data->merk_barang }}</td>
+                                                                    <td>{!! substr($data->desc_barang,0,100) !!}</td>
+                                                                    <td>{{ $data->no_rak }}</td>
+                                                                    <td>{{ $data->stok_minimum }}</td>
+                                                                    <td>{{ rupiahView($data->hpp) }}</td>
+                                                                    <td>
+                                                                            @if($data->metode_jual == '0')
+                                                                               <a href="#" onclick='window.location.href="{{ url('harga-jual-satuan/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> Satu harga</a>
+                                                                            @else
+                                                                                <a href="#" onclick='window.location.href="{{ url('harga-jual-baseon-jumlah/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> Jumlah Beli</a>
+                                                                            @endif
+                                                                    </td>
+                                                                    <th>
+                                                                        <form action="{{ url('delete-barang/'.$data->id) }}" method="post">
+                                                                            <a href="{{ url('ubah-barang/'.$data->id) }}" type="button" class="btn btn-warning" title="ubah jasa">ubah</a>
+                                                                            {{ csrf_field() }}
+                                                                            <input type="hidden" name="_method" value="put">
+                                                                            <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data barang ini ... ?')" class="btn btn-danger" title="hapus proposal">hapus</button>
+                                                                        </form>
+                                                                    </th>
+                                                                </tr>
+                                                              @endif
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+                            @endif
+                        </div>
+                      </div>
+                     <!--tab-pane-3-->
+                     <div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
+                       <div class="row">
+                           <div class="col-md-12">
+                               <h4 style="font-weight: bold">Daftar Harga Barang Satuan</h4>
+                                   <table id="example3" class="table table-bordered table-striped" style="width: 100%">
+                                       <thead>
+                                       <tr>
+                                           <td>#</td>
+                                           <td>Nama Barang</td>
+                                           <td>Satuan</td>
+                                           <td>HPP</td>
+                                           <td>Harga Jual</td>
+                                           <td>Keuntungan</td>
+                                           <td>Aksi</td>
+                                       </tr>
+                                       </thead>
+                                       <tbody>
+                                       @php($no=1)
+                                       @if(!empty($data_barang))
+                                           @foreach($data_barang as $data_barangs )
+                                               @foreach($data_barangs->linkToHargaJualSatuan as $data_satuan)
+                                                   <tr>
+                                                       <td>{{ $no++ }}</td>
+                                                       <td>{{ $data_satuan->linkToBarang->nm_barang }}</td>
+                                                       <td>{{ $data_satuan->linkToBarang->linkToSatuan->satuan }}</td>
+                                                       <td>{{ rupiahView($data_satuan->linkToBarang->hpp) }}</td>
+                                                       <td>{{ rupiahView($data_satuan->harga_jual) }}</td>
+                                                       <td>{{ rupiahView($data_satuan->harga_jual - $data_satuan->linkToBarang->hpp)  }}</td>
+                                                       <td>
+                                                           <form action="{{ url('harga-jual-satuan/'.$data_satuan->id.'/delete') }}" method="post">
+                                                               {{ csrf_field() }}
+                                                               <input type="hidden" name="_method" value="put">
+                                                               <a href="{{ url('harga-jual-satuan/'.$data_satuan->id.'/edit') }}" class="btn btn-sm btn-warning">ubah</a>
+                                                               {{--<button type="submit" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')" class="btn btn-sm btn-danger">hapus</button>--}}
+                                                           </form>
+                                                       </td>
+                                                   </tr>
+                                               @endforeach
+                                           @endforeach
+                                       @endif
+                                       </tbody>
+                                   </table>
+                           </div>
+                           <div class="col-md-12">
+                               <h4 style="font-weight: bold">Daftar Harga Barang Berdasarkan Jumlah Pembelian</h4>
+                           @if(!empty($data_barang))
+                                   <table id="example1" class="table table-bordered table-striped">
+                                       <thead>
+                                       <tr>
+                                           <td>#</td>
+                                           <td>Nama Barang</td>
+                                           <td>Satuan</td>
+                                           <td>Harga HPP</td>
+                                           <td>Jumlah Maks Pembelian</td>
+                                           <td>Harga Jual</td>
+                                           <td>Keuntungan</td>
+                                           <td>Aksi</td>
+                                       </tr>
+                                       </thead>
+                                       <tbody>
+                                       @php($no=1)
+                                       @foreach($data_barang as $data_barang_jumlah)
+                                           @if(!empty($data_barang_jumlah->linkToHargaBaseOnJumlah))
+                                               @foreach($data_barang_jumlah->linkToHargaBaseOnJumlah as $data_bJumlah)
+                                                   <tr>
+                                                       <td>{{ $no++ }}</td>
+                                                       <td>{{ $data_bJumlah->linkToBarang->nm_barang }}</td>
+                                                       <td>{{ $data_bJumlah->linkToBarang->linkToSatuan->satuan }}</td>
+                                                       <td>{{ rupiahView($data_bJumlah->linkToBarang->hpp) }}</td>
+                                                       <td>{{ $data_bJumlah->jumlah_maks_brg }}</td>
+                                                       <td>{{ rupiahView($data_bJumlah->harga_jual) }}</td>
+                                                       <td>{{ rupiahView($data_bJumlah->harga_jual - $data_bJumlah->linkToBarang->hpp) }}</td>
+                                                       <td>
+                                                           <form action="{{ url('harga-jual-baseon-jumlah/'.$data_bJumlah->id.'/delete') }}" method="post">
+                                                               {{ csrf_field() }}
+                                                               <input type="hidden" name="_method" value="put">
+                                                               <a href="{{ url('harga_jual_base_on_jumlah/'.$data_bJumlah->id) }}" onclick="ubah_barang_jumlah('{{ $data->id }}')" class="btn btn-sm btn-warning">ubah</a>
+                                                               {{--<button type="submit" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')" class="btn btn-sm btn-danger">hapus</button>--}}
+                                                           </form>
+                                                       </td>
+                                                   </tr>
+                                               @endforeach
+                                           @endif
+                                       @endforeach
+                                       </tbody>
+                                   </table>
+                               @endif
+                           </div>
+                       </div>
+                     </div>
+                     <!--tab-4-->
+                      <div class="tab-pane @if(Session::get('tab4') == 'tab5') active @else '' @endif" id="tab_5">
                           <div class="alert alert-warning alert-dismissible">
                               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                               Konversi barang digunakan untuk memisahkan pembelian barang dengan satuan yang sama tapi dijual dengan satuan yang berbeda.
@@ -275,7 +440,8 @@
                                </tbody>
                            </table>
                         </div>
-                        <div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
+                        <!--tab-5-->
+                        <div class="tab-pane @if(Session::get('tab6') == 'tab6') active @else '' @endif" id="tab_6">
                           <div class="row">
                              <div class="box-body">
                                  <table id="example2" class="table table-bordered table-striped" style="width: 100%">
@@ -311,7 +477,7 @@
                              </div>
                           </div>
                         </div>
-                        <div class="tab-pane @if(Session::get('tab5') == 'tab5') active @else '' @endif" id="tab_5">
+                        <div class="tab-pane @if(Session::get('tab7') == 'tab7') active @else '' @endif" id="tab_7">
                             <div class="row">
                                 <form action="{{ url('transfer_barang') }}" method="post">
                                     {{ csrf_field() }}
@@ -345,110 +511,12 @@
                             </div>
                         </div>
                         <div class="tab-pane @if(Session::get('tab6') == 'tab6') active @else '' @endif" id="tab_6">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h3>Event Promo <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-default"> Buat Event </a> </h3>
-                                    <table id="example1" class="table table-bordered table-striped" style="width: 100%">
-                                        <thead>
-                                        <tr>
-                                            <td>No</td>
-                                            <td>Nama Promo</td>
-                                            <td>Mulai</td>
-                                            <td>Selesai</td>
-                                            <td>Syarat</td>
-                                            <td>Fasilitas</td>
-                                            <td>Aksi</td>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if(!empty($promo))
-                                                @php($no=1)
-                                                @foreach($promo as $data_promo)
-                                                    <tr>
-                                                        <td>{{ $no++ }}</td>
-                                                        <td>{{ $data_promo->nama_promo }}</td>
-                                                        <td>{{ tanggalView($data_promo->tgl_dibuat) }}</td>
-                                                        <td>{{ tanggalView($data_promo->tgl_berlaku) }}</td>
-                                                        <td>{{ $data_promo->syarat }}</td>
-                                                        <td>{{ $data_promo->fasilitas_promo }}</td>
-                                                        <td>
-                                                            <form action="{{ url('delete-promo/'.$data_promo->id) }}" method="post">
-                                                                {{ csrf_field() }}
-                                                                <a href="#" onclick="onPromoEdit({{ $data_promo->id }})" class="btn btn-warning">ubah</a>
-                                                                <button type="submit" class="btn btn-danger">hapus</button>
-                                                                <a href="#" onclick="window.location.href='{{ url('rincian-promo/'.$data_promo->id) }}'" class="btn btn-default">Rincian Promo</a>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+
                         </div>
-                    </div>
-                    <!-- /.tab-content -->
+                        <!-- /.tab-content -->
                 </div>
                 <!-- nav-tabs-custom -->
             </div>
-                <!--tambah promo barang--->
-                <div class="modal fade" id="modal-default">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Form Promo Barang</h4>
-                            </div>
-                            <form action="{{ url('promo-crud') }}" method="post" id="form_promo">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="_method" value="">
-                                <div class="modal-body">
-                                    <div class="row">
-
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Nama Promo</label>
-                                                <input type="text" class="form-control" name="nm_promo" id="nama_promo" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Jenis Promo</label>
-                                                <select name="jenis_promo" class="form-control" id="jenis_promo" required>
-                                                        <option value="0">Promo Barang</option>
-                                                </select>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Tanggal Dibuat</label>
-                                                <input type="date" class="form-control" name="tgl_awal_promo" id="tgl_awal_promo" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Berlaku s/d</label>
-                                                <input type="date" class="form-control" name="tgl_akhir_promo" id="tgl_akhir_promo" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Syarat</label>
-                                                <textarea name="syarat" class="form-control" id="syarat"></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Fasilitas Promo</label>
-                                                <textarea name="fasilitas" class="form-control" id="fasilitas"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
 
                 <div class="modal fade" id="modal-import">
                     <div class="modal-dialog">

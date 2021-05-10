@@ -83,7 +83,7 @@ class Barang extends Controller
             'promo'=>Promo::where('id_perusahaan', $this->id_perusahaan)->where('jenis_promo','0')->get()
         ];
 
-        if(empty(Session::get('tab')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6'))){
+        if(empty(Session::get('tab')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6')) && empty(Session::get('tab7'))){
             Session::flash('tab1','tab1');
         }
 
@@ -98,7 +98,9 @@ class Barang extends Controller
         if(!empty(Session::get('tab6'))){
             Session::flash('tab6',Session::get('tab6'));
         }
-
+        if(!empty(Session::get('tab7'))){
+            Session::flash('tab7',Session::get('tab7'));
+        }
         return view('user.produksi.section.barang.page_default', $data);
     }
 

@@ -46,6 +46,22 @@ class Klien extends Controller
       'rek_klien'=> rek_klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
 		//dd($data_klien['penandaSDK']);
+    if(empty(Session::get('tab2')) && empty(Session::get('tab3')) && empty(Session::get('tab6'))){
+        Session::flash('tab1','tab1');
+    }
+
+    if(!empty(Session::get('tab2'))){
+        Session::flash('tab2',Session::get('tab2'));
+    }
+
+    if(!empty(Session::get('tab3'))){
+        Session::flash('tab3',Session::get('tab3'));
+    }
+
+    if(!empty(Session::get('tab4'))){
+        Session::flash('tab4',Session::get('tab4'));
+    }
+
         return view('user.administrasi.section.klien.page_default', $data_klien);
     }
 
@@ -198,10 +214,10 @@ class Klien extends Controller
 
         if($models->save())
         {
-            return redirect('Klien')->with('message_success','Anda telah mengubah data customer');
+            return redirect('Klien')->with('message_success','Anda telah mengubah data customer')->with('tab2','tab2');
         }else
         {
-            return redirect('Klien')->with('message_fail','Maaf,Telah terjadi kesalahan, Coba mengubaubah klien anda');
+            return redirect('Klien')->with('message_fail','Maaf,Telah terjadi kesalahan, Coba mengubaubah klien anda')->with('tab2','tab2');
         }
     }
 
