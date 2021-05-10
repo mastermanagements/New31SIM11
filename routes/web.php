@@ -369,13 +369,13 @@ Route::put('hapus-target-staf/{id}', 'karyawan\TargetPerusahaan@deleteTargetStaf
 Route::get('Strategi-Perusahaan', 'karyawan\StrategiPerusahaan@index');
 
 //Strategi jangka panjang perusahaan
-/*Route::post('store-sjp', 'karyawan\StrategiPerusahaan@store');
+Route::post('store-sjp', 'karyawan\StrategiPerusahaan@store');
 
 Route::get('ubah-sjp/{id}', 'karyawan\StrategiPerusahaan@edit');
 
 Route::post('update-sjp', 'karyawan\StrategiPerusahaan@update');
 
-Route::put('hapus-sjp/{id_sjp}', 'karyawan\StrategiPerusahaan@delete');*/
+Route::put('hapus-sjp/{id_sjp}', 'karyawan\StrategiPerusahaan@delete');
 
 //Strategi Eksekutif
 Route::post('store-sekutif', 'karyawan\StrategiPerusahaan@storeSekutif');
@@ -836,16 +836,7 @@ Route::get('detail-pSo/{id_detail_pso}/delete', 'produksi\DetailSo@delete');
 //--- Penjualan ---
 
 Route::get('Penjualan', 'produksi\JualBarang@index');
-//
-//Route::get('tambah-penjualan', 'produksi\JualBarang@create');
-//
-//Route::post('store-penjualan', 'produksi\JualBarang@store');
-//
-//Route::get('ubah-penjualan/{id}', 'produksi\JualBarang@edit');
-//
-//Route::put('update-penjualan/{id}', 'produksi\JualBarang@update');
-//
-//Route::put('hapus-penjualan/{id}', 'produksi\JualBarang@destory');
+
 # History Penjulan
 Route::resource('riwayat-harga-penjualan','produksi\HistoryPenjualan',['except'=>['index', 'show', 'edit', 'destroy']]);
 
@@ -1325,7 +1316,7 @@ Route::post('store-saldo-awal', 'keuangan\JurnalUmum@store_jurnal_awal');
 //Jurnal penyesuaian
 Route::get('Jurnal-Penyesuaian', 'keuangan\JurnalPernyesuaian@index');
 
-Route::post('tutup-buku', 'keuangan\TutupBuku@store');
+Route::post('Tutup-Buku', 'keuangan\TutupBuku@store');
 
 //================================= HRD ======================================================================
 //--- Karyawan ---
@@ -1628,7 +1619,7 @@ Route::put('change-status-aktif-tunjanganOn/{id}', 'penggajian\TunjanganGaji@upd
 Route::put('change-status-aktif-tunjanganOff/{id}', 'penggajian\TunjanganGaji@updateStatusAktifof');
 
 //tunjangan
-Route::get('Tunjangan-gaji', 'penggajian\Tunjangan@index');
+Route::get('Tunjangan-Gaji', 'penggajian\Tunjangan@index');
 
 Route::get('item-tunjangan', 'penggajian\Tunjangan@item_tunjangan');
 
@@ -1655,7 +1646,7 @@ Route::put('status-skala-on/{id}', 'penggajian\SkalaTunjangan@statusOn');
 Route::put('status-skala-off/{id}', 'penggajian\SkalaTunjangan@statusOff');
 
 //daftar gaji
-Route::get('Daftar-gaji', 'penggajian\DaftarGaji@index');
+Route::get('Daftar-Gaji', 'penggajian\DaftarGaji@index');
 
 Route::get('detail-daftar-gaji/{id}', 'penggajian\DaftarGaji@list');
 
@@ -2148,7 +2139,7 @@ Route::post('update-jual-saham-perusahaan', 'Investor\JualSahamPersahaan@update'
 Route::put('hapus-jual-saham-perusahaan/{id}', 'Investor\JualSahamPersahaan@delete');
 
 
-Route::get('saham-investor', 'Investor\JualSahamInvestor@index');
+Route::get('Saham-Investor', 'Investor\JualSahamInvestor@index');
 
 Route::post('store-jual-saham-investor', 'Investor\JualSahamInvestor@store');
 
@@ -2182,6 +2173,7 @@ Route::put('delete-saham-real/{id}', 'Investor\DividenInvestor@delete');
 
 Route::get('lihat-data-dividen-investor/{id_investor}', 'Investor\DividenInvestor@lihat_data_dividen');
 
+
 Route::get('Persen-kas', 'Investor\PersenKas@index');
 
 Route::post('store-persen-kas', 'Investor\PersenKas@store');
@@ -2191,6 +2183,7 @@ Route::get('edit-persen-kas/{id}', 'Investor\PersenKas@edit');
 Route::post('update-persen-kas', 'Investor\PersenKas@update');
 
 Route::put('hapus-persen-kas/{id}', 'Investor\PersenKas@delete');
+
 
 Route::get('Pelaku-Investasi', 'Investor\PelakuInvestasi@index');
 
@@ -2213,11 +2206,13 @@ Route::post('update-pemodal', 'Investor\Pemodal@update');
 
 Route::put('delete-pemodal', 'Investor\Pemodal@delete');
 
+
 Route::get('Akad', 'Investor\Akad@index');
 
 Route::post('store-akad', 'Investor\Akad@store');
 
 Route::put('hapus-akad/{id}', 'Investor\Akad@delete');
+
 
 Route::get('Nisbah', 'Investor\Nisbah@index');
 

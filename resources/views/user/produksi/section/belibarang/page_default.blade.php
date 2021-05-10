@@ -97,16 +97,16 @@
                                     @foreach($pesanan_pembelian as $data_pesanan_pembelian)
 
                                         <tr>
-                                            <th>{{ $i++ }}</th>
-                                            <th>{{ tanggalView($data_pesanan_pembelian->tgl_po) }}</th>
-                                            <th>{{ $data_pesanan_pembelian->no_po }}</th>
-                                            <th>{{ $data_pesanan_pembelian->linkToSupplier->nama_suplier }}</th>
+                                            <td>{{ $i++ }}</td>
+                                            <td>{{ tanggalView($data_pesanan_pembelian->tgl_po) }}</td>
+                                            <td>{{ $data_pesanan_pembelian->no_po }}</td>
+                                            <td>{{ $data_pesanan_pembelian->linkToSupplier->nama_suplier }}</td>
 
-                                            <th>{{ tanggalView($data_pesanan_pembelian->tgl_krm )}}</th>
-                                            <th>{{
+                                            <td>{{ tanggalView($data_pesanan_pembelian->tgl_krm )}}</td>
+                                            <td>{{
                                                     rupiahView($data_pesanan_pembelian->total)
-                                                }}</th>
-                                            <th>
+                                                }}</td>
+                                            <td>
                                                 <form action="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/hapus') }}" method="post">
                                                     {{ csrf_field() }}
                                                     <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Rincian Barang </a>
@@ -114,7 +114,7 @@
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus nota ini ...?')"> Hapus</button>
 
                                                 </form>
-                                            </th>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 @endif
@@ -336,9 +336,9 @@
                                                     @endif
                                                 @endif
                                                 <tr>
-                                                    <th rowspan="{{ $rowspan }}">{{ $no++ }}</th>
-                                                    <th rowspan="{{ $rowspan }}">{{ $jenis_jurnal[$data->jenis_jurnal] }}<br><a href="{{ url('akun-pembelian/'.$data->id.'/edit') }}">ubah</a> <a href="{{ url('hapus-akun-pembelian'.$data->id) }}" onclick="return confirm('Apakah anda akan menghapus akun pembelian ini.');">hapus</a> </th>
-                                                    <th rowspan="{{ $rowspan }}">{{ $data->linkToOneKetTransaksi->nm_transaksi }}</th>
+                                                    <td rowspan="{{ $rowspan }}">{{ $no++ }}</td>
+                                                    <td rowspan="{{ $rowspan }}">{{ $jenis_jurnal[$data->jenis_jurnal] }}<br><a href="{{ url('akun-pembelian/'.$data->id.'/edit') }}">ubah</a> <a href="{{ url('hapus-akun-pembelian'.$data->id) }}" onclick="return confirm('Apakah anda akan menghapus akun pembelian ini.');">hapus</a> </td>
+                                                    <td rowspan="{{ $rowspan }}">{{ $data->linkToOneKetTransaksi->nm_transaksi }}</td>
                                                 </tr>
                                                 @if(!empty($data->linkToOneKetTransaksi->dataAkun))
                                                     @if($data_ket=$data->linkToOneKetTransaksi->dataAkun)

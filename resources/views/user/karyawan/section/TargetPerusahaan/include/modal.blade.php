@@ -1,6 +1,5 @@
 
-<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-
+<script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
 <!---modal ubah tjp --->
 <div class="modal fade" id="modal-ubah-tjp">
     <div class="modal-dialog modal-lg">
@@ -23,7 +22,7 @@
                 <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                 </div>
-                <input type="text" class="form-control pull-right"  name="thn_mulai_ubah" required>
+                <input type="text" class="form-control pull-right"  name="thn_mulai_ubah" id="datepicker" required>
                 </div>
                 <!-- /.input group -->
               <small style="color: red">* Tidak Boleh Kosong</small>
@@ -623,7 +622,18 @@
   CKEDITOR.replace( 'isi_sjp',{
           height: 200
     } );
-
+    $('#datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy',
+        viewMode: "years",
+        minViewMode: "years"
+    });
+    $('#datepicker2').datepicker({
+        autoclose: true,
+        format: 'yyyy',
+        viewMode: "years",
+        minViewMode: "years"
+    });
   };
 
 </script>

@@ -2,7 +2,7 @@
 
 @section('skin')
    <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
-   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+   <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 @stop
 

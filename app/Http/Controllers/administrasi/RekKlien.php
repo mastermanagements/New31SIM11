@@ -61,9 +61,9 @@ class RekKlien extends Controller
 
      if($model->save())
      {
-             return redirect('Klien')->with('message_success','Berhasil tambah rekening supplier');
+             return redirect('Klien')->with('message_success','Berhasil tambah rekening Klien')->with('tab4','tab4');
          }else{
-             return redirect('Klien')->with('message_error','Gagal tambah rekening supplier');
+             return redirect('Klien')->with('message_error','Gagal tambah rekening Klien')->with('tab4','tab4');
          }
    }
 
@@ -105,9 +105,9 @@ class RekKlien extends Controller
 
      if($model->save())
      {
-             return redirect('Klien')->with('message_success','Berhasil update rekening supplier');
+             return redirect('Klien')->with('message_success','Berhasil update rekening Klien')->with('tab4','tab4');
          }else{
-             return redirect('Klien')->with('message_error','Gagal update rekening supplier');
+             return redirect('Klien')->with('message_error','Gagal update rekening Klien')->with('tab4','tab4');
          }
    }
 
@@ -115,9 +115,9 @@ class RekKlien extends Controller
    {
        $model = rek_klien::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id); //bisa jg pake findorFail($id);
        if($model->delete()){
-           return redirect('Klien')->with('message_success','Berhasil menghapus data rekening supplier');
+           return redirect('Klien')->with('message_success','Berhasil menghapus data rekening Klien')->with('tab4','tab4');
        }else{
-           return redirect('Klien')->with('message_fail','Gagal, menghapus rekening supplier');
+           return redirect('Klien')->with('message_fail','Gagal, menghapus rekening Klien')->with('tab4','tab4');
        }
    }
 }

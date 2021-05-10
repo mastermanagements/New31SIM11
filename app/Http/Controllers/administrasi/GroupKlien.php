@@ -21,9 +21,9 @@ class GroupKlien extends Controller
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
 
         if($model->save()){
-            return redirect('Klien')->with('meessage_success', 'Group klien telah ditambahkan');
+            return redirect('Klien')->with('meessage_success', 'Group klien telah ditambahkan')->with('tab3','tab3');
         }else{
-            return redirect('Klien')->with('message_fail','Group gagal ditambahkan');
+            return redirect('Klien')->with('message_fail','Group gagal ditambahkan')->with('tab3','tab3');
         }
 
     }
@@ -39,9 +39,9 @@ class GroupKlien extends Controller
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
 
         if($model->save()){
-            return redirect('Klien')->with('meessage_success', 'Group klien telah diubah');
+            return redirect('Klien')->with('meessage_success', 'Group klien telah diubah')->with('tab3','tab3');
         }else{
-            return redirect('Klien')->with('message_fail','Group gagal diubah');
+            return redirect('Klien')->with('message_fail','Group gagal diubah')->with('tab3','tab3');
         }
     }
 
@@ -49,9 +49,9 @@ class GroupKlien extends Controller
     {
         $model = GK::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->save()){
-            return redirect('Klien')->with('meessage_success', 'Group klien telah dihapus');
+            return redirect('Klien')->with('meessage_success', 'Group klien telah dihapus')->with('tab3','tab3');
         }else{
-            return redirect('Klien')->with('message_fail','Group gagal dihapus');
+            return redirect('Klien')->with('message_fail','Group gagal dihapus')->with('tab3','tab3');
         }
     }
 }

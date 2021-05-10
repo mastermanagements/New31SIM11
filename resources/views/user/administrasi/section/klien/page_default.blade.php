@@ -11,7 +11,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Klien/Cusotmer
+            Klien/Customer
         </h1>
     </section>
 
@@ -29,15 +29,15 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Leads</a></li>
-                        <li><a href="#tab_2" data-toggle="tab">Customer</a></li>
-                        <li><a href="#tab_3" data-toggle="tab">Group Klien(Member)</a></li>
-                        <li><a href="#tab_4" data-toggle="tab">Rekening Klien</a></li>
+                        <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Leads </a></li>
+                        <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Customer</a></li>
+                        <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Group Klien(Member) </a></li>
+                        <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Rekening Klien</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
+                          <div class="tab-pane @if(Session::get('tab1') == 'tab1') active @else '' @endif" id="tab_1">
                             <p></p>
-                            <a href="{{ url('tambah-leads') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Leads </a>
+                            <a href="{{ url('tambah-leads') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
                             <p></p>
                             <table id="example3" class="table table-bordered table-striped">
                                 <thead>
@@ -90,7 +90,7 @@
 
                         </div>
                         <!-- /.tab-pane -->
-						            <div class="tab-pane" id="tab_2">
+						            <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
                           <table id="example1" class="table table-bordered table-striped">
                               <thead>
                               <tr>
@@ -160,7 +160,7 @@
                           </table>
                         </div>
                         <!-- /.tab-pane -->
-                        <div class="tab-pane" id="tab_3">
+                        <div class="tab-pane @if(Session::get('tab3') == 'tab3') active @else '' @endif" id="tab_3">
                             <div class="row">
                                 <div class="col-md-12">
                                     <form action="{{ url('group-klien') }}" method="post">
@@ -203,7 +203,7 @@
                             </div>
                         </div>
                         <!--./tab-3-->
-                        <div class="tab-pane" id="tab_4">
+                      <div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
 
                             <table id="example2" class="table table-bordered table-striped">
                                 <thead>
