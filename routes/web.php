@@ -888,7 +888,7 @@ Route::get('pengaturan-akun-penjualan/{id}/delete','produksi\AkunPenjualan@destr
 
 Route::resource('Jasa','produksi\Jasa');
 
-Route::resource('Proses-Bisnis','produksi\ProsesBisnis',['except'=>['index', 'show']]);
+Route::resource('proses-bisnis','produksi\ProsesBisnis',['except'=>['index', 'show']]);
 
 Route::resource('SK-Jasa','produksi\SKJasa',['except'=>['index', 'show']]);
 
@@ -2357,7 +2357,7 @@ Route::get('hapus-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo
 //Manufaktur
 Route::resource('manufaktur','manufaktur\Manufaktur');
 Route::resource('sop-produksi','manufaktur\SOPProduksi');
-Route::resource('proses-produksi','manufaktur\ProsesBisnis');
+Route::resource('proses-produksi','manufaktur\ProsesProduksi');
 
 
 Route::get('proses-produksi/{id_tambah_produksi}/begin-produksi','manufaktur\ProsesProduksi@begin_produksi');
@@ -2386,3 +2386,5 @@ Route::get('GlobalKabupaten/{id_provinsi}', 'globals\ProvinsiDanKabupaten@Respon
 Route::post('GlobalSubKategori', 'globals\KategoriJasa@getSubKategori');
 
 Route::post('GlobalSubSubKategori', 'globals\KategoriJasa@getSubSubKategori');
+
+Route::resource('Kasir','produksi\Kasir');

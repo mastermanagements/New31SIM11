@@ -253,7 +253,8 @@ class PesananPembelian extends Controller
     }
 
     public function tambah_Pesanan_pembelian(Request $req, $id)
-    { //dd($req->all());
+    {
+
         $this->validate($req, [
             'id_barang' => 'required',
             'id_po' => 'required',
@@ -275,15 +276,14 @@ class PesananPembelian extends Controller
 
         $model_po->id_po = $id;
         $model_po->id_barang = $req->id_barang;
-        $model_po->harga_beli = $req->harga_beli;
+        $model_po->harga_beli =rupiahController($req->harga_beli);
         $model_po->jumlah_beli = $req->jumlah_beli;
         $model_po->diskon_item = $req->diskon;
         $model_po->jumlah_harga = $jumlah_harga;
         $model_po->id_perusahaan = Session::get('id_perusahaan_karyawan');
         $model_po->id_karyawan = Session::get('id_karyawan');
-        $model_po->save();
 
-        if ($model_po) {
+        if ($model_po->save()) {
             if ($req->redirect == true) {
                 return redirect()->back()->with('message_success', 'anda telah menambahkan item baru');
             }
@@ -294,7 +294,6 @@ class PesananPembelian extends Controller
 
     public function ubah_Pesanan_pembelian(Request $req, $id)
     { //dd($req->all());
-
         $this->validate($req, [
           'id_barang' => 'required',
            'jumlah_beli' => 'required',
@@ -329,7 +328,8 @@ class PesananPembelian extends Controller
     }
 
     public function ubah_Pesanan_pembelian_po(Request $req, $id)
-    { //dd($req->all());
+    {
+
         $this->validate($req, [
             //'diskon_tambahan' => 'required',
             //'pajak' => 'required',
@@ -354,7 +354,7 @@ class PesananPembelian extends Controller
         $kurang_bayar = $total_po - $dp_po;
 
         //cek checkbox value on false
-        if ($req->jurnal_totomatis == 'on') {
+        if ($req->jurnal_otomatis == 'on') {
           // update po + insert jurnal umum
           $check_data_pembelian = JenisAkunPembelian::CheckAkunPembelian();
           #check akun pembelian kalau kosong == false
@@ -391,7 +391,17 @@ class PesananPembelian extends Controller
                       'id_pesanan'=> $model->id
                   ]);
                   JenisAkunPembelian::$new_request = $req;
-                  JenisAkunPembelian::get_akun_pembelian($jenis_akun_pembelian);
+                  $response =JenisAkunPembelian::get_akun_pembelian($jenis_akun_pembelian);
+                  if(!empty($response)){
+                      if($response['status']==false){
+                          dd($response);
+                          return redirect()->back()->with('message_fail','Akun Pesanan Belum dibuat');
+                      }else{
+                          return redirect()->back()->with('message_success','Data Pesanan telah disimpan');
+                      }
+                  }else{
+                      return redirect()->back()->with('message_success','Data Pembelian telah disimpan');
+                  }
               }
                   return redirect('Pembelian')->with('message_success', 'anda telah membuat nota pesanan pembelian')->with('tab2','tab2');
                 } else {
@@ -400,7 +410,6 @@ class PesananPembelian extends Controller
 
             //jika tanpa jurnal otomatis
           } else {
-
             $model = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
             //insert values to table
             $model->diskon_tambahan = $diskon_tambahan;
@@ -413,6 +422,7 @@ class PesananPembelian extends Controller
             $model->id_karyawan = Session::get('id_karyawan');
 
             if ($model->save()) {
+
                 return redirect('Pembelian')->with('message_success', 'berhasil memuat nota pesanan pembelian')->with('tab2','tab2');
             } else {
                 return redirect('Pembelian')->with('message_error', 'gagal,membuat nota pesanan pembelian')->with('tab2','tab2');

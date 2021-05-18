@@ -32,6 +32,7 @@ class ProsesProduksi extends Controller
 
     public function show($id_tambah_produksi)
     {
+//       dd(asd);
         $model_tambah_produksi = P_tambah_produksi::findOrFail($id_tambah_produksi);
         $array = [
             'tahap_produksi'=>$this->query_tahap_produksi($model_tambah_produksi->id_barang),

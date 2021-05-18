@@ -19,7 +19,13 @@
 
             <p></p>
             <div class="row">
+
                 <div class="col-md-12">
+                    @if(!empty(session('message_success')))
+                        <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+                    @elseif(!empty(session('message_fail')))
+                        <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+                    @endif
                     <div class="box box-warning">
                         <div class="box-header with-border">
                           <h6 class="box-title">Rincian Penjualan Faktur : <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">{{ $data->linkToKlien->nm_klien }},
@@ -110,7 +116,7 @@
                                                                     <td width="200">
                                                                         @method('put')
                                                                         {{ csrf_field() }}
-                                                                        <select class="form-control select2" style="width: 100%;" name="id_barang"  required>
+                                                                        <select class="form-control select2" style="width: 100%;"  onchange="get_harga(3,'{{$keys}}')" name="id_barang" id="id_barang{{$keys}}"  required>
                                                                             <option disabled>Pilih Barang</option>
                                                                             @if(!empty($barang))
                                                                                 @foreach($barang as $data_barang)
@@ -119,7 +125,7 @@
                                                                             @endif
                                                                         </select>
                                                                     </td>
-                                                                    <td width="150"><input type="text" name="hpp" class="form-control"  value="{{ rupiahView($data_detail->hpp) }}" readonly required></td>
+                                                                    <td width="150"><input type="text" name="hpp" class="form-control" id="show_harga{{$keys}}" value="{{ rupiahView($data_detail->hpp) }}" readonly required></td>
                                                                     <td width="70"><input type="text" name="jumlah_jual" class="form-control" value="{{ rupiahView($data_detail->jumlah_jual) }}" required></td>
                                                                     <td width="80"><input type="number" name="diskon" class="form-control" value="{{ $data_detail->diskon }}" required></td>
                                                                     @php($nilai_diskon = $data_detail->hpp * $data_detail->diskon/100*$data_detail->jumlah_jual)

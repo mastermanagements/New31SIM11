@@ -209,9 +209,26 @@ class JenisAkunPenjualan
     public static function get_akun_penjualan($array){
         foreach ($array as $data)
         {
-            self::set_data(array_keys($data)[0]);
+            if (self::cek_akun_penjualan(array_keys($data)[0]) == true){
+                self::set_data(array_keys($data)[0]);
+            }else{
+                return [
+                    'message'=>'Akun belum diisi',
+                    'status'=> false
+                ];
+            }
         }
     }
+
+    public static function cek_akun_penjualan($index_jenis_barang){
+        $model = AkunPenjualan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('jenis_jurnal',$index_jenis_barang)->first();
+        if(!empty($model)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     private static function group_array($array){
         $new_array = [];

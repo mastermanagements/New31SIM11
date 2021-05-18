@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('component/dist/js/demo.js') }}"></script>
 <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 
-
+@include('user.global.rupiah_input')
 <script>
     $(function () {
         $('.select2').select2()
@@ -109,11 +109,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                          'number_call_function':functionNumber
                      },
                      success: function (result) {
-                         console.log(segment);
-                         if(segment == undefined){
-                             $('#show_harga').val(result.harga);
+                         if(segment == undefined && result.harga!=0){
+                             var hpp = formatRupiah(result.harga.replace('.00',''));
+                             console.log(hpp);
+                             $('#show_harga').val(hpp);
                          }else{
-                             $('#show_harga'+segment).val(result.harga);
+                             var hpp = formatRupiah(result.harga.replace('.00',''));
+                             $('#show_harga'+segment).val(hpp);
                          }
                      }
                  });

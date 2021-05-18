@@ -55,7 +55,7 @@
                                                 </td>
                                                 <td>
                                                     <input type="hidden" class="form-control" name="id_po" value="{{ $data->id }}"  required>
-                                                    <input type="number" class="form-control" name="harga_beli" value="0" required>
+                                                    <input type="number" class="form-control" name="harga_beli" value="0" onkeyup="changer_format('harga_beli')" id="harga_beli" required>
                                                 </td>
 
                                                 <td>
@@ -91,7 +91,7 @@
                                                     <th>Sub Total PO</th>
                                                     <th>Aksi</th>
                                                 </tr>
-                                                @foreach($data->linkToDetailPO as $data_pesanan)
+                                                @foreach($data->linkToDetailPO as $keys=> $data_pesanan)
 
                                                     <form action="{{ url('ubah-barang-pembelian/'.$data_pesanan->id) }}" method="post">
                                                         <tr>
@@ -106,7 +106,7 @@
                                                             @endif
                                                             </td>
                                                             <td width="140">
-                                                                <input type="text" class="form-control" name="harga_beli" value="{{ rupiahView($data_pesanan->harga_beli) }}"  required>
+                                                                <input type="text" class="form-control" name="harga_beli" value="{{ rupiahView($data_pesanan->harga_beli) }}"  onkeyup="changer_format('harga_beli{{$keys}}')" id="harga_beli{{$keys}}" required>
                                                             </td>
                                                             <td width="80">
                                                                 @php($total_qty += $data_pesanan->jumlah_beli)

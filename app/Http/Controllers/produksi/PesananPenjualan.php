@@ -98,7 +98,6 @@ class PesananPenjualan extends Controller
     }
 
     public function updateSO_BaseOnDetailSO(Request $req, $id_so){
-
         $this->validate($req,[
           // 'diskon_tambahan'=> 'required',
           // 'pajak'=> 'required',
@@ -124,7 +123,7 @@ class PesananPenjualan extends Controller
         $kurang_bayar = $total_so - $dp_so;
 
         //cek checkbox value on false
-        if ($req->jurnal_totomatis == 'on') {
+        if ($req->jurnal_otomatis == 'on') {
 
         #Check Akun Penjualan
         $check_akun_penjualan = JenisAkunPenjualan::CheckAkunPenjualan();
@@ -165,7 +164,16 @@ class PesananPenjualan extends Controller
                     'id_pesanan'=> $model->id
                 ]);
                 JenisAkunPenjualan::$new_request = $req;
-                JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
+                $response=JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
+                if(!empty($response)){
+                    if($response['status']==false){
+                        return redirect()->back()->with('message_fail','Akun Pesanan Penjualan Belum dibuat');
+                    }else{
+                        return redirect()->back()->with('message_success','Data Pesanan Penjualan telah disimpan');
+                    }
+                }else{
+                    return redirect()->back()->with('message_success','Data Pesanan penjualan telah disimpan');
+                }
             }
             return redirect('detail-pSo/'. $model->id)->with('message_success', 'Berhasil menyimpan data');
         }else{

@@ -65,11 +65,11 @@
                                 <input type="text" name="kd_barang" class="form-control" placeholder="Kode Barang"/>
                                   <small style="color: orange">* Isi Jika Perlu</small>
                             </div>
-                            <!--<div class="form-group">
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Barcode</label>
                                 <input type="text" name="barcode" class="form-control" placeholder="Barcode"/>
                                   <small style="color: orange">* Isi Jika Perlu</small>
-                            </div>-->
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nama Barang</label>
                                 <input type="text" name="nm_barang" class="form-control" placeholder="nama barang" required/>

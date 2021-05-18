@@ -32,6 +32,12 @@
                         <!-- form start -->
                         <div class="box-body">
                             <div class="col-md-12">
+                                @if(!empty(session('message_success')))
+                                    <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+                                @elseif(!empty(session('message_fail')))
+                                    <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+                                @endif
+
                                 <form role="form" action="{{ url('Order/'.$data_order->id.'/simpan') }}" method="post">
                                 <div class="col-md-12 row" style="margin-top:10px">
 
@@ -57,7 +63,7 @@
                                                 </td>
                                                 <td>
                                                     <input type="hidden" class="form-control" name="id_order" value="{{ $data_order->id }}"  required>
-                                                    <input type="number" class="form-control" name="harga_beli" value="0" required>
+                                                    <input type="number" class="form-control" name="harga_beli" value="0" onkeyup="changer_format('harga_beli')" id="harga_beli" required>
                                                 </td>
 
                                                 <td>
@@ -78,6 +84,7 @@
                                         <div class="form-group">
                                             <button class="btn btn-primary">Tambah barang</button>
                                         </div>
+
                                 </form>
                                 @if(!empty($data_order->linkToDetailOrder))
                                     @php($total_qty=0)
@@ -96,7 +103,7 @@
                                                     <th>Sub Total PO</th>
                                                     <th>Aksi</th>
                                                 </tr>
-                                                @foreach($data_order->linkToDetailOrder as $detail_order)
+                                                @foreach($data_order->linkToDetailOrder as $keys=> $detail_order)
 
                                                     <form action="{{ url('Order/ubah-rincian-pembelian/'.$detail_order->id) }}" id="form-detail" method="post">
                                                         <tr>
@@ -111,7 +118,7 @@
                                                             @endif
                                                             </td>
                                                             <td width="130">
-                                                                <input type="text" class="form-control" name="harga_beli" value="{{ rupiahView($detail_order->harga_beli) }}"  required>
+                                                                <input type="text" class="form-control" name="harga_beli" value="{{ rupiahView($detail_order->harga_beli) }}" onkeyup="changer_format('harga_beli{{$keys}}')" id="harga_beli{{$keys}}" required>
                                                             </td>
                                                             <td width="100">
                                                                 @php($total_qty += $detail_order->jumlah_beli)
@@ -231,10 +238,8 @@
                                                 </div>
                                                 <div class="col-md-6" id="jatuh_tempo" style="display: @if($data_order->metode_bayar=="0") none @else show @endif;">
                                                     <div class="form-group">
-
                                                         <label>Jatuh Tempo</label>
-
-                                                        <input type="text" class="form-control" name="tgl_jatuh_tempo"  @if(!empty($data->tgl_jatuh_tempo)) value="{{ tanggalView($data->tgl_jatuh_tempo) }}" @endif required>
+                                                        <input type="date" class="form-control" name="tgl_jatuh_tempo"  @if(!empty($data->tgl_jatuh_tempo)) value="{{ tanggalView($data->tgl_jatuh_tempo) }}" @endif>
                                                     </div>
                                                 </div>
                                             </div>
@@ -252,6 +257,7 @@
                                        </div>
                                 </form>
                           </div>
+                </div>
                         <!-- /.box-body -->
                     </div>
                   <!-- /.box-primary-->

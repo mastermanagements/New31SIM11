@@ -28,6 +28,11 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <div class="box-body">
+                        @if(!empty(session('message_success')))
+                            <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+                        @elseif(!empty(session('message_fail')))
+                            <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+                        @endif
                         <div class="col-md-12">
                             <form role="form" action="{{ url('detail-pSo') }}" method="post">
                             <div class="col-md-12 row" style="margin-top:10px">
@@ -54,7 +59,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <input type="number" name="hpp" class="form-control" value="0" id="show_harga">
+                                                <input type="text" name="hpp" class="form-control" value="0" id="show_harga" readonly>
                                             </td>
                                             <td>
                                                 <input type="number" name="jumlah_jual" class="form-control" value="0">

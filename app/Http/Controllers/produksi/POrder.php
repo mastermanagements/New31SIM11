@@ -196,16 +196,14 @@ class POrder extends Controller
 
       $model_o->id_order = $id;
       $model_o->id_barang = $req->id_barang;
-      $model_o->harga_beli = $req->harga_beli;
-      $model_o->jumlah_beli = $req->jumlah_beli;
-      $model_o->diskon_item = $req->diskon;
-      $model_o->jumlah_harga = $jumlah_harga;
+      $model_o->harga_beli = rupiahController($req->harga_beli);
+      $model_o->jumlah_beli = rupiahController($req->jumlah_beli);
+      $model_o->diskon_item = rupiahController($req->diskon);
+      $model_o->jumlah_harga = rupiahController($jumlah_harga);
       $model_o->expire_date = tanggalController($req->expire_date);
       $model_o->id_perusahaan = Session::get('id_perusahaan_karyawan');
       $model_o->id_karyawan = Session::get('id_karyawan');
-      $model_o->save();
-
-      if ($model_o) {
+      if ($model_o->save()) {
           if ($req->redirect == true) {
               return redirect()->back()->with('message_success', 'anda telah menambahkan item baru');
           }
@@ -246,7 +244,7 @@ class POrder extends Controller
             $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
             $model->id_karyawan = Session::get('id_karyawan');
 
-            if($model->save()){
+        if($model->save()){
                 Stok::updateStokAkhirPorder($model);
             }
 
@@ -255,14 +253,15 @@ class POrder extends Controller
     }
 
     public function simpan_rincian_pembelian(Request $req, $id)
-    { //dd($req->all());
+    {
+
+         //=============================================================================
         $this->validate($req,[
             'bayar'=> 'required',
             'sub_total'=>'required'
         ]);
-
         //request assignment
-        $diskon_tambahan = rupiahController($req->diskon_tambahan);
+        $diskon_tambahan = $req->diskon_tambahan;
         $pajak = $req->pajak;
         $ongkir = rupiahController($req->onkir);
         $bayar = rupiahController($req->bayar);
@@ -273,20 +272,19 @@ class POrder extends Controller
 
         //$sub_total = total_belanja
         $sub_total = $req->sub_total;
-
-        $total_pajak = $sub_total *($pajak / 100);
-
+        if(!empty($pajak)){
+            $total_pajak = $sub_total *($pajak / 100);
+        }
         //ketentuan mencari total_order (total_order) = sub_total + pajak + ongkir - diskon_tambahan
         $total_order = ($sub_total + $total_pajak + $ongkir) - $diskon_tambahan;
 
         //hutang/krg_bayar = sub_total - (bayar + uang_muka)
         $kurang_bayar = $total_order - ($bayar + $dp_po );
-
         //cek checkbox value on false
-        if ($req->jurnal_totomatis == 'on') {
+        if ($req->jurnal_otomatis == 'on') {
         // update p_order + insert jurnal umum
-        $check_data_pembelian = JenisAkunPembelian::CheckAkunPembelian();
-        #check akun pembelian kalau kosong == false
+            $check_data_pembelian = JenisAkunPembelian::CheckAkunPembelian();
+            #check akun pembelian kalau kosong == false
           if($check_data_pembelian==false){
               return redirect()->back()->with('message_fail','Isilah terlebih dahulu akun pembelian');
           }
@@ -297,14 +295,10 @@ class POrder extends Controller
 
           $model = p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
 
-          if($req->pajak !=0){
-              $pajak = $total*($req->pajak/100);
-              JenisAkunPembelian::$status_pajak = true;
-          }
-
           if($req->onkir !=0){
              JenisAkunPembelian::$status_ongkir =true;
           }
+
 
           $model->diskon_tambahan = $diskon_tambahan;
           $model->pajak = $pajak;
@@ -331,10 +325,17 @@ class POrder extends Controller
                       'id_pembelian'=> $model->id
                   ]);
                   JenisAkunPembelian::$new_request = $req;
-                  JenisAkunPembelian::get_akun_pembelian($jenis_akun_pembelian);
+                  $response =JenisAkunPembelian::get_akun_pembelian($jenis_akun_pembelian);
+                  if(!empty($response)){
+                      if($response['status']==false){
+                        return redirect()->back()->with('message_fail',$response['message']);
+                      }else{
+                          return redirect()->back()->with('message_success','Data Pembelian telah disimpan');
+                      }
+                  }else{
+                      return redirect()->back()->with('message_success','Data Pembelian telah disimpan');
+                  }
               }
-
-              return redirect()->back()->with('message_success','data pembelian telah disimpan');
               }else{
                   return redirect()->back()->with('message_error','data pembelian gagal disimpan');
               }

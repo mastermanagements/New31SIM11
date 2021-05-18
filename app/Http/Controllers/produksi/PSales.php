@@ -165,7 +165,7 @@ class PSales extends Controller
         $kurang_bayar = $total_sales - ($bayar + $dp_so );
 
         //cek checkbox value on false
-        if ($req->jurnal_totomatis == 'on') {
+        if ($req->jurnal_otomatis == 'on') {
           $check_data_penjualan = JenisAkunPenjualan::CheckAkunPenjualan();
           #check akun penjualan kalau kosong == false
           if($check_data_penjualan==false){
@@ -210,7 +210,16 @@ class PSales extends Controller
                       'id_penjualan'=> $model->id
                   ]);
                   JenisAkunPenjualan::$new_request = $req;
-                  JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
+                  $response=JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
+                  if(!empty($response)){
+                      if($response['status']==false){
+                          return redirect()->back()->with('message_fail','Akun Penjualan Belum dibuat');
+                      }else{
+                          return redirect()->back()->with('message_success','Data Penjualan telah disimpan');
+                      }
+                  }else{
+                      return redirect()->back()->with('message_success','Data Penjualan telah disimpan');
+                  }
               }
 
               return redirect('Penjualan')->with('message_success','Data penjualan telah diubah');

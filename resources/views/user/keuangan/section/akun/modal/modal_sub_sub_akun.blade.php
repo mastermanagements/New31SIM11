@@ -19,6 +19,16 @@
                         <input type="text" class="form-control" name="nm_sub" required>
                         <small style="color: red">* Tidak Boleh Kosong</small>
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Posisi Saldo</label>
+                        <select class="form-control" name="posisi_saldo" required>
+                            <option about="">Pilih Posisi saldo</option>
+                            @foreach($posisi as $key=> $item)
+                                <option value="{{ $key }}">{{ $item }}</option>
+                            @endforeach
+                        </select>
+                        <small style="color: red">* Tidak Boleh Kosong</small>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
@@ -57,6 +67,16 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nama Akun</label>
                             <input type="text" class="form-control" name="nm_sub_sub" required>
+                            <small style="color: red">* Tidak Boleh Kosong</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Posisi Saldo</label>
+                            <select class="form-control" name="posisi_saldo" required>
+                                <option about="">Pilih Posisi saldo</option>
+                                @foreach($posisi as $key=> $item)
+                                    <option value="{{ $key }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
                             <small style="color: red">* Tidak Boleh Kosong</small>
                         </div>
 

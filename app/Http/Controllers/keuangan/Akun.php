@@ -18,6 +18,12 @@ class Akun extends Controller
     private $id_karyawan;
     private $id_perusahaan;
 
+    public $posisi = array(
+        'D'=> 'Debit',
+        'K'=> 'Kredit'
+    );
+
+
     public function __construct()
     {
         $this->middleware(function($req, $next){
@@ -37,6 +43,7 @@ class Akun extends Controller
         $data = [
           'master_akun'=>kmA::all(),
           'title'=> 'Menu pengaturan Akun',
+          'posisi'=>$this->posisi,
           'menu'=>'peng_akun'
         ];
         return view('user.keuangan.section.akun.page_default', $data);
@@ -80,7 +87,8 @@ class Akun extends Controller
         $data = [
             'akun_ukm'=>akun_master::all()->where('id_perusahaan', $this->id_perusahaan),
             'title'=> 'Daftar Akun UKM',
-            'menu'=>'Daf_akun'
+            'menu'=>'Daf_akun',
+            'posisi'=>$this->posisi
         ];
         return view('user.keuangan.section.akun.page_default', $data);
     }

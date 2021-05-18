@@ -1,11 +1,9 @@
 <script>
-    var rupiah = document.getElementById("rupiah");
-
-    rupiah.addEventListener("keyup", function(e) {
-      // tambahkan 'Rp.' pada saat form di ketik
-      // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-      rupiah.value = formatRupiah(this.value);
-    });
+    changer_format = function(id){
+        var change=$('#'+id).val();
+        var number = formatRupiah(change);
+        $('#'+id).val(number);
+    }
 
     /* Fungsi formatRupiah */
     function formatRupiah(angka, prefix) {
