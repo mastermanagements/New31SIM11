@@ -17,7 +17,7 @@ class BiayaOverhead extends Controller
         $array = [
             'data_tambah_produksi'=> $model,
             'item_over_head'=>P_item_overhead::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
-            'data_biaya_overhead'=> P_biaya_overhead::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'data_biaya_overhead'=> P_biaya_overhead::all()->where('id_tambah_produksi', $model->id)->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         return view('user.manufaktur.pages.barang_produksi.biaya_overhead.page_show', $array);
     }

@@ -48,8 +48,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Barang Dalam Proses</label>
-                                            <select class="form-control select2" name="brg_dlm_proses" style="width: 100%">
-                                                <option disabled>Pilih Barang</option>
+                                            <select class="form-control select2" name="brg_dalam_proses" style="width: 100%">
+                                                <option value="">Pilih Barang</option>
                                                 @if(!empty($barang_dalam_proses))
                                                     @foreach($barang_dalam_proses as $barang_dalam_proses_item)
                                                         <option value="{{ $barang_dalam_proses_item->id }}"> {{ $barang_dalam_proses_item->nm_barang }}</option>

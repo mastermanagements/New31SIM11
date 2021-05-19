@@ -23,8 +23,8 @@ class BarangProduksi extends Controller
 
     public function create(){
         $data = [
-            'barang_jadi'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('jenis_barang','2'),
-            'barang_dalam_proses'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('jenis_barang','1'),
+            'barang_jadi'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('jenis_barang','0'),
+            'barang_dalam_proses'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('jenis_barang','2'),
             'supervisor'=> H_Karyawan::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'current_date'=> date('Y-m-d'),
             'current_time'=> date('H:i:s'),
@@ -34,10 +34,9 @@ class BarangProduksi extends Controller
     }
 
     public function store(Request $req){
-    //  dd($req->all());
          $this->validate($req,[
             'id_barang'=> 'required',
-            'brg_dlm_proses' =>'required',
+//            'brg_dalam_proses' =>'required',
             'id_supervisor_produksi' => 'required'
         ]);
 
@@ -68,7 +67,7 @@ class BarangProduksi extends Controller
     public function update(Request $req, $id){
         $this->validate($req,[
             'id_barang'=> 'required',
-            'brg_dlm_proses' =>'required',
+//            'brg_dlm_proses' =>'required',
             'id_supervisor_produksi' => 'required'
         ]);
 
@@ -110,7 +109,6 @@ class BarangProduksi extends Controller
 
     public function UpdateQualityControll(Request $req, $id)
     {
-
         $data = $req->except(['_token']);
         $data['tgl_mulai_qc'] = date('Y-m-d');
         $data['jumlah_bdp_bagus'] = $req->jumlah_bdp_bagus;
@@ -122,7 +120,8 @@ class BarangProduksi extends Controller
         $data['id_karyawan'] = Session::get('id_karyawan');
         $model = P_tambah_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->update($data)){
-            $this->setStok($model);
+            $this->setBarangDalamProses($model);
+            $this->setBarangJadi($model);
             return redirect('manufaktur')->with('message_success','Quality control telah disimpan');
         }else{
             return redirect('manufaktur')->with('message_fail','Quality control gagal disimpan');
@@ -139,6 +138,7 @@ class BarangProduksi extends Controller
         $data['id_karyawan'] = Session::get('id_karyawan');
         $model = P_tambah_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($req->id_quality_control);
         if($model->update($data)){
+
             return redirect('manufaktur')->with('message_success','Quality control telah disimpan');
         }else{
             return redirect('manufaktur')->with('message_fail','Quality control gagal disimpan');
@@ -150,21 +150,155 @@ class BarangProduksi extends Controller
         $array = [
             'data'=> $model
         ];
-
         return response()->json($array);
     }
 
-    private function setStok($model){
-
-        $model_barang = Barang::findOrFail($model->id);
-        if($model->status_bdp=='0'){
-            $model_barang->stok_akhir = $model->jumlah_bdp_bagus;
-            $model_barang->stok_akhir = $model->jumlah_brg_jadi_bagus;
-            $model_barang->save();
-        }else{
-            $model_barang->stok_akhir = $model->jumlah_brg_jadi_bagus;
-            $model_barang->save();
+    private function setBarangDalamProses($model){
+        if(!empty($model->brg_dalam_proses)){
+            $model_barang = Barang::findOrFail($model->brg_dalam_proses);
+            $tambah_brang = $model_barang->stok_akhir + $model->jumlah_bdp_bagus;
+            if($model->status_bdp=='1'){
+                $model_barang->stok_akhir =$tambah_brang;
+                $model_barang->save();
+            }
         }
+    }
+
+    private function setBarangJadi($model){
+        $model_barang = Barang::findOrFail($model->id_barang);
+        $tambah_brang = $model_barang->stok_akhir + $model->jumlah_brg_jadi_bagus;
+        $model_barang->stok_akhir = $tambah_brang;
+        $model_barang->save();
+    }
+
+    public function detail($id)
+    {
+        $model = P_tambah_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+        $array = [
+            'data'=> $model,
+            'hpp'=>$this->set_hpp($model),
+            'id'=> $id
+        ];
+//        dd($this->set_hpp($model));
+        return view('user.manufaktur.pages.detail.page_show', $array);
+    }
+
+    public function cetak($id)
+    {
+        $model = P_tambah_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+        $array = [
+            'data'=> $model,
+            'hpp'=>$this->set_hpp($model)
+        ];
+//        dd($this->set_hpp($model));
+        return view('user.manufaktur.pages.detail.cetak', $array);
+    }
+
+    private function set_hpp($model_p_tambah_barang)
+    {
+        $container=[];
+        //1. total biaya mentah
+        $a = $model_p_tambah_barang->linkToBahanProduksi->sum('jumlah_bahan');
+        //push total biaya bahan mentah ke container
+        $container[]= [
+            [
+                'judul'=> 'Total Biaya Bahan Mentah',
+                'total'=> $a,
+                'data'=>null
+            ]
+        ];
+
+        //2. Total biaya produksi
+        $t = $model_p_tambah_barang->linkToMannyTenagaProduksi->sum('jumlah_upah');
+        $o = $model_p_tambah_barang->linkToBiayaOverHead->sum('jumlah_biaya');
+        $tb = $a+$t+$o;
+        //push total produksi ke kontainer
+        $container[] = [
+            [
+                'judul'=>'Total Biaya Produksi',
+                'total'=> $tb,
+                'data'=>
+                    [
+                        [
+                            'judul'=>'Total Biaya Tenaga Kerja',
+                            'total'=> $t,
+                            'data'=>null
+                        ],
+                        [
+                            'judul'=>'Total Biaya Overhead',
+                            'total'=> $o,
+                            'data'=>null
+                        ],
+                    ]
+            ],
+        ];
+
+        //3. Harga Pokok Biaya Produksi (HPPProd)
+        $SABSJ = !empty($barang=$model_p_tambah_barang->linkToBarang->where('jenis_barang','1')->first()) ? $barang->stok_akhir : 0;
+        $SAKBSJ =$SABSJ+($model_p_tambah_barang->jumlah_brg_jadi_bagus -$model_p_tambah_barang->jumlah_brg_jadi_rusan);
+        $HPProd = $tb+$SABSJ-$SAKBSJ;
+        //push HPP ke kontainer
+        $container[] = [
+            [
+                'judul'=>'Harga Pokok Produksi',
+                'total'=>0,
+                'data'=>[
+                    [
+                        'judul'=>'Saldo Awal Produksi',
+                        'total'=> $SABSJ,
+                        'data'=>null
+                    ],
+                    [
+                        'judul'=>'Saldo Akhir Barang Dalam Proses',
+                        'total'=> $SAKBSJ,
+                        'data'=>null
+                    ],
+                    [
+                        'judul'=>'Harga Pokok Penjualan (HPP)',
+                        'total'=> $HPProd,
+                        'data'=>null
+                    ],
+                ]
+            ],
+
+        ];
+
+        //4. Hpp (Harga pokok Penjualan)
+        $saj = !empty($barang=$model_p_tambah_barang->linkToBarang->where('jenis_barang','2')->first()) ? $barang->stok_akhir : 0;
+        $sak = $saj + ($model_p_tambah_barang->jumlah_brg_jadi_bagus-$model_p_tambah_barang->jumlah_brg_jadi_rusan);
+        $hpp = $HPProd+($saj-$sak);
+//        $hpp_per_barang = $hpp/$model_p_tambah_barang->jumlah_brg_jadi_bagus;
+        $hpp_per_barang = $hpp / ($model_p_tambah_barang->jumlah_brg_jadi_bagus);
+        //push Hpp ke kontainer
+        $container[] = [
+            [
+                'judul'=>'Saldo awal barang Jadi',
+                'total'=> $saj,
+                'data'=>[
+                    [
+                        'judul'=>'Saldo awal barang Jadi',
+                        'total'=> $saj,
+                        'data'=>null
+                    ],
+                    [
+                        'judul'=>'Saldo awal barang Jadi',
+                        'total'=> $sak,
+                        'data'=>null
+                    ],
+                ],
+            ],
+            [
+                'judul'=>'Harga Pokok Penjualan (HPP)',
+                'total'=> $hpp,
+                'data'=>null
+            ],
+            [
+                'judul'=>'Harga Pokok Penjualan (HPP) Per barang',
+                'total'=> $hpp_per_barang,
+                'data'=>null
+            ],
+        ];
+        return $container;
     }
 
 }

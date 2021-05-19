@@ -22,17 +22,16 @@ class ProsesProduksi extends Controller
     }
 
     private function query_tahap_produksi($id_barang){
-        $query_tahap_produksi = DB::select('select p_proses_bisnis.* from p_proses_bisnis,p_tambah_produksi,
-              p_barang_sop where p_proses_bisnis.id_sop_pro=p_barang_sop.id_sop_pro 
-              and p_tambah_produksi.id_barang in (select id_barang from p_barang_sop) 
-              and p_tambah_produksi.id_barang = '.$id_barang.' and p_proses_bisnis.id_perusahaan='.Session::get('id_perusahaan_karyawan'));
+        $query_tahap_produksi = DB::select('select p_proses_bisnis_manuf.* from p_proses_bisnis_manuf,p_tambah_produksi,
+              p_barang_sop where p_proses_bisnis_manuf.id_sop_pro=p_barang_sop.id_sop_pro 
+              and p_tambah_produksi.id_barang = p_barang_sop.id_barang
+              and p_tambah_produksi.id_barang = '.$id_barang.' and p_proses_bisnis_manuf.id_perusahaan='.Session::get('id_perusahaan_karyawan'));
 
         return $query_tahap_produksi;
     }
 
     public function show($id_tambah_produksi)
     {
-//       dd(asd);
         $model_tambah_produksi = P_tambah_produksi::findOrFail($id_tambah_produksi);
         $array = [
             'tahap_produksi'=>$this->query_tahap_produksi($model_tambah_produksi->id_barang),
@@ -90,6 +89,22 @@ class ProsesProduksi extends Controller
             return redirect('manufaktur')->with('message_success','Proses produksi telah diubah');
         }else{
             return redirect('manufaktur')->with('message_fial','Proses produksi gagal diubah');
+        }
+    }
+
+    public function begin_produksi($id){
+        $model = P_tambah_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+        if($model->status_produksi==0){
+            $message ='Proses Produksi telah dimulai';
+            $model->status_produksi = '1';
+        }else{
+            $message ='Proses Produksi telah diberhentikan';
+            $model->status_produksi = '0';
+        }
+        if($model->save()){
+            return redirect('manufaktur')->with('message_success',$message);
+        }else{
+            return redirect('manufaktur')->with('message_fail','Proses produksi di berhentikan');
         }
     }
 }

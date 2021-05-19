@@ -32,6 +32,8 @@
                            @include('user.manufaktur.tab.SOP_produksi')
                            @include('user.manufaktur.tab.produksi_baru')
                            @include('user.manufaktur.tab.monitoring')
+                            @include('user.manufaktur.tab.selesai_produksi')
+                           @include('user.manufaktur.tab.setting_akun')
                         </div>
                         <!-- /.tab-content -->
                     </div>
