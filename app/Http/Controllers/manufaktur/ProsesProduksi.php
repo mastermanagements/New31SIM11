@@ -22,23 +22,25 @@ class ProsesProduksi extends Controller
     }
 
     private function query_tahap_produksi($id_barang){
-        $query_tahap_produksi = DB::select('select p_proses_bisnis.* from p_proses_bisnis,p_tambah_produksi,
-              p_barang_sop where p_proses_bisnis.id_sop_pro=p_barang_sop.id_sop_pro 
-              and p_tambah_produksi.id_barang in (select id_barang from p_barang_sop) 
-              and p_tambah_produksi.id_barang = '.$id_barang.' and p_proses_bisnis.id_perusahaan='.Session::get('id_perusahaan_karyawan'));
+        $query_tahap_produksi = DB::select('select p_proses_bisnis_manuf.* from p_proses_bisnis_manuf,p_tambah_produksi,
+              p_barang_sop where p_proses_bisnis_manuf.id_sop_pro=p_barang_sop.id_sop_pro
+              and p_tambah_produksi.id_barang in (select id_barang from p_barang_sop)
+              and p_tambah_produksi.id_barang = '.$id_barang.' and p_proses_bisnis_manuf.id_perusahaan='.Session::get('id_perusahaan_karyawan'));
 
         return $query_tahap_produksi;
     }
 
     public function show($id_tambah_produksi)
     {
-//       dd(asd);
+    //  dd(asd);
         $model_tambah_produksi = P_tambah_produksi::findOrFail($id_tambah_produksi);
+        dd($model_tambah_produksi);
         $array = [
             'tahap_produksi'=>$this->query_tahap_produksi($model_tambah_produksi->id_barang),
             'id_tambah_produksi'=> $id_tambah_produksi,
             'model_tambah_produksi'=> $model_tambah_produksi
         ];
+
         return view('user.manufaktur.pages.monitoring.proses_pengerjaan.page_create', $array);
     }
 
