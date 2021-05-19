@@ -6,14 +6,14 @@
                 <div class="box box-primary collapsed-box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Tgl Mulai: {{ $data_monitoring->tgl_mulai }}, Supervisor: {{ $data_monitoring->linkToSupervisor->nama_ky }}
-                            , Barang s: {{ $data_monitoring->linkToBarang->nm_barang }}
+                            , Barang : {{ $data_monitoring->linkToBarang->nm_barang }}
                         </h3>
                         <div class="box-tools pull-right">
                             <form action="{{ url('quality-control/'.$data_monitoring->id) }}" method="post">
                                 {{ csrf_field() }} @method('put')
-                                <a href="{{ url('proses-pengerjaan/'. $data_monitoring->id) }}" class="btn btn-box-tool"><i class="fa fa-plus-square"></i></a>
-                                <button type="submit" class="btn btn-box-tool"><i class="fa fa-signal"></i></button>
-                                <button type="button" class="btn btn-box-tool" onclick="callModal({{ $data_monitoring->id }})"><i class="fa fa-hourglass-end"></i></button>
+                                <a href="{{ url('proses-pengerjaan/'. $data_monitoring->id) }}" class="btn btn-box-tool" title="Laksanakan Proses Produksi"><i class="fa fa-plus-square"></i></a>
+                                <button type="submit" class="btn btn-box-tool" title="Quality control dan hasil"><i class="fa fa-signal"></i></button>
+                                <button type="button" class="btn btn-box-tool" title="Selesai Produksi" onclick="callModal({{ $data_monitoring->id }})"><i class="fa fa-hourglass-end"></i></button>
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
                             </form>
 
@@ -95,13 +95,13 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-3">
                                                                                     <div class="form-group">
-                                                                                        <input type="radio" @if(!empty($data_monitoring->status_bdp=='0')) checked @endif name="status_bdp" value="0" required>
+                                                                                        <input type="radio" @if(!empty($data_monitoring->status_bdp=='1')) checked @endif name="status_bdp" value="1" required>
                                                                                         <label>Ya</label>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-3">
                                                                                     <div class="form-group">
-                                                                                        <input type="radio" @if(!empty($data_monitoring->status_bdp=='1')) checked @endif  value="1" name="status_bdp">
+                                                                                        <input type="radio" @if(!empty($data_monitoring->status_bdp=='0')) checked @endif  value="0" name="status_bdp">
                                                                                         <label>Tidak</label>
                                                                                     </div>
                                                                                 </div>

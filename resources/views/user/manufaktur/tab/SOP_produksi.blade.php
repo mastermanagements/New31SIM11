@@ -12,8 +12,9 @@
                             <form action="{{ url('sop-produksi/'.$p_proses_produksi->id) }}" method="post">
                                 {{ csrf_field() }}
                                 @method('delete')
-                                 <a href="{{ url('proses-produksi/'.$p_proses_produksi->id) }}" class="btn btn-box-tool" title="Tambah Proses Produksi"><i class="fa fa-plus-circle"></i></a>
-                                 <a href="{{ url('barang-sop/'.$p_proses_produksi->id) }}" class="btn btn-box-tool" title="Tambah barang produksi"><i class="fa fa-plus-square"></i></a>
+                                 <a href="{{ url('proses-bisnis/'.$p_proses_produksi->id) }}" class="btn btn-box-tool" title="Tambah Proses Bisnis"><i class="fa fa-plus-circle"></i></a>
+{{--                                 <a href="{{ url('proses-bisnis/'.$p_proses_produksi->id) }}" class="btn btn-box-tool" title="Tambah Proses Produksi"><i class="fa fa-plus-circle"></i></a>--}}
+                                 <a href="{{ url('barang-sop/'.$p_proses_produksi->id) }}" class="btn btn-box-tool" title="Tambah barang SOP"><i class="fa fa-plus-square"></i></a>
                                  <a href="{{ url('sop-produksi/'.$p_proses_produksi->id.'/edit') }}" class="btn btn-box-tool"><i class="fa fa-pencil"></i></a>
                                  <button type="submit" class="btn btn-box-tool" onclick="return confirm('Apakah anda akan menghapus SOP Produksi ini ...?')"><i class="fa fa-eraser"></i></button>
                                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>

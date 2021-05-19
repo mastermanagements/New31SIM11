@@ -25,4 +25,16 @@ class P_tambah_produksi extends Model
     public function linkToMannyProsesPengerjaan(){
         return $this->hasMany('App\Model\Manufaktur\P_proses_produksi','id_tambah_produksi','id');
     }
+
+    public function linkToMannyTenagaProduksi(){
+        return $this->hasMany('App\Model\Manufaktur\P_tenaga_produksi','id_tambah_produksi','id');
+    }
+
+    public function linkToBahanProduksi(){
+        return $this->hasMany('App\Model\Manufaktur\P_Bahan_produksi','id_tambah_produksi','id');
+    }
+
+    public function linkToBiayaOverHead(){
+        return $this->hasMany('App\Model\Manufaktur\P_biaya_overhead','id_tambah_produksi','id');
+    }
 }

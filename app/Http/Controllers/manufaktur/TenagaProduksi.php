@@ -13,10 +13,11 @@ class TenagaProduksi extends Controller
 {
     //
     public function show($id_tambah_produksi){
+        $model = P_tambah_produksi::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->findOrFail($id_tambah_produksi);
         $array = [
-            'data_tambah_produksi' =>P_tambah_produksi::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->findOrFail($id_tambah_produksi),
+            'data_tambah_produksi' =>$model,
             'karyawan'=> H_Karyawan::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan')),
-            'tenaga_prod'=> P_tenaga_produksi::all()
+            'tenaga_prod'=> P_tenaga_produksi::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->where('id_tambah_produksi', $model->id)
         ];
        return view('user.manufaktur.pages.barang_produksi.pekerja.page_show', $array);
     }
