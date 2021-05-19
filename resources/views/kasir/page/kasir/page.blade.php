@@ -36,6 +36,14 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="col-sm-12">
+                                        <div class="input-group input-group-sm">
+                                            <input type="number" id="bayar" class="form-control">
+                                            <span class="input-group-btn">
+                                              <button type="button" class="btn btn-info btn-flat">Bayar</button>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -49,7 +57,17 @@
                     <div class="col-sm-12">
                         <div class="box">
                             <div class="box-body">
-                                <h1>RP. 50.000.000</h1>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <h1 id="total_akhir">Total Rp: 0</h1>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <h1 id="total_bayar">Bayar Rp: 0</h1>
+                                  </div>
+                                  <div class="col-md-12">
+                                      <h1 id="total_kembalian">Kembalian Rp: 0</h1>
+                                  </div>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -130,11 +148,11 @@
                         </div>
                         <div class="form-group">
                             <label>Harga</label>
-                            <input class="form-control" name="hpp" id="hpp">
+                            <input type="number" class="form-control" name="hpp" id="hpp">
                         </div>
                         <div class="form-group">
                             <label>Jumlah</label>
-                            <input class="form-control" name="jumlah" id="jumlah">
+                            <input type="number" class="form-control" name="jumlah" id="jumlah">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -154,22 +172,37 @@
 @section('js')
     <script>
         var container=[];
-
+        var total_awal = 0;
         render_table = function(){
             var html ="";
             var no=1;
-            $.each(container,function (index, value) {
+            total_awal = 0;
+            $('#daftar_table_pesanan tbody').empty(html);
+           $.each(container,function (index, value) {
                 html+="<tr>";
                 html+="<td>"+(no++)+"</td>";
                 html+="<td>"+value[1]+"</td>";
                 html+="<td>"+value[2]+"</td>";
                 html+="<td>"+value[3]+"</td>";
                 html+="<td>"+(value[2]*value[3])+"</td>";
-                html+="<td><button class='btn btn-warning'>ubah</button><button class='btn btn-danger'>hapus</button></td>";
+                html+="<td><button class='btn btn-sm btn-danger' onclick='delete_item("+index+")'>hapus</button></td>";
                 html+="</tr>";
+                total_awal += (value[2]*value[3]);
             });
-            $('#daftar_table_pesanan').html(html);
+            $('#total_akhir').text("Total Rp: "+total_awal);
+            $('#daftar_table_pesanan').append(html);
         }
+
+        $('#bayar').keyup(function(){
+           var bayar = $(this).val();
+           $('#total_bayar').text('Bayar Rp:'+ bayar);
+           var kembalian = (bayar-total_awal);
+           console.log(kembalian);
+           if(kembalian > bayar){
+               alert("Jumlah bayar yang anda masukan berlebih");
+           }
+          $('#total_kembalian').text("Kembalian Rp: "+(1*kembalian));
+        });
 
         $('#tombol_tambah').click(function(){
             var id_barang = $('#barang').val();
@@ -182,6 +215,10 @@
             render_table();
         });
 
+        delete_item = function(i){
+            container.splice(i, 1);
+            render_table();
+        }
 
     </script>
 @stop

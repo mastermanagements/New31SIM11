@@ -15,7 +15,7 @@ class ProsesBisnis extends Controller
         $array=[
             'sop_produksi'=> P_SOP_Produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id)
         ];
-        return view('user.manufaktur.pages.proses_produksi.page_create', $array);
+        return view('user.manufaktur.pages.proses_bisnis.page_create', $array);
     }
 
     public function store(Request $req){
@@ -39,7 +39,7 @@ class ProsesBisnis extends Controller
         $array=[
             'proses_bisnis'=> P_Proses_Bisnis::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id)
         ];
-        return view('user.manufaktur.pages.proses_produksi.page_edit', $array);
+        return view('user.manufaktur.pages.proses_bisnis.page_edit', $array);
     }
 
     public function update(Request $req, $id){
@@ -68,19 +68,5 @@ class ProsesBisnis extends Controller
         }
     }
 
-    public function begin_produksi($id){
-        $model = P_tambah_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
-        if($model->status_produksi==0){
-            $message ='Proses Produksi telah dimulai';
-            $model->status_produksi = '1';
-        }else{
-            $message ='Proses Produksi telah diberhentikan';
-            $model->status_produksi = '0';
-        }
-        if($model->save()){
-            return redirect('manufaktur')->with('message_success',$message);
-        }else{
-            return redirect('manufaktur')->with('message_fail','Proses produksi di berhentikan');
-        }
-    }
+
 }

@@ -16,7 +16,7 @@ class BahanBaku extends Controller
         $array = [
             'data'=> $model,
             'id_tambah_produksi'=>$id_tambah_produksi,
-            'bahan_baku'=> P_Bahan_produksi::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'bahan_baku'=> P_Bahan_produksi::all()->where('id_tambah_produksi', $model->id)->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'barang' => barang::all()->where('jenis_barang','1')->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         return view('user.manufaktur.pages.barang_produksi.bahan_baku.page_show', $array);

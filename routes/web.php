@@ -888,7 +888,7 @@ Route::get('pengaturan-akun-penjualan/{id}/delete','produksi\AkunPenjualan@destr
 
 Route::resource('Jasa','produksi\Jasa');
 
-Route::resource('proses-bisnis','produksi\ProsesBisnis',['except'=>['index', 'show']]);
+//Route::resource('proses-bisnis','produksi\ProsesBisnis',['except'=>['index', 'show']]);
 
 Route::resource('SK-Jasa','produksi\SKJasa',['except'=>['index', 'show']]);
 
@@ -2358,6 +2358,7 @@ Route::get('hapus-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo
 Route::resource('manufaktur','manufaktur\Manufaktur');
 Route::resource('sop-produksi','manufaktur\SOPProduksi');
 Route::resource('proses-produksi','manufaktur\ProsesProduksi');
+Route::resource('proses-bisnis','manufaktur\ProsesBisnis');
 
 
 Route::get('proses-produksi/{id_tambah_produksi}/begin-produksi','manufaktur\ProsesProduksi@begin_produksi');
@@ -2379,7 +2380,10 @@ Route::get('biaya-overhead/{id_biaya_overhead}/delete', 'manufaktur\BiayaOverhea
 Route::resource('proses-pengerjaan','manufaktur\ProsesProduksi');
 Route::get('barang-sop/{id_barang_sop}/delete','manufaktur\BarangSOP@destroy');
 
-
+Route::get('detail-barang-selesai-produksi/{id}','manufaktur\BarangProduksi@detail');
+Route::get('detail-barang-selesai-produksi-cetak/{id}','manufaktur\BarangProduksi@cetak');
+Route::resource('akun-manufaktur','manufaktur\AkunManufaktur');
+Route::get('akun-manufaktur-delete/{id}','manufaktur\AkunManufaktur@delete');
 //================================= Global Route ======================================================================
 Route::get('GlobalKabupaten/{id_provinsi}', 'globals\ProvinsiDanKabupaten@ResponseKabupaten');
 
