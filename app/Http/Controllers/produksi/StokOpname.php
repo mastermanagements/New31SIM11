@@ -61,6 +61,7 @@ class StokOpname extends Controller
             $model->selisih = $selisih;
             $model->petugas = $req->nm_petugas;
             $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+            $model->id_karyawan = Session::get('id_karyawan');
 
             if($model->save()){
                 $model_barang = Barang::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->findOrFail($model->id_barang);
@@ -112,6 +113,7 @@ class StokOpname extends Controller
             $model->selisih = $selisih;
             $model->petugas = $req->nm_petugas;
             $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+            $model->id_karyawan = Session::get('id_karyawan');
 
             if($model->save()){
                 $model_barang = Barang::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->findOrFail($model->id_barang);

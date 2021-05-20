@@ -50,6 +50,7 @@ class ItemIO extends Controller
         $model->ket = $req->ket;
         $model->jumlah_brg = $req->jumlah_brg;
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        $model->id_karyawan = Session::get('id_karyawan');
         if($model->save()){
             StokBarangOperation::operation($model,'itemIO');
             return redirect('itemIO')->with('message_success','Data Item telah disimpan');
@@ -83,6 +84,7 @@ class ItemIO extends Controller
         $model->ket = $req->ket;
         $model->jumlah_brg = $req->jumlah_brg;
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        $model->id_karyawan = Session::get('id_karyawan');
         if($model->save()){
             StokBarangOperation::operation($model,'itemIO');
             return redirect('itemIO')->with('message_success','Data Item telah disimpan');
