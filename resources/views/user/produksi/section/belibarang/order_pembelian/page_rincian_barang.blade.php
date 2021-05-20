@@ -63,7 +63,7 @@
                                                 </td>
                                                 <td>
                                                     <input type="hidden" class="form-control" name="id_order" value="{{ $data_order->id }}"  required>
-                                                    <input type="number" class="form-control" name="harga_beli" value="0" onkeyup="changer_format('harga_beli')" id="harga_beli" required>
+                                                    <input type="text" class="form-control" name="harga_beli" value="0" onkeyup="changer_format('harga_beli')" id="harga_beli" required>
                                                 </td>
 
                                                 <td>
@@ -76,7 +76,7 @@
                                                     <input type="text" class="form-control" name="expire_date" id="datepicker3">
                                                 </td>
                                                 <td>
-                                                    <input type="number" class="form-control" name="jumlah_total"  disabled required>
+                                                    <input type="text" class="form-control" name="jumlah_total"  disabled required>
                                                     <input type="hidden" class="form-control" name="redirect" value="true">
                                                 </td>
                                             </tr>
@@ -112,7 +112,7 @@
                                                             @if(!empty($barang))
                                                                 <select class="form-control select2" name="id_barang" style="width: 100%" required>
                                                                     @foreach($barang as $datas)
-                                                                        <option value="{{ $datas->id }}" @if($detail_order->id_barang==$datas->id) selected @endif>{{ $datas->nm_barang }}, {{ $datas->linkToSatuan->satuan }}</option>
+                                                                        <option readonly value="{{ $datas->id }}" @if($detail_order->id_barang==$datas->id) selected @else disabled @endif>{{ $datas->nm_barang }}, {{ $datas->linkToSatuan->satuan }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             @endif
@@ -122,7 +122,7 @@
                                                             </td>
                                                             <td width="100">
                                                                 @php($total_qty += $detail_order->jumlah_beli)
-                                                                <input type="number" class="form-control" name="jumlah_beli" value="{{ $detail_order->jumlah_beli }}"  required>
+                                                                <input type="number" class="form-control" name="jumlah_beli" value="{{ $detail_order->jumlah_beli }}" readonly  required>
                                                             </td>
                                                             <td width="120">
                                                                 @php($diskon_item = $detail_order->harga_beli * $detail_order->diskon_item/100)
@@ -134,7 +134,7 @@
                                                             </td>
                                                             <td width="130">
                                                               @php($subtotal_diskon=(($detail_order->harga_beli * $detail_order->diskon_item/100) * $detail_order->jumlah_beli))
-                                                                <input type="text" class="form-control" readonly placeholder="diskon per item" value="{{ rupiahView($subtotal_diskon) }}">
+                                                                <input type="text" class="form-control" readonly placeholder="diskon per item" value="{{ rupiahView($subtotal_diskon) }}" >
                                                             </td>
                                                             <td width="130">
                                                                 @php($sub_item+=$detail_order->jumlah_harga)
@@ -224,7 +224,7 @@
                                                     <div class="form-group">
                                                         <label>Bayar</label>
 
-                                                        <input class="form-control" id="rupiah4" name="bayar" value="{{ rupiahView($data_order->bayar) }}" required>
+                                                        <input class="form-control" id="rupiah4" name="bayar" value="{{  rupiahView($data_order->bayar) }}" required>
 
                                                     </div>
                                                 </div>
@@ -254,6 +254,7 @@
                                        </div>
                                        <div class="col-md-12">
                                           <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal umum otomatis </label> <button type="submit" onclick="return confirm('Pastikan yang anda isi telah sesuai atau tidak')" class="btn btn-primary"> Simpan daftar pembelian </button>
+                                          <label class="pull-right">@if(!empty($data_order->kurang_bayar)) Total Keseluruhan: {{ rupiahView($data_order->total) }} @endif</label>
                                        </div>
                                 </form>
                           </div>
@@ -277,6 +278,7 @@
     @include('user.global.rupiah_input4')
     @include('user.global.rupiah_input5')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    @include('user.global.CalculateJumlah')
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
@@ -305,18 +307,6 @@
             calculate_jumlah();
         })
 
-        calculate_jumlah  = function(){
-            var n_diskon = 0;
-            if(diskon !=0){
-                n_diskon = diskon/100;
-            }
-            var jumlah_total =0;
-            var sub_total =0;
-            sub_total = (harga_beli * jumlah_beli)
-            dis_total = sub_total * n_diskon;
-            jumlah_total = sub_total - dis_total;
-            $('[name="jumlah_total"]').val(jumlah_total);
-        }
         $('#datepicker').datepicker({
             autoclose: true,
             format: 'dd-mm-yyyy'

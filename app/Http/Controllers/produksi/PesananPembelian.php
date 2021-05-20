@@ -263,7 +263,7 @@ class PesananPembelian extends Controller
         ]);
 
 
-        $harga_peritem = $req->jumlah_beli * $req->harga_beli;
+        $harga_peritem = rupiahController($req->jumlah_beli) * rupiahController($req->harga_beli);
         if ($req->diskon != 0)
         {
             $nilai_diskon = $req->diskon / 100;
@@ -279,10 +279,10 @@ class PesananPembelian extends Controller
         $model_po->harga_beli =rupiahController($req->harga_beli);
         $model_po->jumlah_beli = $req->jumlah_beli;
         $model_po->diskon_item = $req->diskon;
-        $model_po->jumlah_harga = $jumlah_harga;
+        $model_po->jumlah_harga = rupiahController($jumlah_harga);
         $model_po->id_perusahaan = Session::get('id_perusahaan_karyawan');
         $model_po->id_karyawan = Session::get('id_karyawan');
-
+//        dd($model_po);
         if ($model_po->save()) {
             if ($req->redirect == true) {
                 return redirect()->back()->with('message_success', 'anda telah menambahkan item baru');
@@ -293,7 +293,8 @@ class PesananPembelian extends Controller
     }
 
     public function ubah_Pesanan_pembelian(Request $req, $id)
-    { //dd($req->all());
+    {
+
         $this->validate($req, [
           'id_barang' => 'required',
            'jumlah_beli' => 'required',
@@ -316,12 +317,12 @@ class PesananPembelian extends Controller
         $model_po->harga_beli = $harga_beli;
         $model_po->jumlah_beli = $jumlah_beli;
         $model_po->diskon_item = $diskon_item ;
-        $model_po->jumlah_harga = $sub_total;
+        $model_po->jumlah_harga = rupiahController($sub_total);
         $model_po->id_perusahaan = Session::get('id_perusahaan_karyawan');
         $model_po->id_karyawan = Session::get('id_karyawan');
 
         if ($model_po->save()) {
-            return redirect('Pembelian')->with('message_success', 'anda telah mengubah item baru')->with('tab2','tab2');
+            return redirect()->back()->with('message_success', 'anda telah mengubah item baru')->with('tab2','tab2');
         } else {
             return redirect('Pembelian')->with('message_success', 'gagal mengubah item baru')->with('tab2','tab2');
         }
@@ -376,7 +377,7 @@ class PesananPembelian extends Controller
           $model->dp_po = $dp_po;
           $model->kurang_bayar = $kurang_bayar;
           $model->ket = $ket;
-          $model->total =$total_po;
+          $model->total =rupiahController($total_po);
           $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
           $model->id_karyawan = Session::get('id_karyawan');
 
@@ -417,7 +418,7 @@ class PesananPembelian extends Controller
             $model->dp_po = $dp_po;
             $model->kurang_bayar = $kurang_bayar;
             $model->ket = $ket;
-            $model->total = $total_po;
+            $model->total = rupiahController($total_po);
             $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
             $model->id_karyawan = Session::get('id_karyawan');
 

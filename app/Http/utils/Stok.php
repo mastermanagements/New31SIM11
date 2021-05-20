@@ -14,6 +14,39 @@ use App\Model\Produksi\PHistoryStokAwal;
 class Stok
 {
 
+    public static function  updateStokAkhirPembelian($model)
+    {
+        # Ambil sisa stok akhir dari p_barang
+        $model_barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($model->id_barang);
+        $model_barang->stok_akhir = ($model_barang->stok_akhir + $model->jumlah_beli);
+        $model_barang->save();
+    }
+
+    public static function  DeleteStokAkhirPembelian($model)
+    {
+        # Ambil sisa stok akhir dari p_barang
+        $model_barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($model->id_barang);
+        $model_barang->stok_akhir = ($model_barang->stok_akhir - $model->jumlah_beli);
+        $model_barang->save();
+    }
+
+    public static function  UpdateStokAkhirPenjualan($model)
+    {
+        # Ambil sisa stok akhir dari p_barang
+        $model_barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($model->id_barang);
+        $model_barang->stok_akhir = ($model_barang->stok_akhir - $model->jumlah_jual);
+        $model_barang->save();
+    }
+
+    public static function  DeleteStokAkhirPenjualan($model)
+    {
+        # Ambil sisa stok akhir dari p_barang
+        $model_barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($model->id_barang);
+        $model_barang->stok_akhir = ($model_barang->stok_akhir + $model->jumlah_jual);
+        $model_barang->save();
+    }
+
+
     # Via  detail Porder
     public static function  updateStokAkhirPorder($model)
     {

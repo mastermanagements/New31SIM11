@@ -21,8 +21,9 @@ class Jurnal extends Model
         'jumlah_transaksi',
         'id_perusahaan',
         'id_karyawan',
-        'id_pesanan',
+        'id_pesanan_pembelian',
         'id_pembelian',
+        'id_pesanan_penjualan',
         'id_penjualan'
     ];
 
