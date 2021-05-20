@@ -40,7 +40,7 @@
                                             <td>Satuan Barang</td>
                                             <td>Stok Akhir</td>
                                             <td>Bukti Fisik</td>
-                                            <td>Seilisi</td>
+                                            <td>Selisih</td>
                                             <td>Petugas</td>
                                             <td>aksi</td>
                                         </tr>
@@ -56,7 +56,13 @@
                                                     <td>{{ $data->linkToBarang->linkToSatuan->satuan_brg }}</td>
                                                     <td>{{ $data->stok_akhir }}</td>
                                                     <td>{{ $data->bukti_fisik }}</td>
-                                                    <td>{{ $data->stok_akhir-$data->bukti_fisik }}</td>
+                                                    <td>
+                                                      @if($data->stok_akhir >= 0)
+                                                      {{ $data->stok_akhir-$data->bukti_fisik }}
+                                                      @elseif($data->stok_akhir < 0)
+                                                      {{ $data->stok_akhir + $data->bukti_fisik }}
+                                                      @endif
+                                                    </td>
                                                     <td>{{ $data->petugas }}</td>
                                                     <td>
                                                         <a href="{{ url('ubah-stok-opname/'. $data->id) }}" class="btn btn-primary" style="margin-bottom: 10px">Ubah</a>
