@@ -62,7 +62,7 @@ class PSales extends Controller
     }
 
     public function store(Request $req){
-      //dd($req->all());
+
         $this->validate($req,[
             'no_sales'=> 'required',
             'tgl_sales'=> 'required',
@@ -228,7 +228,8 @@ class PSales extends Controller
               return redirect('Penjualan')->where('message_fail','Data penjualan gagal diubah');
           }
 
-      } else{
+      } else {
+
         $model = PS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id_p_sales);
         //dd($req->all());
         $model->diskon_tambahan = $diskon_tambahan;
@@ -245,7 +246,7 @@ class PSales extends Controller
         $model->id_karyawan = Session::get('id_karyawan');
 
             if ($model->save()) {
-                return redirect('Penjualan')->with('message_success', 'berhasil input transaksi penjualan')->with('tab4','tab4');
+                return redirect()->back()->with('message_success', 'berhasil input transaksi penjualan')->with('tab4','tab4');
             } else {
                 return redirect('Penjualan')->with('message_error', 'gagal input transaksi penjualan')->with('tab4','tab4');
             }

@@ -155,13 +155,14 @@ class PesananPenjualan extends Controller
         $model->id_karyawan = Session::get('id_karyawan');
 
         if($model->save()){
+
             if(is_array($jenis_akun_penjualan) == true){
                 $req->merge([
                     'total_sebelum_pajak'=>$total_pajak,
-                    'total'=> $total_so,
+                    'total'=> $model->dp_so,
                     'tgl_order'=> $model->tgl_so,
                     'no_order'=>$model->no_so,
-                    'id_pesanan'=> $model->id
+                    'id_pesanan_penjualan'=> $model->id
                 ]);
                 JenisAkunPenjualan::$new_request = $req;
                 $response=JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
@@ -191,7 +192,6 @@ class PesananPenjualan extends Controller
         $model->total = $total_so;
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
         $model->id_karyawan = Session::get('id_karyawan');
-
         if ($model->save()) {
             return redirect('Penjualan')->with('message_success', 'berhasil memuat nota pesanan pembelian')->with('tab2','tab2');
         } else {

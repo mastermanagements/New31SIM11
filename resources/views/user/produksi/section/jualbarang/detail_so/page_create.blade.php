@@ -68,7 +68,7 @@
                                                 <input type="number" name="diskon_item" class="form-control" value="0">
                                             </td>
                                             <td>
-                                                <input type="number" name="jumlah_harga" id="jumlah_harga" class="form-control" value="0" readonly>
+                                                <input type="text" name="jumlah_harga" id="jumlah_harga" class="form-control" value="0" readonly>
                                             </td>
                                         </tr>
                                     </table>
@@ -172,7 +172,7 @@
                                            <div class="col-md-6">
                                                <div class="form-group">
                                                    <label>Pajak (dalam %, misal: 10 %, tulis : 10)</label>
-                                                   <input type="number" name="pajak" class="form-control" @if(!empty($data->pajak)) value="{{ $data->pajak }}" @else  value="0" @endif >
+                                                   <input type="number"  name="pajak" class="form-control" @if(!empty($data->pajak)) value="{{ $data->pajak }}" @else  value="0" @endif >
                                                </div>
                                            </div>
                                        </div>
@@ -180,7 +180,7 @@
                                          <div class="col-md-6">
                                                <div class="form-group">
                                                    <label>Uang Muka</label>
-                                                   <input type="text"  id="rupiah" name="uang_muka" @if(!empty($data->dp_po)) value="{{ rupiahView($data->dp_so) }}" @else value="0" @endif class="form-control" required>
+                                                   <input type="text"  id="rupiah3" name="uang_muka" @if(!empty($data->dp_so)) value="{{ rupiahView($data->dp_so) }}" @else value="0" @endif class="form-control" required>
                                                </div>
                                          </div>
                                            <div class="col-md-6">
@@ -226,6 +226,8 @@
 @section('plugins')
 @include('user.global.rupiah_input')
 @include('user.global.rupiah_input2')
+@include('user.global.rupiah_input3')
+@include('user.global.CalculateTotalPenjualan')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
@@ -251,20 +253,20 @@
             calculate_total();
         });
 
-        calculate_total = function(){
-            var harga_beli = $('[name="hpp"]').val();
-            var jumlah_jual = $('[name="jumlah_jual"]').val();
-            var diskon_item = $('[name="diskon_item"]').val();
-            var total;
-            total = harga_beli * jumlah_jual;
-
-            //diskon
-            if(diskon_item != 0 ){
-                var diskon = total * (diskon_item/100);
-                total = total - diskon;
-            }
-            $('#jumlah_harga').val(total);
-        }
+//        calculate_total = function(){
+//            var harga_beli = $('[name="hpp"]').val();
+//            var jumlah_jual = $('[name="jumlah_jual"]').val();
+//            var diskon_item = $('[name="diskon_item"]').val();
+//            var total;
+//            total = harga_beli * jumlah_jual;
+//
+//            //diskon
+//            if(diskon_item != 0 ){
+//                var diskon = total * (diskon_item/100);
+//                total = total - diskon;
+//            }
+//            $('#jumlah_harga').val(total);
+//        }
     </script>
 
 @stop

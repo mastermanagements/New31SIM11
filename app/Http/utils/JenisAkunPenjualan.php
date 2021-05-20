@@ -61,36 +61,22 @@ class JenisAkunPenjualan
         self::$metode_transaksi = $metode_transaksi;
         if($metode_transaksi == 1){ // Pesanan penjualan
             # Pesanan penjualan tunai tampa pajak
-            if($request['metode_bayar']==0 && $request['pajak']==0){
+            if($request['pajak']==0){
                 $jenis_array = [
                     0 => 'Pesanan Penjualan tunai',
                 ];
                 array_push($initial_jenis, $jenis_array);//add to initial_jenis
             }
 
-            # Pesanan transfer dengan pajak
-            if($request['metode_bayar']==2 && $request['pajak']==0){
-                $jenis_array= [
-                    2=>'Pesanan Penjualan transfer',
-                ];
-                array_push($initial_jenis, $jenis_array);//add to initial_jenis
-            }
 
             # Pesanan penjualan tunai dengan pajak
-            if($request['metode_bayar']==0 && $request['pajak']!=0){
+            if($request['pajak']!=0){
                 $jenis_array = [
-                    2 => 'Pesanan Penjualan tunai dengan pajak',
+                    1 => 'Pesanan Penjualan tunai dengan pajak',
                 ];
                 array_push($initial_jenis, $jenis_array);//add to initial_jenis
             }
 
-            #Pesanan Penjualan transfer dg pajak
-            if($request['metode_bayar']==2 && $request['pajak']!=0){
-                $jenis_array = [
-                    3 => 'Pesanan Penjualan transfer dg pajak',
-                ];
-                array_push($initial_jenis, $jenis_array);//add to initial_jenis
-            }
 
         }else if($metode_transaksi == 2){ // Penjualan
 
@@ -151,16 +137,18 @@ class JenisAkunPenjualan
 
     # Function export jurnal di pindahkan disini agar lebih mudah digunakan dengan kontroller lain.
     private static function set_data($index_jenis_barang){
-        $model = AkunPenjualan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('jenis_jurnal',$index_jenis_barang)->first();
+        $model = AkunPenjualan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('jenis_jurnal',''.$index_jenis_barang)->first();
         $new_q = self::$new_request;
         if(!empty($model)){
             $data = $model->linkToOneKetTransaksi->dataAkun->toArray();
+
             $last_key=null;
             $total_sebelum_sesudah_pajak =0;
             if(self::$status_pajak == true){
                 $build_array = self::group_array($data);
                 $last_key = array_key_last($build_array[0]); // Jika ada akun pajak diasumsikan di array terakhir
             }
+
 
             $total = 0;
             foreach ($data as $key=>$akun){
@@ -182,31 +170,42 @@ class JenisAkunPenjualan
                     $total = $new_q['ongkir'];
                 }
 
-                $njurnal = new Jurnal([
-                    'jenis_jurnal'=>'1',
-                    'tgl_jurnal'=> $new_q->tgl_order,
-                    'id_ket_transaksi' => $akun['id_ket_transaksi'],
-                    'id_akun_aktif'=> $akun['id_akun_aktif'],
-                    'no_transaksi'=> $new_q->no_order,
-                    'ket'=>'Pembelian :'.$new_q->no_order,
-                    'debet_kredit'=> $akun['posisi_akun'],
-                    'jumlah_transaksi'=>$total,
-                    'id_perusahaan'=> Session::get('id_perusahaan_karyawan'),
-                    'id_karyawan'=>Session::get('id_karyawan'),
-                ]);
+                if(self::$metode_transaksi==1){
+                    $metode_transaksi='Pesanan Penjualan';
+                }else if(self::$metode_transaksi==2){
+                    $metode_transaksi='Penjualan';
+                }
+
+                $njurnal = Jurnal::updateOrCreate(
+                    [
+                        'id_pesanan_penjualan'=>$new_q['id_pesanan_penjualan'],
+                        'id_perusahaan'=> Session::get('id_perusahaan_karyawan'),
+                        'id_ket_transaksi' => $akun['id_ket_transaksi'],
+                        'id_akun_aktif'=> $akun['id_akun_aktif'],
+                    ]
+                    ,[
+                        'jenis_jurnal'=>'1',
+                        'tgl_jurnal'=> $new_q->tgl_order,
+                        'no_transaksi'=> $new_q->no_order,
+                        'ket'=>$metode_transaksi.'/'.$new_q->no_order,
+                        'debet_kredit'=> $akun['posisi_akun'],
+                        'jumlah_transaksi'=>$total,
+                        'id_karyawan'=>Session::get('id_karyawan'),
+                    ]
+                );
 
                 if(self::$metode_transaksi==1){
-                    $njurnal->id_pesanan = $new_q['id_pesanan'];
+                    $njurnal->id_pesanan_penjualan = $new_q['id_pesanan_penjualan'];
                 }else if(self::$metode_transaksi==2){
                     $njurnal->id_penjualan=$new_q['id_penjualan'];
                 }
-
                 $njurnal->save();
             }
         }
     }
 
     public static function get_akun_penjualan($array){
+
         foreach ($array as $data)
         {
             if (self::cek_akun_penjualan(array_keys($data)[0]) == true){
@@ -221,7 +220,7 @@ class JenisAkunPenjualan
     }
 
     public static function cek_akun_penjualan($index_jenis_barang){
-        $model = AkunPenjualan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('jenis_jurnal',$index_jenis_barang)->first();
+        $model = AkunPenjualan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('jenis_jurnal',''.$index_jenis_barang)->first();
         if(!empty($model)){
             return true;
         }else{

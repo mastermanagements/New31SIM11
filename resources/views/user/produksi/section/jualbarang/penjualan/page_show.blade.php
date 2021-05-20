@@ -82,8 +82,8 @@
                                                             </td>
                                                             <td><input type="text"  name="hpp" class="form-control" id="show_harga" required></td>
                                                             <td><input type="number" name="jumlah_jual" class="form-control" required></td>
-                                                            <td><input type="text" name="diskon" class="form-control" value="0" readonly required></td>
-                                                            <td><input type="number" name="jumlah_harga" readonly class="form-control" id="tbl_jumlah" required></td>
+                                                            <td><input type="text" name="diskon_item" class="form-control" value="0" readonly required></td>
+                                                            <td><input type="text" name="jumlah_harga" readonly class="form-control" id="jumlah_harga" required></td>
                                                             <td><button type="submit" class="btn btn-primary">Tambah</button></td>
 
                                                         </tr>
@@ -268,6 +268,7 @@
 @include('user.global.rupiah_input2')
 @include('user.global.rupiah_input3')
 @include('user.global.rupiah_input4')
+@include('user.global.CalculateTotalPenjualan')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
@@ -285,25 +286,25 @@
             calculate_total();
         })
         $('[name="jumlah_jual"]').keyup(function(){
+             calculate_total();
+        })
+
+        $('[name="diskon_item"]').keyup(function(){
             calculate_total();
         })
 
-        $('[name="diskon"]').keyup(function(){
-            calculate_total();
-        })
-
-        calculate_total = function(){
-            var jumlah_harga = $('[name="hpp"]').val();
-            var jumlah_jual = $('[name="jumlah_jual"]').val();
-            var diskon = $('[name="diskon"]').val();
-            var total =jumlah_jual * jumlah_harga;
-            if(diskon !=0){
-                diskon = total * (diskon/100);
-                total = total - diskon;
-            }
-
-            $('#tbl_jumlah').val(total);
-        }
+//        calculate_total = function(){
+//            var jumlah_harga = $('[name="hpp"]').val();
+//            var jumlah_jual = $('[name="jumlah_jual"]').val();
+//            var diskon = $('[name="diskon"]').val();
+//            var total =jumlah_jual * jumlah_harga;
+//            if(diskon !=0){
+//                diskon = total * (diskon/100);
+//                total = total - diskon;
+//            }
+//
+//            $('#tbl_jumlah').val(total);
+//        }
 
     </script>
 
