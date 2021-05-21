@@ -395,7 +395,6 @@ class PesananPembelian extends Controller
                   $response =JenisAkunPembelian::get_akun_pembelian($jenis_akun_pembelian);
                   if(!empty($response)){
                       if($response['status']==false){
-                          dd($response);
                           return redirect()->back()->with('message_fail','Akun Pesanan Belum dibuat');
                       }else{
                           return redirect()->back()->with('message_success','Data Pesanan telah disimpan');

@@ -29,7 +29,7 @@
                         <li @if(Session::get('menu_transaksi')=="jurnal_penyesuaian") class="active" @endif ><a href="{{ url('Jurnal-Penyesuaian') }}" >Jurnal Penyesuaian</a></li>
                     </ul>
                     <div class="tab-content">
-                        @include('user.keuangan.section.transaksi.jurnal_umum.page')
+                        @include('user.keuangan.section.transaksi.jurnal_penyesuaian.page')
                     </div>
                     <!-- /.tab-content -->
                 </div>

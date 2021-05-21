@@ -16,6 +16,7 @@ class AkunAktifUkm extends Model
         'nm_akun_aktif',
         'id_perusahaan',
         'posisi_saldo',
+        'off_on',
         'id_karyawan',
     ];
 

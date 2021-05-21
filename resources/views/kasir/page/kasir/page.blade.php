@@ -14,8 +14,19 @@
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Tambah Barang</button>
-                                        <button class="btn btn-danger pull-right" onclick="alert('Coming Soon')">Reset Barang</button>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input class="form-control" name="code_barcode" id="input_code_barcode" placeholder="Masukan Code Barcode">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Tambah Barang</button>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button class="btn btn-danger pull-right" onclick="alert('Coming Soon')">Reset Barang</button>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-12">
                                         <h4 class="box-title"> Daftar Barang Pesanan </h4>
@@ -169,56 +180,4 @@
     <!-- /.content -->
 @stop
 
-@section('js')
-    <script>
-        var container=[];
-        var total_awal = 0;
-        render_table = function(){
-            var html ="";
-            var no=1;
-            total_awal = 0;
-            $('#daftar_table_pesanan tbody').empty(html);
-           $.each(container,function (index, value) {
-                html+="<tr>";
-                html+="<td>"+(no++)+"</td>";
-                html+="<td>"+value[1]+"</td>";
-                html+="<td>"+value[2]+"</td>";
-                html+="<td>"+value[3]+"</td>";
-                html+="<td>"+(value[2]*value[3])+"</td>";
-                html+="<td><button class='btn btn-sm btn-danger' onclick='delete_item("+index+")'>hapus</button></td>";
-                html+="</tr>";
-                total_awal += (value[2]*value[3]);
-            });
-            $('#total_akhir').text("Total Rp: "+total_awal);
-            $('#daftar_table_pesanan').append(html);
-        }
-
-        $('#bayar').keyup(function(){
-           var bayar = $(this).val();
-           $('#total_bayar').text('Bayar Rp:'+ bayar);
-           var kembalian = (bayar-total_awal);
-           console.log(kembalian);
-           if(kembalian > bayar){
-               alert("Jumlah bayar yang anda masukan berlebih");
-           }
-          $('#total_kembalian').text("Kembalian Rp: "+(1*kembalian));
-        });
-
-        $('#tombol_tambah').click(function(){
-            var id_barang = $('#barang').val();
-            var nama_barang = $( "#barang option:selected" ).text();;
-            var hpp = $('#hpp').val();
-            var jumlah = $('#jumlah').val();
-
-            var item = [id_barang,nama_barang, hpp, jumlah];
-            container.push(item);
-            render_table();
-        });
-
-        delete_item = function(i){
-            container.splice(i, 1);
-            render_table();
-        }
-
-    </script>
-@stop
+@include('kasir.page.kasir.js')

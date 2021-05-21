@@ -42,7 +42,7 @@ class JurnalPernyesuaian extends Controller
 
     public function store_jurnal_awal(Request $req){
         $data = $this->store_jurnal($req, $this->id_perusahaan, $this->id_karyawan);
-        return redirect('Jurnal-Umum')->with('message_success',$data['message']);
+        return redirect('Jurnal-Penyesuaian')->with('message_success',$data['message']);
     }
 
 }

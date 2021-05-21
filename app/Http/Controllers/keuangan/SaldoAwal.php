@@ -41,8 +41,14 @@ class SaldoAwal extends Controller
     }
 
     public function store_jurnal_awal(Request $req){
-       $data = $this->store_jurnal($req, $this->id_perusahaan, $this->id_karyawan);
-        return redirect('Saldo-awal')->with('message_success',$data['message']);
+        $data = $this->store_jurnal($req, $this->id_perusahaan, $this->id_karyawan);
+        if($req->jenis_jurnal=="0"){
+            return redirect('Saldo-awal')->with('message_success',$data['message']);
+        }elseif ($req->jenis_jurnal=="1"){
+            return redirect('Jurnal-Umum')->with('message_success',$data['message']);
+        }elseif ($req->jenis_jurnal=="2"){
+            return redirect('Jurnal-Penyesuaian')->with('message_success',$data['message']);
+        }
     }
 
 

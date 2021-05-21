@@ -145,7 +145,7 @@ class JenisAkunPembelian
                 }
 
                 $njurnal = new Jurnal([
-                    'jenis_jurnal'=>'0',
+                    'jenis_jurnal'=>'1',
                     'tgl_jurnal'=> $new_q->tgl_order,
                     'id_ket_transaksi' => $akun['id_ket_transaksi'],
                     'id_akun_aktif'=> $akun['id_akun_aktif'],
