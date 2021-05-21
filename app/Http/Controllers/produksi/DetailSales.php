@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\utils\Stok;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Produksi\DetailSales as DS;
@@ -75,7 +76,7 @@ class DetailSales extends Controller
         if(empty($model_group_klien) AND ($model_diskon_klien->status_diskon =='1')){
             # Penjualan Normal Tampa diskon group tapi bisa jadi diskon di input manual
             //$diskon = 0;
-            $diskon = $req->diskon;
+            $diskon = $req->diskon_item;
             //dd($diskon);
 
           # jika diskon berdasarkan jumlah penjualan tapi bukan member
@@ -122,15 +123,16 @@ class DetailSales extends Controller
     }
 
     public function store(Request $req){
-      //dd($req->all());
-        $this->validate($req,[
+
+         $this->validate($req,[
             'id_sales'=> 'required',
             'id_barang'=> 'required',
             //'hpp'=> 'required',
             'jumlah_jual'=> 'required',
-            'diskon'=> 'required',
+            'diskon_item'=> 'required',
             'jumlah_harga'=> 'required',
         ]);
+
         //panggil harga_jual
         $hpp = $this->check_metode_jual($req);
         //panggil nilai diskon
@@ -154,8 +156,8 @@ class DetailSales extends Controller
         //dd($model->jumlah_harga);
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
         $model->id_karyawan = Session::get('id_karyawan');
-
         if($model->save()){
+            Stok::UpdateStokAkhirPenjualan($model);
             return redirect()->back()->with('message_success','Data Barang telah ditambahkan');
         }else{
             return redirect()->back()->with('message_fail','Data Barang gagal ditambahkan');
@@ -209,6 +211,7 @@ class DetailSales extends Controller
     {
         $model = DS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrfail($id);
         if($model->delete()){
+            Stok::DeleteStokAkhirPenjualan($model);
             return redirect()->back()->with('message_success','Data Barang telah dihapus');
         }else{
             return redirect()->back()->with('message_fail','Data Barang gagal dihapus');

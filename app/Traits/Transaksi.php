@@ -56,7 +56,7 @@ trait Transaksi
     }
 
     public function get_akun_akfif($array){
-        $data = Akun_aktif::all()->where('id_perusahaan', $array['id_perusahaan']);
+        $data = Akun_aktif::all()->where('off_on',"1")->where('id_perusahaan', $array['id_perusahaan']);
         return $data;
     }
 
@@ -230,6 +230,7 @@ trait Transaksi
     }
 
     public function store_jurnal($req, $id_perusahaan, $id_karyawan){
+
         $this->validate($req,[
             'id_ket_transaksi'=> 'required',
             'tgl_jurnal'=> 'required',
@@ -243,17 +244,18 @@ trait Transaksi
         $cek_jenis_jurnal = jurnal::whereYear('tgl_jurnal',$this->costumDate()->year)->where('jenis_jurnal','0')->where('id_perusahaan',$id_perusahaan)->first();
         $cek_no_transaksi = jurnal::whereYear('tgl_jurnal',$this->costumDate()->year)->where('no_transaksi',$req->no_transaksi)->where('id_perusahaan',$id_perusahaan)->first();
 
-        if(!empty($cek_jenis_jurnal)){
-            if($cek_jenis_jurnal->jenis_jurnal == $req->jenis_jurnal){
-                return array('message'=>'Saldo awal cuma bisa dimasukan sekali', 'id_transaksi'=> $cek_jenis_jurnal->id_ket_transaksi);
-            }
-        }
+//        if(!empty($cek_jenis_jurnal)){
+//            if($cek_jenis_jurnal->jenis_jurnal == $req->jenis_jurnal){
+//                return array('message'=>'Saldo awal cuma bisa dimasukan sekali', 'id_transaksi'=> $cek_jenis_jurnal->id_ket_transaksi);
+//            }
+//        }
 
         if(!empty($cek_no_transaksi)){
             return array('message'=>'Nomor Transaksi Telah digunakan', 'id_transaksi'=> $cek_jenis_jurnal->id_ket_transaksi);
         }
 
         $id_ket_transaksi = "";
+
         foreach ($req->id_akun_aktif as $key=>$value){
             $model = new jurnal();
             $model->jenis_jurnal = $req->jenis_jurnal;

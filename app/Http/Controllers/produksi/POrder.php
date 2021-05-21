@@ -60,6 +60,7 @@ class POrder extends Controller
 
     public function store(Request $req)
     {
+
         $this->validate($req,[
             'no_order'=> 'required',
             'tgl_order'=> 'required',
@@ -183,7 +184,7 @@ class POrder extends Controller
       ]);
 
 
-      $harga_peritem = $req->jumlah_beli * $req->harga_beli;
+      $harga_peritem = rupiahController($req->jumlah_beli) * rupiahController($req->harga_beli);
       if ($req->diskon != 0)
       {
           $nilai_diskon = $req->diskon / 100;
@@ -197,13 +198,14 @@ class POrder extends Controller
       $model_o->id_order = $id;
       $model_o->id_barang = $req->id_barang;
       $model_o->harga_beli = rupiahController($req->harga_beli);
-      $model_o->jumlah_beli = rupiahController($req->jumlah_beli);
-      $model_o->diskon_item = rupiahController($req->diskon);
+      $model_o->jumlah_beli =$req->jumlah_beli;
+      $model_o->diskon_item = $req->diskon;
       $model_o->jumlah_harga = rupiahController($jumlah_harga);
       $model_o->expire_date = tanggalController($req->expire_date);
       $model_o->id_perusahaan = Session::get('id_perusahaan_karyawan');
       $model_o->id_karyawan = Session::get('id_karyawan');
       if ($model_o->save()) {
+          $update_stok = Stok::updateStokAkhirPembelian($model_o);
           if ($req->redirect == true) {
               return redirect()->back()->with('message_success', 'anda telah menambahkan item baru');
           }
@@ -244,24 +246,24 @@ class POrder extends Controller
             $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
             $model->id_karyawan = Session::get('id_karyawan');
 
-        if($model->save()){
-                Stok::updateStokAkhirPorder($model);
-            }
 
-        //return redirect()->back()->with('message_success','Data barang pembelian telah disimpan');
-          return redirect('Pembelian')->with('message_success', 'anda telah mengubah rincian pembelian')->with('tab3','tab3');
+        if($model->save()){
+//                $update_stok = Stok::updateStokAkhirPembelian($model);
+        }
+
+        return redirect()->back()->with('message_success','Data barang pembelian telah disimpan');
+//          return redirect('Pembelian')->with('message_success', 'anda telah mengubah rincian pembelian')->with('tab3','tab3');
     }
 
     public function simpan_rincian_pembelian(Request $req, $id)
     {
-
-         //=============================================================================
+           //=============================================================================
         $this->validate($req,[
             'bayar'=> 'required',
             'sub_total'=>'required'
         ]);
         //request assignment
-        $diskon_tambahan = $req->diskon_tambahan;
+        $diskon_tambahan = rupiahController($req->diskon_tambahan);
         $pajak = $req->pajak;
         $ongkir = rupiahController($req->onkir);
         $bayar = rupiahController($req->bayar);
@@ -280,6 +282,7 @@ class POrder extends Controller
 
         //hutang/krg_bayar = sub_total - (bayar + uang_muka)
         $kurang_bayar = $total_order - ($bayar + $dp_po );
+
         //cek checkbox value on false
         if ($req->jurnal_otomatis == 'on') {
         // update p_order + insert jurnal umum
@@ -367,6 +370,7 @@ class POrder extends Controller
     {
         $model = DetailOrder::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
         if ($model->delete()) {
+            Stok::DeleteStokAkhirPembelian($model);
             return redirect()->back()->with('message_success', 'hapus barang pembelian berhasil');
         } else {
             return redirect()->back()->with('message_success', 'gagal hapus barang pembelian');

@@ -35,15 +35,15 @@ class AkunAktifUkm extends Controller
 
         foreach ($req->akun_ukm as $value){
             $model_akun_ukm = akun_master::find($value);
-            foreach ($model_akun_ukm->sub_akun_ukm->where('off_on','1') as $sub_akun){
+            foreach ($model_akun_ukm->sub_akun_ukm as $sub_akun){
                 $model_aau = AAU::updateOrCreate(
                     ['id_sub_akun'=>$sub_akun->id,'id_subsub_akun'=>0,'id_perusahaan'=>$this->id_perusahaan],
-                    ['kode_akun_aktif'=> $sub_akun->kode_sub_akun,'nm_akun_aktif'=>$sub_akun->nm_sub_akun,'id_karyawan'=>$this->id_karyawan,'posisi_saldo'=>$sub_akun->posisi_saldo]
+                    ['kode_akun_aktif'=> $sub_akun->kode_sub_akun,'off_on'=>''.$sub_akun->off_on,'nm_akun_aktif'=>$sub_akun->nm_sub_akun,'id_karyawan'=>$this->id_karyawan,'posisi_saldo'=>$sub_akun->posisi_saldo]
                 )->save();
-                foreach ($sub_akun->subsub_ukm->where('off_on','1') as $sub_sub_akun){
+                foreach ($sub_akun->subsub_ukm as $sub_sub_akun){
                     $model_aau2 = AAU::updateOrCreate(
                         ['id_sub_akun'=>$sub_akun->id,'id_subsub_akun'=>$sub_sub_akun->id,'id_perusahaan'=>$this->id_perusahaan],
-                        ['kode_akun_aktif'=> $sub_sub_akun->kode_subsub_akun,'nm_akun_aktif'=>$sub_sub_akun->nm_subsub_akun,'id_karyawan'=>$this->id_karyawan,'posisi_saldo'=>$sub_akun->posisi_saldo]
+                        ['kode_akun_aktif'=> $sub_sub_akun->kode_subsub_akun,'off_on'=>''.$sub_sub_akun->off_on,'nm_akun_aktif'=>$sub_sub_akun->nm_subsub_akun,'id_karyawan'=>$this->id_karyawan,'posisi_saldo'=>$sub_akun->posisi_saldo]
                     )->save();
                 }
             }

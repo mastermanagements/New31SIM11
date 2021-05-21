@@ -40,7 +40,7 @@ class DetailSo extends Controller
             'jumlah_harga' => 'required'
         ]);
 
-        $harga_peritem = $req->jumlah_jual * $req->hpp;
+        $harga_peritem = rupiahController($req->jumlah_jual) * rupiahController($req->hpp);
         if ($req->diskon_item != 0)
         {
             $nilai_diskon = $req->diskon_item / 100;
@@ -52,10 +52,10 @@ class DetailSo extends Controller
         $model = new DSO();
         $model->id_so = $req->id_so;
         $model->id_barang = $req->id_barang;
-        $model->hpp = $req->hpp;
+        $model->hpp = rupiahController($req->hpp);
         $model->jumlah_jual = $req->jumlah_jual;
         $model->diskon_item = $req->diskon_item;
-        $model->jumlah_harga = $jumlah_harga;
+        $model->jumlah_harga = rupiahController($jumlah_harga);
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
         $model->id_karyawan = Session::get('id_karyawan');
         if($model->save()){

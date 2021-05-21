@@ -30,7 +30,7 @@
                                             </label><br>
                                             <select name="jenis_item" class="form-control select2" required>
                                                 @foreach($jenis_item as $key=>$jenis_item)
-                                                    <option value="{{ $key }}" @if($itemIO->jenis_item == $key) selected @endif>{{$jenis_item }}</option>
+                                                    <option value="{{ $key }}" @if($itemIO->jenis_item == $key) selected @endif>{{$jenis_item }} </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -48,7 +48,7 @@
                                                 <option>Pilihan Barang</option>
                                                 @if(!empty($barang))
                                                     @foreach($barang as $data)
-                                                        <option value="{{ $data->id }}" @if($itemIO->id_barang == $data->id) selected @endif>{{ $data->nm_barang }}</option>
+                                                        <option value="{{ $data->id }}" @if($itemIO->id_barang == $data->id) selected @endif>{{ $data->nm_barang }}  {{ $data->linkToSatuan->satuan }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>

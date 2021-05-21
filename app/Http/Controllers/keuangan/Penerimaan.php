@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Traits\Transaksi;
-
+use App\Model\Keuangan\AkunAktifUkm;
 
 class Penerimaan extends Controller
 {
@@ -38,6 +38,7 @@ class Penerimaan extends Controller
             'keterangan'=>$this->getKeterangan(array('id_perusahaan'=> $this->id_perusahaan,'jenis_transaksi'=>0)),
             'jenis_jurnal'=> $this->jenis_jurnal
         ];
+
         return view('user.keuangan.section.transaksi.page_default', $data);
     }
 
