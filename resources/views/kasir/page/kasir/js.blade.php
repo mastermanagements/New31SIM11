@@ -3,6 +3,7 @@
 <script>
     var container=[];
     var total_awal = 0;
+
     render_table = function(){
         var html ="";
         var no=1;
@@ -11,10 +12,10 @@
         $.each(container,function (index, value) {
             html+="<tr>";
             html+="<td>"+(no++)+"</td>";
-            html+="<td>"+value[1]+"</td>";
-            html+="<td>"+value[2]+"</td>";
-            html+="<td>"+value[3]+"</td>";
-            html+="<td>"+(value[2]*value[3])+"</td>";
+            html+="<td><input type='hidden' name='id_barang[]' value='"+value[0]+"'>"+value[1]+"</td>";
+            html+="<td><input type='hidden' name='jumlah_jual[]' value='"+value[2]+"'>"+value[2]+"</td>";
+            html+="<td><input type='hidden' name='harga_satuan[]' value='"+value[3]+"'>"+value[3]+"</td>";
+            html+="<td><input type='hidden' name='sub_total[]' value='"+(value[2]*value[3])+"'>"+(value[2]*value[3])+"</td>";
             html+="<td><button class='btn btn-sm btn-danger' onclick='delete_item("+index+")'>hapus</button></td>";
             html+="</tr>";
             total_awal += (value[2]*value[3]);

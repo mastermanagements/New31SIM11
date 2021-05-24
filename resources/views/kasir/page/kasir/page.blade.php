@@ -7,9 +7,11 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="box">
+                        <form action="{{ url('Kasir') }}" method="post">
+                            {{ csrf_field() }}
+                            <div class="box">
                             <div class="box-header">
-                                <h4 class="box-title">Pesanan</h4>
+                                <h4 class="box-title">Pesanan Kode Transaksi:{{ $kode }}</h4>
                             </div>
                             <div class="box-body">
                                 <div class="row">
@@ -17,14 +19,15 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
+                                                    <input type="hidden" name="kode" value="{{ $kode }}">
                                                     <input class="form-control" name="code_barcode" id="input_code_barcode" placeholder="Masukan Code Barcode">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <button class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Tambah Barang</button>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Tambah Barang</button>
                                             </div>
                                             <div class="col-md-4">
-                                                <button class="btn btn-danger pull-right" onclick="alert('Coming Soon')">Reset Barang</button>
+                                                <button type="button" class="btn btn-danger pull-right" onclick="alert('Coming Soon')">Reset Barang</button>
                                             </div>
                                         </div>
                                     </div>
@@ -49,16 +52,20 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="input-group input-group-sm">
-                                            <input type="number" id="bayar" class="form-control">
+                                            <input type="number" name="bayar" id="bayar" class="form-control" required>
                                             <span class="input-group-btn">
                                               <button type="button" class="btn btn-info btn-flat">Bayar</button>
                                             </span>
                                         </div>
                                     </div>
+                                    <div class="col-sm-12">
+                                        <p></p>
+                                        <button type="submit" class="btn btn-success">Proses</button>
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
+                        </form>
                     </div>
 
                 </div>
@@ -92,42 +99,38 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Klien</th>
+                                            <th>Kode Transaksi</th>
                                             <th>Jumlah Item Penjualan</th>
                                             <th>Total Penjualan</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody style="overflow-y: scroll;">
-                                        <tr>
-                                            <th>1</th>
-                                            <th>asads</th>
-                                            <th>10</th>
-                                            <th>RP. 50.000.000</th>
-                                        </tr>
-                                        <tr>
-                                            <th>1</th>
-                                            <th>asads</th>
-                                            <th>10</th>
-                                            <th>RP. 50.000.000</th>
-                                        </tr>
-                                        <tr>
-                                            <th>1</th>
-                                            <th>asads</th>
-                                            <th>10</th>
-                                            <th>RP. 50.000.000</th>
-                                        </tr>
-                                        <tr>
-                                            <th>1</th>
-                                            <th>asads</th>
-                                            <th>10</th>
-                                            <th>RP. 50.000.000</th>
-                                        </tr>
-                                        <tr>
-                                            <th>1</th>
-                                            <th>asads</th>
-                                            <th>10</th>
-                                            <th>RP. 50.000.000</th>
-                                        </tr>
+
+                                        @if(!empty($nota))
+                                            @php($no=1)
+                                            @foreach($nota as $data)
+                                                <tr>
+                                                    <th>{{ $no++ }}</th>
+                                                    <th>{{ $data->kode }}</th>
+                                                    <th>{{ $data->linkToMannyDetailNota->count('id') }}</th>
+                                                    <th>RP. {{ $data->linkToMannyDetailNota->sum('sub_total') }}</th>
+                                                    <th>
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-info btn-flat">Aksi</button>
+                                                            <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown">
+                                                                <span class="caret"></span>
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <ul class="dropdown-menu" role="menu">
+                                                                <li><a href="#">Print</a></li>
+                                                                <li><a href="#">Cek Barang</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -138,6 +141,7 @@
         </div>
 
         <div class="modal fade" id="modal-default">
+            <form>
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -163,7 +167,7 @@
                         </div>
                         <div class="form-group">
                             <label>Jumlah</label>
-                            <input type="number" class="form-control" name="jumlah" id="jumlah">
+                            <input  type="number" class="form-control" name="jumlah" id="jumlah">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -173,6 +177,7 @@
                 </div>
                 <!-- /.modal-content -->
             </div>
+            </form>
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
