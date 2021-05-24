@@ -27,7 +27,7 @@
                         @endif
                       @endif
                     </h3>
-                    <h5 class="widget-user-desc"><a href="{{ asset('fileAkta'.$value->file_akta) }}"><font color="#DC3F0D">{{ $value->file_akta }}</a></font></h5>
+
                     @if(!empty($value))
                     <form action="{{ url('delete-akta/'.$value->id) }}" method="post">
                         <a href="{{ url('ubah-akta/'.$value->id) }}" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Ubah </a>
@@ -61,9 +61,9 @@
                       @endif
                     </ul>
                   </div>
-                <!--<div class="box-footer no-padding">
-                    <a href="{{ asset('fileAkta/'.$value->file_akta) }}" class="btn btn-primary pull-right" style="margin: 10px"><i class="fa fa-download"></i></a>
-                </div>-->
+                <div class="box-footer no-padding">
+                    <b>File Akta: </b><a class="pull-right" href="{{ asset('fileAkta/'.$value->file_akta) }}" class="btn btn-primary pull-right" style="margin: 10px"><i class="fa fa-download"> Download</i></a>
+                </div>
             </div>
             <!-- /.widget-user -->
         </div>

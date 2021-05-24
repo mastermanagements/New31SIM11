@@ -23,7 +23,7 @@
             <div class="col-md-12">
                <div class="nav-tabs-custom">
                    <ul class="nav nav-tabs">
-                       <li @if($content_menu=="karyawan") class="active" @endif><a href="{{ url('profil-perusahaan') }}">Daftar Usaha</a></li>
+                       <!--<li @if($content_menu=="karyawan") class="active" @endif><a href="{{ url('profil-perusahaan') }}">Daftar Usaha</a></li>-->
                    </ul>
                    <div class="tab-content">
                        <div class="active tab-pane"

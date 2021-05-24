@@ -22,6 +22,7 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Formulir Ubah Akta</h3>
+                     <h5 class="pull-right"><a href="{{ url('pengaturan-perusahaan')}}">Kembali ke Halaman utama</a></h5>
                 </div>
                 <!-- /.box-header -->
 
@@ -34,45 +35,52 @@
                             <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
 
-                          <div class="col-md-12">
+                          <div class="col-md-6">
              								<div class="form-group">
-             									<label for="exampleInputEmail1">Nomor Akta</label>
+             									<label for="exampleInputEmail1">Nomor Akta</label>&nbsp;<strong style="color: red">*</strong>
              									<input type="text" class="form-control" name="no_akta" value="{{ $akta->no_akta }}" required>
                               <input type="hidden" class="form-control" name="id_perusahaan" value="{{ $akta->id_perusahaan }}" required>
-             									<small style="color: red">* Tidak boleh kosong</small>
+
              								</div>
                             <div class="form-group">
-             									<label for="exampleInputEmail1">Tanggal Akta</label>
+             									<label for="exampleInputEmail1">Tanggal Akta</label>&nbsp;<strong style="color: red">*</strong>
              									<input type="text" class="form-control" name="tgl_akta" value="{{ date('d-m-Y'), strtotime($akta->tgl_akta)}}" id="datepicker" required>
-             									<small style="color: red">* Tidak boleh kosong</small>
+
              								</div>
                             <div class="form-group">
-             									<label for="exampleInputEmail1">Notaris</label>
+             									<label for="exampleInputEmail1">Notaris</label>&nbsp;<strong style="color: red">*</strong>
              									<input type="text" class="form-control" name="notaris" value="{{ $akta->notaris }}" required>
-             									<small style="color: red">* Tidak boleh kosong</small>
+
              								</div>
+                          </div>
+                          <div class="col-md-6">
                             <div class="form-group">
                               <label for="exampleInputEmail1">No rak</label>
                               <input type="text" class="form-control" name="no_rak" value="{{ $akta->no_rak }}">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputFile">File scan akta</label>
-                                <input type="file" id="exampleInputFile" name="file_akta" required>
+                                <input type="file" id="exampleInputFile" name="file_akta">
                                 <p class="help-block" style="color:red">*Format file yang disarankan .rar dan .zip, kami sarankan agar file rar terpassword untuk kenyamanan anda</p>
                             </div>
                             <div class="form-group">
                               <label for="exampleInputEmail1">Keterangan</label>
                               <input type="text" class="form-control" name="ket" value="{{ $akta->ket }}">
                             </div>
-                            <div class="box-footer">
+                          </div>
+                        </div>
+                        <!-- /.box-body -->
+                          <div class="box-footer">
+                            <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                          </div>
+                          <div class="box-footer">
                                 {{csrf_field()}}
                               <input type="hidden" name="_method" value="put"/>
-                              <button type="submit" class="btn btn-primary pull-right">Submit</button>
-                            </div>
+                              <button type="submit" class="btn btn-primary">Submit</button>
                           </div>
-                          <!-- /.col -->
-          					</div>
-          					<!-- /.box-body -->
+
+                        <!-- /.col -->
+
                   </div>
                 <!-- /.box -->
               </div>

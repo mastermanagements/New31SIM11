@@ -12,8 +12,8 @@
             @endif
             " alt="User profile picture">
 
-            <div class="form-group">Foto :<input class="form-control input-sm" type="file" name="foto" value="$profil_user_ukm->foto">
-            <small style="color:red;">* Tidak boleh kosong</small>
+            <div class="form-group">Foto :
+              <input class="form-control input-sm" type="file" name="foto" value="$profil_user_ukm->foto">          
             </div>
 
             <div class="form-group">
