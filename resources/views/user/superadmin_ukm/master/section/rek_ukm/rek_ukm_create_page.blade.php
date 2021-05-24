@@ -27,6 +27,7 @@
                <div class="box box-primary">
                    <div class="box-header with-border">
                        <h3 class="box-title">Tambah Rekening Perusahaan </h3>
+                       <h5 class="pull-right"><a href="{{ url('pengaturan-perusahaan')}}">Kembali ke Halaman utama</a></h5>
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
@@ -37,46 +38,54 @@
                            @elseif(!empty(session('message_fail')))
                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
-
-                           <div class="form-group">
-                               <label for="exampleInputEmail1">Usaha</label>
-                                   <div class="form-group">
-                                       @foreach($usaha as $usaha)
-                                       <label>
-                                           <input type="radio"  name="id_perusahaan" class="minimal" value="{{ $usaha->id}}" required>
-                                           {{ $usaha->nm_usaha }}
-                                       </label>
-                                       @endforeach
-                                       <p></p>
-                                   <small style="color: red">* Tidak Boleh Kosong</small>
-                                   </div>
-                           </div>
+                        <div class="col-md-6">
                                <div class="form-group">
-                                   <label for="exampleInputEmail1">Nama Bank</label>
+                                   <label for="exampleInputEmail1">Usaha</label>&nbsp;<strong style="color: red">*</strong>
+                                       <div class="form-group">
+                                           @forelse($usaha as $usaha)
+                                           <label>
+                                               <input type="radio"  name="id_perusahaan" class="minimal" value="{{ $usaha->id}}" required>
+                                               {{ $usaha->nm_usaha }}
+                                           </label>
+                                           @empty
+                                            <label style="color: red">Isi dulu data perusahaan Anda! <a href="{{ url('tambah-usaha') }}">Klik di sini</a></label>
+                                           @endforelse
+                                           <p></p>
+
+                                       </div>
+                               </div>
+                               <div class="form-group">
+                                   <label for="exampleInputEmail1">Nama Bank</label>&nbsp;<strong style="color: red">*</strong>
                                    <input name="nama_bank" class="form-control" placeholder="Nama Bank" required>
-                                   <small style="color: red">* Tidak boleh kosong</small>
-                               </div>
-                               <div class="form-group">
-                                   <label for="exampleInputEmail1">No Rekening</label>
-                                   <input name="no_rek" class="form-control" placeholder="No. Rekening" required>
-                                   <small style="color: red">* Tidak boleh kosong</small>
-                               </div>
-                               <div class="form-group">
-                                   <label for="exampleInputEmail1">Atas Nama</label>
-                                   <input name="atas_nama" class="form-control" placeholder="Pemilik Rekening Atas Nama Siapa" required>
-                                   <small style="color: red">* Tidak boleh kosong</small>
-                               </div>
-                               <div class="form-group">
-                                   <label for="exampleInputEmail1">Kantor Cabang</label>
-                                   <input type="text" name="kcp" class="form-control" placeholder="Kantor Cabang" required>
-                                   <small style="color: red">* Tidak boleh kosong</small>
-                               </div>
 
-                               <div class="box-footer">
+                               </div>
+                               <div class="form-group">
+                                   <label for="exampleInputEmail1">No Rekening</label>&nbsp;<strong style="color: red">*</strong>
+                                   <input name="no_rek" class="form-control" placeholder="No. Rekening" required>
+
+                               </div>
+                            </div>
+                            <div class="col-md-6">
+                               <div class="form-group">
+                                   <label for="exampleInputEmail1">Atas Nama</label>&nbsp;<strong style="color: red">*</strong>
+                                   <input name="atas_nama" class="form-control" placeholder="Pemilik Rekening Atas Nama Siapa" required>
+
+                               </div>
+                               <div class="form-group">
+                                   <label for="exampleInputEmail1">Kantor Cabang</label>&nbsp;<strong style="color: red">*</strong>
+                                   <input type="text" name="kcp" class="form-control" placeholder="Kantor Cabang" required>
+
+                               </div>
+                            </div>
+                         </div>
+                         <div class="box-footer">
+                           <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                         </div>
+                      <div class="box-footer">
                            {{csrf_field()}}
                            <button type="submit" class="btn btn-primary">Submit</button>
                        </div>
-                       </div>
+
                    </form>
                </div>
                <!-- /.box -->

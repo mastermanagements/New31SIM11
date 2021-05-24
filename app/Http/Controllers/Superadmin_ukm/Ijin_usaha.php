@@ -102,7 +102,7 @@ class Ijin_usaha extends Controller
             'kualifikasi' => 'required',
             'instansi_pemberi' => 'required',
             'klasifikasi' => 'required',
-            'file_iu' => 'required|image|mimes:jpeg,jpg,png,gif'
+            'file_iu' => 'nullable|image|mimes:jpeg,jpg,png,gif'
         ]);
 
         $id_perusahaan = $req->id_perusahaan;
@@ -116,12 +116,16 @@ class Ijin_usaha extends Controller
         $no_rak= $req->no_rak;
 
 
-        $name_file =  time().'.'.$file_iu->getClientOriginalExtension();
         $model = ijin_p::findOrFail($id);
+        if(!empty($file_iu)){
+          $name_file =  time().'.'.$file_iu->getClientOriginalExtension();
+        }else{
+          $name_file = $model->file_iu;
+        }
 
-        if(!empty($model->file_iu))
+        if(!empty($name_file))
         {
-            $file_path =public_path('ijinUsaha').'/' . $model->file_iu;
+            $file_path =public_path('ijinUsaha').'/' . $name_file;
             if (file_exists($file_path)) {
                 @unlink($file_path);
             }
@@ -140,12 +144,15 @@ class Ijin_usaha extends Controller
 
         if($model->save())
         {
+          if(!empty($file_iu))
+          {
             if ($file_iu->move(public_path('ijinUsaha'), $name_file)) {
-                return redirect('izin-usaha')->with('message_success','Berhasil menyimpan Ijin usaha');
+                return redirect('izin-usaha')->with('message_success','Berhasil menyimpan Izin usaha');
             }else{
-                return redirect('unggah-ijin')->with('message_error','Gagal menyimpan akta file Ijin usaha');
+                return redirect('unggah-ijin')->with('message_error','Gagal menyimpan akta file Izin usaha');
             }
-            return redirect('izin-usaha')->with('message_success','Berhasil mengubah Data Ijin Usaha');
+          }
+            return redirect('izin-usaha')->with('message_success','Berhasil mengubah Data Izin Usaha');
         }
 
         return redirect('unggah-ijin')->with('message_error','Terjadi kesalangan, isi dengan benar');

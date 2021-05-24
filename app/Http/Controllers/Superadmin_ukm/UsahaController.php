@@ -79,7 +79,7 @@ class UsahaController extends Controller
         $web= $req->web;
         $logo= $req->logo;
 
-		$image_name = time().'.'.$logo->getClientOriginalExtension();
+		    $image_name = time().'.'.$logo->getClientOriginalExtension();
 
         $model = new perusahaan;
 
@@ -138,7 +138,7 @@ class UsahaController extends Controller
     }
 
     public function update(Request $req, $id)
-    {
+    { //dd($req->all());
         $this->validate($req,[
             'nm_usaha'=>'required',
             'alamat'=>'required',
@@ -151,7 +151,7 @@ class UsahaController extends Controller
             'jenis_usaha'=>'required',
             'bidang_usaha'=>'required',
             'spesifik_usaha'=>'required',
-            'logo'=>'required|image|mimes:jpeg,png,gif,jpg|max:2048'
+            'logo'=>'nullable|image|mimes:jpeg,png,gif,jpg|max:2048'
         ]);
 
         $nama_usaha = $req->nm_usaha;
@@ -178,10 +178,16 @@ class UsahaController extends Controller
         $web= $req->web;
         $logo= $req->logo;
 
-
-        $image_name = time().'.'.$logo->getClientOriginalExtension();
-
         $model = perusahaan::find($id);
+
+        if(!empty($logo)){
+            $image_name = time().'.'.$logo->getClientOriginalExtension();
+
+        }else{
+            //ambil logo lama
+            $logo_lama = $model->logo;
+            $image_name = $logo_lama ;
+        }
 
         $model->nm_usaha =  $nama_usaha;
         $model->singkatan_usaha =  $singkatan_usaha;
@@ -208,13 +214,17 @@ class UsahaController extends Controller
 		    $model->logo = $image_name;
         $model->id_user_ukm =  $this->id_superadmin;
 
+          //dd($model);
         if($model->save())
         {
+          if(!empty($logo))
+          {
             if ($logo->move(public_path('logoUsaha'), $image_name)) {
                 return redirect('profil-perusahaan')->with('message_success','Berhasil mengubah Data Usaha');
             }else{
                 return redirect('profil-perusahaan')->with('message_error','Gagal mengubah Data Usaha');
             }
+          }
             return redirect('profil-perusahaan')->with('message_success','Berhasil mengubah Data Usaha');
         }
         return redirect('ubah-usaha/'.$id)->with('message_error','Terjadi kesalahan, isi dengan benar');

@@ -27,6 +27,7 @@
                <div class="box box-primary">
                    <div class="box-header with-border">
                        <h3 class="box-title">Formulir Akta</h3>
+                       <h5 class="pull-right"><a href="{{ url('pengaturan-perusahaan')}}">Kembali ke Halaman utama</a></h5>
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
@@ -37,27 +38,27 @@
                            @elseif(!empty(session('message_fail')))
                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
-
+                        <div class="col-md-6">
                            <div class="form-group">
-                               <label for="exampleInputEmail1">Usaha Akta</label>
+                               <label for="exampleInputEmail1">Usaha</label>&nbsp;<strong style="color: red">*</strong>
                                    <div class="form-group">
-                                       @foreach($usaha as $usaha)
+                                       @forelse($usaha as $usaha)
                                        <label>
                                            <input type="radio"  name="id_perusahaan" class="minimal" value="{{ $usaha->id}}" required>
                                            {{ $usaha->nm_usaha }}
                                        </label>
-                                       @endforeach
-                                       <p></p>
-                                   <small style="color: red">* Tidak Boleh Kosong</small>
+                                       @empty
+                                        <label style="color: red">Isi dulu data perusahaan Anda! <a href="{{ url('tambah-usaha') }}">Klik di sini</a></label>
+                                       @endforelse
                                    </div>
                            </div>
                                <div class="form-group">
-                                   <label for="exampleInputEmail1">Nomor Akta</label>
+                                   <label for="exampleInputEmail1">Nomor Akta</label>&nbsp;<strong style="color: red">*</strong>
                                    <input name="no_akta" class="form-control" placeholder="No. Akta" required>
-                                   <small style="color: red">* Tidak boleh kosong</small>
+
                                </div>
                                <div class="form-group">
-                                   <label>Date:</label>
+                                   <label>Tanggal Akta:</label>&nbsp;<strong style="color: red">*</strong>
 
                                    <div class="input-group date">
                                        <div class="input-group-addon">
@@ -65,20 +66,19 @@
                                        </div>
                                        <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal Akta" name="tgl_akta" required>
                                    </div>
-                                   <!-- /.input group -->
-                                   <small style="color: red">* Tidak boleh kosong</small>
+                                </div>
+                                <div class="form-group">
+                                         <label for="exampleInputEmail1">Notaris</label>&nbsp;<strong style="color: red">*</strong>
+                                         <input name="notaris" class="form-control" placeholder="Nama Notaris" required>
                                </div>
-                               <div class="form-group">
-                                   <label for="exampleInputEmail1">Notaris</label>
-                                   <input name="notaris" class="form-control" placeholder="Nama Notaris" required>
-                                   <small style="color: red">* Tidak boleh kosong</small>
-                               </div>
+                            </div>
+                            <div class="col-md-6">
                                <div class="form-group">
                                    <label for="exampleInputEmail1">No. Rak</label>
                                    <input name="no_rak" class="form-control" placeholder="No.rak akta asli anda simpan">
                                </div>
                                <div class="form-group">
-                                   <label for="exampleInputFile">File Akta</label>
+                                   <label for="exampleInputFile">File Akta</label>&nbsp;<strong style="color: red">*</strong>
                                    <input type="file" id="exampleInputFile" name="file_akta" required>
                                    <p class="help-block" style="color:red">*Format file yang disarankan .rar dan .zip, kami sarankan agar file rar terpassword untuk kenyamanan anda</p>
                                </div>
@@ -86,11 +86,16 @@
                                    <label for="exampleInputEmail1">Keterangan</label>
                                    <input name="ket" class="form-control" placeholder="Keterangan">
                                </div>
-                               <div class="box-footer">
+                            </div>
+                         </div>
+                      <div class="box-footer">
+                        <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                      </div>
+                      <div class="box-footer">
                            {{csrf_field()}}
                            <button type="submit" class="btn btn-primary">Submit</button>
                        </div>
-                       </div>
+
                    </form>
                </div>
                <!-- /.box -->

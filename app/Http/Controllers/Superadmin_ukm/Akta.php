@@ -94,8 +94,9 @@ class Akta extends Controller
 
     public function update(Request $req, $id)
     {
+      //dd($req->all());
       //validasi
-      $this->validate($req, ['no_akta'=>'required', 'tgl_akta'=>'required', 'notaris'=>'required', 'file_akta' => 'required|file|mimes:rar,zip']);
+      $this->validate($req, ['no_akta'=>'required', 'tgl_akta'=>'required', 'notaris'=>'required', 'file_akta' => 'nullable|file|mimes:rar,zip']);
       //assignment request
       $id_perusahaan = $req->id_perusahaan;
       $no_akta = $req->no_akta;
@@ -104,18 +105,24 @@ class Akta extends Controller
       $rak = $req->no_rak;
       $file_akta = $req->file_akta;
 
-      $name_file =  time().'.'.$file_akta->getClientOriginalExtension();
-
       $ket = $req->ket;
 
       //get data $//
       $model = aktas::findOrFail($id);
       //insert field dg  variabel assignment request
+      if(!empty($file_akta)){
+          $name_file =  time().'.'.$file_akta->getClientOriginalExtension();
+
+      }else{
+          //ambil file lama
+          $name_file = $model->file_akta;
+      }
+
       $model->no_akta = $no_akta;
       $model->tgl_akta = $tgl_akta;
       $model->notaris = $notaris;
       $model->no_rak = $rak;
-      $model->file_akta = $file_akta;
+      $model->file_akta = $name_file;
       $model->ket = $ket;
       $model->id_perusahaan = $id_perusahaan;
       $model->id_user_ukm = $this->id_superadmin;
@@ -130,11 +137,15 @@ class Akta extends Controller
       //save
       if ($model->save())
       {
+        if(!empty($file_akta))
+        {
           if ($file_akta->move(public_path('fileAkta'), $name_file)) {
               return redirect('akta')->with('message_success','Berhasil update akta');
           }else{
               return redirect('akta')->with('message_error','Gagal update akta');
           }
+        }
+
           return redirect('akta')->with('message_success','Berhasil mengubah akta');
       }
     return redirect('unggah-ijin')->with('message_error','Terjadi kesalangan, isi dengan benar');
