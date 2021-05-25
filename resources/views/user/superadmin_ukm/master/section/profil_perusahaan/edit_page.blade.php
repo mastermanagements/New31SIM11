@@ -24,6 +24,7 @@
                <div class="box box-primary">
                    <div class="box-header with-border">
                        <h3 class="box-title">Formulir Usaha</h3>
+                       <h5 class="pull-right"><a href="{{ url('pengaturan-perusahaan')}}">Kembali ke Halaman utama</a></h5>
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
@@ -34,66 +35,123 @@
                            @elseif(!empty(session('message_fail')))
                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
+                        <div class="col-md-6">
                            <div class="form-group">
-                               <label for="exampleInputEmail1">Nama Usaha</label>
+                               <label for="exampleInputEmail1">Nama Usaha</label>&nbsp;<strong style="color: red">*</strong>
                                <input type="text" class="form-control" placeholder="Masukan Nama Usaha Anda" name="nm_usaha" value="{{ $usaha->nm_usaha }}" required>
-                               <small style="color: red">* Tidak boleh kosong</small>
+
                            </div>
                                <div class="form-group">
-                               <label for="exampleInputEmail1">Singkatan Usaha</label>
+                               <label for="exampleInputEmail1">Singkatan Usaha</label>&nbsp;<strong style="color: red">*</strong>
                                <input type="text" class="form-control" placeholder="Masukan Singkatan Usaha Anda" name="singkatan_usaha" value="{{ $usaha->singkatan_usaha }}" required>
-                               <small style="color: red">* Tidak boleh kosong</small>
+
                            </div>
                            <div class="form-group">
-                               <label for="exampleInputPassword1">Alamat</label>
+                               <label for="exampleInputPassword1">Alamat</label>&nbsp;<strong style="color: red">*</strong>
                                <textarea class="form-control" placeholder="Masukan alaman usaha anda" name="alamat" required>{{ $usaha->alamat }}</textarea>
-                               <small style="color: red">* Tidak boleh kosong</small>
+
                            </div>
 
                            <div class="form-group">
-                               <label for="exampleInputFile">Provinsi</label>
+                               <label for="exampleInputFile">Provinsi</label>&nbsp;<strong style="color: red">*</strong>
                                <select class="form-control select2" style="width: 100%;" name="id_provinsi" required>
-                                   <option>Pilih Provinsi</option>
                                    @foreach($provinsi as $value)
-                                   <option value="{{ $value->id }}">{{ $value->nama_provinsi }}</option>
+                                   <option value="{{ $value->id }}" @if($usaha->id_prov== $value->id) selected @endif>{{ $value->nama_provinsi }}</option>
                                    @endforeach
                                </select>
-                               <small style="color: red">* Tidak boleh kosong</small>
+
                            </div>
+
                            <div class="form-group">
-                               <label for="exampleInputFile">Kabupaten</label>
-                               <select class="form-control select2" style="width: 100%;" name="id_kabupaten" required>
-                                   <option>Pilih Kabupaten</option>
-                               </select>
-                               <small style="color: red">* Tidak boleh kosong</small>
+                             <label for="exampleInputFile">Provinsi</label>&nbsp;<strong style="color: red">*</strong>
+                             <select class="form-control select2" style="width: 100%;" name="id_kabupaten" required>
+                                 @foreach($kabupaten as $value)
+                                 <option value="{{ $value->id }}" @if($usaha->id_kab== $value->id) selected @endif>{{ $value->nama_kabupaten}}</option>
+                                 @endforeach
+                             </select>
+
                            </div>
                            <div class="form-group">
                                <label for="exampleInputEmail1">Kode Pos</label>
-                               <input type="text" class="form-control" placeholder="Masukan Kode pos" name="kd_pos" value="{{ $usaha->kode_pos }}" required>
-                               <small style="color: red">* Tidak boleh kosong</small>
+                               <input type="text" class="form-control" placeholder="Masukan Kode pos" name="kd_pos" value="{{ $usaha->kode_pos }}">
+
                            </div>
                            <div class="form-group">
                                <label for="exampleInputEmail1">Nomor Telepon</label>
                                <input type="text" class="form-control" name="telp" {{ $usaha->telp }} placeholder="Masukan Nomor Telepon Anda">
-                               <small style="color: orange">* Isi Jika Ada</small>
+
                            </div>
                            <div class="form-group">
-                               <label for="exampleInputEmail1">Nomor Handphose</label>
-                               <input type="text" class="form-control" name="hp" {{ $usaha->hp }} placeholder="Masukan Nomor Handphone Anda">
-                               <small style="color: orange">* Isi Jika Ada</small>
+                               <label for="exampleInputEmail1">Nomor Handphone</label>&nbsp;<strong style="color: red">*</strong>
+                               <input type="text" class="form-control" name="hp" value="{{ $usaha->hp }}" placeholder="Masukan Nomor Handphone Anda">
+
                            </div> <div class="form-group">
-                               <label for="exampleInputEmail1">Nomor Whatshap</label>
-                               <input type="text" class="form-control" name="wa" {{ $usaha->wa }} placeholder="Masukan Nomor Whatshap Anda">
-                               <small style="color: orange">* Isi Jika Ada</small>
+                               <label for="exampleInputEmail1">Nomor Whatshap</label>&nbsp;<strong style="color: red">*</strong>
+                               <input type="text" class="form-control" name="wa" value="{{ $usaha->wa }}" placeholder="Masukan Nomor Whatshap Anda">
+
                            </div>
                            <div class="form-group">
                                <label for="exampleInputEmail1">Nomor Telegram</label>
-                               <input type="text" class="form-control" name="teleg" {{ $usaha->teleg }} placeholder="Masukan Telegram Anda">
-                               <small style="color: orange">* Isi Jika Ada</small>
+                               <input type="text" class="form-control" name="teleg" value="{{ $usaha->teleg}}" placeholder="Masukan Telegram Anda">
+
+                           </div>
+                           <div class="form-group">
+                               <label for="exampleInputEmail1">Fans Page FB</label>
+                               <input type="text" class="form-control" name="fp" placeholder="Masukan fans page Perusahaan" value="{{ $usaha->fp }}">
                            </div>
 
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="exampleInputEmail1">Twitter</label>
+                              <input type="text" class="form-control" name="twitter" placeholder="Masukan twitter Perusahaan" value="{{ $usaha->twitter }}">
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputEmail1">IG</label>
+                              <input type="text" class="form-control" name="ig" placeholder="Masukan Instagram Perusahaan" value="{{ $usaha->ig }}">
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputEmail1">Tiktok</label>
+                              <input type="text" class="form-control" name="tiktok" placeholder="Masukan tiktok Perusahaan" value="{{ $usaha->tiktok }}">
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputEmail1">Email</label>&nbsp;<strong style="color: red">*</strong>
+
+                              <input type="text" class="form-control" name="email" placeholder="Masukan Email Perusahaan" required value="{{ $usaha->email }}" >
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputEmail1">Website</label>
+                              <input type="text" class="form-control" name="web" placeholder="Masukan Nama Website anda" value="{{ $usaha->web}}">
+                          </div>
+                          <div class="form-group">
+                             <label for="exampleInputEmail1">Badan Usaha</label>&nbsp;<strong style="color: red">*</strong>
+                             <div class="form-group">
+                               <label>
+                                 <input type="radio"  name="badan_usaha" @if($usaha->badan_usaha==0) checked @endif class="minimal" value="0" required>&nbsp;PT&nbsp;
+                               </label>
+                               <label>
+                                 <input type="radio" name="badan_usaha" @if($usaha->badan_usaha==1) checked @endif class="minimal" value="1">&nbsp;CV&nbsp;
+                               </label>
+                               <label>
+                                 <input type="radio" name="badan_usaha"  @if($usaha->badan_usaha==2) checked @endif class="minimal" value="2">&nbsp;UD&nbsp;
+                               </label>
+                               <label>
+                                 <input type="radio" name="badan_usaha"  @if($usaha->badan_usaha==3) checked @endif class="minimal" value="3">&nbsp;Firma&nbsp;
+                               </label>
+                               <label>
+                                 <input type="radio" name="badan_usaha"  @if($usaha->badan_usaha==4) checked @endif class="minimal" value="4">&nbsp;Koperasi&nbsp;
+                               </label>
+                               <label>
+                                 <input type="radio" name="badan_usaha"  @if($usaha->badan_usaha==5) checked @endif class="minimal" value="5">&nbsp;Yayasan&nbsp;
+                               </label>
+                               <label>
+                                 <input type="radio" name="badan_usaha"  @if($usaha->badan_usaha==6) checked @endif class="minimal" value="6">&nbsp;Belum ada&nbsp;
+                               </label><br>
+                             </div>
+                          </div>
                            <div class="form-group">
-                               <label for="exampleInputEmail1">Jenis Usaha</label>
+                               <label for="exampleInputEmail1">Jenis Usaha</label>&nbsp;<strong style="color: red">*</strong>
                                <div class="form-group">
                                    <label>
                                        <input type="radio"  name="jenis_usaha" @if($usaha->jenis_usaha==0) checked @endif class="minimal" value="0" required>
@@ -116,28 +174,53 @@
                                        Pertanian
                                    </label>
                                </div>
-                               <small style="color: red">* Tidak Boleh Kosong</small>
-                           </div>
 
+                           </div>
                            <div class="form-group">
-                               <label for="exampleInputEmail1">Email</label>
-                               <input type="email" class="form-control" name="email" placeholder="Masukan email Anda" value="{{ $usaha->email }}">
-                               <small style="color: orange">* Isi Jika Ada</small>
+                                 <label for="exampleInputEmail1">Status Kantor</label>&nbsp;<strong style="color: red">*</strong>
+                                 <div class="form-group">
+                                     <label>
+                                         <input type="radio"  name="jenis_kantor" @if($usaha->jenis_kantor==0) checked @endif class="minimal" value="0" required>
+                                         Pusat
+                                     </label>
+                                     <label>
+                                         <input type="radio" name="jenis_kantor" @if($usaha->jenis_kantor==1) checked @endif class="minimal" value="0">
+                                         Cabang
+                                     </label>
+                                 </div>
                            </div>
 
-                       <div class="form-group">
-                           <label for="exampleInputEmail1">Website</label>
-                           <input type="text" class="form-control" name="web" placeholder="Masukan Nama Website anda"  value="{{ $usaha->web }}" required>
-                           <small style="color: orange">* isi jika ada</small>
+                             <div class="form-group">
+                                 <label for="exampleInputEmail1">Bidang Usaha</label>&nbsp;<strong style="color: red">*</strong>
+                                 <input type="text" class="form-control" name="bidang_usaha"  required value="{{ $usaha->bidang_usaha }}">
+                             </div>
+                             <div class="form-group">
+                                 <label for="exampleInputEmail1">Spesifikasi Usaha</label>&nbsp;<strong style="color: red">*</strong>
+                                 <input type="text" class="form-control" name="spesifik_usaha" required value="{{ $usaha->spesifik_usaha }}">
+                             </div>
+                             <div class="form-group">
+                               <label for="exampleInputEmail1">Jenis Jasa</label>
+                               <div class="form-group">
+                                <label>
+                                   <input type="radio"  name="jenis_jasa" @if($usaha->jenis_jasa==0) checked @endif class="minimal" value="0"> &nbsp;Jasa Murni&nbsp;
+                                 </label>
+                                 <label>
+                                   <input type="radio" name="jenis_jasa" @if($usaha->jenis_jasa==1) checked @endif class="minimal" value="1">&nbsp;Jasa & barang&nbsp;
+                                 </label><br>
+                                 <strong style="color: green">*Jasa murni, misal: notaris, desain grafis. Jasa & barang misalnya service komputer, jasa laundry, dll.</strong>
+                               </div>
+                             </div>
+                           <div class="form-group">
+                               <label for="exampleInputFile">Logo Usaha</label>
+                               <input type="file" id="exampleInputFile" name="logo" value="{{ $usaha->logo }}">
+
+                           </div>
                        </div>
-                       <!-- /.box-body -->
-                       <div class="form-group">
-                           <label for="exampleInputFile">Logo Usaha</label>
-                           <input type="file" id="exampleInputFile" name="logo" required>
-                           <input type="hidden" name="logo_lama"  value="{{ $usaha->logo }}">
-                           <p class="help-block" style="color:orange">* isi jika ada</p>
-                       </div>
-                       </div>
+                     </div>
+                      <!-- /.box-body -->
+                      <div class="box-footer">
+                      <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                      </div>
                        <div class="box-footer">
                            {{csrf_field()}}
                            <input type="hidden" name="_method" value="put"/>

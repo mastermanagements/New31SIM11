@@ -26,6 +26,7 @@
                <div class="box box-primary">
                    <div class="box-header with-border">
                        <h3 class="box-title">Formulir Misi</h3>
+                       <h5 class="pull-right"><a href="{{ url('pengaturan-perusahaan')}}">Kembali ke Halaman utama</a></h5>
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
@@ -40,7 +41,7 @@
                            <div class="form-group">
                                <label for="exampleInputEmail1">Usaha Anda</label>
                                <div class="form-group">
-                                   @foreach($usaha as $usaha)
+                                   @forelse($usaha as $usaha)
                                    <label>
                                        <input type="radio"  name="id_perusahaan" class="minimal" value="{{ $usaha->id}}" required>
                                        {{ $usaha->nm_usaha }}
@@ -53,7 +54,9 @@
 
                                        @endif
                                    </label>
-                                   @endforeach
+                                   @empty
+                                    <label style="color: red">Isi dulu data perusahaan Anda! <a href="{{ url('tambah-usaha') }}">Klik di sini</a></label>
+                                   @endforelse
                                    <p></p>
                                <small style="color: red">* Tidak Boleh Kosong</small>
                            </div>
@@ -97,7 +100,7 @@
 
         window.onload = function() {
             CKEDITOR.replace( 'misi',{
-                height: 300
+                height: 200
             } );
         };
 

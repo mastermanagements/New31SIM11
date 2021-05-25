@@ -14,13 +14,13 @@
                 <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Nama Ijin</th>
-                    <th>No. Ijin</th>
+                    <th>Nama Izin</th>
+                    <th>No. Izin</th>
                     <th>Berlaku</th>
                     <th>Kualifikasi</th>
                     <th>Instansi pemberi</th>
                     <th>Klasifikasi</th>
-                    <th>File UI</th>
+                    <th>Scan File</th>
                     <th>Aksi</th>
                 </tr>
                 </thead>
@@ -35,10 +35,10 @@
                     <td>{{ $value->kualifikasi }}</td>
                     <td>{{ $value->instansi_pemberi }}</td>
                     <td>{{ $value->klasifikasi }}</td>
-                    <td><a href="{{ asset('ijinUsaha/'.$value->file_iu) }}">{{ $value->file_iu }}</a></td>
+                    <td><a target="_blank" href="{{ asset('ijinUsaha/'.$value->file_iu) }}">{{ $value->file_iu }}</a></td>
                     <td>
-                        <form action="{{ url('delete-rek-ukm/'.$value->id) }}" method="post">
-                            <a target="_blank" href="{{ url('rek-ukm/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                        <form action="{{ url('dnggah-ijin-delete/'.$value->id) }}" method="post">
+                            <a href="{{ url('unggah-ijin/'.$value->id) }}" class="btn btn-warning" title="edit"><i class="fa fa-edit"></i></a>
                             <p></p>
                             {{ csrf_field() }}
                             <input type="hidden" name="_method" value="put"/>

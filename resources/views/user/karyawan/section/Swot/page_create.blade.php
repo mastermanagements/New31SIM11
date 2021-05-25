@@ -30,14 +30,14 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Tambah SWOT</h3>
+                        <h5 class="pull-right"><a href="{{ url('Swot')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" action="{{ url('store-swot') }}" method="post">
                         <div class="box-body">
                           <div class="form-group">
-                              <label>Tahun</label>
-
+                              <label>Tahun</label>&nbsp;<strong style="color: red">*</strong>
                               <div class="input-group date">
                                   <div class="input-group-addon">
                                       <i class="fa fa-calendar"></i>
@@ -45,10 +45,9 @@
                                   <input type="text" class="form-control pull-right" id="datepicker"  name="tahun_swot" required>
                               </div>
                               <!-- /.input group -->
-                              <small style="color: red">* Tidak boleh kosong</small>
                           </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Kategori SWOT</label>
+                                <label for="exampleInputEmail1">Kategori SWOT</label>&nbsp;<strong style="color: red">*</strong>
                                 <div class="form-group">
                                     @foreach($jenis_swot as $value)
                                         <label>
@@ -58,19 +57,18 @@
                                         <br>
                                     @endforeach
                                     <p></p>
-                                    <small style="color: red">* Tidak Boleh Kosong</small>
                              </div>
                             </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Isi (SWOT) anda</label>
-                                    <textarea class="form-control" placeholder="Masukan SWOT usaha anda" name="isi" id="isi" required>
-
+                                    <label for="exampleInputEmail1">Isi (SWOT) anda</label>&nbsp;<strong style="color: red">*</strong>
+                                      <textarea class="form-control" placeholder="Masukan SWOT usaha anda" name="isi" id="isi" required>
                                     </textarea>
-                                    <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
                         </div>
                         <!-- /.box-body -->
-
+                        <div class="box-footer">
+                          <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                        </div>
                         <div class="box-footer">
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-primary">Submit</button>

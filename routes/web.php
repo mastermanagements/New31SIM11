@@ -79,6 +79,10 @@ Route::get('unggah-akta', 'Superadmin_ukm\Akta@create');
 
 Route::post('akta-visi', 'Superadmin_ukm\Akta@store');
 
+Route::get('ubah-akta/{id}', 'Superadmin_ukm\Akta@edit');
+
+Route::put('update-akta/{id}','Superadmin_ukm\Akta@update');
+
 Route::get('izin-usaha', 'Superadmin_ukm\Superadmin_UKM@izin_usaha');
 
 Route::get('unggah-ijin', 'Superadmin_ukm\Ijin_usaha@create');

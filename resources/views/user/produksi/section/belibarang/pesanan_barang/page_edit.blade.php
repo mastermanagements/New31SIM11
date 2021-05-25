@@ -65,7 +65,7 @@
                                                     <input type="number" class="form-control" name="diskon" placeholder="diskon" value="0" required>
                                                 </td>
                                                 <td>
-                                                    <input type="text" class="form-control" name="jumlah_total"  disabled required>
+                                                    <input type="number" id="rupiah2" class="form-control" name="jumlah_total"  disabled required>
                                                     <input type="hidden" class="form-control" name="redirect" value="true">
                                                 </td>
                                             </tr>
