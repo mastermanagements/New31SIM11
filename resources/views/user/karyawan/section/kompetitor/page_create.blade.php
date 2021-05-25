@@ -22,107 +22,103 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Tambah Data Kompetitor</h3>
+                        <h5 class="pull-right"><a href="{{ url('Kompetitor')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" action="{{ url('store-kompetitor') }}" method="post" enctype="multipart/form-data">
-                        <div class="box-body">
-
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Nama Kompetitor</label>
+                    <div class="box-body">
+                      <div class="col-md-4">
+                          <div class="form-group">
+                                <label for="exampleInputEmail1">Nama Kompetitor</label>&nbsp;<strong style="color: red">*</strong>
                                 <input type="text" name="nm_kompetitor" class="form-control" placeholder="Nama Kompetitor" required/>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+                          </div>
+							            <div class="form-group">
+                                <label for="exampleInputEmail1">Badan Hukum</label>&nbsp;<strong style="color: red">*</strong>
+                                <input type="text" name="badan_hukum" class="form-control" placeholder="Badan Hukum" required/>
                             </div>
-							<div class="form-group">
-                                <label for="exampleInputEmail1">Badan Hukum</label>
-                                <input type="text" name="badan_hukum" class="form-control" placeholder="Nama Kompetitor" required/>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
-                            </div>
-							<div class="form-group">
-                                <label for="exampleInputEmail1">Bidang Usaha</label>
-                                <input type="text" name="bidang_usaha" class="form-control" placeholder="Nama Kompetitor" required/>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
-                            </div>
-							<div class="form-group">
-                                <label for="exampleInputEmail1">Alamat</label>
-								<textarea name="alamat" class="form-control" id="alamat_k" required></textarea>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
-                            </div>
-							<div class="form-group">
-                                <label for="exampleInputFile">Provinsi</label>
+							            <div class="form-group">
+                                <label for="exampleInputEmail1">Bidang Usaha</label>&nbsp;<strong style="color: red">*</strong>
+                                <input type="text" name="bidang_usaha" class="form-control" placeholder="Bidang Usaha" required/>
+                          </div>
+							            <div class="form-group">
+                                <label for="exampleInputEmail1">Alamat</label>&nbsp;<strong style="color: red">*</strong>
+								                 <textarea name="alamat" class="form-control" id="alamat_k" required></textarea>
+                          </div>
+
+							                <div class="form-group">
+                                <label for="exampleInputFile">Provinsi</label>&nbsp;<strong style="color: red">*</strong>
                                    <select class="form-control select2" style="width: 100%;" name="id_provinsi" required>
                                         <option>Pilih Provinsi</option>
                                          @foreach($provinsi as $value)
                                            <option value="{{ $value->id }}">{{ $value->nama_provinsi }}</option>
                                          @endforeach
                                     </select>
-                                <small style="color: red">* Tidak boleh kosong</small>
+
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputFile">Kabupaten</label>
+                                <label for="exampleInputFile">Kabupaten</label>&nbsp;<strong style="color: red">*</strong>
                                     <select class="form-control select2" style="width: 100%;" name="id_kabupaten" required>
                                         <option>Pilih Kabupaten</option>
                                     </select>
-                                <small style="color: red">* Tidak boleh kosong</small>
                             </div>
+                          </div>
+                          <div class="col-md-4">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Kontak Person</label>
                                 <input type="text" name="cp" class="form-control" placeholder="Nomor Kontak Person" />
-                                <small style="color: orange">* Isi Jika ada</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">No. Telepon</label>
                                 <input type="text" name="telp" class="form-control" placeholder="No. Telepon Supplier" />
-                                <small style="color: orange">* Isi Jika ada</small>
                             </div>
+
+
                             <div class="form-group">
                                 <label for="exampleInputEmail1">No. Handphone </label>
                                 <input type="text" name="hp" class="form-control" placeholder="No. Handphone Supplier" />
-                                <small style="color: orange">* Isi Jika ada</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">No. WA</label>
                                 <input type="text" name="wa" class="form-control" placeholder="No. Whatsapp" />
-                                <small style="color: orange">* Isi Jika ada</small>
                             </div>
-							<div class="form-group">
+							               <div class="form-group">
                                 <label for="exampleInputEmail1">No. Telegram</label>
                                 <input type="text" name="teleg" class="form-control" placeholder="No. Telegram" />
-                                <small style="color: orange">* Isi Jika ada</small>
                             </div>
-							<div class="form-group">
+							              <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
                                 <input type="text" name="email" class="form-control" placeholder="Email" />
-                                <small style="color: orange">* Isi Jika ada</small>
                             </div>
-							<div class="form-group">
+                         </div>
+                         <div class="col-md-4">
+							              <div class="form-group">
                                 <label for="exampleInputEmail1">Web</label>
                                 <input type="text" name="web" class="form-control" placeholder="Web" />
-                                <small style="color: orange">* Isi Jika ada</small>
                             </div>
-							<div class="form-group">
+							              <div class="form-group">
                                 <label for="exampleInputEmail1">Akun FB</label>
                                 <input type="text" name="akunfb" class="form-control" placeholder="FB" />
-                                <small style="color: orange">* Isi Jika ada</small>
                             </div>
-							<div class="form-group">
+							              <div class="form-group">
                                 <label for="exampleInputEmail1">Fans Page</label>
                                 <input type="text" name="fanpages" class="form-control" placeholder="Fans Page" />
-                                <small style="color: orange">* Isi Jika ada</small>
                             </div>
-							<div class="form-group">
+							              <div class="form-group">
                                 <label for="exampleInputEmail1">Twitter</label>
                                 <input type="text" name="twitter" class="form-control" placeholder="Twitter" />
-                                <small style="color: orange">* Isi Jika ada</small>
                             </div>
-							<div class="form-group">
+							              <div class="form-group">
                                 <label for="exampleInputEmail1">IG</label>
                                 <input type="text" name="ig" class="form-control" placeholder="Instagram" />
-                                <small style="color: orange">* Isi Jika ada</small>
                             </div>
+                          </div>
                         </div>
                         <!-- /.box-body -->
 
+                        <div class="box-footer">
+                          <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                        </div>
                         <div class="box-footer">
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-primary">Submit</button>

@@ -40,7 +40,7 @@
                         <div class="col-md-6">
                             <div class="box @if($value->kategori_swot=="strenght") box-primary @elseif($value->kategori_swot=="weakness") box-warning @elseif($value->kategori_swot=="opportunity") box-success @else  box-danger  @endif collapsed-box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><b>{{ $value->kategori_swot }}</b></h3>
+                                    <h3 class="box-title">{{ $value->kategori_swot }}</h3>
 
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>

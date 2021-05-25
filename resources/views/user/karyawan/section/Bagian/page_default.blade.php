@@ -1,5 +1,7 @@
 @extends('user.karyawan.master_user')
-
+@section('skin')
+    <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+@stop
 @section('master_content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -224,6 +226,7 @@
 @stop
 
 @section('plugins')
+<script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             var ids;

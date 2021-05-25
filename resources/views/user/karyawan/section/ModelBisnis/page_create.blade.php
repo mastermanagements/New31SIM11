@@ -27,35 +27,36 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Tambah Bisnis Model Canvas</h3>
+                        <h5 class="pull-right"><a href="{{ url('Model-Bisnis')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" action="{{ url('store-mb') }}" method="post">
                       <div class="box-body">
                           <div class="form-group">
-                            <label for="exampleInputFile">Elemen Model Bisnis</label>
+                            <label for="exampleInputFile">Elemen Model Bisnis</label>&nbsp;<strong style="color: red">*</strong>
                               <select class="form-control select2" style="width: 100%;" name="id_jenis_mb" required>
                                 <option>Pilih Elemen Model Bisnis</option>
                                   @foreach($jenis_mb as $value)
                                     <option value="{{ $value->id }}">{{ $value->nama_mb }}</option>
                                   @endforeach
                               </select>
-                              <small style="color: red">* Tidak boleh kosong</small>
                           </div>
                           <div class="form-group">
-                              <label for="exampleInputFile">Sub Model Bisnis</label>
+                              <label for="exampleInputFile">Sub Model Bisnis</label>&nbsp;<strong style="color: red">*</strong>
                                 <select class="form-control select2" style="width: 100%;" name="id_sub_mb" required>
                                   <option>Pilih Sub Model Bisnis</option>
                                 </select>
-                                <small style="color: red">* Tidak boleh kosong</small>
                           </div>
                           <div class="form-group">
-                              <label for="exampleInputEmail1">Isi</label>
+                              <label for="exampleInputEmail1">Isi</label>&nbsp;<strong style="color: red">*</strong>
                                   <textarea class="form-control" placeholder="Masukan isi uraian model bisnis" name="isi" id="isi" required></textarea>
-                                  <small style="color: red">* Tidak boleh kosong</small>
                           </div>
                       </div>
                       <!-- /.box-body -->
+                      <div class="box-footer">
+                        <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                      </div>
                       <div class="box-footer">
                           {{ csrf_field() }}
                           <button type="submit" class="btn btn-primary">Submit</button>

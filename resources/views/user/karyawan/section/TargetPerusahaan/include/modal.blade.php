@@ -10,52 +10,50 @@
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Formulir Ubah Target Jangka Panjang Perusahaan</h4>
                 </div>
-                <div class="modal-body">
+      <div class="modal-body">
+        <div class="col-md-6">
 						<div class="form-group">
-							<label for="exampleInputEmail1">Jangka Waktu </label>
+							<label for="exampleInputEmail1">Jangka Waktu </label>&nbsp;<strong style="color: red">*</strong>
 							<input type="number" max="50" class="form-control"  name="periode_ubah" required>
-							<small style="color: red" id="notify"></small>
 						</div>
             <div class="form-group">
-                <label>Tahun Mulai</label>
+                <label>Tahun Mulai</label>&nbsp;<strong style="color: red">*</strong>
                 <div class="input-group date">
                 <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                 </div>
                 <input type="text" class="form-control pull-right"  name="thn_mulai_ubah" id="datepicker" required>
                 </div>
-                <!-- /.input group -->
-              <small style="color: red">* Tidak Boleh Kosong</small>
             </div>
             <div class="form-group">
-                <label>Tahun Selesai</label>
+                <label>Tahun Selesai</label>&nbsp;<strong style="color: red">*</strong>
                 <div class="input-group date">
                 <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                 </div>
                 <input type="text" class="form-control pull-right"  name="thn_selesai_ubah" required>
                 </div>
-                <!-- /.input group -->
-              <small style="color: red">* Tidak Boleh Kosong</small>
             </div>
+          </div>
+          <div class="col-md-6">
 						<div class="form-group">
-							<label for="exampleInputEmail1">Target Jangka Panjang</label>
+							<label for="exampleInputEmail1">Target Jangka Panjang</label>&nbsp;<strong style="color: red">*</strong>
 							<textarea class="form-control"  name="target_puncak_ke" id="target_puncak_ubah" required></textarea>
-							<small style="color: red" id="notify"></small>
 						</div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Jumlah Target</label>
+              <label for="exampleInputEmail1">Jumlah Target</label>&nbsp;<strong style="color: red">*</strong>
               <input type="number" class="form-control"  name="jumlah_target_ubah" required>
-              <small style="color: red" id="notify"></small>
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Satuan Target</label>
+              <label for="exampleInputEmail1">Satuan Target</label>&nbsp;<strong style="color: red">*</strong>
               <input type="text" class="form-control"  name="satuan_target_ubah" required>
-              <small style="color: red" id="notify"></small>
               <input type="hidden" name="id_tjp_ubah">
             </div>
-
-                </div>
+          </div>
+      </div>
+          <div class="box-footer">
+            <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+          </div>
                 <div class="modal-footer">
                     {{ csrf_field() }}
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
@@ -79,20 +77,19 @@
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Formulir Ubah Target Eksekutif Perusahaan</h4>
                 </div>
-          <div class="modal-body">
+        <div class="modal-body">
+          <div class="col-md-6">
             <div class="form-group">
-                <label>Tahun </label>
+                <label>Tahun </label>&nbsp;<strong style="color: red">*</strong>
                 <div class="input-group date">
                 <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                 </div>
                 <input type="text" class="form-control pull-right"  name="tahun_ubah" required >
                 </div>
-                <!-- /.input group -->
-              <small style="color: red">* Tidak Boleh Kosong</small>
             </div>
             <div class="form-group">
-                <label for="exampleInputFile">Departemen</label>
+                <label for="exampleInputFile">Departemen</label>&nbsp;<strong style="color: red">*</strong>
                     <select class="form-control select2" style="width: 100%;" name="id_bagian_p_ubah" required>
                       <option value="0">Pilih Departemen</option>
                       @foreach($bagian_p as $value)
@@ -105,7 +102,7 @@
                     </select>
               </div>
               <div class="form-group">
-                  <label for="exampleInputFile">Jabatan</label>
+                  <label for="exampleInputFile">Jabatan</label>&nbsp;<strong style="color: red">*</strong>
                       <select class="form-control select2" style="width: 100%;" name="id_jabatan_p_ubah" required>
                         <option value="0">Pilih Jabatan</option>
                         @foreach($jabatan_p as $jabatan)
@@ -118,24 +115,27 @@
   												  @endif
   											@endforeach
                       </select>
-                </div>
+              </div>
+          </div>
+          <div class="col-md-6">
 						<div class="form-group">
-							<label for="exampleInputEmail1">Target Eksekutif</label>
+							<label for="exampleInputEmail1">Target Eksekutif</label>&nbsp;<strong style="color: red">*</strong>
 							<textarea class="form-control"  name="target_eksekutif_ubah" required></textarea>
-							<small style="color: red" id="notify"></small>
 						</div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Jumlah Target</label>
+              <label for="exampleInputEmail1">Jumlah Target</label>&nbsp;<strong style="color: red">*</strong>
               <input type="number" class="form-control"  name="jumlah_target_ubah" required>
-              <small style="color: red" id="notify"></small>
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Satuan Target</label>
+              <label for="exampleInputEmail1">Satuan Target</label>&nbsp;<strong style="color: red">*</strong>
               <input type="text" class="form-control"  name="satuan_target_ubah" required>
-              <small style="color: red" id="notify"></small>
               <input type="hidden" name="id_teks_ubah">
             </div>
         </div>
+      </div>
+      <div class="box-footer">
+        <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+      </div>
         <div class="modal-footer">
             {{ csrf_field() }}
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
@@ -159,9 +159,10 @@
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Formulir Ubah Target Manager Perusahaan</h4>
                 </div>
-          <div class="modal-body">
+        <div class="modal-body">
+          <div class="col-md-6">
             <div class="form-group">
-                <label for="exampleInputFile">Target Eksekutif</label>
+                <label for="exampleInputFile">Target Eksekutif</label>&nbsp;<strong style="color: red">*</strong>
                     <select class="form-control select2" style="width: 100%;" name="id_target_eks_ubah" required>
                       <option value="0">Pilih Target Eksekutif</option>
                       @foreach($target_eks as $value)
@@ -177,61 +178,64 @@
 											@endforeach
                     </select>
               </div>
-            <div class="form-group">
-                <label>Tahun </label>
-                <div class="input-group date">
-                <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                </div>
-                <input type="text" class="form-control pull-right"  name="tahun_ubah" required>
-                </div>
-                <!-- /.input group -->
-              <small style="color: red">* Tidak Boleh Kosong</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputFile">Departemen</label>
-                    <select class="form-control select2" style="width: 100%;" name="id_bagian_p_ubah" required>
-                      <option value="0">Pilih Departemen</option>
-                      @foreach($bagian_p as $value)
-												  @if(!empty($target_man->id_bagian_p))
-													<option value="{{ $value->id }}" {{ $value->id == $target_man->id_bagian_p ? 'selected' : '' }}>{{ $value->nm_bagian }}</option>
-												  @else
-													<option value="{{ $value->id }}"}}>{{ $value->nm_bagian }}</option>
-												  @endif
-											@endforeach
-                    </select>
+              <div class="form-group">
+                  <label>Tahun </label>&nbsp;<strong style="color: red">*</strong>
+                  <div class="input-group date">
+                  <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right"  name="tahun_ubah" required>
+                  </div>
               </div>
               <div class="form-group">
-                  <label for="exampleInputFile">Jabatan</label>
-                      <select class="form-control select2" style="width: 100%;" name="id_jabatan_p_ubah" required>
-                        <option value="0">Pilih Jabatan</option>
-                        @foreach($jabatan_p as $jabatan)
-  												  @if(!empty($target_man->id_jabatan_p))
-  													<option value="{{ $jabatan->id }}" {{ $jabatan->id == $target_man->id_jabatan_p ? 'selected' : '' }}>{{ $value->nm_jabatan }}</option>
+                  <label for="exampleInputFile">Departemen</label>&nbsp;<strong style="color: red">*</strong>
+                      <select class="form-control select2" style="width: 100%;" name="id_bagian_p_ubah" required>
+                        <option value="0">Pilih Departemen</option>
+                        @foreach($bagian_p as $value)
+  												  @if(!empty($target_man->id_bagian_p))
+  													<option value="{{ $value->id }}" {{ $value->id == $target_man->id_bagian_p ? 'selected' : '' }}>{{ $value->nm_bagian }}</option>
   												  @else
-                              @if($jabatan->level_jabatan == 1)
-  													<option value="{{ $jabatan->id }}"}}>{{ $jabatan->nm_jabatan }}</option>
-                              @endif
+  													<option value="{{ $value->id }}"}}>{{ $value->nm_bagian }}</option>
   												  @endif
   											@endforeach
                       </select>
                 </div>
-						<div class="form-group">
-							<label for="exampleInputEmail1">Target Manager</label>
-							<textarea class="form-control"  name="target_manager_ubah" required></textarea>
-							<small style="color: red" id="notify"></small>
-						</div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Jumlah Target</label>
-              <input type="number" class="form-control"  name="jumlah_target_ubah" required>
-              <small style="color: red" id="notify"></small>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Satuan Target</label>
-              <input type="text" class="form-control"  name="satuan_target_ubah" required>
-              <small style="color: red" id="notify"></small>
-              <input type="hidden" name="id_tman_ubah">
-            </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputFile">Jabatan</label>&nbsp;<strong style="color: red">*</strong>
+                        <select class="form-control select2" style="width: 100%;" name="id_jabatan_p_ubah" required>
+                          <option value="0">Pilih Jabatan</option>
+                          @foreach($jabatan_p as $jabatan)
+    												  @if(!empty($target_man->id_jabatan_p))
+    													<option value="{{ $jabatan->id }}" {{ $jabatan->id == $target_man->id_jabatan_p ? 'selected' : '' }}>{{ $value->nm_jabatan }}</option>
+    												  @else
+                                @if($jabatan->level_jabatan == 1)
+    													<option value="{{ $jabatan->id }}"}}>{{ $jabatan->nm_jabatan }}</option>
+                                @endif
+    												  @endif
+    											@endforeach
+                        </select>
+                  </div>
+      						<div class="form-group">
+      							<label for="exampleInputEmail1">Target Manager</label>&nbsp;<strong style="color: red">*</strong>
+      							<textarea class="form-control"  name="target_manager_ubah" required></textarea>
+
+      						</div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Jumlah Target</label>&nbsp;<strong style="color: red">*</strong>
+                    <input type="number" class="form-control"  name="jumlah_target_ubah" required>
+
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Satuan Target</label>&nbsp;<strong style="color: red">*</strong>
+                    <input type="text" class="form-control"  name="satuan_target_ubah" required>
+                    <input type="hidden" name="id_tman_ubah">
+                  </div>
+              </div>
+        </div>
+        <div class="box-footer">
+          <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
         </div>
         <div class="modal-footer">
             {{ csrf_field() }}
@@ -256,9 +260,11 @@
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Formulir Ubah Target Supervisor Perusahaan</h4>
                 </div>
-          <div class="modal-body">
+        <div class="modal-body">
+
+        <div class="col-md-6">
             <div class="form-group">
-                <label for="exampleInputFile">Target manager</label>
+                <label for="exampleInputFile">Target manager</label>&nbsp;<strong style="color: red">*</strong>
                     <select class="form-control select2" style="width: 100%;" name="id_target_man_ubah" required>
                       <option value="0">Pilih Target Manager</option>
                       @foreach($target_man as $value)
@@ -274,32 +280,32 @@
 											@endforeach
                     </select>
               </div>
-            <div class="form-group">
-                <label>Tahun </label>
-                <div class="input-group date">
-                <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                </div>
-                <input type="text" class="form-control pull-right"  name="tahun_ubah" required required>
-                </div>
-                <!-- /.input group -->
-              <small style="color: red">* Tidak Boleh Kosong</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputFile">Divisi</label>
-                    <select class="form-control select2" style="width: 100%;" name="id_divisi_p_ubah" required>
-                      <option value="0">Pilih Divisi</option>
-                      @foreach($divisi_p as $value)
-												  @if(!empty($target_sup->id_divisi_p))
-													<option value="{{ $value->id }}" {{ $value->id == $target_sup->id_divisi_p ? 'selected' : '' }}>{{ $value->nm_devisi }}</option>
-												  @else
-													<option value="{{ $value->id }}"}}>{{ $value->nm_devisi }}</option>
-												  @endif
-											@endforeach
-                    </select>
+              <div class="form-group">
+                  <label>Tahun </label>&nbsp;<strong style="color: red">*</strong>
+                  <div class="input-group date">
+                  <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right"  name="tahun_ubah" required required>
+                  </div>
+                  <!-- /.input group -->
+                <small style="color: red">* Tidak Boleh Kosong</small>
               </div>
               <div class="form-group">
-                  <label for="exampleInputFile">Jabatan</label>
+                  <label for="exampleInputFile">Divisi</label>&nbsp;<strong style="color: red">*</strong>
+                      <select class="form-control select2" style="width: 100%;" name="id_divisi_p_ubah" required>
+                        <option value="0">Pilih Divisi</option>
+                        @foreach($divisi_p as $value)
+  												  @if(!empty($target_sup->id_divisi_p))
+  													<option value="{{ $value->id }}" {{ $value->id == $target_sup->id_divisi_p ? 'selected' : '' }}>{{ $value->nm_devisi }}</option>
+  												  @else
+  													<option value="{{ $value->id }}"}}>{{ $value->nm_devisi }}</option>
+  												  @endif
+  											@endforeach
+                      </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputFile">Jabatan</label>&nbsp;<strong style="color: red">*</strong>
                       <select class="form-control select2" style="width: 100%;" name="id_jabatan_p_ubah" required>
                         <option value="0">Pilih Jabatan</option>
                         @foreach($jabatan_p as $jabatan)
@@ -313,22 +319,28 @@
   											@endforeach
                       </select>
                 </div>
-						<div class="form-group">
-							<label for="exampleInputEmail1">Target Supervisor</label>
-							<textarea class="form-control"  name="target_supervisor_ubah" required></textarea>
-							<small style="color: red" id="notify"></small>
-						</div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Jumlah Target</label>
-              <input type="number" class="form-control"  name="jumlah_target_ubah" required>
-              <small style="color: red" id="notify"></small>
             </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Satuan Target</label>
-              <input type="text" class="form-control"  name="satuan_target_ubah" required>
-              <small style="color: red" id="notify"></small>
-              <input type="hidden" name="id_tsup_ubah">
+            <div class="col-md-6">
+    						<div class="form-group">
+    							<label for="exampleInputEmail1">Target Supervisor</label>&nbsp;<strong style="color: red">*</strong>
+    							<textarea class="form-control"  name="target_supervisor_ubah" required></textarea>
+    							<small style="color: red" id="notify"></small>
+    						</div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Jumlah Target</label>&nbsp;<strong style="color: red">*</strong>
+                  <input type="number" class="form-control"  name="jumlah_target_ubah" required>
+                  <small style="color: red" id="notify"></small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Satuan Target</label>&nbsp;<strong style="color: red">*</strong>
+                  <input type="text" class="form-control"  name="satuan_target_ubah" required>
+                  <small style="color: red" id="notify"></small>
+                  <input type="hidden" name="id_tsup_ubah">
+                </div>
             </div>
+        </div>
+        <div class="box-footer">
+          <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
         </div>
         <div class="modal-footer">
             {{ csrf_field() }}
@@ -353,10 +365,10 @@
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Formulir Ubah Target Staf Perusahaan</h4>
                 </div>
-          <div class="modal-body">
-
+        <div class="modal-body">
+          <div class="col-md-6">
             <div class="form-group">
-                <label for="exampleInputFile">Target Supervisor</label>
+                <label for="exampleInputFile">Target Supervisor</label>&nbsp;<strong style="color: red">*</strong>
                     <select class="form-control select2" style="width: 100%;" name="id_target_superv_ubah" required>
                       <option value="0">Pilih Target Supervisor</option>
                       @foreach($target_sup as $values)
@@ -373,7 +385,7 @@
                     </select>
               </div>
               <div class="form-group">
-                  <label for="exampleInputFile">Karyawan</label>
+                  <label for="exampleInputFile">Karyawan</label>&nbsp;<strong style="color: red">*</strong>
                       <select class="form-control select2" style="width: 100%;" name="nm_karyawan_ubah" required>
                         <option value="0">Pilih Karyawan</option>
                         @foreach($karyawan as $values)
@@ -390,33 +402,36 @@
                       </select>
             </div>
             <div class="form-group">
-                <label>Bulan </label>
+                <label>Bulan </label>&nbsp;<strong style="color: red">*</strong>
                 <div class="input-group date">
                 <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                 </div>
                 <input type="text" class="form-control pull-right" name="bulan_ubah" required>
                 </div>
-                <!-- /.input group -->
-              <small style="color: red">* Tidak Boleh Kosong</small>
-            </div>
 
+            </div>
+          </div>
+          <div class="col-md-6">
 						<div class="form-group">
-							<label for="exampleInputEmail1">Target Staf</label>
+							<label for="exampleInputEmail1">Target Staf</label>&nbsp;<strong style="color: red">*</strong>
 							<textarea class="form-control"  name="target_staf_ubah" required></textarea>
-							<small style="color: red" id="notify"></small>
+
 						</div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Jumlah Target</label>
+              <label for="exampleInputEmail1">Jumlah Target</label>&nbsp;<strong style="color: red">*</strong>
               <input type="number" class="form-control"  name="jumlah_target_ubah" required>
-              <small style="color: red" id="notify"></small>
+
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Satuan Target</label>
+              <label for="exampleInputEmail1">Satuan Target</label>&nbsp;<strong style="color: red">*</strong>
               <input type="text" class="form-control"  name="satuan_target_ubah" required>
-              <small style="color: red" id="notify"></small>
               <input type="hidden" name="id_tstaf_ubah">
             </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
         </div>
         <div class="modal-footer">
             {{ csrf_field() }}

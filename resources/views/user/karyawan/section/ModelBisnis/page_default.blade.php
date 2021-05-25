@@ -34,7 +34,7 @@
                                         @elseif($jenisMb->nama_mb=="Key resources") box-success @elseif($jenisMb->nama_mb=="Key partners") box-danger
                                         @else  box-primary  @endif collapsed-box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><b>{{ $jenisMb->nama_mb }}</b></h3>
+                                    <h3 class="box-title">{{ $jenisMb->nama_mb }}</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                                         </button>

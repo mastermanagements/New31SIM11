@@ -28,59 +28,58 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Tambah  Target Jangka Panjang Perusahaan</h3>
+                        <h5 class="pull-right"><a href="{{ url('Target-Perusahaan')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" action="{{ url('store-tjp') }}" method="post">
-                        <div class="box-body">
+                      <div class="box-body">
+                        <div class="col-md-6">
                           <div class="form-group">
-                              <label for="exampleInputEmail1">Jangka Waktu</label>
+                              <label for="exampleInputEmail1">Jangka Waktu</label>&nbsp;<strong style="color: red">*</strong>
                               <input type="number" max="50" name="periode" class="form-control" id="exampleInputEmail1" placeholder="Berapa Tahun Anda Akan Mencapai Goal Tersebut?, Tulis angka Tahunnya" required>
-                              <small style="color: red">* Tidak Boleh Kosong</small>
                           </div>
                           <div class="form-group">
-                              <label>Tahun Mulai</label>
+                              <label>Tahun Mulai</label>&nbsp;<strong style="color: red">*</strong>
                               <div class="input-group date">
                               <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                               </div>
                               <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tahun" name="thn_mulai" required>
                               </div>
-                              <!-- /.input group -->
-                            <small style="color: red">* Tidak Boleh Kosong</small>
                           </div>
                             <div class="form-group">
-                                <label>Tahun selesai</label>
+                                <label>Tahun selesai</label>&nbsp;<strong style="color: red">*</strong>
                                 <div class="input-group date">
                                   <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                   </div>
                                   <input type="text" class="form-control pull-right" id="datepicker2" placeholder="Tahun" name="thn_selesai" required>
                                 </div>
-                                <!-- /.input group -->
-                                <small style="color: red">* Tidak Boleh Kosong</small>
                               </div>
+                          </div>
+                          <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukan Target Jangka Panjang Perusahaan Anda</label>
+                                    <label for="exampleInputEmail1">Masukan Target Jangka Panjang Perusahaan Anda</label>&nbsp;<strong style="color: red">*</strong>
                                     <textarea class="form-control" placeholder="Masukan Target Jngka Panjang Perusahaan Anda" name="target_puncak" id="isi_tjp" required></textarea>
-                                    <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Jumlah Target Spesifik</label>
+                                    <label for="exampleInputEmail1">Masukkan Jumlah Target Spesifik</label>&nbsp;<strong style="color: red">*</strong>
                                     <input type="number" class="form-control" placeholder="Masukan Jumlah Target Anda dalam bentuk angka" name="jumlah_target"  required></input>
-                                    <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Satuan Target Per</label>
+                                    <label for="exampleInputEmail1">Satuan Target Per</label>&nbsp;<strong style="color: red">*</strong>
                                     <input type="text" class="form-control" placeholder="Masukan Satuan Target Anda" name="satuan_target"  required></input>
-                                    <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
+                            </div>
                         </div>
                         <!-- /.box-body -->
-
+                        <div class="box-footer">
+                          <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                        </div>
                         <div class="box-footer">
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>

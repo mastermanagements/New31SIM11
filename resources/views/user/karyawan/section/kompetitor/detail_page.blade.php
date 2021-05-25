@@ -25,7 +25,8 @@
                        <h3 class="profile-username text-center">
                            {{ $data_kompetitor->nm_kompetitor }}<br>
                        </h3>
-                       <p class="text-muted text-center">Profil Lengkap Perusahaan Kompetitor</p>
+                       <h5 class="pull-right"><a href="{{ url('Kompetitor')}}">Kembali ke Halaman utama</a></h5>
+                       <p class="text-muted text-left"><b>Profil Lengkap Perusahaan Kompetitor</b></p>
                        <ul class="list-group list-group-unbordered">
 
                            <li class="list-group-item">

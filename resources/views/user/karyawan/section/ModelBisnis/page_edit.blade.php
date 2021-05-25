@@ -28,6 +28,7 @@
                 <div class="box box-warning">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Ubah Model Bisnis Canvas</h3>
+                        <h5 class="pull-right"><a href="{{ url('Model-Bisnis')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -35,7 +36,7 @@
                         <div class="box-body">
                           <div class="form-group">
                             <div class="form-group">
-                                  <label for="exampleInputFile">Elemen Model Bisnis</label>
+                                  <label for="exampleInputFile">Elemen Model Bisnis</label>&nbsp;<strong style="color: red">*</strong>
                                     @if(empty($mb->id_jenis_mb))
                                        <select class="form-control select2" style="width: 100%;" name="id_jenis_mb" required>
                                             <option>Pilih mb</option>
@@ -51,10 +52,9 @@
                                                 @endforeach
                                           </select>
                                           @endif
-                                    <small style="color:red;">* Tidak boleh kosong</small>
                                   </div>
                                   <div class="form-group">
-                                    <label for="exampleInputFile">Sub Model Bisnis</label>
+                                    <label for="exampleInputFile">Sub Model Bisnis</label>&nbsp;<strong style="color: red">*</strong>
                                       @if(empty($mb->id_sub_mb))
                                         <select class="form-control select2" style="width: 100%;" name="id_sub_mb" required>
                                             <option>Pilih sub mb</option>
@@ -67,19 +67,19 @@
                                             @endforeach
                                         </select>
                                         @endif
-                                        <small style="color:red;">* Tidak boleh kosong</small>
                                   </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail1">Uraian</label>
+                                <label for="exampleInputEmail1">Uraian</label>&nbsp;<strong style="color: red">*</strong>
                                 <textarea class="form-control" placeholder="Masukan uraian bisnis model anda" name="isi" id="isi" required>
                                   {!! $mb->isi !!}
                                 </textarea>
-                                <small style="color: red">* Tidak boleh kosong</small>
                             </div>
                             <input type="hidden" name="id"value="">
                         </div>
                         <!-- /.box-body -->
-
+                        <div class="box-footer">
+                          <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                        </div>
                         <div class="box-footer">
                             {{ csrf_field() }}
                             <input type="hidden" name="_method" value="put">
