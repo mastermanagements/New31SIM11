@@ -36,7 +36,7 @@
                            @elseif(!empty(session('message_fail')))
                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
-                           <p style="color: green">Pilihlah menu pada daftar menu dibawah ini sesuai yang anda inginkan</p>
+                           <p style="color: green">Pilihlah menu aplikasi aturusaha.com dibawah ini sesuai kebutuhan perusahaan anda.</p>
 
                               @foreach($menu as $key=> $menus)
                                <div class="form-group">

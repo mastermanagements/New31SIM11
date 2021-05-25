@@ -28,44 +28,47 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Tambah  Target Supervisor Perusahaan</h3>
+                        <h5 class="pull-right"><a href="{{ url('Target-Perusahaan')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" action="{{ url('store-target-sup') }}" method="post">
-                        <div class="box-body">
+                      <div class="box-body">
+                        <div class="col-md-6">
                           <div class="form-group">
-                              <label for="exampleInputEmail1">Target Manager </label>
+                              <label for="exampleInputEmail1">Target Manager </label>&nbsp;<strong style="color: red">*</strong>
                               <select class="form-control select2" style="width: 100%;" name="id_target_man" required>
                                            <option>Pilih Target Manager</option>
                                           @foreach($target_man as $value)
                                               <option value="{{ $value->id }}">Target {{ $value->getJabatan->nm_jabatan }} Tahun {{ $value->tahun }}&nbsp;:&nbsp;{{ $value->target_manager }} &nbsp; jumlah {{ $value->jumlah_target }} &nbsp; per {{ $value->satuan_target }}</option>
                                           @endforeach
                               </select>
-                              <small style="color: red" id="notify"></small>
+
                           </div>
                           <div class="form-group">
-                              <label>Tahun </label>
+                              <label>Tahun </label>&nbsp;<strong style="color: red">*</strong>
                               <div class="input-group date">
                               <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                               </div>
                               <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tahun" name="tahun" required>
                               </div>
-                              <!-- /.input group -->
-                            <small style="color: red">* Tidak Boleh Kosong</small>
+
                           </div>
                           <div class="form-group">
-                              <label for="exampleInputEmail1">Divisi</label>
+                              <label for="exampleInputEmail1">Divisi</label>&nbsp;<strong style="color: red">*</strong>
                               <select class="form-control select2" style="width: 100%;" name="id_divisi_p" required>
                                            <option>Pilih Divisi</option>
                                           @foreach($divisi_p as $value)
                                               <option value="{{ $value->id }}">{{ $value->nm_devisi }}</option>
                                           @endforeach
                               </select>
-                              <small style="color: red" id="notify"></small>
+
                           </div>
+                        </div>
+                        <div class="col-md-6">
                           <div class="form-group">
-                              <label for="exampleInputEmail1"> Jabatan</label>
+                              <label for="exampleInputEmail1"> Jabatan</label>&nbsp;<strong style="color: red">*</strong>
                               <select class="form-control select2" style="width: 100%;" name="id_jabatan_p" required>
                                            <option>Pilih Jabatan</option>
                                           @foreach($jabatan_p as $value)
@@ -74,26 +77,28 @@
                                               @endif
                                           @endforeach
                               </select>
-                              <small style="color: red" id="notify"></small>
+
                           </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukan Target Supervisor Perusahaan Anda</label>
+                                    <label for="exampleInputEmail1">Masukan Target Supervisor Perusahaan Anda</label>&nbsp;<strong style="color: red">*</strong>
                                     <input type="text" class="form-control" placeholder="Masukan Target Supervisor" name="target_supervisor"  required></input>
-                                    <small style="color: red">* Tidak boleh kosong</small>
+
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Jumlah Target Spesifik </label>
+                                    <label for="exampleInputEmail1">Masukkan Jumlah Target Spesifik </label>&nbsp;<strong style="color: red">*</strong>
                                     <input type="number" class="form-control" placeholder="Masukan Jumlah Target dalam bentuk angka" name="jumlah_target"  required></input>
-                                    <small style="color: red">* Tidak boleh kosong</small>
+
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Satuan Target Per</label>
+                                    <label for="exampleInputEmail1">Satuan Target Per</label>&nbsp;<strong style="color: red">*</strong>
                                     <input type="text" class="form-control" placeholder="Masukan Satuan Target Anda" name="satuan_target"  required></input>
-                                    <small style="color: red">* Tidak boleh kosong</small>
                                 </div>
+                            </div>
                         </div>
                         <!-- /.box-body -->
-
+                        <div class="box-footer">
+                          <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                        </div>
                         <div class="box-footer">
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-primary">Submit</button>

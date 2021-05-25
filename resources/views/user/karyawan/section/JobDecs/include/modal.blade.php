@@ -7,48 +7,44 @@
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">Formulir Tambah Jobdesc</h4>
+                  <h4 class="modal-title">Formulir Tambah Jobdesc Karyawan</h4>
               </div>
               <div class="modal-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Pilih Atasan</label>
+                    <label for="exampleInputEmail1">Pilih Atasan</label>&nbsp;<strong style="color: red">*</strong>
                          <select class="form-control select2" style="width: 100%;" name="atasan" required>
                                 <option>Pilih Atasan</option>
                                 @foreach($data_jabatan as $jabatan)
                                    <option value="{{ $jabatan->id }}" >{{ $jabatan->nm_jabatan }}</option>
                                 @endforeach
                             </select>
-                              <small style="color: red" id="notify"></small>
                 </div>
 
                   <div class="form-group">
-                      <label for="exampleInputEmail1">Ruang Lingkup</label>
+                      <label for="exampleInputEmail1">Ruang Lingkup</label>&nbsp;<strong style="color: red">*</strong>
                       <textarea class="form-control"  name="ruang_lingkup" id="ruang_lingkup" required></textarea>
-                      <small style="color: red">* Tidak boleh kosong</small>
                   </div>
                   <div class="form-group">
-                      <label for="exampleInputEmail1">Hubungan Ke Dalam</label>
+                      <label for="exampleInputEmail1">Hubungan Ke Dalam</label>&nbsp;<strong style="color: red">*</strong>
                       <input type="text" class="form-control" name="hub_kedalam" required>
-                      <small style="color: red">* Tidak boleh kosong</small>
                   </div>
                   <div class="form-group">
-                      <label for="exampleInputEmail1">Hubungan Ke Luar</label>
+                      <label for="exampleInputEmail1">Hubungan Ke Luar</label>&nbsp;<strong style="color: red">*</strong>
                       <input type="text" class="form-control" name="hub_keluar" required>
-                      <small style="color: red">* Tidak boleh kosong</small>
                   </div>
                   <div class="form-group">
-                      <label for="exampleInputEmail1">Pelimpahan Wewenang</label>
+                      <label for="exampleInputEmail1">Pelimpahan Wewenang</label>&nbsp;<strong style="color: red">*</strong>
                       <input type="text" class="form-control" name="limpahan_wewenang" required>
-                      <small style="color: red">* Tidak boleh kosong</small>
                       <input type="hidden" name="id_jabatan_p">
                   </div>
-
-
-        <div class="modal-footer">
+                <div class="box-footer">
+                    <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                </div>
+                <div class="modal-footer">
                   {{ csrf_field() }}
                   <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
                   <button type="submit" id="submitJObdesc" class="btn btn-primary">Simpan</button>
-        </div>
+                </div>
       </form>
     </div>
       <!-- /.modal-content -->
@@ -153,11 +149,11 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulir Ubah Jobdesc Perusahaan</h4>
+                    <h4 class="modal-title">Formulir Ubah Jobdesc Karyawan</h4>
                 </div>
                 <div class="modal-body">
                   <div class="form-group">
-                       <label for="exampleInputEmail1">Atasan</label>
+                       <label for="exampleInputEmail1">Atasan</label>&nbsp;<strong style="color: red">*</strong>
                        <select class="form-control select2" style="width: 100%;" name="atasan_ubah" required>
                            @if(empty($data_jabatan))
                                <option>Nama Jabatan Perusahaan Belum di Isi</option>
@@ -171,28 +167,27 @@
                    </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Isi Ruang Lingkup Perkerjaan</label>
+                        <label for="exampleInputEmail1">Isi Ruang Lingkup Perkerjaan</label>&nbsp;<strong style="color: red">*</strong>
                         <textarea class="form-control"  name="ruanglingkup_ubah"  required></textarea>
-                        <small style="color: red" id="notify"></small>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Hubungan Kedalam</label>
+                        <label for="exampleInputEmail1">Hubungan Kedalam</label>&nbsp;<strong style="color: red">*</strong>
                         <input type="text" class="form-control"  name="hub_kedalam_ubah"  required></input>
-                        <small style="color: red" id="notify"></small>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Hubungan Keluar</label>
+                        <label for="exampleInputEmail1">Hubungan Keluar</label>&nbsp;<strong style="color: red">*</strong>
                         <input type="text" class="form-control"  name="hub_keluar_ubah"  required></input>
-                        <small style="color: red" id="notify"></small>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">limpahan Wewenang</label>
+                        <label for="exampleInputEmail1">limpahan Wewenang</label>&nbsp;<strong style="color: red">*</strong>
                         <input type="text" class="form-control"  name="limpahan_wewenang_ubah"  required></input>
                         <input type="hidden" name="id_jobdesc">
                         <input type="hidden" name="id_jabatan_p">
-                        <small style="color: red" id="notify"></small>
                     </div>
 
+                </div>
+                <div class="box-footer">
+                  <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
                 </div>
                 <div class="modal-footer">
                     {{ csrf_field() }}

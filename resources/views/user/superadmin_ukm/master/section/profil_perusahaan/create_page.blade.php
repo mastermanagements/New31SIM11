@@ -201,7 +201,7 @@
                   </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                    <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                      <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
                     </div>
                     <div class="box-footer">
                         {{csrf_field()}}

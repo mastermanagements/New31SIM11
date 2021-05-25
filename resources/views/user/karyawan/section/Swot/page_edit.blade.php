@@ -29,13 +29,14 @@
                     <div class="box box-warning">
                         <div class="box-header with-border">
                             <h3 class="box-title">Formulir Edit SWOT</h3>
+                            <h5 class="pull-right"><a href="{{ url('Swot')}}">Kembali ke Halaman utama</a></h5>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
                         <form role="form" action="{{ url('update-swot/'. $data_swot->id) }}" method="post">
                             <div class="box-body">
                               <div class="form-group">
-                                  <label>Tahun</label>
+                                  <label>Tahun</label>&nbsp;<strong style="color: red">*</strong>
 
                                   <div class="input-group date">
                                       <div class="input-group-addon">
@@ -44,23 +45,22 @@
                                       <input type="text" class="form-control pull-right" id="datepicker"  name="tahun_swot" value="{{ $data_swot->tahun_swot}}" required>
                                   </div>
                                   <!-- /.input group -->
-                                  <small style="color: red">* Tidak boleh kosong</small>
                               </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Kategori SWOT</label> &nbsp;
+                                    <label for="exampleInputEmail1">Kategori SWOT</label> &nbsp;<strong style="color: red">*</strong>
                                         <input type="text"  name="kategori_swot" class="form-control" id="exampleInputEmail1"  value="{{ $data_swot->kategori_swot }}" required readonly>
-                                    <small style="color: red" id="notify"></small>
                                 </div>
 								<div class="form-group">
-                                    <label for="exampleInputEmail1">Isi SWOT</label>
+                                    <label for="exampleInputEmail1">Isi SWOT</label>&nbsp;<strong style="color: red">*</strong>
                                     <textarea  name="isi" class="form-control" id="isi" required>
                                         {!!  $data_swot->isi !!}
                                     </textarea>
-                                    <small style="color: red">* Tidak boleh kosong</small>
                             </div>
                             </div>
                             <!-- /.box-body -->
-
+                            <div class="box-footer">
+                              <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                            </div>
                             <div class="box-footer">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="put">

@@ -26,6 +26,7 @@
                <div class="box box-primary">
                    <div class="box-header with-border">
                        <h3 class="box-title">Daftar Menu</h3>
+                       <h5 class="pull-right"><a href="{{ url('pengguna-karyawan')}}">Kembali ke Halaman utama</a></h5>
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
@@ -35,7 +36,7 @@
                            @elseif(!empty(session('message_fail')))
                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
-                           <p style="color: green">Pilihlah menu pada daftar menu dibawah ini sesuai yang anda inginkan</p>
+                           <p style="color: green">Pilihlah menu aplikasi dibawah ini yang dapat di akses oleh karyawan bersangkutan.</p>
 
                               @foreach($menu as $key=> $menus)
                                <div class="form-group">

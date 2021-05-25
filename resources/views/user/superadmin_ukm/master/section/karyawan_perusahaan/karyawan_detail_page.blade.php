@@ -37,8 +37,11 @@
                        <h3 class="profile-username text-center">
                            {{ $data_karyawan->nama_ky }}<br>
                            <small>{{ $data_karyawan->nik }} </small>
+                           <h5 class="pull-right"><a href="{{ url('pengguna-karyawan')}}">Kembali ke Halaman utama</a></h5>
                        </h3>
-                       <p class="text-muted text-center">Profil Karyawan</p>
+                       <p  class="text-muted text-left"><b>Profil Karyawan</b></p>
+
+
                        <ul class="list-group list-group-unbordered">
 
                            <li class="list-group-item">
@@ -136,8 +139,10 @@
                                </a>
                            </li>
                        </ul>
+                        <p> <strong style="color: red">Anda dapat melengkapi data karyawan di menu HRD</strong></p>
                    </div>
                    <!-- /.box-body -->
+
                </div>
                <!-- /.box -->
            </div>
