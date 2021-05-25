@@ -441,6 +441,8 @@ Route::get('Barang', 'produksi\Barang@index');
 Route::post('getHargaBarang', 'produksi\Barang@respons_harga_barang');
 Route::get('tambah-barang', 'produksi\Barang@create');
 
+Route::get('response_json/{id_barang}','produksi\Barang@response_barang');
+
 Route::post('store-barang', 'produksi\Barang@store');
 
 Route::get('ubah-barang/{id}', 'produksi\Barang@edit');
@@ -2392,3 +2394,4 @@ Route::post('GlobalSubKategori', 'globals\KategoriJasa@getSubKategori');
 Route::post('GlobalSubSubKategori', 'globals\KategoriJasa@getSubSubKategori');
 
 Route::resource('Kasir','produksi\Kasir');
+Route::get('cetak-nota/{id_nota}','produksi\Kasir@cetak');

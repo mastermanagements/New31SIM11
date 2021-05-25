@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use App\Model\Kasir\Kasir as KasirModel;
 use App\Model\Kasir\DetailKasir;
 use Session;
+use App\Model\Produksi\PSales;
+use App\Model\Produksi\DetailSales;
 class Kasir extends Controller
 {
     //
@@ -38,11 +40,19 @@ class Kasir extends Controller
         $data = [
             'kode'=> $req->kode,
             'bayar'=> $req->bayar,
+            'total_penjualan'=> $req->total_penjualan,
             'id_perusahaan'=> Session::get('id_perusahaan_karyawan'),
             'id_karyawan'=>Session::get('id_karyawan')
         ];
+        // Tambah data kasir
         if($kasir_model = $this->insert_kasir($data)){
+            // Tambah detail kasir
             $this->insert_detail_kasir($kasir_model, $req);
+
+            // Tambah data p_sales
+            $model_sales=$this->insert_P_sales($kasir_model);
+            $this->insert_detail_p_sales($model_sales, $req);
+
         }
         return redirect()->back()->with('message_success', 'Nota penjualan telah dibuat');
     }
@@ -55,16 +65,35 @@ class Kasir extends Controller
             ],
             [
                 'bayar'=> $array['bayar'],
+                'total_penjualan'=> $array['total_penjualan'],
                 'id_karyawan'=> $array['id_karyawan'],
             ]
         );
         return $model;
     }
 
+    private function insert_P_sales($kasir_model){
+        $data = PSales::updateOrCreate(
+            [
+                'id_perusahaan'=>Session::get('id_perusahaan_karyawan'),
+                'no_sales'=> $kasir_model->kode
+            ],
+            [
+                'id_so'=>0,
+                'tgl_sales'=>$kasir_model->created_at,
+                'bayar'=>$kasir_model->bayar,
+                'total'=>$kasir_model->total_penjualan,
+                'status_bayar'=>'0',
+                'id_karyawan'=>$kasir_model->id_karyawan,
+            ]
+        );
+        return $data;
+    }
+
     private function insert_detail_kasir($model,$req){
         $this->delete_before_updateOrCreate($model->id);
         foreach ($req->id_barang as $key=> $id_barang){
-            $model_detail_nota = DetailKasir::create(
+            $model_detail_nota =new DetailKasir(
                 [
                     'id_nota_kasir'=> $model->id,
                     'id_barang'=>$id_barang,
@@ -77,8 +106,33 @@ class Kasir extends Controller
         }
     }
 
+    private function insert_detail_p_sales($model_p_sales,$req){
+        $this->delete_before_updateOrCreate_P_detail_sales($model_p_sales->id);
+        foreach ($req->id_barang as $key=> $id_barang){
+            $model_detail_p_sales=new DetailSales(
+                [
+                    'id_sales'=> $model_p_sales->id,
+                    'id_barang'=>$id_barang,
+                    'jumlah_jual'=>$req->jumlah_jual[$key],
+                    'hpp'=> $req->harga_satuan[$key],
+                    'jumlah_harga'=> $req->sub_total[$key],
+                    'id_perusahaan'=> Session::get('id_perusahaan_karyawan'),
+                    'id_karyawan'=> Session::get('id_karyawan'),
+                ]
+            );
+            $model_detail_p_sales->save();
+         }
+    }
+
     private function delete_before_updateOrCreate($id){
         $model = DetailKasir::where('id_nota_kasir',$id);
+        if(!empty($model)){
+            $model->delete();
+        }
+    }
+
+    private function delete_before_updateOrCreate_P_detail_sales($id){
+        $model = DetailSales::where('id_sales',$id);
         if(!empty($model)){
             $model->delete();
         }
@@ -92,5 +146,12 @@ class Kasir extends Controller
         $count_kasir = KasirModel::whereYear('created_at', $year)->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->count('id')+1;
         $format = $kode.'/'.$count_kasir.'/'.$date.$mont.$year;
         return $format;
+    }
+
+    public function cetak($id_nota_kasir){
+        $data =[
+            'nota'=> KasirModel::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->find($id_nota_kasir)
+        ];
+        return view('kasir.page.kasir.cetak', $data);
     }
 }

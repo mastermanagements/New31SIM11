@@ -16,7 +16,8 @@ class PNotaKasir extends Migration
         Schema::create('p_nota_kasir', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode')->unique();
-            $table->decimal('bayar')->default(0);
+            $table->decimal('bayar',12,2)->default(0);
+            $table->decimal('total_penjualan',12,2)->default(0);
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();
             $table->timestamps();

@@ -21,6 +21,7 @@
             total_awal += (value[2]*value[3]);
         });
         $('#total_akhir').text("Total Rp: "+total_awal);
+        $('#total_penjualan').val(total_awal);
         $('#daftar_table_pesanan').append(html);
     }
 
@@ -36,7 +37,7 @@
 
     $('#tombol_tambah').click(function(){
         var id_barang = $('#barang').val();
-        var nama_barang = $( "#barang option:selected" ).text();;
+        var nama_barang = $( "#barang option:selected" ).text();
         var hpp = $('#hpp').val();
         var jumlah = $('#jumlah').val();
 
@@ -52,11 +53,26 @@
 
     $('#input_code_barcode').keyup(function(){
        var code_barcode =$(this).val();
-       console.log(code_barcode);
        if(code_barcode == '1234567'){
            $('#modal-default').modal('show');
        }
     });
+
+    $('#barang').change(function () {
+        $.ajax({
+            url:'{{ url('response_json') }}/'+$(this).val(),
+            dataType: 'json',
+            success:function(result){
+                $('#hpp').val(result.hpp);
+            },
+            error: function (xhr, status, error) {
+                var err = eval("(" + xhr.responseText + ")");
+                alert(err.Message);
+            }
+        })
+
+
+    })
 
 </script>
 @stop

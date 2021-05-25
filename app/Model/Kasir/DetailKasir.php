@@ -10,4 +10,8 @@ class DetailKasir extends Model
     protected $table = 'p_detail_nota_kasir';
 
     protected $guarded=[];
+
+    public function linkToBarang(){
+        return $this->belongsTo('App\Model\Produksi\Barang','id_barang');
+    }
 }

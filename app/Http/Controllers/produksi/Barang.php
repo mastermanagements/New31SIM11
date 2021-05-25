@@ -57,6 +57,12 @@ class Barang extends Controller
         });
     }
 
+    public function response_barang($id_barang){
+        $model = barangs::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            ->findOrFail($id_barang);
+        return response()->json($model);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -60,6 +60,7 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <p></p>
+                                        <input type="hidden" name="total_penjualan" id="total_penjualan" value="0">
                                         <button type="submit" class="btn btn-success">Proses</button>
                                     </div>
                                 </div>
@@ -123,8 +124,8 @@
                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                             </button>
                                                             <ul class="dropdown-menu" role="menu">
-                                                                <li><a href="#">Print</a></li>
-                                                                <li><a href="#">Cek Barang</a></li>
+                                                                <li><a href="{{ url('cetak-nota/'.$data->id) }}" target="_blank">Print</a></li>
+                                                                <li><a href="#" id="cek_barang_nota">Cek Barang</a></li>
                                                             </ul>
                                                         </div>
                                                     </th>
