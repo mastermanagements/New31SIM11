@@ -2,9 +2,6 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
 @stop
 
@@ -14,7 +11,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Tambah SOP Produksi
+            Tambah Standard Operating Procedure (SOP) Produksi
         </h1>
     </section>
 
@@ -26,6 +23,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir SOP Produksi</h3>
+                        <h5 class="pull-right"><a href="{{ url('manufaktur')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -34,7 +32,7 @@
                             <div class="form-group">
                                 {{ csrf_field() }}
                                 <label>Nama SOP</label>
-                                <input type="text" name="nama_sop" class="form-control" required/>
+                                <input type="text" name="nama_sop" class="form-control" placeholder="misal: SOP pembuatan kue, SOP pembuatan Paving, dll" required/>
                             </div>
                         </div>
 
@@ -52,31 +50,4 @@
 @stop
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script>
-
-        window.onload = function() {
-            CKEDITOR.replace( 'spec_barang',{
-                height: 200
-            } );
-            CKEDITOR.replace( 'desc_barang',{
-                height: 200
-            } );
-        };
-
-        $('#datepicker').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy'
-        });
-//        $('#datepicker1').datepicker({
-//            autoclose: true,
-//            format: 'dd-mm-yyyy'
-//        });
-
-        $(function () {
-            $('.select2').select2()
-        });
-    </script>
-    @include('user.produksi.section.barang.JS.JS')
 @stop

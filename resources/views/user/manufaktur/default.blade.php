@@ -22,11 +22,11 @@
                     <!-- Custom Tabs -->
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab_1" data-toggle="tab">SOP Produksi</a></li>
-                            <li><a href="#tab_2" data-toggle="tab">Produksi Baru</a></li>
-                            <li><a href="#tab_3" data-toggle="tab">Monitoring</a></li>
-                            <li><a href="#tab_4" data-toggle="tab">Selesai Produksi</a></li>
-                            <li><a href="#tab_5" data-toggle="tab">Setting Akun</a></li>
+                            <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> SOP Produksi </a></li>
+                            <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif"><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Produksi Baru</a></li>
+                            <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i>Monitoring</a></li>
+                            <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Selesai Produksi </a></li>
+                            <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Setting Akun </a></li>
                         </ul>
                         <div class="tab-content">
                            @include('user.manufaktur.tab.SOP_produksi')
@@ -53,4 +53,3 @@
 
     </script>
 @stop
-

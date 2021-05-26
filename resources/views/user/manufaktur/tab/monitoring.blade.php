@@ -1,4 +1,4 @@
-<div class="tab-pane" id="tab_3">
+<div class="tab-pane @if(Session::get('tab3') == 'tab3') active @else '' @endif" id="tab_3">
     <div class="row">
         @if(!empty($data_monitoring))
             @foreach($data_monitoring as $data_monitoring)

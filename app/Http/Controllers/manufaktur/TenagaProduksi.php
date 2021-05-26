@@ -32,6 +32,7 @@ class TenagaProduksi extends Controller
         $data = $req->except(['_token']);
         $data['id_perusahaan']= Session::get('id_perusahaan_karyawan');
         $data['id_karyawan']= Session::get('id_karyawan');
+        $data['jumlah_upah'] = rupiahController($req->jumlah_upah);
 
         $model = new P_tenaga_produksi($data);
         if($model->save()){
@@ -51,6 +52,7 @@ class TenagaProduksi extends Controller
         $data = $req->except(['_token']);
         $data['id_perusahaan']= Session::get('id_perusahaan_karyawan');
         $data['id_karyawan']= Session::get('id_karyawan');
+        $data['jumlah_upah'] = rupiahController($req->jumlah_upah);
 
         $model = P_tenaga_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->update($data)){

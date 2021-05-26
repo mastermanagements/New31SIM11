@@ -24,7 +24,7 @@ class ProsesProduksi extends Controller
     private function query_tahap_produksi($id_barang){
         $query_tahap_produksi = DB::select('select p_proses_bisnis_manuf.* from p_proses_bisnis_manuf,p_tambah_produksi,
 
-              p_barang_sop where p_proses_bisnis_manuf.id_sop_pro=p_barang_sop.id_sop_pro 
+              p_barang_sop where p_proses_bisnis_manuf.id_sop_pro=p_barang_sop.id_sop_pro
               and p_tambah_produksi.id_barang = p_barang_sop.id_barang
               and p_tambah_produksi.id_barang = '.$id_barang.' and p_proses_bisnis_manuf.id_perusahaan='.Session::get('id_perusahaan_karyawan'));
 
@@ -106,9 +106,9 @@ class ProsesProduksi extends Controller
             $model->status_produksi = '0';
         }
         if($model->save()){
-            return redirect('manufaktur')->with('message_success',$message);
+            return redirect('manufaktur')->with('message_success',$message)->with('tab3','tab3');
         }else{
-            return redirect('manufaktur')->with('message_fail','Proses produksi di berhentikan');
+            return redirect('manufaktur')->with('message_fail','Proses produksi di berhentikan')->with('tab3','tab3');
         }
     }
 }

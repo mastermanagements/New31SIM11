@@ -80,8 +80,16 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
-											                        <button class="btn btn-primary" onclick="gantiLeads('{{ $value->id }}');" title="Ubah Status Customer"><i class="fa fa-file-picture-o"></i></button>
+                                          <form action="{{ url('convert-leads/'.$value->id) }}" method="post">
+                                              <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                              {{ csrf_field() }}
+                                              <input type="hidden" name="_method" value="put"/>
+                                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan mengkonversi leads menjadi customer ...?')" title="Convert"><i class="fa fa-eraser"></i></button>
+                                          </form>
+
+
+
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -104,7 +112,7 @@
                                   <th>Member</th>
                                   <th>Diskon Berjenjang</th>
                                   <th>Detail</th>
-                                  <th>Aksi</th>
+                                  <th width="100">Aksi</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -147,15 +155,16 @@
                                       </td>
                                      <td>
                                           <form action="{{ url('hapus-klien/'.$value->id) }}" method="post">
-                                              <a href="#" class="btn btn-primary" onclick="tambahRekKlien({{ $value->id }})" title="Tambah Rekening"><i class="fa fa-plus"></i></a>
-                                              <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                              <a href="#" class="btn btn-primary" onclick="tambahRekKlien({{ $value->id }})" title="Tambah Rekening Klien"><i class="fa fa-plus"></i></a>
+                                              <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit Klien"><i class="fa fa-edit"></i></a>
                                               {{ csrf_field() }}
                                               <input type="hidden" name="_method" value="put"/>
-                                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus Klien ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+
+                                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus Klien ini ...?')" title="Hapus Klien"><i class="fa fa-eraser"></i></button>
                                           </form>
                                       </td>
-                                      </tr>
-                                     @endforeach
+                                  </tr>
+                                  @endforeach
                               </tbody>
                           </table>
                         </div>
@@ -213,7 +222,7 @@
                                       <th>No Rekening</th>
                                       <th>Atas Nama</th>
                                       <th>Kantor Cabang</th>
-                                      <th>Aksi</th>
+                                      <th width="100">Aksi</th>
                                   </tr>
                                 </thead>
                                 <tbody>

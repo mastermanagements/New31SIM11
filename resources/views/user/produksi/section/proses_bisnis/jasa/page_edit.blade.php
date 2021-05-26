@@ -28,7 +28,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ url('Proses-Bisnis/'.$data_probis->id) }}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{ url('Proses-Bisnis-Jasa/'.$data_probis->id) }}" method="post" enctype="multipart/form-data">
                           {{ csrf_field() }}
                           @method('put')
                             <div class="box-body">

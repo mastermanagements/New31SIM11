@@ -32,9 +32,11 @@ class BahanBaku extends Controller
         $data = $req->except(['_token']);
         $data['id_perusahaan'] = Session::get('id_perusahaan_karyawan');
         $data['id_karyawan'] = Session::get('id_karyawan');
+        $data['jumlah_bahan'] = rupiahController($req->jumlah_bahan);
+
         $model = new P_Bahan_produksi($data);
         if($model->save()){
-            return redirect()->back()->with('message_success', 'Bahan baku telah disimpan');
+            return redirect()->back()->with('message_success', 'Berhasil tambah bahan baku');
         }else{
             return redirect()->back()->with('message_fail', 'Bahan baku gagal disimpan');
         }
@@ -50,6 +52,8 @@ class BahanBaku extends Controller
         $data = $req->except(['_token']);
         $data['id_perusahaan'] = Session::get('id_perusahaan_karyawan');
         $data['id_karyawan'] = Session::get('id_karyawan');
+        $data['jumlah_bahan'] = rupiahController($req->jumlah_bahan);
+        
         $model = P_Bahan_produksi::find($id);
         if($model->update($data)){
             return redirect()->back()->with('message_success', 'Bahan baku telah diubah');

@@ -32,6 +32,8 @@ class BiayaOverhead extends Controller
         $data = $req->except(['_token']);
         $data['id_perusahaan']=Session::get('id_perusahaan_karyawan');
         $data['id_karyawan']=Session::get('id_karyawan');
+        $data['jumlah_biaya'] = rupiahController($req->jumlah_biaya);
+
         $model = new P_biaya_overhead($data);
         if($model->save()){
             return redirect()->back()->with('message_success','Biaya overhead telah disimpan');
@@ -50,6 +52,8 @@ class BiayaOverhead extends Controller
         $data = $req->except(['_token']);
         $data['id_perusahaan']=Session::get('id_perusahaan_karyawan');
         $data['id_karyawan']=Session::get('id_karyawan');
+        $data['jumlah_biaya'] = rupiahController($req->jumlah_biaya);
+        
         $model = P_biaya_overhead::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->update($data)){
             return redirect()->back()->with('message_success','Biaya overhead telah diubah');

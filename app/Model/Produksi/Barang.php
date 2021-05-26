@@ -38,9 +38,9 @@ class Barang extends Model
     public function linkToHargaBaseOnJumlah(){
         return $this->hasMany('App\Model\Produksi\HargaJualBaseOnJumlah','id_barang','id');
     }
-    public function linkToHargaBaseOneJumlah(){
+    /*public function linkToHargaBaseOneJumlah(){
         return $this->hasOne('App\Model\Produksi\HargaJualBaseOnJumlah','id_barang','id');
-    }
+    }*/
 
     public function linkToStokAwal(){
         return $this->hasMany('App\Model\Produksi\StokAwal','id_barang','id');
@@ -48,5 +48,12 @@ class Barang extends Model
 
     public function linkToItemIO(){
         return $this->hasMany('App\Model\Produksi\ItemIO','id_barang','id');
+    }
+
+    public function linkToPembelian(){
+        return $this->hasMany('App\Model\Produksi\BeliBarang','id_barang','id');
+    }
+    public function linkToPenjualan(){
+        return $this->hasMany('App\Model\Produksi\BeliBarang','id_barang','id');
     }
 }
