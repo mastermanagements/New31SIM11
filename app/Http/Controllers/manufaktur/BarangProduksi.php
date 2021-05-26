@@ -43,11 +43,12 @@ class BarangProduksi extends Controller
         $data = $req->except(['_token']);
         $data['id_perusahaan'] = Session::get('id_perusahaan_karyawan');
         $data['id_karyawan'] = Session::get('id_karyawan');
+        $data['tgl_mulai'] = tanggalController($req->tgl_mulai);
         $model = new P_tambah_produksi($data);
         if($model->save()){
-            return redirect('manufaktur')->with('message_success','Barang produksi telah disimpan');
+            return redirect('manufaktur')->with('message_success','Barang produksi telah disimpan')->with('tab2','tab2');
         }else{
-            return redirect('manufaktur')->with('message_fail','Barang produksi gagal disimpan');
+            return redirect('manufaktur')->with('message_fail','Barang produksi gagal disimpan')->with('tab2','tab2');
         }
     }
 

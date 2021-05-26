@@ -18,6 +18,10 @@ class P_tambah_produksi extends Model
         return $this->belongsTo('App\Model\Produksi\Barang', 'id_barang');
     }
 
+    public function linkToBarangDalamProses(){
+        return $this->belongsTo('App\Model\Produksi\Barang', 'brg_dalam_proses');
+    }
+
     public function linkToSupervisor(){
         return $this->belongsTo('App\Model\Hrd\H_Karyawan','id_supervisor_produksi');
     }

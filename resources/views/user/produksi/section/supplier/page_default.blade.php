@@ -1,7 +1,9 @@
 @extends('user.administrasi.master_user')
 
+@section('skin')
+    <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
 
-
+@stop
 @section('master_content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -95,7 +97,7 @@
                                       <td>{{ $value->kcp }}</td>
                                       <td>
                                             <a href="{{ url('RekSupplier/'.$value->id.'/edit') }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
-                                            
+
                                             <form action="{{ url('RekSupplier/'.$value->id) }}" method="post">
                                               @method('delete')
                                               {{ csrf_field() }}

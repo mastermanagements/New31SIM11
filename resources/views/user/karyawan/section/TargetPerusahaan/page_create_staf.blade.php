@@ -28,7 +28,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Tambah  Target Staf Perusahaan</h3>
-                          <h5 class="pull-right"><a href="{{ url('Target-Perusahaan')}}">Kembali ke Halaman utama</a></h5>
+                        <h5 class="pull-right"><a href="{{ url('Target-Perusahaan')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -73,7 +73,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Masukkan Jumlah Target Spesifik </label>                &nbsp;<strong style="color: red">*</strong>
                                     <input type="number" class="form-control" placeholder="Masukan Jumlah Target dalam bentuk angka" name="jumlah_target"  required></input>
-                                    
+
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Satuan Target Per</label>                &nbsp;<strong style="color: red">*</strong>

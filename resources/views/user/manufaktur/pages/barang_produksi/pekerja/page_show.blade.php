@@ -2,9 +2,6 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
 @stop
 
@@ -23,10 +20,17 @@
 
         <p></p>
         <div class="row">
+          @if(!empty(session('message_success')))
+              <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+          @elseif(!empty(session('message_fail')))
+              <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+          @endif
+          <p></p>
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Tenaga Produksi</h3>
+                        <h5 class="pull-right"><a href="{{ url('manufaktur')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -39,8 +43,8 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Nama Karyawan</th>
-                                                        <th>Besaran Upah</th>
+                                                        <th>Nama Karyawan&nbsp;<strong style="color: red">*</strong></th>
+                                                        <th>Besaran Upah&nbsp;<strong style="color: red">*</strong></th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -60,7 +64,7 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control" name="jumlah_upah" required>
+                                                                <input type="text" id="rupiah2" class="form-control" name="jumlah_upah" required>
                                                             </td>
                                                             <td><button type="submit" class="btn btn-primary">Simpan</button></td>
                                                         </form>
@@ -81,7 +85,7 @@
                                                                             </select>
                                                                     </td>
                                                                     <td>
-                                                                        <input type="text" class="form-control" name="jumlah_upah" value="{{ $tenaga_prod->jumlah_upah }}" required>
+                                                                        <input type="text" class="form-control" name="jumlah_upah" value="{{ rupiahView($tenaga_prod->jumlah_upah) }}" required>
                                                                     </td>
                                                                     <td>
                                                                         <button type="submit" class="btn btn-warning">ubah</button>
@@ -99,12 +103,6 @@
                             </div>
                         </div>
 
-                        <div class="box-footer">
-                            {{ csrf_field() }}
-
-                        </div>
-
-                    </form>
                 </div>
             </div>
         </div>
@@ -113,32 +111,7 @@
 </div>
 @stop
 @section('plugins')
+      @include('user.global.rupiah_input2')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script>
 
-        window.onload = function() {
-            CKEDITOR.replace( 'spec_barang',{
-                height: 200
-            } );
-            CKEDITOR.replace( 'desc_barang',{
-                height: 200
-            } );
-        };
-
-        $('#datepicker').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy'
-        });
-//        $('#datepicker1').datepicker({
-//            autoclose: true,
-//            format: 'dd-mm-yyyy'
-//        });
-
-        $(function () {
-            $('.select2').select2()
-        });
-    </script>
-    @include('user.produksi.section.barang.JS.JS')
 @stop

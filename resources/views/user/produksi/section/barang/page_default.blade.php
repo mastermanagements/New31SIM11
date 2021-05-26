@@ -1,9 +1,7 @@
 @extends('user.produksi.master_user')
 
-
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-
 @stop
 
 @section('master_content')
@@ -64,7 +62,7 @@
                                     <div class="col-md-12">
                                         <div class="box box-success">
                                             <div class="box-header with-border">
-                                                <h3 class="box-title">Tabel Barang Jadi</h3>
+                                                <h3 class="box-title">Daftar Barang Jadi</h3>
                                                 <div class="box-tools pull-right">
                                                     <a href="{{ url('import-barang') }}"  class="btn btn-primary" data-toggle="modal" data-target="#modal-import"> Import Barang </a>
                                                 </div>
@@ -81,12 +79,10 @@
                                                                 <th>Kode</th>
                                                                 <th>Nama Barang</th>
                                                                 <th>Satuan</th>
-                                                                <th>Kategori</th>
                                                                 <th>Spesifikasi</th>
                                                                 <th>Merk</th>
                                                                 <th>Deskripsi</th>
                                                                 <th>No Rak</th>
-                                                                <th>Stok Minimum</th>
                                                                 <th>HPP</th>
                                                                 <th>Metode jual</th>
                                                                 <th>Aksi</th>
@@ -101,37 +97,36 @@
                                                                         <td>{{ $data->kd_barang }}</td>
                                                                         <td>{{ $data->nm_barang }}</td>
                                                                         <td>{{ $data->linkToSatuan->satuan }}</td>
-                                                                        <td>{{ $data->getkategori->nm_kategori_p }}</td>
                                                                         <td>{{ $data->spec_barang }}</td>
                                                                         <td>{{ $data->merk_barang }}</td>
                                                                         <td>{!! substr($data->desc_barang,0,100) !!}</td>
                                                                         <td>{{ $data->no_rak }}</td>
-                                                                        <td>{{ $data->stok_minimum }}</td>
                                                                         <td>{{ rupiahView($data->hpp) }}</td>
                                                                         <td>
                                                                                 @if($data->metode_jual == '0')
                                                                                    <a href="#" onclick='window.location.href="{{ url('harga-jual-satuan/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> Satu harga</a>
                                                                                 @else
-                                                                                    <a href="#" onclick='window.location.href="{{ url('harga-jual-baseon-jumlah/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"> Jumlah Beli</a>
+                                                                                    <a href="#" onclick='window.location.href="{{ url('harga-jual-baseon-jumlah/'. $data->id) }}"' type="button" class="btn btn-primary" title="ubah jasa"><font color="#f7da04">Jumlah Beli</font></a>
                                                                                 @endif
                                                                         </td>
-                                                                        <th>
+                                                                        <td>
                                                                             <form action="{{ url('delete-barang/'.$data->id) }}" method="post">
                                                                                 <a href="{{ url('ubah-barang/'.$data->id) }}" type="button" class="btn btn-warning" title="ubah jasa">ubah</a>
                                                                                 {{ csrf_field() }}
                                                                                 <input type="hidden" name="_method" value="put">
+                                                                                @if((empty($data->linkToHargaJual)) OR empty($data->linkToHargaBaseOnJumlah) OR empty($data->linkToPembelian) OR empty($data->linkToPenjualan))
                                                                                 <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data barang ini ... ?')" class="btn btn-danger" title="hapus proposal">hapus</button>
+                                                                                @else No Hapus
+                                                                                @endif
                                                                             </form>
-                                                                        </th>
+                                                                        </td>
                                                                     </tr>
                                                                   @endif
                                                                 @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    {{--<div class="col-md-12">--}}
-                                                        {{--{{ $data_barang->links() }}--}}
-                                                    {{--</div>--}}
+
                                                 </div>
                                             </div>
                                             <!-- /.box-body -->
@@ -153,7 +148,7 @@
                                 <div class="col-md-12">
                                     <div class="box box-success">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">Tabel Barang Mentah</h3>
+                                            <h3 class="box-title">Daftar Barang Mentah</h3>
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
@@ -232,7 +227,7 @@
                                 <div class="col-md-12">
                                     <div class="box box-success">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">Tabel Barang Dalam Proses</h3>                                          
+                                            <h3 class="box-title">Daftar Barang Dalam Proses</h3>
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
@@ -310,17 +305,19 @@
                                    <table id="example3" class="table table-bordered table-striped" style="width: 100%">
                                        <thead>
                                        <tr>
-                                           <td>#</td>
-                                           <td>Nama Barang</td>
-                                           <td>Satuan</td>
-                                           <td>HPP</td>
-                                           <td>Harga Jual</td>
-                                           <td>Keuntungan</td>
-                                           <td>Aksi</td>
+                                           <th>#</th>
+                                           <th>Nama Barang</th>
+                                           <th>Satuan</th>
+                                           <th>HPP</th>
+                                           <th>Harga Jual</th>
+                                           <th>Keuntungan</th>
+                                           <th> Persen Untung</th>
+                                           <th>Aksi</th>
                                        </tr>
                                        </thead>
                                        <tbody>
                                        @php($no=1)
+                                       @php($untung=0)
                                        @if(!empty($data_barang))
                                            @foreach($data_barang as $data_barangs )
                                                @foreach($data_barangs->linkToHargaJualSatuan as $data_satuan)
@@ -330,7 +327,9 @@
                                                        <td>{{ $data_satuan->linkToBarang->linkToSatuan->satuan }}</td>
                                                        <td>{{ rupiahView($data_satuan->linkToBarang->hpp) }}</td>
                                                        <td>{{ rupiahView($data_satuan->harga_jual) }}</td>
-                                                       <td>{{ rupiahView($data_satuan->harga_jual - $data_satuan->linkToBarang->hpp)  }}</td>
+                                                       @php($untung=$data_satuan->harga_jual - $data_satuan->linkToBarang->hpp)
+                                                       <td>{{ rupiahView($untung)  }}</td>
+                                                       <td>{{ (($untung/$data_satuan->linkToBarang->hpp) * 100) }} </td>
                                                        <td>
                                                            <form action="{{ url('harga-jual-satuan/'.$data_satuan->id.'/delete') }}" method="post">
                                                                {{ csrf_field() }}
@@ -352,18 +351,20 @@
                                    <table id="example1" class="table table-bordered table-striped">
                                        <thead>
                                        <tr>
-                                           <td>#</td>
-                                           <td>Nama Barang</td>
-                                           <td>Satuan</td>
-                                           <td>Harga HPP</td>
-                                           <td>Jumlah Maks Pembelian</td>
-                                           <td>Harga Jual</td>
-                                           <td>Keuntungan</td>
-                                           <td>Aksi</td>
+                                           <th>#</th>
+                                           <th>Nama Barang</th>
+                                           <th>Satuan</th>
+                                           <th>Harga HPP</th>
+                                           <th>Jumlah Maks Pembelian</th>
+                                           <th>Harga Jual</th>
+                                           <th>Keuntungan</th>
+                                           <th>Persen Untung (%)</th>
+                                           <th>Aksi</th>
                                        </tr>
                                        </thead>
                                        <tbody>
                                        @php($no=1)
+                                       @php($untung=0)
                                        @foreach($data_barang as $data_barang_jumlah)
                                            @if(!empty($data_barang_jumlah->linkToHargaBaseOnJumlah))
                                                @foreach($data_barang_jumlah->linkToHargaBaseOnJumlah as $data_bJumlah)
@@ -374,7 +375,9 @@
                                                        <td>{{ rupiahView($data_bJumlah->linkToBarang->hpp) }}</td>
                                                        <td>{{ $data_bJumlah->jumlah_maks_brg }}</td>
                                                        <td>{{ rupiahView($data_bJumlah->harga_jual) }}</td>
-                                                       <td>{{ rupiahView($data_bJumlah->harga_jual - $data_bJumlah->linkToBarang->hpp) }}</td>
+                                                       @php($untung=$data_bJumlah->harga_jual - $data_bJumlah->linkToBarang->hpp)
+                                                       <td>{{ rupiahView($untung)  }}</td>
+                                                       <td>{{ round(($untung/$data_bJumlah->linkToBarang->hpp) * 100) }} </td>
                                                        <td>
                                                            <form action="{{ url('harga-jual-baseon-jumlah/'.$data_bJumlah->id.'/delete') }}" method="post">
                                                                {{ csrf_field() }}
@@ -406,13 +409,13 @@
                             <table id="example1" class="table table-bordered table-striped" style="width: 100%">
                                 <thead>
                                     <tr>
-                                        <td>No</td>
-                                        <td>Barang Asal</td>
-                                        <td>Satuan Asal</td>
-                                        <td>Barang Tujuan</td>
-                                        <td>Satuan Tujuan</td>
-                                        <td>Jumlah Konversi</td>
-                                        <td>Aksi</td>
+                                        <th>No</th>
+                                        <th>Barang Asal</th>
+                                        <th>Satuan Asal</th>
+                                        <th>Barang Tujuan</th>
+                                        <th>Satuan Tujuan</th>
+                                        <th>Jumlah Konversi</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                <tbody>
@@ -447,14 +450,14 @@
                                  <table id="example2" class="table table-bordered table-striped" style="width: 100%">
                                      <thead>
                                      <tr>
-                                         <td>No</td>
-                                         <td>Tanggal Konversi</td>
-                                         <td>Nama Barang Asal</td>
-                                         <td>Satuan Barang Asal</td>
-                                         <td>Nama Barang Tujuan</td>
-                                         <td>Satuan Barang Tujuan</td>
-                                         <td>Jumlah Konversi</td>
-                                         <td>Petugas</td>
+                                         <th>No</th>
+                                         <th>Tanggal Konversi</th>
+                                         <th>Nama Barang Asal</th>
+                                         <th>Satuan Barang Asal</th>
+                                         <th>Nama Barang Tujuan</th>
+                                         <th>Satuan Barang Tujuan</th>
+                                         <th>Jumlah Konversi</th>
+                                         <th>Petugas</th>
                                      </tr>
                                      </thead>
                                      <tbody>

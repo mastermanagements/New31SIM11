@@ -25,7 +25,10 @@ class Barang extends Controller
     private $id_karyawan;
     private $id_perusahaan;
     private $metode_penjualan = [
-        '0'=>'berdasarkan satu harga','1'=>'berdasarkan jumlah beli'
+        '0'=>'Berdasarkan satu harga','1'=>'Berdasarkan jumlah beli'
+    ];
+    private $jenis_barang = [
+        '0'=>'Barang jadi','1'=>'Barang mentah','Barang dalam proses'
     ];
 
     private $metode_promo = [
@@ -114,6 +117,7 @@ class Barang extends Controller
         $data = [
             'kategori_produk'=> kategori_produk::all(),
             'metode_jual'=>$this->metode_penjualan,
+            'jenis_barang'=>$this->jenis_barang,
             'satuan' => Sb::all()
         ];
         return view('user.produksi.section.barang.page_create', $data);
@@ -166,8 +170,9 @@ class Barang extends Controller
          $model->no_rak= $no_rak;
 //         $model->stok_awal= $stok_awal;
          $model->stok_minimum= $stok_minimum;
-         $model->hpp= $hpp;
+         $model->hpp= rupiahController($hpp);
          $model->metode_jual= $request->metode_jual;
+         $model->jenis_barang= $request->jenis_barang;
          $model->stok_akhir= 0;
          $model->gambar= '';
          $model->id_perusahaan= $this->id_perusahaan;
@@ -208,6 +213,7 @@ class Barang extends Controller
             'subsubkategori_produk'=> subsubkategori_produk::all(),
             'data_barang' => $data_barang,
             'metode_jual'=>$this->metode_penjualan,
+            'jenis_barang'=>$this->jenis_barang,
             'satuan' => Sb::all()
         ];
         return view('user.produksi.section.barang.page_edit', $data);
@@ -260,6 +266,7 @@ class Barang extends Controller
         $model->stok_minimum= $stok_minimum;
         $model->hpp= $hpp;
         $model->metode_jual= $request->metode_jual;
+        $model->jenis_barang= $request->jenis_barang;
         $model->stok_akhir= 0;
         $model->gambar= '';
         $model->id_perusahaan= $this->id_perusahaan;

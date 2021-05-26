@@ -1,4 +1,4 @@
-<div class="tab-pane" id="tab_4">
+<div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
     <table id="example1" class="table table-responsive">
         <thead>
         <tr>

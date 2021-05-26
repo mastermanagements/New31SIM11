@@ -2,9 +2,6 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
 @stop
 
@@ -27,6 +24,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Tabel Harga Jual Satuan</h3>
+                        <h5 class="pull-right"><a href="{{ url('Barang')}}">Kembali ke Halaman utama</a></h5>
                     </div>
 
                     <div class="box-body">
@@ -36,7 +34,7 @@
                              </div>
                              <div class="col-md-12" style="margin-top: 10px">
                                 @if(!empty($data->linkToHargaJualSatuan))
-                                     <table id="example1" class="table table-bordered table-striped">
+                                     <table id="example2" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <td>#</td>
@@ -52,8 +50,8 @@
                                                  <tr>
                                                      <td>{{ $no++ }}</td>
                                                      <td>{{ $data->linkToBarang->nm_barang }}</td>
-                                                     <td>{{ Rupiah($data->linkToBarang->hpp) }}</td>
-                                                     <td>{{ Rupiah($data->harga_jual) }}</td>
+                                                     <td>{{ rupiahView($data->linkToBarang->hpp) }}</td>
+                                                     <td>{{ rupiahView($data->harga_jual) }}</td>
                                                      <td>
                                                          <form action="{{ url('harga-jual-satuan/'.$data->id.'/delete') }}" method="post">
                                                              {{ csrf_field() }}
@@ -79,7 +77,6 @@
 @stop
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+
 
 @stop

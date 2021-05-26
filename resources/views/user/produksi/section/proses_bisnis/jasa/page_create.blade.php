@@ -2,7 +2,6 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
 
 @stop
 
@@ -27,7 +26,7 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('Proses-Bisnis') }}" method="post" enctype="multipart/form-data">
+                    <form role="form" action="{{ url('Proses-Bisnis-Jasa') }}" method="post" enctype="multipart/form-data">
                         <div class="box-body">
 
                             <div class="form-group">
