@@ -193,6 +193,12 @@ class POrder extends Controller
       }
       $jumlah_harga = $harga_peritem - ($harga_peritem * $nilai_diskon);
 
+      if($req->expire_date == NULL){
+        $expire_date = null;
+      } else {
+        $expire_date = tanggalController($req->expire_date);
+      }
+
       $model_o = new DetailOrder;
 
       $model_o->id_order = $id;
@@ -201,7 +207,9 @@ class POrder extends Controller
       $model_o->jumlah_beli =$req->jumlah_beli;
       $model_o->diskon_item = $req->diskon;
       $model_o->jumlah_harga = rupiahController($jumlah_harga);
-      $model_o->expire_date = tanggalController($req->expire_date);
+
+      $model_o->expire_date = $expire_date;
+
       $model_o->id_perusahaan = Session::get('id_perusahaan_karyawan');
       $model_o->id_karyawan = Session::get('id_karyawan');
       if ($model_o->save()) {
@@ -228,7 +236,12 @@ class POrder extends Controller
         $harga_beli = rupiahController($req->harga_beli);
         $jumlah_beli = rupiahController($req->jumlah_beli);
         $diskon_item = rupiahController($req->diskon_item);
-        $expire_date = tanggalController($req->expire_date);
+
+        if($req->expire_date == NULL){
+          $expire_date = null;
+        } else {
+          $expire_date = tanggalController($req->expire_date);
+        }
 
         $persen_diskon_item = $diskon_item/$harga_beli*100;
         $total_diskon = $diskon_item * $jumlah_beli;
@@ -271,7 +284,7 @@ class POrder extends Controller
         $metode_bayar = $req->metode_bayar;
         $tgl_jatuh_tempo = tanggalController($req->tgl_jatuh_tempo);
         $ket = $req->ket;
-
+         $total_pajak =0;
         //$sub_total = total_belanja
         $sub_total = $req->sub_total;
         if(!empty($pajak)){
@@ -333,14 +346,14 @@ class POrder extends Controller
                       if($response['status']==false){
                         return redirect()->back()->with('message_fail',$response['message']);
                       }else{
-                          return redirect()->back()->with('message_success','Data Pembelian telah disimpan');
+                          return redirect()->back()->with('message_success','Data barang pembelian telah disimpan');
                       }
                   }else{
-                      return redirect()->back()->with('message_success','Data Pembelian telah disimpan');
+                    return redirect()->back()->with('message_success','Data barang pembelian telah disimpan');
                   }
               }
               }else{
-                  return redirect()->back()->with('message_error','data pembelian gagal disimpan');
+                  return redirect()->back()->with('message_fail','data pembelian gagal disimpan');
               }
           //jika tanpa jurnal otomatis
         } else{
@@ -359,9 +372,9 @@ class POrder extends Controller
               $model->id_karyawan = Session::get('id_karyawan');
 
               if ($model->save()) {
-                  return redirect('Pembelian')->with('message_success', 'berhasil memuat nota pesanan pembelian')->with('tab3','tab3');
+                  return redirect()->back()->with('message_success', 'berhasil menambah data pembelian barang')->with('tab3','tab3');
               } else {
-                  return redirect('Pembelian')->with('message_error', 'gagal,membuat nota pesanan pembelian')->with('tab3','tab3');
+                  return redirect()->with('message_fail', 'gagal,membuat data pembelian barang)->with('tab3','tab3');
               }
         }
     }

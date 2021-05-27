@@ -150,7 +150,14 @@ class PSales extends Controller
         $bayar = rupiahController($req->bayar);
         $dp_so = rupiahController($req->dp_so);
         $metode_bayar = $req->metode_bayar;
-        $tgl_jatuh_tempo = tanggalController($req->tgl_jatuh_tempo);
+
+        if($req->tgl_jatuh_tempo == NULL){
+            $tgl_jatuh_tempo = NULL;
+        }
+        else {
+          $tgl_jatuh_tempo = tanggalController($req->tgl_jatuh_tempo);
+        }
+
         $ket = $req->ket;
 
         //$sub_total = total penjualan

@@ -2,7 +2,6 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
 @stop
 
@@ -24,7 +23,7 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Rincian Pesanan Pembelian dengan Nomor PO : <font color="#FF00GG">{{ $data->no_po }}</font> </h3>
+                            <h3 class="box-title">Rincian Pesanan Pembelian dengan Nomor PO : <font color="#FF00GG">{{ $data->no_po }}</font> , Supplier : <font color="#FF00GG">{{ $data->linkToSupplier->nama_suplier }}</font> </h3>
                              <h5 class="pull-right"><a href="{{ url('Pembelian')}}">Kembali ke Halaman utama</a></h5>
                         </div>
                         <!-- /.box-header -->
@@ -65,7 +64,7 @@
                                                     <input type="number" class="form-control" name="diskon" placeholder="diskon" value="0" required>
                                                 </td>
                                                 <td>
-                                                    <input type="number" id="rupiah2" class="form-control" name="jumlah_total"  disabled required>
+                                                    <input type="text"  class="form-control" name="jumlah_total"  disabled required>
                                                     <input type="hidden" class="form-control" name="redirect" value="true">
                                                 </td>
                                             </tr>
@@ -153,44 +152,36 @@
                                     {{ csrf_field() }}
                                        <div class="col-md-12">
                                            <div class="row">
-                                             <div class="col-md-6">
-                                               <div class="form-group">
-                                                   <label>Diskon Tambahan (Bilangan)</label>
-                                                   <input type="text" id="rupiah2" name="diskon_tambahan" @if(!empty($data->diskon_tambahan)) value="{{ rupiahView($data->diskon_tambahan) }}" @else value="0" @endif class="form-control" required>
-                                               </div>
+                                             <div class="col-md-4">
+                                                 <div class="form-group">
+                                                     <label>Diskon Tambahan (Bilangan)</label>
+                                                     <input type="text" id="rupiah2" name="diskon_tambahan" @if(!empty($data->diskon_tambahan)) value="{{ rupiahView($data->diskon_tambahan) }}" @else value="0" @endif class="form-control" required>
+                                                 </div>
+                                                 <div class="form-group">
+                                                      <label>Pajak (dalam %, misal: 10 %, tulis : 10)</label>
+                                                      <input type="number" name="pajak" class="form-control" @if(!empty($data->pajak)) value="{{ $data->pajak }}" @else  value="0" @endif >
+                                                 </div>
+                                            </div>
+                                             <div class="col-md-4">
+                                                 <div class="form-group">
+                                                         <label>Uang Muka</label>
+                                                         <input type="text"  id="rupiah" name="uang_muka" @if(!empty($data->dp_po)) value="{{ rupiahView($data->dp_po) }}" @else value="0" @endif class="form-control" required>
+                                                 </div>
+                                                 <div class="form-group">
+                                                         <label>Kurang Bayar</label>
+                                                         <input type="hidden" name="sub_total" value="{{ $sub_item }}">
+                                                         <input type="text" readonly name="kurang_bayar" class="form-control" @if(!empty($data->kurang_bayar)) value="{{ rupiahView($data->kurang_bayar) }}" @endif required>
+                                                  </div>
+                                              </div>
 
-                                             </div>
-                                               <div class="col-md-6">
-                                                   <div class="form-group">
-                                                       <label>Pajak (dalam %, misal: 10 %, tulis : 10)</label>
-                                                       <input type="number" name="pajak" class="form-control" @if(!empty($data->pajak)) value="{{ $data->pajak }}" @else  value="0" @endif >
-                                                   </div>
-                                               </div>
-                                           </div>
-                                           <div class="row">
-                                             <div class="col-md-6">
-                                                   <div class="form-group">
-                                                       <label>Uang Muka</label>
-                                                       <input type="text"  id="rupiah" name="uang_muka" @if(!empty($data->dp_po)) value="{{ rupiahView($data->dp_po) }}" @else value="0" @endif class="form-control" required>
-                                                   </div>
-                                             </div>
-                                               <div class="col-md-6">
-                                                   <div class="form-group">
-                                                       <label>Kurang Bayar</label>
-                                                       <input type="hidden" name="sub_total" value="{{ $sub_item }}">
-                                                       <input type="text" readonly name="kurang_bayar" class="form-control" @if(!empty($data->kurang_bayar)) value="{{ rupiahView($data->kurang_bayar) }}" @endif required>
-                                                   </div>
-                                               </div>
-                                               <div class="col-md-6">
-                                                   <div class="form-group">
-                                                       <label>Keterangan</label>
-                                                       <textarea name="ket" class="form-control">@if(!empty($data->ket))  {!! $data->ket !!} @endif</textarea>
-                                                   </div>
-                                               </div>
-                                               <div class="col-md-6">
+                                               <div class="col-md-4">                                                   
                                                    <div class="form-group">
                                                        <label>Total Net</label>
                                                        <input type="text"  readonly class="form-control" @if(!empty($data->total)) value="{{ rupiahView($data->total) }}" @endif >
+                                                   </div>
+                                                   <div class="form-group">
+                                                       <label>Keterangan</label>
+                                                       <textarea name="ket" class="form-control">@if(!empty($data->ket))  {!! $data->ket !!} @endif</textarea>
                                                    </div>
                                                </div>
                                            </div>
@@ -215,6 +206,7 @@
 @section('plugins')
     @include('user.global.rupiah_input')
     @include('user.global.rupiah_input2')
+    @include('user.global.CalculateJumlah')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>

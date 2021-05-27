@@ -46,7 +46,11 @@ class PesananPembelian extends Controller
         ]);
 
         $tgl_po = tanggalController($req->tgl_po);
-        $tgl_kirim = tanggalController($req->tgl_dikirim);
+        if($req->tgl_kirim == NULL){
+          $tgl_kirim = null;
+        } else {
+          $tgl_kirim = tanggalController($req->tgl_dikirim);
+        }
 
         $model = PB::updateOrCreate(
             [
@@ -106,22 +110,23 @@ class PesananPembelian extends Controller
             'no_po' => 'required',
             'tgl_po' => 'required',
             'id_supplier' => 'required',
-            'tgl_krm' => 'required',
+            //'tgl_krm' => 'required',
         ]);
 
-
+        if($req->tgl_krm == null){
+          $tgl_dikirim = null;
+        } else {
+          $tgl_dikirim = tanggalController($req->tgl_krm);
+        }
         $model = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
         //$model->id_tawar_beli = $req->id_tawar_beli;
         $model->no_po = $req->no_po;
         $model->tgl_po = tanggalController($req->tgl_po);
         $model->id_supplier = $req->id_supplier;
-        $model->tgl_krm = tanggalController($req->tgl_krm);
-        /*$model->diskon_tambahan = $req->diskon_tambahan;
-        $model->pajak = $req->pajak;
-        $model->dp_po = $req->uang_muka;
-        $model->kurang_bayar = $req->kurang_bayar;*/
+        $model->tgl_krm = $tgl_dikirim;
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
         $model->id_karyawan = Session::get('id_karyawan');
+        //dd($model);
         if ($model->save()) {
             return redirect('Pembelian')->with('message_success', 'anda telah mengubah nota pesanan pembelian')->with('tab2','tab2');
         } else {

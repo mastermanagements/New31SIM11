@@ -2,7 +2,7 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
+
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
@@ -27,6 +27,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Tambah Pembelian Barang</h3>
+                        <h5 class="pull-right"><a href="{{ url('Pembelian')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -35,12 +36,13 @@
                            <div class="col-md-12" style="margin-top:10px">
                                <form role="form" action="{{ url('Oder') }}" method="post" >
                                    {{ csrf_field() }}
+                                <div class="col-md-6">
                                    <div class="form-group">
-                                       <label>No. Order</label>
+                                       <label>No. Order</label>&nbsp;<strong style="color: red">*</strong>
                                        <input type="text" name="no_order" class="form-control" value="{{ $no_surat }}" required>
                                    </div>
                                    <div class="form-group">
-                                        <label>Tanggal Pembelian</label>
+                                        <label>Tanggal Pembelian</label>&nbsp;<strong style="color: red">*</strong>
                                        <div class="input-group date">
                                            <div class="input-group-addon">
                                                <i class="fa fa-calendar"></i>
@@ -49,7 +51,7 @@
                                        </div>
                                    </div>
                                    <div class="form-group">
-                                       <label>No. Pesanan Pembelian</label>
+                                       <label>No. Pesanan Pembelian</label>&nbsp;<strong style="color: red">*</strong>
                                        <select class="form-control select2" name="id_po" style="width: 100%"
                                             {{-- onchange="if(confirm('Apakah anda akan mengambil data barang penawaran dari kode surat ini ... ?')){ return window.location.href='{{ url('rincian-penawaran') }}/'+$(this).val() }else{ alert('Data Barang tidak dapat diambil') }" --}}
                                             >
@@ -61,8 +63,10 @@
                                            @endif
                                        </select>
                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                    <div class="form-group">
-                                       <label>Supplier</label>
+                                       <label>Supplier</label>&nbsp;<strong style="color: red">*</strong>
                                        <select class="form-control select2" name="id_supplier"  required style="width: 100%">
                                            @if(empty($supplier))
                                                Isi dulu data supplier
@@ -74,7 +78,7 @@
                                        </select>
                                    </div>
                                    <div class="form-group">
-                                       <label>Tanggal Barang Tiba</label>
+                                       <label>Tanggal Barang Tiba</label>&nbsp;<strong style="color: red">*</strong>
                                        <div class="input-group date">
                                            <div class="input-group-addon">
                                                <i class="fa fa-calendar"></i>
@@ -82,15 +86,20 @@
                                        <input type="text" name="tgl_tiba" class="form-control" id="datepicker2" required>
                                      </div>
                                    </div>
-                                   <div class="form-group">
-                                       <button class="btn btn-primary">Simpan</button>
-                                   </div>
-
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="box-footer">
+                                    <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary">Simpan</button>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- /.box-body -->
                                </form>
                            </div>
-                            <div class="col-md-12">
-
-                            </div>
+                  
                         </div>
                         <!-- /.box-body -->
 
