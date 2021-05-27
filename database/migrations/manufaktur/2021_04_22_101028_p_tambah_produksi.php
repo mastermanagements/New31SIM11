@@ -16,9 +16,9 @@ class PTambahProduksi extends Migration
         Schema::create('p_tambah_produksi', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_barang')->unsigned();
-            $table->string('kode_produksi');
-            $table->string('batch_number');
-            $table->string('no_serial');
+            $table->string('kode_produksi')->nullable();
+            $table->string('batch_number')->nullable();
+            $table->string('no_serial')->nullable();
             $table->date('tgl_mulai')->nullable();
             $table->time('jam_mulai')->nullable();
             $table->integer('id_supervisor_produksi')->unsigned();

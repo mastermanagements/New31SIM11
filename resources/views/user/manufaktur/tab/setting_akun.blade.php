@@ -1,4 +1,4 @@
-<div class="tab-pane" id="tab_5">
+<div class="tab-pane @if(Session::get('tab5') == 'tab5') active @else '' @endif" id="tab_5">
     <a href="{{ url('akun-manufaktur/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i>Tambah</a>
     <p></p>
     <div class="row">

@@ -438,7 +438,9 @@ Route::get('ambilDataKlien/{id}', 'administrasi\Klien@ambil_data_klien');
 
 Route::get('getPenanda/{id_sdk}', 'administrasi\Klien@ResponsePenanda');
 
-Route::post('ganti-jenis-klien-leads', 'administrasi\Klien@ganti_jenis_klien_leads');
+Route::put('convert-leads/{id}', 'administrasi\Klien@convertLeads');
+
+Route::resource('RekKlien', 'administrasi\RekKlien');
 
 //--- Barang ---
 Route::get('Barang', 'produksi\Barang@index');
@@ -899,6 +901,8 @@ Route::resource('Jasa','produksi\Jasa');
 Route::resource('SK-Jasa','produksi\SKJasa',['except'=>['index', 'show']]);
 
 Route::resource('Order-Jasa', 'produksi\OrderJasa');
+
+Route::resource('Proses-Bisnis-Jasa', 'produksi\ProsesBisnisJasa');
 
 Route::get('rincian-orderjasa/{id}', 'produksi\OrderJasa@rincian_orderjasa');
 Route::post('tambah-rincian-orderjasa/{id_order_jasa}', 'produksi\OrderJasa@rincian_orderjasa_store');
@@ -2364,6 +2368,7 @@ Route::get('hapus-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo
 Route::resource('manufaktur','manufaktur\Manufaktur');
 Route::resource('sop-produksi','manufaktur\SOPProduksi');
 Route::resource('proses-produksi','manufaktur\ProsesProduksi');
+Route::put('update-pertahap/{id}','manufaktur\ProsesProduksi@updatePertahap');
 Route::resource('proses-bisnis','manufaktur\ProsesBisnis');
 
 

@@ -2,12 +2,8 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
 @stop
-
 
 @section('master_content')
 <div class="content-wrapper">
@@ -26,7 +22,8 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Barang SOP</h3>
+                        <h3 class="box-title">Tambah Barang Pada SOP Berikut.</h3>
+                        <h5 class="pull-right"><a href="{{ url('manufaktur')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -37,7 +34,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             {{ csrf_field() }}
-                                            <label>Proses Bisnis</label>
+                                            <label>SOP</label>
                                             <input type="hidden" name="id_sop_pro" class="form-control" value="{{ $id_sop_produksi }}" required/>
                                             <input type="text" name="proses_bisnis" class="form-control" value="{{ $sop_produksi->nama_sop }}" disabled required/>
                                         </div>
@@ -49,7 +46,7 @@
                                                 <option disabled>Pilih Barang</option>
                                                 @if(!empty($barang))
                                                     @foreach($barang as $data_barang)
-                                                        <option value="{{ $data_barang->id }}"> {{ $data_barang->nm_barang }}</option>
+                                                        <option value="{{ $data_barang->id }}"> {{ $data_barang->nm_barang }}, &nbsp;{{ $data_barang->linkToSatuan->satuan }}, &nbsp;{{ $data_barang->spec_barang }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -89,7 +86,7 @@
                                                             </td>
                                                             <td>
                                                                 <button type="submit" class="btn btn-warning">Ubah</button>
-                                                                <a href="{{ url('barang-sop/'.$sop_produksi->id.'/delete') }}" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')">Ubah</a>
+                                                                <a href="{{ url('barang-sop/'.$sop_produksi->id.'/delete') }}" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')">Hapus</a>
                                                             </td>
                                                         </form>
                                                     </tr>
@@ -117,27 +114,6 @@
 @stop
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script>
-
-        window.onload = function() {
-            CKEDITOR.replace( 'spec_barang',{
-                height: 200
-            } );
-            CKEDITOR.replace( 'desc_barang',{
-                height: 200
-            } );
-        };
-
-        $('#datepicker').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy'
-        });
-//        $('#datepicker1').datepicker({
-//            autoclose: true,
-//            format: 'dd-mm-yyyy'
-//        });
 
         $(function () {
             $('.select2').select2()

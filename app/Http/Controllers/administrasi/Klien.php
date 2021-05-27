@@ -268,26 +268,18 @@ class Klien extends Controller
 
 	//Ganti jenis klien dari leads ke prospect
 
-	 public function ganti_jenis_klien_leads(Request $req)
-    { //validasi
-        $this->validate($req,[
-            'id_ubah' => 'required',
-            'jenis_klien'=>'required'
-        ]);
-        $id= $req->id_ubah;
-        $jenis_klien= $req->jenis_klien;
-
-        $model = kliens::findOrFail($id);
-        $model->jenis_klien = $jenis_klien;
-
-        if($model->save())
-        {
-           return redirect('Klien')->with('message_success','Anda baru saja memindahkan jenis customer');
-        }
-        else
-        {
-           return redirect('Klien')->with('message_fail','Terjadi kesalahan, gagal memindahkan jenis klien');
-        }
-    }
+  public function convertLeads(Request $req, $id)
+  {
+      $models = kliens::find($id);
+      $models->jenis_klien = '0';
+      if($models->save())
+      {
+          return redirect('Klien')->with('message_success','sukses mengubah jenis klien');
+      }
+      else
+      {
+          return redirect('Klien')->with('message_fail','Maaf,Telah terjadi kesalahan, gagal mengubah jenis klien');
+      }
+  }
 
 }

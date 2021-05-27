@@ -1,7 +1,6 @@
 @extends('user.produksi.master_user')
 
 
-
 @section('master_content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->

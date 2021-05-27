@@ -111,7 +111,7 @@
                         <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
                           <div class="row">
                               <div class="col-md-3" style="margin: 0">
-                                  <a href="{{ url('Proses-Bisnis/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Proses Bisnis </a>
+                                  <a href="{{ url('Proses-Bisnis-Jasa/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Proses Bisnis </a>
                               </div>
                           </div>
                           <p></p>
@@ -147,11 +147,11 @@
                                                                   <td>{!! $probis->ket !!}</td>
                                                                   <td></td>
                                                                   <th>
-                                                                      <form action="{{ url('Proses-Bisnis/'.$probis->id) }}" method="post">
+                                                                      <form action="{{ url('Proses-Bisnis-Jasa/'.$probis->id) }}" method="post">
                                                                         <!---bisa jg url ="{{ url('Jasa/'.$jasa->id.'/destroy') }}"-->
                                                                             @method('delete')
                                                                             {{ csrf_field() }}
-                                                                          <a href="{{ url('Proses-Bisnis/'.$probis->id.'/edit') }}" type="button" class="btn btn-warning" title="ubah proses bisnis">ubah</a>
+                                                                          <a href="{{ url('Proses-Bisnis-Jasa/'.$probis->id.'/edit') }}" type="button" class="btn btn-warning" title="ubah proses bisnis">ubah</a>
                                                                           <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data proses bisnis ini ... ?')" class="btn btn-danger" title="hapus proses bisnis jasa">hapus</button>
                                                                       </form>
                                                                   </th>

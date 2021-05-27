@@ -1,4 +1,4 @@
-<div class="tab-pane" id="tab_3">
+<div class="tab-pane @if(Session::get('tab3') == 'tab3') active @else '' @endif" id="tab_3">
     <div class="row">
         @if(!empty($data_monitoring))
             @foreach($data_monitoring as $data_monitoring)
@@ -6,15 +6,14 @@
                 <div class="box box-primary collapsed-box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Tgl Mulai: {{ $data_monitoring->tgl_mulai }}, Supervisor: {{ $data_monitoring->linkToSupervisor->nama_ky }}
-                            , Barang : {{ $data_monitoring->linkToBarang->nm_barang }}
+                            , Barang yang diproduksi : {{ $data_monitoring->linkToBarang->nm_barang }}, &nbsp;{{ $data_monitoring->linkToBarang->linkToSatuan->satuan }}, &nbsp;{{ $data_monitoring->linkToBarang->spec_barang }}
                         </h3>
                         <div class="box-tools pull-right">
                             <form action="{{ url('quality-control/'.$data_monitoring->id) }}" method="post">
                                 {{ csrf_field() }} @method('put')
                                 <a href="{{ url('proses-pengerjaan/'. $data_monitoring->id) }}" class="btn btn-box-tool" title="Laksanakan Proses Produksi"><i class="fa fa-plus-square"></i></a>
-                                <button type="submit" class="btn btn-box-tool" title="Quality control dan hasil"><i class="fa fa-signal"></i></button>
                                 <button type="button" class="btn btn-box-tool" title="Selesai Produksi" onclick="callModal({{ $data_monitoring->id }})"><i class="fa fa-hourglass-end"></i></button>
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Buka-tutup"><i class="fa fa-times"></i>
                             </form>
 
                         </div>
@@ -27,13 +26,26 @@
                                         <div class="box-header with-border">
                                             <h3 class="box-title">{{ $data_proses_produksi->linkToProsesBisnis->proses_bisnis }}</h3>
                                             <div class="box-tools pull-right">
-                                                <a href="{{ url('proses-pengerjaan/'. $data_proses_produksi->id.'/edit') }}" class="btn btn-box-tool"><i class="fa fa-pencil"></i></a>
-                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                                <form action="{{ url('proses-pengerjaan/'.$data_proses_produksi->id) }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    @method('delete')
+                                                    <a href="{{ url('proses-pengerjaan/'. $data_proses_produksi->id.'/edit') }}" class="btn btn-box-tool" title="Ubah Proses ini"><i class="fa fa-pencil"></i></a>
+                                                    <button type="submit" class="btn btn-box-tool" title="hapus proses produksi" onclick="return confirm('Apakah anda akan menghapus proses produksi ini ...?')"><i class="fa fa-eraser"></i></button>
+                                                </form>
+                                                <!--end per tahap produksi-->
+                                                <form action="{{ url('update-pertahap/'.$data_proses_produksi->id) }}" method="post">
+                                                  {{ csrf_field() }}
+                                                    <input type="hidden" name="_method" value="put"/>
+                                                    @if(empty($data_proses_produksi->tgl_selesai))
+                                                    <button type="submit" class="btn btn-box-tool" title="Akhiri proses ini" onclick="return confirm('Apakah anda akan mengakhiri tahap produksi ini ...?')"><i class="fa fa-hand-o-right"></i></button>
+                                                    @endif
+                                                </form>
                                             </div>
+
                                             <div class="box-body" >
                                                 <div class="form-group">
-                                                    <label>Mulai dikerjakan</label>
-                                                    <p>{{ date('d-m-Y', strtotime($data_proses_produksi->tgl_mulai)) }}, {{ date('H:i:s', strtotime($data_proses_produksi->jam_mulai)) }}</p>
+                                                    <p><label>Mulai dikerjakan</label>&nbsp;: &nbsp;{{ date('d-m-Y', strtotime($data_proses_produksi->tgl_mulai)) }}, {{ date('H:i:s', strtotime($data_proses_produksi->jam_mulai)) }}</p>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Keterangan</label>
@@ -54,11 +66,13 @@
                                         <div class="box box-primary">
                                         <div class="box-header with-border">
                                             <h3 class="box-title">Quality Control</h3>
-                                            <div class="box-tools pull-right">
-                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                                            </div>
+
                                             <div class="box-body" >
+                                              @if(!empty($data_monitoring->tgl_mulai_qc))
+                                                <font color="#DE3106">Quality Control Selesai Dikerjakan !</font>
+                                              @else
                                                <div>
+                                                  <p> <font color="#DE3106">Input data Quality Control hanya dilakukan sekali saja, pastikan data yang anda input benar!</font></p>
                                                    <table class="table table-responsive">
                                                        <table>
                                                            <thead>
@@ -140,7 +154,7 @@
                                                        </table>
                                                    </table>
                                                </div>
-                                            </div>
+                                               @endif                                            </div>
                                         </div>
                                     </div>
                                     </div>
@@ -160,7 +174,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Modal Akhiri Produksi</h4>
+                    <h4 class="modal-title">Akhiri Proses Produksi ini</h4>
                 </div>
                 <form action="{{ url('quality-control-end-produksi') }}" method="post">
                     {{ csrf_field() }}
@@ -168,7 +182,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Jumlah Barang Jadi</label>
+                                    <label>Hasil Produksi Barang Jadi Pada Proses ini adalah:</label>
                                     <input type="hidden" name="id_quality_control">
                                     <input name="jumlah_brg_jadi_bagus" id="jumlah_brg_jadi_bagus_modal" class="form-control" readonly/>
                                 </div>
@@ -201,4 +215,5 @@
            }
        })
     }
+
 </script>

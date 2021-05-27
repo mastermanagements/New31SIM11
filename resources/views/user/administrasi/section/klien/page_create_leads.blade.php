@@ -17,7 +17,8 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Tamdah Data Leads</h3>
+                        <h3 class="box-title">Formulir Tambah Data Leads</h3>
+                        <h5 class="pull-right"><a href="{{ url('Klien')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -26,24 +27,24 @@
                         <div class="box-body">
                           <div class="col-md-3">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nama </label>
+                                <label for="exampleInputEmail1">Nama </label>&nbsp;<strong style="color: red">*</strong>
                                 <input type="text" name="nm_klien" class="form-control" id="exampleInputEmail1" required>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Alamat </label>
+                                <label for="exampleInputEmail1">Alamat </label>&nbsp;<strong style="color: red">*</strong>
                                 <textarea class="form-control"  name="alamat" id="alamat" required></textarea>
-                                <small style="color: red">* Tidak boleh kosong</small>
+
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Pekerjaan</label>
+                                <label for="exampleInputEmail1">Pekerjaan</label>&nbsp;<strong style="color: red">*</strong>
                                 <input type="text" name="pekerjaan" class="form-control" id="exampleInputEmail1" required>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">No. Handphone</label>
+                                <label for="exampleInputEmail1">No. Handphone</label>&nbsp;<strong style="color: red">*</strong>
                                 <input type="text" name="hp"  class="form-control" id="exampleInputEmail1" required>
-                                <small style="color: red">* Tidak Boleh Kosong</small>
+
                             </div>
 
                           </div>
@@ -64,12 +65,13 @@
                                 <label for="exampleInputEmail1">Instagram</label>
                                 <input type="text" name="ig"  class="form-control" id="exampleInputEmail1">
                             </div>
+
+                          </div>
+                          <div class="col-md-3">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Facebook</label>
                                 <input type="text" name="fb"  class="form-control" id="exampleInputEmail1">
                             </div>
-                          </div>
-                          <div class="col-md-3">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Twitter</label>
                                 <input type="text" name="twiter"  class="form-control" id="exampleInputEmail1">
@@ -82,36 +84,37 @@
                                 <label for="exampleInputEmail1">Alamat Perusahaan</label>
                                 <textarea class="form-control"  name="alamat_perusahaan" id="alamat_perusahaan"></textarea>
                             </div>
+
+                          </div>
+                          <div class="col-md-3">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Telp Perusahaan</label>
                                 <input type="text" name="telp_perusahaan" class="form-control" id="exampleInputEmail1">
                             </div>
-                          </div>
-                          <div class="col-md-3">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Jabatan</label>
                                 <input type="text" name="jabatan" class="form-control" id="exampleInputEmail1">
                                 <input type="hidden" name="jenis_klien" value="1" class="form-control" id="exampleInputEmail1">
                             </div>
               							<div class="form-group">
-                  							<label for="exampleInputEmail1">Info Customer Dari</label>
+                  							<label for="exampleInputEmail1">Info Customer Dari</label>&nbsp;<strong style="color: red">*</strong>
                   								<select class="form-control select2" style="width: 100%;" name="id_sdk" required>
                   								@if(empty($SDK))
                   									<option>Sumber Data Klien Belum di Isi</option>
                   								@else
                   									<option>Pilih</option>
                   									@foreach($SDK as $sdk)
-                                                      <option value="{{ $sdk->id }}">{{ $sdk->sumber_media }}</option>
+                                      <option value="{{ $sdk->id }}">{{ $sdk->sumber_media }}</option>
                   									@endforeach
                   								@endif
                   								</select>
               							</div>
               							<div class="form-group">
-              								<label for="exampleInputFile">Penanda</label>
+              								<label for="exampleInputFile">Penanda</label>&nbsp;<strong style="color: red">*</strong>
               								<select class="form-control select2" style="width: 100%;" name="id_penanda_sdk" required>
               									<option>Pilih</option>
               								</select>
-              								<small style="color: red">* Tidak boleh kosong</small>
+
               							</div>
             							  <div class="form-group">
                                 <label for="exampleInputEmail1">Ket Tambahan Info Customer</label>
@@ -119,6 +122,9 @@
                             </div>
                           </div>
                         <div class="col-md-12">
+                          <div class="box-footer">
+                            <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                          </div>
             							<div class="box-footer">
             								{{ csrf_field() }}
             								<button type="submit" class="btn btn-primary">Submit</button>

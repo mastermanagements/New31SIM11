@@ -2,9 +2,6 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
 @stop
 
@@ -14,7 +11,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-           Daftar Harga Berdasarkan Jumlah Barang
+           Daftar Harga Barang Berdasarkan Jumlah Pembelian
         </h1>
     </section>
 
@@ -27,12 +24,13 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Tabel Harga Berdasarkan Jumlah Barang</h3>
+                        <h5 class="pull-right"><a href="{{ url('Barang')}}">Kembali ke Halaman utama</a></h5>
                     </div>
 
                     <div class="box-body">
                          <div class="row">
                              <div class="col-md-12">
-                                 <a href="#" onclick="modalShow({{$data->id}})" type="button" class="btn btn-primary" title="ubah jasa"> berdasarkan jumlah beli</a>
+                                 <a href="#" onclick="modalShow({{$data->id}})" type="button" class="btn btn-primary" title="ubah jasa"> Masukan Jumlah Barang</a>
                              </div>
                              <div class="col-md-12" style="margin-top: 10px">
                                 @if(!empty($data->linkToHargaBaseOnJumlah))
@@ -148,8 +146,6 @@
 @stop
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
         modalShow = function (kode) {
             $('[name="id_barang"]').val(kode);

@@ -19,16 +19,29 @@ class ProsesBisnis extends Controller
     }
 
     public function store(Request $req){
+       //dd($req->all());
         $this->validate($req, [
-           'id_sop_pro'=> 'required',
-           'proses_bisnis'=> 'required'
+           //'id_sop_pro'=> 'required',
+           //'proses_bisnis'=> 'required'
         ]);
 
-        $data = $req->except(['_token']);
-        $data['id_perusahaan'] = Session::get('id_perusahaan_karyawan');
-        $data['id_karyawan'] = Session::get('id_karyawan');
-        $model = new P_Proses_Bisnis($data);
-        if($model->save()){
+
+        $proses_bisnis = $req->proses_bisnis;
+        $ket = $req->ket;
+        $id_sop_pro = $req->id_sop_pro;
+
+        foreach ($proses_bisnis as $key => $value)
+        {
+          $model = new P_Proses_Bisnis();
+          $model->proses_bisnis = $value;
+          $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
+          $model->id_karyawan = Session::get('id_karyawan');
+          $model->id_sop_pro= $id_sop_pro[$key];
+          $model->ket = $ket[$key];
+          $model->save();
+        }
+
+        if($model->save()== TRUE){
             return redirect('manufaktur')->with('message_success','Proses Bisnis telah ditambahkan');
         }else{
             return redirect('manufaktur')->with('message_fail','Proses Bisnis Gagal ditambahkan');
