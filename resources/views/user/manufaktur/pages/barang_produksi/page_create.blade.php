@@ -41,7 +41,7 @@
                                                 <option disabled>Pilih Barang</option>
                                                 @if(!empty($barang_jadi))
                                                     @foreach($barang_jadi as $data_barang_jadi)
-                                                        <option value="{{ $data_barang_jadi->id }}"> {{ $data_barang_jadi->nm_barang }}</option>
+                                                        <option value="{{ $data_barang_jadi->id }}"> {{ $data_barang_jadi->nm_barang }}, &nbsp;{{ $data_barang_jadi->linkToSatuan->satuan }}, &nbsp;{{ $data_barang_jadi->spec_barang }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -52,7 +52,7 @@
                                                 <option value="">Pilih Barang</option>
                                                 @if(!empty($barang_dalam_proses))
                                                     @foreach($barang_dalam_proses as $barang_dalam_proses_item)
-                                                        <option value="{{ $barang_dalam_proses_item->id }}"> {{ $barang_dalam_proses_item->nm_barang }}</option>
+                                                        <option value="{{ $barang_dalam_proses_item->id }}"> {{ $barang_dalam_proses_item->nm_barang }}, &nbsp;{{ $barang_dalam_proses_item->linkToSatuan->satuan }}, &nbsp;{{ $barang_dalam_proses_item->spec_barang }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>

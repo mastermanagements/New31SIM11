@@ -36,11 +36,11 @@
                                             <br>
                                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $data->ket }}
                                             <div class="box-tools pull-right">
-                                                <form action="{{ url('proses-produksi/'.$data->id) }}" method="post">
+                                                <form action="{{ url('proses-bisnis/'.$data->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     @method('delete')
-                                                    <a href="{{ url('proses-bisnis/'.$data->id.'/edit') }}" class="btn btn-box-tool"><i class="fa fa-pencil"></i></a>
-                                                    <button type="submit" class="btn btn-box-tool" onclick="return confirm('Apakah anda akan menghapus proses produksi ini ...?')"><i class="fa fa-eraser"></i></button>
+                                                    <a href="{{ url('proses-bisnis/'.$data->id.'/edit') }}" class="btn btn-box-tool" title="Ubah proses bisnis"><i class="fa fa-pencil"></i></a>
+                                                    <button type="submit" class="btn btn-box-tool" title="hapus proses bisnis" onclick="return confirm('Apakah anda akan menghapus proses bisnis ini ...?')"><i class="fa fa-eraser"></i></button>
                                                 </form>
                                             </div>
                                             <!-- /.box-tools -->

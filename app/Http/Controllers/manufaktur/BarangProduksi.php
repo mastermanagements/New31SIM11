@@ -95,11 +95,14 @@ class BarangProduksi extends Controller
 
     public function qualityControll(Request $req, $id)
     {
+      //dd($req->all());
         $data = $req->except(['_token']);
         $data['tgl_mulai_qc'] = date('Y-m-d');
         $data['jam_mulai_qc'] = date('H:i:s');
+
         $data['id_perusahaan'] = Session::get('id_perusahaan_karyawan');
         $data['id_karyawan'] = Session::get('id_karyawan');
+
         $model = P_tambah_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->update($data)){
             return redirect('manufaktur')->with('message_success','Quality control telah disimpan');

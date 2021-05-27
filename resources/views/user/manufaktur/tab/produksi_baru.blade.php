@@ -21,7 +21,7 @@
                     @foreach($data_produksi as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $data->linkToBarang->nm_barang }}</td>
+                        <td>{{ $data->linkToBarang->nm_barang }}, &nbsp;{{ $data->linkToBarang->linkToSatuan->satuan }}, &nbsp;{{ $data->linkToBarang->spec_barang }}</td>
                         @if(!empty($data->linkToBarangDalamProses->nm_barang ))
                         <td>{{ $data->linkToBarangDalamProses->nm_barang }}</td>
                         @else
@@ -39,7 +39,7 @@
                                 <a href="{{ url('biaya-overhead/'.$data->id) }}" class="btn btn-primary" title="Tambah Biaya Overhead"><i class="fa fa-dollar"></i></a>
                                 <a href="{{ url('proses-produksi/'.$data->id.'/begin-produksi') }}" class="btn btn-primary" title="Mulai Proses Produksi"><i class="fa fa-refresh"></i></a>
                                 <a href="{{ url('produksi-baru/'.$data->id.'/edit') }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                
+
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data produksi ini...?')"><i class="fa fa-eraser"></i></button>
                             </form>
                         </td>

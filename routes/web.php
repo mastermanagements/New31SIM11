@@ -2366,6 +2366,7 @@ Route::get('hapus-detail-promo/{id_detail_promo}', 'marketing\Promo@barang_promo
 Route::resource('manufaktur','manufaktur\Manufaktur');
 Route::resource('sop-produksi','manufaktur\SOPProduksi');
 Route::resource('proses-produksi','manufaktur\ProsesProduksi');
+Route::put('update-pertahap/{id}','manufaktur\ProsesProduksi@updatePertahap');
 Route::resource('proses-bisnis','manufaktur\ProsesBisnis');
 
 
