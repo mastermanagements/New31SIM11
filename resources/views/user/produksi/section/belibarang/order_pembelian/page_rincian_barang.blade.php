@@ -2,7 +2,6 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
@@ -25,7 +24,7 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Rincian Pembelian dengan Nomor Order : <font color="#FF00GG">{{ $data_order->no_order }}</font> </h3>
+                            <h3 class="box-title">Rincian Pembelian dengan Nomor Order : <font color="#FF00GG">{{ $data_order->no_order }}</font> , Supplier : <font color="#FF00GG">{{ $data_order->linkToSuppliers->nama_suplier }}</font> </h3>
                              <h5 class="pull-right"><a href="{{ url('Pembelian')}}">Kembali ke Halaman utama</a></h5>
                         </div>
                         <!-- /.box-header -->
@@ -130,7 +129,7 @@
                                                                 <input type="text" class="form-control" name="diskon_item" placeholder="diskon per item" value="{{ rupiahView($diskon_item) }}">
                                                             </td>
                                                             <td width="90">
-                                                                <input type="text" class="form-control" name="expire_date" id="datepicker" @if(!empty($detail_order->expire_date)) value="{{ tanggalView($detail_order->expire_date) }}" @endif required>
+                                                                <input type="text" class="form-control" name="expire_date" id="datepicker" @if(!empty($detail_order->expire_date)) value="{{ tanggalView($detail_order->expire_date) }}" @endif>
                                                             </td>
                                                             <td width="130">
                                                               @php($subtotal_diskon=(($detail_order->harga_beli * $detail_order->diskon_item/100) * $detail_order->jumlah_beli))
@@ -172,9 +171,8 @@
                                         <input type="hidden" name="sub_total" value="{{ $sub_item }}">
                                        <div class="col-md-12">
                                            <div class="row">
-                                              <div class="col-md-6">
+                                              <div class="col-md-4">
                                                 <div class="form-group">
-
                                                     <label>Uang Muka PO</label>
                                                     @if(!empty($data_order->linkToPO) AND ($data_order->dp_po == 0))
                                                         <input type="text"  id="rupiah" readonly name="uang_muka" @if(!empty($data_order->linkToPO->dp_po)) value="{{ rupiahView($data_order->linkToPO->dp_po) }}" @else value="0" @endif class="form-control" required>
@@ -182,34 +180,21 @@
                                                         <input type="text"  id="rupiah" readonly name="uang_muka" @if(!empty($data_order->dp_po)) value="{{ rupiahView($data_order->dp_po) }}" @else value="0" @endif class="form-control" required>
                                                     @endif
                                                 </div>
-                                              </div>
-                                               <div class="col-md-6">
                                                  <div class="form-group">
-                                                     <label>Pajak (dalam %, misal: 10 %, tulis : 10)</label>
+                                                     <label>Pajak (10 %, tulis : 10)</label>
                                                      <input type="number" name="pajak" class="form-control" @if(!empty($data_order->pajak)) value="{{ $data_order->pajak }}" @else  value="0" @endif >
                                                  </div>
-                                             </div>
-                                           </div>
-                                           <div class="row">
-                                             <div class="col-md-6">
-                                               <div class="form-group">
-                                                   <label>Diskon Tambahan (Bilangan)</label>
-                                                   <input type="text" id="rupiah2" name="diskon_tambahan" class="form-control" @if(!empty($data_order->diskon_tambahan)) value="{{ rupiahView($data_order->diskon_tambahan) }}" @else  value="0" @endif >
+                                                 <div class="form-group">
+                                                       <label>Diskon Tambahan (Bilangan)</label>
+                                                       <input type="text" id="rupiah2" name="diskon_tambahan" class="form-control" @if(!empty($data_order->diskon_tambahan)) value="{{ rupiahView($data_order->diskon_tambahan) }}" @else  value="0" @endif >
 
-                                               </div>
+                                                </div>
                                            </div>
-                                               <div class="col-md-6">
+                                           <div class="col-md-4">
                                                    <div class="form-group">
-
                                                        <label>Ongkos Kirim</label>
                                                        <input type="text" id="rupiah3" name="onkir" class="form-control" @if(!empty($data_order->ongkir)) value="{{ rupiahView($data_order->ongkir) }}" @else  value="0" @endif >
-
                                                    </div>
-                                               </div>
-
-                                           </div>
-                                           <div class="row">
-                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Metode pembayaran</label>
                                                         <select class="form-control" name="metode_bayar" onchange=" var value = $(this).val(); if(value==0){ $('#hutang').hide(), $('#jatuh_tempo').hide() }else{ $('#hutang').show(), $('#jatuh_tempo').show() }">
@@ -219,16 +204,12 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Bayar</label>
-
                                                         <input class="form-control" id="rupiah4" name="bayar" value="{{  rupiahView($data_order->bayar) }}" required>
-
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6" id="hutang" style="display: @if($data_order->metode_bayar=="0") none @else show @endif;">
+                                            </div>
+                                                <div class="col-md-4" id="hutang" style="display: @if($data_order->metode_bayar=="0") none @else show @endif;">
                                                     <div class="form-group">
                                                         <label>Hutang</label>
 
@@ -236,21 +217,18 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6" id="jatuh_tempo" style="display: @if($data_order->metode_bayar=="0") none @else show @endif;">
+                                                <div class="col-md-4" id="jatuh_tempo" style="display: @if($data_order->metode_bayar=="0") none @else show @endif;">
                                                     <div class="form-group">
                                                         <label>Jatuh Tempo</label>
                                                         <input type="date" class="form-control" name="tgl_jatuh_tempo"  @if(!empty($data->tgl_jatuh_tempo)) value="{{ tanggalView($data->tgl_jatuh_tempo) }}" @endif>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Keterangan</label>
                                                         <textarea name="ket" class="form-control">@if(!empty($data->ket))  {!! $data->ket !!} @endif</textarea>
                                                     </div>
                                                 </div>
-                                            </div>
                                        </div>
                                        <div class="col-md-12">
                                           <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal umum otomatis </label> <button type="submit" onclick="return confirm('Pastikan yang anda isi telah sesuai atau tidak')" class="btn btn-primary"> Simpan daftar pembelian </button>

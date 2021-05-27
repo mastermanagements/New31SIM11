@@ -2,7 +2,6 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
@@ -34,7 +33,7 @@
                         <div class="box-body">
                             <form role="form" action="{{ url('pesanan-pembelian') }}" method="post" >
                            <div class="col-md-12" style="margin-top:10px">
-                               
+
                                    {{ csrf_field() }}
                                    <div class="form-group">
                                        <label>No. PO</label>
@@ -102,7 +101,7 @@
                                        {{--</div>--}}
                                    {{--</div>--}}
 
-                              
+
                            </div>
                             <div class="col-md-12">
                                 @if(!empty($barang_penawaran))
@@ -120,7 +119,7 @@
                                         @php($no=1)
                                         @foreach($barang_penawaran->linkToDetail as $data_tb)
                                             <tr>
-                                            
+
                                                 <td>{{ $no++ }}</td>
                                                 <td>
                                                     {{ csrf_field() }}
@@ -130,7 +129,7 @@
                                                 <td>
                                                     <input type="number" class="form-control" name="jumlah_beli[]" value="{{$data_tb->jumlah_beli}}" readonly required>
                                                 </td>
-                                             
+
                                                 <td>
                                                     <input type="text" class="form-control" name="diskon[]" value="{{ $data_tb->diskon }}" required>
                                                 </td>
@@ -144,11 +143,11 @@
                                                     <button type="submit" class="btn btn-warning"> ubah </button>
                                                     <a href="{{ url('hapus-pembelian-penawaran-barang/'.$data_tb->id) }}" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')"> hapus </a>
                                                </td> --}}
-                                           
+
                                             </tr>
                                         @endforeach
                                 </table>
-                            
+
                                  @endif
                                 </div>
                             </form>
@@ -192,10 +191,10 @@
                                 </form>
                             </div>
                             @endif
-    
+
                         </div>
                         <!-- /.box-body -->
-                       
+
 
                 </div>
             </div>

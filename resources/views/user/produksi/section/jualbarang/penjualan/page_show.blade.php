@@ -31,20 +31,21 @@
                           <h6 class="box-title">Rincian Penjualan Faktur : <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">{{ $data->linkToKlien->nm_klien }},
                           </font>
                             @if($data->id_group !=='0')
-                            <font color="#FF00GG">
+
                               @if(!empty($data->linkToKlien->linkToMannyGroupKlien->nama_group))
                               Member:
-                              {{ $data->linkToKlien->linkToMannyGroupKlien->nama_group }},</font>
+                            <font color="#FF00GG">  {{ $data->linkToKlien->linkToMannyGroupKlien->nama_group }},</font>
                               @endif
                             @endif
-                          </font>
+
                             @if($data->linkToKlien->status_diskon =='0')
-                            Diskon Berjenjang:<font color="#FF00GG">
-                              Ya</font>
+                            Diskon Berjenjang:
+                              <font color="#FF00GG">  Ya </font>
                               @else
-                              Diskon Berjenjang:<font color="#FF00GG">
-                              Tidak
-                            </font>
+                              Diskon Berjenjang:  </font>
+
+                              <font color="#FF00GG">Tidak</font>
+
                             @endif
                           </h6>
                            <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
@@ -177,6 +178,10 @@
                                                                     @endforeach
                                                                 </select>
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label>Keterangan</label>
+                                                                <textarea name="ket" class="form-control"></textarea>
+                                                            </div>
 
 
                                                         </div>
@@ -189,7 +194,10 @@
                                                                 <label>Bayar</label>
                                                                 <input type="text" id="rupiah2" name="bayar" class="form-control"  @if(!empty($data->bayar)) value="{{ rupiahView($data->bayar) }}" @else value="0" @endif  required/>
                                                             </div>
-
+                                                            <div class="form-group">
+                                                                <label>Total Net</label>
+                                                                <input type="text" name="total" id="total_keseluruhan" @if(!empty($data->total)) value="{{rupiahView($data->total)}}" @endif class="form-control" readonly>
+                                                            </div>
                                                         </div>
 
                                                         <div class="col-md-3">
@@ -198,37 +206,32 @@
                                                               <label>Diskon Tambahan (Bilangan)</label>
                                                               <input type="text"  id="rupiah3" name="diskon_tambahan" class="form-control" @if(!empty($data->diskon_tambahan)) value="{{ rupiahView($data->diskon_tambahan) }}" @else value="0" @endif required/>
                                                           </div>
+                                                          <div class="form-group">
+                                                              <label>Ongkos Kirim</label>
+                                                              <input type="text"  id="rupiah4" name="ongkir" class="form-control"  @if(!empty($data->ongkir)) value="{{ rupiahView($data->ongkir) }}" @else value="0" @endif />
+                                                          </div>
 
+                                                        </div>
+                                                        <div class="col-md-3">
                                                           <div class="form-group" id="hutang" style="display: @if($data->metode_bayar=="0") none @else show @endif;">
                                                               <div class="form-group">
                                                                   <label>Hutang</label>
                                                                   <input type="text"  name="kurang_bayar" readonly @if(!empty($data->kurang_bayar)) value="{{ rupiahView($data->kurang_bayar) }}" @else value="0" @endif class="form-control">
                                                               </div>
                                                           </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                          <div class="form-group">
-                                                              <label>Ongkos Kirim</label>
-                                                              <input type="text"  id="rupiah4" name="ongkir" class="form-control"  @if(!empty($data->ongkir)) value="{{ rupiahView($data->ongkir) }}" @else value="0" @endif />
-                                                          </div>
+
                                                             <div class="form-group" id="jatuh_tempo" style="display: @if($data->metode_bayar=="0") none @else show @endif;">
                                                                 <label>Jatuh tempo</label>
-                                                                <input type="text" class="form-control" id="datepicker" name="tgl_jatuh_tempo"  @if(!empty($data->tgl_jatuh_tempo)) value="{{tanggalView($data->tgl_jatuh_tempo)}}"  value="{{tanggalView($data->tgl_jatuh_tempo)}}" @endif />
+
+                                                                <input type="text" class="form-control" id="datepicker" name="tgl_jatuh_tempo"  @if(!empty($data->tgl_jatuh_tempo)) value="{{tanggalView($data->tgl_jatuh_tempo)}}" @endif />
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-3">
-                                                            <div class="form-group">
-                                                                <label>Keterangan</label>
-                                                                <textarea name="ket" class="form-control"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label>Total Net</label>
-                                                                <input type="text" name="total" id="total_keseluruhan" @if(!empty($data->total)) value="{{rupiahView($data->total)}}" @endif class="form-control" readonly>
-                                                            </div>
-                                                        </div>
+
+
+
+
+
                                                         <!--<div class="col-md-3">
                                                             <div class="form-group">
                                                                 <label>Kembali</label>

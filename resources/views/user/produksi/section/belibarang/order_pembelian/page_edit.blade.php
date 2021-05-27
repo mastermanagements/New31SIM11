@@ -2,7 +2,6 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
@@ -16,6 +15,7 @@
         <h1>
           Pembelian Barang
         </h1>
+
     </section>
 
     <!-- Main content -->
@@ -27,6 +27,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Ubah Pembelian</h3>
+                        <h5 class="pull-right"><a href="{{ url('Pembelian')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -35,6 +36,7 @@
                            <div class="col-md-12" style="margin-top:10px">
                                <form role="form" action="{{ url('Oder/'.$data_order->id) }}" method="post" >
                                    {{ csrf_field() }}
+                                <div class="col-md-6">
                                    <div class="form-group">
                                        <input type="hidden" name="_method" value="put">
                                        <label>No. Order</label>
@@ -63,6 +65,8 @@
                                            @endif
                                        </select>
                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                    <div class="form-group">
                                        <label>Supplier</label>
                                        <select class="form-control select2" name="id_supplier"  required style="width: 100%">
@@ -84,14 +88,20 @@
                                            <input type="text" name="tgl_tiba" class="form-control" id="datepicker2" value="{{ tanggalView($data_order->tgl_tiba) }}" required>
                                        </div>
                                    </div>
-                                   <div class="col-md-12">
-                                     <button class="btn btn-primary pull-left"> Simpan</button>
-                                   </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="box-footer">
+                                    <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary">Simpan</button>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- /.box-body -->
                                </form>
                            </div>
-                            <div class="col-md-12">
 
-                            </div>
                         </div>
                         <!-- /.box-body -->
 
