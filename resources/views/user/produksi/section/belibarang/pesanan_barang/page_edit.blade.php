@@ -12,7 +12,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Rincian Pesanan Pembelian Barang
+                Rincian Pesanan Pembelian Baranga
             </h1>
         </section>
 
@@ -65,7 +65,7 @@
                                                     <input type="number" class="form-control" name="diskon" placeholder="diskon" value="0" required>
                                                 </td>
                                                 <td>
-                                                    <input type="number" id="rupiah2" class="form-control" name="jumlah_total"  disabled required>
+                                                    <input type="text" id="rupiah2" class="form-control" name="jumlah_total"  disabled required>
                                                     <input type="hidden" class="form-control" name="redirect" value="true">
                                                 </td>
                                             </tr>
@@ -215,6 +215,7 @@
 @section('plugins')
     @include('user.global.rupiah_input')
     @include('user.global.rupiah_input2')
+    @include('user.global.CalculateJumlah')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- bootstrap datepicker -->
     <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
@@ -244,20 +245,6 @@
             calculate_jumlah();
         })
 
-        calculate_jumlah  = function(){
-            var n_diskon = 0;
-            var dis_total = 0;
-            if(diskon !=0){
-                n_diskon = diskon/100;
-            }
-            var jumlah_total =0;
-            var sub_total =0;
-            sub_total = (harga_beli.split('.').join('') * jumlah_beli);
-            dis_total = sub_total * n_diskon;
-            jumlah_total = sub_total - dis_total;
-
-            $('[name="jumlah_total"]').val(formatRupiah(jumlah_total.toString()));
-        }
 
     </script>
 
