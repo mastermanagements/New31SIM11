@@ -13,8 +13,8 @@
             html+="<tr>";
             html+="<td>"+(no++)+"</td>";
             html+="<td><input type='hidden' name='id_barang[]' value='"+value[0]+"'>"+value[1]+"</td>";
-            html+="<td><input type='hidden' name='jumlah_jual[]' value='"+value[2]+"'>"+value[2]+"</td>";
-            html+="<td><input type='hidden' name='harga_satuan[]' value='"+value[3]+"'>"+value[3]+"</td>";
+            html+="<td><input type='hidden' name='jumlah_jual[]' value='"+value[2]+"'>"+value[3]+"</td>";
+            html+="<td><input type='hidden' name='harga_satuan[]' value='"+value[3]+"'>"+value[2]+"</td>";
             html+="<td><input type='hidden' name='sub_total[]' value='"+(value[2]*value[3])+"'>"+(value[2]*value[3])+"</td>";
             html+="<td><button class='btn btn-sm btn-danger' onclick='delete_item("+index+")'>hapus</button></td>";
             html+="</tr>";
@@ -41,7 +41,7 @@
         var hpp = $('#hpp').val();
         var jumlah = $('#jumlah').val();
 
-        var item = [id_barang,nama_barang, hpp, jumlah];
+        var item = [id_barang,nama_barang,jumlah,hpp];
         container.push(item);
         render_table();
     });
@@ -70,9 +70,45 @@
                 alert(err.Message);
             }
         })
-
-
     })
 
+    cek_barang =function (id_nota) {
+        var html ="";
+        $('#detail_tabel_modal tbody').empty(html);
+        $('#belanja_total').text('asasd');
+        $('#modal_total_bayar').text('');
+        $('#kembalian').text('');
+        var total_belanja = 0;
+        var total_bayar = 0;
+        var kebalian = 0;
+        $.ajax({
+            url:'{{ url('Kasir') }}/'+id_nota,
+            type:'get',
+            success: function(result){
+                console.log(result);
+                total_bayar=result.nota.bayar;
+                $.each(result.detail_barang, function(i, v){
+                    html+="<tr>";
+                    html+="<td>"+v[0]+"</td>";
+                    html+="<td>"+v[1]+"</td>";
+                    html+="<td>"+v[2]+"</td>";
+                    html+="<td>"+v[3]+"</td>";
+                    html+="<td>"+v[4]+"</td>";
+                    html+="</tr>";
+                    total_belanja +=parseInt(v[4]);
+                });
+                $('#detail_tabel_modal').append(html);
+                $('#modal-detail-barang').modal({ backdrop: 'static',});
+                $('#belanja_total').text("Total Belanja :"+total_belanja);
+                $('#modal_total_bayar').text("Total Bayar :"+total_bayar);
+                var n_kembalian = Math.abs(total_belanja-total_bayar);
+                $('#kembalian').text("Kembalian :"+n_kembalian);
+            },
+            error(xhr, status, error){
+                var err = eval("(" + xhr.responseText + ")");
+                alert(err.Message);
+            }
+        })
+    }
 </script>
 @stop

@@ -22,10 +22,30 @@ class Kasir extends Controller
         $current_date = date('Y/m/d');
         $data = [
             'kode'=> $this->kodeKasir(),
-            'nota'=> KasirModel::whereDate('created_at',$current_date)->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get(),
+            'nota'=> KasirModel::whereDate('created_at',$current_date)->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->orderBy('created_at','desc')->get(),
             'barang'=>Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         return view('kasir.page.kasir.page', $data);
+    }
+
+    public function show($id){
+        $model = KasirModel::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+        return response()->json(array('detail_barang'=> $this->ListBarang($model),'nota'=> $model));
+    }
+
+    private function ListBarang($model){
+        $array_container = [];
+        $no = 1;
+        foreach ($model->linkToMannyDetailNota as $data){
+            $column = [];
+            $column[]= $no++;
+            $column[]= $data->linkToBarang->nm_barang;
+            $column[]= $data->jumlah_jual;
+            $column[]= $data->harga_satuan;
+            $column[]= $data->sub_total;
+            $array_container[] = $column;
+        }
+        return $array_container;
     }
 
     public function store(Request $req){
@@ -58,6 +78,7 @@ class Kasir extends Controller
     }
 
     private function insert_kasir($array){
+
         $model =KasirModel::updateOrCreate(
             [
                 'kode'=>$array['kode'],

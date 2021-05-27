@@ -125,7 +125,7 @@
                                                             </button>
                                                             <ul class="dropdown-menu" role="menu">
                                                                 <li><a href="{{ url('cetak-nota/'.$data->id) }}" target="_blank">Print</a></li>
-                                                                <li><a href="#" id="cek_barang_nota">Cek Barang</a></li>
+                                                                <li><a href="#" onclick="cek_barang({{ $data->id }})" id="cek_barang_nota">Cek Barang</a></li>
                                                             </ul>
                                                         </div>
                                                     </th>
@@ -148,7 +148,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Default Modal</h4>
+                        <h4 class="modal-title">Modal Pesanan Barang</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -178,6 +178,55 @@
                 </div>
                 <!-- /.modal-content -->
             </div>
+            </form>
+            <!-- /.modal-dialog -->
+        </div>
+
+        <div class="modal fade" id="modal-detail-barang">
+            <form>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Modal Detail Barang</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-striped" id="detail_tabel_modal">
+                                        <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Barang</th>
+                                            <th>Jumlah Penjualan</th>
+                                            <th>Harga Satuan</th>
+                                            <th>Sub Total</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <p style="font-weight: bold" id="belanja_total"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <p style="font-weight: bold" id="modal_total_bayar"></p>
+                                        <p style="font-weight: bold" id="kembalian"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-primary" id="tombol_tambah">Simpan</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
             </form>
             <!-- /.modal-dialog -->
         </div>
