@@ -22,7 +22,7 @@ class ProsesBisnis extends Controller
        //dd($req->all());
         $this->validate($req, [
            //'id_sop_pro'=> 'required',
-           'proses_bisnis'=> 'required'
+           //'proses_bisnis'=> 'required'
         ]);
 
 

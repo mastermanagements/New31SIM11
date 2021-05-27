@@ -46,7 +46,7 @@
                                                 <option disabled>Pilih Barang</option>
                                                 @if(!empty($barang))
                                                     @foreach($barang as $data_barang)
-                                                        <option value="{{ $data_barang->id }}"> {{ $data_barang->nm_barang }}</option>
+                                                        <option value="{{ $data_barang->id }}"> {{ $data_barang->nm_barang }}, &nbsp;{{ $data_barang->linkToSatuan->satuan }}, &nbsp;{{ $data_barang->spec_barang }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>

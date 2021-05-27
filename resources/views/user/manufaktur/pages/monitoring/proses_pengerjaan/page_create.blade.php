@@ -2,9 +2,7 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+
 
 @stop
 
@@ -27,6 +25,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Proses Pengerjaan</h3>
+                        <h5 class="pull-right"><a href="{{ url('manufaktur')}}">Kembali ke Halaman utama</a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -39,12 +38,12 @@
                                             {{ csrf_field() }}
                                             <label>Barang Produksi</label>
                                             <input type="hidden" name="id_tambah_produksi" class="form-control" value="{{ $model_tambah_produksi->id }}" required/>
-                                            <input type="text" name="proses_bisnis" class="form-control" value="{{ $model_tambah_produksi->linkToBarang->nm_barang }}" disabled required/>
+                                            <input type="text" name="proses_bisnis" class="form-control" value="{{ $model_tambah_produksi->linkToBarang->nm_barang }}-{{ $model_tambah_produksi->linkToBarang->linkToSatuan->satuan }}-{{ $model_tambah_produksi->linkToBarang->spec_barang }}" disabled required/>
                                         </div>
                                         <div class="form-group">
                                             <label>Tahap Produksi</label>
                                             <select class="form-control select2" name="id_proses_bisnis" style="width: 100%">
-                                                <option disabled>Pilih Barang</option>
+                                                <option disabled>Pilih Tahap Produksi</option>
                                                 @if(!empty($tahap_produksi))
                                                     @foreach($tahap_produksi as $item_tahap_produksi)
                                                         <option value="{{ $item_tahap_produksi->id }}"> {{ $item_tahap_produksi->proses_bisnis }}</option>
@@ -81,31 +80,14 @@
 @stop
 @section('plugins')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('component/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+  
     <script>
 
         window.onload = function() {
-            CKEDITOR.replace( 'spec_barang',{
-                height: 200
-            } );
-            CKEDITOR.replace( 'desc_barang',{
-                height: 200
-            } );
-        };
-
-        $('#datepicker').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy'
-        });
-//        $('#datepicker1').datepicker({
-//            autoclose: true,
-//            format: 'dd-mm-yyyy'
-//        });
 
         $(function () {
             $('.select2').select2()
         });
     </script>
-    @include('user.produksi.section.barang.JS.JS')
+
 @stop

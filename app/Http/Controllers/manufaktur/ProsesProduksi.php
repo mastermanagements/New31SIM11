@@ -23,11 +23,10 @@ class ProsesProduksi extends Controller
 
     private function query_tahap_produksi($id_barang){
         $query_tahap_produksi = DB::select('select p_proses_bisnis_manuf.* from p_proses_bisnis_manuf,p_tambah_produksi,
-
               p_barang_sop where p_proses_bisnis_manuf.id_sop_pro=p_barang_sop.id_sop_pro
               and p_tambah_produksi.id_barang = p_barang_sop.id_barang
               and p_tambah_produksi.id_barang = '.$id_barang.' and p_proses_bisnis_manuf.id_perusahaan='.Session::get('id_perusahaan_karyawan'));
-
+        //dd($query_tahap_produksi);
         return $query_tahap_produksi;
     }
 
@@ -35,18 +34,20 @@ class ProsesProduksi extends Controller
     {
 
         $model_tambah_produksi = P_tambah_produksi::findOrFail($id_tambah_produksi);
-        dd($model_tambah_produksi);
+        //dd($model_tambah_produksi);
         $array = [
             'tahap_produksi'=>$this->query_tahap_produksi($model_tambah_produksi->id_barang),
             'id_tambah_produksi'=> $id_tambah_produksi,
             'model_tambah_produksi'=> $model_tambah_produksi
+            //'proses_produksi'=>P_proses_produksi::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('id_tambah_produksi',$id_tambah_produksi)
         ];
-
+        //dd($array['proses_produksi']);
         return view('user.manufaktur.pages.monitoring.proses_pengerjaan.page_create', $array);
     }
 
-    public function store(Request $req){
-
+    public function store(Request $req)
+    {
+      //dd($req->all());
         $this->validate($req,[
             'id_tambah_produksi'=> 'required',
             'id_proses_bisnis'=> 'required',
@@ -59,10 +60,11 @@ class ProsesProduksi extends Controller
         $data['id_perusahaan']=Session::get('id_perusahaan_karyawan');
         $data['id_karyawan']=Session::get('id_karyawan');
         $model =new P_proses_produksi($data);
+        //dd($model);
         if($model->save()){
-            return redirect('manufaktur')->with('message_success','Proses produksi telah disimpan');
+            return redirect('manufaktur')->with('message_success','Proses produksi sukses disimpan')->with('tab3','tab3');
         }else{
-            return redirect('manufaktur')->with('message_fial','Proses produksi gagal disimpan');
+            return redirect('manufaktur')->with('message_fial','Proses produksi gagal disimpan')->with('tab3','tab3');
         }
     }
 
@@ -110,5 +112,30 @@ class ProsesProduksi extends Controller
         }else{
             return redirect('manufaktur')->with('message_fail','Proses produksi di berhentikan')->with('tab3','tab3');
         }
+    }
+
+    public function destroy(Request $req, $id){
+        $model = P_proses_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+        if($model->delete()){
+            return redirect('manufaktur')->with('message_success','Proses produksi telah dihapus')->with('tab3','tab3');
+        }else{
+            return redirect('manufaktur')->with('message_fail','Proses produksi Gagal dihapus')->with('tab3','tab3');
+        }
+    }
+
+    public function updatePertahap(Request $req, $id)
+    {
+        $models = P_proses_produksi::find($id);
+        $models->tgl_selesai = $this->current_date;;
+        $models->jam_selesai = $this->current_time;
+        $models->id_perusahaan = Session::get('id_perusahaan_karyawan');
+        $models->id_karyawan = Session::get('id_karyawan');
+
+        if($models->save())
+        {
+          return redirect('manufaktur')->with('message_success','Berhasil mengakhiri tahap produksi ini')->with('tab3','tab3');
+      }else{
+          return redirect('manufaktur')->with('message_fail','Gagal mengakhiri tahap produksi ini')->with('tab3','tab3');
+      }
     }
 }
