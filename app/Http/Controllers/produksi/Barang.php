@@ -17,6 +17,7 @@ use App\Model\Produksi\HistroyKonversiBrg as p_history_konversi_brg;
 use Illuminate\Support\Facades\DB;
 use App\Model\Marketing\Promo;
 use App\Http\utils\GetHargarBarang;
+use stdClass;
 
 class Barang extends Controller
 {
@@ -62,8 +63,16 @@ class Barang extends Controller
 
     public function response_barang($id_barang){
         $model = barangs::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
-            ->findOrFail($id_barang);
-        return response()->json($model);
+            ->findOrFail($id_barang)->linkToHargaJualSatuan;
+        $data=[];
+        if(!empty($model)){
+            $n_std = new stdClass();
+            foreach ($model as $data_item){
+                $n_std->hpp = $data_item->harga_jual;
+                $data[] = $n_std;
+            }
+        }
+        return response()->json($data[0]);
     }
 
     /**

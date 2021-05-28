@@ -114,8 +114,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                              console.log(hpp);
                              $('#show_harga').val(hpp);
                          }else{
-                             var hpp = formatRupiah(result.harga.replace('.00',''));
-                             $('#show_harga'+segment).val(hpp);
+                             if(result.harga!=0){
+                                var hpp = formatRupiah(result.harga.replace('.00',''));
+                                $('#show_harga'+segment).val(hpp);
+                             }
                          }
                      }
                  });
