@@ -102,7 +102,12 @@
                                             <td>{{ $data_pesanan_pembelian->no_po }}</td>
                                             <td>{{ $data_pesanan_pembelian->linkToSupplier->nama_suplier }}</td>
 
-                                            <td>{{ tanggalView($data_pesanan_pembelian->tgl_krm )}}</td>
+                                            <td>
+                                              @if($data_pesanan_pembelian->tgl_krm !==NULL)
+                                              {{ tanggalView($data_pesanan_pembelian->tgl_krm )}}
+                                              @endif
+                                            </td>
+
                                             <td>{{
                                                     rupiahView($data_pesanan_pembelian->total)
                                                 }}</td>

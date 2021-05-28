@@ -2,7 +2,7 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
+
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
@@ -24,9 +24,10 @@
             <p></p>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="box box-primary">
+                    <div class="box box-warning">
                         <div class="box-header with-border">
                             <h3 class="box-title">Ubah Pesanan Pembelian</h3>
+                            <h5 class="pull-right"><a href="{{ url('Pembelian')}}">Kembali ke Halaman utama</a></h5>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
@@ -36,12 +37,13 @@
                                 <form role="form" action="{{ url('pesanan-pembelian/'.$data->id) }}" method="post" >
                                     {{ csrf_field() }}
                                     <input type="hidden" name="_method" value="put">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>No. PO</label>
+                                        <label>No. PO</label>&nbsp;<strong style="color: red">*</strong>
                                         <input type="text" name="no_po" class="form-control" value="{{ $data->no_po }}" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Tanggal. PO</label>
+                                        <label>Tanggal. PO</label>&nbsp;<strong style="color: red">*</strong>
                                         <div class="input-group date">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
@@ -49,7 +51,7 @@
                                             <input type="text" name="tgl_po" class="form-control" id="datepicker" value="{{ tanggalView($data->tgl_po) }}" required>
                                         </div>
                                     </div>
-
+                                  </div>
                                     <!--<div class="form-group">
                                         <label>Penawaran Pembelian</label>
                                         <select class="form-control select2" name="id_tawar_beli" style="width: 100%">
@@ -61,8 +63,9 @@
                                             @endif
                                         </select>
                                     </div>-->
+                                  <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Supplier</label>
+                                        <label>Supplier</label>&nbsp;<strong style="color: red">*</strong>
                                         <select class="form-control select2" name="id_supplier"  required style="width: 100%">
                                             @if(!empty($supplier))
                                                 <option>Pilihan supplier</option>
@@ -74,14 +77,23 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Kirim</label>
+                                          @if($data->tgl_kirim !== NULL)
                                         <div class="input-group date">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" name="tgl_krm" class="form-control" id="datepicker2" value="{{ tanggalView($data->tgl_krm) }}" required>
+                                            <input type="text" name="tgl_krm" class="form-control" id="datepicker2" value="{{ tanggalView($data->tgl_krm) }}">
                                         </div>
+                                        @else
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" name="tgl_krm" class="form-control" id="datepicker2">
+                                        </div>
+                                        @endif
                                     </div>
-
+                                </div>
                                 <!--<div class="col-md-12">
                                  <div class="col-md-12 row" style="margin-top:10px">
 
@@ -165,8 +177,15 @@
                                            </div>
                                        </div>-->
                                        <div class="col-md-12">
-                                         <button class="btn btn-primary pull-left"> Simpan Pesanan pembelian </button>
-                                       </div>
+                                           <div class="box-footer">
+                                           <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+                                           </div>
+                                           <div class="form-group">
+                                               <button class="btn btn-primary">Simpan</button>
+                                           </div>
+                                        </div>
+                                     </div>
+                                     <!-- /.box-body -->
                                 </form>
                             </div>
                         </div>
