@@ -37,16 +37,17 @@
                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
                            <p style="color: green">Pilihlah menu aplikasi dibawah ini yang dapat di akses oleh karyawan bersangkutan.</p>
-
+                               @php($id=0)
                               @foreach($menu as $key=> $menus)
                                <div class="form-group">
-                                   <label class="main-class" >{{ $menus->getMasterMenu->nm_menu }}</label>
+                                   <label >{{ $menus->getMasterMenu->nm_menu }}</label>
                                </div>
                                   @if(!empty($submenu=$menus->getSubMenu))
                                         @foreach($submenu as $sKey => $sum_menu)
 											@if(!empty($sum_menu->getMasterSubMenuUKM->id))
                                            <div class="form-group" style="padding-left: 5%;">
-                                               <input type="checkbox" class="minimal menu_sub_{{ $key }}" value="{{ $sum_menu->getMasterSubMenuUKM->id }}" id="menus_{{ $key }}"
+
+                                              <input type="checkbox" class="minimal main-class menu_sub_{{ $key }}" value="{{ $sum_menu->getMasterSubMenuUKM->id }}" id="menus_{{ $id++ }}"
                                                @if(!empty($daftar_menu_karyawan))
                                                     @foreach($daftar_menu_karyawan as $daftar_menu)
                                                             @if($sum_menu->getMasterSubMenuUKM->id == $daftar_menu->getSubMenuPerusahaan->id_master_submenu)
@@ -103,12 +104,13 @@
                radioClass   : 'iradio_minimal-blue'
            });
 
-           $('.main-class').each(function (index) {
+           $('.main-class').each(function (index, val) {
 //               $('#menu_'+index).on('ifChecked', function (event) {
-//                   $('.menu_sub_'+index).iCheck('check')
+//
 //               })
+//               $('.menu_sub_'+index).iCheck('check')
 
-               $('.menu_sub_'+index).on('ifChecked', function (event) {
+               $('#menus_'+index).on('ifChecked', function (event) {
                  //  $('#menu_'+index).iCheck('check')
                   // alert(""+ $(this).val());
                    $.ajax({
@@ -127,7 +129,7 @@
                    })
                });
 
-               $('.menu_sub_'+index).on('ifUnchecked', function (event) {
+               $('#menus_'+index).on('ifUnchecked', function (event) {
                    $.ajax({
                        url:"{{ url('delete_request_menu_karyawan') }}/{{ $karyawan->id }}",
                        type: "post",
