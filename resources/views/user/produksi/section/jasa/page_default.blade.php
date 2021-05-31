@@ -145,7 +145,6 @@
                                                                   <td>{{ $no++ }}</td>
                                                                   <td>{{ $probis->proses_bisnis }}</td>
                                                                   <td>{!! $probis->ket !!}</td>
-                                                                  <td></td>
                                                                   <th>
                                                                       <form action="{{ url('Proses-Bisnis-Jasa/'.$probis->id) }}" method="post">
                                                                         <!---bisa jg url ="{{ url('Jasa/'.$jasa->id.'/destroy') }}"-->
@@ -197,6 +196,7 @@
                                                       <thead>
                                                       <tr>
                                                           <th>No.</th>
+                                                          <th>Jenis Syarat dan ketentuan </th>
                                                           <th>Syarat dan Ketentuan </th>
                                                           <th>Aksi</th>
                                                       </tr>
@@ -209,8 +209,6 @@
                                                                   <td>{{ $no++ }}</td>
                                                                   <td>@if($skj->jenis_sk == 0) Nota Service  @else  Nota Tagihan  @endif</td>
                                                                   <td>{!! $skj->sk !!}</td>
-
-                                                                  <td></td>
                                                                   <th>
                                                                       <form action="{{ url('SK-Jasa/'.$skj->id) }}" method="post">
                                                                         <!---bisa jg url ="{{ url('Jasa/'.$jasa->id.'/destroy') }}"-->

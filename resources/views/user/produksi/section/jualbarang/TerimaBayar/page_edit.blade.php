@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Klien</label>
-                                            <input type="text" class="form-control" name="klien" value="{{ $data->linkToKlien->nm_klien }}" readonly>
+                                            <input type="text" class="form-control" name="klien" value="@if(!empty($data->linkToKlien)){{ $data->linkToKlien->nm_klien }} @else Klien Umum @endif" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>Tgl Transaksi</label>

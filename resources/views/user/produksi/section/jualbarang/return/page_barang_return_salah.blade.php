@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                          <h6 class="box-title">Return Penjualan Barang dengan No Transaksi: <font color="#FF00GG">{{ $data->linkToSales->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">{{ $data->linkToSales->linkToKlien->nm_klien }}
+                          <h6 class="box-title">Return Penjualan Barang dengan No Transaksi: <font color="#FF00GG">{{ $data->linkToSales->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">@if(!empty($data->linkToSales->linkToKlien)){{ $data->linkToSales->linkToKlien->nm_klien }}@else Klien Umum @endif
                           </font></h6>
                           <h5 class="pull-right"><a href="{{ url('Penjualan') }}">Kembali ke Halaman utama</a></h5>
                         </div>
@@ -88,7 +88,7 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>{{ $data->linkToSales->linkToKlien->nm_klien}}</td>
+                                                                <td>@if(!empty($data->linkToSales->linkToKlien)){{ $data->linkToSales->linkToKlien->nm_klien}}@else Klien Umum @endif</td>
                                                                 <td>{{ $data->linkToSales->no_sales }}</td>
                                                                 <td>{{ tanggalView($data->linkToSales->tgl_sales) }}</td>
                                                                 <td>{{ $data->linkToBarang->nm_barang }}</td>

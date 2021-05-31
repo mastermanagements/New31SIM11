@@ -63,7 +63,6 @@ class OrderJasa extends Controller
                   Session::flash('tab2',Session::get('tab2'));
               }
 
-
       return view('user.produksi.section.jasa.order_jasa.page_default', $data);
     }
 

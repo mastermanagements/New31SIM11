@@ -28,24 +28,30 @@
                     @endif
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                          <h6 class="box-title">Rincian Penjualan Faktur : <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">{{ $data->linkToKlien->nm_klien }},
+                          <h6 class="box-title">Rincian Penjualan Faktur : <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">@if(!($data->linkToKlien)){{ $data->linkToKlien->nm_klien }} @else Klien umum  @endif,
                           </font>
                             @if($data->id_group !=='0')
-
-                              @if(!empty($data->linkToKlien->linkToMannyGroupKlien->nama_group))
-                              Member:
-                            <font color="#FF00GG">  {{ $data->linkToKlien->linkToMannyGroupKlien->nama_group }},</font>
+                              @if(!empty($data->linkToKlien))
+                                  @if(!empty($data->linkToKlien->linkToMannyGroupKlien->nama_group))
+                                      Member:
+                                    <font color="#FF00GG">  {{ $data->linkToKlien->linkToMannyGroupKlien->nama_group }},</font>
+                                  @endif
+                              @else
+                                Klien umum
                               @endif
                             @endif
+                            @if(!empty($data->linkToKlien))
+                                @if($data->linkToKlien->status_diskon =='0')
+                                Diskon Berjenjang:
+                                  <font color="#FF00GG">  Ya </font>
+                                  @else
+                                  Diskon Berjenjang:  </font>
 
-                            @if($data->linkToKlien->status_diskon =='0')
-                            Diskon Berjenjang:
-                              <font color="#FF00GG">  Ya </font>
-                              @else
-                              Diskon Berjenjang:  </font>
+                                  <font color="#FF00GG">Tidak</font>
 
-                              <font color="#FF00GG">Tidak</font>
-
+                                @endif
+                             @else
+                                Klien Umum
                             @endif
                           </h6>
                            <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>

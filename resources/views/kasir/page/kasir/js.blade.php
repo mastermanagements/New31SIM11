@@ -59,9 +59,18 @@
     });
 
     $('#barang').change(function () {
+        getHarga();
+    })
+
+    $('#jumlah').keyup(function(){
+        getHarga();
+    });
+    getHarga = function(){
         $.ajax({
-            url:'{{ url('response_json') }}/'+$(this).val(),
+            url:'{{ url('response_json') }}/'+$('#barang').val(),
             dataType: 'json',
+            type: 'post',
+            data: $('#form-pesanan').serialize(),
             success:function(result){
                 $('#hpp').val(result.hpp);
             },
@@ -70,7 +79,9 @@
                 alert(err.Message);
             }
         })
-    })
+    }
+
+
 
     cek_barang =function (id_nota) {
         var html ="";

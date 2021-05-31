@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                          <h3 class="box-title">Rincian Pesanan Penjualan dengan Nomor SO : <font color="#FF00GG">{{ $data->no_sales }}</font>, Klien: <font color="#FF00GG">{{ $data->linkToKlien->nm_klien }}</font> </h3>
+                          <h3 class="box-title">Rincian Pesanan Penjualan dengan Nomor SO : <font color="#FF00GG">{{ $data->no_sales }}</font>, Klien: <font color="#FF00GG">@if(!empty($data->linkToKlien)){{ $data->linkToKlien->nm_klien }} @else Klien Umum @endif</font> </h3>
                            <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
                         </div>
                         <!-- /.box-header -->

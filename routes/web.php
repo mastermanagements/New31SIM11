@@ -447,7 +447,7 @@ Route::get('Barang', 'produksi\Barang@index');
 Route::post('getHargaBarang', 'produksi\Barang@respons_harga_barang');
 Route::get('tambah-barang', 'produksi\Barang@create');
 
-Route::get('response_json/{id_barang}','produksi\Barang@response_barang');
+Route::post('response_json/{id_barang}','produksi\Barang@response_barang');
 
 Route::post('store-barang', 'produksi\Barang@store');
 
