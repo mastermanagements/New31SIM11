@@ -175,4 +175,31 @@ class Kasir extends Controller
         ];
         return view('kasir.page.kasir.cetak', $data);
     }
+
+    public function laporan(){
+        $data = [
+            'nota'=> $this->data_nota(null)
+        ];
+        return view('kasir.page.kasir.laporan', $data);
+    }
+
+    public function filter(Request $req){
+        $data = [
+            'nota'=> $this->data_nota($req)
+        ];
+        if($req->proses == 'proses'){
+            return view('kasir.page.kasir.laporan', $data);
+        }else{
+            return view('kasir.page.kasir.cetak-laporan', $data);
+        }
+    }
+
+    public function data_nota($req){
+        if(empty($req)){
+            $query = KasirModel::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->paginate(60);
+        }else{
+            $query = KasirModel::whereBetween('created_at',[$req->tgl_awal, $req->tgl_akhir])->where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->paginate(60);
+        }
+        return $query;
+    }
 }

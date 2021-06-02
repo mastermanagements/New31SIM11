@@ -2404,3 +2404,5 @@ Route::post('GlobalSubSubKategori', 'globals\KategoriJasa@getSubSubKategori');
 
 Route::resource('Kasir','produksi\Kasir');
 Route::get('cetak-nota/{id_nota}','produksi\Kasir@cetak');
+Route::get('laporan-kasir', 'produksi\Kasir@laporan');
+Route::post('filter-nota', 'produksi\Kasir@filter');
