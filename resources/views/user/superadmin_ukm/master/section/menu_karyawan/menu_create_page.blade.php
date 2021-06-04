@@ -10,7 +10,9 @@
 
 @section('master_content')
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    <!-- Content Header (Page header)
+        Woyyyy
+    -->
     <section class="content-header">
         <h1>
            Halaman Pengaturan Menu Karyawan
