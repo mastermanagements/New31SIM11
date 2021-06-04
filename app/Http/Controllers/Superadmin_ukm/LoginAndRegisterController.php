@@ -20,14 +20,16 @@ class LoginAndRegisterController extends Controller
         $password = $req->kata_kunci;
         $model = user_admin_ukm::where('email', $alamat_email)->first();
        if($model->status_verifikasi==0){
-            return redirect('login-page')->with('message_fail','Maaf, Anda harus belum melakukan verifikasi ulang');
+//            return redirect('login-page')->with('message_fail','Maaf, Anda harus belum melakukan verifikasi ulang');
+           return response()->json(['message'=> 'Maaf, Anda harus belum melakukan verifikasi ulang', 'status'=> false]);
        }else{
            if(Hash::check($password, $model->password))
             {
                $req->session()->put('id_superadmin_ukm', $model->id);
-               return redirect('dashboard')->with('message_success','Selamat datang '. $model->nama.' !!');
+               return response()->json(['message'=> '', 'status'=> true]);
             }else{
-               return redirect('/')->with('message_fail','email atau password anda salah...!');
+//               return redirect('/')->with('message_fail','email atau password anda salah...!');
+               return response()->json(['message'=> 'email atau password anda salah...!', 'status'=> false]);
            }
        }
     }
@@ -54,10 +56,12 @@ class LoginAndRegisterController extends Controller
         // if success save data then email will sending
         if($model->save())
         {
-            Mail::send(new verification_superadmin_ukm($model));
-            return redirect('registerApp')->with('message_success','Pesan konfirmasi anda telah dikirim, lakukan konfirmasi via email anda');
+//            Mail::send(new verification_superadmin_ukm($model));
+            return response()->json(['message'=>'Pesan konfirmasi anda telah dikirim, lakukan konfirmasi via email anda','status'=>true]);
+//            return redirect('registerApp')->with('message_success','Pesan konfirmasi anda telah dikirim, lakukan konfirmasi via email anda');
+        }else{
+            return response()->json(['message'=>'Gagal melakukan registrasi ','status'=>false]);
         }
-        return redirect('registerApp')->with('message_fail','Anda belum berhasil mendaftar');
     }
 
     public function verification_($id)
@@ -70,6 +74,15 @@ class LoginAndRegisterController extends Controller
             return redirect('login-page')->with('message_success','Anda telah berhasil melakukan verifikasi akun, login untuk masuk kedalam aplikasi');
         }
         return redirect('login-page')->with('message_fail','Maaf, telah terjadi kesalahan');
+    }
+
+    public function cek_email(Request $req){
+        $data = user_admin_ukm::where('email',$req->alamat_email);
+        if($data->count('id')>0){
+            return response()->json(['message'=>'*email sudah terdaftar','status'=>true]);
+        }else{
+            return response()->json(['message'=>'','status'=>false]);
+        }
     }
 
     public function signOut()

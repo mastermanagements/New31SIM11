@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Daftar Perusahaan Anda
+            Ganti Email dan Password
         </h1>
     </section>
 
@@ -16,25 +16,39 @@
           | Your Page Content Here |
           -------------------------->
         <div class="row">
-           @if(empty($data_perusahaan))
-                <h3>Anda belum memasukan nama perusahaan anda ...!!</h3>
-               <p>Klik <a href="{{ url('tambah-usaha') }}"><label style="color: #0b93d5; font-weight: bold">Daftarkan Usaha Anda</label></a> Anda Akan Diarahkan pada halaman perusahaan</p>
-            @else
-                @foreach($data_perusahaan as $perusahaans)
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-blue"><i class="ion ion-ios-people-outline"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-number">{{ $perusahaans->nm_usaha  }}</span>
-                            <span class="info-box-text">{{ $perusahaans->alamat  }}</span>
-                        </div>
-                        <!-- /.info-box-content -->
+            <div class="col-md-6">
+                <div class="box">
+                    <div class="box-header">
+                        <h4 class="box-title">
+                            Form Ganti Password
+                        </h4>
                     </div>
-                    <!-- /.info-box -->
+                    <div class="box-body">
+                        @if(!empty(Session::get('message_success')))
+                            <span style="color: green">{{ Session::get('message_success') }}</span>
+                        @endif
+
+                        @if(!empty(Session::get('message_fail')))
+                            <span style="color: green">{{ Session::get('message_fail') }}</span>
+                        @endif
+                        <form method="post" action="{{ url('ganti-password-admin-post') }}">
+                            {{ csrf_field() }}
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" value="{{ $data_profil->email }}" name="email"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" value="{{ $data_profil->password }}" name="password"/>
+                            <span style="color: orange">Password anda telah terenkripsi</span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah anda yakin akan mengganti email atau password anda...?')"> Ganti </button>
+                        </div>
+                        </form>
+                    </div>
                 </div>
-               @endforeach
-            @endif
+            </div>
         </div>
     </section>
     <!-- /.content -->

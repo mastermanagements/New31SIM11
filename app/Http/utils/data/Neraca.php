@@ -78,7 +78,9 @@ class Neraca
             'saldo_kredit'=>$total_laba,
         ];
         # Sisipkan Akun Laba ditahun berjalan khusus akun modal;
-        array_push($result[3], $array_akun_laba_ditahan_ditahun_berjalan);
+        if(!empty($result[3])){
+            array_push($result[3], $array_akun_laba_ditahan_ditahun_berjalan);
+        }
        return $result;
     }
 
