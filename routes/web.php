@@ -13,6 +13,8 @@ Route::get('registerApp', function () {
     return view('user.superadmin_ukm.master.section.registered.registered');
 });
 
+
+
 Route::get('login-page', function () {
     return view('user.superadmin_ukm.master.section.registered.login');
 });
@@ -36,10 +38,15 @@ Route::get('dashboard', function () {
 //=========================== Registrasi & Login ========================================================================
 Route::post('registered', 'Superadmin_ukm\LoginAndRegisterController@registered');
 
+Route::post('cek-email','Superadmin_ukm\LoginAndRegisterController@cek_email');
+
 Route::post('login-page', 'Superadmin_ukm\LoginAndRegisterController@login');
 
 //=========================== Superadmin UKM ========================================================================
 Route::get('pengaturan-perusahaan', 'Superadmin_ukm\Superadmin_UKM@index');
+
+Route::get('ganti-password-admin','Superadmin_ukm\Superadmin_UKM@ganti_password');
+Route::post('ganti-password-admin-post','Superadmin_ukm\Superadmin_UKM@ganti_password_proses');
 
 Route::get('verification/{id}', 'Superadmin_ukm\LoginAndRegisterController@verification_');
 
@@ -2407,3 +2414,7 @@ Route::get('cetak-nota/{id_nota}','produksi\Kasir@cetak');
 Route::get('laporan-kasir', 'produksi\Kasir@laporan');
 Route::post('filter-nota', 'produksi\Kasir@filter');
 Route::get('filter-barang-by-barcode/{kode_barcode}', 'produksi\Barang@filterBarangByBarcode');
+
+
+Route::get('ganti-password-karyawan','karyawan\Karyawan@ganti_password_karyawan');
+Route::post('ganti-password-karyawan-post','karyawan\Karyawan@ganti_password_karyawan_proses');

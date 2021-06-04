@@ -151,11 +151,12 @@
                     <div class="col-md-12 wthree_pvt_title text-center">
                         <p class="mb-5"><b>Login Owner</b></p>
 						<form method="POST" action="{{ url('login-page') }}" id="appointment-form">
+                            <span id="notif_login_owner" style="color: red;"></span>
                             <input type="email" name="alamat_email" id="email" class="mx-auto nama" placeholder="Email" required />
                             <br/>
                             <input type="password" name="kata_kunci" id="name" class="mx-auto pass" placeholder="Password">
 							{{ csrf_field() }}
-							<button type="submit" name="submit" id="submit" class="btn btn-primary mt-5 tombol">Login</button>
+							<button type="button" name="submit" id="submit_owner" class="btn btn-primary mt-5 tombol">Login</button>
                         </form>
 
 						<div>
@@ -171,12 +172,13 @@
                 <div class="row mb-5 f-karyawan" id="karyawan">
                     <div class="col-md-12 wthree_pvt_title text-center">
                         <p class="mb-5"><b>Login Karyawan</b></p>
-                        <form action="{{ url('cek-karyawan') }}" method="post">
+                        <form action="{{ url('cek-karyawan') }}" method="post" id="login_karyawan">
+                            <span id="notif_login_karyawan" style="color: red;"></span>
                             <input type="text" class="mx-auto nama" placeholder="Username" name="user_nm" required>
                             <br/>
                             <input type="password" class="mx-auto pass" placeholder="password" name="pass" required>
 							{{ csrf_field() }}
-							<button type="submit" class="btn btn-primary mt-5 tombol">Login</button>
+							<button type="button" id="login_karyawan_button" class="btn btn-primary mt-5 tombol">Login</button>
                         </form>
 
                     </div>
@@ -195,19 +197,22 @@
                 <div class="row mb-5 f-regis" id="regis">
                     <div class="col-md-12 wthree_pvt_title text-center">
                         <p class="mb-5"><b>Register</b></p>
-                        <form method="POST" action="{{ url('registered') }}">
+                        <form method="POST" action="{{ url('registered') }}" id="form-regist">
+                            <span style="color: green" id="notif_registered_success"></span>
+                            <span style="color: red" id="notif_registered_fail"></span>
                             <input type="text" name="nama" id="title" class="mx-auto nama" placeholder="Nama" required>
                             <br/>
-                            <input type="email" name="alamat_email" id="email"class="mx-auto nama" placeholder="email" required>
+                            <input type="email" name="alamat_email" id="email_regist"class="mx-auto nama" placeholder="email" required>
+                            <small style="color: red" id="notif_regis_email"></small>
                             <br/>
                             <input type="password" name="kata_kunci" id="name" class="mx-auto pass" placeholder="password">
 
                         <!--<br>
                         <div class="g-recaptcha move-left" data-sitekey="6LcTOr0UAAAAAGcl4liqP6-IPIvHpdr_m8jke99Y"></div>-->
-                        <br>
-                        <input type="checkbox" name="agree_term" class="move-left" required> Saya sudah membaca <a href="#" class="sarat"> syarat dan ketentuan</a>
-                        <br>
-                        <button type="submit" class="btn btn-primary mt-5 tombol">Register</button>
+                            <br>
+                            <input type="checkbox" name="agree_term" class="move-left" required> Saya sudah membaca <a href="#" class="sarat"> syarat dan ketentuan</a>
+                            <br>
+                            <button type="button" class="btn btn-primary mt-5 tombol" id="tombol-regis">Register</button>
 						{{ csrf_field() }}
 						</form>
 						<div>
@@ -780,6 +785,71 @@
 
     $(document).ready(function(){
 
+        $('#email_regist').keyup(function(){
+            var data = $('#form-regist').serialize()
+            $.ajax({
+                url:'{{ url('cek-email') }}',
+                type: 'post',
+                data : data,
+                success: function(result){
+                    console.log(result);
+                    $('#notif_regis_email').text(result.message);
+                    if(result.status==true){
+                        $('#tombol-regis').attr('disabled',true);
+                    }else{
+                        $('#tombol-regis').attr('disabled',false);
+                    }
+                }
+            });
+
+        });
+
+        $('#notif_registered').text("test")
+        $('#tombol-regis').click(function(){
+            {{--method="POST" action="{{ url('registered') }}" id="form-regist"--}}
+            $.ajax({
+                url: $('#form-regist').attr('action'),
+                type: 'post',
+                data:$('#form-regist').serialize(),
+                success: function(result){
+                    if(result.status==true){
+                        $('#notif_registered_success').text(result.message)
+                    }else{
+                        $('#notif_registered_fail').text(result.message)
+                    }
+                }
+            })
+        });
+
+        $('#login_karyawan_button').click(function () {
+            $.ajax({
+                url:$('#login_karyawan').attr('action'),
+                type:'post',
+                data : $('#login_karyawan').serialize(),
+                success:function(result){
+                    if(result.status==true){
+                        window.location.href="{{ url('welcome-page') }}";
+                    }else{
+                        $('#notif_login_karyawan').text(result.message);
+                    }
+                }
+            });
+        });
+
+        $('#submit_owner').click(function () {
+            $.ajax({
+                url:$('#appointment-form').attr('action'),
+                type:'post',
+                data : $('#appointment-form').serialize(),
+                success:function(result){
+                    if(result.status==true){
+                        window.location.href="{{ url('dashboard') }}";
+                    }else{
+                        $('#notif_login_owner').text(result.message);
+                    }
+                }
+            });
+        });
         // navbar
 		$('.klik_menu').click(function(){
 			var menu = $(this).attr('id');

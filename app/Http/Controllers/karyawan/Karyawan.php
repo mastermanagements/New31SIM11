@@ -339,4 +339,23 @@ class Karyawan extends Controller
         }
     }
 
+
+    public function ganti_password_karyawan(){
+        $data = [
+            'data'=> karyawans::findOrFail(Session::get('id_karyawan'))
+        ];
+        return view('user.karyawan.section.ganti_password.page_default', $data);
+    }
+
+    public function ganti_password_karyawan_proses(Request $req){
+        $model = karyawans::findOrFail(Session::get('id_karyawan'));
+        $model->username = $req->username;
+        $model->nama_ky = $req->nama_ky;
+        $model->password = bcrypt($req->password);
+        if($model->save()){
+            return redirect()->back()->with('message_success','Anda telah mengubah akun anda');
+        }else{
+            return redirect()->back()->with('message_fail','gagal, mengubah akun anda');
+        }
+    }
 }

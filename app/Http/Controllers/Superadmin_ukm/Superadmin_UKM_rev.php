@@ -122,7 +122,7 @@ class Superadmin_UKM extends Controller
 			}
 			$foto = $req->foto;
 			$image_name = $foto->getClientOriginalName();
-			$foto->move($path, $file_name);
+			$foto->move($path, $image_name);
 			
 			$model_profil_user_ukm->foto = $image_name;	
 		}

@@ -30,7 +30,7 @@
                             <a href="{{ url('logout-karyawan') }}" class="btn btn-default btn-flat">Sign out</a>
                         </div>
                         <div class="pull-left">
-                            <a href="#" class="btn btn-default btn-flat">Ganti Password</a>
+                            <a href="{{ url('ganti-password-karyawan') }}" class="btn btn-default btn-flat">Ganti Password</a>
                         </div>
                     </li>
                 </ul>
