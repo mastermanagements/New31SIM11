@@ -56,7 +56,7 @@ class LoginAndRegisterController extends Controller
         // if success save data then email will sending
         if($model->save())
         {
-//            Mail::send(new verification_superadmin_ukm($model));
+            Mail::send(new verification_superadmin_ukm($model));
             return response()->json(['message'=>'Pesan konfirmasi anda telah dikirim, lakukan konfirmasi via email anda','status'=>true]);
 //            return redirect('registerApp')->with('message_success','Pesan konfirmasi anda telah dikirim, lakukan konfirmasi via email anda');
         }else{
@@ -71,9 +71,9 @@ class LoginAndRegisterController extends Controller
         $model->status_verifikasi = '1';
         if($model->save())
         {
-            return redirect('login-page')->with('message_success','Anda telah berhasil melakukan verifikasi akun, login untuk masuk kedalam aplikasi');
+            return redirect('/')->with('message_success','Anda telah berhasil melakukan verifikasi akun, login untuk masuk kedalam aplikasi');
         }
-        return redirect('login-page')->with('message_fail','Maaf, telah terjadi kesalahan');
+        return redirect('/')->with('message_fail','Maaf, telah terjadi kesalahan');
     }
 
     public function cek_email(Request $req){
