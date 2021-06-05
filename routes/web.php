@@ -2416,5 +2416,15 @@ Route::post('filter-nota', 'produksi\Kasir@filter');
 Route::get('filter-barang-by-barcode/{kode_barcode}', 'produksi\Barang@filterBarangByBarcode');
 
 
+//========================================= Laporan Produksi ======================================
+Route::get('laporan-produksi','manufaktur\Manufaktur@laporan_produksi');
+Route::post('laporan-produksi','manufaktur\Manufaktur@PrinView_OrCetak');
+
+Route::get('laporan-pembelian','manufaktur\Manufaktur@laporan_pembelian');
+Route::post('laporan-pembelian','manufaktur\Manufaktur@laporan_pembelian_printOrView');
+
+Route::get('laporan-detail-pembelian','manufaktur\Manufaktur@laporan_detail_pembelian');
+Route::post('laporan-detail-pembelian','manufaktur\Manufaktur@print_view_detail_pembelian');
+
 Route::get('ganti-password-karyawan','karyawan\Karyawan@ganti_password_karyawan');
 Route::post('ganti-password-karyawan-post','karyawan\Karyawan@ganti_password_karyawan_proses');
