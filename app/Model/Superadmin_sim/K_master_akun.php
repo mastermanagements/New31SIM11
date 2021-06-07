@@ -9,7 +9,7 @@ class K_master_akun extends Model
     //
     protected $table = 'k_master_akun';
 
-    protected $fillable=['kode_m_akun','nm_m_akun'];
+    protected $fillable=['kode_m_akun','nm_m_akun','posisi_saldo'];
 
     public function manySubAkun()
     {

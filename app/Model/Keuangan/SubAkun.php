@@ -16,8 +16,10 @@ class SubAkun extends Model
       'kode_sub_akun',
       'nm_sub_akun',
       'off_on',
+	  'posisi_saldo',
       'id_perusahaan',
-      'id_karyawan',
+      'id_karyawan'
+	 
     ];
 
 
