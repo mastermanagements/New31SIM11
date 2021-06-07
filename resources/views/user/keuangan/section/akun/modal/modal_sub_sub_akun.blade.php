@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir Sub Akun</h4>
+                <h4 class="modal-title">Formulir Ubah Sub Akun</h4>
             </div>
             <form action="#" method="post" id="formulir_sub">
                 <div class="modal-body">
