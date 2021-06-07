@@ -8,6 +8,7 @@ use Session;
 use App\Traits\Transaksi;
 use App\Http\utils\data\Neraca as data_neraca;
 use App\Http\utils\data\SettingTahunBuku;
+use App\Http\utils\HeaderReport;
 class Neraca extends Controller
 {
     //
@@ -39,6 +40,8 @@ class Neraca extends Controller
             'tahun_berjalan2'=> $this->costumDate(),
             'data'=> $data_neraca
         ];
+        $data['header'] = HeaderReport::header('layouts.header_print.header',$tgl_awal,$tgl_akhir,'Neraca');
+
 
         return view('user.keuangan.section.laporan.neraca.print_page', $data);
     }

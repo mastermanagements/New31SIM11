@@ -45,6 +45,8 @@
     </style>
 </head>
 <body style="margin: 10px;padding: 20px">
+{!! $header !!}
+<p></p>
     <table id="customers">
              <tbody>
             @php($total_laba=0)
