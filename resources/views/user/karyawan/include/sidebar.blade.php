@@ -31,8 +31,8 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">LIST MENU KARYAWAN</li>
            @if(!empty($daftar_menu['daftar_menu']))
-                @foreach($daftar_menu['daftar_menu'] as $menus)
-                    <li class="treeview" >
+                @foreach($daftar_menu['daftar_menu'] as $mKey=> $menus)
+                    <li class="treeview @if(Session::get('main_menu')==$mKey) active menu-open @endif" >
                         <a href="#">
                             <i></i> <span style="font-weight: bold">{{ $menus->getMasterMenu->nm_menu }}</span>
                             <span class="pull-right-container">
@@ -44,7 +44,7 @@
                             @foreach($submenu as $sKey => $sum_menu)
                                 @if(!empty($Menu_karyawan = $sum_menu->getMenuKaryawan->where('id_karyawan', Session::get('id_karyawan'))))
                                     @foreach($Menu_karyawan as $menus_karyawan)
-                                        <li><a
+                                        <li class="@if(Session::get('sub_menu')==$sKey) active @endif"><a
                                                     @if($sum_menu->getMasterSubMenuUKM->url=="BA-Pemeriksaan")
                                                     href="#"
                                                     data-toggle="modal" data-target="#modal-menu-ba-pemeriksaan"
@@ -62,7 +62,8 @@
                                                     data-toggle="modal" data-target="#modal-menu-ba-serops"
 
                                                     @else
-                                                    href="{{ url($sum_menu->getMasterSubMenuUKM->url) }}"
+                                                    {{--href="{{ url($sum_menu->getMasterSubMenuUKM->url) }}"--}}
+                                                        onclick="setSession('{{ url($sum_menu->getMasterSubMenuUKM->url) }}', '{{ $mKey }}','{{ $sKey }}')"
                                                     @endif
 
                                             ><i></i> <span>{{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}</span></a></li>

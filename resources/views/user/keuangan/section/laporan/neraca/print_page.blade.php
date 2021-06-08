@@ -18,9 +18,13 @@
             padding: 8px;
         }
 
-        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-        #customers tr:hover {background-color: #ddd;}
+        #customers tr:hover {
+            background-color: #ddd;
+        }
 
         #customers th {
             padding-top: 12px;
@@ -45,42 +49,52 @@
     </style>
 </head>
 <body style="margin: 10px;padding: 20px">
-    <table id="customers">
-        <tbody>
-        @if(!empty($data))
+{!! $header !!}
+<p></p>
+<table id="customers">
+    <tbody>
+    @if(!empty($data))
 
-            @foreach($data as $key => $data_sort)
-                <tr style="background-color: greenyellow">
-                    <td colspan="2">{{ $key }}</td>
-                </tr>
-                @if(!empty($data_sort['data']))
-                    @foreach($data_sort['data'] as  $key_account=> $data_akuns)
-                        @foreach($data_akuns as $data_akun)
-                            <tr>
-                                <td>
-                                    <input type="hidden" name="id_akun[]" value="{{ $key_account }}">
-                                    <input type="hidden" name="id_aktif_ukm[]" value="{{ $data_akun['id_aktif_ukm'] }}">
-                                    <input type="hidden" name="tgl_jurnal[]" value="{{ $data_akun['tgl_jurnal'] }}">
-                                    <input type="hidden" name="debet_kredit[]" value="{{ $data_akun['debet_kredit'] }}">
-                                    {{ $data_akun['nama_akun'] }}
-                                </td>
+        @foreach($data as $key => $data_sort)
+            <tr style="background-color: greenyellow">
+                <td colspan="2">{{ $key }}</td>
+            </tr>
+            @if(!empty($data_sort['data']))
+                @foreach($data_sort['data'] as  $key_account=> $data_akuns)
+                    @foreach($data_akuns as $data_akun)
+                        <tr>
+                            <td>
+                                <input type="hidden" name="id_akun[]" value="{{ $key_account }}">
+                                <input type="hidden" name="id_aktif_ukm[]" value="{{ $data_akun['id_aktif_ukm'] }}">
+                                <input type="hidden" name="tgl_jurnal[]" value="{{ $data_akun['tgl_jurnal'] }}">
+                                <input type="hidden" name="debet_kredit[]" value="{{ $data_akun['debet_kredit'] }}">
                                 @if($data_akun['posisi_saldo']=='D')
-                                    <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_debet'] }}"> {{ number_format($data_akun['saldo_debet'],2,',','.') }}</td>
+                                    {{ $data_akun['nama_akun'] }}
                                 @else
-                                    <td > <input type="hidden" name="saldo_dk[]" value="{{ $data_akun['saldo_kredit'] }}"> {{ number_format($data_akun['saldo_kredit'],2,',','.') }}</td>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{{ $data_akun['nama_akun'] }}
                                 @endif
-                            </tr>
-                        @endforeach
+                            </td>
+                            @if($data_akun['posisi_saldo']=='D')
+                                <td><input type="hidden" name="saldo_dk[]"
+                                           value="{{ $data_akun['saldo_debet'] }}"> {{ number_format($data_akun['saldo_debet'],2,',','.') }}
+                                </td>
+                            @else
+                                <td><input type="hidden" name="saldo_dk[]"
+                                           value="{{ $data_akun['saldo_kredit'] }}"> {{ number_format($data_akun['saldo_kredit'],2,',','.') }}
+                                </td>
+                            @endif
+                        </tr>
                     @endforeach
-                    <tr style="background-color: lightblue">
-                        <td>Total {{ $key }}</td>
-                        <td>{{ number_format($data_sort['total'],2,',','.') }}</td>
-                    </tr>
-                @endif
-            @endforeach
-        @endif
-        </tbody>
-    </table>
+                @endforeach
+                <tr style="background-color: lightblue">
+                    <td>Total {{ $key }}</td>
+                    <td>{{ number_format($data_sort['total'],2,',','.') }}</td>
+                </tr>
+            @endif
+        @endforeach
+    @endif
+    </tbody>
+</table>
 </body>
 <script type="text/javascript">
     //window.onload = function() { window.print(); }

@@ -108,6 +108,7 @@ class Pembelian
             $column[] = $item->ongkir;
             $column[] = $item->pajak;
             $column[] = self::list_detail_barang($item);
+            $column[] = $item->total;
             $data[] = $column;
         }
         return $data;

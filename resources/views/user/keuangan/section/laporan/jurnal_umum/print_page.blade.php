@@ -18,9 +18,13 @@
             padding: 8px;
         }
 
-        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-        #customers tr:hover {background-color: #ddd;}
+        #customers tr:hover {
+            background-color: #ddd;
+        }
 
         #customers th {
             padding-top: 12px;
@@ -45,40 +49,50 @@
     </style>
 </head>
 <body>
-    <table id="customers">
+{!! $header !!}
+<p></p>
+<table id="customers">
 
-             <tr class="vendorListHeading">
-                <th>No. Transaksi</th>
-                <th>Tanggal</th>
-                <th>Kode Akun</th>
-                <th>Nama Akun</th>
-                <th>Keterangan</th>
-                <th>Debet</th>
-                <th>Kredit</th>
+    <tr class="vendorListHeading">
+        <th>No. Transaksi</th>
+        <th>Tanggal</th>
+        <th>Kode Akun</th>
+        <th>Nama Akun</th>
+        <th>Keterangan</th>
+        <th>Debet</th>
+        <th>Kredit</th>
+    </tr>
+
+    @if(!empty($data_jurnal))
+        @foreach($data_jurnal as $data)
+            <tr>
+                <td>{{ $data['no_transaksi'] }}</td>
+                <td>{{ $data['tanggal'] }}</td>
+                <td>{{ $data['kode_akun'] }}</td>
+                <td>{{ $data['nama_akun'] }}</td>
+                <td>
+                    @if($data['debet'] == 0)
+                        &nbsp;&nbsp;&nbsp; {{ $data['keterangan'] }}
+                    @else
+                        {{ $data['keterangan'] }}
+                    @endif
+                </td>
+                <td>{{ $data['debet'] }}</td>
+                <td>{{ $data['kredit'] }}</td>
             </tr>
+        @endforeach
+    @endif
+    <tr class="vendorListHeading">
+        <th colspan="5"></th>
+        <th>{{ $total_debet }}</th>
+        <th>{{ $total_kredit }}</th>
+    </tr>
 
-        @if(!empty($data_jurnal))
-            @foreach($data_jurnal as $data)
-                <tr>
-                    <td>{{ $data['no_transaksi'] }}</td>
-                    <td>{{ $data['tanggal'] }}</td>
-                    <td>{{ $data['kode_akun'] }}</td>
-                    <td>{{ $data['nama_akun'] }}</td>
-                    <td>{{ $data['keterangan'] }}</td>
-                    <td>{{ $data['debet'] }}</td>
-                    <td>{{ $data['kredit'] }}</td>
-                </tr>
-            @endforeach
-        @endif
-            <tr class="vendorListHeading">
-                <th colspan="5"></th>
-                <th>{{ $total_debet }}</th>
-                <th>{{ $total_kredit }}</th>
-            </tr>
-
-    </table>
+</table>
 </body>
 <script type="text/javascript">
-    window.onload = function() { window.print(); }
+    window.onload = function () {
+        window.print();
+    }
 </script>
 </html>

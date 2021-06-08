@@ -45,6 +45,8 @@
     </style>
 </head>
 <body style="margin: 10px;padding: 20px">
+    {!!  $header !!}
+    <p></p>
     <table id="customers">
         <thead>
         <tr>
@@ -61,7 +63,13 @@
             @foreach($data as $data)
                 <tr style="background-color: white">
                     <td>{{ $data['kode_akun'] }}</td>
-                    <td>{{ $data['nama_akun'] }}</td>
+                    <td>
+                        @if(abs($data['saldo_debet']) == 0)
+                            &nbsp;&nbsp;&nbsp;&nbsp; {{ $data['nama_akun'] }}
+                        @else
+                            {{ $data['nama_akun'] }}
+                        @endif
+                    </td>
                     <td>{{ number_format(abs($data['saldo_debet']),2,',','.') }}</td>
                     <td>{{ number_format(abs($data['saldo_kredit']),2,',','.') }}</td>
                 </tr>
