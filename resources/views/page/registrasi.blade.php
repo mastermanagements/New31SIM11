@@ -7,15 +7,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="ERP, Enterprice Resource Planning, UMKM, Usaha Mikro Kecil Menengah,
 	manajemen perusahaan satu pintu, merancang usaha, strategi usaha" />
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
+    
     <!---script src='https://www.google.com/recaptcha/api.js'></script>-->
     <!-- Custom Theme files -->
     <link href="{{ asset('frontend/css/bootstrap.css') }}" type="text/css" rel="stylesheet" media="all">
@@ -30,11 +22,9 @@
 </head>
 
 <body>
-<script src='{{ asset('frontend/js/jquery.min.js') }}'></script><script src="{{ asset('frontend/js/monetization.js') }}" type="text/javascript"></script>
-
 
 <meta name="robots" content="noindex">
-<body>
+
     <!-- header -->
     <header id="home">
         <div class="container">
@@ -51,10 +41,11 @@
                         <input type="checkbox" id="drop" />
                         <ul class="menu">
                             <li><a href="{{'/'}}" class="active klik_menu" id="home">Home</a></li>
-                            <!--<li><a href="#" >Blog</a></li>-->
+                            <li><a href="#">Blog</a></li>
 							<li><a href="#" class="klik_menu" id="event" >Event</a></li>
                             <li><a href="#" class="klik_menu" id="pelatihan" >Pelatihan</a></li>
-                            <li><a href="#" class="klik_menu" id="kontak">Kontak</a></li>
+                            <li><a href="#">Kontak</a></li>
+							<li><a href="#" class="klik_menu" id="daftar">daftar</a></li>
                             <li class="nav-right-sty mt-lg-0 mt-sm-4 mt-2">
                                 <a href="#regis" class="reqe-button text-uppercase page-scroll regis">Registrasi</a>
                             </li>
@@ -79,8 +70,7 @@
     <!-- //header -->
     <div class="content">
         <!-- banner -->
-        <!-- banner -->
-        <section class="banner">
+     
             <!-- banner text -->
             <div class="container">
                 <div class="banner_text_wthree_pvt">
@@ -142,52 +132,20 @@
                 </div>
             </div>
             <!-- //banner-bottom -->
-        </section>
-
+        </sectio
         <!-- about-->
         <section class="single_grid_w3_main align-w3-abt" id="about">
             <div class="container">
                 <div class="row mb-5 f-owner" id="owner">
                     <div class="col-md-12 wthree_pvt_title text-center">
-                        <p class="mb-5"><b>Login Owner/Founder</b></p>
+                        <p class="mb-5"><b>Login Owner</b></p>
 						<form method="POST" action="{{ url('login-page') }}" id="appointment-form">
                             <span id="notif_login_owner" style="color: red;"></span>
                             <input type="email" name="alamat_email" id="email" class="mx-auto nama" placeholder="Email" required />
                             <br/>
                             <input type="password" name="kata_kunci" id="name" class="mx-auto pass" placeholder="Password">
 							{{ csrf_field() }}
-							<br>
-							<div class="col-md-9 text-right">
-                            <a href="#lupa_pass" class="lupa_pass"> Lupa password</a>
-							</div>
-                           
 							<button type="button" name="submit" id="submit_owner" class="btn btn-primary mt-5 tombol">Login</button>
-                        </form>
-
-						<div>
-						<br>
-						@if(!empty(session('message_success')))
-							<p style="color: green; text-align: center">*{{ session('message_success')}}</p>
-						@elseif(!empty(session('message_fail')))
-							<p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
-						@endif
-						</div>
-                    </div>
-                </div>
-				<div class="row mb-5 f-lupa_pass" id="lupa_pass">
-                    <div class="col-md-12 wthree_pvt_title text-center">
-                        <p class="mb-5"><b>Reset Password Owner</b></p>
-						<form method="POST" action="{{ url('lupa-password') }}" id="form-reset-pass">
-                            <span id="notif_email_reset" style="color: red;"></span>
-							<span style="color: green" id="notif_reset_success"></span>
-                            <span style="color: red" id="notif_reset_fail"></span>
-							<br>
-                            <input type="email" name="email" id="email_reset" class="mx-auto nama" placeholder="Masukkan Email Anda" required />
-                            <br/>
-                            
-							{{ csrf_field() }}
-							<br>							          
-							<button type="button" name="submit" id="submit_lupa_pass" class="btn btn-primary mt-5 tombol">Kirim</button>
                         </form>
 
 						<div>
@@ -209,7 +167,6 @@
                             <br/>
                             <input type="password" class="mx-auto pass" placeholder="password" name="pass" required>
 							{{ csrf_field() }}
-							
 							<button type="button" id="login_karyawan_button" class="btn btn-primary mt-5 tombol">Login</button>
                         </form>
 
@@ -242,7 +199,7 @@
                         <!--<br>
                         <div class="g-recaptcha move-left" data-sitekey="6LcTOr0UAAAAAGcl4liqP6-IPIvHpdr_m8jke99Y"></div>-->
                             <br>
-                            <input type="checkbox" name="agree_term" class="move-left" checked required> Saya sudah membaca <a href="#" class="sarat"> syarat dan ketentuan</a>
+                            <input type="checkbox" name="agree_term" class="move-left" required> Saya sudah membaca <a href="#" class="sarat"> syarat dan ketentuan</a>
                             <br>
                             <button type="button" class="btn btn-primary mt-5 tombol" id="tombol-regis">Register</button>
 						{{ csrf_field() }}
@@ -257,217 +214,8 @@
 						</div>
                     </div>
                 </div>
-                <div class="wthree_pvt_title text-center">
-                    <h4 class="w3pvt-title">Apakah Perusahaan Anda Sering Mengalami Masalah Seperti ?</h4>
-                    <p class="sub-title"></p>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-ravelry"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h5>Tidak Tahu Arah Perusahaan ke Depan ?</h5>
-                                        <br>
-                                        <p>
-											Perusahaan yang penting jalan saja?,
-											tidak mempunyai struktur dan bagian/departemen serta divisinya?, tidak ada analisa SWOT,
-											 tidak ada jobdesc yang jelas, tidak ada tanggung jawab dan wewenang karyawan, tidak tidak mengetahui
-											siapa kompetitor Anda?, tidak mempunyai sasaran, target tahunan, bulanan per bagian, per divisi dan
-											strategi untuk mencapainya?.
-										</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 my-lg-0 my-4">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-cubes"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h5>Administrasi amburadul?</h5>
-                                        <br>
-                                        <p>
-											Arsip perusahaan: badan hukum, data perizinan, data proposal, data kontrak pekerjaan,
-											surat masuk dan keluar, inventaris peralatan,
-											serta file arsip lainnya tersebar di berbagai komputer karyawan,
-											dan Anda kesulitan mencari file dan hard copy jika membutuhkannya?, dan itu membuat waktu anda
-											terbuang banyak untuk urusan administrasi?
-										</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-desktop"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h5>Kesulitan mengontrol Produk ?</h5>
-                                        <br>
-                                        <p>
-											Anda kesulitan mengetahui data pembelian ke supplier?, penjualan harian, bulanan tidak terupdate?,
-											Anda tidak tahu barang apa yang paling laku, yang tidak laku?,
-											Anda kesulitan mengontrol persediaan barang? berapa sisa?, berapa kedaluarsa?,
-											Kesulitan mengetahui layanan jasa yang paling banyak peminatnya?
-											Proyek pada klien perusahaan anda tidak terjadwal?, monitoring kemajuan proyek tidak terkontrol?,
-											jobdesc tidak jelas dan sering terlambat pengerjaannya?.
-										</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 my-lg-0 my-4">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-money"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h5>Kesulitan Mengelola Laporan Keuangan?</h5>
-                                        <br>
-                                        <p>
-											Anda tidak mempunyai Rencana anggaran perusahaan, target pendapatan dan alokasi pengeluaran?,
-											tidak tahu berapa jumlah uang cash di kas harian untuk operasional, dan uang di bank?
-											uang perusahaan tercampur dengan uang pribadi?,
-											tidak tahu posisi kekayaan perusahaan?,
-											Anda merasa tidak tahu kenapa pendapatan mudah didapat, tapi uang perusahaan cepat habis? terlebih
-											menjelang gajian karyawan,
-											Anda tidak tahu berapa laba/rugi perusahaan anda setiap saat?
-
-										</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-group"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h5>Marketing Asal Jalan?</h5>
-                                        <br>
-                                        <p>Anda tidak mempunyai data pelanggan, siapa leads anda, berapa yg sudah melakukan konversi?,
-											tidak mempunyai data valid, pelanggan mana saja yang sering belanja barang atau layanan Anda?
-											Anda tidak melakukan STP (segmenting, Targeting dan  Positioning)?,
-											kegiatan marketing  bulanan tidak di rencanankan dengan baik, yang penting asal jalan.
-											fase pengenalan, branding, converting dan maintenance pelanggan tidak terpantau dengan cepat.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 my-lg-0 my-4">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-area-chart"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h4>Pengelolaan SDM Asal-Asalan</h4>
-                                        <p>
-											Tidak ada divisi HRD di perusahaan Anda? dan Anda tidak mengetahui solusinya?,
-											kesulitan menghire seleksi karyawan?, bingung membuat kontrak kerja?,
-											tidak ada SOP yg jelas, kesulitan mengatur absensi dan cuti karyawan,
-											menilai kinera karyawan berdasarkan feeling?, aspek apa yang akan di nilai, kapan harus naik gaji?,
-											bagaimana memberikan kompensasi kinerja karyawan (bonus, keniakan gaji, tunjangan, dll).
-
-										</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-usd"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h4>Penggajian Tidak Terstruktur</h4>
-                                        <p>
-											Anda kesulitan mengalokasikan pendapatan perusahaan untuk gaji karyawan?,
-											berapa menentukan jumlah alokasi gaji setiap tahun sesuai dengan perubahan pendapatan perusahaan?,
-											tidak ada standar baku menentukan gaji pokok karyawan,
-											bagaimana menentukan dan menghitung compansable factor untuk menentukan nilai gaji setiap jabatan?,
-											apa saja standar penilaiannya?,
-											bagaimana menentukan tunjangan karyawan sesuai dengan jabatan?  item apa saja yang dinilai,
-											bagaimana menentukan skala gaji, bonus proyek, kelas proyek?.
-										</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 my-lg-0 my-4">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-handshake-o"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h4>Ingin Menggaet Investor, Tapi Kesulitan Pelaporannya?</h4>
-                                        <p>
-											Anda tidak mengetahui bentuk investasinya seperti apa? kepemilikan saham atau syirkah (Mudharabah/Musyarakah?), dan bagaimana menentukan bagi hasilnya?,
-											kesulitan menentukan persentase saham?, bagaimana mengkonversi keahlian menjadi bentuk saham,
-											bagaimana jika ada investor yang menjual sahamnya, berapa alokasi laba untuk operasional perusahaan sebelum dividen di bagikan?,
-											kesulitan membuat laporan keuangan dan laporan dividen untuk investor, sehingga kepercayaan investor menjadi berkurang?.
-										</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+               
             </div>
         </section>
         <!-- //about -->
@@ -838,7 +586,7 @@
 
         $('#notif_registered').text("test")
         $('#tombol-regis').click(function(){
-            
+            {{--method="POST" action="{{ url('registered') }}" id="form-regist"--}}
             $.ajax({
                 url: $('#form-regist').attr('action'),
                 type: 'post',
@@ -848,41 +596,6 @@
                         $('#notif_registered_success').text(result.message)
                     }else{
                         $('#notif_registered_fail').text(result.message)
-                    }
-                }
-            })
-        });
-		
-		$('#email_reset').keyup(function(){
-            var data = $('#form-reset-pass').serialize()
-            $.ajax({
-                url:'{{ url('cek-email-reset') }}',
-                type: 'post',
-                data : data,
-                success: function(result){
-                    console.log(result);
-                    $('#notif_email_reset').text(result.message);
-                    if(result.status==true){
-                        $('#submit_lupa_pass').attr('disabled',true);
-                    }else{
-                        $('#submit_lupa_pass').attr('disabled',false);
-                    }
-                }
-            });
-
-        });
-		
-		$('#submit_lupa_pass').click(function(){
-         
-            $.ajax({
-                url: $('#form-reset-pass').attr('action'),
-                type: 'post',
-                data:$('#form-reset-pass').serialize(),
-                success: function(result){
-                    if(result.status==true){
-                        $('#notif_reset_success').text(result.message)
-                    }else{
-                        $('#notif_reset_fail').text(result.message)
                     }
                 }
             })
@@ -926,13 +639,12 @@
 				$('.content').load('{{ url('pelatihan') }}');
 			}else if(menu == "event"){
 				$('.content').load('event');
-			}
-			else if(menu == "kontak"){
-				$('.content').load('{{ url('kontak') }}');
+			}else if(menu == "daftar"){
+				$('.content').load('daftar');
 			}
 		});
 		$('.sarat').click(function(){
-			$('.content').load('{{ url('syarat') }}');
+			$('.content').load('{{ url('sarat') }}');
 		});
 
         // Form login dan register
@@ -940,36 +652,25 @@
             $(".f-regis").hide();
             $(".f-karyawan").hide();
             $(".f-investor").hide();
-			$(".f-lupa_pass").hide();
             $(".f-owner").show();
         });
         $(".karyawan").click(function(){
             $(".f-regis").hide();
             $(".f-owner").hide();
             $(".f-investor").hide();
-			$(".f-lupa_pass").hide();
             $(".f-karyawan").show();
         });
         $(".investor").click(function(){
             $(".f-regis").hide();
             $(".f-owner").hide();
             $(".f-karyawan").hide();
-			$(".f-lupa_pass").hide();
             $(".f-investor").show();
         });
         $(".regis").click(function(){
             $(".f-owner").hide();
             $(".f-karyawan").hide();
             $(".f-investor").hide();
-			$(".f-lupa_pass").hide();
             $(".f-regis").show();
-        });
-		$(".lupa_pass").click(function(){
-            $(".f-owner").hide();
-            $(".f-karyawan").hide();
-            $(".f-investor").hide();
-            $(".f-regis").hide();
-			$(".f-lupa_pass").show();
         });
     });
 
