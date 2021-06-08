@@ -11,7 +11,7 @@
 </head>
 <body style="margin: 20px;">
 @if(!empty($data))
-    @php($sum_harga_beli = 0)
+    @php($sum_harga_jual = 0)
     @php($sum_sub_total = 0)
     @foreach($data as $item)
         <div class="col-md-12">
@@ -19,14 +19,14 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <p style="font-weight: bold">No. Transaksi : {{ $item[0] }}</p>
-                            <p style="font-weight: bold">Supplier : {{ $item[1] }}</p>
-                            <p style="font-weight: bold">Jenis Pembelian : {{ $item[2] }}</p>
+                            <p style="font-weight: bold">No. Transaksi : {{ $item[4] }}</p>
+                            <p style="font-weight: bold">Klien : {{ $item[5] }}</p>
+                            <p style="font-weight: bold">Jenis Pembelian : {{ $item[11] }}</p>
                         </div>
                         <div class="col-md-4">
-                            <p style="font-weight: bold">Diskon : {{ $item[3] }}</p>
-                            <p style="font-weight: bold">Ongkir : {{ $item[4] }}</p>
-                            <p style="font-weight: bold">Pajak : {{ $item[5] }}%</p>
+                            <p style="font-weight: bold">Diskon : {{ $item[8] }}</p>
+                            <p style="font-weight: bold">Ongkir : {{ $item[9] }}</p>
+                            <p style="font-weight: bold">Pajak : {{ $item[16] }}%</p>
                         </div>
                         <div class="col-md-12">
                             <div class="table-responsive">
@@ -39,16 +39,15 @@
                                         <th>Satuan</th>
                                         <th>Spec</th>
                                         <th>Merk</th>
-                                        <th>Harga Beli</th>
-                                        <th>Jumlah Beli</th>
+                                        <th>Harga Jual</th>
+                                        <th>Jumlah Jual</th>
                                         <th>Diskon Per Item</th>
                                         <th>Sub Total</th>
-                                        <th>Expired Date</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if(!empty($item[6]))
-                                        @foreach($item[6] as $item_data)
+                                    @if(!empty($item[15]))
+                                        @foreach($item[15] as $item_data)
                                             <tr>
                                                 <td>{{ $item_data[0] }}</td>
                                                 <td>{{ $item_data[1] }}</td>
@@ -56,12 +55,10 @@
                                                 <td>{{ $item_data[3] }}</td>
                                                 <td>{{ $item_data[4] }}</td>
                                                 <td>{{ $item_data[5] }}</td>
-                                                <td>{{ $item_data[6] }}</td>
+                                                <td>{{ $item_data[6] }} @php($sum_harga_jual +=$item_data[6])</td>
                                                 <td>{{ $item_data[7] }}</td>
                                                 <td>{{ $item_data[8] }}</td>
                                                 <td>{{ $item_data[9] }}</td>
-                                                <td>{{ $item_data[10] }}</td>
-                                                <td></td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -69,16 +66,14 @@
                                     <tfoot>
                                     <tr>
                                         <td colspan="6">Total</td>
-                                        <td>{{ $sum_harga_beli }}</td>
+                                        <td>{{ $sum_harga_jual }}</td>
                                         <td></td>
                                         <td></td>
                                         <td>{{ $sum_sub_total }}</td>
-                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="9">Total  Akhir</td>
-                                        <td>{{ $item[7] }}</td>
-                                        <td></td>
+                                        <td>{{ $item[17] }}</td>
                                     </tr>
                                     </tfoot>
                                 </table>

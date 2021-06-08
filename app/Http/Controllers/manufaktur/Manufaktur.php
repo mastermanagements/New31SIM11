@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\manufaktur;
 
+use App\Http\Controllers\produksi\utils\Penjualan;
+use App\Model\Administrasi\Klien;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
@@ -132,4 +134,59 @@ class Manufaktur extends Controller
         }
     }
 
+
+    //================================== Penjualan =========================================
+    public function laporan_penjualan(){
+        Penjualan::$month = $this->month;
+        Penjualan::$year = $this->years;
+        $data = [
+            'data'=>Penjualan::getData(),
+            'metode_bayar'=>Penjualan::$jenis_penjualan,
+            'klien'=>Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+        ];
+        return view('user.manufaktur.pages.laporan.penjualan.page_show', $data);
+    }
+
+    public function laporan_print_penjualan(Request $req){
+        Penjualan::$tgl_awal = $req->tgl_awal;
+        Penjualan::$tgl_akhir = $req->tgl_akhir;
+        $data = [
+            'data'=>Penjualan::getData(),
+            'metode_bayar'=>Penjualan::$jenis_penjualan,
+            'klien'=>Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+        ];
+        dd($data);
+        if($req->action =='preview'){
+            return view('user.manufaktur.pages.laporan.penjualan.page_show', $data);
+        }else{
+            return view('user.manufaktur.pages.laporan.penjualan.cetak', $data);
+        }
+    }
+
+    public function laporan_detail_penjualan(){
+        Penjualan::$month = $this->month;
+        Penjualan::$year = $this->years;
+        $data = [
+            'data'=>Penjualan::getData(),
+            'metode_bayar'=>Penjualan::$jenis_penjualan,
+            'klien'=>Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+        ];
+
+        return view('user.manufaktur.pages.laporan.detail_penjualan.page_show', $data);
+    }
+
+    public function laporan_print_detail_penjualan(Request $req){
+        Penjualan::$tgl_transaksi = $req->tgl_transaksi;
+        Penjualan::$klien = $req->klien;
+        $data = [
+            'data'=>Penjualan::getData(),
+            'metode_bayar'=>Penjualan::$jenis_penjualan,
+            'klien'=>Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+        ];
+        if($req->action=='preview'){
+            return view('user.manufaktur.pages.laporan.detail_penjualan.page_show', $data);
+        }else{
+            return view('user.manufaktur.pages.laporan.detail_penjualan.cetak', $data);
+        }
+    }
 }

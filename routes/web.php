@@ -2,6 +2,13 @@
 
 use App\Model\Superadmin_ukm\U_menu_ukm as menu_ukm;
 use Illuminate\Routing\Router;
+use Illuminate\Http\Request;
+
+Route::post('setting-session-menu', function(Request $req){
+    Session::put('main_menu',$req->main_menu);
+    Session::put('sub_menu',$req->sub_menu);
+    return response()->json(['message_session'=>'Session menu add to temp success']);
+});
 
 Route::get('/', 'fronendController@index');
 
@@ -2419,12 +2426,19 @@ Route::get('filter-barang-by-barcode/{kode_barcode}', 'produksi\Barang@filterBar
 //========================================= Laporan Produksi ======================================
 Route::get('laporan-produksi','manufaktur\Manufaktur@laporan_produksi');
 Route::post('laporan-produksi','manufaktur\Manufaktur@PrinView_OrCetak');
-
+//======================================= Laporan Pembelian =======================================
 Route::get('laporan-pembelian','manufaktur\Manufaktur@laporan_pembelian');
 Route::post('laporan-pembelian','manufaktur\Manufaktur@laporan_pembelian_printOrView');
-
+//======================================= Laporan Detail Pembelian =================================
 Route::get('laporan-detail-pembelian','manufaktur\Manufaktur@laporan_detail_pembelian');
 Route::post('laporan-detail-pembelian','manufaktur\Manufaktur@print_view_detail_pembelian');
+
+//====================================== Laporan Penjualan =========================================
+Route::get('laporan-penjualan','manufaktur\Manufaktur@laporan_penjualan');
+Route::post('laporan-penjualan','manufaktur\Manufaktur@laporan_print_penjualan');
+
+Route::get('laporan-detail-penjualan','manufaktur\Manufaktur@laporan_detail_penjualan');
+Route::post('laporan-detail-penjualan','manufaktur\Manufaktur@laporan_print_detail_penjualan');
 
 Route::get('ganti-password-karyawan','karyawan\Karyawan@ganti_password_karyawan');
 Route::post('ganti-password-karyawan-post','karyawan\Karyawan@ganti_password_karyawan_proses');
