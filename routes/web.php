@@ -9,6 +9,10 @@ Route::get('pelatihan', 'fronendController@pelatihan');
 
 Route::get('event', 'fronendController@event');
 
+Route::get('syarat', 'fronendController@syarat');
+
+Route::get('kontak', 'fronendController@kontak');
+
 Route::get('registerApp', function () {
     return view('user.superadmin_ukm.master.section.registered.registered');
 });
@@ -41,6 +45,10 @@ Route::post('registered', 'Superadmin_ukm\LoginAndRegisterController@registered'
 Route::post('cek-email','Superadmin_ukm\LoginAndRegisterController@cek_email');
 
 Route::post('login-page', 'Superadmin_ukm\LoginAndRegisterController@login');
+
+Route::post('cek-email-reset','Superadmin_ukm\LoginAndRegisterController@cek_email_reset');
+
+Route::post('lupa-password','Superadmin_ukm\LoginAndRegisterController@reset_password');
 
 //=========================== Superadmin UKM ========================================================================
 Route::get('pengaturan-perusahaan', 'Superadmin_ukm\Superadmin_UKM@index');
