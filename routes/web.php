@@ -2439,6 +2439,8 @@ Route::post('laporan-penjualan','manufaktur\Manufaktur@laporan_print_penjualan')
 
 Route::get('laporan-detail-penjualan','manufaktur\Manufaktur@laporan_detail_penjualan');
 Route::post('laporan-detail-penjualan','manufaktur\Manufaktur@laporan_print_detail_penjualan');
+Route::get('laporan-stok-barang','manufaktur\Manufaktur@laporan_stok_barang');
+Route::post('laporan-stok-barang','manufaktur\Manufaktur@laporan_print_preview_stok_barang');
 
 Route::get('ganti-password-karyawan','karyawan\Karyawan@ganti_password_karyawan');
 Route::post('ganti-password-karyawan-post','karyawan\Karyawan@ganti_password_karyawan_proses');

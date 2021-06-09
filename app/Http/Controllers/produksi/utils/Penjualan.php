@@ -71,11 +71,25 @@ class Penjualan
             $column[] = $item->linkToDetailSales->sum('jumlah_harga');
             $column[] = $item->diskon_tambahan;
             $column[] = $item->ongkir;
-            $column[] = date('d-m-Y', strtotime($item->tgl_kirim));
+            $tgl_kirim = "";
+            if($item->tgl_kirim != '1970-01-01'){
+                $tgl_kirim = date('d-m-Y', strtotime($item->tgl_kirim));
+            }else{
+                $tgl_kirim = "";
+            }
+            $column[] = $tgl_kirim;
             $column[] = self::$jenis_penjualan[$item->metode_bayar];
             $column[] = $item->bayar;
             $column[] = $item->kurang_bayar;
-            $column[] = date('d-m-Y', strtotime($item->tgl_jatuh_tempo));
+
+            $tgl_jatuh_tempo = "";
+            if($item->tgl_jatuh_tempo != '1970-01-01'){
+                $tgl_jatuh_tempo = date('d-m-Y', strtotime($item->tgl_jatuh_tempo));
+            }else{
+                $tgl_jatuh_tempo = "";
+            }
+
+            $column[] = $tgl_jatuh_tempo;
             $column[] = self::DetailPenjualan($item);
             $column[] = $item->pajak;
             $column[] = $item->total;

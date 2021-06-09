@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\manufaktur;
 
 use App\Http\Controllers\produksi\utils\Penjualan;
+use App\Http\Controllers\produksi\utils\StokBarangOperation;
 use App\Model\Administrasi\Klien;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -129,64 +130,93 @@ class Manufaktur extends Controller
         $metode_bayar = Pembelian::$metode_bayar;
         if ($req->action == 'preview') {
             return view('user.manufaktur.pages.laporan.detail_pembelian.page_show', ['data' => $pembelian, 'supplier' => $supplier, 'metode_bayar' => $metode_bayar]);
-        }else{
+        } else {
             return view('user.manufaktur.pages.laporan.detail_pembelian.cetak', ['data' => $pembelian, 'supplier' => $supplier]);
         }
     }
 
 
     //================================== Penjualan =========================================
-    public function laporan_penjualan(){
+    public function laporan_penjualan()
+    {
         Penjualan::$month = $this->month;
         Penjualan::$year = $this->years;
         $data = [
-            'data'=>Penjualan::getData(),
-            'metode_bayar'=>Penjualan::$jenis_penjualan,
-            'klien'=>Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'data' => Penjualan::getData(),
+            'metode_bayar' => Penjualan::$jenis_penjualan,
+            'klien' => Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         return view('user.manufaktur.pages.laporan.penjualan.page_show', $data);
     }
 
-    public function laporan_print_penjualan(Request $req){
+    public function laporan_print_penjualan(Request $req)
+    {
         Penjualan::$tgl_awal = $req->tgl_awal;
         Penjualan::$tgl_akhir = $req->tgl_akhir;
         $data = [
-            'data'=>Penjualan::getData(),
-            'metode_bayar'=>Penjualan::$jenis_penjualan,
-            'klien'=>Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'data' => Penjualan::getData(),
+            'metode_bayar' => Penjualan::$jenis_penjualan,
+            'klien' => Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         dd($data);
-        if($req->action =='preview'){
+        if ($req->action == 'preview') {
             return view('user.manufaktur.pages.laporan.penjualan.page_show', $data);
-        }else{
+        } else {
             return view('user.manufaktur.pages.laporan.penjualan.cetak', $data);
         }
     }
 
-    public function laporan_detail_penjualan(){
+    public function laporan_detail_penjualan()
+    {
         Penjualan::$month = $this->month;
         Penjualan::$year = $this->years;
         $data = [
-            'data'=>Penjualan::getData(),
-            'metode_bayar'=>Penjualan::$jenis_penjualan,
-            'klien'=>Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'data' => Penjualan::getData(),
+            'metode_bayar' => Penjualan::$jenis_penjualan,
+            'klien' => Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
 
         return view('user.manufaktur.pages.laporan.detail_penjualan.page_show', $data);
     }
 
-    public function laporan_print_detail_penjualan(Request $req){
+    public function laporan_print_detail_penjualan(Request $req)
+    {
         Penjualan::$tgl_transaksi = $req->tgl_transaksi;
         Penjualan::$klien = $req->klien;
         $data = [
-            'data'=>Penjualan::getData(),
-            'metode_bayar'=>Penjualan::$jenis_penjualan,
-            'klien'=>Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'data' => Penjualan::getData(),
+            'metode_bayar' => Penjualan::$jenis_penjualan,
+            'klien' => Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
-        if($req->action=='preview'){
+        if ($req->action == 'preview') {
             return view('user.manufaktur.pages.laporan.detail_penjualan.page_show', $data);
-        }else{
+        } else {
             return view('user.manufaktur.pages.laporan.detail_penjualan.cetak', $data);
+        }
+    }
+
+    public function laporan_stok_barang()
+    {
+        $stok_barang = StokBarangOperation::getDataStok();
+        $data = [
+            'data' => $stok_barang,
+            'jenis_barang' => StokBarangOperation::$list_jenis_barang
+        ];
+        return view('user.manufaktur.pages.laporan.StokBarang.page_show', $data);
+    }
+
+    public function laporan_print_preview_stok_barang(Request $req)
+    {
+        StokBarangOperation::$jenis_barang = $req->jenis_barang;
+        $stok_barang = StokBarangOperation::getDataStok();
+        $data = [
+            'data' => $stok_barang,
+            'jenis_barang' => StokBarangOperation::$list_jenis_barang
+        ];
+        if ($req->action == "preview") {
+            return view('user.manufaktur.pages.laporan.StokBarang.page_show', $data);
+        } else {
+            return view('user.manufaktur.pages.laporan.StokBarang.cetak', $data);
         }
     }
 }
