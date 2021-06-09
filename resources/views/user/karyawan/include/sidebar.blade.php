@@ -43,7 +43,7 @@
                             @foreach($submenu as $sKey => $sum_menu)
                                 @if(!empty($Menu_karyawan = $sum_menu->getMenuKaryawan->where('id_karyawan', Session::get('id_karyawan'))))
                                     @foreach($Menu_karyawan as $menus_karyawan)
-                                        <li class="@if(Session::get('sub_menu')==$sKey) active @endif"><a
+                                        <li class="@if(Session::get('main_menu')==$mKey && Session::get('sub_menu')==$sKey) active @endif"><a
                                                     @if($sum_menu->getMasterSubMenuUKM->url=="BA-Pemeriksaan")
                                                     href="#"
                                                     data-toggle="modal" data-target="#modal-menu-ba-pemeriksaan"
