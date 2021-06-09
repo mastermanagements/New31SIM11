@@ -96,5 +96,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         })
     })
 </script>
+@include('layouts.setSessian')
 </body>
 </html>
