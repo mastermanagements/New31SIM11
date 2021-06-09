@@ -28,9 +28,7 @@ class DetailSales extends Controller
               //ambil p_harga_jual_satuan.harga_jual
                 $hpp = $model->linkToHargaJual->harga_jual;
                 //dd($hpp);
-             //jika p_barang.metode_jual = 1 (harga jual based on jumlah beli)
-
-           }elseif($model->metode_jual=='1'){
+           }elseif($model->metode_jual=='1'){ //jika p_barang.metode_jual = 1 (harga jual based on jumlah beli)
              $model_b = harga_jum::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('id_barang',$req->id_barang)->get();
              //dd($model_b);
              foreach($model_b as $b){

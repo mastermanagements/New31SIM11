@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                            <h6 class="box-title">Penerimaan Complain Barang No Transaksi: <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">{{ $data->linkToKlien->nm_klien }}
+                            <h6 class="box-title">Penerimaan Complain Barang No Transaksi: <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">@if(!empty($data->linkToKlien)){{ $data->linkToKlien->nm_klien }} @else Klien Umum
                             </font></h6>
                              <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
                         </div>

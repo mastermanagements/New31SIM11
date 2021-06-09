@@ -59,10 +59,9 @@
                                 {{--</tr>--}}
                             {{--</tbody>--}}
                             <tbody>
-
+                            @php($total_debet=0)
+                            @php($total_kredit=0)
                             @if(!empty($data))
-                                @php($total_debet=0)
-                                @php($total_kredit=0)
                             @foreach($data as $data)
                                 <tr>
                                     <th>{{ $data['kode_akun'] }}</th>

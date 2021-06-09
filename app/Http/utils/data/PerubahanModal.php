@@ -16,11 +16,8 @@ class PerubahanModal
         3=>['Modal','K']
     ];
 
-
-
     public static function data_perubahan_model($array){
-
-        LabaRugi::LabaRugi(null);
+        LabaRugi::LabaRugi($array);
         $total_laba_rugi = LabaRugi::hitungjumlah_laba();
         $data_neraca = NeracaSaldo::neraca($array);
         $group_data = self::group_array($data_neraca);

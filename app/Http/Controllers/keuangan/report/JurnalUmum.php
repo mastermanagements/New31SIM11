@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\keuangan\report;
 
+use App\Http\utils\HeaderReport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Traits\Transaksi;
@@ -12,14 +13,22 @@ class JurnalUmum extends Controller
 {
     //
     use Transaksi;
+    private $tgl_awal;
+    private $tgl_akhir;
+    public function __construct()
+    {
+        $this->tgl_awal =date('Y-m-01');
+        $this->tgl_akhir= date('Y-m-t');
+    }
 
     public function index(){
         $data_tahun = SettingTahunBuku::tahun_buku();
+        data_jurnal_umum::$date_awal = $this->tgl_awal;
+        data_jurnal_umum::$date_akhir = $this->tgl_akhir;
         $jurnal = data_jurnal_umum::data_jurnal_umum($data_tahun);
         $jurnal['judul']='Jurnal Umum';
         $jurnal['tahun_berjalan']=$this->costumDate();
         Session::put('menu-laporan-keuangan','jurnal_umum');
-//        dd($jurnal);
         return view('user.keuangan.section.laporan.page_default', $jurnal);
     }
 
@@ -29,6 +38,7 @@ class JurnalUmum extends Controller
         $jurnal = data_jurnal_umum::data_jurnal_umum(null);
         $jurnal['judul']='Jurnal Umum';
         $jurnal['tahun_berjalan']=$this->costumDate();
+        $jurnal['header'] = HeaderReport::header('layouts.header_print.header',$tgl_awal,$tgl_akhir,'Jurnal Umum');
         return view('user.keuangan.section.laporan.jurnal_umum.print_page', $jurnal);
     }
 

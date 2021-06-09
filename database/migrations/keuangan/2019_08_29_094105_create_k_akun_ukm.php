@@ -18,6 +18,7 @@ class CreateKAkunUkm extends Migration
 			$table->integer('id_m_akun')->unsigned();
 			$table->string('kode_akun',15);
 			$table->string('nm_akun');
+			$table->enum('posisi_saldo',['D','K'])->comment('D=Debet, K=Kredit')->default('D');
 			$table->integer('id_perusahaan')->unsigned();
 			$table->integer('id_karyawan')->unsigned();
             $table->timestamps();

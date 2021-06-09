@@ -61,7 +61,13 @@
                                             <th>{{ $i++ }}</th>
                                             <th>{{ $data->no_invoice }}</th>
                                             <th>{{ $data->no_tawar }}</th>
-                                            <th>{{ $data->linkktoKlien->nm_klien }}</th>
+                                            <th>
+                                                @if(!empty($data->linkktoKlien))
+                                                    {{ $data->linkktoKlien->nm_klien }}
+                                                @else
+                                                    Klien Umum
+                                                @endif
+                                             </th>
                                             <th>{{ $data->tgl_tawar }}</th>
                                             <th>{{ $data->tgl_berlaku }}</th>
                                             <th>{{ $data->tgl_krm }}</th>
@@ -103,7 +109,13 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($data->tgl_so)) }}</td>
                                                 <td>{{ $data->no_so }}</td>
-                                                <td>{{ $data->linkToKlien->nm_klien }}</td>
+                                                <td>
+                                                    @if(!empty($data->linkToKlien))
+                                                        {{ $data->linkToKlien->nm_klien }}
+                                                    @else
+                                                        Klien Umum
+                                                    @endif
+                                                </td>
                                                 <td>{{ $data->total }}</td>
                                                 <td>
                                                     <form action="{{ url('pesanan-penjualan/'.$data->id) }}" method="post" >
@@ -232,7 +244,13 @@
                                             <td>{{ $no_p_sales }}</td>
                                             <td>{{ date('d-m-Y', strtotime($item_Psales->tgl_sales)) }}</td>
                                             <td>{{ $item_Psales->no_sales }}</td>
-                                            <td>{{ $item_Psales->linkToKlien->nm_klien }}</td>
+                                            <td>
+                                                @if(!empty($item_Psales->linkToKlien))
+                                                    {{ $item_Psales->linkToKlien->nm_klien }}
+                                                @else
+                                                    Klien Umum
+                                                @endif
+                                            </td>
                                             <td>{{ date('d-m-Y', strtotime($item_Psales->tgl_kirim)) }}</td>
                                             <td>{{ rupiahView($item_Psales->total) }}</td>
                                             <td>
@@ -276,7 +294,13 @@
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $data_so->no_so }}</td>
-                                                <td>{{ $data_so->linkToKlien->nm_klien }}</td>
+                                                <td>
+                                                    @if(!empty($data_so->linkToKlien))
+                                                        {{ $data_so->linkToKlien->nm_klien }}
+                                                    @else
+                                                        Klien Umum
+                                                    @endif
+                                                </td>
 
                                                 <td>{{ date('d-m-Y', strtotime($data_so->tgl_so)) }}</td>
                                                 <td>@if(!empty($data_so->linkToTerimaBayar)) {{ date('d-m-Y', strtotime($data_so->linkToTerimaBayar->tgl_bayar)) }} @endif  </td>
@@ -324,7 +348,13 @@
                                             <td>{{ $no_p_sales++ }}</td>
                                             <td>{{ $item_Psales_->no_sales }}</td>
                                             <td>{{ date('d-m-Y', strtotime($item_Psales_->tgl_sales)) }}</td>
-                                            <td>{{ $item_Psales_->linkToKlien->nm_klien }}</td>
+                                            <td>
+                                                @if(!empty($item_Psales_->linkToKlien))
+                                                   {{ $item_Psales_->linkToKlien->nm_klien }}
+                                                @else
+                                                    Klien Umum
+                                                @endif
+                                            </td>
                                             <td>@if($item_Psales_->metode_bayar == '0') Tunai @else Kredit @endif</td>
                                             <td>{{ rupiahView($item_Psales_->total) }}</td>
                                             <td>@if(!empty($item_Psales_->tgl_jatuh_tempo)) {{  tanggalView($item_Psales_->tgl_jatuh_tempo)}} @endif </td>
@@ -395,7 +425,13 @@
                                             @if($barang_complain->status_return =='0')
                                           <tr>
                                               <td>{{ $no_complain++ }}</td>
-                                              <td>{{ $barang_complain->linkToSales->linkToKlien->nm_klien}}</td>
+                                              <td>
+                                                  @if(!empty($barang_complain->linkToSales))
+                                                    {{ $barang_complain->linkToSales->linkToKlien->nm_klien}}
+                                                  @else
+                                                      Klien Umum
+                                                  @endif
+                                              </td>
                                               <td>{{ $barang_complain->linkToSales->no_sales }}</td>
                                               <td>{{ tanggalView($barang_complain->linkToSales->tgl_sales) }}</td>
                                               <td>{{ $barang_complain->linkToBarang->nm_barang }}</td>

@@ -301,13 +301,14 @@
                                                         <tbody>
                                                         <tr>
                                                             <td> <div class="container">
-                                                                    <center><p>Pesanmu Yaitu :</p></center>
+                                                                    <center><p>Spesial pesan untukmu :</p></center>
                                                                     <hr>
-                                                                    Terimah Kasih Anda Telah Melakukan Registrasi. untuk melanjutkannya anda disarankan
-                                                                    untuk menekan tambol verifikasi di samping:
+                                                                    Terimah Kasih Anda Telah Melakukan Registrasi. Untuk mengaktifkan akun anda di aturusaha.com,
+                                                                    silahkan klik tambol verifikasi di samping ini:
                                                                     <a href="{{ url('verification/'.$user->id) }}" >Verifikasi</a>
                                                                     <hr>
-                                                                    <center><p>Telah Disampaikan! <br> Terimakasih telah menghubungi kami!</p></center>
+																	<p>Setelah melakukan verifikasi, Anda dapat login ke aturusaha.com</p>
+                                                                    <center><p>Selamat mencoba aplikasinya ya, jika megalami kendala, jgn segan-segan mengubungi kami. <br> Terimakasih..</p></center>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -317,6 +318,11 @@
                                             </tr>
                                             </tbody>
                                         </table>
+										 <p>Aturusaha.com<br>
+											Jl. Pangeran Antasari Kendari Sultra<br>
+											Telp.0401-3083049, Hp/Wa/Telegram. 085228006675<br>
+											Email. admin@aturusaha.com
+										 </p>
                                         {{--<p>This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>--}}
                                         {{--<p>Good luck! Hope it works.</p>--}}
                                     </td>

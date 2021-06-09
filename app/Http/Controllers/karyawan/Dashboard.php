@@ -28,4 +28,5 @@ class Dashboard extends Controller
         return view('user.karyawan.section.default.page_default');
    }
 
+
 }

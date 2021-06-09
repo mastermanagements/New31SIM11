@@ -19,6 +19,7 @@ class CreateKMasterSubsubAkun extends Migration
 			$table->string('kode_m_subsub_akun',15);
 			$table->string('nm_m_subsub_akun',50);
 			$table->enum('off_on',['0','1'])->comment('0=akun non aktif, 1=akun aktif');
+			$table->enum('posisi_saldo',['D','K'])->comment('D=Debet, K=Kredit')->default('D');
             $table->timestamps();
         });
     }

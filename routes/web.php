@@ -2,6 +2,13 @@
 
 use App\Model\Superadmin_ukm\U_menu_ukm as menu_ukm;
 use Illuminate\Routing\Router;
+use Illuminate\Http\Request;
+
+Route::post('setting-session-menu', function(Request $req){
+    Session::put('main_menu',$req->main_menu);
+    Session::put('sub_menu',$req->sub_menu);
+    return response()->json(['message_session'=>'Session menu add to temp success']);
+});
 
 Route::get('/', 'fronendController@index');
 
@@ -9,9 +16,15 @@ Route::get('pelatihan', 'fronendController@pelatihan');
 
 Route::get('event', 'fronendController@event');
 
+Route::get('syarat', 'fronendController@syarat');
+
+Route::get('kontak', 'fronendController@kontak');
+
 Route::get('registerApp', function () {
     return view('user.superadmin_ukm.master.section.registered.registered');
 });
+
+
 
 Route::get('login-page', function () {
     return view('user.superadmin_ukm.master.section.registered.login');
@@ -36,10 +49,19 @@ Route::get('dashboard', function () {
 //=========================== Registrasi & Login ========================================================================
 Route::post('registered', 'Superadmin_ukm\LoginAndRegisterController@registered');
 
+Route::post('cek-email','Superadmin_ukm\LoginAndRegisterController@cek_email');
+
 Route::post('login-page', 'Superadmin_ukm\LoginAndRegisterController@login');
+
+Route::post('cek-email-reset','Superadmin_ukm\LoginAndRegisterController@cek_email_reset');
+
+Route::post('lupa-password','Superadmin_ukm\LoginAndRegisterController@reset_password');
 
 //=========================== Superadmin UKM ========================================================================
 Route::get('pengaturan-perusahaan', 'Superadmin_ukm\Superadmin_UKM@index');
+
+Route::get('ganti-password-admin','Superadmin_ukm\Superadmin_UKM@ganti_password');
+Route::post('ganti-password-admin-post','Superadmin_ukm\Superadmin_UKM@ganti_password_proses');
 
 Route::get('verification/{id}', 'Superadmin_ukm\LoginAndRegisterController@verification_');
 
@@ -447,7 +469,7 @@ Route::get('Barang', 'produksi\Barang@index');
 Route::post('getHargaBarang', 'produksi\Barang@respons_harga_barang');
 Route::get('tambah-barang', 'produksi\Barang@create');
 
-Route::get('response_json/{id_barang}','produksi\Barang@response_barang');
+Route::post('response_json/{id_barang}','produksi\Barang@response_barang');
 
 Route::post('store-barang', 'produksi\Barang@store');
 
@@ -2404,3 +2426,28 @@ Route::post('GlobalSubSubKategori', 'globals\KategoriJasa@getSubSubKategori');
 
 Route::resource('Kasir','produksi\Kasir');
 Route::get('cetak-nota/{id_nota}','produksi\Kasir@cetak');
+Route::get('laporan-kasir', 'produksi\Kasir@laporan');
+Route::post('filter-nota', 'produksi\Kasir@filter');
+Route::get('filter-barang-by-barcode/{kode_barcode}', 'produksi\Barang@filterBarangByBarcode');
+
+
+//========================================= Laporan Produksi ======================================
+Route::get('laporan-produksi','manufaktur\Manufaktur@laporan_produksi');
+Route::post('laporan-produksi','manufaktur\Manufaktur@PrinView_OrCetak');
+//======================================= Laporan Pembelian =======================================
+Route::get('laporan-pembelian','manufaktur\Manufaktur@laporan_pembelian');
+Route::post('laporan-pembelian','manufaktur\Manufaktur@laporan_pembelian_printOrView');
+//======================================= Laporan Detail Pembelian =================================
+Route::get('laporan-detail-pembelian','manufaktur\Manufaktur@laporan_detail_pembelian');
+Route::post('laporan-detail-pembelian','manufaktur\Manufaktur@print_view_detail_pembelian');
+
+//====================================== Laporan Penjualan =========================================
+Route::get('laporan-penjualan','manufaktur\Manufaktur@laporan_penjualan');
+Route::post('laporan-penjualan','manufaktur\Manufaktur@laporan_print_penjualan');
+
+Route::get('laporan-detail-penjualan','manufaktur\Manufaktur@laporan_detail_penjualan');
+Route::post('laporan-detail-penjualan','manufaktur\Manufaktur@laporan_print_detail_penjualan');
+
+Route::get('ganti-password-karyawan','karyawan\Karyawan@ganti_password_karyawan');
+Route::post('ganti-password-karyawan-post','karyawan\Karyawan@ganti_password_karyawan_proses');
+

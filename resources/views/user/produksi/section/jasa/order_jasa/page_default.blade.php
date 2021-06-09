@@ -148,7 +148,7 @@
                                                     <div class="box-footer no-padding">
                                                       <ul class="nav nav-stacked">
                                                         <dl>
-                                                            <dt>&nbsp;&nbsp;&nbsp;<span class="badge bg-yellow">{{ $pl->getProBis->proses_bisnis }}</span>
+                                                            <dt>&nbsp;&nbsp;&nbsp;<span class="badge bg-yellow">@if(!empty($pl->getProBis)) {{ $pl->getProBis->proses_bisnis }} @endif</span>
                                                               <a href="#" onclick="ubahPLAwal({{ $pl->id }})" class="pull-right" title="Isi apa yang dilakukan">&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil"></i></a>
                                                               <a href="#" onclick="ubahPLSelesai({{ $pl->id }})" class="pull-right" title="Tuliskan Hasil disini">&nbsp;&nbsp;&nbsp;<i class="fa fa-clone"></i></a>
                                                               <a href="#" onclick="ubahPLConfirm({{ $pl->id }})" class="pull-right" title="Konfirm klien">&nbsp;&nbsp;&nbsp;<i class="fa fa-bus"></i></a>

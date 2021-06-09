@@ -142,7 +142,8 @@
         </div>
 
         <div class="modal fade" id="modal-default">
-            <form>
+            <form id="form-pesanan" method="post">
+                {{ csrf_field() }}
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -153,7 +154,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Barang</label>
-                            <select class="form-control select2" id="barang" required>
+                            <select class="form-control select2" name="id_barang" id="barang" required>
                                 <option value="">Pilih Barang</option>
                                 @if(!empty($barang))
                                     @foreach($barang as $data_item)
@@ -163,12 +164,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Harga</label>
-                            <input type="number" class="form-control" name="hpp" id="hpp">
+                            <label>Jumlah</label>
+                            <input  type="number" class="form-control" name="jumlah" value="0" id="jumlah">
                         </div>
                         <div class="form-group">
-                            <label>Jumlah</label>
-                            <input  type="number" class="form-control" name="jumlah" id="jumlah">
+                            <label>Harga</label>
+                            <input type="number" class="form-control" name="hpp" value="0" id="hpp">
                         </div>
                     </div>
                     <div class="modal-footer">

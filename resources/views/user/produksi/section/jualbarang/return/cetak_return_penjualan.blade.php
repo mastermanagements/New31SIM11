@@ -42,7 +42,7 @@
         <tr>
             <td>Klien</td>
             <td>:</td>
-            <td>{{ $data->linkToKlien->nm_klien }}</td>
+            <td>@if(!empty($data->linkToKlien)){{ $data->linkToKlien->nm_klien }} @else Klien Umum @endif</td>
         </tr>
         <tr>
             <td>Tgl Transaksi</td>

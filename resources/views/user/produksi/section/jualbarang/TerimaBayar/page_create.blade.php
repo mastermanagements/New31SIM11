@@ -23,10 +23,10 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                       @if(!empty($data->no_so))
-                      <h6 class="box-title">Formulir pembayaran Pesanan Penjualan No Transaksi: <font color="#FF00GG">{{ $data->no_so }}</font>, &nbsp;Klien: <font color="#FF00GG">{{ $data->linkToKlien->nm_klien }}
+                      <h6 class="box-title">Formulir pembayaran Pesanan Penjualan No Transaksi: <font color="#FF00GG">{{ $data->no_so }}</font>, &nbsp;Klien: <font color="#FF00GG">@if(!empty($data->linkToKlien)){{ $data->linkToKlien->nm_klien }} @else Klien Umum @endif
                       @php($jumlah_bayar = $data->dp_so )
                       @else
-                      <h6 class="box-title">Formulir pembayaran Penjualan No Transaksi: <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">{{ $data->linkToKlien->nm_klien }}
+                      <h6 class="box-title">Formulir pembayaran Penjualan No Transaksi: <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">@if(!empty($data->linkToKlien)) {{ $data->linkToKlien->nm_klien }} @else Klien Umum @endif
                       @php($jumlah_bayar = $data->kurang_bayar )
                       @endif
 

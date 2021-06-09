@@ -17,6 +17,7 @@ use App\Model\Produksi\HistroyKonversiBrg as p_history_konversi_brg;
 use Illuminate\Support\Facades\DB;
 use App\Model\Marketing\Promo;
 use App\Http\utils\GetHargarBarang;
+use stdClass;
 
 class Barang extends Controller
 {
@@ -60,10 +61,24 @@ class Barang extends Controller
         });
     }
 
-    public function response_barang($id_barang){
-        $model = barangs::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
-            ->findOrFail($id_barang);
-        return response()->json($model);
+    public function response_barang(Request $req){
+       $model = barangs::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            ->findOrFail($req->id_barang);
+       $data = [];
+       $obj = new stdClass;
+       if($n_data=$model->linkToHargaBaseOnJumlah->where('jumlah_maks_brg','>',$req->jumlah)->first()){
+           $obj->hpp = $n_data->harga_jual;
+           $data[] = $obj;
+       }else{
+           $n_data = $model->linkToHargaJual;
+           if(!empty($n_data)){
+               $obj->hpp = $n_data->harga_jual;
+           }else{
+               $obj->hpp = 0;
+           }
+           $data[] = $obj;
+       }
+        return response()->json($obj);
     }
 
     /**
@@ -374,5 +389,10 @@ class Barang extends Controller
 
         // alihkan halaman kembali
         return redirect('/Barang');
+    }
+
+    public function filterBarangByBarcode($kode_barcode){
+        $model = barangs::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('barcode',$kode_barcode)->first();
+         return response()->json(array('data'=>$model));
     }
 }
