@@ -4,7 +4,7 @@ namespace App\Http\Controllers\produksi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
-use App\Model\Produksi\JualBarang as jualBarangs;
+
 use App\Model\Produksi\Barang as barang;
 use App\Model\Administrasi\Klien as klien;
 use App\Model\Produksi\TawarJual as TJ;
@@ -53,7 +53,7 @@ class JualBarang extends Controller
     public function index()
     {
         $data=[
-            'penjualan' => jualBarangs::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate(),
+
             'tawar_jual'=> TJ::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'p_so'=> PSO::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'PSales'=> PSales::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),

@@ -64,7 +64,7 @@
                                                 <input type="number" name="jumlah_jual" class="form-control" value="0">
                                             </td>
                                             <td>
-                                                <input type="number" name="diskon_item" class="form-control" value="0">
+                                                <input type="text" name="diskon_item" class="form-control" value="0">
                                             </td>
                                             <td>
                                                 <input type="text" name="jumlah_harga" id="jumlah_harga" class="form-control" value="0" readonly>
