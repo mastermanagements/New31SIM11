@@ -32,13 +32,13 @@ class RincianTugas extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    /*public function create()
     {
         $data=[
           'rincian_tugas'=>  taskProyeks::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.produksi.section.jadwalProyek.rincianTugas.page_create', $data);
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
@@ -62,9 +62,9 @@ class RincianTugas extends Controller
         $model->id_karyawan= $this->id_karyawan;
 
         if($model->save()){
-            return redirect('Jadwal-Proyek')->with('message_success', 'Anda Baru saja menambahkan rincian taks proyek baru');
+            return redirect()->back()->with('message_success', 'Anda Baru saja menambahkan rincian taks proyek baru');
         }else{
-            return redirect('Jadwal-Proyek')->with('message_fail', 'Maaf, telah terjadi kesalahan silahkan coba lagi');
+            return redirect()->back()->with('message_fail', 'Maaf, telah terjadi kesalahan silahkan coba lagi');
         }
     }
 
@@ -112,9 +112,9 @@ class RincianTugas extends Controller
         $model->id_karyawan= $this->id_karyawan;
 
         if($model->save()){
-            return redirect('Jadwal-Proyek')->with('message_success', 'Anda Baru saja mengubah rincian taks proyek baru');
+            return redirect()->back()->with('message_success', 'Anda Baru saja mengubah rincian taks proyek baru');
         }else{
-            return redirect('Jadwal-Proyek')->with('message_fail', 'Maaf, telah terjadi kesalahan silahkan coba lagi');
+            return redirect()->back()->with('message_fail', 'Maaf, telah terjadi kesalahan silahkan coba lagi');
         }
     }
 

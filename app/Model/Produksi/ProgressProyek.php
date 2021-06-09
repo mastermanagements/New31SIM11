@@ -11,7 +11,7 @@ class ProgressProyek extends Model
 
      protected $fillable=['id_jadwal_proyek','tgl_dikerjakan','masalah','solusi','rincian_pekerjaan','id_perusahaan','id_karyawan'];
 
-    public function klien(){
+    public function karyawan(){
         return $this->belongsTo('App\Model\Superadmin_ukm\H_karyawan','id_karyawan');
     }
 

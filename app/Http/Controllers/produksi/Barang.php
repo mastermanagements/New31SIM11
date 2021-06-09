@@ -154,16 +154,16 @@ class Barang extends Controller
     {
       //dd($request->all());
          $this->validate($request,[
-            'id_kategori' => 'required',
+            //'id_kategori' => 'required',
             'nm_barang' => 'required',
             'id_satuan' => 'required',
             'stok_minimum' => 'required',
             'hpp' => 'required',
         ]);
 
-         $id_kategori = $request->id_kategori;
-         $id_subkategori = $request->id_subkategori_produk;
-         $id_subsubkategori = $request->id_subsubkategori_produk;
+        // $id_kategori = $request->id_kategori;
+        // $id_subkategori = $request->id_subkategori_produk;
+        // $id_subsubkategori = $request->id_subsubkategori_produk;
          $nm_barang = $request->nm_barang;
          $spec_barang= $request->spec_barang;
          $desc_barang= $request->desc_barang;
@@ -176,9 +176,9 @@ class Barang extends Controller
          $hpp = rupiahController($request->hpp);
 
          $model =new barangs;
-         $model->id_kategori_produk = $id_kategori;
-         $model->id_subkategori_produk = $id_subkategori;
-         $model->id_subsubkategori_produk= $id_subsubkategori;
+         //$model->id_kategori_produk = $id_kategori;
+         //$model->id_subkategori_produk = $id_subkategori;
+        // $model->id_subsubkategori_produk= $id_subsubkategori;
          $model->kd_barang= $kd_barang;
          $model->barcode= $barcode;
          $model->nm_barang= $nm_barang;

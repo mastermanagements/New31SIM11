@@ -21,7 +21,9 @@
                     @foreach($data_produksi as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
+						@if(!empty($data->linkToBarang->linkToSatuan->satuan) AND !empty($data->linkToBarang->nm_barang) AND !empty($data->linkToBarang->spec_barang))
                         <td>{{ $data->linkToBarang->nm_barang }}, &nbsp;{{ $data->linkToBarang->linkToSatuan->satuan }}, &nbsp;{{ $data->linkToBarang->spec_barang }}</td>
+						@endif
                         @if(!empty($data->linkToBarangDalamProses->nm_barang ))
                         <td>{{ $data->linkToBarangDalamProses->nm_barang }}</td>
                         @else

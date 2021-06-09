@@ -107,66 +107,66 @@
                         <p></p>
                         @foreach($jabatan_p as $jabat)
                           @foreach($jabat->getTargetEks->groupBy('id_jabatan_p') as $jabatan => $values)
-                        <div class="box box-primary collapsed-box">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">
-                                  {{ $jabat->nm_jabatan }}
-                                </h3>
-                                  <div class="box-tools pull-right">
-                                  <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Buka-tutup"><i class="fa fa-times"></i>
-                                 </div>
-                                  <!-- /.box-tools -->
+                            <div class="box box-primary collapsed-box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                      {{ $jabat->nm_jabatan }}
+                                    </h3>
+                                      <div class="box-tools pull-right">
+                                      <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Buka-tutup"><i class="fa fa-times"></i>
+                                     </div>
+                                      <!-- /.box-tools -->
+                                </div>
+                                @foreach($target_eks_group as $group)
+                                  @if ($group->id_jabatan_p == $jabat->id)
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ $group->tahun  }} </h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body no-padding">
+                                        <table class="table table-condensed">
+                                            <tr>
+                                                <th style="width: 10px">No</th>
+                                                <th>Target Eksekutif</th>
+                                                <th>Jumlah </th>
+                                                <th>Satuan</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                            @php($i=1)
+                                            @foreach($target_eks as $targetEks)
+                                              @if($targetEks->tahun == $group->tahun)
+                                                @if($targetEks->id_jabatan_p == $jabat->id)
+                                            <tr>
+                                                <td>{{ $i++ }}</td>
+                                                <td> {{ $targetEks->target_eksekutif }} </td>
+                                                <td><span class="badge bg-yellow">{{ $targetEks->jumlah_target }} </span></td>
+                                                <td><span class="badge bg-green">{{ $targetEks->satuan_target }} </span></td>
+                                                <td>
+                                                  <form action="{{ url('hapus-target-eks/'. $targetEks->id) }}" method="post">
+                                                      <input type="hidden" name="_method" value="put">
+                                                      {{ csrf_field() }}
+                                                      <button type="submit" onclick="return confirm('Yakin mau menghapus target Eksekutif ?, Jika anda menghapus data ini, maka target Manager, Supervisor dan Staf yg berhubungan dengan target eksekutif akan ikut terhapus.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> &nbsp;
+                                                      <a href="#" onclick="ubahTargetEks({{ $targetEks->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target Eksekutif">
+                                                      <i class="fa fa-edit"></i></a>
+                                                      @if(empty($targetEks->getStrategiEks->id_teks))
+                                                      <a href="#" onclick="tambahSEks({{ $targetEks->id }})" class="btn btn-xs btn-primary pull-right" title="Masukkan strategi untuk target ini">
+                                                      <i class="fa fa-plus"></i></a>
+                                                      @endif
+                                                  </form>
+                                                </td>
+                                            </tr>
+                                               @endif
+                                             @endif
+                                           @endforeach
+                                        </table>
+                                    </div>
+                                      <!--- /. box-body-->
+                                    @endif
+                                  @endforeach
                             </div>
-                            @foreach($target_eks_group as $group)
-                              @if ($group->id_jabatan_p == $jabat->id)
-                                <div class="box-header">
-                                    <h3 class="box-title">{{ $group->tahun  }} </h3>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="box-body no-padding">
-                                    <table class="table table-condensed">
-                                        <tr>
-                                            <th style="width: 10px">No</th>
-                                            <th>Target Eksekutif</th>
-                                            <th>Jumlah </th>
-                                            <th>Satuan</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                        @php($i=1)
-                                        @foreach($target_eks as $targetEks)
-                                          @if($targetEks->tahun == $group->tahun)
-                                            @if($targetEks->id_jabatan_p == $jabat->id)
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td> {{ $targetEks->target_eksekutif }} </td>
-                                            <td><span class="badge bg-yellow">{{ $targetEks->jumlah_target }} </span></td>
-                                            <td><span class="badge bg-green">{{ $targetEks->satuan_target }} </span></td>
-                                            <td>
-                                              <form action="{{ url('hapus-target-eks/'. $targetEks->id) }}" method="post">
-                                                  <input type="hidden" name="_method" value="put">
-                                                  {{ csrf_field() }}
-                                                  <button type="submit" onclick="return confirm('Yakin mau menghapus target Eksekutif ?, Jika anda menghapus data ini, maka target Manager, Supervisor dan Staf yg berhubungan dengan target eksekutif akan ikut terhapus.')" class="btn btn-xs btn-danger pull-right"> <i class="fa fa-trash"></i> </button> &nbsp;
-                                                  <a href="#" onclick="ubahTargetEks({{ $targetEks->id }})" class="btn btn-xs btn-primary pull-right" title="ubah target Eksekutif">
-                                                  <i class="fa fa-edit"></i></a>
-                                                  @if(empty($targetEks->getStrategiEks->id_teks))
-                                                  <a href="#" onclick="tambahSEks({{ $targetEks->id }})" class="btn btn-xs btn-primary pull-right" title="Masukkan strategi untuk target ini">
-                                                  <i class="fa fa-plus"></i></a>
-                                                  @endif
-                                              </form>
-                                            </td>
-                                        </tr>
-                                           @endif
-                                         @endif
-                                       @endforeach
-                                    </table>
-                                </div>
-                                  <!--- /. box-body-->
-                                @endif
-                              @endforeach
-                        </div>
-                      <!-- /.box primary -->
-                    @endforeach
-                  @endforeach
+                            <!-- /.box primary -->
+                          @endforeach
+                        @endforeach
                 </div>
                 <!-- /.tab-pane 2-->
 

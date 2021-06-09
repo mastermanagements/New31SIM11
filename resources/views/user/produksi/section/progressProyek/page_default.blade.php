@@ -48,7 +48,7 @@
                                                             <div class="col-md-12">
                                                                 <div class="box box-success box-solid">
                                                                     <div class="box-header with-border">
-                                                                        <h3 class="box-title">Tanggal Buat : {{ date('d-m-Y H:i:s', strtotime($value->created_at)) }}</h3>
+                                                                        <h3 class="box-title">Tanggal Proyek dibuat : {{ date('d-m-Y H:i:s', strtotime($value->created_at)) }}</h3>
                                                                         <div class="box-tools pull-right">
                                                                             <form action="{{ url('delete-proyek/'.$value->id) }}" method="post">
                                                                                 <a href="{{ url('ubah-proyek/'.$value->id) }}" type="button" class="btn btn-box-tool" title="ubah proyek"><i class="fa fa-pencil"></i>

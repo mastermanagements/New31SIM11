@@ -1313,9 +1313,9 @@ Route::post('delete-keterangan-transaksi', 'keuangan\Penerimaan@delete_keteranga
 
 Route::get('Pengeluaran', 'keuangan\Pengeluaran@index');
 
-Route::get('data-pengeluaran', 'keuangan\pengeluaran@get_pengeluaran');
+Route::get('data-pengeluaran', 'keuangan\Pengeluaran@get_pengeluaran');
 
-Route::post('store-transaksi-pengeluaran', 'keuangan\pengeluaran@store');
+Route::post('store-transaksi-pengeluaran', 'keuangan\Pengeluaran@store');
 
 Route::post('detail-keterangan-transaksi-pengeluaran', 'keuangan\Pengeluaran@detail_keterangan');
 
@@ -2452,3 +2452,4 @@ Route::post('laporan-stok-barang','manufaktur\Manufaktur@laporan_print_preview_s
 
 Route::get('ganti-password-karyawan','karyawan\Karyawan@ganti_password_karyawan');
 Route::post('ganti-password-karyawan-post','karyawan\Karyawan@ganti_password_karyawan_proses');
+

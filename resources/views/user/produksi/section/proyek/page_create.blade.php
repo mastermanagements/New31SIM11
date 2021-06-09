@@ -46,10 +46,10 @@
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nama SPK</label>
+                                <label for="exampleInputEmail1">Nama SPK/Kontrak</label>
                                 <select class="form-control select2" style="width: 100%;" name="id_spk" required>
                                     @if(empty($spk))
-                                        <option>SPK masih kosong</option>
+                                        <option>SPK masih kosong, isi di menu administrasi proyek</option>
                                     @else
                                         @foreach($spk as $value)
                                             <option value="{{ $value->id }}">{{ $value->nm_spk }}</option>
@@ -59,7 +59,7 @@
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Lama Proyek</label>
+                                <label for="exampleInputEmail1">Lama Proyek (Satuan Hari)</label>
                                 <input type="number" min="0"  name="jangka_waktu" class="form-control" placeholder="Lama Proyek" required/>
                                 <small style="color: red">* Tidak boleh kosong</small>
                             </div>

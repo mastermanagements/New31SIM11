@@ -6,7 +6,10 @@
                 <div class="box box-primary collapsed-box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Tgl Mulai: {{ $data_monitoring->tgl_mulai }}, Supervisor: {{ $data_monitoring->linkToSupervisor->nama_ky }}
-                            , Barang yang diproduksi : {{ $data_monitoring->linkToBarang->nm_barang }}, &nbsp;{{ $data_monitoring->linkToBarang->linkToSatuan->satuan }}, &nbsp;{{ $data_monitoring->linkToBarang->spec_barang }}
+                            , Barang yang diproduksi : 
+							@if(!empty($data_monitoring->linkToBarang->nm_barang) AND !empty($data_monitoring->linkToBarang->linkToSatuan->satuan) AND !empty($data_monitoring->linkToBarang->spec_barang))
+							{{ $data_monitoring->linkToBarang->nm_barang }}, &nbsp;{{ $data_monitoring->linkToBarang->linkToSatuan->satuan }}, &nbsp;{{ $data_monitoring->linkToBarang->spec_barang }}
+							@endif
                         </h3>
                         <div class="box-tools pull-right">
                             <form action="{{ url('quality-control/'.$data_monitoring->id) }}" method="post">

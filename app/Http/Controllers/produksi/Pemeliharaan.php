@@ -29,14 +29,14 @@ class Pemeliharaan extends Controller
         });
     }
 
-    public function index()
+   /*  public function index()
     {
         $data = [
           'jenis_pemeliharaan' => JenisPemeliharaan::all()->where('id_perusahaan', $this->id_perusahaan),
           'data_pemeliaraan'=> pemeliharaans::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate(15)
         ];
         return view('user.produksi.section.pemeliharaan.page_default', $data);
-    }
+    } */
 
     public function show(Request $req)
     {

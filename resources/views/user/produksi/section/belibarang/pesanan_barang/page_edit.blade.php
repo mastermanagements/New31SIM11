@@ -175,7 +175,7 @@
                                                   </div>
                                               </div>
 
-                                               <div class="col-md-4">                                                   
+                                               <div class="col-md-4">
                                                    <div class="form-group">
                                                        <label>Total Net</label>
                                                        <input type="text"  readonly class="form-control" @if(!empty($data->total)) value="{{ rupiahView($data->total) }}" @endif >
