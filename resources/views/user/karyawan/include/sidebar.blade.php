@@ -28,7 +28,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">LIST MENU KARYAWAN</li>
+            <li class="header"><a href="{{ url('welcome-page') }}">MENU KARYAWAN</li></a>
            @if(!empty($daftar_menu['daftar_menu']))
                 @foreach($daftar_menu['daftar_menu'] as $mKey=> $menus)
                     <li class="treeview @if(Session::get('main_menu')==$mKey) active menu-open @endif" >

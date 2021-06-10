@@ -5,5 +5,5 @@
         <font color="#DE3106"><b>Menjadi besar, perlu sistem !! </b></font>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2019 <a href="#">aturusaha.com</a> </strong> All rights reserved.
+    <strong>Copyright &copy; 2021 <a href="#">aturusaha.com</a></strong> All rights reserved.
 </footer>

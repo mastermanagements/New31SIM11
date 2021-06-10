@@ -46,10 +46,10 @@ class JenisArsip extends Controller
         $model->id_karyawan = $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Arsip')->with('message_success','Anda baru saja menambahkan jenis surat baru');
+            return redirect('Surat')->with('message_success','Anda baru saja menambahkan jenis arsip');
         }else
         {
-            return redirect('Arsip')->with('message_fail','Maaf, terjadi kesalahan. silahkan coba lagi');
+            return redirect('Surat')->with('message_fail','Maaf, terjadi kesalahan. silahkan coba lagi');
         }
     }
 
@@ -82,10 +82,10 @@ class JenisArsip extends Controller
         $model->id_karyawan = $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Arsip')->with('message_success','Anda baru saja mengubah jenis surat baru');
+            return redirect('Surat')->with('message_success','Anda baru saja mengubah jenis arsip');
         }else
         {
-            return redirect('Arsip')->with('message_fail','Maaf, terjadi kesalahan. silahkan coba lagi');
+            return redirect('Surat')->with('message_fail','Maaf, terjadi kesalahan. silahkan coba lagi');
         }
     }
 
@@ -98,10 +98,10 @@ class JenisArsip extends Controller
         $model = jenis_arsip::find($req->id);
         if($model->delete())
         {
-            return redirect('Arsip')->with('message_success','Anda baru saja menghapus jenis surat baru');
+            return redirect('Surat')->with('message_success','Anda baru saja menghapus jenis arsip');
         }else
         {
-            return redirect('Arsip')->with('message_fail','Maaf, terjadi kesalahan. silahkan coba lagi');
+            return redirect('Surat')->with('message_fail','Maaf, terjadi kesalahan. silahkan coba lagi');
         }
     }
 }
