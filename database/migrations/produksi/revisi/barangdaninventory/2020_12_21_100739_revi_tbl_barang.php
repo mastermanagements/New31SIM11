@@ -15,9 +15,9 @@ class ReviTblBarang extends Migration
     {
         Schema::create('p_barang', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_kategori_produk')->unsigned();
-            $table->integer('id_subkategori_produk')->unsigned();
-            $table->integer('id_subsubkategori_produk')->unsigned();
+            $table->integer('id_kategori_produk')->unsigned()->default(0);
+            $table->integer('id_subkategori_produk')->unsigned()->default(0);
+            $table->integer('id_subsubkategori_produk')->unsigned()->default(0);
             $table->enum('jenis_barang',['0','1','2'])->comment('0=barang jadi, 1=barang barang mentah, 2=barang dalam proses')->default('0');
             $table->string('kd_barang',20)->nullable();
             $table->string('barcode')->nullable();
