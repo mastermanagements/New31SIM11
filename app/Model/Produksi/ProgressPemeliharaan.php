@@ -16,7 +16,7 @@ class ProgressPemeliharaan extends Model
         return $this->belongsTo('App\Model\Produksi\Pemeliharaan','id_pemeliharaan');
     }
 
-    public function klien(){
+     public function karyawan(){
         return $this->belongsTo('App\Model\Superadmin_ukm\H_karyawan','id_karyawan');
     }
 }

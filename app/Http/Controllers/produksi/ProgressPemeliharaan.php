@@ -29,13 +29,13 @@ class ProgressPemeliharaan extends Controller
         });
     }
 
-    public function index()
+   /*  public function index()
     {
         $data = [
             'data_pemeliaraan'=> pemeliharaans::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate(15)
         ];
         return view('user.produksi.section.progrespPemeliharaan.page_default', $data);
-    }
+    } */
 
     public function daftar_progress_pemeliharaan($id)
     {

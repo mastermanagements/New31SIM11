@@ -43,7 +43,7 @@
                                              <div class="timeline-item">
                                                  <span class="time"><i class="fa fa-clock-o"></i>  {{ date('H:i:s', strtotime($value->created_at)) }}</span>
 
-                                                 <h3 class="timeline-header"><a href="#"><b>Pelaksana:</b>{{ $value->karyawan->nama_ky }}</a></h3>
+                                                 <h3 class="timeline-header"><a href="#"><b>Pelaksana:</b>@if(!empty($value->karyawan->nama_ky)){{ $value->karyawan->nama_ky }} @endif</a></h3>
 
                                                  <div class="timeline-body">
                                                      <p>

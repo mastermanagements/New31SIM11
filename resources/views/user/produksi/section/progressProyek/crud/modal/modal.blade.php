@@ -26,7 +26,7 @@
 						<label>Masalah</label>
 						<textarea id="masalah" name="masalah" required></textarea>
 						<!-- /.input group -->
-						<small style="color: red">* Tidak Boleh Kosong</small>
+						
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -34,7 +34,7 @@
 						<label>Solusi</label>
 						<textarea id="solusi" name="solusi" required></textarea>
 						<!-- /.input group -->
-						<small style="color: red">* Tidak Boleh Kosong</small>
+						
 					</div>
 					<div class="form-group">
 						<label>Rincian Pekerjaan</label>
@@ -86,15 +86,14 @@
 							<label>Masalah</label>
 							<textarea id="masalah_ubah" name="masalah_ubah" required></textarea>
 							<!-- /.input group -->
-							<small style="color: red">* Tidak Boleh Kosong</small>
+							
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Solusi</label>
 							<textarea id="solusi_ubah" name="solusi_ubah" required></textarea>
-							<!-- /.input group -->
-							<small style="color: red">* Tidak Boleh Kosong</small>
+						
 						</div>
 						<div class="form-group">
 							<label>Rincian Pekerjaan</label>
