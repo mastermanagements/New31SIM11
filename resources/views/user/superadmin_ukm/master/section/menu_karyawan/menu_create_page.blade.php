@@ -52,11 +52,13 @@
                                               <input type="checkbox" class="minimal main-class menu_sub_{{ $key }}" value="{{ $sum_menu->getMasterSubMenuUKM->id }}" id="menus_{{ $id++ }}"
                                                @if(!empty($daftar_menu_karyawan))
                                                     @foreach($daftar_menu_karyawan as $daftar_menu)
+														@if(!empty($daftar_menu->getSubMenuPerusahaan->id_master_submenu))
                                                             @if($sum_menu->getMasterSubMenuUKM->id == $daftar_menu->getSubMenuPerusahaan->id_master_submenu)
                                                                 checked
-                                                                @endif
-                                                            @endforeach
-                                                       @endif
+                                                            @endif
+														@endif
+                                                    @endforeach
+                                                @endif
                                                > <label >  {{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}
                                                </label>
                                            </div>

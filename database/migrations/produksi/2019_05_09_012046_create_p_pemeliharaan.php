@@ -15,9 +15,10 @@ class CreatePPemeliharaan extends Migration
     {
         Schema::create('p_pemeliharaan', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_jasa')->unsigned();
-            $table->integer('id_jenis_pem')->unsigned();
-            $table->string('nm_pemeliharaan');
+			$table->integer('id_proyek')->unsigned();
+            $table->integer('id_jasa')->unsigned()->nullable();
+            $table->integer('id_jenis_pem')->unsigned()->nullable()->default('0');			
+            $table->string('nm_pemeliharaan')->nullable();
             $table->integer('jangka_waktu');
             $table->decimal('biaya_pem', 12,2);
             $table->text('ket');

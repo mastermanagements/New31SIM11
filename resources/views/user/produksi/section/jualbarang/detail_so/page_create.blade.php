@@ -2,6 +2,7 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
+	 <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
 @stop
 
 @section('master_content')

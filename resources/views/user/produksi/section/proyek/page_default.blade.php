@@ -608,10 +608,10 @@
                                                     <div class="col-md-3" style="margin: 0">
                                                         <a href="{{ url('tambah-pemeliharaan') }}" class="btn btn-primary" style="width: 100%" ><i class="fa fa-plus"></i> Tambah Pemeliharaan </a>
                                                     </div>
-													<div class="col-md-9" style="margin: 0" align="right">
+													<!--<div class="col-md-9" style="margin: 0" align="right">
 														<a href="#jenis_pem" data-toggle="tab"><i class="fa fa-list"></i> Jenis Pemeliharaan</a></li>&nbsp;&nbsp;			
 														
-													</div>
+													</div>-->
                                                    
                                                 </div>
                                                 <p></p>
@@ -642,12 +642,12 @@
                                                                     <div class="box-body">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
-                                                                                <h3 style="color: #0b93d5; margin-top: 0px"><u>{{ $value->nm_pemeliharaan }}</u> </h3>
+                                                                                <h3 style="color: #0b93d5; margin-top: 0px"><u>Pemeliharaan Proyek {{ $value->proyek->spk->nm_spk }}</u> </h3>
                                                                                 <div class="row">
                                                                                     <div class="col-md-3">
-                                                                                        <h4 style="font-weight: bold">Rincian Permintaan Jasa :</h4>
-                                                                                        <p>Jasa  : {{ $value->jasa->nm_jasa }}</p>
-                                                                                        <p>Jenis Pemeliharaan : {{ $value->jenis_pem->jenis_pm }}</p>
+                                                                                        <h4 style="font-weight: bold">Rincian Pekerjaan Pemeliharaan :</h4>
+                                                                                        {{-- <p>Jasa  : {{ $value->jasa->nm_jasa }}</p> --}}
+																							{{-- <p>Jenis Pemeliharaan : {{ $value->jenis_pem->jenis_pm --}}</p>
                                                                                         <p>Jangka Waktu Pemeliharaan : {{ $value->jangka_waktu }}</p>
                                                                                         <p>Harga Pemeliharaan :Rp. {{ $value->biaya_pem }}</p>
                                                                                     </div>
