@@ -10,6 +10,7 @@
 
 </head>
 <body style="margin: 20px;">
+{!! $header !!}
 @if(!empty($data))
     @php($sum_harga_beli = 0)
     @php($sum_sub_total = 0)
