@@ -35,7 +35,7 @@ class ProgressProyek extends Controller
             'proyek'=>proyek::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at')->paginate(15),
         ];
         return view('user.produksi.section.progressProyek.page_default', $data);
-    }
+    } 
 
     public function listOfProgress(Request $req, $id)
     {

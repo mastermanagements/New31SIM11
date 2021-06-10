@@ -31,7 +31,7 @@ class TimProyek extends Controller
         });
     }
 
-    public function index(){
+    /*public function index(){
         $data = [
             'proyeks'=> proyeks::where('id_perusahaan', $this->id_perusahaan)->paginate(),
             'karyawan'=> karyawan::all()->where('id_perusahaan', $this->id_perusahaan),
@@ -48,7 +48,7 @@ class TimProyek extends Controller
             'spk'=> spk::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.produksi.section.timproyek.page_default', $data);
-    }
+    }*/
 
     public function store(Request $req)
     {
@@ -71,9 +71,9 @@ class TimProyek extends Controller
 
         if($model->save())
         {
-            return redirect()->back()->with('message_success', 'anda telah menambahkan anggota tim ');
+            return redirect('Proyek')->with('message_success', 'anda telah menambahkan anggota tim')->with('tab2','tab2');
         }else{
-            return redirect()->with('message_fail', 'Telah terjadi kesalahan, silahkan coba lagi');
+            return redirect('Proyek')->with('message_fail', 'Telah terjadi kesalahan, silahkan coba lagi')->with('tab2','tab2');
         }
 
     }
@@ -87,9 +87,9 @@ class TimProyek extends Controller
 
         if($model->delete())
         {
-            return redirect()->back()->with('message_success', 'anda telah menghapus anggota tim ');
+            return redirect('Proyek')->with('message_success', 'anda telah menghapus anggota tim ')->with('tab2','tab2');
         }else{
-            return redirect()->with('message_fail', 'Telah terjadi kesalahan, silahkan coba lagi');
+            return redirect('Proyek')->with('message_fail', 'Telah terjadi kesalahan, silahkan coba lagi')->with('tab2','tab2');
         }
 
     }

@@ -27,10 +27,10 @@ class JenisPemeliharaan extends Controller
         });
     }
 
-    public function create()
+   /*  public function create()
     {
         return view('user.produksi.section.pemeliharaan.jenispemeliharaan.page_create');
-    }
+    } */
 
     public function store(Request $req)
     {
@@ -45,9 +45,9 @@ class JenisPemeliharaan extends Controller
         $model->id_karyawan= $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Pemeliharaan')->with('message_success', 'Anda telah menambahkan jenis pemeliharaan');
+            return redirect()->back()->with('message_success', 'Anda telah menambahkan jenis pemeliharaan');
         }else{
-            return redirect('Pemeliharaan')->with('message_fail', 'Maaf, telah terjadi kesalahan');
+            return redirect()->back()->with('message_fail', 'Maaf, telah terjadi kesalahan');
         }
     }
 

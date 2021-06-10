@@ -6,6 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Produksi\Proyek as proyeks;
 use App\Model\Administrasi\SPKKontrak as spk;
+use App\Model\Superadmin_ukm\H_karyawan as karyawan;
+use App\Model\Produksi\JadwalProyek as jadwalProyeks;
+use App\Model\Produksi\TaskProyek as taks_proyek;
+use App\Model\Produksi\RincianTugas as rincian_Tugas;
+use App\Model\Produksi\TaskProyek as taskProyeks;
+use App\Model\Produksi\ProgressProyek as progress_proyek;
+use App\Model\Produksi\JenisPemeliharaan;
+use App\Model\Produksi\Jasa as jasa;
+use App\Model\Produksi\Pemeliharaan as pemeliharaans;
 use Session;
 
 class Proyek extends Controller
@@ -16,7 +25,7 @@ class Proyek extends Controller
 
     private $jenis_proyek = [
         '0'=> 'Proyek Internal',
-        '1'=> 'Proyek Penasan Klien',
+        '1'=> 'Proyek Pesanan Klien',
     ];
 
     public function __construct()
@@ -36,8 +45,36 @@ class Proyek extends Controller
     public function index(){
         $data = [
           'proyeks'=> proyeks::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate(),
-          'spk'=> spk::all()->where('id_perusahaan', $this->id_perusahaan)
+          'spk'=> spk::all()->where('id_perusahaan', $this->id_perusahaan),
+		  'karyawan'=> karyawan::all()->where('id_perusahaan', $this->id_perusahaan),
+		  'Listproyek'=>spk::all()->where('id_perusahaan', $this->id_perusahaan),
+          'data_taks_proyek' => taks_proyek::all()->where('id_perusahaan', $this->id_perusahaan),
+          'data_rincian_proyek' => rincian_Tugas::all()->where('id_perusahaan', $this->id_perusahaan),
+		   'jenis_pemeliharaan' => JenisPemeliharaan::all()->where('id_perusahaan', $this->id_perusahaan),
+          'data_pemeliaraan'=> pemeliharaans::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at','desc')->paginate(15)
+		  
         ];
+		 if(empty(Session::get('tab2')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6'))){
+                  Session::flash('tab1','tab1');
+              }
+
+              if(!empty(Session::get('tab2'))){
+                  Session::flash('tab2',Session::get('tab2'));
+              }
+
+              if(!empty(Session::get('tab3'))){
+                  Session::flash('tab3',Session::get('tab3'));
+              }
+
+              if(!empty(Session::get('tab4'))){
+                  Session::flash('tab4',Session::get('tab4'));
+              }
+			  if(!empty(Session::get('tab5'))){
+                  Session::flash('tab5',Session::get('tab5'));
+              }
+			  if(!empty(Session::get('tab6'))){
+                  Session::flash('tab6',Session::get('tab6'));
+              }
         return view('user.produksi.section.proyek.page_default', $data);
     }
 
