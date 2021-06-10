@@ -48,8 +48,8 @@
                                                     <td>{{ $no++ }}</td>
                                                     <td>{{ date('d-m-Y', strtotime($data->tgl)) }}</td>
                                                     <td>{{ $data->ket }}</td>
-                                                    <td>{{ $data->linkToBarang->nm_barang }}</td>
-                                                    <td>{{ $data->linkToBarang->linkToSatuan->satuan_brg }}</td>
+                                                    <td>@if(!empty($data->linkToBarang->nm_barang)){{ $data->linkToBarang->nm_barang }} @endif</td>
+                                                    <td>@if(!empty($data->linkToBarang->linkToSatuan->satuan)){{ $data->linkToBarang->linkToSatuan->satuan }} @endif</td>
                                                     <td>{{ $data->jumlah_brg }}</td>
                                                     <td>
                                                         <form action="{{ url('itemIO/'.$data->id.'/destroy') }}" method="post">
@@ -86,8 +86,9 @@
                                                     <td>{{ $no++ }}</td>
                                                     <td>{{ date('d-m-Y', strtotime($data->tgl)) }}</td>
                                                     <td>{{ $data->ket }}</td>
-                                                    <td>{{ $data->linkToBarang->nm_barang }}</td>
-                                                    <td>{{ $data->linkToBarang->linkToSatuan->satuan_brg }}</td>
+													<td>@if(!empty($data->linkToBarang->nm_barang)){{ $data->linkToBarang->nm_barang }} @endif</td>
+                                                    <td>@if(!empty($data->linkToBarang->linkToSatuan->satuan)){{ $data->linkToBarang->linkToSatuan->satuan }} @endif</td>
+		
                                                     <td>{{ $data->jumlah_brg }}</td>
                                                     <td>
                                                         <form action="{{ url('itemIO/'.$data->id.'/destroy') }}" method="post">

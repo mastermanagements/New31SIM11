@@ -96,7 +96,7 @@
                                                                         <td>{{ $no++ }}</td>
                                                                         <td>{{ $data->kd_barang }}</td>
                                                                         <td>{{ $data->nm_barang }}</td>
-                                                                        <td>{{ $data->linkToSatuan->satuan }}</td>
+                                                                        <td>@if(!empty($data->linkToSatuan->satuan)){{ $data->linkToSatuan->satuan }}@endif</td>
                                                                         <td>{{ $data->spec_barang }}</td>
                                                                         <td>{{ $data->merk_barang }}</td>
                                                                         <td>{!! substr($data->desc_barang,0,100) !!}</td>
@@ -180,7 +180,7 @@
                                                                     <td>{{ $no++ }}</td>
                                                                     <td>{{ $data->kd_barang }}</td>
                                                                     <td>{{ $data->nm_barang }}</td>
-                                                                    <td>{{ $data->linkToSatuan->satuan }}</td>
+                                                                    <td>@if(!empty($data->linkToSatuan->satuan)){{ $data->linkToSatuan->satuan }} @endif</td>
                                                                     <td>{{ $data->getkategori->nm_kategori_p }}</td>
                                                                     <td>{{ $data->spec_barang }}</td>
                                                                     <td>{{ $data->merk_barang }}</td>
@@ -259,7 +259,7 @@
                                                                     <td>{{ $no++ }}</td>
                                                                     <td>{{ $data->kd_barang }}</td>
                                                                     <td>{{ $data->nm_barang }}</td>
-                                                                    <td>{{ $data->linkToSatuan->satuan }}</td>
+                                                                    <td>@if(!empty($data->linkToSatuan->satuan)){{ $data->linkToSatuan->satuan }} @endif</td>
                                                                     <td>{{ $data->getkategori->nm_kategori_p }}</td>
                                                                     <td>{{ $data->spec_barang }}</td>
                                                                     <td>{{ $data->merk_barang }}</td>
@@ -323,8 +323,8 @@
                                                @foreach($data_barangs->linkToHargaJualSatuan as $data_satuan)
                                                    <tr>
                                                        <td>{{ $no++ }}</td>
-                                                       <td>{{ $data_satuan->linkToBarang->nm_barang }}</td>
-                                                       <td>{{ $data_satuan->linkToBarang->linkToSatuan->satuan }}</td>
+                                                       <td>@if(!empty($data_satuan->linkToBarang->nm_barang)){{ $data_satuan->linkToBarang->nm_barang }} @endif</td>
+                                                       <td>@if(!empty($data_satuan->linkToBarang->linkToSatuan->satuan)){{ $data_satuan->linkToBarang->linkToSatuan->satuan }} @endif</td>
                                                        <td>{{ rupiahView($data_satuan->linkToBarang->hpp) }}</td>
                                                        <td>{{ rupiahView($data_satuan->harga_jual) }}</td>
                                                        @php($untung=$data_satuan->harga_jual - $data_satuan->linkToBarang->hpp)
@@ -371,7 +371,7 @@
                                                    <tr>
                                                        <td>{{ $no++ }}</td>
                                                        <td>{{ $data_bJumlah->linkToBarang->nm_barang }}</td>
-                                                       <td>{{ $data_bJumlah->linkToBarang->linkToSatuan->satuan }}</td>
+                                                       <td>@if(!empty($data_bJumlah->linkToBarang->linkToSatuan->satuan)){{ $data_bJumlah->linkToBarang->linkToSatuan->satuan }} @endif</td>
                                                        <td>{{ rupiahView($data_bJumlah->linkToBarang->hpp) }}</td>
                                                        <td>{{ $data_bJumlah->jumlah_maks_brg }}</td>
                                                        <td>{{ rupiahView($data_bJumlah->harga_jual) }}</td>
