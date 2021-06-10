@@ -29,10 +29,11 @@ class JenisProposal extends Controller
 
     public function index()
     {
-        $data_jenis_surat = jenis_proposal::all()->where('id_perusahaan', $this->id_perusahaan);
+        $data_jenis_proposal = jenis_proposal::all()->where('id_perusahaan', $this->id_perusahaan);
         $column = array();
         $no = 1;
-        foreach ($data_jenis_surat as $value)
+	
+        foreach ($data_jenis_proposal as $value)
         {
             $row = array();
             $row[] = $no++;
@@ -57,11 +58,11 @@ class JenisProposal extends Controller
         $model->id_karyawan = $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Proposal')->with('message_success','Anda telah menambah jenis proposal baru');
+            return redirect('Surat')->with('message_success','Anda telah menambah jenis proposal baru');
         }
         else
         {
-            return redirect('Proposal')->with('message_fail','Terjadi kesalahan, silahkan coba lagi');
+            return redirect('Surat')->with('message_fail','Terjadi kesalahan, silahkan coba lagi');
         }
     }
 
@@ -89,11 +90,11 @@ class JenisProposal extends Controller
         $model->id_karyawan = $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Proposal')->with('message_success','Anda telah mengubah jenis proposal');
+            return redirect('Surat')->with('message_success','Anda telah mengubah jenis proposal');
         }
         else
         {
-            return redirect('Proposal')->with('message_fail','Terjadi kesalahan, silahkan coba lagi');
+            return redirect('Surat')->with('message_fail','Terjadi kesalahan, silahkan coba lagi');
         }
     }
 
@@ -106,11 +107,11 @@ class JenisProposal extends Controller
         $model = jenis_proposal::find($id);
         if($model->delete())
         {
-            return redirect('Proposal')->with('message_success','Anda telah menghapus jenis proposal');
+            return redirect('Surat')->with('message_success','Anda telah menghapus jenis proposal');
         }
         else
         {
-            return redirect('Proposal')->with('message_fail','Terjadi kesalahan, silahkan coba lagi');
+            return redirect('Surat')->with('message_fail','Terjadi kesalahan, silahkan coba lagi');
         }
     }
 

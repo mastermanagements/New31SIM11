@@ -27,13 +27,13 @@ class Proposal extends Controller
         });
     }
 
-    public function index()
+   /*  public function index()
     {
         $data=[
             'data_proposal'=> proposals::where('id_perusahaan', $this->id_perusahaan)->paginate(20)
         ];
         return view('user.administrasi.section.proposal.page_default', $data);
-    }
+    } */
 
     public function cari(Request $req)
     {
@@ -80,9 +80,9 @@ class Proposal extends Controller
 
         if($model->save())
         {
-            return redirect('Proposal')->with('message_success', 'Anda baru saja benambah proposal baru');
+            return redirect('Surat')->with('message_success', 'Anda baru saja benambah proposal baru')->with('tab3','tab3');
         }else{
-            return redirect('Proposal')->with('message_fail', 'Terjadi kesalahan, Silahkan coba lagi');
+            return redirect('Surat')->with('message_fail', 'Terjadi kesalahan, Silahkan coba lagi')->with('tab3','tab3');
         }
     }
 
@@ -124,9 +124,9 @@ class Proposal extends Controller
 
         if($model->save())
         {
-            return redirect('Proposal')->with('message_success', 'Anda baru saja mengubah proposal');
+            return redirect('Surat')->with('message_success', 'Anda baru saja mengubah proposal')->with('tab3','tab3');
         }else{
-            return redirect('Proposal')->with('message_fail', 'Terjadi kesalahan, Silahkan coba lagi');
+            return redirect('Surat')->with('message_fail', 'Terjadi kesalahan, Silahkan coba lagi')->with('tab3','tab3');
         }
     }
 
@@ -136,9 +136,9 @@ class Proposal extends Controller
         $model = proposals::find($id);
         if($model->delete())
         {
-            return redirect('Proposal')->with('message_success', 'Anda baru saja menghapus proposal anda');
+            return redirect('Surat')->with('message_success', 'Anda baru saja menghapus proposal anda')->with('tab3','tab3');
         }else{
-            return redirect('Proposal')->with('message_fail', 'Terjadi kesalahan, Silahkan coba lagi');
+            return redirect('Surat')->with('message_fail', 'Terjadi kesalahan, Silahkan coba lagi')->with('tab3','tab3');
         }
     }
 
@@ -168,9 +168,9 @@ class Proposal extends Controller
         if($model->save())
         {
             if ($cover_proposal->move(public_path('coverDirectori'), $name_file)) {
-                return redirect('Proposal')->with('message_success','Berhasil cover proposal telah berhasil diunggah');
+                return redirect('Surat')->with('message_success','Berhasil cover proposal telah berhasil diunggah')->with('tab3','tab3');
             }else{
-                return redirect('Proposal')->with('message_error','Gagal meng-unggul cover proposal');
+                return redirect('Surat')->with('message_error','Gagal meng-unggul cover proposal')->with('tab3','tab3');
             }
         }
 
@@ -202,9 +202,9 @@ class Proposal extends Controller
         if($model->save())
         {
             if ($doc_proposal->move(public_path('documentDirectori'), $name_file)) {
-                return redirect('Proposal')->with('message_success','Berhasil cover proposal telah berhasil diunggah');
+                return redirect('Surat')->with('message_success','Berhasil cover proposal telah berhasil diunggah')->with('tab3','tab3');
             }else{
-                return redirect('Proposal')->with('message_error','Gagal meng-unggul cover proposal');
+                return redirect('Surat')->with('message_error','Gagal meng-unggul cover proposal')->with('tab3','tab3');
             }
         }
     }

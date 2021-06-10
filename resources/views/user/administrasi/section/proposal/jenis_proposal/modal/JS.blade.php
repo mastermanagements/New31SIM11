@@ -9,7 +9,7 @@
 
 
         $(document).ready(function () {
-            table_jenis_surat = $('#example4').DataTable({
+            table_jenis_proposal = $('#example4').DataTable({
                 data:[],
                 column:[
                     {'data' :'0'},
@@ -34,8 +34,8 @@
                     dataType : 'json',
                 }).done(function (result) {
                     console.log(result);
-                    table_jenis_surat.clear().draw();
-                    table_jenis_surat.rows.add(result.data).draw();
+                    table_jenis_proposal.clear().draw();
+                    table_jenis_proposal.rows.add(result.data).draw();
                 }).fail(function(jqXHR, textStatus,errorThrown){
 
                 })
