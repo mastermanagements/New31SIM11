@@ -29,13 +29,13 @@ class ProgressProyek extends Controller
         });
     }
 
-    public function index()
+    /* public function index()
     {
         $data=[
             'proyek'=>proyek::where('id_perusahaan', $this->id_perusahaan)->orderBy('created_at')->paginate(15),
         ];
         return view('user.produksi.section.progressProyek.page_default', $data);
-    } 
+    }  */
 
     public function listOfProgress(Request $req, $id)
     {
@@ -50,8 +50,8 @@ class ProgressProyek extends Controller
     {
         $this->validate($req,[
             'tgl_dikerjakan'=> 'required',
-            'masalah' => 'required',
-            'solusi' => 'required',
+           // 'masalah' => 'required',
+           // 'solusi' => 'required',
             'rincian_pekerjaan' => 'required',
             'id_jadwal_proyek' => 'required',
         ]);
@@ -91,8 +91,8 @@ class ProgressProyek extends Controller
     public function update(Request $req){
         $this->validate($req,[
             'tgl_dikerjakan_ubah'=> 'required',
-            'masalah_ubah' => 'required',
-            'solusi_ubah' => 'required',
+          //  'masalah_ubah' => 'required',
+           // 'solusi_ubah' => 'required',
             'rincian_pekerjaan_ubah' => 'required',
             'id_jadwal_proyek' => 'required',
             'id_progress_proyek' => 'required',
