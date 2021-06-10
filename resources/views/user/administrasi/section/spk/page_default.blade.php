@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            SPK(Surat Perintah Kerja)
+            SPK(Surat Perintah Kerja/Kontrak)
         </h1>
     </section>
 
@@ -29,7 +29,7 @@
                         <div class="tab-pane active" id="tab_1">
                             <div class="row">
                                 <div class="col-md-3" style="margin: 0">
-                                    <a href="{{ url('tambah-spk') }}" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah SKP </a>
+                                    <a href="{{ url('tambah-spk') }}" class="btn btn-primary" style="width: 100%"><i class="fa fa-plus"></i> Tambah SPK/Kontrak </a>
                                 </div>
                                 <div class="col-md-9" >
                                     <form action="{{ url('cari-spk') }}" method="post" style="width: 100%">

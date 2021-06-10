@@ -423,12 +423,12 @@
                                @foreach($konvesi_barang as $data_barang_konversi)
                                        <tr>
                                            <td>{{ $i++ }}</td>
-                                           <td>@if(!empty($data_barang_konversi)){{ $data_barang_konversi->linkToBarangAsal->nm_barang }}@endif</td>
-                                           <td>@if(!empty($data_barang_konversi)){{ $data_barang_konversi->linkToBarangAsal->linkToSatuan->satuan }}@endif</td>
+                                           <td>@if(!empty($data_barang_konversi->linkToBarangAsal->nm_barang)){{ $data_barang_konversi->linkToBarangAsal->nm_barang }}@endif</td>
+                                           <td>@if(!empty($data_barang_konversi->linkToBarangAsal->linkToSatuan->satuan)){{ $data_barang_konversi->linkToBarangAsal->linkToSatuan->satuan }}@endif</td>
 
-                                           <td>{{ $data_barang_konversi->linkToBarangTujuan->nm_barang }}</td>
-                                           <td>{{ $data_barang_konversi->linkToBarangTujuan->linkToSatuan->satuan }}</td>
-                                           <td>{{ $data_barang_konversi->jumlah_konversi_satuan }}</td>
+                                           <td>@if(!empty($data_barang_konversi->linkToBarangTujuan->nm_barang)){{ $data_barang_konversi->linkToBarangTujuan->nm_barang }} @endif</td>
+                                           <td>@if(!empty($data_barang_konversi->linkToBarangTujuan->linkToSatuan->satuan)){{ $data_barang_konversi->linkToBarangTujuan->linkToSatuan->satuan }} @endif</td>
+                                           <td>@if(!empty($data_barang_konversi->jumlah_konversi_satuan)){{ $data_barang_konversi->jumlah_konversi_satuan }} @endif</td>
                                            <td>
                                                <form action="{{ url('atur-konversi/'.$data_barang_konversi->id.'/delete') }}" method="post">
                                                     {{ csrf_field() }}
@@ -471,8 +471,12 @@
 
                                              <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->nm_barang)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->nm_barang }}@endif</td>
                                              <td>@if(!empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->linkToSatuan->satuan)){{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangTujuan->linkToSatuan->satuan }}@endif</td>
-                                             <td>{{ $data_barang_konvesi->jum_brg_dikonversi }} {{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan }}</td>
-                                             <td>{{ $data_barang_konvesi->linkToKaryawan->nama_ky}} </td>
+                                             <td>
+											@if(!empty($data_barang_konvesi->jum_brg_dikonversi) AND !empty($data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan))
+											 {{ $data_barang_konvesi->jum_brg_dikonversi }} 
+											 {{ $data_barang_konvesi->linkToKonversiBarang->linkToBarangAsal->linkToSatuan->satuan }} @endif
+											 </td>
+                                             <td>@if(!empty($data_barang_konvesi->linkToKaryawan->nama_ky)){{ $data_barang_konvesi->linkToKaryawan->nama_ky}} @endif</td>
                                          </tr>
                                      @endforeach
                                      </tbody>

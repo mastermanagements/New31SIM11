@@ -1,7 +1,7 @@
 @extends('user.administrasi.master_user')
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
 @stop
 
 @section('master_content')
@@ -9,8 +9,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          Jadwal Proyek
+          Monitoring Proyek
         </h1>
+		<h5 class="pull-right"><a href="{{ url('Proyek')}}">Kembali ke Halaman utama</a></h5>
+		
     </section>
 
     <!-- Main content -->
@@ -41,17 +43,17 @@
                                              <div class="timeline-item">
                                                  <span class="time"><i class="fa fa-clock-o"></i>  {{ date('H:i:s', strtotime($value->created_at)) }}</span>
 
-                                                 <h3 class="timeline-header"><a href="#">{{ $value->klien->nama_ky }}</a></h3>
+                                                 <h3 class="timeline-header"><a href="#"><b>Pelaksana:</b>{{ $value->karyawan->nama_ky }}</a></h3>
 
                                                  <div class="timeline-body">
                                                      <p>
-                                                         Masalah: <br>
+                                                         <b>Masalah:</b> <br>
                                                         {!! $value->masalah !!}
                                                          <hr>
-                                                        Solusi :<br>
+                                                        <b>Solusi :</b><br>
                                                         {!! $value->solusi !!}
                                                         <hr>
-                                                        Rincian Pengerjaan :<br>
+                                                        <b>Rincian Pengerjaan :</b><br>
                                                         {!! $value->rincian_pekerjaan !!}
                                                         <hr>
 
@@ -97,6 +99,7 @@
 
         $('#content_modal').slimScroll({
             height: '450px'
+			
         });
         $('#content_modal_update').slimScroll({
             height: '450px'
@@ -104,23 +107,23 @@
 
         window.onload = function() {
             CKEDITOR.replace( 'masalah',{
-                height: 200
+                height: 185
             } );
             CKEDITOR.replace( 'solusi',{
-                height: 200
+                height: 100
             } );
             CKEDITOR.replace( 'rincian_pekerjaan',{
-                height: 200
+                height: 100
             } );
 
             var editor_masalah=CKEDITOR.replace( 'masalah_ubah',{
-                height: 200
+                height: 185
             } );
             CKEDITOR.replace( 'solusi_ubah',{
-                height: 200
+                height: 100
             } );
             CKEDITOR.replace( 'rincian_pekerjaan_ubah',{
-                height: 200
+                height: 100
             } );
         };
 
