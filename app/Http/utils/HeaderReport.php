@@ -22,6 +22,14 @@ class HeaderReport
         return self::render_partial($views, $array);
     }
 
+    public static function header_format_2($views=null,$title= null)
+    {
+        $array=[];
+        $array['title']= $title;
+        $array['perusahaan'] = U_usaha::findOrFail(Session::get('id_perusahaan_karyawan'));
+        return self::render_partial($views, $array);
+    }
+
     public static function render_partial($view,$array){
         return (string)View::make($view, array('data'=>$array));
     }

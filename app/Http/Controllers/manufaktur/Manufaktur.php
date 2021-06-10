@@ -14,6 +14,7 @@ use App\Model\Manufaktur\AkunManufaktur;
 use App\Http\Controllers\produksi\utils\Produksi;
 use App\Http\Controllers\produksi\utils\Pembelian;
 use App\Model\Produksi\Supplier;
+use App\Http\utils\HeaderReport;
 
 class Manufaktur extends Controller
 {
@@ -29,8 +30,8 @@ class Manufaktur extends Controller
 
     public function __construct()
     {
-        $this->month = date('m', strtotime('2021-05-19'));
-        $this->years = date('Y', strtotime('2021-05-19'));
+        $this->month = date('m');
+        $this->years = date('Y');
     }
 
     public function index()
@@ -77,10 +78,11 @@ class Manufaktur extends Controller
         Produksi::$tanggal_awal = $req->tgl_awal;
         Produksi::$tanggal_akhir = $req->tgl_akhir;
         $produksi = Produksi::DataProduksi();
+        $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PRODUKSI');
         if ($req->action == 'preview') {
             return view('user.manufaktur.pages.laporan.produksi.page_show', ['data' => $produksi]);
         } else {
-            return view('user.manufaktur.pages.laporan.produksi.cetak', ['data' => $produksi]);
+            return view('user.manufaktur.pages.laporan.produksi.cetak', ['data' => $produksi, 'header' => $header]);
         }
     }
 
@@ -106,7 +108,8 @@ class Manufaktur extends Controller
         if ($req->action == 'preview') {
             return view('user.manufaktur.pages.laporan.pembelian.page_show', ['data' => $pembelian, 'supplier' => $supplier, 'metode_bayar' => $metode_bayar]);
         } else {
-            return view('user.manufaktur.pages.laporan.pembelian.cetak', ['data' => $pembelian]);
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PEMBELIAN');
+            return view('user.manufaktur.pages.laporan.pembelian.cetak', ['data' => $pembelian, 'header' => $header]);
         }
     }
 
@@ -131,7 +134,8 @@ class Manufaktur extends Controller
         if ($req->action == 'preview') {
             return view('user.manufaktur.pages.laporan.detail_pembelian.page_show', ['data' => $pembelian, 'supplier' => $supplier, 'metode_bayar' => $metode_bayar]);
         } else {
-            return view('user.manufaktur.pages.laporan.detail_pembelian.cetak', ['data' => $pembelian, 'supplier' => $supplier]);
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN DETAIL PEMBELIAN');
+            return view('user.manufaktur.pages.laporan.detail_pembelian.cetak', ['data' => $pembelian, 'supplier' => $supplier, 'header' => $header]);
         }
     }
 
@@ -153,12 +157,13 @@ class Manufaktur extends Controller
     {
         Penjualan::$tgl_awal = $req->tgl_awal;
         Penjualan::$tgl_akhir = $req->tgl_akhir;
+        $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PENJUALAN');
         $data = [
             'data' => Penjualan::getData(),
             'metode_bayar' => Penjualan::$jenis_penjualan,
-            'klien' => Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'klien' => Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'header' => $header
         ];
-        dd($data);
         if ($req->action == 'preview') {
             return view('user.manufaktur.pages.laporan.penjualan.page_show', $data);
         } else {
@@ -183,10 +188,12 @@ class Manufaktur extends Controller
     {
         Penjualan::$tgl_transaksi = $req->tgl_transaksi;
         Penjualan::$klien = $req->klien;
+        $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN DETAIL PENJUALAN');
         $data = [
             'data' => Penjualan::getData(),
             'metode_bayar' => Penjualan::$jenis_penjualan,
-            'klien' => Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'klien' => Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'header' => $header
         ];
         if ($req->action == 'preview') {
             return view('user.manufaktur.pages.laporan.detail_penjualan.page_show', $data);
@@ -209,9 +216,11 @@ class Manufaktur extends Controller
     {
         StokBarangOperation::$jenis_barang = $req->jenis_barang;
         $stok_barang = StokBarangOperation::getDataStok();
+        $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN STOK BARANG');
         $data = [
             'data' => $stok_barang,
-            'jenis_barang' => StokBarangOperation::$list_jenis_barang
+            'jenis_barang' => StokBarangOperation::$list_jenis_barang,
+            'header' => $header
         ];
         if ($req->action == "preview") {
             return view('user.manufaktur.pages.laporan.StokBarang.page_show', $data);
