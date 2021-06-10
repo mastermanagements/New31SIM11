@@ -49,7 +49,7 @@
             <tr>
                 <td>{{ $no++ }}</td>
                 <td>{{ $data->nm_barang }}</td>
-                <td>{{ $data->linkToSatuan->satuan_brg }}</td>
+                 <td>@if(!empty($data->linkToSatuan->satuan)){{ $data->linkToSatuan->satuan }} @endif</td>
                 <td>{{ $data->linkToStokAwal->sum('jumlah_brg')}}</td>
                 <td>{{ $data->linkToItemIO->where('jenis_item','0')->sum('jumlah_brg')}}</td>
                 <td>{{ $data->linkToItemIO->where('jenis_item','1')->sum('jumlah_brg')}}</td>

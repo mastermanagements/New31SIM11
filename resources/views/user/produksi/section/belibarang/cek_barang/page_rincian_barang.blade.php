@@ -75,7 +75,7 @@
                                                                                             @if ($item->id == $data_tb->id_barang)
                                                                                                 selected
                                                                                             @endif
-                                                                                        >{{ $item->nm_barang }}, {{ $item->linkToSatuan->satuan }}</option>
+                                                                                        >{{ $item->nm_barang }}, @if(!empty($item->linkToSatuan->satuan)){{ $item->linkToSatuan->satuan }} @endif</option>
                                                                                     @endforeach
                                                                                 </select>
                                                                             </td>

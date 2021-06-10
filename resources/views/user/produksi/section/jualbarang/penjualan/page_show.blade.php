@@ -82,7 +82,7 @@
                                                                     <option disabled>Pilih Barang</option>
                                                                     @if(!empty($barang))
                                                                         @foreach($barang as $data_barang)
-                                                                            <option value="{{ $data_barang->id }}">{{ $data_barang->nm_barang }}, {{$data_barang->linkToSatuan->satuan}}, {{$data_barang->spec}}</option>
+                                                                            <option value="{{ $data_barang->id }}">{{ $data_barang->nm_barang }}, @if(!empty($data_barang->linkToSatuan->satuan)){{$data_barang->linkToSatuan->satuan}} @endif, {{$data_barang->spec}}</option>
                                                                         @endforeach
                                                                     @endif
                                                                 </select>
@@ -127,7 +127,7 @@
                                                                             <option disabled>Pilih Barang</option>
                                                                             @if(!empty($barang))
                                                                                 @foreach($barang as $data_barang)
-                                                                                    <option value="{{ $data_barang->id }}" @if($data_barang->id==$data_detail->id_barang) selected @endif>{{ $data_barang->nm_barang }}, {{$data_barang->linkToSatuan->satuan}}, {{$data_barang->spec}}</option>
+                                                                                    <option value="{{ $data_barang->id }}" @if($data_barang->id==$data_detail->id_barang) selected @endif>{{ $data_barang->nm_barang }}, @if(!empty($data_barang->linkToSatuan->satuan)){{$data_barang->linkToSatuan->satuan}} @endif, {{$data_barang->spec}}</option>
                                                                                 @endforeach
                                                                             @endif
                                                                         </select>

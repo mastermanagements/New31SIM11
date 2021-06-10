@@ -134,7 +134,7 @@
                                                 <div class="col-md-6">
                                                 <div class="box-footer no-padding">
                                                   <ul class="nav nav-stacked">
-                                                    <li><b>Jumlah</b><span class="pull-right">{{ $detail_oj->qty }} {{ $detail_oj->getBarang->linkToSatuan->satuan }} </span></li>
+                                                    <li><b>Jumlah</b><span class="pull-right">{{ $detail_oj->qty }} @if(!empty($detail_oj->getBarang->linkToSatuan->satuan)){{ $detail_oj->getBarang->linkToSatuan->satuan }} @endif</span></li>
                                                     <dl>
                                                         <dt>Keterangan</dt>
                                                         <dd>{!! $detail_oj->ket !!}</dd>
