@@ -651,9 +651,10 @@
                                                                                         <p>Jangka Waktu Pemeliharaan : {{ $value->jangka_waktu }}</p>
                                                                                         <p>Harga Pemeliharaan :Rp. {{ $value->biaya_pem }}</p>
                                                                                     </div>
-                                                                                    <div class="col-md-9" style="width:73%;height: 255px; overflow-y: scroll; ">
-                                                                                        <p><h5 style="font-weight: bold">Keterangan Pemeliharaan :</h5> {!!  $value->ket  !!} </p>
-                                                                                    </div>
+                                                                                    <div class="col-md-9" style="width:73%;height: 255px; overflow-y: scroll; ">                                                                     
+																						<p><h5 style="font-weight: bold">Keterangan Pemeliharaan : <a href="{{ url('lihat-progress/'.$value->id) }}" class="btn btn-xs btn-primary pull-right">Lihat Progress</a></h5> {!!  $value->ket  !!} </p>
+                                                                                    </div>																					
+                                                                                                                                                                        
                                                                                 </div>
                                                                             </div>
                                                                         </div>

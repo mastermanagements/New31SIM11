@@ -8,6 +8,7 @@
     <section class="content-header">
         <h1>
             BA. Penyelesaian untuk SPK : {{ $spk->no_spk }}
+			
         </h1>
     </section>
 
@@ -26,6 +27,7 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Daftar BA. Penyelesaian</a></li>
+						<h5 class="pull-right"><a href="{{ url('SPK-Kontrak')}}">Kembali ke Halaman utama&nbsp;&nbsp;&nbsp;&nbsp;</a></h5>
                   </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -41,7 +43,7 @@
                                         <div class="input-group input-group-md" >
                                             {{ csrf_field() }}
                                             <input type="hidden" name="id_spk" value="{{ $spk->id }}">
-                                            <input type="text" name="isi_bapeny" class="form-control" placeholder="cari berdasarkan isi penyelesaian" required>
+                                            <input type="text" name="isi_bapeny" class="form-control" placeholder="cari berdasarkan isi BA Penyelesaian" required>
                                             <span class="input-group-btn">
                                             <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
                                             </span>
