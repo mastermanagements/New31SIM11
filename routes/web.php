@@ -1369,6 +1369,8 @@ Route::get('hapus-karyawan/{id}', 'hrd\Karyawan@delete');
 
 Route::get('profil/{id}', 'karyawan\Karyawan@index');
 
+Route::post('store-jabatan-ky', 'hrd\JabatanKy@storeUpdate');
+
 Route::post('proses-pendidikan', 'karyawan\Karyawan@proses_pendidikan');
 
 Route::get('getDataPendidikan', 'karyawan\Karyawan@data_pendidikan');
@@ -1968,7 +1970,7 @@ Route::get('ubah-sop/{id}', 'hrd\Sop@edit');
 
 Route::put('update-sop/{id}', 'hrd\Sop@update');
 
-Route::post('store-jabatan-ky', 'hrd\JabatanKy@storeUpdate');
+
 
 //================================= Penggjian ==========================================================================
 

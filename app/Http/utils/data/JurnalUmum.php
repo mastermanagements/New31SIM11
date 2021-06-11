@@ -46,9 +46,9 @@ class JurnalUmum
 				if(!empty($data_jurnal->akun->kode_akun_aktif)) {
 					$column['kode_akun'] = $data_jurnal->akun->kode_akun_aktif;
 				}
-				if(!empty($data_jurnal->akun->nm_akun_aktif)) {
+				
 					$column['nama_akun'] = $data_jurnal->akun->nm_akun_aktif;
-				}
+				
 					$column['keterangan'] = $data_jurnal->keterangan->nm_transaksi;
 	
                 if($data_jurnal->debet_kredit==0){
@@ -59,21 +59,21 @@ class JurnalUmum
 
                 $column['debet'] = $nilai_debet;
                 $column['kredit'] = $nilai_kredit;
-				if(!empty($data_jurnal->akun->id)){
+				
 					$column['id_akun'] = $data_jurnal->akun->id;
-				}	
-				if(!empty($data_jurnal->akun->sub_akun->id_akun_ukm)){
+					
+				
 					$column['id_akun_ukm'] = $data_jurnal->akun->sub_akun->id_akun_ukm;
-				}
+				
                 
                 $column['id_aktif_ukm'] = $data_jurnal->id_akun_aktif;
                 $column['tgl_jurnal'] = $data_jurnal->tgl_jurnal;
                 $column['debet_kredit'] = $data_jurnal->debet_kredit;
 
                 # Posisi saldo adalah gabungan posisi saldo dari akun, sub akun, sub sub akun.
-				if(!empty($data_jurnal->akun->posisi_saldo)){
+				
                 $column['posisi_saldo'] = $data_jurnal->akun->posisi_saldo;
-				}
+				
                 if(!empty($data_jurnal->akun->sub_akun->posisi_saldo)){
                     $column['posisi_akun_saldo'] = $data_jurnal->akun->sub_akun->linktoakunUkm->posisi_saldo;
                 }else{

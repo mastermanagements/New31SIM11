@@ -36,14 +36,17 @@
                            @elseif(!empty(session('message_fail')))
                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
-                           <p style="color: green">Pilihlah menu aplikasi aturusaha.com dibawah ini sesuai kebutuhan perusahaan anda.</p>
+                           <p style="color: blue">Pilihlah menu aplikasi aturusaha.com dibawah ini sesuai kebutuhan perusahaan anda, Klik dikolom centang untuk mengaktifkannya.</p>
 
                               @foreach($menu as $key=> $menus)
+							<div class="col-md-12">
                                <div class="form-group">
-                                   <label class="main-class" >{{ $menus->nm_menu }}</label>
+                                   <label class="main-class" ><font color="#EE3723">{{ $menus->nm_menu }}</font></label>
                                </div>
+							</div>
                                   @if(!empty($submenu=$menus->getSubmenu))
                                         @foreach($submenu as $sKey => $sum_menu)
+										<div class="col-md-4">
                                            <div class="form-group" style="padding-left: 5%;">
                                                <input type="checkbox" class="minimal menu_sub_{{ $key }}" value="{{ $sum_menu->id }}" id="menus_{{ $key }}"
                                                @if(!empty($menu_perusahaan))
@@ -56,10 +59,13 @@
                                                > <label > {{ $sum_menu->nm_submenu }}
                                                </label>
                                            </div>
+										</div>
                                         @endforeach
                                   @endif
                                @endforeach
+							
                                <input type="hidden" name="id_perusahaan" value="{{ $usaha->id }}">
+							
                        </div>
                        <div class="box-footer">
 

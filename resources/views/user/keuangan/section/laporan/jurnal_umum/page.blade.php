@@ -50,8 +50,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @if(!empty($data_jurnal_umum))
-                                @foreach($data_jurnal_umum as $data)
+                            @if(!empty($data_jurnal))
+                                @foreach($data_jurnal as $data)
                                     <tr>
                                         <td>{{ $data['no_transaksi'] }}</td>
                                         <td>{{ $data['tanggal'] }}</td>
