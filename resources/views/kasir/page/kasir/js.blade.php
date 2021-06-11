@@ -93,7 +93,7 @@
         cek_barang = function (id_nota) {
             var html = "";
             $('#detail_tabel_modal tbody').empty(html);
-            $('#belanja_total').text('asasd');
+            $('#belanja_total').text('');
             $('#modal_total_bayar').text('');
             $('#kembalian').text('');
             var total_belanja = 0;
