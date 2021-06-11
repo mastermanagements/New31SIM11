@@ -23,7 +23,7 @@
                         <li @if(Session::get('menu_tun')=="TunjanganGaji") class="active" @endif ><a href="{{ url('TunjanganGaji') }}" >Tunjangan Gaji</a></li>
                         <li @if(Session::get('menu_tun')=="KelasProyek") class="active" @endif ><a href="{{ url('Kelas-proyek') }}" >Kelas Proyek</a></li>
                         <li @if(Session::get('menu_tun')=="BonusProyek") class="active" @endif ><a href="{{ url('Bonus-proyek') }}" >Bonus Proyek</a></li>
-                        <li class="pull-left header"><i class="fa fa-th"></i> Skala Gaji</li>
+                        <li class="pull-left header"><i class="fa fa-th"></i> Tunjangan Gaji</li>
                     </ul>
                     <div class="tab-content">
                         @if(Session::get('menu_tun')=="itemTunjangan")
