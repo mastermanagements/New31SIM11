@@ -113,9 +113,9 @@
                                             @foreach($nota as $data)
                                                 <tr>
                                                     <th>{{ $no++ }}</th>
-                                                    <th>{{ $data->kode }}</th>
-                                                    <th>{{ $data->linkToMannyDetailNota->count('id') }}</th>
-                                                    <th>RP. {{ $data->linkToMannyDetailNota->sum('sub_total') }}</th>
+                                                    <th>{{ $data->no_sales }}</th>
+                                                    <th>{{ $data->linkToDetailSales->count('id') }}</th>
+                                                    <th>RP. {{ $data->linkToDetailSales->sum('jumlah_harga') }}</th>
                                                     <th>
                                                         <div class="btn-group">
                                                             <button type="button" class="btn btn-info btn-flat">Aksi</button>

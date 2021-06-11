@@ -36,10 +36,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet"
   
 </head>
-<body class="hold-transition skin-black-light sidebar-mini fixed">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 <div class="wrapper">
 
   @include('user.karyawan.include.header')

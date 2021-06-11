@@ -62,7 +62,7 @@
                                                     data-toggle="modal" data-target="#modal-menu-ba-serops"
 
                                                     @else
-                                                    {{--href="{{ url($sum_menu->getMasterSubMenuUKM->url) }}"--}}
+                                                    href="#"
                                                         onclick="setSession('{{ url($sum_menu->getMasterSubMenuUKM->url) }}', '{{ $mKey }}','{{ $sKey }}')"
                                                     @endif
 

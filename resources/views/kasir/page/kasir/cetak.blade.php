@@ -12,11 +12,11 @@
         <thead>
             <tr>
                     <th>Kode:</th>
-                    <th>{{ $nota->kode }}</th>
+                    <th>{{ $nota->no_sales }}</th>
             </tr>
             <tr>
                     <th>Tgl:</th>
-                    <th>{{ date('d-m-Y', strtotime($nota->created_at)) }}</th>
+                    <th>{{ date('d-m-Y', strtotime($nota->tgl_sales)) }}</th>
             </tr>
         </thead>
     </table>
@@ -32,13 +32,13 @@
         <tbody>
         @php($total_harga =0)
         @php($total_item =0)
-            @if(!empty($nota->linkToMannyDetailNota))
+            @if(!empty($nota->linkToDetailSales))
                 @php($no=1)
-                @foreach($nota->linkToMannyDetailNota as $item)
+                @foreach($nota->linkToDetailSales as $item)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $item->linkToBarang->nm_barang }} <br> {{ number_format($item->jumlah_jual,0,',','.') }} x {{ number_format($item->harga_satuan,0,',','.') }}</td>
-                        <td>{{ number_format($item->sub_total,0,',','.') }}  @php($total_harga+=$item->sub_total) @php($total_item++)</td>
+                        <td>{{ $item->linkToBarang->nm_barang }} <br> {{ number_format($item->jumlah_jual,0,',','.') }} x {{ number_format($item->hpp,0,',','.') }}</td>
+                        <td>{{ number_format($item->jumlah_harga,0,',','.') }}  @php($total_harga+=$item->jumlah_jual) @php($total_item++)</td>
                     </tr>
                 @endforeach
             @endif

@@ -152,7 +152,8 @@
                                                                 <th colspan="2">Total</th>
                                                                 <th colspan="2">&nbsp;&nbsp;&nbsp;{{ $total_item }} item</th>
                                                                 <th colspan="1"> &nbsp;&nbsp;&nbsp;{{ rupiahView($total_diskon) }}</th>
-                                                                <th>  &nbsp;&nbsp;&nbsp;{{ rupiahView($total_uang) }}</th>
+                                                                <th>  &nbsp;&nbsp;&nbsp;{{ rupiahView($total_uang) }}
+                                                                    <input type="hidden" id="sub_total" value="{{ $total_uang }}"></th>
                                                             </tr>
                                                         </tbody>
                                                     </table>
