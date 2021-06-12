@@ -259,6 +259,7 @@
                                                     @method('delete')
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id) }}" class="btn btn-primary">Detail barang</a>
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/complain') }}" class="btn btn-primary">Complain</a>
+                                                    <a href="{{ url('cetak-nota-penjualan/'. $item_Psales->id) }}" class="btn btn-primary">Cetak Nota</a>
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/edit') }}" class="btn btn-warning">ubah</a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>
                                                 </form>

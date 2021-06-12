@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\utils\HeaderReport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Administrasi\Klien as klien;
@@ -259,6 +260,15 @@ class PSales extends Controller
             }
       }
 
+  }
+
+  public function cetak_nota_penjualan($id_penjualan){
+        $penjualan = PS::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id_penjualan);
+        $data = [
+            'data'=> $penjualan,
+            'header'=> HeaderReport::header_format_2('layouts.header_print.header_print1','INVOICE')
+        ];
+        return view('user.produksi.section.jualbarang.penjualan.cetak_nota_penjualan', $data);
   }
 
 }

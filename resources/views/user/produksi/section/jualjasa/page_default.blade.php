@@ -3,7 +3,6 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-
 @stop
 
 @section('master_content')

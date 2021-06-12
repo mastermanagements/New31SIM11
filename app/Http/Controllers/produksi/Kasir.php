@@ -11,6 +11,7 @@ use App\Model\Kasir\DetailKasir;
 use Session;
 use App\Model\Produksi\PSales;
 use App\Model\Produksi\DetailSales;
+use App\Http\utils\Stok;
 
 class Kasir extends Controller
 {
@@ -112,6 +113,7 @@ class Kasir extends Controller
                 ]
             );
             $model_detail_p_sales->save();
+            Stok::UpdateStokAkhirPenjualan($model_detail_p_sales);
         }
     }
 
