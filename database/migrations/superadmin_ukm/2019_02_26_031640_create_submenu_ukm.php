@@ -17,6 +17,7 @@ class CreateSubmenuUkm extends Migration
             $table->increments('id');
             $table->integer('id_menu_ukm')->unsigned();
             $table->integer('id_master_submenu')->unsigned();
+			$table->integer('urutan')->default('0')->nullable();
             $table->integer('id_perusahaan')->unsigned();
             $table->timestamps();
         });

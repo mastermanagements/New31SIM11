@@ -20,6 +20,7 @@ class CreateUMenuKaryawan extends Migration
             $table->integer('id_karyawan')->unsigned();
             $table->integer('id_user_ukm')->unsigned();
             $table->enum('status_akses',['0','1'])->default('0');
+			$table->integer('urutan')->default('0')->nullable();
             $table->integer('id_perusahaan')->unsigned();
             $table->timestamps();
         });

@@ -26,7 +26,7 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Daftar BA. Serah Terima</a></li>
-						<h5 class="pull-right"><a href="{{ url('SPK-Kontrak')}}">Kembali ke Halaman utama&nbsp;&nbsp;&nbsp;&nbsp;</a></h5>
+						<h5 class="pull-right"><a href="{{ url('SPK-Kontrak')}}"><font color="#1052EE">Kembali ke Halaman Utama</font>&nbsp;&nbsp;&nbsp;&nbsp;</a></h5>
                   </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">

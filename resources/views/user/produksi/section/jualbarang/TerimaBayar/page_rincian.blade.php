@@ -19,7 +19,7 @@
                   <div class="box-header with-border">
                       <h6 class="box-title">Rincian Pembayaran Penjualan dengan No Transaksi: <font color="#FF00GG">@if(!empty($data->no_so)){{ $data->no_so }}@else {{ $data->no_sales }} @endif</font>, &nbsp;Klien: <font color="#FF00GG">@if(!empty($data->linkToKlien)){{ $data->linkToKlien->nm_klien }} @else Klien Umum @endif
                       </font></h6>
-                       <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
+                       <h5 class="pull-right"><a href="{{ url('Penjualan')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                   </div>
                     <!-- /.box-header -->
                     <!-- form start -->

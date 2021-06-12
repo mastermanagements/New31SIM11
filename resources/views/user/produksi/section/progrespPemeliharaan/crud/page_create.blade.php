@@ -11,7 +11,7 @@
         <h1>
           Progress Pemeliharaan Proyek
         </h1>
-		<h5 class="pull-right"><a href="{{ url('Proyek')}}">Kembali ke Halaman utama</a></h5>
+		<h5 class="pull-right"><a href="{{ url('Proyek')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
     </section>
 
     <!-- Main content -->

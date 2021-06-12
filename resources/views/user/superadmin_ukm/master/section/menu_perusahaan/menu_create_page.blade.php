@@ -26,7 +26,7 @@
                <div class="box box-primary">
                    <div class="box-header with-border">
                        <h3 class="box-title">Daftar Menu</h3>
-                       <h5 class="pull-right"><a href="{{ url('menu-perusahaan')}}">Kembali ke Halaman utama</a></h5>
+                       <h5 class="pull-right"><a href="{{ url('menu-perusahaan')}}"><font color="#1052EE"><font color="#1052EE">Kembali ke Halaman Utama</font></font></a></h5>
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
@@ -36,7 +36,9 @@
                            @elseif(!empty(session('message_fail')))
                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
-                           <p style="color: blue">Pilihlah menu aplikasi aturusaha.com dibawah ini sesuai kebutuhan perusahaan anda, Klik dikolom centang untuk mengaktifkannya.</p>
+                           <h4><p><font color="#0E50EC">Pilihlah menu dan submenu dibawah ini sesuai kebutuhan perusahaan anda, Klik dikolom centang untuk mengaktifkannya.
+						   Anda dapat mengaktifkan atau menonaktifkan kapan saja Anda mau.</font></p></h4>
+						  
 
                               @foreach($menu as $key=> $menus)
 							<div class="col-md-12">
@@ -60,6 +62,7 @@
                                                </label>
                                            </div>
 										</div>
+										<input type="hidden" name="urutan" value="{{ $sum_menu->urutan }}">
                                         @endforeach
                                   @endif
                                @endforeach
