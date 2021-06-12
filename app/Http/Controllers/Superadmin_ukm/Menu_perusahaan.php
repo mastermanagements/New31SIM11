@@ -76,6 +76,7 @@ class Menu_perusahaan extends Controller
             $master_SubMenu_model = new s_ukm_menu;
             $master_SubMenu_model->id_menu_ukm = $model_menu_ukm->id;
             $master_SubMenu_model->id_master_submenu = $sub_master_menu_mode_l->id;
+			$master_SubMenu_model->urutan = $sub_master_menu_mode_l->urutan;
             $master_SubMenu_model->id_perusahaan = $id_perusahaan;
 
             if($master_SubMenu_model->save())

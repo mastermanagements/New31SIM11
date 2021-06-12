@@ -26,7 +26,7 @@
                     <div class="box-body">
                         <!-- Custom Tabs -->
                         <a href="{{ url('komisi-sales/create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Tambah Komisi Penjualan</a>
-                        <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
+                        <h5 class="pull-right"><a href="{{ url('Penjualan')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                         <table id="example4" class="table table-bordered table-striped">
                             <thead>
                             <tr>

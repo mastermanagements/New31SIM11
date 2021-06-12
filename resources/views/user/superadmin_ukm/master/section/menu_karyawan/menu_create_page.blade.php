@@ -28,7 +28,7 @@
                <div class="box box-primary">
                    <div class="box-header with-border">
                        <h3 class="box-title">Daftar Menu</h3>
-                       <h5 class="pull-right"><a href="{{ url('pengguna-karyawan')}}">Kembali ke Halaman utama</a></h5>
+                       <h5 class="pull-right"><a href="{{ url('pengguna-karyawan')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
@@ -38,30 +38,37 @@
                            @elseif(!empty(session('message_fail')))
                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
-                           <p style="color: green">Pilihlah menu aplikasi dibawah ini yang dapat di akses oleh karyawan bersangkutan.</p>
-                               @php($id=0)
+                          <h4><p><font color="#0E50EC">Pilihlah menu dan submenu dibawah ini yang dapat diakses oleh karyawan perusahaan anda, Klik dikolom centang untuk mengaktifkannya.
+						   Anda dapat mengaktifkan atau menonaktifkan kapan saja Anda mau.</font></p></h4>
+						   
+                              @php($id=0)
                               @foreach($menu as $key=> $menus)
-                               <div class="form-group">
-                                   <label >{{ $menus->getMasterMenu->nm_menu }}</label>
-                               </div>
+								<div class="col-md-12">
+								   <div class="form-group">
+									   <label ><font color="#EE3723">{{ $menus->getMasterMenu->nm_menu }}</font></label>
+								   </div>
+								</div>
                                   @if(!empty($submenu=$menus->getSubMenu))
                                         @foreach($submenu as $sKey => $sum_menu)
 											@if(!empty($sum_menu->getMasterSubMenuUKM->id))
-                                           <div class="form-group" style="padding-left: 5%;">
-
-                                              <input type="checkbox" class="minimal main-class menu_sub_{{ $key }}" value="{{ $sum_menu->getMasterSubMenuUKM->id }}" id="menus_{{ $id++ }}"
-                                               @if(!empty($daftar_menu_karyawan))
-                                                    @foreach($daftar_menu_karyawan as $daftar_menu)
-														@if(!empty($daftar_menu->getSubMenuPerusahaan->id_master_submenu))
-                                                            @if($sum_menu->getMasterSubMenuUKM->id == $daftar_menu->getSubMenuPerusahaan->id_master_submenu)
-                                                                checked
-                                                            @endif
-														@endif
-                                                    @endforeach
-                                                @endif
-                                               > <label >  {{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}
-                                               </label>
-                                           </div>
+											<div class="col-md-4">
+												<div class="form-group" style="padding-left: 5%;">
+										
+												  <input type="checkbox" class="minimal main-class menu_sub_{{ $key }}" value="{{ $sum_menu->getMasterSubMenuUKM->id }}" id="menus_{{ $id++ }}"
+												   @if(!empty($daftar_menu_karyawan))
+														@foreach($daftar_menu_karyawan as $daftar_menu)
+															@if(!empty($daftar_menu->getSubMenuPerusahaan->id_master_submenu))
+																@if($sum_menu->getMasterSubMenuUKM->id == $daftar_menu->getSubMenuPerusahaan->id_master_submenu)
+																	checked
+																@endif
+															@endif
+														@endforeach
+													@endif
+												   > <label >  {{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}
+												   </label>
+												</div>
+											</div>
+											<input type="hidden" name="urutan" value="{{ $sum_menu->getMasterSubMenuUKM->urutan }}">
 										   @endif
                                         @endforeach
                                   @endif

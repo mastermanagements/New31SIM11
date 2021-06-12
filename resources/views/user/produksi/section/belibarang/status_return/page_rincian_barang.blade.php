@@ -27,7 +27,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                       <h3 class="box-title">Status Return Pembelian Barang Nomor Order : <font color="#FF00GG">{{ $data_order->no_order }}</font>, Supplier : <font color="#DE8F06">{{ $data_order->linkToSuppliers->nama_suplier }}</font>  </h3>
-                      <h5 class="pull-right"><a href="{{ url('Pembelian')}}">Kembali ke Halaman utama</a></h5>
+                      <h5 class="pull-right"><a href="{{ url('Pembelian')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
