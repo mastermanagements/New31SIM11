@@ -53,7 +53,7 @@
                                                 @if(!empty($barang))
                                                     <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3)"  required>
                                                         @foreach($barang as $item)
-                                                            <option value="{{ $item->id }}" >{{ $item->nm_barang }}, {{ $item->linkToSatuan->satuan }}</option>
+                                                            <option value="{{ $item->id }}" >{{ $item->nm_barang }}, @if(!empty($item->linkToSatuan->satuan)){{ $item->linkToSatuan->satuan }} @endif</option>
                                                         @endforeach
                                                     </select>
                                                 @endif
@@ -222,10 +222,10 @@
     <script>
 
 
-        $('#datepicker').datepicker({
+       /*  $('#datepicker').datepicker({
             autoclose: true,
             format: 'dd-mm-yyyy'
-        });
+        }); */
 
 
 

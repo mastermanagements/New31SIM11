@@ -54,7 +54,7 @@ class DetailSales extends Controller
 
         $harga_jual_satuan = $this->check_metode_jual($req);
         $diskon = ($diskon_nominal / $harga_jual_satuan) * 100;
-        $diskon = round($diskon, 4);
+        $diskon = round($diskon, 2);
         return $diskon;
 
     }

@@ -28,7 +28,7 @@
                     @endif
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                          <h6 class="box-title">Rincian Penjualan Faktur : <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">@if(!($data->linkToKlien)){{ $data->linkToKlien->nm_klien }} @else Klien umum  @endif,
+                          <h6 class="box-title">Rincian Penjualan Faktur : <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">@if($data->linkToKlien == 0) Klien umum @else {{ $data->linkToKlien->nm_klien }}   @endif,
                           </font>
                             @if($data->id_group !=='0')
                               @if(!empty($data->linkToKlien))
@@ -37,7 +37,7 @@
                                     <font color="#FF00GG">  {{ $data->linkToKlien->linkToMannyGroupKlien->nama_group }},</font>
                                   @endif
                               @else
-                                Klien umum
+                                Non Member
                               @endif
                             @endif
                             @if(!empty($data->linkToKlien))
@@ -51,7 +51,7 @@
 
                                 @endif
                              @else
-                                Klien Umum
+                                Tidak ada Skema Diskon
                             @endif
                           </h6>
                            <h5 class="pull-right"><a href="{{ url('Penjualan')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
