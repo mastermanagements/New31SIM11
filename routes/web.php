@@ -881,6 +881,7 @@ Route::resource('p-diskon', 'produksi\PDiskon');
 Route::resource('penjualan-barang','produksi\PSales');
 Route::post('penjualan-barang/{id_p_sales}/detail','produksi\PSales@updateDetail');
 Route::get('penjualan-barang/{id_p_sales}/complain','produksi\PSales@complain');
+Route::get('cetak-nota-penjualan/{id_sales}','produksi\PSales@cetak_nota_penjualan');
 #detail penjualan
 #pake resource post detail-penjualan-barang return 404 terus
 //Route::resource('detail-penjualan-barang','produksi\RincianSales');
