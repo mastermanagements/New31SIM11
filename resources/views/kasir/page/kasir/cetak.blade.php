@@ -38,7 +38,7 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $item->linkToBarang->nm_barang }} <br> {{ number_format($item->jumlah_jual,0,',','.') }} x {{ number_format($item->hpp,0,',','.') }}</td>
-                        <td>{{ number_format($item->jumlah_harga,0,',','.') }}  @php($total_harga+=$item->jumlah_jual) @php($total_item++)</td>
+                        <td>{{ number_format($item->jumlah_harga,0,',','.') }}  @php($total_harga+=$item->jumlah_harga) @php($total_item++)</td>
                     </tr>
                 @endforeach
             @endif
@@ -62,4 +62,7 @@
         </tfoot>
     </table>
 </body>
+<script>
+    window.print();
+</script>
 </html>

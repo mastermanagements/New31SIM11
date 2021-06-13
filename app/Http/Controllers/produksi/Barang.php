@@ -392,7 +392,7 @@ class Barang extends Controller
     }
 
     public function filterBarangByBarcode($kode_barcode){
-        $model = barangs::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('barcode',$kode_barcode)->first();
+        $model = barangs::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('barcode','like','%'.$kode_barcode.'%')->first();
          return response()->json(array('data'=>$model));
     }
 }

@@ -9,29 +9,31 @@
             total_awal = 0;
             $('#daftar_table_pesanan tbody').empty(html);
             $.each(container, function (index, value) {
+                var total = value[2] * value[3];
                 html += "<tr>";
                 html += "<td>" + (no++) + "</td>";
                 html += "<td><input type='hidden' name='id_barang[]' value='" + value[0] + "'>" + value[1] + "</td>";
-                html += "<td><input type='hidden' name='jumlah_jual[]' value='" + value[2] + "'>" + value[3] + "</td>";
-                html += "<td><input type='hidden' name='harga_satuan[]' value='" + value[3] + "'>" + value[2] + "</td>";
-                html += "<td><input type='hidden' name='sub_total[]' value='" + (value[2] * value[3]) + "'>" + (value[2] * value[3]) + "</td>";
+                html += "<td><input type='hidden' name='jumlah_jual[]' value='" + value[2] + "'>" + value[2] + "</td>";
+                html += "<td><input type='hidden' name='harga_satuan[]' value='" + value[3] + "'>" + formatRupiah(value[3].toString()) + "</td>";
+                html += "<td><input type='hidden' name='sub_total[]' value='" + (value[2] * value[3]) + "'>" + formatRupiah(total.toString()) + "</td>";
                 html += "<td><button class='btn btn-sm btn-danger' onclick='delete_item(" + index + ")'>hapus</button></td>";
                 html += "</tr>";
                 total_awal += (value[2] * value[3]);
             });
-            $('#total_akhir').text("Total Rp: " + total_awal);
+            $('#total_akhir').text("Total Rp: " + formatRupiah(total_awal.toString()));
             $('#total_penjualan').val(total_awal);
             $('#daftar_table_pesanan').append(html);
         }
 
         $('#bayar').keyup(function () {
-            var bayar = $(this).val();
-            $('#total_bayar').text('Bayar Rp:' + bayar);
+            var bayar = $(this).val().replaceAll('.','');
+            $('#total_bayar').text('Bayar Rp:' + formatRupiah(bayar.toString()));
             var kembalian = Math.abs((bayar - total_awal));
             if (kembalian > bayar) {
                 console.log(kembalian);
             }
-            $('#total_kembalian').text("Kembalian Rp: " + kembalian);
+            var n_format = kembalian;
+            $('#total_kembalian').text("Kembalian Rp: " + formatRupiah(n_format.toString()));
         });
 
         $('#tombol_tambah').click(function () {
@@ -104,23 +106,23 @@
                 type: 'get',
                 success: function (result) {
                     console.log(result);
-                    total_bayar = result.nota.bayar;
+                    total_bayar = result.nota.bayar.replaceAll('.00','');
                     $.each(result.detail_barang, function (i, v) {
                         html += "<tr>";
                         html += "<td>" + v[0] + "</td>";
                         html += "<td>" + v[1] + "</td>";
                         html += "<td>" + v[2] + "</td>";
-                        html += "<td>" + v[3] + "</td>";
-                        html += "<td>" + v[4] + "</td>";
+                        html += "<td>" + formatRupiah(v[3].toString()) + "</td>";
+                        html += "<td>" + formatRupiah(v[4].toString()) + "</td>";
                         html += "</tr>";
                         total_belanja += parseInt(v[4]);
                     });
                     $('#detail_tabel_modal').append(html);
                     $('#modal-detail-barang').modal({backdrop: 'static',});
-                    $('#belanja_total').text("Total Belanja :" + total_belanja);
-                    $('#modal_total_bayar').text("Total Bayar :" + total_bayar);
+                    $('#belanja_total').text("Total Belanja :" + formatRupiah(total_belanja.toString()));
+                    $('#modal_total_bayar').text("Total Bayar :" + formatRupiah(total_bayar.toString()));
                     var n_kembalian = Math.abs(total_belanja - total_bayar);
-                    $('#kembalian').text("Kembalian :" + n_kembalian);
+                    $('#kembalian').text("Kembalian :" + formatRupiah(n_kembalian.toString()));
                 },
                 error(xhr, status, error) {
                     var err = eval("(" + xhr.responseText + ")");
