@@ -42,7 +42,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" id="datepicker1" placeholder="Tanggal Selesai menjabatan" name="selesai_menjabat" required>
+                            <input type="text" class="form-control pull-right" id="datepicker1" placeholder="Tanggal Selesai menjabatan" name="selesai_menjabat">
                         </div>
                         <!-- /.input group -->
                         <small style="color: red">* Tidak boleh kosong</small>

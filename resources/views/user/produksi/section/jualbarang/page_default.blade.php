@@ -551,7 +551,11 @@
                                           @if($data_ket=$data->linkToOneKetTransaksi->dataAkun)
                                               @foreach($data_ket as $data)
                                                   <tr>
-                                                      <td>{{ $data->transaksi->kode_akun_aktif }} {{ $data->transaksi->nm_akun_aktif }}</td>
+                                                      <td>
+													  
+														@if(!empty($data->transaksi->kode_akun_aktif) AND !empty($data->transaksi->nm_akun_aktif) )	{{ $data->transaksi->kode_akun_aktif }} {{ $data->transaksi->nm_akun_aktif }} @endif
+														
+													  </td>
                                                       <td>@if($data->posisi_akun=='0') D @else K @endif</td>
                                                   </tr>
                                               @endforeach

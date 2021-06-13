@@ -49,7 +49,7 @@
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
                                                     <td>{{ $data->nm_barang }}</td>
-                                                    <td>{{ $data->linkToSatuan->satuan_brg }}</td>
+                                                     <td>@if(!empty($data->linkToSatuan->satuan)){{ $data->linkToSatuan->satuan }} @endif</td>
                                                     <td>{{ $data->stok_akhir }}</td>
                                                     <td>
                                                         <a href="{{ url('perbaikan-stok/'.$data->id) }}" class="btn btn-default">Perbaiki Stok</a>

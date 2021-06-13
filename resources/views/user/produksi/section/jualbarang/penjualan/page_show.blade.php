@@ -11,7 +11,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Detail Penjualan barang
+                Detail Penjualan barang 
             </h1>
         </section>
 
@@ -45,6 +45,7 @@
                                         Klien umum
                                     @endif
                                 @endif
+
                                 @if(!empty($data->linkToKlien))
                                     @if($data->linkToKlien->status_diskon =='0')
                                         Diskon Berjenjang:
@@ -60,11 +61,18 @@
                                 @endif
                             </h6>
                             <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
+
+                             @else
+                                Klien Umum
+                            @endif
+                          </h6>
+
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
                         <div class="box-body">
                             <div class="row">
+
                                 <div class="col-md-12">
                                     <form action="{{ url('detail-penjualan-barang') }}" method="post">
                                         <input type="hidden" name="id_sales" value="{{ $data->id }}">
@@ -91,6 +99,95 @@
                                                                 <option value="{{ $data_barang->id }}">{{ $data_barang->nm_barang }}
                                                                     , {{$data_barang->linkToSatuan->satuan}}
                                                                     , {{$data_barang->spec}}</option>
+
+<div class="col-md-12">
+                                                <form action="{{ url('detail-penjualan-barang') }}" method="post">
+                                                    <input type="hidden" name="id_sales" value="{{ $data->id }}">
+                                                    <table style="width: 100%;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Barang</th>
+                                                            <th>Harga Jual</th>
+                                                            <th>Banyak</th>
+                                                            <th>Diskon(%)</th>
+                                                            <th>Sub Total</th>
+                                                            <th>Aksi</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="300">
+                                                                {{ csrf_field() }}
+                                                                <select class="form-control select2" style="width: 100%;" name="id_barang"  onchange="get_harga(3)" required>
+                                                                    <option disabled>Pilih Barang</option>
+                                                                    @if(!empty($barang))
+                                                                        @foreach($barang as $data_barang)
+                                                                            <option value="{{ $data_barang->id }}">{{ $data_barang->nm_barang }}, @if(!empty($data_barang->linkToSatuan->satuan)){{$data_barang->linkToSatuan->satuan}} @endif, {{$data_barang->spec}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </select>
+                                                            </td>
+                                                            <td><input type="text"  name="hpp" class="form-control" id="show_harga" required></td>
+                                                            <td><input type="number" name="jumlah_jual" class="form-control" required></td>
+                                                            <td><input type="text" name="diskon_item" class="form-control" value="0" readonly required></td>
+                                                            <td><input type="text" name="jumlah_harga" readonly class="form-control" id="jumlah_harga" required></td>
+                                                            <td><button type="submit" class="btn btn-primary">Tambah</button></td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                </form>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <hr>
+                                                    @if(!empty($data->linkToDetailSales))
+                                                        <table style="width: 100%;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Barang</th>
+                                                                <th>Harga Jual</th>
+                                                                <th>Banyak</th>
+                                                                <th>Diskon (%)</th>
+                                                                <th>Nilai Diskon</th>
+                                                                <th>Sub Total</th>
+                                                                <th>Aksi</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @php($total_item = 0)
+                                                        @php($total_uang = 0)
+                                                        @php($total_diskon = 0)
+                                                        @foreach($data->linkToDetailSales as $keys=> $data_detail)
+                                                            <form action="{{ url('detail-penjualan-barang/'. $data_detail->id) }}" method="post">
+                                                                <tr>
+                                                                    <td width="200">
+                                                                        @method('put')
+                                                                        {{ csrf_field() }}
+                                                                        <select class="form-control select2" style="width: 100%;"  onchange="get_harga(3,'{{$keys}}')" name="id_barang" id="id_barang{{$keys}}"  required>
+                                                                            <option disabled>Pilih Barang</option>
+                                                                            @if(!empty($barang))
+                                                                                @foreach($barang as $data_barang)
+                                                                                    <option value="{{ $data_barang->id }}" @if($data_barang->id==$data_detail->id_barang) selected @endif>{{ $data_barang->nm_barang }}, @if(!empty($data_barang->linkToSatuan->satuan)){{$data_barang->linkToSatuan->satuan}} @endif, {{$data_barang->spec}}</option>
+                                                                                @endforeach
+                                                                            @endif
+                                                                        </select>
+                                                                    </td>
+                                                                    <td width="150"><input type="text" name="hpp" class="form-control" id="show_harga{{$keys}}" value="{{ rupiahView($data_detail->hpp) }}" readonly required></td>
+                                                                    <td width="70"><input type="text" name="jumlah_jual" class="form-control" value="{{ rupiahView($data_detail->jumlah_jual) }}" required></td>
+                                                                    <td width="80"><input type="number" name="diskon" class="form-control" value="{{ $data_detail->diskon }}" required></td>
+                                                                    @php($nilai_diskon = $data_detail->hpp * $data_detail->diskon/100*$data_detail->jumlah_jual)
+                                                                    <td width="150"><input type="text"  class="form-control" readonly value="{{ rupiahView($nilai_diskon) }}"></td>
+                                                                    <td width="180"><input type="text" name="jumlah_harga" readonly class="form-control" value="{{ rupiahView($data_detail->jumlah_harga) }}" required></td>
+                                                                    <td>
+                                                                        @php($total_uang+=$data_detail->jumlah_harga)
+                                                                        @php($total_diskon += (($data_detail->hpp * $data_detail->diskon/100) * $data_detail->jumlah_jual))
+                                                                        @php($total_item+=$data_detail->jumlah_jual)
+                                                                        <button type="submit" class="btn btn-warning">ubah</button>
+                                                                        <a href="{{ url('detail-penjualan-barang/'.$data_detail->id.'/destroy') }}" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')">hapus</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </form>
+
                                                             @endforeach
                                                         @endif
                                                     </select>

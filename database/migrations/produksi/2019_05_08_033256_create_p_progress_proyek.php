@@ -17,8 +17,8 @@ class CreatePProgressProyek extends Migration
             $table->increments('id');
             $table->integer('id_jadwal_proyek')->unsigned();
             $table->date('tgl_dikerjakan');
-            $table->text('masalah');
-            $table->text('solusi');
+            $table->text('masalah')->nullable();
+            $table->text('solusi')->nullable();
             $table->text('rincian_pekerjaan');
             $table->integer('id_perusahaan')->unsigned();
             $table->integer('id_karyawan')->unsigned();

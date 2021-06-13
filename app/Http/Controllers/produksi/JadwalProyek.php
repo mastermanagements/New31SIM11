@@ -35,7 +35,7 @@ class JadwalProyek extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    /*public function index()
     {
         $data=[
           'proyek'=>proyek::where('id_perusahaan', $this->id_perusahaan)->paginate(15),
@@ -44,7 +44,7 @@ class JadwalProyek extends Controller
           'data_rincian_proyek' => rincian_Tugas::all()->where('id_perusahaan', $this->id_perusahaan),
         ];
         return view('user.produksi.section.jadwalProyek.page_default', $data);
-    }
+    }*/
 
 
     /**
@@ -95,10 +95,10 @@ class JadwalProyek extends Controller
 
         if($model->save())
         {
-            return redirect('Jadwal-Proyek')->with('message_success',"Jadwal Proyek telah ditambahkan");
+            return redirect('Proyek')->with('message_success',"Jadwal Proyek telah ditambahkan")->with('tab3','tab3');
         }
         else{
-            return redirect('Jadwal-Proyek')->with('message_fail',"Maaf, telah terjadi kesalahan silahkan coba lagi");
+            return redirect('Proyek')->with('message_fail',"Maaf, telah terjadi kesalahan silahkan coba lagi")->with('tab3','tab3');
         }
 
     }
@@ -177,10 +177,10 @@ class JadwalProyek extends Controller
 
         if($model->save())
         {
-            return redirect('Jadwal-Proyek')->with('message_success',"Jadwal Proyek telah diubah");
+            return redirect('Proyek')->with('message_success',"Jadwal Proyek telah diubah")->with('tab3','tab3');
         }
         else{
-            return redirect('Jadwal-Proyek')->with('message_fail',"Maaf, telah terjadi kesalahan silahkan coba lagi");
+            return redirect('Proyek')->with('message_fail',"Maaf, telah terjadi kesalahan silahkan coba lagi")->with('tab3','tab3');
         }
 
     }
@@ -197,10 +197,10 @@ class JadwalProyek extends Controller
 
         if($model->delete())
         {
-            return redirect('Jadwal-Proyek')->with('message_success',"Jadwal Proyek telah dihapus");
+            return redirect('Proyek')->with('message_success',"Jadwal Proyek telah dihapus")->with('tab3','tab3');
         }
         else{
-            return redirect('Jadwal-Proyek')->with('message_fail',"Maaf, telah terjadi kesalahan silahkan coba lagi");
+            return redirect('Proyek')->with('message_fail',"Maaf, telah terjadi kesalahan silahkan coba lagi")->with('tab3','tab3');
         }
     }
 }

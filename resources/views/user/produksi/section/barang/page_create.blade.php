@@ -24,7 +24,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Tambah Barang</h3>
-                        <h5 class="pull-right"><a href="{{ url('Barang')}}">Kembali ke Halaman utama</a></h5>
+                        <h5 class="pull-right"><a href="{{ url('Barang')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -67,12 +67,13 @@
                                  <label for="exampleInputEmail1">Deskripsi Barang</label>
                                  <textarea name="desc_barang" class="form-control" ></textarea>
                              </div>
-                              <div class="form-group">
-                                  <label for="exampleInputEmail1">No Rak/Gudang</label>
-                                  <input type="number" min="0" name="no_rak" class="form-control" placeholder="Nomor Rak"/>
-                              </div>
+                              
                           </div>
                           <div class="col-md-3">
+							  <div class="form-group">
+                                  <label for="exampleInputEmail1">No Rak/Gudang</label>
+                                  <input type="text" name="no_rak" class="form-control" placeholder="Nomor Rak"/>
+                              </div>
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Stok Minimum</label>
                                   <input type="number" min="0" name="stok_minimum" class="form-control" placeholder="Stok Minimal" value="0" required/>
@@ -81,7 +82,10 @@
                                   <label for="exampleInputEmail1">Hpp (Harga Pokok Penjualan)</label>&nbsp;<strong style="color: red">*</strong>
                                   <input type="text" name="hpp" id="rupiah2" class="form-control" placeholder="Harga Pokok Penjualan" required/>
                               </div>
-                              <div class="form-group">
+                              
+                          </div>
+                          <div class="col-md-3">
+								<div class="form-group">
                                   <label for="exampleInputEmail1">Metode Penjualan</label>
                                   <select class="form-control select2" style="width: 100%;" name="metode_jual" required>
                                       @foreach($metode_jual as $key=> $data)
@@ -97,9 +101,11 @@
                                       @endforeach
                                   </select>
                               </div>
-                          </div>
-                          <div class="col-md-3">
-                              <div class="form-group">
+							  <div class="form-group">
+                                  <label for="exampleInputEmail1">Gambar Barang</label>
+                                  <input type="file"  name="gambar" class="form-control" placeholder="Gambar" />
+                              </div>
+                              <!--<div class="form-group">
                                   <label for="exampleInputEmail1">Kategori Barang</label>&nbsp;<strong style="color: red">*</strong>
                                   <select class="form-control select2" style="width: 100%;" name="id_kategori" required>
                                       @if(empty($kategori_produk))
@@ -124,11 +130,8 @@
                                   <select class="form-control select2" style="width: 100%;" name="id_subsubkategori_produk" required>
                                       <option value="0">Sub Kategori Belum dipilih</option>
                                   </select>
-                              </div>
-                              <div class="form-group">
-                                  <label for="exampleInputEmail1">Gambar Barang</label>
-                                  <input type="file"  name="gambar" class="form-control" placeholder="Gambar" />
-                              </div>
+                              </div>-->
+                              
                           </div>
                           <div class="col-md-12">
                             <div class="box-footer">

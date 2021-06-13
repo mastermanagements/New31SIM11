@@ -1,5 +1,4 @@
 
-
 <aside class="main-sidebar">
 
     <!-- sidebar: style can be found in sidebar.less -->
@@ -29,10 +28,11 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">LIST MENU KARYAWAN</li>
+            <li class="header"><a href="{{ url('welcome-page') }}">MENU KARYAWAN</li></a>
            @if(!empty($daftar_menu['daftar_menu']))
-                @foreach($daftar_menu['daftar_menu'] as $mKey=> $menus)
+                @foreach($daftar_menu['daftar_menu']->sortBy('id_master_menu') as $mKey=> $menus)
                     <li class="treeview @if(Session::get('main_menu')==$mKey) active menu-open @endif" >
+					
                         <a href="#">
                             <i></i> <span style="font-weight: bold">{{ $menus->getMasterMenu->nm_menu }}</span>
                             <span class="pull-right-container">
@@ -79,6 +79,8 @@
             @endif
         </ul>
         <!-- /.sidebar-menu -->
+		
+		
     </section>
     <!-- /.sidebar -->
 </aside>

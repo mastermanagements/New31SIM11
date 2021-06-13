@@ -51,9 +51,9 @@ class Barang extends Model
     }
 
     public function linkToPembelian(){
-        return $this->hasMany('App\Model\Produksi\BeliBarang','id_barang','id');
+        return $this->hasMany('App\Model\Produksi\DetailOrder','id_barang','id');
     }
     public function linkToPenjualan(){
-        return $this->hasMany('App\Model\Produksi\BeliBarang','id_barang','id');
+        return $this->hasMany('App\Model\Produksi\DetailSales','id_barang','id');
     }
 }

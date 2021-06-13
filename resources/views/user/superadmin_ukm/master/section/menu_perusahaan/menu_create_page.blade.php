@@ -26,7 +26,7 @@
                <div class="box box-primary">
                    <div class="box-header with-border">
                        <h3 class="box-title">Daftar Menu</h3>
-                       <h5 class="pull-right"><a href="{{ url('menu-perusahaan')}}">Kembali ke Halaman utama</a></h5>
+                       <h5 class="pull-right"><a href="{{ url('menu-perusahaan')}}"><font color="#1052EE"><font color="#1052EE">Kembali ke Halaman Utama</font></font></a></h5>
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
@@ -36,14 +36,19 @@
                            @elseif(!empty(session('message_fail')))
                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
-                           <p style="color: green">Pilihlah menu aplikasi aturusaha.com dibawah ini sesuai kebutuhan perusahaan anda.</p>
+                           <h4><p><font color="#0E50EC">Pilihlah menu dan submenu dibawah ini sesuai kebutuhan perusahaan anda, Klik dikolom centang untuk mengaktifkannya.
+						   Anda dapat mengaktifkan atau menonaktifkan kapan saja Anda mau.</font></p></h4>
+						  
 
                               @foreach($menu as $key=> $menus)
+							<div class="col-md-12">
                                <div class="form-group">
-                                   <label class="main-class" >{{ $menus->nm_menu }}</label>
+                                   <label class="main-class" ><font color="#EE3723">{{ $menus->nm_menu }}</font></label>
                                </div>
+							</div>
                                   @if(!empty($submenu=$menus->getSubmenu))
                                         @foreach($submenu as $sKey => $sum_menu)
+										<div class="col-md-4">
                                            <div class="form-group" style="padding-left: 5%;">
                                                <input type="checkbox" class="minimal menu_sub_{{ $key }}" value="{{ $sum_menu->id }}" id="menus_{{ $key }}"
                                                @if(!empty($menu_perusahaan))
@@ -56,10 +61,14 @@
                                                > <label > {{ $sum_menu->nm_submenu }}
                                                </label>
                                            </div>
+										</div>
+										<input type="hidden" name="urutan" value="{{ $sum_menu->urutan }}">
                                         @endforeach
                                   @endif
                                @endforeach
+							
                                <input type="hidden" name="id_perusahaan" value="{{ $usaha->id }}">
+							
                        </div>
                        <div class="box-footer">
 

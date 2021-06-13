@@ -26,6 +26,7 @@
                     <div class="box box-warning">
                         <div class="box-header with-border">
                             <h3 class="box-title">Formulir surat masuk</h3>
+							<h5 class="pull-right"><a href="{{ url('Surat')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->

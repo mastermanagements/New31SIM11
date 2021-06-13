@@ -33,13 +33,13 @@ class TaskProyek extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+   /* public function create()
     {
         $data=[
             'proyek' => proyek::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
         return view('user.produksi.section.jadwalProyek.taksProyek.page_create', $data);
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
@@ -64,9 +64,9 @@ class TaskProyek extends Controller
         $model->id_karyawan= $this->id_karyawan;
 
         if($model->save()){
-            return redirect('Jadwal-Proyek')->with('message_success', 'Anda Baru saja menambahkan taks proyek baru');
+            return redirect()->back()->with('message_success', 'Anda Baru saja menambahkan taks proyek baru');
         }else{
-            return redirect('Jadwal-Proyek')->with('message_fail', 'Maaf, telah terjadi kesalahan silahkan coba lagi');
+            return redirect()->back()->with('message_fail', 'Maaf, telah terjadi kesalahan silahkan coba lagi');
         }
     }
 
@@ -113,9 +113,9 @@ class TaskProyek extends Controller
         $model->id_karyawan= $this->id_karyawan;
 
         if($model->save()){
-            return redirect('Jadwal-Proyek')->with('message_success', 'Anda Baru saja mengubah taks proyek ');
+            return redirect('Proyek')->with('message_success', 'Anda Baru saja mengubah taks proyek ')->with('tab3','tab3');
         }else{
-            return redirect('Jadwal-Proyek')->with('message_fail', 'Maaf, telah terjadi kesalahan silahkan coba lagi');
+            return redirect('Proyek')->with('message_fail', 'Maaf, telah terjadi kesalahan silahkan coba lagi')->with('tab3','tab3');
         }
     }
 
@@ -132,9 +132,9 @@ class TaskProyek extends Controller
         }
 
         if($model->delete()){
-            return redirect('Jadwal-Proyek')->with('message_success', 'Anda Baru saja menghapus taks proyek ');
+            return redirect('Proyek')->with('message_success', 'Anda Baru saja menghapus taks proyek')->with('tab3','tab3');
         }else{
-            return redirect('Jadwal-Proyek')->with('message_fail', 'Maaf, telah terjadi kesalahan silahkan coba lagi');
+            return redirect('Proyek')->with('message_fail', 'Maaf, telah terjadi kesalahan silahkan coba lagi')->with('tab3','tab3');
         }
     }
 }

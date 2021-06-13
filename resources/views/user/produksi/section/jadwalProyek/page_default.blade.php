@@ -46,7 +46,7 @@
                                                     <div class="col-md-3" style="margin: 0">
                                                         <a href="{{ url('tambah-jadwal-proyek') }}" class="btn btn-primary" style="width: 100%" ><i class="fa fa-plus"></i> Tambah Jadwal Proyek </a>
                                                     </div>
-                                                    <div class="col-md-9" >
+                                                    <!--<div class="col-md-9" >
                                                         <form action="{{ url('cari-jadwal-proyek') }}" method="post" style="width: 100%">
                                                             <div class="input-group input-group-md" >
                                                                 {{ csrf_field() }}
@@ -64,7 +64,7 @@
                                                                 </span>
                                                             </div>
                                                         </form>
-                                                    </div>
+                                                    </div>-->
                                                 </div>
                                                 <p></p>
                                                 <div class="row">
@@ -75,8 +75,8 @@
                                                             <div class="col-md-12">
                                                                 <div class="box box-success box-solid">
                                                                     <div class="box-header with-border">
-                                                                        <h3 class="box-title">Tanggal Buat : {{ date('d-m-Y H:i:s', strtotime($value->created_at)) }}</h3>
-                                                                        <div class="box-tools pull-right">
+                                                                        <h3 class="box-title">Tanggal dibuat : {{ date('d-m-Y H:i:s', strtotime($value->created_at)) }}</h3>
+                                                                        <!--<div class="box-tools pull-right">
                                                                             <form action="{{ url('delete-proyek/'.$value->id) }}" method="post">
                                                                                 <a href="{{ url('ubah-proyek/'.$value->id) }}" type="button" class="btn btn-box-tool" title="ubah proyek"><i class="fa fa-pencil"></i>
                                                                                 </a>
@@ -87,7 +87,7 @@
                                                                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                                                                 </button>
                                                                             </form>
-                                                                        </div>
+                                                                        </div>-->
                                                                         <!-- /.box-tools -->
                                                                     </div>
                                                                     <!-- /.box-header -->

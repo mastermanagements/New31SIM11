@@ -9,6 +9,10 @@ use App\Model\Administrasi\SuratMasuk as surat_masuk;
 use App\Model\Administrasi\SuratKeluar as surat_keluar;
 use App\Model\Superadmin_ukm\U_jabatan_p as jabatan;
 use App\Model\Administrasi\JenisSurat as jenis_surat;
+use App\Model\Administrasi\Proposal as proposals;
+use App\Model\Administrasi\A_Jenis_Proposal as jenis_proposal;
+use App\Model\Administrasi\JenisArsip as jenis_arsip;
+use App\Model\Administrasi\Arsip as arsips;
 
 class Surat extends Controller
 {
@@ -35,8 +39,33 @@ class Surat extends Controller
     {
         $data_pass = [
             'surat_masuk' => surat_masuk::all()->where('id_perusahaan', $this->id_perusahaan),
-            'surat_keluar' => surat_keluar::all()->where('id_perusahaan', $this->id_perusahaan)
+            'surat_keluar' => surat_keluar::all()->where('id_perusahaan', $this->id_perusahaan),
+			'data_proposal'=> proposals::where('id_perusahaan', $this->id_perusahaan)->paginate(20),
+			'data_arsip'=> arsips::where('id_perusahaan', $this->id_perusahaan)->paginate(30),
+            'jenis_arsip' => jenis_arsip::all()->where('id_perusahaan', $this->id_perusahaan)
         ];
+		 if(empty(Session::get('tab2')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6'))){
+                  Session::flash('tab1','tab1');
+              }
+
+              if(!empty(Session::get('tab2'))){
+                  Session::flash('tab2',Session::get('tab2'));
+              }
+
+              if(!empty(Session::get('tab3'))){
+                  Session::flash('tab3',Session::get('tab3'));
+              }
+
+              if(!empty(Session::get('tab4'))){
+                  Session::flash('tab4',Session::get('tab4'));
+			  }
+			  if(!empty(Session::get('tab5'))){
+                  Session::flash('tab5',Session::get('tab5'));
+              }
+			  if(!empty(Session::get('tab6'))){
+                  Session::flash('tab6',Session::get('tab6'));
+              }
+              
         return view('user.administrasi.section.surat.page_default', $data_pass);
     }
 
@@ -202,10 +231,10 @@ class Surat extends Controller
         $model->id_karyawan = $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Surat')->with('message_success','Anda telah menambahkan surat keluar');
+            return redirect('Surat')->with('message_success','Anda telah menambahkan surat keluar')->with('tab2','tab2');
         }else
             {
-                return redirect('Surat')->with('message_fail','Terjadi kesalahan, silahkan coba ..!!');
+                return redirect('Surat')->with('message_fail','Terjadi kesalahan, silahkan coba ..!!')->with('tab2','tab2');
             }
     }
 
@@ -239,10 +268,10 @@ class Surat extends Controller
         $model->id_karyawan = $this->id_karyawan;
         if($model->save())
         {
-            return redirect('Surat')->with('message_success','Anda telah mengubah surat keluar');
+            return redirect('Surat')->with('message_success','Anda telah mengubah surat keluar')->with('tab2','tab2');
         }else
         {
-            return redirect('Surat')->with('message_fail','Terjadi kesalahan, silahkan coba ..!!');
+            return redirect('Surat')->with('message_fail','Terjadi kesalahan, silahkan coba ..!!')->with('tab2','tab2');
         }
     }
 
@@ -251,10 +280,10 @@ class Surat extends Controller
         $model = surat_keluar::findOrFail($id);
         if($model->delete())
         {
-            return redirect('Surat')->with('message_success','Anda telah menghapus surat keluar');
+            return redirect('Surat')->with('message_success','Anda telah menghapus surat keluar')->with('tab2','tab2');
         }else
         {
-            return redirect('Surat')->with('message_fail','Terjadi kesalahan, silahkan coba ..!!');
+            return redirect('Surat')->with('message_fail','Terjadi kesalahan, silahkan coba ..!!')->with('tab2','tab2');
         }
     }
 
@@ -291,20 +320,21 @@ class Surat extends Controller
         if($model->save())
         {
             if ($file_surat->move(public_path('fileSuratKeluar'), $name_file)) {
-                return redirect('Surat')->with('message_success','Anda baru saja meng-unggah file surat keluar');
+                return redirect('Surat')->with('message_success','Anda baru saja meng-unggah file surat keluar')->with('tab2','tab2');
             }else{
-                return redirect('Surat')->with('message_fail','Terjadi kesalahan, file surat keluar gagal untuk di-unggah');
+                return redirect('Surat')->with('message_fail','Terjadi kesalahan, file surat keluar gagal untuk di-unggah')->with('tab2','tab2');
             }
         }
     }
 
     public function upload_status_surat_keluar(Request $req)
     { //validasi
+	//dd($req->all());
         $this->validate($req,[
             'id_ubah' => 'required',
             'status_surat'=>'required',
 			'tgl_dikirim' => 'required',
-			'tanda_terima' => 'required',
+			//'tanda_terima' => 'required',
         ]);
         $id= $req->id_ubah;
         $status_surat= $req->status_surat;
@@ -316,11 +346,11 @@ class Surat extends Controller
 		
         if($model->save())
         {
-           return redirect('Surat')->with('message_success','Anda baru saja meng-unggah file surat keluar');
+           return redirect('Surat')->with('message_success','Anda baru saja meng-unggah file surat keluar')->with('tab2','tab2');
         }
         else
         {
-           return redirect('Surat')->with('message_fail','Terjadi kesalahan, gagal untuk ubah status surat');
+           return redirect('Surat')->with('message_fail','Terjadi kesalahan, gagal untuk ubah status surat')->with('tab2','tab2');
         }
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Karyawan\JobDecs as jobdesc;
 use App\Model\Hrd\H_Jabatan_ky as jabatan_karyawan;
-use App\Model\Karyawan\TargetBulanan as TB;
+//use App\Model\Karyawan\TargetBulanan as TB;
 
 use Session;
 
@@ -33,9 +33,9 @@ class AgendaHarian extends Controller
     {
         $data = [
             'data_jobdesc'=> jobdesc::all()->where('id_perusahaan', $this->id_perusahaan),
-			'jabatan_karyawan'=> jabatan_karyawan::all()->where('id_ky', $this->id_karyawan)->where('id_perusahaan', $this->id_perusahaan)->where('status_jabatan','aktif'),
+			'jabatan_karyawan'=> jabatan_karyawan::all()->where('id_ky', $this->id_karyawan)->where('id_perusahaan', $this->id_perusahaan)->where('status_jabatan','aktif')
 			
-			'data_target_bulanan'=> TB::all()->where('id_perusahaan', $this->id_perusahaan)
+			//'data_target_bulanan'=> TB::all()->where('id_perusahaan', $this->id_perusahaan)
 			
         ];
 		//dd($data['data_jobdesc']);

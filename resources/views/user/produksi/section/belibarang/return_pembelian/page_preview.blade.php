@@ -23,7 +23,7 @@
                     <div class="box-header with-border">
 
                         <h3 class="box-title">Return Pembelian Barang Nomor Order : <font color="#FF00GG">{{ $data->no_order }}</font>, Supplier : <font color="#DE8F06">{{ $data->linkToSuppliers->nama_suplier }}</font>  </h3>
-                        <h5 class="pull-right"><a href="{{ url('Pembelian')}}">Kembali ke Halaman utama</a></h5>
+                        <h5 class="pull-right"><a href="{{ url('Pembelian')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -37,6 +37,7 @@
                                           <th>Bentuk Return</th>
                                           <th>:</th>
                                           <th>
+										  @if(!empty($data->linkToReturnBeli->jenis_return))
                                             @php($jenis_return = $data->linkToReturnBeli->jenis_return)
                                               @if($jenis_return == 0)
                                                 Return Barang
@@ -45,23 +46,26 @@
                                               @else
                                                 Potong Hutang
                                               @endif
+										   @endif
 
                                           </th>
                                       </tr>
                                       <tr>
                                           <th>Tanggal Return</th>
                                           <th>:</th>
-                                          <th>{{ tanggalView($data->linkToReturnBeli->tgl_return)}}</th>
+                                          <th>
+												@if(!empty($data->linkToReturnBeli->tgl_return)){{ tanggalView($data->linkToReturnBeli->tgl_return)}} @endif
+										  </th>
                                       </tr>
                                       <tr>
                                           <th>Ongkos Kirim</th>
                                           <th>:</th>
-                                          <th>{{ rupiahView($data->linkToReturnBeli->ongkir_return) }}</th>
+                                          <th>@if(!empty($data->linkToReturnBeli->ongkir_return)){{ rupiahView($data->linkToReturnBeli->ongkir_return) }} @endif</th>
                                       </tr>
                                       <tr>
                                           <th>Petugas</th>
                                           <th>:</th>
-                                          <th>{{ $data->linkToReturnBeli->linkToKaryawan->nama_ky }}</th>
+                                          <th>@if(!empty($data->linkToReturnBeli->linkToKaryawan->nama_ky)){{ $data->linkToReturnBeli->linkToKaryawan->nama_ky }} @endif</th>
                                       </tr>
 
                                   </table>

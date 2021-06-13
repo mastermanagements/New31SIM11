@@ -88,8 +88,8 @@
                                                                                 <div class="row">
                                                                                     <div class="col-md-3">
                                                                                         <h4 style="font-weight: bold">Rincian Permintaan Jasa :</h4>
-                                                                                        <p>Jasa  : {{ $value->jasa->nm_jasa }}</p>
-                                                                                        <p>Jenis Pemeliharaan : {{ $value->jenis_pem->jenis_pm }}</p>
+                                                                                        {{-- <p>Jasa  : {{ $value->jasa->nm_jasa }}</p> --}}
+                                                                                      {{--  <p>Jenis Pemeliharaan : {{ $value->jenis_pem->jenis_pm }}</p> --}}
                                                                                         <p>Jangka Waktu Pemeliharaan : {{ $value->jangka_waktu }}</p>
                                                                                         <p>Harga Pemeliharaan :Rp. {{ $value->biaya_pem }}</p>
                                                                                     </div>

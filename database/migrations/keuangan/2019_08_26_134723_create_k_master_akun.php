@@ -17,6 +17,7 @@ class CreateKMasterAkun extends Migration
             $table->increments('id');
 			$table->string('kode_m_akun',15);
 			$table->string('nm_m_akun',50);
+			$table->enum('posisi_saldo',['D','K'])->comment('D=Debet, K=Kredit')->default('D');
             $table->timestamps();
         });
     }

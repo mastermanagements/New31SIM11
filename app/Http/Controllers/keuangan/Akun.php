@@ -54,31 +54,33 @@ class Akun extends Controller
 //            "id_akun_master"=> 'required'
 //        ]);
         $data_master_akun = kmA::all();
+		//dd($data_master_akun);
         foreach ($data_master_akun as $value){
             $model = akun_master::updateOrCreate(
-                ['id_m_akun'=> $value->id, 'id_perusahaan'=>$this->id_perusahaan, 'id_karyawan'=> $this->id_karyawan],
-                ['kode_akun'=>$value->kode_m_akun, 'nm_akun'=> $value->nm_m_akun]
+                ['id_m_akun'=> $value->id, 'id_perusahaan'=>$this->id_perusahaan],
+                ['kode_akun'=>$value->kode_m_akun, 'nm_akun'=> $value->nm_m_akun, 'posisi_saldo'=>$value->posisi_saldo, 'id_karyawan'=> $this->id_karyawan]
             );
+
             $model->save();
             foreach ($value->manySubAkun as $values_sub){
                 $modelSub = SB::updateOrCreate(
                     ['id_m_sub_akun'=> $values_sub->id,'id_perusahaan'=>$this->id_perusahaan],
                     ['id_akun_ukm'=>$model->id,'kode_sub_akun'=> $values_sub->kode_m_sub_akun,'nm_sub_akun'=>$values_sub->nm_m_sub_akun,
-                        'off_on'=>'1','id_karyawan'=>$this->id_karyawan]
+                        'off_on'=>'1','id_karyawan'=>$this->id_karyawan, 'posisi_saldo'=>$values_sub->posisi_saldo]
                 );
                 $modelSub->save();
                 foreach ($values_sub->manySubsub as $value_sub_sub){
                     $model_sub_sub = ssA::updateOrCreate(
                       ['id_sub_sub_master_akun'=> $value_sub_sub->id,'id_perusahaan'=>$this->id_perusahaan],
                       ['id_sub_akun_ukm'=>$modelSub->id,'kode_subsub_akun'=> $value_sub_sub->kode_m_subsub_akun,
-                       'nm_subsub_akun'=> $value_sub_sub->nm_m_subsub_akun,'off_on'=>'1','id_karyawan'=>$this->id_karyawan]
+                       'nm_subsub_akun'=> $value_sub_sub->nm_m_subsub_akun,'off_on'=>'1','posisi_saldo'=>$value_sub_sub->posisi_saldo,'id_karyawan'=>$this->id_karyawan,]
                     );
                     $model_sub_sub->save();
                 }
             }
         }
 
-        return redirect('Akun')->with('message_success','Akun Master telah aktif');
+        return redirect('Akun')->with('message_success','Berhasil memindahkan daftar akun ini ke akun perusahaan Anda');
 
     }
 
@@ -112,9 +114,10 @@ class Akun extends Controller
         $model->kode_sub_akun= $req->kode_sub;
         $model->nm_sub_akun= $req->nm_sub;
         $model->off_on= '1';
+		$model->posisi_saldo= $req->posisi_saldo;
         $model->id_perusahaan= $this->id_perusahaan;
         $model->id_karyawan= $this->id_karyawan;
-
+		//dd($model);
         if($model->save()){
             return redirect('daftar-akun')->with('message_success','Anda telah menambah sub akun :'.$model->nm_sub_akun);
         }else{
@@ -123,6 +126,7 @@ class Akun extends Controller
     }
 
     public function update_akun_sub(Request $req){
+		//dd($req->all());
         $this->validate($req,[
           "kode_sub" => "required",
           "nm_sub" => "required",
@@ -132,6 +136,8 @@ class Akun extends Controller
         $model = SB::find($req->id_sub);
         $model->kode_sub_akun=$req->kode_sub;
         $model->nm_sub_akun=$req->nm_sub;
+		$model->posisi_saldo= $req->posisi_saldo;
+		//dd($model);
         if($model->save()){
             return redirect('daftar-akun')->with('message_success','Anda telah mengubah sub akun :'.$model->nm_sub_akun);
         }else{
@@ -171,6 +177,7 @@ class Akun extends Controller
         $model->kode_subsub_akun = $req->kode_sub_sub;
         $model->nm_subsub_akun = $req->nm_sub_sub;
         $model->off_on = '0';
+		$model->posisi_saldo= $req->posisi_saldo;
         $model->id_perusahaan = $this->id_perusahaan;
         $model->id_karyawan = $this->id_karyawan;
         if($model->save()){

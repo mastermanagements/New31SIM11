@@ -53,7 +53,7 @@
                                                     <td>{{ $no++ }}</td>
                                                     <td>{{ date('d-m-Y', strtotime($data->tgl_so)) }}</td>
                                                     <td>{{ $data->linkToBarang->nm_barang }}</td>
-                                                    <td>{{ $data->linkToBarang->linkToSatuan->satuan_brg }}</td>
+                                                     <td>@if(!empty($data->linkToSatuan->satuan)){{ $data->linkToSatuan->satuan }} @endif</td>
                                                     <td>{{ $data->stok_akhir }}</td>
                                                     <td>{{ $data->bukti_fisik }}</td>
                                                     <td>

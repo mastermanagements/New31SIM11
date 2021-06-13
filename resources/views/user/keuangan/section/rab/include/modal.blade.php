@@ -1,3 +1,4 @@
+
 <!---modal tambah RPB--->
 <div class="modal fade" id="modal-tambah-RPB">
     <div class="modal-dialog modal-lg">
@@ -46,7 +47,7 @@
 		</div>
     <!-- /.modal-dialog -->
 	</div>
-</div>	
+</div>
 <!-- /.modal -->
 <!----edit RPB-->
 <div class="modal fade" id="modal-ubahRPB">
@@ -80,7 +81,7 @@
                         </select>
                         <small style="color: red" id="notify"></small>
                     </div>
-									
+
 					<div class="form-group">
                         <label for="exampleInputEmail1">Barang</label>
                         <select class="form-control select2" style="width: 100%;" name="id_barang_ubah" required>
@@ -135,10 +136,10 @@
                         <select class="form-control select2" style="width: 100%;" name="id_jasa" required>
                             @if(empty($data_jasa))
                                <option>Data Jasa Belum di isi</option>
-								@else
-								<option>Pilih Jasa</option>
+								           @else
+								          <option>Pilih Jasa</option>
                                 @foreach($data_jasa as $jasa)
-                                    <option value="{{ $jasa->id }}">{{ $jasa->nm_jasa }}</option>
+                                    <option value="{{ $jasa->id }}">{{ $jasa->nm_layanan }}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -167,7 +168,7 @@
 		</div>
     <!-- /.modal-dialog -->
 	</div>
-</div>	
+</div>
 <!-- /.modal -->
 <!----edit RPJ-->
 <div class="modal fade" id="modal-ubahRPJ">
@@ -201,7 +202,7 @@
                         </select>
                         <small style="color: red" id="notify"></small>
                     </div>
-									
+
 					<div class="form-group">
                         <label for="exampleInputEmail1">Jasa</label>
                         <select class="form-control select2" style="width: 100%;" name="id_jasa_ubah" required>
@@ -266,7 +267,7 @@
                     </div>
 					<div class="form-group">
                         <label for="exampleInputEmail1">Jumlah Pengeluaran</label>
-                        <input name="jumlah_pengeluaran" class="form-control" required/>
+                        <input id="rupiah2" name="jumlah_pengeluaran" class="form-control" required/>
                         <small style="color: red">* Tidak Boleh Kosong</small>
                     </div>
 					<input type="hidden" name="bulan">
@@ -282,7 +283,7 @@
 		</div>
     <!-- /.modal-dialog -->
 	</div>
-</div>	
+</div>
 <!-- /.modal -->
 <!----edit R-OUT-->
 <div class="modal fade" id="modal-ubahROUT">
@@ -295,35 +296,32 @@
                     <h4 class="modal-title">Formulir Ubah Rencana Pengeluaran Perusahaan</h4>
                 </div>
                 <div class="modal-body">
-					<div class="form-group">
-                        <label for="exampleInputEmail1">Tahun </label>
-						<select class="form-control select2" style="width: 100%;" name="tahun_ubah" required>
-								<option>Tahun</option>
-                                    @foreach(Tahun() as $tahun)
-                                            <option value="{{ $tahun }}">{{ $tahun }}</option>
-                                    @endforeach
-                        </select>
-                        <small style="color: red" id="notify"></small>
-                    </div>
-					<div class="form-group">
-                        <label for="exampleInputEmail1">Bulan</label>
-						<select class="form-control select2" style="width: 100%;" name="bulan_ubah" required>
-								<option>Bulan</option>
-                                    @foreach(Bulan() as $bulan)
-                                            <option value="{{ $bulan }}">{{ $bulan }}</option>
-                                    @endforeach
-                        </select>
-                        </select>
-                        <small style="color: red" id="notify"></small>
-                    </div>
-									
+          <div class="form-group">
+              <label for="exampleInputEmail1">Tahun</label>
+                <select class="form-control select2" style="width: 100%;" name="tahun_ubah" required>
+        				<option>Pilih Tahun</option>
+                    @foreach($data_teks as $tahun)
+                    <option value="{{ $tahun->tahun }}">{{ $tahun->tahun }}</option>
+                    @endforeach
+                </select>
+          </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Bulan</label>
+                <select class="form-control select2" style="width: 100%;" name="bulan_ubah" required>
+                <option>Pilih Bulan</option>
+                    @foreach($data_tstaf as $bulan)
+                    <option value="{{ $bulan->bulan }}">{{ $bulan->bulan }}</option>
+                    @endforeach
+                </select>
+          </div>
+
 					<div class="form-group">
                         <label for="exampleInputEmail1">Nama Pengeluaran</label>
                         <select class="form-control select2" style="width: 100%;" name="id_subsub_akun_ubah" required>
                             @if(empty($data_barang))
                                 <option>Data Akun Belum di Isi</option>
                                 @else
-								<option>Pilih Nama Pengeluaran</option>
+								                 <option>Pilih Nama Pengeluaran</option>
                                 @foreach($data_subsub_akun as $akun_beban)
                                     <option value="{{ $akun_beban->id }}">{{ $akun_beban->nm_subsub_akun }}</option>
                                 @endforeach
@@ -333,7 +331,7 @@
                     </div>
 					<div class="form-group">
                         <label for="exampleInputEmail1">Jumlah Pengeluaran</label>
-                        <input type="text" class="form-control"  name="jumlah_pengeluaran_ubah"  required>
+                        <input type="text" class="form-control"  id="rupiah2" name="jumlah_pengeluaran_ubah"  required>
                         <small style="color: red" id="notify"></small>
                     </div>
                 </div>

@@ -26,7 +26,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Produksi Baru</h3>
-                        <h5 class="pull-right"><a href="{{ url('manufaktur')}}">Kembali ke Halaman utama</a></h5>
+                        <h5 class="pull-right"><a href="{{ url('manufaktur')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -41,7 +41,7 @@
                                                 <option disabled>Pilih Barang</option>
                                                 @if(!empty($barang_jadi))
                                                     @foreach($barang_jadi as $data_barang_jadi)
-                                                        <option value="{{ $data_barang_jadi->id }}"> {{ $data_barang_jadi->nm_barang }}, &nbsp;{{ $data_barang_jadi->linkToSatuan->satuan }}, &nbsp;{{ $data_barang_jadi->spec_barang }}</option>
+                                                        <option value="{{ $data_barang_jadi->id }}"> {{ $data_barang_jadi->nm_barang }}, &nbsp; @if(!empty($data_barang_jadi->linkToSatuan->satuan)) {{ $data_barang_jadi->linkToSatuan->satuan }},  @endif&nbsp;{{ $data_barang_jadi->spec_barang }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -52,7 +52,7 @@
                                                 <option value="">Pilih Barang</option>
                                                 @if(!empty($barang_dalam_proses))
                                                     @foreach($barang_dalam_proses as $barang_dalam_proses_item)
-                                                        <option value="{{ $barang_dalam_proses_item->id }}"> {{ $barang_dalam_proses_item->nm_barang }}, &nbsp;{{ $barang_dalam_proses_item->linkToSatuan->satuan }}, &nbsp;{{ $barang_dalam_proses_item->spec_barang }}</option>
+                                                        <option value="{{ $barang_dalam_proses_item->id }}"> {{ $barang_dalam_proses_item->nm_barang }}, &nbsp; @if(!empty($barang_dalam_proses_item->linkToSatuan->satuan)){{ $barang_dalam_proses_item->linkToSatuan->satuan }} @endif , &nbsp;{{ $barang_dalam_proses_item->spec_barang }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>

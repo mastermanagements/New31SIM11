@@ -26,6 +26,7 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Daftar BA. Serah Terima</a></li>
+						<h5 class="pull-right"><a href="{{ url('SPK-Kontrak')}}"><font color="#1052EE">Kembali ke Halaman Utama</font>&nbsp;&nbsp;&nbsp;&nbsp;</a></h5>
                   </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -41,7 +42,7 @@
                                         <div class="input-group input-group-md" >
                                             {{ csrf_field() }}
                                             <input type="hidden" name="id_spk" value="{{ $spk->id }}">
-                                            <input type="text" name="isi_sertim" class="form-control" placeholder="cari berdasarkan isi serah terima" required>
+                                            <input type="text" name="isi_sertim" class="form-control" placeholder="cari berdasarkan isi BA Serah Terima Pekerjaan" required>
                                             <span class="input-group-btn">
                                             <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
                                             </span>

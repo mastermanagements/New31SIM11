@@ -37,7 +37,7 @@
                        <h3 class="profile-username text-center">
                            {{ $data_karyawan->nama_ky }}<br>
                            <small>{{ $data_karyawan->nik }} </small>
-                           <h5 class="pull-right"><a href="{{ url('pengguna-karyawan')}}">Kembali ke Halaman utama</a></h5>
+                           <h5 class="pull-right"><a href="{{ url('pengguna-karyawan')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                        </h3>
                        <p  class="text-muted text-left"><b>Profil Karyawan</b></p>
 
