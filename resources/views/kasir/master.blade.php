@@ -39,7 +39,7 @@
     <!-- =============================================== -->
 
     <!-- Left side column. contains the sidebar -->
-    @include('kasir.component.sidebar')
+    {{--@include('kasir.component.sidebar')--}}
 
     <!-- =============================================== -->
 

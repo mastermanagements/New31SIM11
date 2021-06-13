@@ -115,7 +115,7 @@
                                                     <th>{{ $no++ }}</th>
                                                     <th>{{ $data->no_sales }}</th>
                                                     <th>{{ $data->linkToDetailSales->count('id') }}</th>
-                                                    <th>RP. {{ $data->linkToDetailSales->sum('jumlah_harga') }}</th>
+                                                    <th>RP. {{ number_format($data->linkToDetailSales->sum('jumlah_harga'),2,',','.') }}</th>
                                                     <th>
                                                         <div class="btn-group">
                                                             <button type="button" class="btn btn-info btn-flat">Aksi</button>
@@ -158,14 +158,14 @@
                                 <option value="">Pilih Barang</option>
                                 @if(!empty($barang))
                                     @foreach($barang as $data_item)
-                                        <option value="{{ $data_item->id }}">{{ $data_item->nm_barang }}</option>
+                                        <option value="{{ $data_item->id }}">{{ $data_item->nm_barang }},{{ $data_item->linkToSatuan->satuan }} ,{{ $data_item->spec }}</option>
                                     @endforeach
                                 @endif
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Jumlah</label>
-                            <input  type="number" class="form-control" name="jumlah" value="0" id="jumlah">
+                            <input  type="number" class="form-control" name="jumlah" value="1" id="jumlah">
                         </div>
                         <div class="form-group">
                             <label>Harga</label>
@@ -236,4 +236,5 @@
     <!-- /.content -->
 @stop
 
+@include('user.global.rupiah_input')
 @include('kasir.page.kasir.js')
