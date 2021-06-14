@@ -24,9 +24,9 @@
     <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- //Custom Theme files -->
     <!-- online-fonts -->
-    <!--<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">-->
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 </head>
 
 <body>
@@ -51,10 +51,10 @@
                         <input type="checkbox" id="drop" />
                         <ul class="menu">
                             <li><a href="{{'/'}}" class="active klik_menu" id="home">Home</a></li>
-                            <li><a href="#">Blog</a></li>
+                            <!--<li><a href="#" >Blog</a></li>-->
 							<li><a href="#" class="klik_menu" id="event" >Event</a></li>
                             <li><a href="#" class="klik_menu" id="pelatihan" >Pelatihan</a></li>
-                            <li><a href="#">Kontak</a></li>
+                            <li><a href="#" class="klik_menu" id="kontak">Kontak</a></li>
                             <li class="nav-right-sty mt-lg-0 mt-sm-4 mt-2">
                                 <a href="#regis" class="reqe-button text-uppercase page-scroll regis">Registrasi</a>
                             </li>
@@ -80,83 +80,128 @@
     <div class="content">
         <!-- banner -->
         <!-- banner -->
-        <section class="banner">
-            <!-- banner text -->
+		 <section class="blog_w3ls align-w3" id="posts">
             <div class="container">
-                <div class="banner_text_wthree_pvt">
-                    <h3 class="home-banner-w3">Jalankan Bisnismu dengan satu aplikasi</h3>
-                    <p class="bnr-txt">
-						Anda sebagai pelaku Usaha Mikro, Kecil dan Menengah (UMKM), sering mengalami kesulitan mengontrol
-						jalannya perusahaan?, Anda kesulitan mengontrol
-						administrasi, produk, keuangan, kinerja karyawan, marketing, penggajian dan semua bagian di perusahaan?
-						Hal tersebut tentunya membuat usaha Anda sulit untuk berkembang. Aturusaha.com, sebuah aplikasi Enterprice Resource Planning (ERP) hadir
-						sebagai solusi permasalahan UMKM. ERP mengintegrasikan jalannya semua bagian di perusahaan Anda mulai
-						dari Perencanaan, Pelaksanaan, Monitoring sampai Laporan (Evaluasi). Menjalankan bisnis semakin mudah dengan menggunakan
-						aplikasi ini.
-
-                    </p>
+                <div class="wthree_pvt_title text-center">
+                    <h4 class="w3pvt-title">Apa itu Aturusaha.com ?</h4>
                 </div>
-            </div>
-            <!-- //banner text -->
-            <!-- banner-bottom -->
-            <div class="banner-bottom-w3ls">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-3 col-6">
-                            <div class="bb-img">
-                                <img src="{{ asset('frontend/images/a3.jpg') }}" class="img-fluid img-thumbnail" alt="" />
-                                <h3>Perencanaan</h3>
-								<p>
-									Perencanaan akan mengarahkan jalannya perusahaan Anda ke depan.
-								</p>
+				<div class="card-body">                              
+					<h5><font color="#0B63E1">Aturusaha.com</font> adalah platform yang dapat digunakan oleh Usaha Mikro Kecil dan Menengah (UMKM) maupun perusahaan rintisan (start up) 
+						Untuk mengatur bisnisnya dan terhubung dengan mentor dan investor dalam satu aplikasi.
+					</h5>
+                </div><br>
+                <div class="row space-sec">
+                    <!-- blog grid -->
+                    <div class="col-lg-4 col-md-6 mt-sm-0 mt-4">
+                        <div class="card">
+                            <div class="card-header p-0 position-relative">                                
+                                <img class="card-img-bottom" src="{{ asset('frontend/images/g1.jpg') }}" alt="Card image cap">
+                                    <span class="post-icon">Internal Manajemen UMKM</span>                                
                             </div>
-                        </div>
-                        <div class="col-sm-3 col-6">
-                            <div class="bb-img">
-                                <img src="{{ asset('frontend/images/a2.jpg') }}" class="img-fluid img-thumbnail" alt="" />
-                                <h3>Pelaksanaan</h3>
-								<p>
-									Implementasikan rencana kerja semua bagian di perusahaan Anda.
-								</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-6 mx-auto mt-sm-0 mt-4">
-                            <div class="bb-img">
-                                <img src="{{ asset('frontend/images/a1.jpg') }}" class="img-fluid img-thumbnail" alt="" />
-                                <h3>Monitoring</h3>
-								<p>
-									Kontrol kinerja semua bagian sesuai dengan target yang telah direncanakan.
-								</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-6 mx-auto mt-sm-0 mt-4">
-                            <div class="bb-img">
-                                <img src="{{ asset('frontend/images/a0.jpg') }}" class="img-fluid img-thumbnail" alt="" />
-                                <h3>Evaluasi</h3>
-								<p>
-									Laporan kinerja karyawan tersedia oleh sistem, evaluasi bisnis semakin mudah.
-								</p>
+                            <div class="card-body">                             
+								<h5 class="blog-title card-title font-weight-bold">
+                                    <a href="#"> Enterpice Resource Planning For UMKM</a>
+                                </h5>
+                                <p><font color="#0B63E1">Aturusaha.com</font> adalah aplikasi satu pintu yang dapat digunakan oleh <font color="#E1120B">owner/founder</font> UMKM untuk menjalankan 
+								   bisnisnya mulai dari perencanaan sampai laporan bisnis.</p> <br><p><font color="#E1120B">Owner/founder</font> dapat mengontrol semua bagian dalam perusahaan 
+								   seperti administrasi, pembelian, penjualan, produksi, layanan jasa, marketing, keuangan, HRD, penggajian,dll.
+								</p><br><a href="#regis" class="regis">Coba sekarang gratis..</a>                              
                             </div>
                         </div>
                     </div>
+                    <!-- //blog grid -->
+                    <!-- blog grid -->
+                    <div class="col-lg-4 col-md-6 mt-md-0  mt-4">
+                        <div class="card">
+                            <div class="card-header p-0 position-relative">
+                                <a href="#">
+                                    <img class="card-img-bottom" src="{{ asset('frontend/images/g2.jpg') }}" alt="Card image cap">
+                                    <span class="post-icon">Mentoring/Coaching</span>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="blog-title card-title font-weight-bold">
+                                    <a href="single.html">Pendampingan Bisnis</a>
+                                </h5>
+                                <p>
+								  Tersedia program pendampingan bisnis untuk UMKM. UMKM dapat memilih para <font color="#E1120B">Coach</font> bisnis sesuai dengan bidang 
+								  bisnis dan kebutuhannya masing-masing.</p><br><p> <font color="#E1120B">Coach</font> bisnis yang terdaftar di <font color="#0B63E1">Aturusaha.com</font> adalah para coach bisnis yang
+								  sudah berpengalaman dan berhasil menjalankan bisnisnya. Pendampingan bisnis ini berdasarkan data real UMKM yang terdapat di aturusaha.com. 								 
+								</p><br><!--<a href="">Coba sekarang gratis..</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //blog grid -->
+                    <!-- blog grid -->
+                    <div class="col-lg-4 col-md-6 mt-lg-0 mt-4 mx-auto blog-end">
+                        <div class="card">
+                            <div class="card-header p-0  position-relative">
+                                <a href="#">
+                                    <img class="card-img-bottom" src="{{ asset('frontend/images/g3i.jpg') }}" alt="Card image cap">
+                                    <span class="post-icon">Pendanaan Usaha (funding)</span>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="blog-title card-title font-weight-bold">
+                                    <a href="single.html">Pemodalan Usaha</a>
+                                </h5>
+                                <p>
+								  <font color="#0B63E1">Aturusaha.com</font> mempertemukan UMKM dengan para <font color="#E1120B">investor</font>, baik <font color="#E1120B">investor</font> perseorangan maupun perusahaan ventura yang siap mendanai bisnis UMKM.
+								   </p><br><p>UMKM dapat melihat daftar investor dan  mengajukan pendanaan usahanya. <font color="#E1120B">Investor</font> dapat melihat 
+								   Data UMKM sesuai dengan data real laporan UMKM. Laporan perkembangan bisnis UMKM dapat dilihat setiap saat oleh investor.								   
+								</p><br><!--<a href="">Coba sekarang gratis..</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //blog grid -->
                 </div>
             </div>
-            <!-- //banner-bottom -->
         </section>
-
-        <!-- about-->
+        <!-- //blog -->
+		<!-- about-->
         <section class="single_grid_w3_main align-w3-abt" id="about">
             <div class="container">
                 <div class="row mb-5 f-owner" id="owner">
                     <div class="col-md-12 wthree_pvt_title text-center">
-                        <p class="mb-5"><b>Login Owner</b></p>
+                        <p class="mb-5"><b>Login Owner/Founder</b></p>
 						<form method="POST" action="{{ url('login-page') }}" id="appointment-form">
                             <span id="notif_login_owner" style="color: red;"></span>
                             <input type="email" name="alamat_email" id="email" class="mx-auto nama" placeholder="Email" required />
                             <br/>
                             <input type="password" name="kata_kunci" id="name" class="mx-auto pass" placeholder="Password">
 							{{ csrf_field() }}
+							<br>
+							<div class="col-md-9 text-right">
+                            <a href="#lupa_pass" class="lupa_pass"> Lupa password</a>
+							</div>
+                           
 							<button type="button" name="submit" id="submit_owner" class="btn btn-primary mt-5 tombol">Login</button>
+                        </form>
+
+						<div>
+						<br>
+						@if(!empty(session('message_success')))
+							<p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+						@elseif(!empty(session('message_fail')))
+							<p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+						@endif
+						</div>
+                    </div>
+                </div>
+				<div class="row mb-5 f-lupa_pass" id="lupa_pass">
+                    <div class="col-md-12 wthree_pvt_title text-center">
+                        <p class="mb-5"><b>Reset Password Owner</b></p>
+						<form method="POST" action="{{ url('lupa-password') }}" id="form-reset-pass">
+                            <span id="notif_email_reset" style="color: red;"></span>
+							<span style="color: green" id="notif_reset_success"></span>
+                            <span style="color: red" id="notif_reset_fail"></span>
+							<br>
+                            <input type="email" name="email" id="email_reset" class="mx-auto nama" placeholder="Masukkan Email Anda" required />
+                            <br/>
+                            
+							{{ csrf_field() }}
+							<br>							          
+							<button type="button" name="submit" id="submit_lupa_pass" class="btn btn-primary mt-5 tombol">Kirim</button>
                         </form>
 
 						<div>
@@ -178,6 +223,7 @@
                             <br/>
                             <input type="password" class="mx-auto pass" placeholder="password" name="pass" required>
 							{{ csrf_field() }}
+							
 							<button type="button" id="login_karyawan_button" class="btn btn-primary mt-5 tombol">Login</button>
                         </form>
 
@@ -196,7 +242,7 @@
                 </div>
                 <div class="row mb-5 f-regis" id="regis">
                     <div class="col-md-12 wthree_pvt_title text-center">
-                        <p class="mb-5"><b>Register</b></p>
+                        <p class="mb-5"><font color="2381EE"><b>Register Owner/Founder Perusahaan</b></font></p>
                         <form method="POST" action="{{ url('registered') }}" id="form-regist">
                             <span style="color: green" id="notif_registered_success"></span>
                             <span style="color: red" id="notif_registered_fail"></span>
@@ -210,7 +256,7 @@
                         <!--<br>
                         <div class="g-recaptcha move-left" data-sitekey="6LcTOr0UAAAAAGcl4liqP6-IPIvHpdr_m8jke99Y"></div>-->
                             <br>
-                            <input type="checkbox" name="agree_term" class="move-left" required> Saya sudah membaca <a href="#" class="sarat"> syarat dan ketentuan</a>
+                            <input type="checkbox" name="agree_term" class="move-left" checked required> Saya sudah membaca <a href="#" class="sarat"> syarat dan ketentuan</a>
                             <br>
                             <button type="button" class="btn btn-primary mt-5 tombol" id="tombol-regis">Register</button>
 						{{ csrf_field() }}
@@ -223,11 +269,17 @@
 							<p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
 						@endif
 						</div>
-                    </div>
+                    </div>               
                 </div>
+            </div>
+        </section>
+		<!-- about-->
+        <section class="single_grid_w3_main align-w3-abt" id="about">
+            <div class="container">            				
                 <div class="wthree_pvt_title text-center">
-                    <h4 class="w3pvt-title">Apakah Perusahaan Anda Sering Mengalami Masalah Seperti ?</h4>
-                    <p class="sub-title"></p>
+                    <h4 class="w3pvt-title">Siapa Pengguna Aturusaha.com <br>dan Bagaimana Cara Kerjanya ?</h4><br>
+                    <p class="sub-title"><h5>Pengguna Aturusaha.com terdiri dari 4 pengguna, yaitu:</h5></p>
+					
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
@@ -240,15 +292,16 @@
                                 </div>
                                 <div class="col-9">
                                     <div class="abt-txt">
-                                        <h5>Tidak Tahu Arah Perusahaan ke Depan ?</h5>
+                                        <h5>Owner/founder</h5>
                                         <br>
-                                        <p>
-											Perusahaan yang penting jalan saja?,
-											tidak mempunyai struktur dan bagian/departemen serta divisinya?, tidak ada analisa SWOT,
-											 tidak ada jobdesc yang jelas, tidak ada tanggung jawab dan wewenang karyawan, tidak tidak mengetahui
-											siapa kompetitor Anda?, tidak mempunyai sasaran, target tahunan, bulanan per bagian, per divisi dan
-											strategi untuk mencapainya?.
-										</p>
+                                        <p><font color="#E1120B">Owner/founder</font> mendaftar diaplikasi untuk :</p>																															
+											<p><i class="fa fa-check-circle mr-1"></i></span>Mengaktifkan menu aplikasi sesuai kebutuhan </p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Menambah Akun Pengguna Karyawan</p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Melihat daftar <font color="#E1120B">coach/mentor</font> </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Mendaftar program mentoring </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Melihat daftar <font color="#E1120B">investor</font> </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Mengajukan pendanaan ke <font color="#E1120B">investor</font> </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Mengaktifkan menu laporan untuk <font color="#E1120B">coach/investor</font> </p>
                                     </div>
                                 </div>
                             </div>
@@ -264,15 +317,16 @@
                                 </div>
                                 <div class="col-9">
                                     <div class="abt-txt">
-                                        <h5>Administrasi amburadul?</h5>
+                                        <h5>Karyawan</h5>
                                         <br>
-                                        <p>
-											Arsip perusahaan: badan hukum, data perizinan, data proposal, data kontrak pekerjaan,
-											surat masuk dan keluar, inventaris peralatan,
-											serta file arsip lainnya tersebar di berbagai komputer karyawan,
-											dan Anda kesulitan mencari file dan hard copy jika membutuhkannya?, dan itu membuat waktu anda
-											terbuang banyak untuk urusan administrasi?
-										</p>
+                                        <p><font color="#E1120B">Karyawan</font> login ke aplikasi untuk :</p>																															
+											<p><i class="fa fa-check-circle mr-1"></i></span>Mengakses menu yang diatur oleh <font color="#E1120B">Owner/founder </font></p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Mengisi tugas sesuai dengan jobdesc pekerjaan</p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Melihat produktifitas kinerja </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Menindaklanjuti respon konsumen </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Melihat laporan </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Bisa bekerja secara remote </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Menindaklanjuti feedback dari atasan </p>
                                     </div>
                                 </div>
                             </div>
@@ -292,16 +346,15 @@
                                 </div>
                                 <div class="col-9">
                                     <div class="abt-txt">
-                                        <h5>Kesulitan mengontrol Produk ?</h5>
+                                        <h5>Coach/Mentor</h5>
                                         <br>
-                                        <p>
-											Anda kesulitan mengetahui data pembelian ke supplier?, penjualan harian, bulanan tidak terupdate?,
-											Anda tidak tahu barang apa yang paling laku, yang tidak laku?,
-											Anda kesulitan mengontrol persediaan barang? berapa sisa?, berapa kedaluarsa?,
-											Kesulitan mengetahui layanan jasa yang paling banyak peminatnya?
-											Proyek pada klien perusahaan anda tidak terjadwal?, monitoring kemajuan proyek tidak terkontrol?,
-											jobdesc tidak jelas dan sering terlambat pengerjaannya?.
-										</p>
+                                        <p><font color="#E1120B">Coach/Mentor</font> mendaftar dan login ke aplikasi untuk :</p>																															
+											<p><i class="fa fa-check-circle mr-1"></i></span>Mengisi profil <font color="#E1120B">Coach/Mentor </font></p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Melihat Profil UMKM yang mengajukan coaching</p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Mengapprove/reject pengajuan coaching/mentoring </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Melihat Laporan Kinerja UMKM  </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Memberikan feedback kinerja UMKM </p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Merekomendasikan pendanaan ke <font color="#E1120B">investor </font> </p>											
                                     </div>
                                 </div>
                             </div>
@@ -317,18 +370,15 @@
                                 </div>
                                 <div class="col-9">
                                     <div class="abt-txt">
-                                        <h5>Kesulitan Mengelola Laporan Keuangan?</h5>
+                                        <h5>Investor</h5>
                                         <br>
-                                        <p>
-											Anda tidak mempunyai Rencana anggaran perusahaan, target pendapatan dan alokasi pengeluaran?,
-											tidak tahu berapa jumlah uang cash di kas harian untuk operasional, dan uang di bank?
-											uang perusahaan tercampur dengan uang pribadi?,
-											tidak tahu posisi kekayaan perusahaan?,
-											Anda merasa tidak tahu kenapa pendapatan mudah didapat, tapi uang perusahaan cepat habis? terlebih
-											menjelang gajian karyawan,
-											Anda tidak tahu berapa laba/rugi perusahaan anda setiap saat?
-
-										</p>
+                                        <p><font color="#E1120B">Investor</font> mendaftar dan login ke aplikasi untuk :</p>																															
+											<p><i class="fa fa-check-circle mr-1"></i></span>Mengisi profil <font color="#E1120B">Investor </font></p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Melihat Profil UMKM yang mengajukan pendanaan</p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Mengapprove/reject pengajuan pendanaan UMKM </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Melihat Laporan Keuangan UMKM  </p> 
+											<p><i class="fa fa-check-circle mr-1"></i></span>Memberikan feedback kinerja UMKM </p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Melihat Dividen / Bagi hasil Keuangan </p> 										
                                     </div>
                                 </div>
                             </div>
@@ -336,295 +386,33 @@
                     </div>
                 </div>
                 <br>
-                <br>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-group"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h5>Marketing Asal Jalan?</h5>
-                                        <br>
-                                        <p>Anda tidak mempunyai data pelanggan, siapa leads anda, berapa yg sudah melakukan konversi?,
-											tidak mempunyai data valid, pelanggan mana saja yang sering belanja barang atau layanan Anda?
-											Anda tidak melakukan STP (segmenting, Targeting dan  Positioning)?,
-											kegiatan marketing  bulanan tidak di rencanankan dengan baik, yang penting asal jalan.
-											fase pengenalan, branding, converting dan maintenance pelanggan tidak terpantau dengan cepat.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 my-lg-0 my-4">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-area-chart"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h4>Pengelolaan SDM Asal-Asalan</h4>
-                                        <p>
-											Tidak ada divisi HRD di perusahaan Anda? dan Anda tidak mengetahui solusinya?,
-											kesulitan menghire seleksi karyawan?, bingung membuat kontrak kerja?,
-											tidak ada SOP yg jelas, kesulitan mengatur absensi dan cuti karyawan,
-											menilai kinera karyawan berdasarkan feeling?, aspek apa yang akan di nilai, kapan harus naik gaji?,
-											bagaimana memberikan kompensasi kinerja karyawan (bonus, keniakan gaji, tunjangan, dll).
-
-										</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-usd"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h4>Penggajian Tidak Terstruktur</h4>
-                                        <p>
-											Anda kesulitan mengalokasikan pendapatan perusahaan untuk gaji karyawan?,
-											berapa menentukan jumlah alokasi gaji setiap tahun sesuai dengan perubahan pendapatan perusahaan?,
-											tidak ada standar baku menentukan gaji pokok karyawan,
-											bagaimana menentukan dan menghitung compansable factor untuk menentukan nilai gaji setiap jabatan?,
-											apa saja standar penilaiannya?,
-											bagaimana menentukan tunjangan karyawan sesuai dengan jabatan?  item apa saja yang dinilai,
-											bagaimana menentukan skala gaji, bonus proyek, kelas proyek?.
-										</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 my-lg-0 my-4">
-                        <div class="abt-grid">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="abt-icon">
-                                        <span class="fa fa-handshake-o"></span>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h4>Ingin Menggaet Investor, Tapi Kesulitan Pelaporannya?</h4>
-                                        <p>
-											Anda tidak mengetahui bentuk investasinya seperti apa? kepemilikan saham atau syirkah (Mudharabah/Musyarakah?), dan bagaimana menentukan bagi hasilnya?,
-											kesulitan menentukan persentase saham?, bagaimana mengkonversi keahlian menjadi bentuk saham,
-											bagaimana jika ada investor yang menjual sahamnya, berapa alokasi laba untuk operasional perusahaan sebelum dividen di bagikan?,
-											kesulitan membuat laporan keuangan dan laporan dividen untuk investor, sehingga kepercayaan investor menjadi berkurang?.
-										</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </section>
-        <!-- //about -->
-        <section>
+		<section class="blog_w3ls align-w3" id="posts">
             <div class="container">
                 <div class="wthree_pvt_title text-center">
-                    <h4>
-						Jangan menunggu perusahaan menjadi besar untuk menggunakan sistem, tapi
-						gunakanlah sistem agar perusahaan anda menjadi besar.
-                    </h4>
+                    <h4 class="w3pvt-title">Apa Keuntungan Menggunakan Aturusaha.com ?</h4>
                 </div>
-            </div>
-        </section>
-
-        <!-- slide -->
-        <section class="wthree-slie-btm py-lg-5">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="slide-banner pl-0">
-
-                        </div>
-                    </div>
-                    <div class="col-lg-6 mt-lg-0 mt-4">
-                        <div class="container">
-                            <div class="wthree_pvt_title">
-                                <h4 class="w3pvt-title">Bagaimana Cara Kerja Aplikasi ini?
-                                </h4> <br>
-                                <h6>
-                                    ERP untuk UMKM ini adalah sistem yang akan mengotomasisi dan mengintegrasikan bisnis anda.
-                                    Anda dapat mengelola lebih dari satu perusahaan baik perusahaan pusat dan cabang untuk perusahaan sejenis maupun berbeda jenis
-									perusahaan cukup dari satu aplikasi.
-									Pengguna Aplikasi ini terdiri dari:
-
-                                </h6>
-                            </div>
-                            <div class="row flex-column">
-                                <div class="abt-grid">
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <span class="fa fa-ravelry"></span>
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="abt-txt ml-0">
-                                                <h6><b>Owner/Founder/Co Founder Perusahaan</b></h6>
-												<p>
-													Untuk menggunakan aplikasi ini, Anda sebagai owner perusahaan silahkan melakukan registrasi.
-													Setelah melakukan login ke sistem, Anda dapat menambahkan perusahaan apa saja yang ingin Anda tambahkan.
-													Kemudian Anda dapat memilih menu aplikasi sesuai dengan kebutuhan perusahaa Anda, menambahkan karyawan
-													dan mengatur hak akses mereka sesuai dengan menu yang di izinkan. Anda juga dapat menambahkan data investor jika
-													ada.
-												</p>
-                                            </div>
-                                        </div>
-                                    </div>
-									<br>
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <span class="fa fa-ravelry"></span>
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="abt-txt ml-0">
-                                                <h6><b>Karyawan</b></h6>
-												<p>
-													Karyawan login ke sistem menggunakan akun yang diberikan oleh owner.Karyawan dapat mengakses menu aplikasi
-													sesuai dengan hak akses masing - masing.
-												</p>
-                                            </div>
-                                        </div>
-                                    </div>
-									<br>
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <span class="fa fa-ravelry"></span>
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="abt-txt ml-0">
-                                                <h6><b>Investor</b></h6>
-												<p>
-													Invstor login ke sistem menggunakan akun yang diberikan oleh owner. Investor dapat melihat perkembangan perusahaan
-													seperti laporan keuangan dan menu lainnya yang ditentukan oleh owner.
-												</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="d-flex justify-content-start">
-                                <a href="about.html" class="btn w3ls-btn">view more</a>
-                            </div> -->
-                        </div>
-                        <div class="container">
-                            <div class="wthree_pvt_title mt-4">
-                                <h4 class="w3pvt-title">Siapa Pengguna Aplikasi ini ?
-                                </h4> <br>
-                                <h6>
-                                    Pengguna aplikasi ini adalah semua UMKM yang bergerak di bidang perdagangan dan jasa. Sedangkan untuk perusahaan
-									manufaktur beberapa menu dapat digunakan untuk menjalankan proses bisnis sesuai dengan kebutuhannya.
-                                </h6>
-                            </div>
-                            <!--<div class="row flex-column">
-                                <div class="abt-grid">
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <span class="fa fa-ravelry"></span>
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="abt-txt ml-0">
-                                                <h4>Fashion</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <span class="fa fa-ravelry"></span>
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="abt-txt ml-0">
-                                                <h4>Komputer Dan Elektronik</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <span class="fa fa-ravelry"></span>
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="abt-txt ml-0">
-                                                <h4>Pertanian</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <span class="fa fa-ravelry"></span>
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="abt-txt ml-0">
-                                                <h4>Perkebunan</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <span class="fa fa-ravelry"></span>
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="abt-txt ml-0">
-                                                <h4>Otomotif</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>-->
-                            <!-- <div class="d-flex justify-content-start">
-                                <a href="about.html" class="btn w3ls-btn">view more</a>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- //slide -->
-        <!-- blog -->
-        <section class="blog_w3ls align-w3" id="posts">
-            <div class="container">
-                <div class="wthree_pvt_title text-center">
-                    <h4 class="w3pvt-title">Apa Keuntungannya Menggunakan Aplikasi ini?
-                    </h4>
-                </div>
+				<div class="card-body">                              
+					<h5 align="center"><font color="#0B63E1">Aturusaha.com</font> memberikan keuntungan untuk:
+					</h5>
+                </div><br>
                 <div class="row space-sec">
                     <!-- blog grid -->
                     <div class="col-lg-4 col-md-6 mt-sm-0 mt-4">
                         <div class="card">
-                            <div class="card-header p-0 position-relative">
-                                <a href="single.html">
-                                    <img class="card-img-bottom" src="{{ asset('frontend/images/g1.jpg') }}" alt="Card image cap">
-                                    <span class="post-icon">Efektif</span>
-                                </a>
+                            <div class="card-header p-0 position-relative">                                
+                                <img class="card-img-bottom" src="{{ asset('frontend/images/banner-ukm.jpg') }}" alt="Card image cap">
+                                    <span class="post-icon">UMKM</span>                                
                             </div>
                             <div class="card-body">
-                                <h5 class="blog-title card-title font-weight-bold">
-                                    <a href="single.html">Anda lebih fokus ke core bisnis.</a>
-                                </h5>
-                                <p>Dengan menggunakan aplikasi ini anda tidak perlu membuat dan mengembangkan sistem
-								   yang membutuhkan waktu dan biaya mahal. Kerja Anda dan tim lebih fokus meningkatkan pendapatan
-								   sesuai dengan core bisnis Anda. Dengan fokus ke core bisnis, hasil bisnis Anda lebih optimal.
-								</p>
-                                <!--<a href="single.html" class="blog_link">Read more</a>-->
+								 <h6 class="mt-3">1. Aplikasi Satu Pintu</h6>
+                                 <p class="ml-3">Anda dapat menjalanakn usaha dan mengontrol semua bagian perusahaan</p>                            
+								 <h6 class="mt-3">2. Integrasi</h6>
+                                 <p class="ml-3">Semua bagian saling terintegrasi, scalup perusahaan anda bisa lebih cepat</p>    
+								 <h6 class="mt-3">3. Connected</h6>
+                                 <p class="ml-3">Terhubung dengan coach dan investor</p>   
                             </div>
                         </div>
                     </div>
@@ -633,20 +421,18 @@
                     <div class="col-lg-4 col-md-6 mt-md-0  mt-4">
                         <div class="card">
                             <div class="card-header p-0 position-relative">
-                                <a href="single.html">
-                                    <img class="card-img-bottom" src="{{ asset('frontend/images/g2.jpg') }}" alt="Card image cap">
-                                    <span class="post-icon">Efesien</span>
+                                <a href="#">
+                                    <img class="card-img-bottom" src="{{ asset('frontend/images/coach.jpg') }}" alt="Card image cap">
+                                    <span class="post-icon">Coach/Mentor</span>
                                 </a>
                             </div>
                             <div class="card-body">
-                                <h5 class="blog-title card-title font-weight-bold">
-                                    <a href="single.html">Mengatur Perusahaan Menjadi lebih cepat</a>
-                                </h5>
-                                <p>
-								   Monitoring semua proses dan hasil kinerja karyawan untuk semua bagian/departemen menjadi lebih cepat.
-								   Perusahaan Anda lebih terarah dalam melakukan kerja - kerja harian untuk mencapai target bulanan dan tahunan.
-								</p>
-                                <!--<a href="single.html" class="blog_link">Read more</a>-->
+								 <h6 class="mt-3">1. Real Data</h6>
+                                 <p class="ml-3">Pendampingan bisnis berdasarkan data bisnis UMKM, bukan hanya bicara saja</p>                            
+								 <h6 class="mt-3">2. Lebih banyak UMKM</h6>
+                                 <p class="ml-3">Terhubung dengan jutaan UMKM di Indonesia</p>    
+								 <h6 class="mt-3">3. Syarat Mudah</h6>
+                                 <p class="ml-3">Yang penting anda sudah punya bisnis yang sukses</p>   
                             </div>
                         </div>
                     </div>
@@ -655,21 +441,18 @@
                     <div class="col-lg-4 col-md-6 mt-lg-0 mt-4 mx-auto blog-end">
                         <div class="card">
                             <div class="card-header p-0  position-relative">
-                                <a href="single.html">
-                                    <img class="card-img-bottom" src="{{ asset('frontend/images/g3i.jpg') }}" alt="Card image cap">
-                                    <span class="post-icon">Scale Up</span>
+                                <a href="#">
+                                    <img class="card-img-bottom" src="{{ asset('frontend/images/g5.jpg') }}" alt="Card image cap">
+                                    <span class="post-icon">Investor</span>
                                 </a>
                             </div>
                             <div class="card-body">
-                                <h5 class="blog-title card-title font-weight-bold">
-                                    <a href="single.html">Bisnis Anda bisa naik kelas menjadi lebih cepat.</a>
-                                </h5>
-                                <p>
-								   Syarat scale up adalah bisnis Anda sudah harus tersistem. Anda tidak lagi menggunakan cara konvensional, yaitu
-								    menjalankan bisnis secara manual. Proses bisnis   dan hasilnya sudah real time tersaji di aplikasi ini.
-
-								</p>
-                                <!--<a href="single.html" class="blog_link">Read more</a>-->
+								 <h6 class="mt-3">1. Transparan</h6>
+                                 <p class="ml-3">Sebelum deal pendanaan, anda sudah mengetahui perkembangan UMKM</p>                            
+								 <h6 class="mt-3">2. Lebih banyak UMKM</h6>
+                                 <p class="ml-3">Terhubung dengan jutaan UMKM di Indonesia</p>    
+								 <h6 class="mt-3">3. Real Data</h6>
+                                 <p class="ml-3">Setiap saat Anda dapat melihat laporan UMKM, terutama laporan keuangannya</p>   
                             </div>
                         </div>
                     </div>
@@ -677,45 +460,84 @@
                 </div>
             </div>
         </section>
-        <!-- //blog -->
-        <section>
+		<section class="single_grid_w3_main align-w3-abt" id="about">
+            <div class="container">            				
+                <div class="wthree_pvt_title text-center">
+                    <h4 class="w3pvt-title">Siapa Yang Dapat menggunakan Aturusaha.com?</h4><br>
+                    <p class="sub-title"><h5>Bidang Usaha UMKM yang dapat menggunakan aplikasi ini, yaitu:</h5></p>
+					
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="abt-grid">
+                            <div class="row">
+                               
+                                <div class="col-9">
+                                    <div class="abt-txt">
+                                        <h5>Manufaktur</h5>
+                                        <br>
+                                        	<p>Usaha Mengubah bahan mentah menjadi barang jadi seperti :</p>																														
+											<p><i class="fa fa-check-circle mr-1"></i></span>Pabrik Bahan Bangunan</p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Usaha Makanan</p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Dan Lain-lain</p> 
+											
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="abt-grid">
+                            <div class="row">
+                               
+                                <div class="col-9">
+                                    <div class="abt-txt">
+                                        <h5>Perdagangan</h5>
+                                        <br>
+                                        <p>Usaha menjual barang seperti :</p>																															
+											<p><i class="fa fa-check-circle mr-1"></i></span>Toko bangunan </font></p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Toko Pakaian/fashion</p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Toko komputer, dll </p> 										
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="abt-grid">                               
+                                <div class="col-9">
+                                    <div class="abt-txt">
+                                        <h5>Jasa</h5>
+                                        <br>
+                                        <p>Usaha yang menyediakan layanan jasa seperti :</p>																															
+											<p><i class="fa fa-check-circle mr-1"></i></span>Service Elektornik</p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Laundry</p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Notaris, dll</p> 											
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>         
+            </div>
+        </section>
+		<section>
             <div class="container">
                 <!-- iklan -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="image-ads mb-4 pl-5">
                             <h3 class="text-ads">
-                                Tunggu apa lagi ? Saatnya kelola bisnis anda <br> secara terintegrasi agar bisnis anda <br> bisa melakukan scale up secepatnya
-                            </h3>
-                            <a href="#regis" class="btn btn-primary"> <b> Daftar Gratis !!!</b> </a>
+                                Tunggu apa lagi ? Saatnya kelola bisnis anda <br> secara terintegrasi agar bisnis anda <br> bisa  scale up lebih cepat,
+								saatnya naik kelas dari zona UMKM !
+                            </h3><br>
+                            <a href="#regis" class="btn btn-primary"> <b> Daftar Gratis sekarang juga !!!</b> </a>
                         </div>
                     </div>
                 </div>
             </div>
-                    <!-- akhir iklan -->
-            <div class="container">
-                <div class="row email">
-                    <div class="col-md-6">
-                        <h4 class="text-email">
-                            Dapatkan informasi terkini mengenai aplikasi, event - event dan pelatihan, silahkan isi nama dan email Anda.
-                        </h4>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="system-email">
-                            <form class="f-email">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Nama">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email">
-                                </div>
-                                <button type="submit" class="btn btn-info pull-right">Subcrise</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </section>
+      
     </div>
     <!-- footer -->
     <footer class="footer py-md-5 pt-md-3 pb-sm-5">
@@ -806,7 +628,7 @@
 
         $('#notif_registered').text("test")
         $('#tombol-regis').click(function(){
-            {{--method="POST" action="{{ url('registered') }}" id="form-regist"--}}
+            
             $.ajax({
                 url: $('#form-regist').attr('action'),
                 type: 'post',
@@ -816,6 +638,41 @@
                         $('#notif_registered_success').text(result.message)
                     }else{
                         $('#notif_registered_fail').text(result.message)
+                    }
+                }
+            })
+        });
+		
+		$('#email_reset').keyup(function(){
+            var data = $('#form-reset-pass').serialize()
+            $.ajax({
+                url:'{{ url('cek-email-reset') }}',
+                type: 'post',
+                data : data,
+                success: function(result){
+                    console.log(result);
+                    $('#notif_email_reset').text(result.message);
+                    if(result.status==true){
+                        $('#submit_lupa_pass').attr('disabled',true);
+                    }else{
+                        $('#submit_lupa_pass').attr('disabled',false);
+                    }
+                }
+            });
+
+        });
+		
+		$('#submit_lupa_pass').click(function(){
+         
+            $.ajax({
+                url: $('#form-reset-pass').attr('action'),
+                type: 'post',
+                data:$('#form-reset-pass').serialize(),
+                success: function(result){
+                    if(result.status==true){
+                        $('#notif_reset_success').text(result.message)
+                    }else{
+                        $('#notif_reset_fail').text(result.message)
                     }
                 }
             })
@@ -860,9 +717,12 @@
 			}else if(menu == "event"){
 				$('.content').load('event');
 			}
+			else if(menu == "kontak"){
+				$('.content').load('{{ url('kontak') }}');
+			}
 		});
 		$('.sarat').click(function(){
-			$('.content').load('Syarat.blade.php');
+			$('.content').load('{{ url('syarat') }}');
 		});
 
         // Form login dan register
@@ -870,25 +730,36 @@
             $(".f-regis").hide();
             $(".f-karyawan").hide();
             $(".f-investor").hide();
+			$(".f-lupa_pass").hide();
             $(".f-owner").show();
         });
         $(".karyawan").click(function(){
             $(".f-regis").hide();
             $(".f-owner").hide();
             $(".f-investor").hide();
+			$(".f-lupa_pass").hide();
             $(".f-karyawan").show();
         });
         $(".investor").click(function(){
             $(".f-regis").hide();
             $(".f-owner").hide();
             $(".f-karyawan").hide();
+			$(".f-lupa_pass").hide();
             $(".f-investor").show();
         });
         $(".regis").click(function(){
             $(".f-owner").hide();
             $(".f-karyawan").hide();
             $(".f-investor").hide();
+			$(".f-lupa_pass").hide();
             $(".f-regis").show();
+        });
+		$(".lupa_pass").click(function(){
+            $(".f-owner").hide();
+            $(".f-karyawan").hide();
+            $(".f-investor").hide();
+            $(".f-regis").hide();
+			$(".f-lupa_pass").show();
         });
     });
 

@@ -4,20 +4,20 @@
     <section class="sidebar">
 
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel">
+        <!--<div class="user-panel">
             <div class="pull-left image">
                 <img src="{{ @asset('component/dist/img/avatar.png') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>Avatar</p>
-                <!-- Status -->
+                <!-- Status
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
-        </div>
-
+        </div>-->
+		<br>
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MENU OWNER/FOUNDER</li>
+            <li class="header"><font color="#FFFFFF">MENU OWNER/FOUNDER</font></li>
 
             <!-- Optionally, you can add icons to the links -->
             @if(!empty($main_menu=Session::get('main_menu')))

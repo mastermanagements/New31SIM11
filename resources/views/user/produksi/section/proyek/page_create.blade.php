@@ -27,6 +27,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Proyek</h3>
+						<h5 class="pull-right"><a href="{{ url('Proyek')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -46,10 +47,10 @@
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nama SPK</label>
+                                <label for="exampleInputEmail1">Nama SPK/Kontrak</label>
                                 <select class="form-control select2" style="width: 100%;" name="id_spk" required>
                                     @if(empty($spk))
-                                        <option>SPK masih kosong</option>
+                                        <option>SPK masih kosong, isi di menu administrasi proyek</option>
                                     @else
                                         @foreach($spk as $value)
                                             <option value="{{ $value->id }}">{{ $value->nm_spk }}</option>
@@ -59,7 +60,7 @@
                                 <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Lama Proyek</label>
+                                <label for="exampleInputEmail1">Lama Proyek (Satuan Hari)</label>
                                 <input type="number" min="0"  name="jangka_waktu" class="form-control" placeholder="Lama Proyek" required/>
                                 <small style="color: red">* Tidak boleh kosong</small>
                             </div>

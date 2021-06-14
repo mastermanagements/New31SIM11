@@ -1,7 +1,7 @@
 <div class="tab-pane active" id="tab_1">
   <div class="row">
       {{--<div class="col-md-12">--}}
-          {{--<button class="btn btn-primary" data-toggle="modal" data-target="#modal-transaksi-penerimaan">Catata Transaksi Penerimaan</button>--}}
+          {{--<button class="btn btn-primary" data-toggle="modal" data-target="#modal-transaksi-penerimaan">Catatan Transaksi Penerimaan</button>--}}
       {{--</div>--}}
       <div class="col-md-12">
           @if(!empty(session('message_success')))

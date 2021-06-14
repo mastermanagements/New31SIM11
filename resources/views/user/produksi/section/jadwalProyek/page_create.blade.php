@@ -27,6 +27,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulir Jadwal Proyek</h3>
+						<h5 class="pull-right"><a href="{{ url('Proyek')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                     </div>
                     <!-- /.box-header -->
                     @if(!empty(session('message_success')))

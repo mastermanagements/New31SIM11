@@ -17,8 +17,8 @@ class CreatePProgressPemeliharaan extends Migration
             $table->increments('id');
             $table->date('tgl_dikerjakan');
             $table->integer('id_pemeliharaan')->unsigned();
-            $table->text('masalah');
-            $table->text('solusi');
+            $table->text('masalah')->nullable();
+            $table->text('solusi')->nullable();
             $table->text('rincian_pekerjaan');
             $table->text('ket');
             $table->integer('id_perusahaan')->unsigned();

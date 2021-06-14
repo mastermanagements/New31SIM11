@@ -74,8 +74,8 @@
                                                                 <tr>
                                                                     <td>{{ $no++ }}</td>
                                                                     <td>{{ $jasa->nm_layanan }}</td>
-                                                                    <td>{{ $jasa->peritem }} {{ $jasa->getSatuan->satuan }}</td>
-                                                                    <td>{{ $jasa->waktu_kerja }} {{ $jasa->getSatuanWaktu->satuan}}
+                                                                    <td>{{ $jasa->peritem }} @if(!empty($jasa->getSatuan->satuan)){{ $jasa->getSatuan->satuan }} @endif</td>
+                                                                    <td>{{ $jasa->waktu_kerja }} @if(!empty( $jasa->getSatuanWaktu->satuan)){{ $jasa->getSatuanWaktu->satuan}} @endif
                                                                           @if($jasa->waktu_selesai == 0)
                                                                             ( Pasti ) @elseif($jasa->waktu_selesai == 1) ( Estimasi  )
                                                                           @endif

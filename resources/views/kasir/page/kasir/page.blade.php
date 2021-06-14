@@ -26,7 +26,7 @@
                             {{ csrf_field() }}
                             <div class="box">
                             <div class="box-header">
-                                <h4 class="box-title">Pesanan Kode Transaksi:{{ $kode }}</h4>
+                                <h4 class="box-title"> No Faktur:{{ $kode }}</h4>
                             </div>
                             <div class="box-body">
                                 <div class="row">
@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <h4 class="box-title"> Daftar Barang Pesanan </h4>
+                                        <h4 class="box-title"> Daftar Penjualan Barang:</h4>
                                         <hr>
                                         <table class="table table-striped" id="daftar_table_pesanan" style="overflow-y: scroll;">
                                             <thead>

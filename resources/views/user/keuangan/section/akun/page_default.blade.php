@@ -24,13 +24,18 @@
                     <h3 class="box-title">{{ $title }}</h3>
                     <a href="{{ url('Akun') }}" class="btn btn-xs btn-primary pull-right" style="margin-left: 5px">Ke Halaman Awal</a>
                     <a href="{{ url('daftar-akun') }}" class="btn btn-xs btn-success pull-right">Lihat daftar Akun Anda</a>
+					 @if(!empty(session('message_success')))
+							<p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+						@elseif(!empty(session('message_fail')))
+							<p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+					 @endif
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     @if($menu=="peng_akun")
                         <form action="{{ url('store_master_akun_to_ukm') }}" method="post">
                         {{ csrf_field() }}
-                        <button type="submit" class="form-control"><font color="#DE5B06">Klik Untuk mentransfer daftar akun ini ke akun UKM Anda</font></button>
+                        <button type="submit" class="form-control"><font color="#FF3D33">Klik Untuk memindahkan daftar akun dibawah ini ke akun UKM Anda</font></button>
                         @foreach($master_akun as $masterAkn)
                     <ul>
                         <p>{{ $masterAkn->kode_m_akun }}:{{ $masterAkn->nm_m_akun }}
@@ -203,6 +208,7 @@
                    $('[name="kode_sub"]').val(result.kode_sub_akun);
                    $('[name="nm_sub"]').val(result.nm_sub_akun);
                    $('[name="id_sub"]').val(result.id);
+				   $('[name="posisi_saldo"]').val(result.posisi_saldo).trigger('change');
                    $('#formulir_sub').attr('action','update-sub-akun');
                    $('#modal-sub-akun').modal('show');
                }

@@ -2,7 +2,7 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+     <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js"></script>
 @stop
 
 @section('master_content')
@@ -22,7 +22,8 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Formulir Pemeliharaan</h3>
+                        <h3 class="box-title">Formulir Tambah Pemeliharaan Proyek</h3>
+						<h5 class="pull-right"><a href="{{ url('Proyek')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                     </div>
                     <!-- /.box-header -->
                     @if(!empty(session('message_success')))
@@ -37,8 +38,20 @@
                             <div class="row">
 
                                 <div class="col-md-12">
-
-                                    <div class="form-group">
+									<div class="form-group">
+                                        <label for="exampleInputEmail1">Proyek</label>
+                                        <select class="form-control select2" style="width: 100%;" name="id_proyek" required>
+                                            @if(empty($proyeks))
+                                                <option>Anda Belum Memasukan data proyek </option>
+                                            @else
+                                                  @foreach($proyeks as $value)
+                                                     <option value="{{ $value->id }}"> {{ $value->spk->nm_spk}}</option>
+                                                  @endforeach
+                                            @endif
+                                        </select>
+                                        <small style="color: red">* Tidak Boleh Kosong</small>
+                                    </div>
+                                    <!--<div class="form-group">
                                         <label for="exampleInputEmail1">Jual Jasa</label>
                                         <select class="form-control select2" name="id_jasa" style="width: 100%;" required>
                                             @if(empty($jasa))
@@ -69,12 +82,12 @@
                                     <div class="form-group">
                                         <label>Nama Pemeliharaan</label>
                                         <input type="text"  class="form-control"name="nm_pemeliharaan" placeholder="Masukan nama pemeliharaan anda" required >
-                                        <!-- /.input group -->
+                                       
                                         <small style="color: red">* Tidak Boleh Kosong</small>
-                                    </div>
+                                    </div>-->
 
                                     <div class="form-group">
-                                        <label>Jangka Waktu</label>
+                                        <label>Jangka Waktu Pemeliharaan (Hari)</label>
                                         <input type="number" min="0" class="form-control "  name="jangka_waktu" placeholder="Masukan Jangka waktu pengerjaan" >
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
@@ -82,7 +95,7 @@
 
                                     <div class="form-group">
                                         <label>Biaya Pemeliharaan</label>
-                                        <input type="number" min="0" class="form-control"  name="biaya_pem" placeholder="Masukan Biaya Pemeliharaan" >
+                                        <input type="text" id="rupiah2" class="form-control"  name="biaya_pem" placeholder="Masukan Biaya Pemeliharaan" >
                                         <!-- /.input group -->
                                         <small style="color: red">* Tidak Boleh Kosong</small>
                                     </div>
@@ -116,13 +129,14 @@
 @stop
 
 @section('plugins')
+	@include('user.global.rupiah_input2')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
 
     <script>
         window.onload = function() {
             CKEDITOR.replace( 'ket',{
-                height: 300
+                height: 150
             } );
         };
 

@@ -60,13 +60,21 @@ class Penjualan
             if (!empty($item->linkToPO)) {
                 $nota_pesanan = $item->linkToSo->no_so;
             }
+			$klien = "";
+			 if (!empty($item->linkToKlien)) {
+                $klien = $item->linkToKlien->nm_klien;
+            } elseif($item->linkToKlien ==0){
+				$klien ="Umum";
+			}
+			
+			
 
             $column[] = $no++;
             $column[] = date('d-m-Y', strtotime($item->tgl_sales));
             $column[] = $nota_pesanan;
             $column[] = $item->dp_so;
             $column[] = $item->no_sales;
-            $column[] = $item->linkToKlien->nm_klien;
+            $column[] = $klien;
             $column[] = $item->linkToDetailSales->count('id');
             $column[] = $item->linkToDetailSales->sum('jumlah_harga');
             $column[] = $item->diskon_tambahan;
@@ -104,11 +112,18 @@ class Penjualan
         $no=1;
         if (!empty($penjualan->linkToDetailSales)) {
             foreach ($penjualan->linkToDetailSales as $item_penjualan) {
+				if(!empty($item_penjualan->linkToBarang->linkToSatuan->satuan)){
+					$satuan = $item_penjualan->linkToBarang->linkToSatuan->satuan;
+				}
                 $column=[];
+				$satuan = "";
+					if (!empty($item_penjualan->linkToBarang->linkToSatuan)) {
+						$satuan = $item_penjualan->linkToBarang->linkToSatuan->satuan;
+					}
                 $column[]=$no++;
                 $column[]=$item_penjualan->linkToBarang->kd_barang;
                 $column[]=$item_penjualan->linkToBarang->nm_barang;
-                $column[]=$item_penjualan->linkToBarang->linkToSatuan->satuan;
+                $column[]=$satuan;
                 $column[]=$item_penjualan->linkToBarang->spec_barang;
                 $column[]=$item_penjualan->linkToBarang->merk_barang;
                 $column[]=$item_penjualan->hpp;

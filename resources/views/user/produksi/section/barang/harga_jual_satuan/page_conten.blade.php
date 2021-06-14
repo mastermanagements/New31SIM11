@@ -24,7 +24,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Tabel Harga Jual Satuan</h3>
-                        <h5 class="pull-right"><a href="{{ url('Barang')}}">Kembali ke Halaman utama</a></h5>
+                        <h5 class="pull-right"><a href="{{ url('Barang')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                     </div>
 
                     <div class="box-body">

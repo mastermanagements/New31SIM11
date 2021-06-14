@@ -82,11 +82,11 @@ class Arsip extends Controller
         if($model->save())
         {
             if ($file_arsip->move(public_path('fileArsip'), $name_file)) {
-                return redirect('Arsip')->with('message_success','Berhasil menyimpan Arsip');
+                return redirect('Surat')->with('message_success','Berhasil menyimpan Arsip')->with('tab4','tab4');
             }else{
-                return redirect('Arsip')->with('message_error','Gagal menyimpan file Arsip');
+                return redirect('Surat')->with('message_error','Gagal menyimpan file Arsip')->with('tab4','tab4');
             }
-            return redirect('Arsip')->with('message_success','Berhasil menambahkan Arsip');
+            return redirect('Surat')->with('message_success','Berhasil menambahkan Arsip')->with('tab4','tab4');
 
         }
     }
@@ -137,11 +137,11 @@ class Arsip extends Controller
         if($model->save())
         {
             if ($file_arsip->move(public_path('fileArsip'), $name_file)) {
-                return redirect('Arsip')->with('message_success','Berhasil mengubah Arsip');
+                return redirect('Surat')->with('message_success','Berhasil mengubah Arsip')->with('tab4','tab4');
             }else{
-                return redirect('Arsip')->with('message_error','Gagal menyimpan file Arsip');
+                return redirect('Surat')->with('message_error','Gagal menyimpan file Arsip')->with('tab4','tab4');
             }
-            return redirect('Arsip')->with('message_success','Berhasil mengubah Arsip');
+            return redirect('Surat')->with('message_success','Berhasil mengubah Arsip')->with('tab4','tab4');
 
         }
     }
@@ -159,11 +159,11 @@ class Arsip extends Controller
 
         if($model->delete())
         {
-            return redirect('Arsip')->with('message_success','Berhasil menghapus Arsip');
+            return redirect('Surat')->with('message_success','Berhasil menghapus Arsip')->with('tab4','tab4');
         }
         else
         {
-            return redirect('Arsip')->with('message_fail','Berhasil menghapus Arsip');
+            return redirect('Surat')->with('message_fail','Berhasil menghapus Arsip')->with('tab4','tab4');
         }
     }
 }

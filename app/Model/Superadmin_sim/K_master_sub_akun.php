@@ -15,6 +15,7 @@ class K_master_sub_akun extends Model
         'kode_m_sub_akun',
         'nm_m_sub_akun',
         'off_on',
+		'posisi_saldo'
     ];
 
     public function manySubsub()

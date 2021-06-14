@@ -433,9 +433,9 @@
                                                       Klien Umum
                                                   @endif
                                               </td>
-                                              <td>{{ $barang_complain->linkToSales->no_sales }}</td>
-                                              <td>{{ tanggalView($barang_complain->linkToSales->tgl_sales) }}</td>
-                                              <td>{{ $barang_complain->linkToBarang->nm_barang }}</td>
+                                              <td>@if(!empty($barang_complain->linkToSales->no_sales)){{ $barang_complain->linkToSales->no_sales }} @endif</td>
+                                              <td>@if(!empty($barang_complain->linkToSales->tgl_sales)){{ tanggalView($barang_complain->linkToSales->tgl_sales) }} @endif</td>
+                                              <td>@if(!empty($barang_complain->linkToBarang->nm_barang)){{ $barang_complain->linkToBarang->nm_barang }} @endif</td>
                                               <td>{{ rupiahView($barang_complain->hpp) }}</td>
                                               <td> {{ $barang_complain->complain_jumlah }}</td>
                                               <td> {{ $barang_complain->complain_kualitas }}</td>
@@ -551,7 +551,11 @@
                                           @if($data_ket=$data->linkToOneKetTransaksi->dataAkun)
                                               @foreach($data_ket as $data)
                                                   <tr>
-                                                      <td>{{ $data->transaksi->kode_akun_aktif }} {{ $data->transaksi->nm_akun_aktif }}</td>
+                                                      <td>
+													  
+														@if(!empty($data->transaksi->kode_akun_aktif) AND !empty($data->transaksi->nm_akun_aktif) )	{{ $data->transaksi->kode_akun_aktif }} {{ $data->transaksi->nm_akun_aktif }} @endif
+														
+													  </td>
                                                       <td>@if($data->posisi_akun=='0') D @else K @endif</td>
                                                   </tr>
                                               @endforeach

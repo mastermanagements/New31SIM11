@@ -62,13 +62,15 @@ class Hak_akses extends Controller
         $id_sub_menu_ukm = $model_sub_menu_ukm->id;
         $id_karyawan = $data_karyawan->id;
         $id_user_ukm = $this->id_superadmin;
+		$urutan = $model_sub_menu_ukm->urutan;
 
         $model_menu_karyawan = menu_karyawan::firstOrCreate([
             'id_submenu_ukm' =>$id_sub_menu_ukm,
             'id_perusahaan'=>$id_perusahaan,
             'id_karyawan'=>$id_karyawan,
             'id_menu_ukm'=>$id_menu_ukm,
-            'id_user_ukm'=>$id_user_ukm
+            'id_user_ukm'=>$id_user_ukm,
+			'urutan'=>$urutan
         ]);
 
         if($model_menu_karyawan->save())

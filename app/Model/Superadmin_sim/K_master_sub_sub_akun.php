@@ -13,8 +13,9 @@ class K_master_sub_sub_akun extends Model
       'id_m_sub_akun',
       'kode_m_subsub_akun',
       'nm_m_subsub_akun',
+	  'status_alur_kas',
       'off_on',
-      'id_perusahaan',
-      'id_perusahaan',
+      'posisi_saldo'
+      
     ];
 }

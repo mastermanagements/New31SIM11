@@ -43,7 +43,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-black-light sidebar-mini fixed">
+<body class="hold-transition skin-red-light sidebar-mini fixed">
 <div class="wrapper">
 
   @include('user.karyawan.include.header')
@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   @yield('master_content')
   @include('user.marketing.include.footer')
   @include('user.marketing.include.control_sidebar')
-
+	<div class="control-sidebar-bg"></div>
 </div>
 
 <!-- REQUIRED JS SCRIPTS -->

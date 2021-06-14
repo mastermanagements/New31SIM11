@@ -21,7 +21,7 @@ class ImportBarang implements ToModel, WithStartRow
         //dd($model_saatuan);
         return Barang::updateOrCreate(
             [
-                'id_kategori_produk'=> 1,
+                //'id_kategori_produk'=> 1,
                 'kd_barang'=> $row[1],
                 'nm_barang'=> $row[2],
                 'id_satuan'=> $model_saatuan->id,

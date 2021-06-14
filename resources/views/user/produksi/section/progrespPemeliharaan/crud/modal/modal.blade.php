@@ -5,46 +5,50 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Formulir Progress Pemeliharaan</h4>
+                <h4 class="modal-title">Formulir Tambah Progress Pemeliharaan</h4>
             </div>
             <form action="{{ url('store-progress-pemeliharaan') }}" method="post">
             <div class="modal-body" id="content_modal">
-                <div class="form-group">
-                    <label>Tanggal Dikerjakan </label>
-                    <div class="input-group date">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal dikerjakan" name="tgl_dikerjakan" >
-                    </div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Tanggal Dikerjakan </label>
+						<div class="input-group date">
+							<div class="input-group-addon">
+								<i class="fa fa-calendar"></i>
+							</div>
+							<input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal dikerjakan" name="tgl_dikerjakan" >
+						</div>
 
-                    <!-- /.input group -->
-                    <small style="color: red">* Tidak Boleh Kosong</small>
-                </div>
-                <div class="form-group">
-                    <label>Masalah</label>
-                    <textarea id="masalah" name="masalah" required></textarea>
-                    <!-- /.input group -->
-                    <small style="color: red">* Tidak Boleh Kosong</small>
-                </div>
-                <div class="form-group">
-                    <label>Solusi</label>
-                    <textarea id="solusi" name="solusi" required></textarea>
-                    <!-- /.input group -->
-                    <small style="color: red">* Tidak Boleh Kosong</small>
-                </div>
-                <div class="form-group">
-                    <label>Rincian Pekerjaan</label>
-                    <textarea id="rincian_pekerjaan" name="rincian_pekerjaan" required></textarea>
-                    <!-- /.input group -->
-                    <small style="color: red">* Tidak Boleh Kosong</small>
-                </div>
-                <div class="form-group">
-                    <label>Keterangan Tambahan</label>
-                    <textarea id="ket" name="ket" required></textarea>
-                    <!-- /.input group -->
-                    <small style="color: red">* Tidak Boleh Kosong</small>
-                </div>
+						<!-- /.input group -->
+						<small style="color: red">* Tidak Boleh Kosong</small>
+					</div>
+					<div class="form-group">
+						<label>Masalah</label>
+						<textarea id="masalah" name="masalah" required></textarea>
+						<!-- /.input group -->
+						<small style="color: red">* Tidak Boleh Kosong</small>
+					</div>				
+					<div class="form-group">
+						<label>Solusi</label>
+						<textarea id="solusi" name="solusi" required></textarea>
+						<!-- /.input group -->
+						<small style="color: red">* Tidak Boleh Kosong</small>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Rincian Pekerjaan</label>
+						<textarea id="rincian_pekerjaan" name="rincian_pekerjaan" required></textarea>
+						<!-- /.input group -->
+						<small style="color: red">* Tidak Boleh Kosong</small>
+					</div>
+					<div class="form-group">
+						<label>Keterangan Tambahan</label>
+						<textarea id="ket" name="ket" required></textarea>
+						<!-- /.input group -->
+						<small style="color: red">* Tidak Boleh Kosong</small>
+					</div>
+				</div>
             </div>
             <div class="modal-footer">
                 <input type="hidden" name="id_pemeliharaan" value="{{ $id_pemeliharaan }}">
@@ -71,42 +75,43 @@
             </div>
             <form action="{{ url('update-progress-pemeliharaan') }}" method="post">
                 <div class="modal-body" id="content_modal_update">
-                    <div class="form-group">
-                        <label>Tanggal Dikerjakan </label>
-                        <div class="input-group date">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal dikerjakan" name="tgl_dikerjakan_ubah" >
-                        </div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Tanggal Dikerjakan </label>
+							<div class="input-group date">
+								<div class="input-group-addon">
+									<i class="fa fa-calendar"></i>
+								</div>
+								<input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal dikerjakan" name="tgl_dikerjakan_ubah" >
+							</div>
 
-                        <!-- /.input group -->
-                        <small style="color: red">* Tidak Boleh Kosong</small>
-                    </div>
-                    <div class="form-group">
-                        <label>Masalah</label>
-                        <textarea id="masalah_ubah" name="masalah_ubah" required></textarea>
-                        <!-- /.input group -->
-                        <small style="color: red">* Tidak Boleh Kosong</small>
-                    </div>
-                    <div class="form-group">
-                        <label>Solusi</label>
-                        <textarea id="solusi_ubah" name="solusi_ubah" required></textarea>
-                        <!-- /.input group -->
-                        <small style="color: red">* Tidak Boleh Kosong</small>
-                    </div>
-                    <div class="form-group">
-                        <label>Rincian Pekerjaan</label>
-                        <textarea id="rincian_pekerjaan_ubah" name="rincian_pekerjaan_ubah" required></textarea>
-                        <!-- /.input group -->
-                        <small style="color: red">* Tidak Boleh Kosong</small>
-                    </div>
-                    <div class="form-group">
-                        <label>Keterangan Tambah</label>
-                        <textarea id="ket_ubah" name="ket_ubah" required></textarea>
-                        <!-- /.input group -->
-                        <small style="color: red">* Tidak Boleh Kosong</small>
-                    </div>
+							<!-- /.input group -->
+							<small style="color: red">* Tidak Boleh Kosong</small>
+						</div>
+						<div class="form-group">
+							<label>Masalah</label>
+							<textarea id="masalah_ubah" name="masalah_ubah" required></textarea>
+							
+						</div>
+						<div class="form-group">
+							<label>Solusi</label>
+							<textarea id="solusi_ubah" name="solusi_ubah" required></textarea>
+							
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Rincian Pekerjaan</label>
+							<textarea id="rincian_pekerjaan_ubah" name="rincian_pekerjaan_ubah" required></textarea>
+							<!-- /.input group -->
+							<small style="color: red">* Tidak Boleh Kosong</small>
+						</div>
+						<div class="form-group">
+							<label>Keterangan Tambah</label>
+							<textarea id="ket_ubah" name="ket_ubah" required></textarea>
+							
+						</div>
+					</div>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id_pemeliharan" value="{{ $id_pemeliharaan }}">

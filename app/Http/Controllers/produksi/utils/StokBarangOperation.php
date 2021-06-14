@@ -55,9 +55,13 @@ class StokBarangOperation
         $no = 1;
         foreach ($barang->get() as $data_barang) {
             $column = [];
+			$satuan="";
+			if(!empty($data_barang->linkToSatuan->satuan)){
+				$satuan = $data_barang->linkToSatuan->satuan;
+			}
             $column[] = $no++;
             $column[] = $data_barang->nm_barang;
-            $column[] = $data_barang->linkToSatuan->satuan;
+            $column[] = $satuan;
             $column[] = $data_barang->spec_barang;
             $column[] = $data_barang->merk_barang;
             $column[] = $data_barang->stok_akhir;

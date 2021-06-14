@@ -27,7 +27,7 @@
                <div class="box box-primary">
                    <div class="box-header with-border">
                        <h3 class="box-title">Formulir Karyawan</h3>
-                       <h5 class="pull-right"><a href="{{ url('pengguna-karyawan')}}">Kembali ke Halaman utama</a></h5>
+                       <h5 class="pull-right"><a href="{{ url('pengguna-karyawan')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                    </div>
                    <!-- /.box-header -->
                    <!-- form start -->
