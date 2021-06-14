@@ -2184,6 +2184,7 @@ Route::get('edit-jual-saham-investor/{id}', 'investor\JualSahamInvestor@edit');
 
 Route::post('update-jual-saham-invest', 'investor\JualSahamInvestor@update');
 
+
 Route::get('Dividen', 'investor\Deviden@index');
 
 Route::post('store-dividen-per-bulan', 'investor\Deviden@store');
@@ -2195,6 +2196,7 @@ Route::post('update-divine-bulanan', 'investor\Deviden@update');
 Route::put('delete-divine-bulanan/{id}', 'investor\Deviden@delete');
 
 Route::get('getDataDividen/{year}', 'investor\Deviden@getDataDP');
+
 
 Route::get('Dividen-investor', 'investor\DividenInvestor@index');
 
@@ -2219,7 +2221,7 @@ Route::post('update-persen-kas', 'investor\PersenKas@update');
 
 Route::put('hapus-persen-kas/{id}', 'investor\PersenKas@delete');
 
-
+//====syirkah=====/
 Route::get('Pelaku-Investasi', 'investor\PelakuInvestasi@index');
 
 Route::post('store-pelaksana', 'investor\PelakuInvestasi@store');

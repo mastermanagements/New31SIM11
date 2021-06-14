@@ -54,7 +54,7 @@ class DetailSales extends Controller
 
         $harga_jual_satuan = $this->check_metode_jual($req);
         $diskon = ($diskon_nominal / $harga_jual_satuan) * 100;
-        $diskon = round($diskon, 4);
+        $diskon = round($diskon, 2);
         return $diskon;
 
     }
@@ -66,6 +66,7 @@ class DetailSales extends Controller
         //dd($model);
         //ambil jenis group klien dari klien yg beli di p_sales.id_klien->p_klien.id_group->a_group_klien.id
         //1. diskon berdasarkan group klien (member)
+		
         $model_group_klien = $model->linkToKlien->linkToMannyGroupKlien;
         $model_diskon_klien = $model->linkToKlien;
         //dd($model_group_klien);

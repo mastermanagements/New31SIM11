@@ -16,12 +16,12 @@
     <tr>
         <td>Nama</td>
         <td>:</td>
-        <td>{{ $data->linkToKlien->nm_klien }}</td>
+        <td>@if(!empty($data->linkToKlien->nm_klien)){{ $data->linkToKlien->nm_klien }} @endif</td>
     </tr>
     <tr>
         <td>Telp</td>
         <td>:</td>
-        <td>{{ $data->linkToKlien->hp }}</td>
+        <td></td>
     </tr>
     <tr>
         <td>Tanggal</td>
@@ -46,6 +46,16 @@
         @php($no=1)
         @php($total=0)
         @foreach($data->linkToDetailSales as $item)
+<<<<<<< HEAD
+        <tr>
+            <td>{{ $no++ }}</td>
+            <td>{{ $item->linkToBarang->nm_barang }}</td>
+            <td>@if(!empty($item->linkToBarang->linkToSatuan->satuan)){{ $item->linkToBarang->linkToSatuan->satuan }} @endif</td>
+            <td>{{ $item->hpp }}</td>
+            <td>{{ $item->jumlah_jual }}</td>
+            <td>{{ $item->jumlah_harga }} @php($total+=$item->jumlah_harga) </td>
+        </tr>
+=======
             <tr>
                 <td>{{ $no++ }}</td>
                 <td>{{ $item->linkToBarang->nm_barang }}</td>
@@ -54,6 +64,7 @@
                 <td>{{ $item->jumlah_jual }}</td>
                 <td>{{ number_format($item->jumlah_harga,2,',','.') }} @php($total+=$item->jumlah_harga) </td>
             </tr>
+>>>>>>> 93bfa9523bc73a8b8ddbeaeb7f78e481d9bdb5f9
         @endforeach
     @endif
     <tr>

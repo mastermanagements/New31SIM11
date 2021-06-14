@@ -63,7 +63,7 @@
                                                                         <input type="hidden" name="id_sales" value="{{ $data->id }}">
                                                                         <input type="hidden" name="id_barang" value="{{ $data_detail->id_barang }}">
 
-                                                                    <td width="150"><input type="text" class="form-control" value="{{ $data_detail->linkToBarang->nm_barang}}, {{$data_detail->linkToBarang->linkToSatuan->satuan}}, {{$data_detail->spec}}" readonly></td>
+                                                                    <td width="150"><input type="text" class="form-control" value="{{ $data_detail->linkToBarang->nm_barang}}, {{$data_detail->linkToBarang->linkToSatuan->satuan}}, {{$data_detail->spec_barang}}" readonly></td>
                                                                     <td ><input type="text" name="hpp" class="form-control" value="{{ rupiahview($data_detail->hpp) }}" readonly></td>
                                                                     <td width="60"><input type="text" name="jumlah_beli" class="form-control" value="{{ rupiahview($data_detail->jumlah_jual) }}" readonly></td>
                                                                     <td width="70"><input type="number" name="diskon_item" class="form-control" value="{{ $data_detail->diskon }}"  readonly></td>
@@ -135,7 +135,7 @@
                                                           @if($complain->id_detail_sales == $data_detail->id)
 
                                                                 <tr>
-                                                                    <td width="180">{{ $complain->linkToBarang->nm_barang}}, {{$complain->linkToBarang->linkToSatuan->satuan}}, {{$complain->spec}}</td>
+                                                                    <td width="180">{{ $complain->linkToBarang->nm_barang}}, {{$complain->linkToBarang->linkToSatuan->satuan}}, {{$complain->spec_barang}}</td>
                                                                     <td width="100">{{ rupiahview($complain->hpp) }}</td>
                                                                     <td width="70">{{ rupiahview($complain->jumlah_beli) }}</td>
                                                                     <td width="70">{{ $complain->diskon_item }}</td>
