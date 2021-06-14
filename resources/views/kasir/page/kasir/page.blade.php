@@ -4,10 +4,25 @@
     <section class="content">
 
         <div class="row">
+            <div class="col-md-12">
+                @if(!empty(session('message_success')))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                        {{ session('message_success')}}
+                    </div>
+                @elseif(!empty(session('message_fail')))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                        *{{ session('message_fail') }}
+                    </div>
+                @endif
+            </div>
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="{{ url('Kasir') }}" method="post">
+                        <form action="{{ url('Kasir') }}" method="post" >
                             {{ csrf_field() }}
                             <div class="box">
                             <div class="box-header">
@@ -27,7 +42,7 @@
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Tambah Barang</button>
                                             </div>
                                             <div class="col-md-4">
-                                                <button type="button" class="btn btn-danger pull-right" onclick="alert('Coming Soon')">Reset Barang</button>
+                                                <button type="button" class="btn btn-danger pull-right" onclick="reset_barang()">Reset Barang</button>
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +76,7 @@
                                     <div class="col-sm-12">
                                         <p></p>
                                         <input type="hidden" name="total_penjualan" id="total_penjualan" value="0">
-                                        <button type="submit" class="btn btn-success">Proses</button>
+                                        <button type="submit" id="btn_proses" class="btn btn-success">Proses</button> <small style="color: red;" id="notif_bayar"></small>
                                     </div>
                                 </div>
                             </div>
@@ -126,6 +141,7 @@
                                                             <ul class="dropdown-menu" role="menu">
                                                                 <li><a href="{{ url('cetak-nota/'.$data->id) }}" target="_blank">Print</a></li>
                                                                 <li><a href="#" onclick="cek_barang({{ $data->id }})" id="cek_barang_nota">Cek Barang</a></li>
+                                                                <li><a href="{{ url('hapus-nota-kasir/'.$data->id) }}" onclick="return confirm('Apakah anda akan menghapus nota ini ...? ')">hapus</a></li>
                                                             </ul>
                                                         </div>
                                                     </th>

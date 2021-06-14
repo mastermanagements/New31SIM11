@@ -189,7 +189,7 @@ class PSales extends Controller
           $model->metode_bayar = $metode_bayar;
           $model->ongkir = $ongkir;
           $model->tgl_jatuh_tempo = $tgl_jatuh_tempo;
-          $total_net = $total_sales;
+          $total_net = 0;
 
           if($model->metode_bayar == 0){
               $total_net = $total_sales;
