@@ -24,7 +24,7 @@ class Kasir extends Controller
         $current_date = date('Y/m/d');
         $data = [
             'kode' => $this->kodeKasir(),
-            'nota' => PSales::where('no_sales','like','%Trans%')->whereDate('created_at', $current_date)->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->orderBy('created_at', 'desc')->get(),
+            'nota' => PSales::where('no_sales', 'like', '%Trans%')->whereDate('created_at', $current_date)->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->orderBy('created_at', 'desc')->get(),
             'barang' => Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         return view('kasir.page.kasir.page', $data);
@@ -66,7 +66,7 @@ class Kasir extends Controller
             'kode' => $req->kode,
             'bayar' => $req->bayar,
             'total_penjualan' => $req->total_penjualan,
-            'tgl_sales'=> date('Y-m-d'),
+            'tgl_sales' => date('Y-m-d'),
             'id_perusahaan' => Session::get('id_perusahaan_karyawan'),
             'id_karyawan' => Session::get('id_karyawan')
         ];
@@ -122,6 +122,16 @@ class Kasir extends Controller
         $model = DetailSales::where('id_sales', $id);
         if (!empty($model)) {
             $model->delete();
+        }
+    }
+
+    public function destroy($id)
+    {
+        $barang = PSales::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
+        if ($barang->delete()) {
+            return redirect()->back()->with('message_success', 'Nota kasir telah dihapus');
+        }else{
+            return redirect()->back()->with('message_fail', 'Gagal, menghapus nota kasir');
         }
     }
 

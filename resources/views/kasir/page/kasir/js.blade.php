@@ -2,6 +2,7 @@
     <script>
         var container = [];
         var total_awal = 0;
+        var total_kembalian =0;
 
         render_table = function () {
             var html = "";
@@ -9,12 +10,14 @@
             total_awal = 0;
             $('#daftar_table_pesanan tbody').empty(html);
             $.each(container, function (index, value) {
-                var total = value[2] * value[3];
+                console.log(value[3]);
+                var harga_satuan = value[3].replaceAll('.00','');
                 html += "<tr>";
                 html += "<td>" + (no++) + "</td>";
                 html += "<td><input type='hidden' name='id_barang[]' value='" + value[0] + "'>" + value[1] + "</td>";
                 html += "<td><input type='hidden' name='jumlah_jual[]' value='" + value[2] + "'>" + value[2] + "</td>";
-                html += "<td><input type='hidden' name='harga_satuan[]' value='" + value[3] + "'>" + formatRupiah(value[3].toString()) + "</td>";
+                html += "<td><input type='hidden' name='harga_satuan[]' value='" + value[3] + "'>" + formatRupiah(harga_satuan.toString()) + "</td>";
+                var total = value[2] * value[3];
                 html += "<td><input type='hidden' name='sub_total[]' value='" + (value[2] * value[3]) + "'>" + formatRupiah(total.toString()) + "</td>";
                 html += "<td><button class='btn btn-sm btn-danger' onclick='delete_item(" + index + ")'>hapus</button></td>";
                 html += "</tr>";
@@ -25,15 +28,23 @@
             $('#daftar_table_pesanan').append(html);
         }
 
+        reset_barang = function () {
+            container=[];
+            render_table();
+        }
+
         $('#bayar').keyup(function () {
             var bayar = $(this).val().replaceAll('.','');
             $('#total_bayar').text('Bayar Rp:' + formatRupiah(bayar.toString()));
-            var kembalian = Math.abs((bayar - total_awal));
-            if (kembalian > bayar) {
-                console.log(kembalian);
-            }
+            var kembalian = (bayar - total_awal);
+            console.log(kembalian);
+//            if (kembalian > bayar) {
+//                console.log(kembalian);
+//            }
             var n_format = kembalian;
+            total_kembalian = n_format;
             $('#total_kembalian').text("Kembalian Rp: " + formatRupiah(n_format.toString()));
+            cek_bayar();
         });
 
         $('#tombol_tambah').click(function () {
@@ -91,6 +102,15 @@
             })
         }
 
+        cek_bayar= function(){
+            if(total_kembalian < 0){
+                $('#notif_bayar').text('Bayar Kurang');
+                $('#btn_proses').attr('disabled', true);
+            }else{
+                $('#notif_bayar').text('');
+                $('#btn_proses').attr('disabled', false);
+            }
+        }
 
         cek_barang = function (id_nota) {
             var html = "";

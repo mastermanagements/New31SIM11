@@ -2431,6 +2431,7 @@ Route::post('GlobalSubSubKategori', 'globals\KategoriJasa@getSubSubKategori');
 
 Route::resource('Kasir','produksi\Kasir');
 Route::get('cetak-nota/{id_nota}','produksi\Kasir@cetak');
+Route::get('hapus-nota-kasir/{id_nota}','produksi\Kasir@destroy');
 Route::get('laporan-kasir', 'produksi\Kasir@laporan');
 Route::post('filter-nota', 'produksi\Kasir@filter');
 Route::get('filter-barang-by-barcode/{kode_barcode}', 'produksi\Barang@filterBarangByBarcode');

@@ -40,8 +40,9 @@
                            @endif
                           <h4><p><font color="#0E50EC">Pilihlah menu dan submenu dibawah ini yang dapat diakses oleh karyawan perusahaan anda, Klik dikolom centang untuk mengaktifkannya.
 						   Anda dapat mengaktifkan atau menonaktifkan kapan saja Anda mau.</font></p></h4>
-						   
-                              @php($id=0)
+                               <label><input type="checkbox" name="sample" class="minimal selectall"/> Select all</label>
+
+                               @php($id=0)
                               @foreach($menu as $key=> $menus)
 								<div class="col-md-12">
 								   <div class="form-group">
@@ -107,6 +108,13 @@
            $('input[type="radio"].minimal').iCheck({
                checkboxClass: 'icheckbox_minimal-blue',
                radioClass   : 'iradio_minimal-blue'
+           });
+
+           $('.selectall').on('ifChecked', function(event){
+               $('.minimal').iCheck('check');
+           });
+           $('.selectall').on('ifUnchecked', function(event){
+               $('.minimal').iCheck('uncheck');
            });
 
            //iCheck for checkbox and radio inputs
