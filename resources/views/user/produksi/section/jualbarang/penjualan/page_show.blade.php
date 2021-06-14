@@ -29,7 +29,7 @@
                     @endif
                     <div class="box box-warning">
                         <div class="box-header with-border">
-<<<<<<< HEAD
+
                           <h6 class="box-title">Rincian Penjualan Faktur : <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">@if($data->linkToKlien == NULL) Klien umum @else {{ $data->linkToKlien->nm_klien }}   @endif,
                           </font>
                             @if($data->id_group !=='0')
@@ -47,8 +47,9 @@
                                 Diskon Berjenjang:
                                   <font color="#FF00GG">  Ya </font>
                                   @else
-                                  Diskon Berjenjang:  </font>
-=======
+
+                                  Diskon Berjenjang: Tidak </font>
+
                             <h6 class="box-title">Rincian Penjualan Faktur : <font
                                         color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font
                                         color="#FF00GG">@if(!($data->linkToKlien)){{ $data->linkToKlien->nm_klien }} @else
@@ -65,7 +66,6 @@
                                         Klien umum
                                     @endif
                                 @endif
->>>>>>> 93bfa9523bc73a8b8ddbeaeb7f78e481d9bdb5f9
 
                                 @if(!empty($data->linkToKlien))
                                     @if($data->linkToKlien->status_diskon =='0')

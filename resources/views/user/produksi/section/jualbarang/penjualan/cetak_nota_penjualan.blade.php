@@ -59,7 +59,7 @@
             <tr>
                 <td>{{ $no++ }}</td>
                 <td>{{ $item->linkToBarang->nm_barang }}</td>
-                <td>{{ $item->linkToBarang->linkToSatuan->satuan }}</td>
+                <td>@if(!empty($item->linkToBarang->linkToSatuan->satuan)){{ $item->linkToBarang->linkToSatuan->satuan }} @endif</td>
                 <td>{{ number_format($item->hpp,2,',','.') }}</td>
                 <td>{{ $item->jumlah_jual }}</td>
                 <td>{{ number_format($item->jumlah_harga,2,',','.') }} @php($total+=$item->jumlah_harga) </td>
