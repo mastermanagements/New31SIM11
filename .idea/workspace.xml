@@ -4,7 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/produksi/PSales.php" line="73" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="- Penambahan">
+    <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="- Revisi">
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/public/webview/assets/img/about.jpg" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/public/webview/assets/img/apple-touch-icon.png" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/public/webview/assets/img/course-1.jpg" />
@@ -113,12 +113,8 @@
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/resources/views/webview/pricing.blade.php" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/resources/views/webview/trainers.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/Kasir.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/Kasir.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/PSales.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/PSales.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/kasir/page/kasir/js.blade.php" afterPath="$PROJECT_DIR$/resources/views/kasir/page/kasir/js.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/kasir/page/kasir/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/kasir/page/kasir/page.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_karyawan/menu_create_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_karyawan/menu_create_page.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_perusahaan/menu_create_page.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_perusahaan/menu_create_page.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Models/User.php" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Models/User.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Providers/RouteServiceProvider.php" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Providers/RouteServiceProvider.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/composer.json" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/composer.json" />
@@ -1551,22 +1547,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu_create_page.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="menu_create_page.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_perusahaan/menu_create_page.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="306">
+              <caret line="99" column="15" lean-forward="true" selection-start-line="94" selection-start-column="12" selection-end-line="99" selection-end-column="15" />
+              <folding>
+                <element signature="e#1432#1472#0#HTML" expanded="true" />
+                <element signature="e#1614#1651#0#HTML" expanded="true" />
+                <element signature="e#1753#1773#0#HTML" expanded="true" />
+                <element signature="e#2475#2500#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu_create_page.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="menu_create_page.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_karyawan/menu_create_page.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="340">
+              <caret line="113" column="14" lean-forward="false" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
+              <folding>
+                <element signature="e#1372#1412#0#HTML" expanded="true" />
+                <element signature="e#1552#1589#0#HTML" expanded="true" />
+                <element signature="e#2644#2669#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1717,8 +1722,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/Kasir.php" />
         <option value="$PROJECT_DIR$/resources/views/kasir/page/kasir/js.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/kasir/page/kasir/page.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_karyawan/menu_create_page.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_perusahaan/menu_create_page.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_karyawan/menu_create_page.blade.php" />
       </list>
     </option>
   </component>
@@ -1917,7 +1922,7 @@
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="superadmin_ukm" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="keuangan" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
@@ -1925,52 +1930,8 @@
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="superadmin_ukm" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="master" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="superadmin_ukm" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="master" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="keuangan" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="superadmin_ukm" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="master" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="menu_karyawan" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="superadmin_ukm" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="master" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="menu_perusahaan" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="superadmin_ukm" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="master" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="menu_perusahaan" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="include" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -1995,19 +1956,19 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\layouts\header_print" />
-      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\manufaktur\pages\laporan" />
-      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\app\Http\Controllers\produksi\utils" />
-      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\manufaktur\pages\laporan\produksi" />
-      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\karyawan\section" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\global" />
       <recent name="E:\xampp173\htdocs\New31SIM11\resources\views\user\produksi\section\belibarang\pesanan_barang" />
       <recent name="E:\xampp173\htdocs\New31SIM11\app\Model\Investor" />
       <recent name="E:\xampp173\htdocs\New31SIM11\app\Http\Controllers\investor" />
       <recent name="E:\xampp173\htdocs\New31SIM11\app\Model\Hrd" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\layouts\header_print" />
+      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\manufaktur\pages\laporan" />
+      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\app\Http\Controllers\produksi\utils" />
+      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\manufaktur\pages\laporan\produksi" />
+      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\karyawan\section" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2578,7 +2539,7 @@
       <workItem from="1623570731695" duration="1865000" />
       <workItem from="1623644312926" duration="6864000" />
       <workItem from="1623652760721" duration="1738000" />
-      <workItem from="1623656568459" duration="2259000" />
+      <workItem from="1623656568459" duration="3261000" />
     </task>
     <task id="LOCAL-00176" summary="- Promo Fix">
       <created>1610423863832</created>
@@ -2927,7 +2888,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2972681000" />
+    <option name="totallyTimeSpent" value="2973683000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2949,7 +2910,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.301059" sideWeight="0.2638889" order="3" side_tool="true" content_ui="tabs" x="518" y="60" width="330" height="608" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14309211" sideWeight="0.47276855" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2993421" sideWeight="0.47276855" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22314675" sideWeight="0.49177632" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3061,27 +3022,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/utils/Pembelian.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4318">
-          <caret line="133" column="26" lean-forward="false" selection-start-line="133" selection-start-column="26" selection-end-line="133" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/utils/Penjualan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="38" column="42" lean-forward="false" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/utils/Produksi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/utils/HeaderReport.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -3346,7 +3286,7 @@
         <state relative-caret-position="12988">
           <caret line="397" column="1" lean-forward="false" selection-start-line="397" selection-start-column="1" selection-end-line="397" selection-end-column="1" />
           <folding>
-            <marker date="1623564101536" expanded="true" signature="2920:3257" ph="SELECT u_per... h_karyawan" />
+            <marker date="1623659095372" expanded="true" signature="2920:3257" ph="SELECT u_per... h_karyawan" />
           </folding>
         </state>
       </provider>
@@ -3414,19 +3354,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_karyawan/menu_create_page.blade.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_02_26_031449_create_menu_ukm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_02_26_031640_create_submenu_ukm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/superadmin_ukm/2019_02_26_033753_create_u_menu_karyawan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_perusahaan/menu_create_page.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
-          <folding />
+        <state relative-caret-position="306">
+          <caret line="99" column="15" lean-forward="true" selection-start-line="94" selection-start-column="12" selection-end-line="99" selection-end-column="15" />
+          <folding>
+            <element signature="e#1432#1472#0#HTML" expanded="true" />
+            <element signature="e#1614#1651#0#HTML" expanded="true" />
+            <element signature="e#1753#1773#0#HTML" expanded="true" />
+            <element signature="e#2475#2500#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_karyawan/menu_create_page.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="113" column="14" lean-forward="false" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
+          <folding>
+            <element signature="e#1372#1412#0#HTML" expanded="true" />
+            <element signature="e#1552#1589#0#HTML" expanded="true" />
+            <element signature="e#2644#2669#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

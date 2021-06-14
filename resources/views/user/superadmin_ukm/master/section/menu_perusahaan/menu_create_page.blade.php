@@ -39,7 +39,7 @@
                             @endif
                             <p style="color: green">Pilihlah menu aplikasi aturusaha.com dibawah ini sesuai kebutuhan
                                 perusahaan anda.</p>
-                            {{--<label><input type="checkbox" name="sample" class="minimal selectall"/> Select all</label>--}}
+                            <label><input type="checkbox" name="sample" class="minimal selectall"/> Select all</label>
                             @foreach($menu as $key=> $menus)
                                 <div class="form-group">
                                     <label class="main-class">{{ $menus->nm_menu }}</label>
@@ -91,6 +91,7 @@
         //Initialize Select2 Elements
         $(function () {
             $('.select2').select2();
+
             $('.selectall').on('ifChecked', function(event){
                 $('.minimal').iCheck('check');
             });
