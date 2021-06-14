@@ -86,8 +86,8 @@
                     <h4 class="w3pvt-title">Apa itu Aturusaha.com ?</h4>
                 </div>
 				<div class="card-body">                              
-					<h5><font color="#0B63E1">Aturusaha.com</font> adalah platform yang dapat digunakan oleh Usaha Mikro Kecil dan Menengah (UMKM) maupun perusahaan rintisan (start up) 
-						Untuk mengatur bisnisnya dan terhubung dengan mentor dan investor dalam satu aplikasi.
+					<h5><font color="#0B63E1">Aturusaha.com</font> adalah platform digital yang dapat digunakan oleh Usaha Mikro Kecil dan Menengah (UMKM) maupun perusahaan rintisan (start up) 
+						Untuk mengatur perusahaannya dan terhubung dengan mentor/coach dan investor dalam satu aplikasi.
 					</h5>
                 </div><br>
                 <div class="row space-sec">
@@ -408,9 +408,9 @@
                             </div>
                             <div class="card-body">
 								 <h6 class="mt-3">1. Aplikasi Satu Pintu</h6>
-                                 <p class="ml-3">Anda dapat menjalanakn usaha dan mengontrol semua bagian perusahaan</p>                            
+                                 <p class="ml-3"><font color="#E1120B">Owner/founder </font> dapat menjalankan lebih dari 1 perusahaan dengan 1 aplikasi.</p>                            
 								 <h6 class="mt-3">2. Integrasi</h6>
-                                 <p class="ml-3">Semua bagian saling terintegrasi, scalup perusahaan anda bisa lebih cepat</p>    
+                                 <p class="ml-3">Semua bagian saling terintegrasi, scale up perusahaan anda bisa lebih cepat</p>    
 								 <h6 class="mt-3">3. Connected</h6>
                                  <p class="ml-3">Terhubung dengan coach dan investor</p>   
                             </div>
@@ -519,7 +519,7 @@
                         </div>
                 </div>         
             </div>
-        </section>
+        </section><br><br>
 		<section>
             <div class="container">
                 <!-- iklan -->
@@ -548,15 +548,15 @@
                     <hr>
                     <div class="fv3-contact mt-2">
                         <p>
-                            <a href="mailto:example@email.com">Email : info@aturusaha.com</a>
+                            <a href="mailto:admin@aturusaha.com">Email : admin@aturusaha.com</a>
                         </p>
                     </div>
                     <div class="fv3-contact my-2">
-                        <p>Phone : 0427-5343434</p>
+                        <p>Phone : 0401-3083049</p>
                     </div>
                     <div class="fv3-contact">
-                        <p>Alamat : <br>Sekip, Sinduadi, Mlati, Sleman
-                            <br>DI Yogyakarta 55783.</p>
+                        <p>Alamat : <br>Jl. Pangeran Antasari, Anduonohu, Poasia, Kendari
+                            <br>Sulawesi Tenggara</p>
                     </div>
                 </div>
                 <div class="col-lg-8  col-md-6 mt-lg-0 mt-4">
@@ -590,7 +590,7 @@
     <!-- //footer -->
     <!-- copyright -->
     <div class="cpy-right text-center">
-        <p class="text-bl">© 2019 aturusaha.com All rights reserved
+        <p class="text-bl">© 2021 aturusaha.com All rights reserved
         </p>
     </div>
     <!-- //copyright -->
