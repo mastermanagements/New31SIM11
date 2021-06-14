@@ -15,23 +15,44 @@
         $('#jumlah_harga').val(formatRupiah(total.toString()));
     }
 
-    $('[name="pajak"]').keyup(function () {
-         calculateJumlahBayar();
+    $('[name="bayar"]').keyup(function () {
+        calculateJumlahBayar();
     });
-    
+
+    $('[name="pajak"]').keyup(function () {
+        calculateJumlahBayar();
+    });
+
+    $('[name="diskon_tambahan"]').keyup(function () {
+        calculateJumlahBayar();
+    });
+
+    $('[name="ongkir"]').keyup(function () {
+        calculateJumlahBayar();
+    });
+
+    convertFormatNumber = function (value) {
+        var new_value = value.replaceAll('.', '');
+        return new_value;
+    }
+
     calculateJumlahBayar = function () {
-        var sub_total = parseInt($('#sub_total').val());
-        var pajak_field = parseInt($('[name="pajak"]').val());
-        var diskon_tambahan_field = parseInt($('[name="diskon_tambahan"]').val());
+        var bayar = parseInt(convertFormatNumber($('[name="bayar"]').val()));
+        var sub_total = parseInt(convertFormatNumber($('#sub_total').val()));
+        var pajak_field = parseInt(convertFormatNumber($('[name="pajak"]').val()));
+        var diskon_tambahan_field = parseInt(convertFormatNumber($('[name="diskon_tambahan"]').val()));
         var ongkir_field = parseInt($('[name="ongkir"]').val());
 
-        var pajak =0;
-        var total_bayar=0;
-        if(pajak_field !=0){
-            pajak = sub_total * (pajak_field/100);
+        var pajak = 0;
+        var total_bayar = 0;
+        var kembalian = 0;
+        if (pajak_field != 0) {
+            pajak = sub_total * (pajak_field / 100);
         }
 
-        total_bayar = (sub_total + pajak + ongkir_field)-diskon_tambahan_field;
-        $('[name="bayar"]').val(formatRupiah(total_bayar.toString()));
+        total_bayar = (sub_total + pajak + ongkir_field) - diskon_tambahan_field;
+        kembalian = bayar - total_bayar;
+        $('#id_kembalian').val(formatRupiah(kembalian.toString()));
+        $('[name="total_keseluruhan"]').val(formatRupiah(total_bayar.toString()));
     }
 </script>
