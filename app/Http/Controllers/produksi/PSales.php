@@ -189,7 +189,15 @@ class PSales extends Controller
           $model->metode_bayar = $metode_bayar;
           $model->ongkir = $ongkir;
           $model->tgl_jatuh_tempo = $tgl_jatuh_tempo;
-          $model->total = $total_sales;
+          $total_net = $total_sales;
+
+          if($model->metode_bayar == 0){
+              $total_net = $total_sales;
+          }else{
+              $total_net = $bayar;
+          }
+
+          $model->total = $total_net;
           $model->keterangan = $req->ket;
           $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
           $model->id_karyawan = Session::get('id_karyawan');
