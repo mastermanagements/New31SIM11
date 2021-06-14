@@ -66,6 +66,7 @@ class DetailSales extends Controller
         //dd($model);
         //ambil jenis group klien dari klien yg beli di p_sales.id_klien->p_klien.id_group->a_group_klien.id
         //1. diskon berdasarkan group klien (member)
+		
         $model_group_klien = $model->linkToKlien->linkToMannyGroupKlien;
         $model_diskon_klien = $model->linkToKlien;
         //dd($model_group_klien);

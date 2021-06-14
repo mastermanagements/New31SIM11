@@ -20,7 +20,7 @@
                 <!-- User Account Menu -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                     <span class="pull-right"><font color="#F3A112">Keluar</font></span>
+                     <span class="pull-right"><font color="#FFFFF">Keluar</font></span>
                 </a>
                 <ul class="dropdown-menu"></br>
                     <!-- Menu Body -->

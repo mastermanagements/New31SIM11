@@ -16,12 +16,12 @@
     <tr>
         <td>Nama</td>
         <td>:</td>
-        <td>{{ $data->linkToKlien->nm_klien }}</td>
+        <td>@if(!empty($data->linkToKlien->nm_klien)){{ $data->linkToKlien->nm_klien }} @endif</td>
     </tr>
     <tr>
         <td>Telp</td>
         <td>:</td>
-        <td>{{ $data->linkToKlien->hp }}</td>
+        <td></td>
     </tr>
     <tr>
         <td>Tanggal</td>
@@ -49,7 +49,7 @@
         <tr>
             <td>{{ $no++ }}</td>
             <td>{{ $item->linkToBarang->nm_barang }}</td>
-            <td>{{ $item->linkToBarang->linkToSatuan->satuan }}</td>
+            <td>@if(!empty($item->linkToBarang->linkToSatuan->satuan)){{ $item->linkToBarang->linkToSatuan->satuan }} @endif</td>
             <td>{{ $item->hpp }}</td>
             <td>{{ $item->jumlah_jual }}</td>
             <td>{{ $item->jumlah_harga }} @php($total+=$item->jumlah_harga) </td>

@@ -30,4 +30,5 @@ class fronendController extends Controller
 	public function kontak(){
         return view('page/kontak');
     }
+
 }

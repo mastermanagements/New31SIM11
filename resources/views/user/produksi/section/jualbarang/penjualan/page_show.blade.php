@@ -28,7 +28,7 @@
                     @endif
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                          <h6 class="box-title">Rincian Penjualan Faktur : <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">@if($data->linkToKlien == 0) Klien umum @else {{ $data->linkToKlien->nm_klien }}   @endif,
+                          <h6 class="box-title">Rincian Penjualan Faktur : <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">@if($data->linkToKlien == NULL) Klien umum @else {{ $data->linkToKlien->nm_klien }}   @endif,
                           </font>
                             @if($data->id_group !=='0')
                               @if(!empty($data->linkToKlien))
@@ -82,14 +82,14 @@
                                                                     <option disabled>Pilih Barang</option>
                                                                     @if(!empty($barang))
                                                                         @foreach($barang as $data_barang)
-                                                                            <option value="{{ $data_barang->id }}">{{ $data_barang->nm_barang }}, @if(!empty($data_barang->linkToSatuan->satuan)){{$data_barang->linkToSatuan->satuan}} @endif, {{$data_barang->spec}}</option>
+                                                                            <option value="{{ $data_barang->id }}">{{ $data_barang->nm_barang }}, @if(!empty($data_barang->linkToSatuan->satuan)){{$data_barang->linkToSatuan->satuan}} @endif, {{$data_barang->spec_barang}}</option>
                                                                         @endforeach
                                                                     @endif
                                                                 </select>
                                                             </td>
                                                             <td><input type="text"  name="hpp" class="form-control" id="show_harga" required></td>
                                                             <td><input type="number" name="jumlah_jual" class="form-control" required></td>
-                                                            <td><input type="text" name="diskon_item" class="form-control" value="0" readonly required></td>
+                                                            <td><input type="text" name="diskon_item" class="form-control" value="0"  required></td>
                                                             <td><input type="text" name="jumlah_harga" readonly class="form-control" id="jumlah_harga" required></td>
                                                             <td><button type="submit" class="btn btn-primary">Tambah</button></td>
 
@@ -127,7 +127,7 @@
                                                                             <option disabled>Pilih Barang</option>
                                                                             @if(!empty($barang))
                                                                                 @foreach($barang as $data_barang)
-                                                                                    <option value="{{ $data_barang->id }}" @if($data_barang->id==$data_detail->id_barang) selected @endif>{{ $data_barang->nm_barang }}, @if(!empty($data_barang->linkToSatuan->satuan)){{$data_barang->linkToSatuan->satuan}} @endif, {{$data_barang->spec}}</option>
+                                                                                    <option value="{{ $data_barang->id }}" @if($data_barang->id==$data_detail->id_barang) selected @endif>{{ $data_barang->nm_barang }}, @if(!empty($data_barang->linkToSatuan->satuan)){{$data_barang->linkToSatuan->satuan}} @endif, {{$data_barang->spec_barang}}</option>
                                                                                 @endforeach
                                                                             @endif
                                                                         </select>
