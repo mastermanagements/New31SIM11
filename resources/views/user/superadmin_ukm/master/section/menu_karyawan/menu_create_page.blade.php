@@ -38,8 +38,8 @@
                            @elseif(!empty(session('message_fail')))
                                <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                            @endif
-                          <h4><p><font color="#0E50EC">Pilihlah menu dan submenu dibawah ini yang dapat diakses oleh karyawan perusahaan anda, Klik dikolom centang untuk mengaktifkannya.
-						   Anda dapat mengaktifkan atau menonaktifkan kapan saja Anda mau.</font></p></h4>
+                          <h4><p><font color="#0E50EC">Pilihlah menu dan submenu dibawah ini yang dapat <font color="#E14408">diakses oleh karyawan</font> perusahaan anda, Klik dikolom centang untuk mengaktifkannya.
+						   Anda dapat mengaktifkan atau menonaktifkan bebas kapan saja Anda mau.Untuk mengaktifkan/menonaktifkan semua menu dan sub menu, klik select all. </font></p></h4>
                                <label><input type="checkbox" name="sample" class="minimal selectall"/> Select all</label>
 
                                @php($id=0)

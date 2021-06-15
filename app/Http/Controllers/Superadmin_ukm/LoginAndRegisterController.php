@@ -113,8 +113,9 @@ class LoginAndRegisterController extends Controller
 		//
 		if($model->save())
         {
-            Mail::send(new verification_reset_password($user));
+            Mail::to($req->email)->send(new verification_reset_password($user));
             return response()->json(['message'=>'Silahkan cek email anda untuk melihat password baru anda','status'=>true]);
+			
 //            
         }else{
             return response()->json(['message'=>'Gagal reset password ','status'=>false]);

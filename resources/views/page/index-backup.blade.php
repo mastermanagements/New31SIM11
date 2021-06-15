@@ -82,7 +82,6 @@
         <!-- banner -->
 		 <section class="blog_w3ls align-w3" id="posts">
             <div class="container">
-				<br><br>
                 <div class="wthree_pvt_title text-center">
                     <h4 class="w3pvt-title">Apa itu Aturusaha.com ?</h4>
                 </div>
@@ -106,11 +105,7 @@
                                 <p><font color="#0B63E1">Aturusaha.com</font> adalah aplikasi satu pintu yang dapat digunakan oleh <font color="#E1120B">owner/founder</font> UMKM untuk menjalankan 
 								   bisnisnya mulai dari perencanaan sampai laporan bisnis.</p> <br><p><font color="#E1120B">Owner/founder</font> dapat mengontrol semua bagian dalam perusahaan 
 								   seperti administrasi, pembelian, penjualan, produksi, layanan jasa, marketing, keuangan, HRD, penggajian,dll.
-								</p>
-								<div class="center">
-									<a href="#regis"  class="blog_link regis">Daftar Owner</a>
-								</div>
-								
+								</p><br><a href="#regis" class="regis">Coba sekarang gratis..</a>                              
                             </div>
                         </div>
                     </div>
@@ -132,10 +127,7 @@
 								  Tersedia program pendampingan bisnis untuk UMKM. UMKM dapat memilih para <font color="#E1120B">Coach</font> bisnis sesuai dengan bidang 
 								  bisnis dan kebutuhannya masing-masing.</p><br><p> <font color="#E1120B">Coach</font> bisnis yang terdaftar di <font color="#0B63E1">Aturusaha.com</font> adalah para coach bisnis yang
 								  sudah berpengalaman dan berhasil menjalankan bisnisnya. Pendampingan bisnis ini berdasarkan data real UMKM yang terdapat di aturusaha.com. 								 
-								</p>
-								<div class="center">
-									<a href="javascript:alert('Maaf, daftar sebagai Coach belum tersedia, cooming soon.');" class="blog_link">Daftar Coach</a>
-								</div>
+								</p><br><!--<a href="">Coba sekarang gratis..</a>-->
                             </div>
                         </div>
                     </div>
@@ -157,10 +149,7 @@
 								  <font color="#0B63E1">Aturusaha.com</font> mempertemukan UMKM dengan para <font color="#E1120B">investor</font>, baik <font color="#E1120B">investor</font> perseorangan maupun perusahaan ventura yang siap mendanai bisnis UMKM.
 								   </p><br><p>UMKM dapat melihat daftar investor dan  mengajukan pendanaan usahanya. <font color="#E1120B">Investor</font> dapat melihat 
 								   Data UMKM sesuai dengan data real laporan UMKM. Laporan perkembangan bisnis UMKM dapat dilihat setiap saat oleh investor.								   
-								</p>
-								<div class="center">
-									<a href="javascript:alert('Maaf, daftar sebagai investor belum tersedia, cooming soon.');"  class="blog_link">Daftar Investor</a>
-								</div>
+								</p><br><!--<a href="">Coba sekarang gratis..</a>-->
                             </div>
                         </div>
                     </div>
@@ -400,7 +389,6 @@
                
             </div>
         </section>
-		
 		<section class="blog_w3ls align-w3" id="posts">
             <div class="container">
                 <div class="wthree_pvt_title text-center">
@@ -421,7 +409,7 @@
                             <div class="card-body">
 								 <h6 class="mt-3">1. Aplikasi Satu Pintu</h6>
                                  <p class="ml-3"><font color="#E1120B">Owner/founder </font> dapat menjalankan lebih dari 1 perusahaan dengan 1 aplikasi.</p>                            
-								 <h6 class="mt-3">2. Otomatisasi Bisnis</h6>
+								 <h6 class="mt-3">2. Integrasi</h6>
                                  <p class="ml-3">Semua bagian saling terintegrasi, scale up perusahaan anda bisa lebih cepat</p>    
 								 <h6 class="mt-3">3. Connected</h6>
                                  <p class="ml-3">Terhubung dengan coach dan investor</p>   
@@ -475,7 +463,7 @@
 		<section class="blog_w3ls align-w3" id="posts">
             <div class="container">            				
                 <div class="wthree_pvt_title text-center">
-                    <h4 class="w3pvt-title">Bidang Usaha Apa Yang Dapat menggunakan Aturusaha.com?</h4><br>
+                    <h4 class="w3pvt-title">Siapa Yang Dapat menggunakan Aturusaha.com?</h4><br>
                     <p class="sub-title"><h5>Bidang Usaha UMKM yang dapat menggunakan aplikasi ini, yaitu:</h5></p>
 					
                 </div>
@@ -486,7 +474,6 @@
                                
                                 <div class="col-9">
                                     <div class="abt-txt">
-									
                                         <h5>Manufaktur</h5>
                                         <br>
                                         	<p>Usaha Mengubah bahan mentah menjadi barang jadi seperti :</p>																														
@@ -566,7 +553,6 @@
                     </div>
                     <div class="fv3-contact my-2">
                         <p>Phone : 0401-3083049</p>
-						<p>HP/WA/Telegram : 085228006675</p>
                     </div>
                     <div class="fv3-contact">
                         <p>Alamat : <br>Jl. Pangeran Antasari, Anduonohu, Poasia, Kendari
