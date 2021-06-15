@@ -77,6 +77,7 @@
                                         <p></p>
                                         <input type="hidden" name="total_penjualan" id="total_penjualan" value="0">
                                         <button type="submit" id="btn_proses" class="btn btn-success">Proses</button> <small style="color: red;" id="notif_bayar"></small>
+                                        <label  class="pull-right"><input type="checkbox" name="jurnal_otomatis" value="on"> Jurnal Otomatis</label>
                                     </div>
                                 </div>
                             </div>

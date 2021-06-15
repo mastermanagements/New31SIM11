@@ -36,7 +36,8 @@ class LoginAndRegisterController extends Controller
     }
 
     public function registered(Request $req)
-    { //dd($req->all());
+    {
+        //dd($req->all());
         $this->validate($req,[
             'nama' => 'required',
             'alamat_email' => 'required',
@@ -96,8 +97,7 @@ class LoginAndRegisterController extends Controller
     }
 	
 	public function reset_password(Request $req){
-	
-        $this->validate($req, [
+	    $this->validate($req, [
             'email' => 'required|email'
         ]);
 
@@ -115,8 +115,6 @@ class LoginAndRegisterController extends Controller
         {
             Mail::to($req->email)->send(new verification_reset_password($user));
             return response()->json(['message'=>'Silahkan cek email anda untuk melihat password baru anda','status'=>true]);
-			
-//            
         }else{
             return response()->json(['message'=>'Gagal reset password ','status'=>false]);
         }
