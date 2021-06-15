@@ -13,7 +13,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Halaman Pengaturan Menu
+                Halaman Pengaturan Menu Perusahaan
             </h1>
         </section>
 
@@ -37,31 +37,36 @@
                             @elseif(!empty(session('message_fail')))
                                 <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                             @endif
-                            <p style="color: green">Pilihlah menu aplikasi aturusaha.com dibawah ini sesuai kebutuhan
-                                perusahaan anda.</p>
+                            <h4><p><font color="#0E50EC">Pilihlah menu dan submenu dibawah ini sesuai <font color="#E14408">kebutuhan perusahaan anda</font>, Klik dikolom centang untuk mengaktifkannya.
+						   Anda dapat mengaktifkan atau menonaktifkan bebas kapan saja Anda mau. Untuk mengaktifkan/menonaktifkan semua menu dan sub menu, klik select all. </font></p></h4>
                             <label><input type="checkbox" name="sample" class="minimal selectall"/> Select all</label>
                             @foreach($menu as $key=> $menus)
+							<div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="main-class">{{ $menus->nm_menu }}</label>
+                                    <label class="main-class"><font color="#EE3723">{{ $menus->nm_menu }}</font></label>
                                 </div>
+							</div>
                                 @if(!empty($submenu=$menus->getSubmenu))
                                     @foreach($submenu as $sKey => $sum_menu)
+									<div class="col-md-4">
                                         <div class="form-group" style="padding-left: 5%;">
                                             <input type="checkbox" class="minimal status menu_sub_{{ $key }}"
                                                    value="{{ $sum_menu->id }}" id="menus_{{ $key }}"
                                                    @if(!empty($menu_perusahaan))
-                                                   @foreach($menu_perusahaan as $menu_perusahaans)
-                                                   @if($menu_perusahaans->id_master_submenu == $sum_menu->id)
-                                                   checked
-                                                    @endif
+													@foreach($menu_perusahaan as $menu_perusahaans)
+														@if($menu_perusahaans->id_master_submenu == $sum_menu->id)
+															checked
+														@endif
                                                     @endforeach
-                                                    @endif
+                                                   @endif
                                             > <label> {{ $sum_menu->nm_submenu }}
                                             </label>
                                         </div>
+									</div>
                                     @endforeach
                                 @endif
                             @endforeach
+							
                             <input type="hidden" name="id_perusahaan" value="{{ $usaha->id }}">
                         </div>
                         <div class="box-footer">

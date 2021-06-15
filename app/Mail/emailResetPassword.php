@@ -30,7 +30,7 @@ class emailResetPassword extends Mailable
      */
     public function build()
     {
-        $subject = "Password baru telah Di Kirim Ke Email anda";
+        $subject = "Password baru telah Di Kirim Ke Email anda, Silahla di cek";
         return $this->subject($subject)->view('email.new_password_verifikasi');
     }
 }
