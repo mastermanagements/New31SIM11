@@ -374,7 +374,7 @@ class POrder extends Controller
               if ($model->save()) {
                   return redirect()->back()->with('message_success', 'berhasil menambah data pembelian barang')->with('tab3','tab3');
               } else {
-                  return redirect()->with('message_fail', 'gagal,membuat data pembelian barang)->with('tab3','tab3');
+                  return redirect()->with('message_fail', 'gagal,membuat data pembelian barang')->with('tab3','tab3');
               }
         }
     }

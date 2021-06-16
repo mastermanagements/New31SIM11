@@ -30,7 +30,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header"><a href="{{ url('welcome-page') }}">MENU KARYAWAN</li></a>
            @if(!empty($daftar_menu['daftar_menu']))
-                @foreach($daftar_menu['daftar_menu']->sortBy('id_master_menu') as $mKey=> $menus)
+                @foreach($daftar_menu['daftar_menu']->where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->sortBy('id_master_menu') as $mKey=> $menus)
                     <li class="treeview @if(Session::get('main_menu')==$mKey) active menu-open @endif" >
 					
                         <a href="#">
@@ -44,10 +44,10 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
-                        @if(!empty($submenu=$menus->getSubMenu->sortBy('urutan')))
+                        @if(!empty($submenu=$menus->getSubMenu->where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->sortBy('urutan')))
                             <ul class="treeview-menu">
                             @foreach($submenu as $sKey => $sum_menu)
-                                @if(!empty($Menu_karyawan = $sum_menu->getMenuKaryawan->where('id_karyawan', Session::get('id_karyawan'))))
+                                @if(!empty($Menu_karyawan = $sum_menu->getMenuKaryawan->where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->where('id_karyawan', Session::get('id_karyawan'))))
                                     @foreach($Menu_karyawan as $menus_karyawan)
                                         <li class="@if(Session::get('main_menu')==$mKey && Session::get('sub_menu')==$sKey) active @endif"><a
                                                     @if($sum_menu->getMasterSubMenuUKM->url=="BA-Pemeriksaan")

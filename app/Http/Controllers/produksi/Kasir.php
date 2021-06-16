@@ -12,6 +12,7 @@ use Session;
 use App\Model\Produksi\PSales;
 use App\Model\Produksi\DetailSales;
 use App\Http\utils\Stok;
+use App\Http\utils\JenisAkunPenjualan;
 
 class Kasir extends Controller
 {
@@ -54,7 +55,7 @@ class Kasir extends Controller
 
     public function store(Request $req)
     {
-        $this->validate($req, [
+      $this->validate($req, [
             'kode' => 'required',
             'id_barang' => 'required',
             'jumlah_jual' => 'required',
@@ -68,10 +69,31 @@ class Kasir extends Controller
             'total_penjualan' => $req->total_penjualan,
             'tgl_sales' => date('Y-m-d'),
             'id_perusahaan' => Session::get('id_perusahaan_karyawan'),
-            'id_karyawan' => Session::get('id_karyawan')
+            'id_karyawan' => Session::get('id_karyawan'),
+            'pajak' => 0,
+            'metode_bayar' => 0,
+            'ongkir' => 0
         ];
         // Tambah data kasir
+        $data['ongkir'] = 0;
+        $check_data_penjualan = JenisAkunPenjualan::CheckAkunPenjualan();
+        $jenis_akun_penjualan = JenisAkunPenjualan::rule($data, 2);
+        JenisAkunPenjualan::$status_pajak = false;
         if ($kasir_model = $this->insert_P_sales($data)) {
+            $req->merge([
+                'ongkir' => $kasir_model->onkir,
+                'total_sebelum_pajak' => $kasir_model->pajak,
+                'total' => $kasir_model->total,
+                'tgl_order' => $kasir_model->tgl_sales,
+                'no_order' => $kasir_model->no_sales,
+                'id_penjualan' => $kasir_model->id
+            ]);
+            if (!empty($req->jurnal_otomatis)) {
+                if ($req->jurnal_otomatis == 'on') {
+                    JenisAkunPenjualan::$new_request = $req;
+                    $response = JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
+                }
+            }
             $this->insert_detail_p_sales($kasir_model, $req);
         }
         return redirect()->back()->with('message_success', 'Nota penjualan telah dibuat');
@@ -130,7 +152,7 @@ class Kasir extends Controller
         $barang = PSales::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if ($barang->delete()) {
             return redirect()->back()->with('message_success', 'Nota kasir telah dihapus');
-        }else{
+        } else {
             return redirect()->back()->with('message_fail', 'Gagal, menghapus nota kasir');
         }
     }

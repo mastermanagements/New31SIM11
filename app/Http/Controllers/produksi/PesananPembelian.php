@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\utils\HeaderReport;
+use App\Model\Produksi\PSO;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Produksi\TawarBeli;
@@ -172,9 +174,6 @@ class PesananPembelian extends Controller
                 if($data->dp_po == $data->linkToBayar->jumlah_bayar){
                     $tombol_bayar = "<a href='".url('bayar/'.$data->id.'/bayar-po/0')."' class='btn btn-primary'> Bayar</a>";
                 }
-
-
-
             }
             if(!empty($data->linkToBayar->jumlah_bayar)){
                 $jumlah_bayar = rupiahview($data->linkToBayar->jumlah_bayar);
@@ -446,6 +445,12 @@ class PesananPembelian extends Controller
         } else {
             return redirect()->back()->with('message_success', 'gagal mengubah item baru');
         }
+    }
+
+    public function CetakPesananPembelian($id)
+    {
+        $model_pb = PB::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
+        return view('user.produksi.section.belibarang.pesanan_barang.cetak', ['data'=> $model_pb, 'header'=>HeaderReport::header_format_2('layouts.header_print.header_print1','PESANAN PEMBELIAN')]);
     }
 
 }
