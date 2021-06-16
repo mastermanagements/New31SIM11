@@ -55,8 +55,7 @@ class Kasir extends Controller
 
     public function store(Request $req)
     {
-        dd($req->all());
-        $this->validate($req, [
+      $this->validate($req, [
             'kode' => 'required',
             'id_barang' => 'required',
             'jumlah_jual' => 'required',

@@ -115,6 +115,7 @@
                                                 <form action="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/hapus') }}" method="post">
                                                     {{ csrf_field() }}
                                                     <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Rincian Barang </a>
+                                                    <a href="{{ url('cetak-pesanan-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Cetak </a>
                                                     <a href="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/edit') }}" class="btn btn-warning"> Ubah</a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus nota ini ...?')"> Hapus</button>
 

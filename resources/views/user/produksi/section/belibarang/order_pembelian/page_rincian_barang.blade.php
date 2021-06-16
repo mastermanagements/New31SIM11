@@ -234,6 +234,7 @@
                                           <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal umum otomatis </label> <button type="submit" onclick="return confirm('Pastikan yang anda isi telah sesuai atau tidak')" class="btn btn-primary"> Simpan daftar pembelian </button>
                                           <label class="pull-right">@if(!empty($data_order->kurang_bayar)) Total Keseluruhan: {{ rupiahView($data_order->total) }} @endif</label>
                                        </div>
+                                       </div>
                                 </form>
                           </div>
                 </div>
