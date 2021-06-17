@@ -62,7 +62,7 @@
                                 <!-- <a href="login.html" class="reqe-button text-uppercase">Login</a> -->
 
                                 <a href="" class="reqe-button text-uppercase page-scroll">Login <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                <input type="checkbox" id="drop-2" />
+                                <input type="checkbox" id="drop" />
                                 <ul>
                                     <li><a href="#owner" class="drop-text owner">Owner</a></li>
                                     <li><a href="#karyawan" class="drop-text karyawan">Karyawan</a></li>

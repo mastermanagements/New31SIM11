@@ -28,7 +28,7 @@
         <td colspan="2" style="border-color: transparent;">Costomer Service Aturusaha.com</td>
     </tr>
     <tr>
-        <td colspan="2" style="border-color: transparent;">www.aturusaha.com.id</td>
+        <td colspan="2" style="border-color: transparent;">www.aturusaha.com</td>
     </tr>
     <tr>
         <td style="border-color: transparent;">Head Office </td>

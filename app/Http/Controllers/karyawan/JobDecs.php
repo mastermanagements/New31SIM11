@@ -33,7 +33,7 @@ class JobDecs extends Controller
     public function index()
     {
         $data_JD = [
-           'data_jabatan'=>jabatan::where('id_perusahaan', $this->id_perusahaan)->paginate(6),
+           'data_jabatan'=>jabatan::where('id_perusahaan', $this->id_perusahaan)->get(),
            'data_jobdesc'=>JD::where('id_perusahaan', $this->id_perusahaan)->get(),
            'tugas'=>tugas::where('id_perusahaan', $this->id_perusahaan)->get(),
            'tanggungj'=>TJB::where('id_perusahaan', $this->id_perusahaan)->get(),

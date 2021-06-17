@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nama Departemen Perusahaan</label>
-                    <input type="text" class="form-control" placeholder="Contoh: Manager HRD" name="nm_bagian">
+                    <input type="text" class="form-control" placeholder="Contoh: Keuangan, Marketing, Administrasi, dll" name="nm_bagian">
                     <small style="color: red" id="notify"></small>
                 </div>
             </div>
