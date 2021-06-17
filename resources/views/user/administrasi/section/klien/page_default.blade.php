@@ -29,76 +29,17 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Leads </a></li>
-                        <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Customer</a></li>
+                        <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Customer  </a></li>
+                        <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Leads </a></li>
                         <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Group Klien(Member) </a></li>
                         <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Rekening Klien</a></li>
                     </ul>
                     <div class="tab-content">
-                          <div class="tab-pane @if(Session::get('tab1') == 'tab1') active @else '' @endif" id="tab_1">
-                            <p></p>
-                            <a href="{{ url('tambah-leads') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
-                            <p></p>
-                            <table id="example3" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Nama</th>
-                                    <th>Alamat</th>
-                                    <th>Pekerjaan</th>
-                                    <th>HP</th>
-                                    <th>WA</th>
-                                    <th>Email</th>
-									                  <th>Detail</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-								                @php($i=1)
-                                @foreach($data_leads as $value)
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $value->nm_klien }}</td>
-                                        <td>
-                                            {{ $value->alamat }}
-                                        </td>
-                                        <td>
-                                            {{ $value->pekerjaan }}
-                                        </td>
-                                        <td>
-                                            {{ $value->hp }}
-                                        </td>
-										                    <td>
-                                            {{ $value->wa }}
-                                        </td>
-										                    <td>
-                                            {{ $value->email }}
-                                        </td>
-										                    <td>
-                                            <a href="#" onclick="detailKlien('{{ $value->id }}')">
-                                                <span class="badge bg-red">Detail</span>
-                                            </a>
-                                        </td>
-                                        <td>
-                                          <form action="{{ url('convert-leads/'.$value->id) }}" method="post">
-                                              <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
-                                              {{ csrf_field() }}
-                                              <input type="hidden" name="_method" value="put"/>
-                                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan mengkonversi leads menjadi customer ...?')" title="Convert"><i class="fa fa-eraser"></i></button>
-                                          </form>
-
-
-
-
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-
-                        </div>
+                          
                         <!-- /.tab-pane -->
-						            <div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
+						<div class="tab-pane @if(Session::get('tab1') == 'tab1') active @else '' @endif" id="tab_1">
+							<a href="{{ url('tambah-customer') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                            <p></p>
                           <table id="example1" class="table table-bordered table-striped">
                               <thead>
                               <tr>
@@ -169,6 +110,68 @@
                           </table>
                         </div>
                         <!-- /.tab-pane -->
+						<div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
+                            <p></p>
+                            <a href="{{ url('tambah-leads') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                            <p></p>
+                            <table id="example3" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Nama</th>
+                                    <th>Alamat</th>
+                                    <th>Pekerjaan</th>
+                                    <th>HP</th>
+                                    <th>WA</th>
+                                    <th>Email</th>
+									                  <th>Detail</th>
+                                    <th>Aksi</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+								                @php($i=1)
+                                @foreach($data_leads as $value)
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $value->nm_klien }}</td>
+                                        <td>
+                                            {{ $value->alamat }}
+                                        </td>
+                                        <td>
+                                            {{ $value->pekerjaan }}
+                                        </td>
+                                        <td>
+                                            {{ $value->hp }}
+                                        </td>
+										                    <td>
+                                            {{ $value->wa }}
+                                        </td>
+										                    <td>
+                                            {{ $value->email }}
+                                        </td>
+										                    <td>
+                                            <a href="#" onclick="detailKlien('{{ $value->id }}')">
+                                                <span class="badge bg-red">Detail</span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                          <form action="{{ url('convert-leads/'.$value->id) }}" method="post">
+                                              <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                              {{ csrf_field() }}
+                                              <input type="hidden" name="_method" value="put"/>
+                                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan mengkonversi leads menjadi customer ...?')" title="Convert"><i class="fa fa-eraser"></i></button>
+                                          </form>
+
+
+
+
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+
+                        </div>
                         <div class="tab-pane @if(Session::get('tab3') == 'tab3') active @else '' @endif" id="tab_3">
                             <div class="row">
                                 <div class="col-md-12">

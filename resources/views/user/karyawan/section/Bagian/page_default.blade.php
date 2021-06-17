@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Departemen Perusahaan
+            Departemen/Bagian Perusahaan
         </h1>
     </section>
 
