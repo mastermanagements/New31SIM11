@@ -26,6 +26,7 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-body">
+                            <a href="{{ url('gudang/create') }}" class="btn btn-primary">Tambah Gudang</a>
                             <table class="table table-responsive table-striped">
                                 <thead>
                                 <tr>
@@ -41,7 +42,7 @@
                                     @foreach($gudang as $item_gudang)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $item_gudang->nama_gudang }}</td>
+                                            <td>{{ $item_gudang->gudang }}</td>
                                             <td>
                                                 @if($item_gudang->jenis_gudang == '0')
                                                     Gudang
@@ -50,8 +51,13 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-warning">ubah</a>
-                                                <button class="btn btn-danger">hapus</button>
+                                                <form action="{{ url('gudang/'.$item_gudang->id) }}" method="post">
+                                                    @method('delete')
+                                                    {{ csrf_field() }}
+                                                    <a href="{{ url('gudang/'.$item_gudang->id.'/edit') }}"
+                                                       class="btn btn-warning">ubah</a>
+                                                    <button type="submit" onclick="return confirm('Apakah anda akan menghapus data gudang ini...?')" class="btn btn-danger">hapus</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

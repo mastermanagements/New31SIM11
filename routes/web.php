@@ -463,7 +463,7 @@ Route::put('convert-leads/{id}', 'administrasi\Klien@convertLeads');
 Route::resource('RekKlien', 'administrasi\RekKlien');
 
 //------------------------------------Gudang -------------------------------------
-Route::get('gudang', 'Gudang\Gudang@index');
+Route::resource('gudang', 'Gudang\Gudang');
 
 //--- Barang ---
 Route::get('Barang', 'produksi\Barang@index');
