@@ -181,7 +181,7 @@
                                                                     <td>{{ $data->kd_barang }}</td>
                                                                     <td>{{ $data->nm_barang }}</td>
                                                                     <td>@if(!empty($data->linkToSatuan->satuan)){{ $data->linkToSatuan->satuan }} @endif</td>
-                                                                    <td>{{ $data->getkategori->nm_kategori_p }}</td>
+                                                                    <td>@if(!empty($data->getkategori->nm_kategori_p)){{ $data->getkategori->nm_kategori_p }}@endif</td>
                                                                     <td>{{ $data->spec_barang }}</td>
                                                                     <td>{{ $data->merk_barang }}</td>
                                                                     <td>{!! substr($data->desc_barang,0,100) !!}</td>
@@ -260,7 +260,7 @@
                                                                     <td>{{ $data->kd_barang }}</td>
                                                                     <td>{{ $data->nm_barang }}</td>
                                                                     <td>@if(!empty($data->linkToSatuan->satuan)){{ $data->linkToSatuan->satuan }} @endif</td>
-                                                                    <td>{{ $data->getkategori->nm_kategori_p }}</td>
+                                                                    <td>@if(!empty($data->getkategori->nm_kategori_p)){{ $data->getkategori->nm_kategori_p }} @endif</td>
                                                                     <td>{{ $data->spec_barang }}</td>
                                                                     <td>{{ $data->merk_barang }}</td>
                                                                     <td>{!! substr($data->desc_barang,0,100) !!}</td>

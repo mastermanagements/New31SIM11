@@ -33,18 +33,18 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Alamat </label>&nbsp;<strong style="color: red">*</strong>
-                                    <textarea class="form-control"  name="alamat" id="alamat" required>{{ $data_klien->alamat }}</textarea>
-                                    <small style="color: red">* Tidak boleh kosong</small>
+                                    <label for="exampleInputEmail1">Alamat </label>
+                                    <textarea class="form-control"  name="alamat" id="alamat">{{ $data_klien->alamat }}</textarea>
+                                    
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Pekerjaan</label>&nbsp;<strong style="color: red">*</strong>
-                                    <input type="text" name="pekerjaan" class="form-control"  value="{{ $data_klien->pekerjaan }}"  id="exampleInputEmail1" required>
+                                    <label for="exampleInputEmail1">Pekerjaan</label>
+                                    <input type="text" name="pekerjaan" class="form-control"  value="{{ $data_klien->pekerjaan }}"  id="exampleInputEmail1" >
 
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">No. Handphone</label>&nbsp;<strong style="color: red">*</strong>
-                                    <input type="text" name="hp"  class="form-control"   value="{{ $data_klien->hp }}" id="exampleInputEmail1" required>
+                                    <label for="exampleInputEmail1">No. Handphone</label>
+                                    <input type="text" name="hp"  class="form-control"   value="{{ $data_klien->hp }}" id="exampleInputEmail1" >
 
                                 </div>
                             </div>
@@ -94,24 +94,24 @@
                                     <input type="text" name="jabatan" class="form-control"  value="{{ $data_klien->jabatan }}" id="exampleInputEmail1">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Group Klien</label>&nbsp;<strong style="color: red">*</strong>
+                                    <label for="exampleInputEmail1">Group Klien</label>
                                     <select class="form-control select2" style="width: 100%;" name="id_group" required>
                                         @if(empty($group_klien))
                                             <option>data masih kosong</option>
                                         @else
                                             @foreach($group_klien as $value)
-                                                <option value="{{ $value->id }}">{{ $value->nama_group }}</option>
+                                 
+												<option value="{{ $value->id }}" @if($data_klien->id_group == $value->id) selected @endif> {{ $value->nama_group }} </option>
                                             @endforeach
                                         @endif
                                     </select>
-
                                 </div>
                                 <div class="form-group">
-                                  <label for="exampleInputEmail1">Diskon Berjenjang</label>&nbsp;<strong style="color: red">*</strong>
-                                  <input type="radio" class="minimal" name="status_diskon"  @if($value->status_diskon ='0') checked @endif value="0" required>&nbsp;Ya
-                                  <input type="radio" name="status_diskon" @if($value->status_diskon ='1') checked @endif value="1">&nbsp;Tidak
+                                  <label for="exampleInputEmail1">Diskon Berjenjang</label>
+                                  <input type="radio" class="minimal" name="status_diskon"  @if($data_klien->status_diskon =='0') checked @endif value="0" required>&nbsp;Ya
+                                  <input type="radio" name="status_diskon" @if($data_klien->status_diskon =='1') checked @endif value="1">&nbsp;Tidak
                                 </div>
-							                         <input type="hidden" name="jenis_klien" class="form-control"  value="{{ $data_klien->jenis_klien }}" id="exampleInputEmail1">
+							    
                           </div>
 
                         <div class="col-md-12">
