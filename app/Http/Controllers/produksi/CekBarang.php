@@ -13,6 +13,7 @@ use App\Model\Produksi\Cek_Barang;
 use App\Model\Produksi\Detail_Cek_Barang;
 use App\Model\MasukGudang;
 use App\Model\Gudang;
+use App\Model\DetailMasukGudang;
 
 class CekBarang extends Controller
 {
@@ -81,7 +82,7 @@ class CekBarang extends Controller
         ]);
         $id_order = $req->id_order;
         $current_date = date('Y-m-d');
-        $this->transfers_barang($req);
+
         //insert to p_cek_brg
         $model = new Cek_Barang;
         $model->id_order = $id_order;
@@ -116,6 +117,7 @@ class CekBarang extends Controller
             }
 
         }
+        $this->transfers_barang($req);
         if ($model_d) {
             $model_o = p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id_order);
             $model_o->status_cekbarang = '1';
@@ -200,7 +202,7 @@ class CekBarang extends Controller
         if (!empty($req->transfer_gudang)) {
 
             if ($req->transfer_gudang == "transfer") {
-                $masuk_gudan = MasukGudang::updateOrCreate(
+                $masuk_gudang = MasukGudang::updateOrCreate(
                     [
                         'id_order' => $req->id_order,
                         'id_gudang' => $req->id_gudang,
@@ -209,6 +211,30 @@ class CekBarang extends Controller
                     [
                         'tgl_transaksi' => $req->tgl_transaksi,
                         'nama_pengirim' => $req->nama_pengirim,
+                        'id_karyawan' => Session::get('id_karyawan')
+                    ]
+                );
+
+                if($masuk_gudang){
+                    $this->transfer_detail_barang($masuk_gudang);
+                }
+            }
+        }
+    }
+
+    private function transfer_detail_barang($model_gudang_masuk)
+    {
+        // Ambil detail barang dari table p_detail_cek_barang
+        if (!empty($data = $model_gudang_masuk->linkToOrder->linkToCekBarangDetail)) {
+            foreach ($data as $item_detail_cek_barang) {
+                $detail_masuk_gudang = DetailMasukGudang::updateOrCreate(
+                    [
+                        'id_masuk_gudang' => $model_gudang_masuk->id,
+                        'id_barang' => $item_detail_cek_barang->id_barang,
+                        'id_perusahaan' => Session::get('id_perusahaan_karyawan')
+                    ],
+                    [
+                        'jumlah' => $item_detail_cek_barang->jum_kualitas_sesuai,
                         'id_karyawan' => Session::get('id_karyawan')
                     ]
                 );

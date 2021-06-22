@@ -130,6 +130,7 @@
 
                           <div class="tab-pane @if(Session::get('tab3') == 'tab3') active @else '' @endif" id="tab_3">
                             <a href="{{ url('Oder/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Pembelian</a>
+                            <a href="{{ url('stok-gudang') }}" class="btn btn-warning pull-right"><i class="fa fa-archive"></i> Stok Gudang</a>
                             <p></p>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
@@ -162,8 +163,8 @@
                                                             <span class="sr-only">Toggle Dropdown</span>
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
-                                                            <li> <a href="{{  url('Oder/'.$item->id) }}">Rincian barang</a>   </li>
-                                                            <li> <a href="{{  url('cek-barang/'.$item->id) }}">Cek barang</a>   </li>
+                                                            <li> <a href="{{  url('Oder/'.$item->id) }}">Rincian barang</a></li>
+                                                            <li> <a href="{{  url('cek-barang/'.$item->id) }}">Cek barang</a></li>
                                                             <li> <a href="{{  url('status-return/'.$item->id) }}">Status return</a></li>
                                                             <li class="divider"></li>
                                                             <li><a href="#">Cetak</a></li>

@@ -464,6 +464,7 @@ Route::resource('RekKlien', 'administrasi\RekKlien');
 
 //------------------------------------Gudang -------------------------------------
 Route::resource('gudang', 'Gudang\Gudang');
+Route::get('stok-gudang','Gudang\Gudang@data_gudang');
 
 //--- Barang ---
 Route::get('Barang', 'produksi\Barang@index');
