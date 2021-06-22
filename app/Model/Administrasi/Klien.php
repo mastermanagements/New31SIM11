@@ -10,21 +10,17 @@ class Klien extends Model
 
     protected $table = "a_klien";
 
-    protected $fillable = ['nm_klien','alamat','pekerjaan','hp','wa','email','teleg','ig','fb','twiter','nm_perusahaan','alamat_perusahaan','telp_perusahaan','jabatan','jenis_klien','id_sdk','id_penanda_sdk','tambahan_sdk','id_group','status_diskon','id_perusahaan','id_karyawan'];
+    protected $fillable = ['nm_klien','alamat','pekerjaan','hp','wa','email','teleg','ig','fb','twiter','nm_perusahaan','alamat_perusahaan','telp_perusahaan','jabatan','id_group','status_diskon','id_perusahaan','id_karyawan'];
 
     public function linkToMannyGroupKlien(){
         return $this->belongsTo('App\Model\Administrasi\GroupKlien','id_group');
     }
-		public function linkToMannyDiskon(){
+	public function linkToMannyDiskon(){
         return $this->belongsTo('App\Model\Administrasi\GroupKlien','id_group');
     }
 
-	public function getSDK()
+	public function linkToSO()
     {
-        return $this->belongsTo('App\Model\Marketing\SumberDataKlien','id_sdk');
-    }
-	public function getPenandaSDK()
-    {
-        return $this->belongsTo('App\Model\Marketing\PenandaSDK','id_penanda_sdk');
+        return $this->hasMany('App\Model\Produksi\PSO','id_klien','id');
     }
 }

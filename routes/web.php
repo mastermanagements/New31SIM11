@@ -445,6 +445,14 @@ Route::get('tambah-leads', 'administrasi\Klien@create_leads');
 
 Route::post('store-leads', 'administrasi\Klien@store_leads');
 
+Route::get('ubah-leads/{id}', 'administrasi\Klien@editLeads');
+
+Route::put('update-leads/{id}', 'administrasi\Klien@updateLeads');
+
+Route::get('tambah-klien', 'administrasi\Klien@create_klien');
+
+Route::post('store-klien', 'administrasi\Klien@store_klien');
+
 Route::get('ubah-klien/{id}', 'administrasi\Klien@edit');
 
 Route::put('update-klien/{id}', 'administrasi\Klien@update');
