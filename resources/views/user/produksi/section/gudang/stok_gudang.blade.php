@@ -32,6 +32,7 @@
                                     <th>No.</th>
                                     <th>Nama Barang</th>
                                     <th>Stok Gudang</th>
+                                    <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -42,9 +43,14 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item_gudang->nm_barang }}</td>
                                             <td>{{ $item_gudang->jumlah }}</td>
+                                            <td>
+                                                <a class="btn btn-primary" href="{{ url('keluarkan-barang-gudang/'.$item_gudang->id) }}">Nota Keluarkan Barang</a>
+                                                <a class="btn btn-primary" href="{{ url('daftar-nota-keluarkan-barang/'.$item_gudang->id) }}">Daftar Nota</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 @endif
+
                                 </tbody>
                             </table>
                         </div>

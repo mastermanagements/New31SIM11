@@ -49,7 +49,7 @@ class LoginController extends Controller
             $req->session()->put('id_superadmin_karyawan', $model_ky->id_user_ukm);
             return response()->json(['message'=>'Anda berhasil login','status'=>true]);
         }else{
-            return response()->json(['message'=>'Anda gagal login','status'=>false]);
+            return response()->json(['message'=>'Anda gagal login, username atau password salah!','status'=>false]);
         }
         return redirect('login-karyawan')->with('fail_login','Anda Belum Terdaftar diperusahaan manapun...!');
     }

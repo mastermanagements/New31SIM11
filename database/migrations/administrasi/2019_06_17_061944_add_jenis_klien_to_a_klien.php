@@ -15,7 +15,7 @@ class AddJenisKlienToAKlien extends Migration
     {
         Schema::table('a_klien', function (Blueprint $table) {
             //tambah field jenis_klien
-			$table->enum('jenis_klien',['0','1'])->after('jabatan');
+			//$table->enum('jenis_klien',['0','1'])->after('jabatan');
         });
     }
 

@@ -32,18 +32,18 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Alamat </label>&nbsp;<strong style="color: red">*</strong>
-                                <textarea class="form-control"  name="alamat" id="alamat" required></textarea>
+                                <label for="exampleInputEmail1">Alamat </label>
+                                <textarea class="form-control"  name="alamat" id="alamat" ></textarea>
 
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Pekerjaan</label>&nbsp;<strong style="color: red">*</strong>
-                                <input type="text" name="pekerjaan" class="form-control" id="exampleInputEmail1" required>
+                                <label for="exampleInputEmail1">Pekerjaan</label>
+                                <input type="text" name="pekerjaan" class="form-control" id="exampleInputEmail1" >
 
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">No. Handphone</label>&nbsp;<strong style="color: red">*</strong>
-                                <input type="text" name="hp"  class="form-control" id="exampleInputEmail1" required>
+                                <label for="exampleInputEmail1">No. Handphone</label>
+                                <input type="text" name="hp"  class="form-control" id="exampleInputEmail1" >
 
                             </div>
 
@@ -97,12 +97,12 @@
                                 <input type="hidden" name="jenis_klien" value="1" class="form-control" id="exampleInputEmail1">
                             </div>
               							<div class="form-group">
-                  							<label for="exampleInputEmail1">Info Customer Dari</label>&nbsp;<strong style="color: red">*</strong>
-                  								<select class="form-control select2" style="width: 100%;" name="id_sdk" required>
+                  							<label for="exampleInputEmail1" >Info Customer Dari</label>
+                  								<select class="form-control select2" style="width: 100%;" name="id_sdk" >
                   								@if(empty($SDK))
                   									<option>Sumber Data Klien Belum di Isi</option>
                   								@else
-                  									<option>Pilih</option>
+                  									<option value="0">Pilih</option>
                   									@foreach($SDK as $sdk)
                                       <option value="{{ $sdk->id }}">{{ $sdk->sumber_media }}</option>
                   									@endforeach
@@ -110,9 +110,9 @@
                   								</select>
               							</div>
               							<div class="form-group">
-              								<label for="exampleInputFile">Penanda</label>&nbsp;<strong style="color: red">*</strong>
-              								<select class="form-control select2" style="width: 100%;" name="id_penanda_sdk" required>
-              									<option>Pilih</option>
+              								<label for="exampleInputFile">Penanda</label>
+              								<select class="form-control select2" style="width: 100%;" name="id_penanda_sdk">
+              									<option value="0">Pilih</option>
               								</select>
 
               							</div>

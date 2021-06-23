@@ -40,7 +40,7 @@
 										@foreach($data_jobdesc as $jobdesc)
 											@foreach ($jabatan_karyawan as $jabatan_karyawans)
 												@if ($jabatan_karyawans->id_jabatan_p == $jobdesc->id_jabatan_p)
-													<option value="{{ $jobdesc->id }}">{{ 		$jobdesc->getJabatan->nm_jabatan}}-{!! $jobdesc->job_desc !!}</option>
+													<option value="{{ $jobdesc->id }}">{{ $jobdesc->getJabatan->nm_jabatan}}-{!! $jobdesc->job_desc !!}</option>
 												@endif
 											@endforeach
 										@endforeach

@@ -445,6 +445,14 @@ Route::get('tambah-leads', 'administrasi\Klien@create_leads');
 
 Route::post('store-leads', 'administrasi\Klien@store_leads');
 
+Route::get('ubah-leads/{id}', 'administrasi\Klien@editLeads');
+
+Route::put('update-leads/{id}', 'administrasi\Klien@updateLeads');
+
+Route::get('tambah-klien', 'administrasi\Klien@create_klien');
+
+Route::post('store-klien', 'administrasi\Klien@store_klien');
+
 Route::get('ubah-klien/{id}', 'administrasi\Klien@edit');
 
 Route::put('update-klien/{id}', 'administrasi\Klien@update');
@@ -465,11 +473,14 @@ Route::resource('RekKlien', 'administrasi\RekKlien');
 //------------------------------------Gudang -------------------------------------
 Route::resource('gudang', 'Gudang\Gudang');
 Route::get('stok-gudang','Gudang\Gudang@data_gudang');
-
-//--- Barang ---
+Route::resource('detail-barang-keluar-gudang','Gudang\DetailKeluarGudang');
+Route::get('detail-barang-keluar-gudang/{id_detail_keluar_gudang}/delete','Gudang\DetailKeluarGudang@destroy');
+//--- Barang ---D
 Route::get('Barang', 'produksi\Barang@index');
 Route::post('getHargaBarang', 'produksi\Barang@respons_harga_barang');
 Route::get('tambah-barang', 'produksi\Barang@create');
+Route::resource('keluarkan-barang-gudang','gudang\KeluarGudang');
+Route::get('daftar-nota-keluarkan-barang/{id_gudang_asal}','gudang\KeluarGudang@daftar_nota');
 
 Route::post('response_json/{id_barang}', 'produksi\Barang@response_barang');
 

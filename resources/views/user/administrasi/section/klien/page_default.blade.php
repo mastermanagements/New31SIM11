@@ -38,7 +38,7 @@
                           
                         <!-- /.tab-pane -->
 						<div class="tab-pane @if(Session::get('tab1') == 'tab1') active @else '' @endif" id="tab_1">
-							<a href="{{ url('tambah-customer') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+							<a href="{{ url('tambah-klien') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
                             <p></p>
                           <table id="example1" class="table table-bordered table-striped">
                               <thead>
@@ -100,8 +100,13 @@
                                               <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit Klien"><i class="fa fa-edit"></i></a>
                                               {{ csrf_field() }}
                                               <input type="hidden" name="_method" value="put"/>
-
-                                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus Klien ini ...?')" title="Hapus Klien"><i class="fa fa-eraser"></i></button>
+											
+												@if(!empty($value->linkToSO->id_klien))
+													<button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus Klien ini ...?')" title="Hapus Klien"><i class="fa fa-eraser"></i></button>
+												@endif
+											  
+												
+                                              
                                           </form>
                                       </td>
                                   </tr>
@@ -156,7 +161,7 @@
                                         </td>
                                         <td>
                                           <form action="{{ url('convert-leads/'.$value->id) }}" method="post">
-                                              <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                              <a href="{{ url('ubah-leads/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
                                               {{ csrf_field() }}
                                               <input type="hidden" name="_method" value="put"/>
                                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan mengkonversi leads menjadi customer ...?')" title="Convert"><i class="fa fa-eraser"></i></button>

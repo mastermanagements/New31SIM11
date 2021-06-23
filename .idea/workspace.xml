@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dca242ea-7820-43ea-bc84-6c215f392013" name="Default" comment="- Revisi">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documen Aturusaha/Revisi/REVISI dashboard-laporan-kasir.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documen Aturusaha/Revisi/_$mbahan  Untuk mengetahui stok barang akhir di pisah 2.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend.rar" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/public/webview/assets/img/about.jpg" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/public/webview/assets/img/apple-touch-icon.png" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/public/webview/assets/img/course-1.jpg" />
@@ -42,8 +45,14 @@
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/public/webview/assets/vendor/remixicon/remixicon.ttf" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/public/webview/assets/vendor/remixicon/remixicon.woff" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/public/webview/assets/vendor/remixicon/remixicon.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/utils/StokGudang.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/gudang/stok_gudang.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Model/Administrasi/Leads.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/administrasi/2021_06_18_165906_create_table_leads.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/index.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/administrasi/section/klien/page_create_klien.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/administrasi/section/klien/page_edit_leads.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/gudang/keluarkan_gudang/daftar_nota_keluarkan_barang.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/gudang/keluarkan_gudang/detail_keluarkan_gudang.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/gudang/keluarkan_gudang/page_default.blade.php" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/.idea/vcs.xml" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/.idea/YayaEdustation.iml" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/.idea/modules.xml" />
@@ -114,15 +123,26 @@
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/resources/views/webview/index.blade.php" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/resources/views/webview/pricing.blade.php" />
       <change type="NEW" beforePath="" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/resources/views/webview/trainers.blade.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Documen Aturusaha/Revisi/~$mbahan  Untuk mengetahui stok barang akhir di pisah 2.docx" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documen Aturusaha/Revisi/daftar tabel revisi.xlsx" afterPath="$PROJECT_DIR$/Documen Aturusaha/Revisi/daftar tabel revisi.xlsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documen Aturusaha/Revisi/~$mbahan  Untuk mengetahui stok barang akhir di pisah 2.docx" afterPath="$PROJECT_DIR$/Documen Aturusaha/Revisi/~$mbahan  Untuk mengetahui stok barang akhir di pisah 2.docx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/gudang/Gudang.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/gudang/Gudang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/produksi/CekBarang.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/produksi/CekBarang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/DetailMasukGudang.php" afterPath="$PROJECT_DIR$/app/Model/DetailMasukGudang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Gudang.php" afterPath="$PROJECT_DIR$/app/Model/Gudang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/MasukGudang.php" afterPath="$PROJECT_DIR$/app/Model/MasukGudang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/administrasi/Klien.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/administrasi/Klien.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/gudang/DetailKeluarGudang.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/gudang/DetailKeluarGudang.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/gudang/KeluarGudang.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/gudang/KeluarGudang.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/karyawan/LoginController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/karyawan/LoginController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/utils/StokGudang.php" afterPath="$PROJECT_DIR$/app/Http/utils/StokGudang.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/Administrasi/Klien.php" afterPath="$PROJECT_DIR$/app/Model/Administrasi/Klien.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/DetailKeluarGudang.php" afterPath="$PROJECT_DIR$/app/Model/DetailKeluarGudang.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/KeluarGudang.php" afterPath="$PROJECT_DIR$/app/Model/KeluarGudang.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/administrasi/2019_06_17_061944_add_jenis_klien_to_a_klien.php" afterPath="$PROJECT_DIR$/database/migrations/administrasi/2019_06_17_061944_add_jenis_klien_to_a_klien.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/administrasi/2019_07_13_071517_add_field_to_klien.php" afterPath="$PROJECT_DIR$/database/migrations/administrasi/2019_07_13_071517_add_field_to_klien.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/administrasi/section/AgendaHarian/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/administrasi/section/AgendaHarian/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/administrasi/section/klien/page_create_leads.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/administrasi/section/klien/page_create_leads.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/administrasi/section/klien/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/administrasi/section/klien/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/administrasi/section/klien/page_edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/administrasi/section/klien/page_edit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/karyawan/section/default/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/karyawan/section/default/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_default.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/barang/page_default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/produksi/section/gudang/stok_gudang.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/produksi/section/gudang/stok_gudang.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Models/User.php" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Models/User.php" />
       <change type="MODIFICATION" beforePath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Providers/RouteServiceProvider.php" afterPath="E:/Sample/Project/Platform_belajar_online/YayaEduStation/YayaEdustation/app/Providers/RouteServiceProvider.php" />
@@ -171,7 +191,7 @@
         <item name="" type="eadb38e5:DatabaseStructure$Root" />
         <item name="db_aturusaha@localhost" type="e3449647:DbNodeDescriptor" />
         <item name="db_aturusaha" type="e3449647:DbNodeDescriptor" />
-        <item name="p_gudang" type="e3449647:DbNodeDescriptor" />
+        <item name="p_keluar_gudang" type="e3449647:DbNodeDescriptor" />
       </path>
     </expand>
     <select />
@@ -1555,28 +1575,18 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="466" column="51" lean-forward="false" selection-start-line="466" selection-start-column="51" selection-end-line="466" selection-end-column="51" />
+            <state relative-caret-position="238">
+              <caret line="476" column="12" lean-forward="false" selection-start-line="476" selection-start-column="12" selection-end-line="476" selection-end-column="72" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="js.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/cek_barang/js.blade.php">
+      <file leaf-file-name="DetailKeluarGudang.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/gudang/DetailKeluarGudang.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Gudang.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/gudang/Gudang.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="744">
-              <caret line="96" column="5" lean-forward="false" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
+            <state relative-caret-position="186">
+              <caret line="65" column="6" lean-forward="false" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="6" />
               <folding>
                 <element signature="e#47#75#0#PHP" expanded="true" />
               </folding>
@@ -1584,11 +1594,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stok_gudang.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/gudang/stok_gudang.blade.php">
+      <file leaf-file-name="KeluarGudang.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Model/KeluarGudang.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="45" column="47" lean-forward="false" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
+            <state relative-caret-position="220">
+              <caret line="29" column="47" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -1597,24 +1607,26 @@
       <file leaf-file-name="StokGudang.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/utils/StokGudang.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="32" />
+            <state relative-caret-position="172">
+              <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
               <folding>
-                <element signature="e#122#143#0#PHP" expanded="true" />
-                <marker date="1624345172943" expanded="true" signature="285:698" ph="SELECT p_gud... p_masuk_gudang" />
-                <marker date="1624345172943" expanded="true" signature="285:699" ph="SELECT p_gud... p_masuk_gudang" />
-                <marker date="1624345172943" expanded="true" signature="285:782" ph="SELECT p_gud... p_masuk_gudang" />
+                <marker date="1624428312104" expanded="true" signature="443:894" ph="SELECT p_gud... p_masuk_gudang" />
+                <marker date="1624428312104" expanded="true" signature="443:895" ph="SELECT p_gud... p_masuk_gudang" />
+                <marker date="1624428312104" expanded="true" signature="443:935" ph="SELECT p_gud... p_masuk_gudang" />
+                <marker date="1624428312104" expanded="true" signature="443:994" ph="SELECT p_gud... p_masuk_gudang" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gudang.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Model/Gudang.php">
+      <file leaf-file-name="detail_keluarkan_gudang.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/gudang/keluarkan_gudang/detail_keluarkan_gudang.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="37" />
-              <folding />
+            <state relative-caret-position="322">
+              <caret line="87" column="64" lean-forward="false" selection-start-line="87" selection-start-column="64" selection-end-line="87" selection-end-column="64" />
+              <folding>
+                <element signature="e#1257#3809#0#HTML" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1716,13 +1728,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/produksi/DetailSales.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/karyawan/include/header.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/karyawan/master_user.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/administrasi/master_user.blade.php" />
-        <option value="$PROJECT_DIR$/app/Model/Produksi/PSales.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/page_edit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/page_default.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/jualjasa/page_default.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/manufaktur/pages/laporan/penjualan/page_show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/penjualan/cetak_nota_penjualan.blade.php" />
@@ -1762,11 +1767,18 @@
         <option value="$PROJECT_DIR$/app/Model/DetailMasukGudang.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/cek_barang/page_rincian_barang.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/page_default.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Model/Gudang.php" />
-        <option value="$PROJECT_DIR$/app/Http/utils/StokGudang.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/gudang/Gudang.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/gudang/keluarkan_gudang/page_default.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/produksi/section/gudang/stok_gudang.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/gudang/KeluarGudang.php" />
+        <option value="$PROJECT_DIR$/app/Http/utils/StokGudang.php" />
+        <option value="$PROJECT_DIR$/app/Model/DetailKeluarGudang.php" />
+        <option value="$PROJECT_DIR$/app/Model/KeluarGudang.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/gudang/keluarkan_gudang/daftar_nota_keluarkan_barang.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/gudang/DetailKeluarGudang.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/produksi/section/gudang/keluarkan_gudang/detail_keluarkan_gudang.blade.php" />
       </list>
     </option>
   </component>
@@ -1934,7 +1946,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1946,25 +1957,6 @@
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
               <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="utils" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
-              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Model" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
@@ -2011,17 +2003,29 @@
               <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="gudang" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="New31SIM11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New31SIM11" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="produksi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="section" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="gudang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="keluarkan_gudang" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="Gudang&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/gudang/Gudang.php&#10;Masu&#9;null&#9;null&#10;Cekb&#9;null&#9;null&#10;p_masu&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/database/migrations/produksi/revisi/gudang/2021_06_18_124653_create_p_masuk_gudang.php&#10;web&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/routes/web.php&#10;gudan&#9;null&#9;null&#10;Pesanan&#9;null&#9;null&#10;POr&#9;null&#9;null&#10;sidebar&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/karyawan/include/sidebar.blade.php&#10;Usaha&#9;null&#9;null&#10;Login&#9;null&#9;null&#10;Regis&#9;null&#9;null&#10;P&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Kas&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/Kasir.php&#10;page_show&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/produksi/section/jualbarang/penjualan/page_show.blade.php&#10;Kasir&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/Kasir.php&#10;PSales&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;new&#9;null&#9;null&#10;new_passw&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/email/new_password_verifikasi.blade.php&#10;LoginReg&#9;null&#9;null&#10;penjualan&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/global/CalculateTotalPenjualan.blade.php&#10;Barang&#9;null&#9;null&#10;Sales&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Psales&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Detail&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/DetailSales.php&#10;Kasi&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/Kasir.php&#10;PSa&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Menu&#9;null&#9;null&#10;master&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/superadmin_ukm/master/master_user.blade.php&#10;Ma&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/manufaktur/Manufaktur.php&#10;Se&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/master/master_user.blade.php&#10;Side&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/master/include/sidebar.blade.php&#10;Manu&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/manufaktur/Manufaktur.php&#10;Penj&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/utils/Penjualan.php&#10;m&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/manufaktur/Manufaktur.php&#10;Laporan_de&#9;null&#9;null&#10;Dashb&#9;null&#9;null&#10;Neraca&#9;null&#9;null&#10;Perubaha&#9;null&#9;null&#10;Laba&#9;null&#9;null&#10;NeracaSaldo&#9;null&#9;null&#10;BukuBe&#9;null&#9;null&#10;JurnalUmum&#9;null&#9;null&#10;JurnalUm&#9;null&#9;null&#10;Lapo&#9;null&#9;null&#10;POrder&#9;null&#9;null&#10;TambaP&#9;null&#9;null&#10;Log&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/Superadmin_ukm/LoginAndRegisterController.php&#10;Karyawan&#9;null&#9;null&#10;Dashboard&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="Detai&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/gudang/DetailKeluarGudang.php&#10;DetailKeluar&#9;null&#9;null&#10;Deta&#9;null&#9;null&#10;Gudang&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/gudang/Gudang.php&#10;Masu&#9;null&#9;null&#10;Cekb&#9;null&#9;null&#10;p_masu&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/database/migrations/produksi/revisi/gudang/2021_06_18_124653_create_p_masuk_gudang.php&#10;web&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/routes/web.php&#10;gudan&#9;null&#9;null&#10;Pesanan&#9;null&#9;null&#10;POr&#9;null&#9;null&#10;sidebar&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/karyawan/include/sidebar.blade.php&#10;Usaha&#9;null&#9;null&#10;Login&#9;null&#9;null&#10;Regis&#9;null&#9;null&#10;P&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Kas&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/Kasir.php&#10;page_show&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/produksi/section/jualbarang/penjualan/page_show.blade.php&#10;Kasir&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/Kasir.php&#10;PSales&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;new&#9;null&#9;null&#10;new_passw&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/email/new_password_verifikasi.blade.php&#10;LoginReg&#9;null&#9;null&#10;penjualan&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/global/CalculateTotalPenjualan.blade.php&#10;Barang&#9;null&#9;null&#10;Sales&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Psales&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Detail&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/DetailSales.php&#10;Kasi&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/Kasir.php&#10;PSa&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/PSales.php&#10;Menu&#9;null&#9;null&#10;master&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/superadmin_ukm/master/master_user.blade.php&#10;Ma&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/manufaktur/Manufaktur.php&#10;Se&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/master/master_user.blade.php&#10;Side&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/resources/views/user/master/include/sidebar.blade.php&#10;Manu&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/manufaktur/Manufaktur.php&#10;Penj&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/produksi/utils/Penjualan.php&#10;m&#9;FILE&#9;file://E:/Kantor/Cloning Repo Aturusaha.com/New31SIM11/app/Http/Controllers/manufaktur/Manufaktur.php&#10;Laporan_de&#9;null&#9;null&#10;Dashb&#9;null&#9;null&#10;Neraca&#9;null&#9;null&#10;Perubaha&#9;null&#9;null&#10;Laba&#9;null&#9;null&#10;NeracaSaldo&#9;null&#9;null&#10;BukuBe&#9;null&#9;null&#10;JurnalUmum&#9;null&#9;null&#10;JurnalUm&#9;null&#9;null&#10;Lapo&#9;null&#9;null&#10;POrder&#9;null&#9;null&#10;TambaP&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
@@ -2034,11 +2038,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\produksi\section\gudang\keluarkan_gudang" />
       <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\produksi\section\gudang" />
       <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\produksi\section" />
       <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\layouts\header_print" />
       <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\manufaktur\pages\laporan" />
-      <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\app\Http\Controllers\produksi\utils" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Kantor\Cloning Repo Aturusaha.com\New31SIM11\resources\views\user\global" />
@@ -2636,7 +2640,9 @@
       <workItem from="1624252241562" duration="5080000" />
       <workItem from="1624271328917" duration="110000" />
       <workItem from="1624323958934" duration="5633000" />
-      <workItem from="1624337402256" duration="7407000" />
+      <workItem from="1624337402256" duration="7910000" />
+      <workItem from="1624409334385" duration="10734000" />
+      <workItem from="1624423696993" duration="6000000" />
     </task>
     <task id="LOCAL-00177" summary="- Beli Barang&#10;- Penawaran barang">
       <created>1610433356315</created>
@@ -2985,7 +2991,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3049347000" />
+    <option name="totallyTimeSpent" value="3066584000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2999,15 +3005,15 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2246596" sideWeight="0.7361111" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23146747" sideWeight="0.7361111" order="0" side_tool="false" content_ui="combo" x="478" y="110" width="179" height="631" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46546054" sideWeight="0.52723145" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18078668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44078946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.301059" sideWeight="0.2638889" order="3" side_tool="true" content_ui="tabs" x="518" y="60" width="330" height="608" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36842105" sideWeight="0.47276855" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36842105" sideWeight="0.47276855" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22314675" sideWeight="0.49177632" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3114,70 +3120,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="26" />
+      <option name="time" value="27" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/email/new_password_verifikasi.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="13" column="41" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="30" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/superadmin_ukm/master/section/menu_perusahaan/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../backup aturusaha.com/08-06-2021/New31SIM11/resources/views/user/produksi/section/jualbarang/penjualan/page_show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="124" column="59" lean-forward="false" selection-start-line="124" selection-start-column="59" selection-end-line="124" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/jualbarang/penjualan/page_show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="118" column="70" lean-forward="true" selection-start-line="118" selection-start-column="70" selection-end-line="118" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/utils/JenisAkunPenjualan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="60" column="51" lean-forward="false" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/PSales.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="208" column="17" lean-forward="false" selection-start-line="208" selection-start-column="17" selection-end-line="208" selection-end-column="17" />
-          <folding>
-            <element signature="e#49#81#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/karyawan/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="62" column="1" lean-forward="true" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/karyawan/include/sidebar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -3376,18 +3323,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/gudang/page_default.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="58" column="157" lean-forward="false" selection-start-line="58" selection-start-column="157" selection-end-line="58" selection-end-column="157" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/cek_barang/page_rincian_barang.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="866">
           <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3403,9 +3342,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="132" column="56" lean-forward="false" selection-start-line="132" selection-start-column="56" selection-end-line="132" selection-end-column="56" />
-          <folding>
-            <marker date="1624341252327" expanded="true" signature="6747:6891" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3417,76 +3353,150 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/DetailMasukGudang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/produksi/CekBarang.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="230" column="21" lean-forward="true" selection-start-line="230" selection-start-column="21" selection-end-line="230" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/gudang/Gudang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="96" column="5" lean-forward="false" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
           <folding>
-            <element signature="e#5070#7817#0#PHP" expanded="false" />
+            <element signature="e#47#75#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Gudang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/gudang/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="53" column="90" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/gudang/keluarkan_gudang/page_default.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2380">
+          <caret line="70" column="92" lean-forward="false" selection-start-line="70" selection-start-column="79" selection-end-line="70" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Hrd/H_Karyawan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/belibarang/cek_barang/js.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        <state relative-caret-position="98">
+          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/gudang/stok_gudang.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="48" column="49" lean-forward="false" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/gudang/KeluarGudang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding>
+            <element signature="e#47#75#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/DetailMasukGudang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/DetailKeluarGudang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/gudang/keluarkan_gudang/daftar_nota_keluarkan_barang.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="104" column="26" lean-forward="false" selection-start-line="104" selection-start-column="26" selection-end-line="104" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="466" column="51" lean-forward="false" selection-start-line="466" selection-start-column="51" selection-end-line="466" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Gudang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="37" />
+        <state relative-caret-position="238">
+          <caret line="476" column="12" lean-forward="false" selection-start-line="476" selection-start-column="12" selection-end-line="476" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/utils/StokGudang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="32" />
+        <state relative-caret-position="172">
+          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
           <folding>
-            <element signature="e#122#143#0#PHP" expanded="true" />
-            <marker date="1624345172943" expanded="true" signature="285:698" ph="SELECT p_gud... p_masuk_gudang" />
-            <marker date="1624345172943" expanded="true" signature="285:699" ph="SELECT p_gud... p_masuk_gudang" />
-            <marker date="1624345172943" expanded="true" signature="285:782" ph="SELECT p_gud... p_masuk_gudang" />
+            <marker date="1624428312104" expanded="true" signature="443:894" ph="SELECT p_gud... p_masuk_gudang" />
+            <marker date="1624428312104" expanded="true" signature="443:895" ph="SELECT p_gud... p_masuk_gudang" />
+            <marker date="1624428312104" expanded="true" signature="443:935" ph="SELECT p_gud... p_masuk_gudang" />
+            <marker date="1624428312104" expanded="true" signature="443:994" ph="SELECT p_gud... p_masuk_gudang" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/gudang/Gudang.php">
+    <entry file="file://$PROJECT_DIR$/app/Model/KeluarGudang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="744">
-          <caret line="96" column="5" lean-forward="false" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
+        <state relative-caret-position="220">
+          <caret line="29" column="47" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/gudang/DetailKeluarGudang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="65" column="6" lean-forward="false" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="6" />
           <folding>
             <element signature="e#47#75#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/gudang/stok_gudang.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/produksi/section/gudang/keluarkan_gudang/detail_keluarkan_gudang.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="45" column="47" lean-forward="false" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
-          <folding />
+        <state relative-caret-position="322">
+          <caret line="87" column="64" lean-forward="false" selection-start-line="87" selection-start-column="64" selection-end-line="87" selection-end-column="64" />
+          <folding>
+            <element signature="e#1257#3809#0#HTML" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
