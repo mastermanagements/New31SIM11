@@ -11,7 +11,7 @@ namespace App\Http\utils;
 use App\Model\Gudang;
 use Session;
 use Illuminate\Support\Facades\DB;
-
+use App\Model\StokGudang as stok_data_gudang;
 class StokGudang
 {
     public function query_gudang($id_gudang = null)
@@ -28,5 +28,29 @@ class StokGudang
              join p_barang on p_detail_masuk_gudang.id_barang = p_barang.id 
              where p_detail_masuk_gudang.id_perusahaan = '.Session::get('id_perusahaan_karyawan').' '.$plug_query.' GROUP by p_detail_masuk_gudang.id_barang');
         return $q_gudang;
+    }
+
+    public function IOStok($model, $operation){
+        $model_stok_gudang= stok_data_gudang::where('id_gudang', $model['id_gudang'])->where('id_barang', $model['id_barang'])->first();
+        //kalau data stok tidak ada
+        if(!empty($model_stok_gudang)){
+            //update jumlah
+           if($operation == 'masuk'){
+                $model_stok_gudang->stok_gudang +=$model['jumlah'];
+            }else{
+                $model_stok_gudang->stok_gudang -=$model['jumlah'];
+            }
+            $model_stok_gudang->save();
+        }else{
+            //tambah jumlah
+            $data = new stok_data_gudang([
+                'id_gudang'=> $model['id_gudang'],
+                'id_barang'=> $model['id_barang'],
+                'stok_gudang'=> $model['jumlah'],
+                'id_perusahaan'=> Session::get('id_perusahaan_karyawan'),
+                'id_karyawan'=> Session::get('id_karyawan'),
+            ]);
+            $data->save();
+        }
     }
 }

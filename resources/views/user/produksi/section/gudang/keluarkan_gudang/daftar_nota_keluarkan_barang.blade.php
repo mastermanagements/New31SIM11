@@ -63,46 +63,7 @@
                         </div>
                     </div>
                 </div>
-                    <div class="col-md-12">
-                        <div class="box box-primary">
-                            <div class="box-header">
-                                <h4 class="box-title">Tabel Nota Keluarkan Barang</h4>
-                            </div>
-                            <div class="box-body">
-                                <table class="table table-responsive table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Tanggal Transaksi</th>
-                                        <th>Nama Pengirim</th>
-                                        <th>Nama Penerima</th>
-                                        <th>Gudang Asal</th>
-                                        <th>Gudang Tujuan</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @if(!empty($data))
-                                        @php($no=1)
-                                        @foreach($data as $item_nota)
-                                            <tr>
-                                                <td>{{ $no++ }}</td>
-                                                <td>{{ date('d-m-Y', strtotime($item_nota->tgl_transaksi)) }}</td>
-                                                <td>{{ $item_nota->linkToPengirim->nama_ky }}</td>
-                                                <td>{{ $item_nota->linkToPenerima->nama_ky }}</td>
-                                                <td>{{ $item_nota->linkToGudangAsal->gudang }}</td>
-                                                <td>{{ $item_nota->linkToGudangTujuan->gudang }}</td>
-                                                <td>
-                                                    <a href="{{ url('detail-barang-keluar-gudang/'.$item_nota->id) }}" class="btn btn-warning">Detail Keluar Barang</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+
             </div>
         </section>
         <!-- /.content -->
