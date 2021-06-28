@@ -17,7 +17,7 @@
 		<br>
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header"><font color="#FFFFFF">MENU OWNER/FOUNDER</font></li>
+            <li class="header"><font color="#0032E4"><b>MENU OWNER/FOUNDER</b></font></li>
 
             <!-- Optionally, you can add icons to the links -->
             @if(!empty($main_menu=Session::get('main_menu')))
