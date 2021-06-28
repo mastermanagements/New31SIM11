@@ -101,7 +101,7 @@
                                                         <input type="number" class="form-control" name="jumlah" value="{{ $item_detail_barang->jumlah }}">
                                                     </th>
                                                     <th>
-                                                        <button class="btn btn-warning" type="submit">ubah</button>
+                                                        {{--<button class="btn btn-warning" type="submit">ubah</button>--}}
                                                         <a href="{{ url('detail-barang-keluar-gudang/'.$item_detail_barang->id.'/delete') }}" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini..?')" type="button">hapus</a>
                                                     </th>
 
