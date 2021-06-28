@@ -61,19 +61,13 @@
                             <li class=" mt-lg-0 mt-sm-4 mt-4">
                                 <!-- <a href="login.html" class="reqe-button text-uppercase">Login</a> -->
 
-                                <li class="mt-lg-0 mt-sm-4 mt-4">
-                                <label for="drop-2" class="toggle toogle-2" style="border: 1px solid rgba(255, 255, 255, 0.45);
-                                padding: 9px 20px;
-                                border-radius: 3px;">Login <span class="fa fa-angle-down" aria-hidden="true"></span>
-                                </label>
-                                <a class="button-adk" href="#">Login <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                <input type="checkbox" id="drop-2">
+                                <a href="" class="reqe-button text-uppercase page-scroll">Login <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                                <input type="checkbox" id="drop" />
                                 <ul>
                                     <li><a href="#owner" class="drop-text owner">Owner</a></li>
                                     <li><a href="#karyawan" class="drop-text karyawan">Karyawan</a></li>
                                     <li><a href="#investor" class="drop-text investor">Investor</a></li>
                                 </ul>
-                            </li>
                             </li>
                         </ul>
                     </nav>
