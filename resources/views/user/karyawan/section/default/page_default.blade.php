@@ -148,7 +148,7 @@
                                             <div class="box box-info">
                                                 <div class="box-body" style="background-color: deepskyblue">
                                                     <h4>Laba Rugi Hari ini : {{ date('d-m-Y') }}</h4>
-                                                    <p>Rp. {{ $laba_rugi }}</p>
+                                                    <p>Rp. {{ $laba_harian}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -156,7 +156,7 @@
                                             <div class="box box-info">
                                                 <div class="box-body" style="background-color: deepskyblue">
                                                     <h4>Laba Rugi Bulan ini : {{ date('d-m-Y') }}</h4>
-                                                    <p>Rp. 15.000.000</p>
+                                                    <p>Rp. {{ $laba_bulanan }}</p>
                                                 </div>
                                             </div>
                                         </div>
