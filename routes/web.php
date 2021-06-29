@@ -472,11 +472,15 @@ Route::resource('RekKlien', 'administrasi\RekKlien');
 
 //------------------------------------Gudang -------------------------------------
 Route::resource('gudang', 'Gudang\Gudang');
-
-//--- Barang ---
+Route::get('stok-gudang','Gudang\Gudang@data_gudang');
+Route::resource('detail-barang-keluar-gudang','Gudang\DetailKeluarGudang');
+Route::get('detail-barang-keluar-gudang/{id_detail_keluar_gudang}/delete','Gudang\DetailKeluarGudang@destroy');
+//--- Barang ---D
 Route::get('Barang', 'produksi\Barang@index');
 Route::post('getHargaBarang', 'produksi\Barang@respons_harga_barang');
 Route::get('tambah-barang', 'produksi\Barang@create');
+Route::resource('keluarkan-barang-gudang','gudang\KeluarGudang');
+Route::get('daftar-nota-keluarkan-barang/{id_gudang_asal}','gudang\KeluarGudang@daftar_nota');
 
 Route::post('response_json/{id_barang}', 'produksi\Barang@response_barang');
 

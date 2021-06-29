@@ -39,7 +39,7 @@
 
                         <div class="box-body">
 
-                            @if($data_order->status_cekbarang == '0')
+                            @if($data_order->status_cekbarang == '1')
 
                                 <form role="form" action="{{ url('cek-barang') }}" method="post">
 

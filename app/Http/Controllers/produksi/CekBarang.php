@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\utils\StokGudang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Produksi\POrder as p_order;
@@ -13,6 +14,8 @@ use App\Model\Produksi\Cek_Barang;
 use App\Model\Produksi\Detail_Cek_Barang;
 use App\Model\MasukGudang;
 use App\Model\Gudang;
+use App\Model\DetailMasukGudang;
+use stdClass;
 
 class CekBarang extends Controller
 {
@@ -81,41 +84,47 @@ class CekBarang extends Controller
         ]);
         $id_order = $req->id_order;
         $current_date = date('Y-m-d');
-        $this->transfers_barang($req);
+
         //insert to p_cek_brg
-        $model = new Cek_Barang;
-        $model->id_order = $id_order;
-        $model->tgl_konfirm_cek = $current_date;
-        $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
-        $model->id_karyawan = Session::get('id_karyawan');
-        $model->save();
+        $model = Cek_Barang::updateOrCreate(
+            [
+                'id_order' => $id_order,
+                'id_perusahaan' => Session::get('id_perusahaan_karyawan'),
+            ],
+            [
+                'tgl_konfirm_cek' => $current_date,
+                'id_karyawan' => Session::get('id_karyawan')
+            ]
+        );
 
         //insert to p_detail_cek_brg
         $id_cek_barang = $model->id;
         //dd($id_cek_barang);
 
         if ($model) {
-
-
             foreach ($req->id_barang as $key => $value) {
-                $model_d = new Detail_Cek_Barang;
-                $model_d->id_order = $id_order;
-                $model_d->id_cek_barang = $id_cek_barang;
-                $model_d->id_barang = $value;
-                $model_d->harga_beli = rupiahController($req->harga_beli[$key]);
-                $model_d->jumlah_beli = rupiahController($req->jumlah_beli[$key]);
-                $model_d->jumlah_harga = rupiahController($req->jumlah_harga[$key]);
-                $model_d->jum_sesuai = $req->jum_sesuai[$key];
-                $model_d->jum_no_sesuai = $req->jum_no_sesuai[$key];
-                $model_d->jum_kualitas_sesuai = $req->jum_kualitas_sesuai[$key];
-                $model_d->jum_kualitas_no_sesuai = $req->jum_kualitas_no_sesuai[$key];
-                $model_d->ket = $req->ket[$key];
-                $model_d->id_perusahaan = Session::get('id_perusahaan_karyawan');
-                $model_d->id_karyawan = Session::get('id_karyawan');
-                $model_d->save();
+                $model_d = Detail_Cek_Barang::updateOrCreate(
+                    [
+                        'id_order'=>$id_order,
+                        'id_cek_barang'=>$id_cek_barang,
+                        'id_barang'=>$value,
+                        'id_perusahaan'=>Session::get('id_perusahaan_karyawan'),
+                        'id_karyawan'=>Session::get('id_karyawan'),
+                    ],[
+                        'harga_beli'=>rupiahController($req->harga_beli[$key]),
+                        'jumlah_beli'=>rupiahController($req->jumlah_beli[$key]),
+                        'jumlah_harga'=>rupiahController($req->jumlah_harga[$key]),
+                        'jum_sesuai'=>$req->jum_sesuai[$key],
+                        'jum_no_sesuai'=>$req->jum_no_sesuai[$key],
+                        'jum_kualitas_sesuai'=>$req->jum_kualitas_sesuai[$key],
+                        'jum_kualitas_no_sesuai'=>$req->jum_kualitas_no_sesuai[$key],
+                        'ket'=>$req->ket[$key],
+                    ]
+                );
             }
-
+            $this->transfers_barang($req);
         }
+
         if ($model_d) {
             $model_o = p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id_order);
             $model_o->status_cekbarang = '1';
@@ -200,7 +209,7 @@ class CekBarang extends Controller
         if (!empty($req->transfer_gudang)) {
 
             if ($req->transfer_gudang == "transfer") {
-                $masuk_gudan = MasukGudang::updateOrCreate(
+                $masuk_gudang = MasukGudang::updateOrCreate(
                     [
                         'id_order' => $req->id_order,
                         'id_gudang' => $req->id_gudang,
@@ -212,6 +221,39 @@ class CekBarang extends Controller
                         'id_karyawan' => Session::get('id_karyawan')
                     ]
                 );
+
+                if ($masuk_gudang) {
+                    $this->transfer_detail_barang($masuk_gudang);
+                }
+            }
+        }
+    }
+
+    private function transfer_detail_barang($model_gudang_masuk)
+    {
+        // Ambil detail barang dari table p_detail_cek_barang
+        if (!empty($data = $model_gudang_masuk->linkToOrder->linkToCekBarangDetail)) {
+
+            foreach ($data as $item_detail_cek_barang) {
+                $array = [];
+                $stok_gudang = new StokGudang();
+                $detail_masuk_gudang = DetailMasukGudang::updateOrCreate(
+                    [
+                        'id_masuk_gudang' => $model_gudang_masuk->id,
+                        'id_barang' => $item_detail_cek_barang->id_barang,
+                        'id_perusahaan' => Session::get('id_perusahaan_karyawan')
+                    ],
+                    [
+                        'jumlah' => $item_detail_cek_barang->jum_kualitas_sesuai,
+                        'id_karyawan' => Session::get('id_karyawan')
+                    ]
+                );
+                if ($detail_masuk_gudang) {
+                    $array['id_gudang'] = $model_gudang_masuk->id_gudang;
+                    $array['id_barang'] = $item_detail_cek_barang->id_barang;
+                    $array['jumlah'] = $detail_masuk_gudang->jumlah;
+                    $stok_gudang->IOStok($array, 'masuk');
+                }
             }
         }
     }

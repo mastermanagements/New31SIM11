@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Gudang as model_gudang;
 use Session;
+use App\Http\utils\StokGudang;
 
 class Gudang extends Controller
 {
@@ -87,5 +88,12 @@ class Gudang extends Controller
         } else {
             return redirect('gudang')->with('message_error', 'Data gudang gagal dihapus');
         }
+    }
+
+    public function data_gudang()
+    {
+        $gudang =new StokGudang();
+        $data_gudang = $gudang->query_gudang();
+        return view('user.produksi.section.gudang.stok_gudang',['gudang'=> $data_gudang]);
     }
 }
