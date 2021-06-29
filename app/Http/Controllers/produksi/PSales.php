@@ -140,7 +140,7 @@ class PSales extends Controller
     }
 
     public function updateDetail(Request $req, $id_p_sales){
-        dd($req->all());
+        //dd($req->all());
         $this->validate($req,[
             'bayar' => 'required',
             'sub_total'=> 'required',
