@@ -54,37 +54,7 @@
 
                                         Diskon Berjenjang: Tidak </font>
                                     @endif
-                                    <h6 class="box-title">Rincian Penjualan Faktur : <font
-                                                color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font
-                                                color="#FF00GG">@if(!($data->linkToKlien)){{ $data->linkToKlien->nm_klien }} @else
-                                                Klien umum  @endif,
-                                        </font>
-                                        @if($data->id_group !=='0')
-                                            @if(!empty($data->linkToKlien))
-                                                @if(!empty($data->linkToKlien->linkToMannyGroupKlien->nama_group))
-                                                    Member:
-                                                    <font color="#FF00GG">  {{ $data->linkToKlien->linkToMannyGroupKlien->nama_group }}
-                                                        ,</font>
-                                                @endif
-                                            @else
-                                                Klien umum
-                                            @endif
-                                        @endif
-
-                                        @if(!empty($data->linkToKlien))
-                                            @if($data->linkToKlien->status_diskon =='0')
-                                                Diskon Berjenjang:
-                                                <font color="#FF00GG"> Ya </font>
-                                            @else
-                                                Diskon Berjenjang:  </font>
-
-                                                <font color="#FF00GG">Tidak</font>
-
-                                            @endif
-                                        @else
-                                            Klien Umum
-                                        @endif
-                                    </h6>
+                                    
                                     <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a>
                                     </h5>
 
@@ -135,7 +105,7 @@
                                                 <td><input type="number" name="jumlah_jual" class="form-control"
                                                            required></td>
                                                 <td><input type="text" name="diskon_item" class="form-control" value="0"
-                                                           readonly required></td>
+                                                            required></td>
                                                 <td><input type="text" name="jumlah_harga" readonly class="form-control"
                                                            id="jumlah_harga" required></td>
                                                 <td>
