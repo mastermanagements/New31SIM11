@@ -38,7 +38,7 @@ class Menu_perusahaan extends Controller
         ];
         return view('user.superadmin_ukm.master.section.menu_perusahaan.page_default', $data_pass);
     }
-
+	//ini untuk pengaturan menu perdagangan
     public function daftar_menu($id)
     {
         if(empty($data_usaha=usaha::where('id',$id)->where('id_user_ukm', $this->id_superadmin)->first()))
@@ -52,9 +52,28 @@ class Menu_perusahaan extends Controller
             'menu'=> menu::all(),
             'menu_perusahaan'=>  s_ukm_menu::all()->where('id_perusahaan', $id)
         ];
-        return view('user.superadmin_ukm.master.section.menu_perusahaan.menu_create_page', $data_pass);
+		//dd($data_pass['usaha']);
+        return view('user.superadmin_ukm.master.section.menu_perusahaan.menu_gabung_create_page', $data_pass);
     }
+	
+	/* //ini untuk pengaturan menu jasa
+    public function daftar_menu_jasa($id)
+    {
+        if(empty($data_usaha=usaha::where('id',$id)->where('id_user_ukm', $this->id_superadmin)->first()))
+        {
+            return abort(404);
+        }
 
+        $data_pass = [
+            'content_menu'=>"daftar-perusahaan",
+            'usaha'=> $data_usaha,
+            'menu'=> menu::all(),
+            'menu_perusahaan'=>  s_ukm_menu::all()->where('id_perusahaan', $id)
+        ];
+		//dd($data_pass['usaha']);
+        return view('user.superadmin_ukm.master.section.menu_perusahaan.menu_jasa_create_page', $data_pass);
+    }
+ */
 
     public function store_menu(Request $req)
     {
@@ -91,6 +110,7 @@ class Menu_perusahaan extends Controller
 
         return response()->json(array('Message'=> 'Terjadi Kesalahan..!'));
     }
+	
 
     public function delete_menu(Request $req)
     {

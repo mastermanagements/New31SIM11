@@ -162,7 +162,7 @@
                                     </label>
                                     <label>
                                         <input type="radio" name="jenis_usaha" class="minimal" value="2">
-                                        Barang & Jasa
+                                        Perdagangan & Jasa
                                     </label>
                                     <label>
                                         <input type="radio" name="jenis_usaha" class="minimal" value="3">

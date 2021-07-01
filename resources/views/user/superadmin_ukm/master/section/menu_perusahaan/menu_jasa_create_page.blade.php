@@ -13,7 +13,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Halaman Pengaturan Menu Perusahaan Dagang
+                Halaman Pengaturan Menu Perusahaan Jasa
             </h1>
         </section>
 
@@ -43,7 +43,7 @@
                           
 							@foreach($menu as $key=> $menus)
 							<div class="col-md-12">
-								@if($menus->kelompok_menu =='0')
+								@if($menus->kelompok_menu =='1')
                                 <div class="form-group">
                                     <label class="main-class"><font color="#EE3723">{{ $menus->nm_menu }}</font></label>																																				
                                 </div>
@@ -52,7 +52,7 @@
                                 @if(!empty($submenu=$menus->getSubmenu))
                                     @foreach($submenu as $sKey => $sum_menu)
 									<div class="col-md-4">
-										@if($sum_menu->kelompok_submenu =='0')
+										@if($sum_menu->kelompok_submenu =='1')
                                         <div class="form-group" style="padding-left: 5%;">
                                             <input type="checkbox" class="minimal status menu_sub_{{ $key }}"
                                                    value="{{ $sum_menu->id }}" id="menus_{{ $key }}"

@@ -10,5 +10,5 @@ class U_master_sub_menu extends Model
 
     protected $table="u_master_submenu";
 
-    protected $fillable = ['id_master_menu','nm_submenu', 'urutan', 'url'];
+    protected $fillable = ['id_master_menu','kelompok_submenu','jenis_submenu','nm_submenu', 'urutan', 'url'];
 }
