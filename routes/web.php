@@ -2449,6 +2449,8 @@ Route::get('filter-barang-by-barcode/{kode_barcode}', 'produksi\Barang@filterBar
 //========================================= Laporan Produksi ======================================
 Route::get('laporan-produksi', 'manufaktur\Manufaktur@laporan_produksi');
 Route::post('laporan-produksi', 'manufaktur\Manufaktur@PrinView_OrCetak');
+Route::get('laporan-produksi-tahunan', 'manufaktur\Manufaktur@laporan_produksi_perbulan');
+Route::post('laporan-produksi-tahunan', 'manufaktur\Manufaktur@laporan_produksi_perbulan_printView');
 //======================================= Laporan Pembelian =======================================
 Route::get('laporan-pembelian', 'manufaktur\Manufaktur@laporan_pembelian');
 Route::post('laporan-pembelian', 'manufaktur\Manufaktur@laporan_pembelian_printOrView');

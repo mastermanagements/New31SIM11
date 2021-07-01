@@ -75,7 +75,7 @@ class Manufaktur extends Controller
         $produksi = Produksi::DataProduksi();
         $barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
         $supervisor = H_Karyawan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
-        return view('user.manufaktur.pages.laporan.produksi.page_show', ['data' => $produksi,'barang'=> $barang,'supervisor'=> $supervisor]);
+        return view('user.manufaktur.pages.laporan.produksi.page_show', ['data' => $produksi, 'barang' => $barang, 'supervisor' => $supervisor]);
     }
 
     public function PrinView_OrCetak(Request $req)
@@ -88,11 +88,43 @@ class Manufaktur extends Controller
         $produksi = Produksi::DataProduksi();
         $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PRODUKSI');
         if ($req->action == 'preview') {
-            return view('user.manufaktur.pages.laporan.produksi.page_show', ['data' => $produksi,'barang'=> $barang,'supervisor'=> $supervisor]);
+            return view('user.manufaktur.pages.laporan.produksi.page_show', ['data' => $produksi, 'barang' => $barang, 'supervisor' => $supervisor]);
         } else {
             return view('user.manufaktur.pages.laporan.produksi.cetak', ['data' => $produksi, 'header' => $header]);
         }
     }
+
+    public function laporan_produksi_perbulan()
+    {
+        $data = Produksi::data_produksi_per_tahun();
+        $bulan = Produksi::$bulan;
+        $barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        $karyawan = H_Karyawan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        return view('user.manufaktur.pages.laporan.produksi.page_show_produksi_tahunan', ['data' => $data,
+            'barang' => $barang,'karyawan'=>$karyawan, 'bulan'=> $bulan]);
+    }
+
+    public function laporan_produksi_perbulan_printView(Request $req)
+    {
+        Produksi::$year = $req->year;
+        Produksi::$karyawan = $req->id_karyawan;
+        Produksi::$barang = $req->id_barang;
+        $data = Produksi::data_produksi_per_tahun();
+        $bulan = Produksi::$bulan;
+        $barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        $karyawan = H_Karyawan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+
+        if ($req->action == 'preview') {
+            return view('user.manufaktur.pages.laporan.produksi.page_show_produksi_tahunan', ['data' => $data,
+                'barang' => $barang,'karyawan'=>$karyawan, 'bulan'=> $bulan]);
+        } else {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PRODUKSI TAHUNAN');
+            return view('user.manufaktur.pages.laporan.produksi.cetak_produksi_tahunan', ['data' => $pembelian, 'header' => $header]);
+        }
+
+    }
+
+    // ============================================= Pembelian =========================================================
 
     public function laporan_pembelian()
     {
