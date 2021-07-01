@@ -120,6 +120,8 @@ Route::get('menu-perusahaan', 'Superadmin_ukm\Menu_perusahaan@daftar_perusahaan'
 
 Route::get('pengaturan-menu/{id}', 'Superadmin_ukm\Menu_perusahaan@daftar_menu');
 
+Route::get('pengaturan-menu-jasa/{id}', 'Superadmin_ukm\Menu_perusahaan@daftar_menu_jasa');
+
 Route::post('store_request_menu', 'Superadmin_ukm\Menu_perusahaan@store_menu');
 
 Route::post('delete_request_menu', 'Superadmin_ukm\Menu_perusahaan@delete_menu');

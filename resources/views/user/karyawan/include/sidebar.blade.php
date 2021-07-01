@@ -36,8 +36,7 @@
                         <a href="#">
                             <i></i> <span style="font-weight: bold" style="color: blue">
 							
-								<!--<img src="{{ @asset('component/dist/img/icon-menu.png') }}" style="width:20px;height:30px;">-->
-							
+								<img src="{{ @asset('component/menu/'.$menus->getMasterMenu->icon) }}" style="width:30px;height:30px;">								          
 								{{ $menus->getMasterMenu->nm_menu }}
 								</span>
                             <span class="pull-right-container">

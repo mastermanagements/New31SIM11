@@ -13,7 +13,10 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Halaman Pengaturan Menu Perusahaan Dagang
+                Halaman Pengaturan Menu Perusahaan 
+				@if($usaha->jenis_usaha =='0')Dagang
+				@elseif($usaha->jenis_usaha =='1')Jasa
+				@endif
             </h1>
         </section>
 
@@ -43,7 +46,12 @@
                           
 							@foreach($menu as $key=> $menus)
 							<div class="col-md-12">
-								@if($menus->kelompok_menu =='0')
+								@if(($usaha->jenis_usaha == '0') AND ($menus->kelompok_menu =='0'))
+                                <div class="form-group">
+                                    <label class="main-class"><font color="#EE3723">{{ $menus->nm_menu }}</font></label>																																				
+                                </div>
+								@endif
+								@if(($usaha->jenis_usaha == '1') AND ($menus->kelompok_menu =='1'))
                                 <div class="form-group">
                                     <label class="main-class"><font color="#EE3723">{{ $menus->nm_menu }}</font></label>																																				
                                 </div>
@@ -52,7 +60,26 @@
                                 @if(!empty($submenu=$menus->getSubmenu))
                                     @foreach($submenu as $sKey => $sum_menu)
 									<div class="col-md-4">
-										@if($sum_menu->kelompok_submenu =='0')
+										@if (($usaha->jenis_usaha == '0') AND($sum_menu->kelompok_submenu =='0'))
+                                        <div class="form-group" style="padding-left: 5%;">
+                                            <input type="checkbox" class="minimal status menu_sub_{{ $key }}"
+                                                   value="{{ $sum_menu->id }}" id="menus_{{ $key }}"
+                                                   @if(!empty($menu_perusahaan))
+													@foreach($menu_perusahaan as $menu_perusahaans)
+														@if($menu_perusahaans->id_master_submenu == $sum_menu->id)
+															checked
+														@endif
+                                                    @endforeach
+                                                   @endif
+                                            > <label> 
+											
+											{{ $sum_menu->nm_submenu }}
+											
+                                            </label>
+                                        </div>
+										@endif
+										
+										@if (($usaha->jenis_usaha == '1') AND($sum_menu->kelompok_submenu =='1'))
                                         <div class="form-group" style="padding-left: 5%;">
                                             <input type="checkbox" class="minimal status menu_sub_{{ $key }}"
                                                    value="{{ $sum_menu->id }}" id="menus_{{ $key }}"

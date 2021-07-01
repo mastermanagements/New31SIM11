@@ -22,7 +22,12 @@
                     <span class="info-box-number">{{ $perusahaan->nm_usaha }}</span>
                     <span class="progress-description">{{ $perusahaan->email }}</span>
                     <span class="progress-description">
-                            <a href="{{ url('pengaturan-menu/'. $perusahaan->id ) }}" class="btn btn-md btn-danger"><i class="fa fa-arrow-right"></i> Berahli ke pengaturan menu </a>
+					{{-- pisah link menu sesuai dg jenis perusahaan --}}
+						@if($perusahaan->jenis_usaha == '0')
+                        <a href="{{ url('pengaturan-menu/'. $perusahaan->id ) }}" class="btn btn-md btn-danger"><i class="fa fa-arrow-right"></i> Menu Utama  </a>
+						@elseif($perusahaan->jenis_usaha == '1')
+						<a href="{{ url('pengaturan-menu-jasa/'. $perusahaan->id ) }}" class="btn btn-md btn-danger"><i class="fa fa-arrow-right"></i> Menu Utama  </a>
+						@endif
                     </span>
                 </div>
                 <!-- /.info-box-content -->
