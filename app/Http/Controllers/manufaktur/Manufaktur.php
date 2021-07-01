@@ -5,6 +5,8 @@ namespace App\Http\Controllers\manufaktur;
 use App\Http\Controllers\produksi\utils\Penjualan;
 use App\Http\Controllers\produksi\utils\StokBarangOperation;
 use App\Model\Administrasi\Klien;
+use App\Model\Hrd\H_Karyawan;
+use App\Model\Produksi\Barang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
@@ -69,8 +71,11 @@ class Manufaktur extends Controller
     {
         Produksi::$month = $this->month;
         Produksi::$year = $this->years;
+
         $produksi = Produksi::DataProduksi();
-        return view('user.manufaktur.pages.laporan.produksi.page_show', ['data' => $produksi]);
+        $barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        $supervisor = H_Karyawan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        return view('user.manufaktur.pages.laporan.produksi.page_show', ['data' => $produksi,'barang'=> $barang,'supervisor'=> $supervisor]);
     }
 
     public function PrinView_OrCetak(Request $req)
@@ -78,9 +83,12 @@ class Manufaktur extends Controller
         Produksi::$tanggal_awal = $req->tgl_awal;
         Produksi::$tanggal_akhir = $req->tgl_akhir;
         $produksi = Produksi::DataProduksi();
+        $barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        $supervisor = H_Karyawan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        $produksi = Produksi::DataProduksi();
         $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PRODUKSI');
         if ($req->action == 'preview') {
-            return view('user.manufaktur.pages.laporan.produksi.page_show', ['data' => $produksi]);
+            return view('user.manufaktur.pages.laporan.produksi.page_show', ['data' => $produksi,'barang'=> $barang,'supervisor'=> $supervisor]);
         } else {
             return view('user.manufaktur.pages.laporan.produksi.cetak', ['data' => $produksi, 'header' => $header]);
         }

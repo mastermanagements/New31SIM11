@@ -2391,6 +2391,7 @@ Route::get('history-barang', 'produksi\StokOpname@HistoryStokOpname');
 Route::get('ubah-stok-opname/{id}', 'produksi\StokOpname@UbahHistoryStokUpname');
 Route::post('ubah-perbaikan-stok/{id}', 'produksi\StokOpname@update_perbaikan_stok');
 
+
 #Todo Promo
 //promo barang
 Route::resource('promo-crud', 'marketing\Promo');
