@@ -21,10 +21,8 @@
                 <div class="info-box-content">
                     <span class="info-box-number">{{ $perusahaan->nm_usaha }}</span>
                     <span class="progress-description">{{ $perusahaan->email }}</span>
-                    <span class="progress-description">
-					
-                        <a href="{{ url('pengaturan-menu/'. $perusahaan->id ) }}" class="btn btn-md btn-danger"><i class="fa fa-arrow-right"></i> Menu Utama  </a>
-						
+                    <span class="progress-description">				
+                        <a href="{{ url('pengaturan-menu/'. $perusahaan->id ) }}" class="btn btn-md btn-danger"><i class="fa fa-arrow-right"></i> Menu Utama  </a>					
                     </span>
                 </div>
                 <!-- /.info-box-content -->

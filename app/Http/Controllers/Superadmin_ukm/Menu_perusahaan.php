@@ -56,7 +56,7 @@ class Menu_perusahaan extends Controller
         return view('user.superadmin_ukm.master.section.menu_perusahaan.menu_gabung_create_page', $data_pass);
     }
 	
-	/* //ini untuk pengaturan menu jasa
+	 //ini untuk pengaturan menu jasa
     public function daftar_menu_jasa($id)
     {
         if(empty($data_usaha=usaha::where('id',$id)->where('id_user_ukm', $this->id_superadmin)->first()))
@@ -73,7 +73,7 @@ class Menu_perusahaan extends Controller
 		//dd($data_pass['usaha']);
         return view('user.superadmin_ukm.master.section.menu_perusahaan.menu_jasa_create_page', $data_pass);
     }
- */
+
 
     public function store_menu(Request $req)
     {
