@@ -43,17 +43,19 @@
                             <h4><p><font color="#0E50EC">Pilihlah menu dan submenu dibawah ini sesuai <font color="#E14408">kebutuhan perusahaan anda</font>, Klik dikolom centang untuk mengaktifkannya.
 						   Anda dapat mengaktifkan atau menonaktifkan bebas kapan saja Anda mau. Untuk mengaktifkan/menonaktifkan semua menu dan sub menu, klik select all. </font></p></h4>
                             <label><input type="checkbox" name="sample" class="minimal selectall"/> Select all</label>
-                          
+
 							@foreach($menu as $key=> $menus)
 							<div class="col-md-12">
 								@if(($usaha->jenis_usaha == '0') AND ($menus->kelompok_menu =='0'))
                                 <div class="form-group">
-                                    <label class="main-class"><font color="#EE3723">{{ $menus->nm_menu }}</font></label>																																				
+                                    <label ><font color="#EE3723">{{ $menus->nm_menu }}</font></label>
+                                    <input type="hidden" class="main-class" value="{{ $key }}">
                                 </div>
 								@endif
 								@if(($usaha->jenis_usaha == '1') AND ($menus->kelompok_menu =='1'))
                                 <div class="form-group">
-                                    <label class="main-class"><font color="#EE3723">{{ $menus->nm_menu }}</font></label>																																				
+                                    <label><font color="#EE3723">{{ $menus->nm_menu }}</font></label>
+                                    <input type="hidden" class="main-class" value="{{ $key }}">
                                 </div>
 								@endif
 							</div>
@@ -150,11 +152,12 @@
             });
 
             $('.main-class').each(function (index) {
+                var n_val = $(this).val();
 //               $('#menu_'+index).on('ifChecked', function (event) {
 //                   $('.menu_sub_'+index).iCheck('check')
 //               })
 
-                $('.menu_sub_' + index).on('ifChecked', function (event) {
+                $('.menu_sub_' + n_val).on('ifChecked', function (event) {
                     //  $('#menu_'+index).iCheck('check')
                     // alert(""+ $(this).val());
                     $.ajax({
@@ -172,7 +175,7 @@
                     })
                 });
 
-                $('.menu_sub_' + index).on('ifUnchecked', function (event) {
+                $('.menu_sub_' + n_val).on('ifUnchecked', function (event) {
                     $.ajax({
                         url: "{{ url('delete_request_menu') }}",
                         type: "post",
