@@ -17,19 +17,29 @@ class Produksi
     public static $tanggal_akhir = null;
     public static $year = null;
     public static $month = null;
+    public static $barang = null;
+    public static $supervisor = null;
 
     public static function DataProduksi()
     {
         if (self::$year != null && self::$month != null) {
-            $produksi = P_tambah_produksi::where('status_produksi', '2')->whereMonth('tgl_mulai', self::$month)->whereYear('tgl_mulai', self::$year)->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+            $produksi = P_tambah_produksi::where('status_produksi', '2')->whereMonth('tgl_mulai', self::$month)->whereYear('tgl_mulai', self::$year)->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
         }
         if (self::$tanggal_awal != null && self::$tanggal_akhir) {
-            $produksi = P_tambah_produksi::where('status_produksi', '2')->whereBetween('tgl_mulai', [self::$tanggal_awal, self::$tanggal_akhir])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+            $produksi = P_tambah_produksi::where('status_produksi', '2')->whereBetween('tgl_mulai', [self::$tanggal_awal, self::$tanggal_akhir])->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        }
+
+        if(self::$barang !=null){
+            $produksi->where('id_barang', self::$barang);
+        }
+
+        if(self::$supervisor !=null){
+            $produksi->where('id_supervisor_produksi',self::$supervisor );
         }
 
         $data = array();
         $no = 1;
-        foreach ($produksi as $data_item) {
+        foreach ($produksi->get() as $data_item) {
             $column = array();
             $column[] = $no++;
             $column[] = date('d-m-Y', strtotime($data_item->tgl_mulai));

@@ -35,6 +35,32 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                            <label>Barang</label>
+                                            <select class="form-control" name="id_barang">
+                                                @if(!empty($barang))
+                                                    <option value="">Pilih nama barang</option>
+                                                    @foreach($barang as $item_barang)
+                                                        <option value="{{ $item_barang->id }}">{{ $item_barang->nm_barang }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Suppervisor</label>
+                                            <select class="form-control" name="id_karyawan">
+                                                @if(!empty($supervisor))
+                                                    <option value="">Pilih supervisor</option>
+                                                    @foreach($supervisor as $item_supervisor)
+                                                        <option value="{{ $item_supervisor->id }}">{{ $item_supervisor->nama_ky }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
                                             <label></label>
                                             <button type="submit" name="action" value="preview" class="btn btn-primary"
                                                     style="margin-top: 25px">Tampilkan
