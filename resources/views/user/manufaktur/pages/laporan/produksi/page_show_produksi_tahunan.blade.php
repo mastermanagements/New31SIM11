@@ -15,7 +15,7 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h4 class="box-title">Pengaturan Laporan</h4>
+                            <h4 class="box-title">Pengaturan Laporan @if($params=='karyawan') Karyawan @else Supervisor @endif</h4>
                         </div>
                         <div class="box-body">
                             <form action="{{ url('laporan-produksi-tahunan') }}" method="post">
@@ -25,14 +25,15 @@
                                         <div class="form-group">
                                             <label>Tahun</label>
                                             <input type="number" class="form-control" name="year" required>
+                                            <input type="hidden" class="form-control" name="params" value="@if($params=='karyawan') karyawan @else supervisor @endif">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Karyawan</label>
-                                            <select class="form-control" name="id_karyawan">
+                                            <label>@if($params=='karyawan') Karyawan @else Supervisor @endif</label>
+                                            <select class="form-control" name="@if($params=='karyawan') id_karyawan @else id_supervisor @endif">
                                                 @if(!empty($karyawan))
-                                                    <option value="">Pilih Karyawan</option>
+                                                    <option value="">Pilih @if($params=='karyawan') Karyawan @else Supervisor @endif</option>
                                                     @foreach($karyawan as $item_karyawan)
                                                         <option value="{{ $item_karyawan->id }}">{{ $item_karyawan->nama_ky }}</option>
                                                     @endforeach
@@ -73,7 +74,7 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h4 class="box-title">Laporan Produksi</h4>
+                            <h4 class="box-title">Laporan Produksi @if($params=='karyawan') Karyawan @else Supervisor @endif</h4>
                         </div>
                         <div class="box-body">
                             <table class="table table-responsive table-striped">

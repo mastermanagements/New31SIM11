@@ -4,6 +4,7 @@ namespace App\Http\Controllers\manufaktur;
 
 use App\Http\Controllers\produksi\utils\Penjualan;
 use App\Http\Controllers\produksi\utils\StokBarangOperation;
+use App\Http\utils\StokGudang;
 use App\Model\Administrasi\Klien;
 use App\Model\Hrd\H_Karyawan;
 use App\Model\Produksi\Barang;
@@ -94,20 +95,24 @@ class Manufaktur extends Controller
         }
     }
 
-    public function laporan_produksi_perbulan()
+    public function laporan_produksi_perbulan($params) // Karyawan
     {
         $data = Produksi::data_produksi_per_tahun();
         $bulan = Produksi::$bulan;
         $barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
         $karyawan = H_Karyawan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
         return view('user.manufaktur.pages.laporan.produksi.page_show_produksi_tahunan', ['data' => $data,
-            'barang' => $barang,'karyawan'=>$karyawan, 'bulan'=> $bulan]);
+            'barang' => $barang, 'karyawan' => $karyawan, 'bulan' => $bulan, 'params' => $params]);
     }
 
-    public function laporan_produksi_perbulan_printView(Request $req)
+    public function laporan_produksi_perbulan_printView(Request $req) //Karyawan
     {
         Produksi::$year = $req->year;
-        Produksi::$karyawan = $req->id_karyawan;
+        if (!empty($req->id_karyawan)) {
+            Produksi::$karyawan = $req->id_karyawan;
+        } else {
+            Produksi::$supervisor = $req->id_supervisor;
+        }
         Produksi::$barang = $req->id_barang;
         $data = Produksi::data_produksi_per_tahun();
         $bulan = Produksi::$bulan;
@@ -116,7 +121,7 @@ class Manufaktur extends Controller
 
         if ($req->action == 'preview') {
             return view('user.manufaktur.pages.laporan.produksi.page_show_produksi_tahunan', ['data' => $data,
-                'barang' => $barang,'karyawan'=>$karyawan, 'bulan'=> $bulan]);
+                'barang' => $barang, 'karyawan' => $karyawan, 'bulan' => $bulan, 'params' => $req->params]);
         } else {
             $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PRODUKSI TAHUNAN');
             return view('user.manufaktur.pages.laporan.produksi.cetak_produksi_tahunan', ['data' => $pembelian, 'header' => $header]);
@@ -242,6 +247,35 @@ class Manufaktur extends Controller
         }
     }
 
+//==================================== Item Masuk Keluar Barang  =========================================
+    public function laporan_masuk_keluar_brg()
+    {
+        $data = Produksi::dataIO();
+        $jenis_item = Produksi::$list_jenis_item;
+        return view('user.manufaktur.pages.laporan.masuk_keluar.page_show', ['data'=>$data, 'jenis_item'=> $jenis_item]);
+
+    }
+
+    public function laporan_masuk_keluar_brg_printView(Request $req)
+    {
+        Produksi::$jenis_item = $req->jenis_item;
+        $data = Produksi::dataIO();
+        $jenis_item = Produksi::$list_jenis_item;
+        if($jenis_item == '0'){
+            $plug_title='BARANG MASUK';
+        }else{
+            $plug_title='BARANG KELUAR';
+        }
+        $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN '.$plug_title);
+
+        if ($req->action == 'preview') {
+            return view('user.manufaktur.pages.laporan.masuk_keluar.page_show', ['data'=>$data, 'jenis_item'=> $jenis_item]);
+        } else {
+            return view('user.manufaktur.pages.laporan.masuk_keluar.cetak', ['data'=>$data, 'jenis_item'=> $jenis_item, 'header'=> $header]);
+        }
+    }
+
+//====================================== Stok Barang =====================================================
     public function laporan_stok_barang()
     {
         $stok_barang = StokBarangOperation::getDataStok();
@@ -266,6 +300,30 @@ class Manufaktur extends Controller
             return view('user.manufaktur.pages.laporan.StokBarang.page_show', $data);
         } else {
             return view('user.manufaktur.pages.laporan.StokBarang.cetak', $data);
+        }
+    }
+
+    public function laporan_stok_gudang(){
+        $gudang = new StokGudang();
+        $data = $gudang->query_gudang();
+        $gudang = $gudang->data_gudang();
+        return view('user.manufaktur.pages.laporan.StokGudang.page_show', ['data'=> $data, 'gudang'=>$gudang]);
+    }
+
+    public function laporan_stok_gudang_PrintPr(Request $req)
+    {
+       $gudang = new StokGudang();
+        $data = $gudang->query_gudang($req->gudang);
+        $gudang = $gudang->data_gudang();
+        $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN STOK GUDANG');
+        $data = [
+            'data'=> $data, 'gudang'=>$gudang,
+            'header' => $header
+        ];
+        if ($req->action == "preview") {
+            return view('user.manufaktur.pages.laporan.StokGudang.page_show', $data);
+        } else {
+            return view('user.manufaktur.pages.laporan.StokGudang.cetak', $data);
         }
     }
 }
