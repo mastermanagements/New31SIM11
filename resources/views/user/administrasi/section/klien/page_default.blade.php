@@ -220,8 +220,8 @@
                             </div>
                         </div>
                         <!--./tab-3-->
-                      <div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
-
+						<div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
+						
                             <table id="example2" class="table table-bordered table-striped">
                                 <thead>
                                   <tr>

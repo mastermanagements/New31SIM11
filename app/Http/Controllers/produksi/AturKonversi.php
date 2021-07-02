@@ -37,7 +37,12 @@ class AturKonversi extends Controller
                 'id_barang_asal'=> 'required',
                 'id_barang_tujuan'=> 'required',
                 'jumlah_konversi_satuan'=> 'required',
+				'sisa_brg_asal' => 'required'
             ]);
+			//cek jika jumlah brg yg dikonversi > sisa brg asal error 
+			if($req->jumlah_konversi_satuan> $req->sisa_brg_asal){
+				return redirect('Barang')->with('message_fail','Jumlah barang yang akan dikonversi lebih besar dari sisa barang asal ')->with('tab5','tab5');
+			}
             $model = new p_konversi_barang();
             $model->id_barang_asal = $req->id_barang_asal;
             $model->id_barang_tujuan = $req->id_barang_tujuan;
@@ -46,9 +51,9 @@ class AturKonversi extends Controller
             $model->id_karyawan = Session::get('id_karyawan');
 
             if($model->save()){
-                return redirect('Barang')->with('message_success','Barang konversi telah ditambahkan')->with('tab3','tab3');
+                return redirect('Barang')->with('message_success','Barang konversi telah ditambahkan')->with('tab6','tab6');
             }else{
-                return redirect('Barang')->with('message_fail','Barang konversi gagal ditambahkan')->with('tab3','tab3');
+                return redirect('Barang')->with('message_fail','Barang konversi gagal ditambahkan')->with('tab5','tab5');
             }
         }catch (Throwable $e){
             return false;

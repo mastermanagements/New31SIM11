@@ -9,7 +9,7 @@ class U_menu_ukm extends Model
     //
     protected $table = "u_menu_ukm";
 
-    protected $fillable = ['id_master_menu','id_perusahaan'];
+    protected $fillable = ['id_master_menu','urutan','id_perusahaan'];
 
     public function getMasterMenu()
     {
