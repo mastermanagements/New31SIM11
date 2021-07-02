@@ -26,7 +26,7 @@ class Dashboard extends Controller
     {
         $this->middleware(function ($req, $next) {
             if (empty(Session::get('id_karyawan'))) {
-                return redirect('login-karyawan')->with('message_login_fail', 'Waktu masuk anda berakhir, Silahkan login Ulang...!!');
+                return redirect('/')->with('message_login_fail', 'Waktu masuk anda berakhir, Silahkan login Ulang...!!');
             }
             $this->current_date = date('Y-m-d');
             $this->current_mont = date('m');

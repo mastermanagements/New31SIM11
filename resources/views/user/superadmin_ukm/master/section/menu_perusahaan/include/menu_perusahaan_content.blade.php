@@ -22,7 +22,8 @@
                     <span class="info-box-number">{{ $perusahaan->nm_usaha }}</span>
                     <span class="progress-description">{{ $perusahaan->email }}</span>
                     <span class="progress-description">				
-                        <a href="{{ url('pengaturan-menu/'. $perusahaan->id ) }}" class="btn btn-md btn-danger"><i class="fa fa-arrow-right"></i> Menu Utama  </a>					
+                        <a href="{{ url('pengaturan-menu/'. $perusahaan->id ) }}" class="btn btn-md btn-danger"><i class="fa fa-arrow-right"></i> Menu Utama  </a> &nbsp;
+						<a href="{{ url('pengaturan-menu-tambahan/'. $perusahaan->id ) }}" class="btn btn-md btn-warning"><i class="fa fa-arrow-right"></i> Menu Tambahan  </a>					
                     </span>
                 </div>
                 <!-- /.info-box-content -->

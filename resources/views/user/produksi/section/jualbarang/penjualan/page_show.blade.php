@@ -55,7 +55,7 @@
                                         Diskon Berjenjang: Tidak </font>
                                     @endif
                                     
-                                    <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a>
+                                    <h5 class="pull-right"><a href="{{ url('Penjualan')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a>
                                     </h5>
 
                                 @else

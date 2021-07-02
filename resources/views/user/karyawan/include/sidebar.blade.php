@@ -28,15 +28,15 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header"><a href="{{ url('welcome-page') }}">MENU KARYAWAN</li></a>
+            <li class="header"><a href="{{ url('welcome-page') }}"><font color="#0032E4">MENU KARYAWAN</font></li></a>
            @if(!empty($daftar_menu['daftar_menu']))
-                @foreach($daftar_menu['daftar_menu']->where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->sortBy('id_master_menu') as $mKey=> $menus)
+                @foreach($daftar_menu['daftar_menu']->where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->sortBy('urutan') as $mKey=> $menus)
                     <li class="treeview @if(Session::get('main_menu')==$mKey) active menu-open @endif" >
 					
                         <a href="#">
                             <i></i> <span style="font-weight: bold" style="color: blue">
 							
-								<img src="{{ @asset('component/menu/'.$menus->getMasterMenu->icon) }}" style="width:30px;height:30px;">								          
+								<img src="{{ @asset('component/menu/'.$menus->getMasterMenu->icon) }}" style="width:11%;height:11%;">								          
 								{{ $menus->getMasterMenu->nm_menu }}
 								</span>
                             <span class="pull-right-container">

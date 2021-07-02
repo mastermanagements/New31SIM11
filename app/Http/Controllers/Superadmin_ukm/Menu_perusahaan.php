@@ -22,7 +22,7 @@ class Menu_perusahaan extends Controller
         $this->middleware(function ($req, $next){
             if(empty(Session::get('id_superadmin_ukm')))
             {
-                return redirect('login-page')->with('message_fail','Waktu masuk anda telah habis, Silahkan login Ulang..!');
+                return redirect('/')->with('message_fail','Waktu masuk anda telah habis, Silahkan login Ulang..!');
             }
             $this->id_superadmin = Session::get('id_superadmin_ukm');
             Session::put('main_menu','pengaturan_awal-menu_perusahaan');
@@ -38,7 +38,7 @@ class Menu_perusahaan extends Controller
         ];
         return view('user.superadmin_ukm.master.section.menu_perusahaan.page_default', $data_pass);
     }
-	//ini untuk pengaturan menu perdagangan
+	
     public function daftar_menu($id)
     {
         if(empty($data_usaha=usaha::where('id',$id)->where('id_user_ukm', $this->id_superadmin)->first()))
@@ -53,11 +53,10 @@ class Menu_perusahaan extends Controller
             'menu_perusahaan'=>  s_ukm_menu::all()->where('id_perusahaan', $id)
         ];
 		//dd($data_pass['usaha']);
-        return view('user.superadmin_ukm.master.section.menu_perusahaan.menu_gabung_create_page', $data_pass);
+        return view('user.superadmin_ukm.master.section.menu_perusahaan.menu_create_page', $data_pass);
     }
 	
-	 //ini untuk pengaturan menu jasa
-    public function daftar_menu_jasa($id)
+	public function daftar_menu_tambahan($id)
     {
         if(empty($data_usaha=usaha::where('id',$id)->where('id_user_ukm', $this->id_superadmin)->first()))
         {
@@ -71,23 +70,25 @@ class Menu_perusahaan extends Controller
             'menu_perusahaan'=>  s_ukm_menu::all()->where('id_perusahaan', $id)
         ];
 		//dd($data_pass['usaha']);
-        return view('user.superadmin_ukm.master.section.menu_perusahaan.menu_jasa_create_page', $data_pass);
+        return view('user.superadmin_ukm.master.section.menu_perusahaan.menu_tambahan_create_page', $data_pass);
     }
-
-
+	
     public function store_menu(Request $req)
     {
 
         $this->validate($req,[
            'sub_menu_id' => 'required',
-            'id_usaha' => 'required'
+           'id_usaha' => 'required',
+		  
         ]);
 
         $pk_sub_menu = $req->sub_menu_id;
         $id_perusahaan = $req->id_usaha;
+			
         $sub_master_menu_mode_l = s_menu::findOrFail($pk_sub_menu);
         $master_menu_model = menu::findOrFail($sub_master_menu_mode_l->id_master_menu);
-        $model_menu_ukm=ukm_menu::firstOrCreate(['id_master_menu'=>$master_menu_model->id,'id_perusahaan'=> $id_perusahaan]);
+				
+        $model_menu_ukm=ukm_menu::firstOrCreate(['id_master_menu'=>$master_menu_model->id,'urutan'=>$master_menu_model->urutan,'id_perusahaan'=> $id_perusahaan]);
 
         if($model_menu_ukm->save())
         {

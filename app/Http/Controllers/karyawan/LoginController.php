@@ -19,7 +19,7 @@ class LoginController extends Controller
 //        $this->middleware(function($req, $next){
 //           if(empty(Session::get('id_karyawan')))
 //           {
-//               return redirect('login-karyawan')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
+//               return redirect('/')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
 //           }
 //           $this->id_karyawan = Session::get('id_karyawan');
 //           return $next($req);
@@ -51,7 +51,7 @@ class LoginController extends Controller
         }else{
             return response()->json(['message'=>'Anda gagal login, username atau password salah!','status'=>false]);
         }
-        return redirect('login-karyawan')->with('fail_login','Anda Belum Terdaftar diperusahaan manapun...!');
+        return redirect('/')->with('fail_login','Anda Belum Terdaftar diperusahaan manapun...!');
     }
 
     public function logOut()
