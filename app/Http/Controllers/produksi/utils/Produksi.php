@@ -10,6 +10,7 @@ namespace App\Http\Controllers\produksi\utils;
 
 use App\Model\Manufaktur\P_tambah_produksi;
 use Illuminate\Support\Facades\DB;
+use App\Model\Produksi\ItemIO;
 use Session;
 
 class Produksi
@@ -21,6 +22,12 @@ class Produksi
     public static $barang = null;
     public static $supervisor = null;
     public static $karyawan = null;
+    public static $jenis_item = null;
+
+    public static $list_jenis_item = [
+        'Item masuk',
+        'Item keluar'
+    ];
 
     public static $bulan = [
         1 => 'Januari',
@@ -114,6 +121,32 @@ class Produksi
         return $return;
     }
 
+    public static function dataIO()
+    {
+        $data = ItemIO::where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        if (self::$jenis_item != null)
+        {
+            $data->where('jenis_item', self::$jenis_item);
+        }
+        $no = 1;
+        $container = [];
+        if (!empty($data)) {
+            foreach ($data->orderBy('tgl', 'desc')->get() as $item_data) {
+                $column = [];
+                $column['no'] = $no++;
+                $column['tgl'] = $item_data->tgl;
+                $column['barang'] = $item_data->linkToBarang->nm_barang;
+                $column['spek'] = $item_data->linkToBarang->spec_barang;
+                $column['merk'] = $item_data->linkToBarang->merk_barang;
+                $column['satuan'] = $item_data->linkToBarang->linkToSatuan->satuan;
+                $column['jumlah'] = $item_data->jumlah_brg;
+                $column['ket'] = $item_data->ket;
+                $container[] = $column;
+            }
+        }
+        return $container;
+    }
+
     private static function data_pertahun()
     {
 
@@ -125,6 +158,10 @@ class Produksi
 
         if (self::$karyawan != null) {
             $query_plug .= ' and p_tambah_produksi.id_karyawan="' . self::$karyawan . '" ';
+        }
+
+        if (self::$supervisor != null) {
+            $query_plug .= ' and p_tambah_produksi.id_supervisor_produksi="' . self::$supervisor . '" ';
         }
 
         if (self::$barang != null) {

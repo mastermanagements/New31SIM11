@@ -472,15 +472,15 @@ Route::resource('RekKlien', 'administrasi\RekKlien');
 
 //------------------------------------Gudang -------------------------------------
 Route::resource('gudang', 'Gudang\Gudang');
-Route::get('stok-gudang','Gudang\Gudang@data_gudang');
-Route::resource('detail-barang-keluar-gudang','Gudang\DetailKeluarGudang');
-Route::get('detail-barang-keluar-gudang/{id_detail_keluar_gudang}/delete','Gudang\DetailKeluarGudang@destroy');
+Route::get('stok-gudang', 'Gudang\Gudang@data_gudang');
+Route::resource('detail-barang-keluar-gudang', 'Gudang\DetailKeluarGudang');
+Route::get('detail-barang-keluar-gudang/{id_detail_keluar_gudang}/delete', 'Gudang\DetailKeluarGudang@destroy');
 //--- Barang ---D
 Route::get('Barang', 'produksi\Barang@index');
 Route::post('getHargaBarang', 'produksi\Barang@respons_harga_barang');
 Route::get('tambah-barang', 'produksi\Barang@create');
-Route::resource('keluarkan-barang-gudang','gudang\KeluarGudang');
-Route::get('daftar-nota-keluarkan-barang/{id_gudang_asal}','gudang\KeluarGudang@daftar_nota');
+Route::resource('keluarkan-barang-gudang', 'gudang\KeluarGudang');
+Route::get('daftar-nota-keluarkan-barang/{id_gudang_asal}', 'gudang\KeluarGudang@daftar_nota');
 
 Route::post('response_json/{id_barang}', 'produksi\Barang@response_barang');
 
@@ -2449,8 +2449,10 @@ Route::get('filter-barang-by-barcode/{kode_barcode}', 'produksi\Barang@filterBar
 //========================================= Laporan Produksi ======================================
 Route::get('laporan-produksi', 'manufaktur\Manufaktur@laporan_produksi');
 Route::post('laporan-produksi', 'manufaktur\Manufaktur@PrinView_OrCetak');
-Route::get('laporan-produksi-tahunan', 'manufaktur\Manufaktur@laporan_produksi_perbulan');
-Route::post('laporan-produksi-tahunan', 'manufaktur\Manufaktur@laporan_produksi_perbulan_printView');
+Route::get('laporan-produksi-tahunan/{params}', 'manufaktur\Manufaktur@laporan_produksi_perbulan'); // karyawan
+Route::post('laporan-produksi-tahunan', 'manufaktur\Manufaktur@laporan_produksi_perbulan_printView'); // karyawan
+
+
 //======================================= Laporan Pembelian =======================================
 Route::get('laporan-pembelian', 'manufaktur\Manufaktur@laporan_pembelian');
 Route::post('laporan-pembelian', 'manufaktur\Manufaktur@laporan_pembelian_printOrView');
@@ -2464,8 +2466,17 @@ Route::post('laporan-penjualan', 'manufaktur\Manufaktur@laporan_print_penjualan'
 
 Route::get('laporan-detail-penjualan', 'manufaktur\Manufaktur@laporan_detail_penjualan');
 Route::post('laporan-detail-penjualan', 'manufaktur\Manufaktur@laporan_print_detail_penjualan');
+
+//=============================================Masuk keluar barang ====================================
+Route::get('laporan-masuk-keluar-barang','manufaktur\Manufaktur@laporan_masuk_keluar_brg');
+Route::post('laporan-masuk-keluar-barang','manufaktur\Manufaktur@laporan_masuk_keluar_brg_printView');
+
+//============================================ Stok Barang ============================================
 Route::get('laporan-stok-barang', 'manufaktur\Manufaktur@laporan_stok_barang');
 Route::post('laporan-stok-barang', 'manufaktur\Manufaktur@laporan_print_preview_stok_barang');
+
+Route::get('laporan-stok-gudang', 'manufaktur\Manufaktur@laporan_stok_gudang');
+Route::post('laporan-stok-gudang', 'manufaktur\Manufaktur@laporan_stok_gudang_PrintPr');
 
 Route::get('ganti-password-karyawan', 'karyawan\Karyawan@ganti_password_karyawan');
 Route::post('ganti-password-karyawan-post', 'karyawan\Karyawan@ganti_password_karyawan_proses');
