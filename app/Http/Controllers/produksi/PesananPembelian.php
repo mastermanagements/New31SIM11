@@ -351,7 +351,7 @@ class PesananPembelian extends Controller
         //sub_total = total_belanja_po
         $sub_total = $req->sub_total;
 
-        $total_pajak = $sub_total *($pajak / 100);
+        $total_pajak = $sub_total * $pajak / 100;
         //total_po = sub_total + pajak -diskon_tambahan   :
         $total_po = $sub_total + $total_pajak - $diskon_tambahan ;
 

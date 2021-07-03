@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Produksi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Produksi\Barang;
+use App\Model\Superadmin_ukm\U_Usaha as ukm;
 use Session;
 use App\Model\Produksi\StokOpname as SO;
 
@@ -22,8 +23,11 @@ class StokOpname extends Controller
     public function cetak(){
         $data = [
             'menu'=>'stok_opname',
-            'data_barang'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+            'data_barang'=> Barang::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+			'usaha' => ukm::where('id', Session::get('id_perusahaan_karyawan'))->get()
+			
         ];
+		//dd($data['usaha']);
         return view('user.produksi.section.inventory.stok_opname.print_stok_opname', $data);
     }
 

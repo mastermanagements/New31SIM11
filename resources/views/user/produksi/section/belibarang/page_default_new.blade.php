@@ -83,7 +83,7 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Tanggal Pesanan</th>
-                                    <th>Nomor Penawaran</th>
+                                    <th>Nomor Pesananan</th>
                                     <th>Supplier</th>
                                     <th>Tanggal DiKirim</th>
                                     <th>Total Pesanan</th>
@@ -114,11 +114,10 @@
                                             <td>
                                                 <form action="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/hapus') }}" method="post">
                                                     {{ csrf_field() }}
-                                                    <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Rincian </a>
-                                                    
+                                                    <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Rincian </a>                                                    
                                                     <a href="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/edit') }}" class="btn btn-warning"> Ubah</a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus nota ini ...?')"> Hapus</button>
-													<a href="{{ url('cetak-pesanan-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-success"> Cetak </a>
+													<a target="_blank" href="{{ url('cetak-pesanan-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-success"> Cetak </a>
 
                                                 </form>
                                             </td>
@@ -150,9 +149,9 @@
                                     @php($no=1)
                                         @foreach ($data_pembelian as $item)
                                             <tr>
-                                                <td>{{ $no++ }}</td>
-                                                <td>{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
-                                                <td>{{ $item->no_order }}</td>
+                                                <td width="10">{{ $no++ }}</td>
+                                                <td width="20">{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
+                                                <td width="50">{{ $item->no_order }}</td>
                                                 <td>{{ $item->linkToSuppliers->nama_suplier }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($item->tgl_tiba)) }}</td>
                                                 <td>{{ number_format($item->total,2,',','.') }}</td>

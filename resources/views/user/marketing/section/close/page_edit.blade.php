@@ -148,7 +148,7 @@
 									<div class="form-group">
                                         {{csrf_field()}}
                                         <input type="hidden" name="_method" value="put">
-                                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                        <button type="submit" class="btn btn-primary pull-right">Simpan</button>
                                     </div>
                                 </div>
                             </div>

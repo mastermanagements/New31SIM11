@@ -85,7 +85,7 @@ class BeliBarang extends Controller
             Session::flash('tab6',Session::get('tab6'));
         }
 
-        return view('user.produksi.section.belibarang.page_default', $data);
+        return view('user.produksi.section.belibarang.page_default_new', $data);
     }
 
     public function create()

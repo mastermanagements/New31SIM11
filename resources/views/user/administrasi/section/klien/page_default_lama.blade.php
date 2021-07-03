@@ -96,16 +96,15 @@
                                       </td>
                                      <td>
                                           <form action="{{ url('hapus-klien/'.$value->id) }}" method="post">
-                                              <a href="#" class="btn btn-primary" onclick="tambahRekKlien({{ $value->id }})" title="Tambah Rekening Klien"><i class="fa fa-plus"></i></a>
-                                              <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit Klien"><i class="fa fa-edit"></i></a>
+                                              <a href="#" class="btn btn-primary" onclick="tambahRekKlien({{ $value->id }})" title="Tambah Rekening Klien">Tambah Rekening</a>
+                                              <a href="{{ url('ubah-klien/'.$value->id) }}" class="btn btn-warning" title="Edit Klien">Ubah</a>
                                               {{ csrf_field() }}
                                               <input type="hidden" name="_method" value="put"/>
 											
 												@if(!empty($value->linkToSO->id_klien))
-													<button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus Klien ini ...?')" title="Hapus Klien"><i class="fa fa-eraser"></i></button>
+													<button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus Klien ini ...?')" title="Hapus Klien">Hapus</button>
 												@endif
-											  
-												
+																
                                               
                                           </form>
                                       </td>
@@ -161,10 +160,10 @@
                                         </td>
                                         <td>
                                           <form action="{{ url('convert-leads/'.$value->id) }}" method="post">
-                                              <a href="{{ url('ubah-leads/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                              <a href="{{ url('ubah-leads/'.$value->id) }}" class="btn btn-warning" title="Edit">Ubah</a>
                                               {{ csrf_field() }}
                                               <input type="hidden" name="_method" value="put"/>
-                                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan mengkonversi leads menjadi customer ...?')" title="Convert"><i class="fa fa-eraser"></i></button>
+                                              <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan mengkonversi leads menjadi customer ...?')" title="Convert">Convert</button>
                                           </form>
 
 
@@ -245,13 +244,13 @@
                                       <td>{{ $value->atas_nama }}</td>
                                       <td>{{ $value->kcp }}</td>
                                       <td>
-                                            <a href="{{ url('RekKlien/'.$value->id.'/edit') }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ url('RekKlien/'.$value->id.'/edit') }}" class="btn btn-warning" title="Edit">Ubah</a>
 
                                             <form action="{{ url('RekKlien/'.$value->id) }}" method="post">
                                               @method('delete')
                                               {{ csrf_field() }}
                                                   @if(empty($value->getBayarJual->bank_asal))
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus supplier ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus supplier ini ...?')" title="Hapus">Hapus</button>
                                                 @endif
                                             </form>
 
@@ -286,7 +285,6 @@
             checkboxClass: 'icheckbox_minimal-red',
             radioClass   : 'iradio_minimal-red'
         })
-
         $(document).ready(function () {
                 var ids;
                 tambahRekKlien = function (id) {
@@ -294,6 +292,5 @@
                           $('#modal-tambah-rekKlien').modal('show');
                       };
           })
-
     </script>
 @stop

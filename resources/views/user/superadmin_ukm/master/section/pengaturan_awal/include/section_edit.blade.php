@@ -124,7 +124,7 @@
             @endif
                 {{ csrf_field() }}
                 <input hidden="hidden" name="_method" value="put">
-                <button type="submit" class="btn btn-success btn-block"><i class="fa fa-pencil"></i> <b>Submit</b></button>
+                <button type="submit" class="btn btn-success btn-block"><i class="fa fa-pencil"></i> <b>Simpan</b></button>
             </form>
         </div>
         <!-- /.box-body -->

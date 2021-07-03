@@ -122,7 +122,7 @@
                     <div class="box-footer">
                        {{csrf_field()}}
                        <input type="hidden" name="id_usaha" value="{{ $id_usaha }}">
-                       <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                       <button type="submit" class="btn btn-primary pull-right">Simpan</button>
                    </div>
                    </form>
                </div>

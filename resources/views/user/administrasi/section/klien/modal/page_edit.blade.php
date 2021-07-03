@@ -68,7 +68,7 @@
                               <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
                             </div>
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </form>
                     </div>

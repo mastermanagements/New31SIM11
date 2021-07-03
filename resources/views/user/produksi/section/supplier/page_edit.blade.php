@@ -17,7 +17,8 @@
                 <div class="col-md-12">
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Formulir Supplier</h3>
+                            <h3 class="box-title">Formulir Ubah Supplier</h3>
+							<h5 class="pull-right"><a href="{{ url('Supplier')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
@@ -55,7 +56,7 @@
                             <div class="box-footer">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="put">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </form>
                     </div>

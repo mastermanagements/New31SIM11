@@ -204,7 +204,7 @@
                        {{csrf_field()}}
                        <input type="hidden" name="id_usaha" value="{{ $id_usaha }}">
                        <input type="hidden" name="_method" value="put">
-                       <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                       <button type="submit" class="btn btn-primary pull-left">Simpan</button>
                    </div>
                    </form>
                </div>

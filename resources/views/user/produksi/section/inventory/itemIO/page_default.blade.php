@@ -27,7 +27,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap;">
-                                <h4>Item Masuk <a href="{{ url('itemIO/create') }}" class="btn btn-success pull-right" style="margin-bottom: 10px">Tambah Item Masuk Keluar</a></h4>
+                                <h5 style="font-weight: bold">Item Masuk <a href="{{ url('itemIO/create') }}" class="btn btn-success pull-right" style="margin-bottom: 10px">Tambah Item Masuk Keluar</a></h5>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -65,7 +65,7 @@
                                 </table>
                             </div>
                             <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap;">
-                                <h4>Item Keluar</h4>
+                                <h5 style="font-weight: bold">Item Keluar</h5>
                                 <table id="example2" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>

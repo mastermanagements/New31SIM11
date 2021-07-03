@@ -42,7 +42,7 @@ class Supplier extends Controller
 		if(!empty(Session::get('tab2'))){
 			Session::flash('tab2',Session::get('tab2'));
 		}
-        return view('user.produksi.section.supplier.page_default', $data);
+        return view('user.produksi.section.supplier.page_default_lama', $data);
     }
 
     public function create(){

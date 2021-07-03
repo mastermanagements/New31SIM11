@@ -31,7 +31,7 @@
                     <td>{{ $value->kcp }}</td>
                     <td>
 
-                              <a href="{{ url('edit-rek-ukm/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                              <a href="{{ url('edit-rek-ukm/'.$value->id) }}" class="btn btn-warning" title="Ubah"><i class="fa fa-edit"></i></a>
 
                               {{ csrf_field() }}
                               <input type="hidden" name="_method" value="put"/>
