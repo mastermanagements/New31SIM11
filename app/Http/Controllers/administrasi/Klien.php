@@ -44,10 +44,10 @@ class Klien extends Controller
 			'SDK'=>SDK::all(),
 			'penandaSDK'=>penandaSDK::all(),
       'group_klien'=> GroupKlien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
-      'rek_klien'=> rek_klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+      'rek_klien'=> rek_klien::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->orderBy('id_klien')->get()
         ];
 		//dd($data_klien['penandaSDK']);
-    if(empty(Session::get('tab2')) && empty(Session::get('tab3')) && empty(Session::get('tab6'))){
+    if  (empty(Session::get('tab2')) && empty(Session::get('tab3')) && empty(Session::get('tab4'))){
         Session::flash('tab1','tab1');
     }
 
@@ -374,10 +374,15 @@ class Klien extends Controller
         if(empty($data_klien = kliens::where('id', $id)->where('id_perusahaan', $this->id_perusahaan)->first())){
             return abort(404);
         }
-
+		if(empty($data_rek = rek_klien::where('id_klien', $id)->where('id_perusahaan', $this->id_perusahaan))){
+            return abort(404);
+        }
+		
         $data_pass = [
-            'data'=> $data_klien
+            'data'=> $data_klien,
+			'rek'=> $data_rek,
         ];
+		
         return response()->json($data_pass);
     }
 

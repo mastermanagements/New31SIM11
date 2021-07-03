@@ -47,7 +47,7 @@ class RekSupplier extends Controller
 
       if($model->save())
       {
-              return redirect('Supplier')->with('message_success','Berhasil tambah rekening supplier');
+              return redirect('Supplier')->with('message_success','Berhasil tambah rekening supplier')->with('tab2','tab2');
           }else{
               return redirect('Supplier')->with('message_error','Gagal tambah rekening supplier');
           }
@@ -91,9 +91,9 @@ class RekSupplier extends Controller
 
       if($model->save())
       {
-              return redirect('Supplier')->with('message_success','Berhasil update rekening supplier');
+              return redirect('Supplier')->with('message_success','Berhasil update rekening supplier')->with('tab2','tab2');
           }else{
-              return redirect('Supplier')->with('message_error','Gagal update rekening supplier');
+              return redirect('Supplier')->with('message_error','Gagal update rekening supplier')->with('tab2','tab2');
           }
     }
 
@@ -101,9 +101,9 @@ class RekSupplier extends Controller
     {
         $model = rek_sup::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id); //bisa jg pake findorFail($id);
         if($model->delete()){
-            return redirect('Supplier')->with('message_success','Berhasil menghapus data rekening supplier');
+            return redirect('Supplier')->with('message_success','Berhasil menghapus data rekening supplier')->with('tab2','tab2');
         }else{
-            return redirect('Supplier')->with('message_fail','Gagal, menghapus rekening supplier');
+            return redirect('Supplier')->with('message_fail','Gagal, menghapus rekening supplier')->with('tab2','tab2');
         }
     }
 }
