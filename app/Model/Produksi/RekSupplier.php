@@ -14,4 +14,8 @@ class RekSupplier extends Model
   {
     return $this->hasMany('App\Model\Produksi\Bayar','bank_tujuan','id');
   }
+  public function linkToSupplier()
+  {
+    return $this->belongsTo('App\Model\Produksi\Supplier','id_supplier');
+  }
 }

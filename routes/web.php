@@ -2102,7 +2102,7 @@ Route::put('delete-bonus-proyek/{id}', 'penggajian\G_Bonus_Gaji@delete');
 
 
 //================================= investor ==========================================================================
-Route::get('Data-investor', 'investor\DataInvestor@index');
+Route::get('Data-Investor', 'investor\DataInvestor@index');
 
 Route::get('tambah-investor', 'investor\DataInvestor@create');
 

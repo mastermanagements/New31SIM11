@@ -2,16 +2,14 @@
 
 @section('skin')
     <link rel="stylesheet" href="{{ asset('component/bower_components/select2/dist/css/select2.min.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('component/plugins/iCheck/all.css') }}">
+	
 @stop
-
 @section('master_content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Klien/Customer
+            Supplier
         </h1>
     </section>
 
@@ -28,40 +26,38 @@
             <div class="col-md-12">
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Supplier  </a></li>
-                        <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Rekening Supplier </a></li>
-                
-                    </ul>
+                  <ul class="nav nav-tabs">
+                      <li class="active"><a href="#tab_1" data-toggle="tab">Daftar Supplier</a></li>
+                      <li><a href="#tab_2" data-toggle="tab">Rekening Supplier</a></li>
+                  </ul>
+
                     <div class="tab-content">
-                          
-                        <!-- /.tab-pane -->
-						<div class="tab-pane @if(Session::get('tab1') == 'tab1') active @else '' @endif" id="tab_1">
-							<a href="{{ url('tambah-klien') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                        <div class="tab-pane active" id="tab_1">
+                            <a href="{{ url('tambah-supplier') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Supplier</a>
                             <p></p>
-                          <table id="example1" class="table table-bordered table-striped">
-                              <thead>
-                              <tr>
-                                   <th>No.</th>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>No.</th>
                                     <th>Nama Supplier</th>
                                     <th>Kontak Person </th>
                                     <th>Telp </th>
                                     <th>Hp </th>
                                     <th>WhatsApp</th>
                                     <th>Aksi</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              @php($i=1)
-                              @foreach($data_supplier as $value)
-                                  <tr>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @php($i=1)
+                                @foreach($data_supplier as $value)
+                                    <tr>
                                         <td>{{ $i++ }}</td>
-										<td>{{ $value->nama_suplier }}</td>
+                                        <td>{{ $value->nama_suplier }}</td>
                                         <td>{{ $value->cp_suplier }}</td>
                                         <td>{{ $value->telp_suplier }}</td>
                                         <td>{{ $value->hp_suplier }}</td>
                                         <td>{{ $value->wa_suplier }}</td>
-										<td>
+                                       <td>
                                             <form action="{{ url('hapus-supplier/'.$value->id) }}" method="post">
                                                 <a href="#" class="btn btn-primary" onclick="tambahRekSupplier({{ $value->id }})" title="Tambah Rekening"><i class="fa fa-plus"></i></a>
                                                 <a href="{{ url('ubah-supplier/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
@@ -70,33 +66,31 @@
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus supplier ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
                                             </form>
                                         </td>
-                                  </tr>
-                                  @endforeach
-                              </tbody>
-                          </table>
+                                        </tr>
+                                       @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        <!-- /.tab-pane -->
-						<div class="tab-pane @if(Session::get('tab2') == 'tab2') active @else '' @endif" id="tab_2">
-                            <p></p>
-                           
-                            <table id="example3" class="table table-bordered table-striped">
+                        <!-- /.tab-pane -1-->
+
+                        <div class="tab-pane" id="tab_2">
+
+                            <table id="example2" class="table table-bordered table-striped">
                                 <thead>
-                                <tr>
-                                   <th>No.</th>
-									  <th>Nama Supplier</th>
+                                  <tr>
+                                      <th>No.</th>
                                       <th>Nama Bank</th>
                                       <th>No Rekening</th>
                                       <th>Atas Nama</th>
                                       <th>Kantor Cabang</th>
                                       <th>Aksi</th>
-                                </tr>
+                                  </tr>
                                 </thead>
                                 <tbody>
-								 @php($i=1)
-                                @foreach($rek_supplier as $value)
-                                    <tr>
+                                  @php($i=1)
+                                  @foreach($rek_supplier as $value)
+                                  <tr>
                                       <td>{{ $i++ }}</td>
-									  <td>{{ $value->linkToSupplier->nama_suplier }}</td>
                                       <td>{{ $value->nama_bank }}</td>
                                       <td>{{ $value->no_rek }}</td>
                                       <td>{{ $value->atas_nama }}</td>
@@ -113,18 +107,18 @@
                                             </form>
 
                                         </td>
-                                    </tr>
-                                @endforeach
+                                        </tr>
+                                       @endforeach
                                 </tbody>
                             </table>
-
                         </div>
-                       
+                        <!-- /.tab-pane 2-->
                     </div>
                     <!-- /.tab-content -->
                 </div>
                 <!-- nav-tabs-custom -->
             </div>
+
         </div>
     </section>
     <!-- /.content -->
@@ -145,4 +139,3 @@
       })
     </script>
 @stop
-

@@ -25,6 +25,11 @@
 				   $('[name="alamat_perusahaan"]').val(result.data.alamat_perusahaan);
 				   $('[name="telp_perusahaan"]').val(result.data.telp_perusahaan);
 				   $('[name="jabatan"]').val(result.data.jabatan);
+				   //no rekening
+				   $('[name="nama_bank"]').val(result.rek.nama_bank);
+				   $('[name="no_rek"]').val(result.rek.no_rek);
+				   $('[name="atas_nama"]').val(result.rek.atas_nama);
+				   $('[name="kcp"]').val(result.rek.kcp);
                    $('#modal-detail-klien').modal('show')   
 				   
                }

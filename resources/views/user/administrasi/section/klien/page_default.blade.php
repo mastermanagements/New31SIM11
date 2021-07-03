@@ -222,10 +222,11 @@
                         <!--./tab-3-->
 						<div class="tab-pane @if(Session::get('tab4') == 'tab4') active @else '' @endif" id="tab_4">
 						
-                            <table id="example2" class="table table-bordered table-striped">
+                           <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                   <tr>
                                       <th>No.</th>
+									  <th>Klien</th>
                                       <th>Nama Bank</th>
                                       <th>No Rekening</th>
                                       <th>Atas Nama</th>
@@ -238,6 +239,7 @@
                                   @foreach($rek_klien as $value)
                                   <tr>
                                       <td>{{ $i++ }}</td>
+									  <td>{{ $value->linkToKlien->nm_klien }}</td>
                                       <td>{{ $value->nama_bank }}</td>
                                       <td>{{ $value->no_rek }}</td>
                                       <td>{{ $value->atas_nama }}</td>
@@ -259,7 +261,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.tab-pane 2-->
+                        <!-- /.tab-pane 4-->
                     </div>
                     <!-- /.tab-content -->
                 </div>
