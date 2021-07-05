@@ -176,7 +176,7 @@ class PesananPembelian extends Controller
                 }
             }
             if(!empty($data->linkToBayar->jumlah_bayar)){
-                $jumlah_bayar = rupiahview($data->linkToBayar->jumlah_bayar);
+                $jumlah_bayar = rupiahView($data->linkToBayar->jumlah_bayar);
             }
 
             $column = [];
@@ -292,7 +292,7 @@ class PesananPembelian extends Controller
                 return redirect()->back()->with('message_success', 'anda telah menambahkan item baru');
             }
         } else {
-            return redirect()->back()->with('message_success', 'gagal menambahkan item baru');
+            return redirect()->back()->with('message_fail', 'gagal menambahkan item pesanan pembelian baru');
         }
     }
 
@@ -427,9 +427,9 @@ class PesananPembelian extends Controller
 
             if ($model->save()) {
 
-                return redirect('Pembelian')->with('message_success', 'berhasil memuat nota pesanan pembelian')->with('tab2','tab2');
+                return redirect()->back()->with('message_success', 'berhasil memuat nota pesanan pembelian')->with('tab2','tab2');
             } else {
-                return redirect('Pembelian')->with('message_error', 'gagal,membuat nota pesanan pembelian')->with('tab2','tab2');
+                return redirect()->back->with('message_fail', 'gagal,membuat nota pesanan pembelian')->with('tab2','tab2');
             }
 
           }

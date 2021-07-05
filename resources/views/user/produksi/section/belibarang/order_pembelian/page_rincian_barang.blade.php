@@ -24,7 +24,7 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Rincian Pembelian dengan Nomor Order : <font color="#FF00GG">{{ $data_order->no_order }}</font> , Supplier : <font color="#FF00GG">{{ $data_order->linkToSuppliers->nama_suplier }}</font> </h3>
+                            <h3 class="box-title">Rincian Pembelian dengan No Transaksi : <font color="#FF00GG">{{ $data_order->no_order }}</font> , Supplier : <font color="#FF00GG">{{ $data_order->linkToSuppliers->nama_suplier }}</font> </h3>
                              <h5 class="pull-right"><a href="{{ url('Pembelian')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                         </div>
                         <!-- /.box-header -->
@@ -36,17 +36,17 @@
                                 @elseif(!empty(session('message_fail')))
                                     <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                                 @endif
-
+								<p></p>
                                 <form role="form" action="{{ url('Order/'.$data_order->id.'/simpan') }}" method="post">
                                 <div class="col-md-12 row" style="margin-top:10px">
 
                                         {{ csrf_field() }}
                                         <table style="width: 100%; margin-bottom: 10px">
-                                            <tr>
+                                            <tr style="text-align:center">
                                                 <th>Nama Barang</th>
                                                 <th>Harga Beli</th>
-                                                <th>Banyaknya</th>
-                                                <th>Diskon (10%, tulis:10)</td>
+                                                <th>Jumlah</th>
+                                                <th>Diskon(%)</td>
                                                 <th>Expire Date</th>
                                                 <th>Sub Total</th>
                                             </tr>
@@ -60,29 +60,31 @@
                                                         </select>
                                                     @endif
                                                 </td>
-                                                <td>
+                                                <td width="150">
                                                     <input type="hidden" class="form-control" name="id_order" value="{{ $data_order->id }}"  required>
                                                     <input type="text" class="form-control" name="harga_beli" value="0" onkeyup="changer_format('harga_beli')" id="harga_beli" required>
                                                 </td>
 
-                                                <td>
+                                                <td width="80">
                                                     <input type="number" class="form-control" name="jumlah_beli" value="0"  required>
                                                 </td>
-                                                <td>
+                                                <td width="80">
                                                     <input type="number" class="form-control" name="diskon" placeholder="diskon" value="0" required>
                                                 </td>
-                                                <td>
+                                                <td width="95">
                                                     <input type="text" class="form-control" name="expire_date" id="datepicker3">
                                                 </td>
-                                                <td>
+                                                <td width="200">
                                                     <input type="text" class="form-control" name="jumlah_total"  disabled required>
                                                     <input type="hidden" class="form-control" name="redirect" value="true">
                                                 </td>
+												 <td width="100">
+													<button class="btn btn-primary">Tambah</button>
+												</td>
                                             </tr>
+											
                                         </table>
-                                        <div class="form-group">
-                                            <button class="btn btn-primary">Tambah barang</button>
-                                        </div>
+                                       
 
                                 </form>
                                 @if(!empty($data_order->linkToDetailOrder))
@@ -95,10 +97,10 @@
                                                 <tr>
                                                     <th>Nama Barang</th>
                                                     <th>Harga Beli</th>
-                                                    <th>Banyaknya</th>
-                                                    <th>Diskon Per item</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Diskon item</th>
                                                     <th>Expire Date</th>
-                                                    <th>Sub Total Diskon</th>
+                                                    <th>Sub Diskon</th>
                                                     <th>Sub Total PO</th>
                                                     <th>Aksi</th>
                                                 </tr>
@@ -116,14 +118,14 @@
                                                                 </select>
                                                             @endif
                                                             </td>
-                                                            <td width="130">
+                                                            <td width="120">
                                                                 <input type="text" class="form-control" name="harga_beli" value="{{ rupiahView($detail_order->harga_beli) }}" onkeyup="changer_format('harga_beli{{$keys}}')" id="harga_beli{{$keys}}" required>
                                                             </td>
-                                                            <td width="100">
+                                                            <td width="75">
                                                                 @php($total_qty += $detail_order->jumlah_beli)
                                                                 <input type="number" class="form-control" name="jumlah_beli" value="{{ $detail_order->jumlah_beli }}" readonly  required>
                                                             </td>
-                                                            <td width="120">
+                                                            <td width="90">
                                                                 @php($diskon_item = $detail_order->harga_beli * $detail_order->diskon_item/100)
 
                                                                 <input type="text" class="form-control" name="diskon_item" placeholder="diskon per item" value="{{ rupiahView($diskon_item) }}">
@@ -142,8 +144,8 @@
                                                               @php($total_diskon += (($detail_order->harga_beli * $detail_order->diskon_item/100) * $detail_order->jumlah_beli))
 
                                                             <td>
-                                                                <button type="submit" class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                                                                <a href="{{ url('hapus-detail-order/'.$detail_order->id) }}" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')"> hapus </a>
+                                                                <button type="submit" class="btn btn-warning" title="ubah"><i class="fa fa-pencil"></i></button>
+                                                                <a href="{{ url('hapus-detail-order/'.$detail_order->id) }}" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')" title="hapus"> <i class="fa fa-eraser"></i> </a>
                                                             </td>
                                                         </tr>
                                                     </form>
@@ -220,7 +222,7 @@
                                                 <div class="col-md-4" id="jatuh_tempo" style="display: @if($data_order->metode_bayar=="0") none @else show @endif;">
                                                     <div class="form-group">
                                                         <label>Jatuh Tempo</label>
-                                                        <input type="date" class="form-control" name="tgl_jatuh_tempo"  @if(!empty($data->tgl_jatuh_tempo)) value="{{ tanggalView($data->tgl_jatuh_tempo) }}" @endif>
+                                                        <input type="date" class="form-control" name="tgl_jatuh_tempo"  @if(!empty($data_order->tgl_jatuh_tempo)) value="{{ tanggalView(tanggalView($data_order->tgl_jatuh_tempo)) }}" @endif>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -229,12 +231,15 @@
                                                         <textarea name="ket" class="form-control">@if(!empty($data->ket))  {!! $data->ket !!} @endif</textarea>
                                                     </div>
                                                 </div>
+												<div class="col-md-12">
+													<label class="pull-right">@if(!empty($data_order->kurang_bayar)) Total Keseluruhan: {{ rupiahView($data_order->total) }} @endif</label>
+												</div><br>
                                        </div>
-                                       <div class="col-md-12">
-                                          <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal umum otomatis </label> <button type="submit" onclick="return confirm('Pastikan yang anda isi telah sesuai atau tidak')" class="btn btn-primary"> Simpan daftar pembelian </button>
-                                          <label class="pull-right">@if(!empty($data_order->kurang_bayar)) Total Keseluruhan: {{ rupiahView($data_order->total) }} @endif</label>
-                                       </div>
-                                       </div>
+											<div class="col-md-12">
+											  <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal umum otomatis </label> <button type="submit" onclick="return confirm('Pastikan yang anda isi telah sesuai atau tidak')" class="btn btn-primary"> Simpan </button>											 											  										  
+											  <a target="_blank" style="float: right;" href="{{ url('cetak-pembelian/'.$data_order->id) }}" class="btn btn-success"> Cetak </a>
+											</div>				
+                                    </div>
                                 </form>
                           </div>
                 </div>

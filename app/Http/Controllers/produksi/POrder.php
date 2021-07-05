@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\utils\HeaderReport;
 use App\Http\Controllers\keuangan\JurnalUmum;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -389,6 +390,13 @@ class POrder extends Controller
             return redirect()->back()->with('message_success', 'gagal hapus barang pembelian');
         }
     }
+	
+	 public function CetakPembelian($id)
+    {
+        $model_pb = p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
+        return view('user.produksi.section.belibarang.order_pembelian.cetak', ['data'=> $model_pb, 'header'=>HeaderReport::header_format_2('layouts.header_print.header_print1','PEMBELIAN')]);
+    }
+
 
 
 }

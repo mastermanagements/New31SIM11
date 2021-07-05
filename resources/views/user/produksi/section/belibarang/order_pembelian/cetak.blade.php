@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cetak Pesanan Pembelian</title>
+    <title>Cetak Pembelian</title>
 </head>
 <style>
     #customers {
@@ -38,17 +38,17 @@
                 <tr>
                     <td style="border-color: transparent; text-align: left;" width="100"><strong>No Transaksi</strong></td>
                     <td style="border-color: transparent; text-align: left;" width="20">:</td>
-                    <td style="border-color: transparent; text-align: left;">{{ $data->no_po }}</td>
+                    <td style="border-color: transparent; text-align: left;">{{ $data->no_order }}</td>
                 </tr>
                 <tr>
                     <td style="border-color: transparent; text-align: left;" ><strong>Supplier</strong></td>
                     <td style="border-color: transparent; text-align: left;">:</td>
-                    <td style="border-color: transparent; text-align: left;">{{ $data->linkToSupplier->nama_suplier }}</td>
+                    <td style="border-color: transparent; text-align: left;">{{ $data->linkToSuppliers->nama_suplier }}</td>
                 </tr>
                 <tr>
-                    <td style="border-color: transparent; text-align: left;" ><strong>Tanggal Dikirim</strong></td>
+                    <td style="border-color: transparent; text-align: left;" ><strong>Tanggal Tiba</strong></td>
                     <td style="border-color: transparent; text-align: left;">:</td>
-                    <td style="border-color: transparent; text-align: left;">@if($data->tgl_krm !==NULL){{ tanggalView($data->tgl_kirim) }}@endif</td>
+                    <td style="border-color: transparent; text-align: left;">@if($data->tgl_tiba !==NULL){{ tanggalView($data->tgl_tiba) }}@endif</td>
                 </tr>
             </table>
         </div>
@@ -59,21 +59,23 @@
         <th>Nama barang</th>
         <th>Harga Beli</th>
         <th>Kwantitas</th>
+		<th>Expire Date</th>
         <th>Diskon (%)</th>
         <th>Nilai Diskon</th>
         <th>Sub Total Diskon</th>
-        <th>Sub Total PO</th>
+        <th>Sub Total Order</th>
     </tr>
     </thead>
     <tbody>
-    @if(!empty($data->linkToDetailPO))
+    @if(!empty($data->linkToDetailOrder))
         @php($no=1)
-        @foreach($data->linkToDetailPO as $item)
+        @foreach($data->linkToDetailOrder as $item)
             <tr>
                 <td>{{ $no++ }}</td>
                 <td>{{ $item->linkToBarang->nm_barang }}</td>
                 <td style="text-align: right;">{{ rupiahView($item->harga_beli) }}</td>
                 <td style="text-align: center;">{{ $item->jumlah_beli }}</td>
+				<td style="text-align: center;">@if($data->expire_date !==NULL) {{ tanggalView($data->expire_date) }}@endif</td>
                 <td style="text-align: center;">{{ $item->diskon_item }}</td>
                 <td style="text-align: right;">
                     @php($diskon = 0)
@@ -102,15 +104,15 @@
 				<tr>
                     <td style="border-color: transparent; text-align: left;" ><strong>Total</strong></td>
                    
-						@php($total_po_bruto=0)
-						 @foreach($data->linkToDetailPO as $data_pesanan)
+						@php($total_order_bruto=0)
+						 @foreach($data->linkToDetailOrder as $data_order)
 						
-						@php($total_po_bruto+=$data_pesanan->jumlah_harga)
+						@php($total_order_bruto+=$data_order->jumlah_harga)
 					  
 						@endforeach
 					  
 					<td style="border-color: transparent; text-align: left;"> : </td>
-					<td style="border-color: transparent; text-align: left;">{{ rupiahView($total_po_bruto) }} </td>					   			                  
+					<td style="border-color: transparent; text-align: left;">{{ rupiahView($total_order_bruto) }} </td>					   			                  
                 </tr>
                 <tr>
                     <td style="border-color: transparent; text-align: left;" width="100"><strong>PPN</strong></td>
@@ -119,7 +121,7 @@
 					@php($ppn = 0) 
 					
 					@if($data->pajak !=0)
-                        @php($ppn = ($total_po_bruto * $data->pajak/100))
+                        @php($ppn = ($total_order_bruto * $data->pajak/100))
                     @endif
 					
 					{{rupiahView($ppn)}}</td>
@@ -132,18 +134,26 @@
 				<tr>
                     <td style="border-color: transparent; text-align: left;" ><strong>Total Akhir</strong></td>
                     <td style="border-color: transparent; text-align: left;">:</td>
-                    <td style="border-color: transparent; text-align: left;">{{rupiahView($total_po_bruto + $ppn - $data->diskon_tambahan )}}</td>
+                    <td style="border-color: transparent; text-align: left;">{{rupiahView($total_order_bruto + $ppn - $data->diskon_tambahan )}}</td>
                 </tr>
-                <tr>
-                    <td style="border-color: transparent; text-align: left;" ><strong>Uang Muka</strong></td>
+				<tr>
+                    <td style="border-color: transparent; text-align: left;" ><strong>Pembayaran</strong></td>
                     <td style="border-color: transparent; text-align: left;">:</td>
-                    <td style="border-color: transparent; text-align: left;">{{rupiahView($data->dp_po)}}</td>
+                    <td style="border-color: transparent; text-align: left;">@if($data->metode_bayar =='0') Tunai @else Kredit @endif</td>
                 </tr>
+				@if($data->metode_bayar == '1')
+                <tr>
+                    <td style="border-color: transparent; text-align: left;" ><strong>Jatuh Tempo</strong></td>
+                    <td style="border-color: transparent; text-align: left;">:</td>
+                    <td style="border-color: transparent; text-align: left;">@if($data->tgl_jatuh_tempo !==NULL) {{ tanggalView($data->tgl_jatuh_tempo) }}@endif
+					</td>
+                </tr>				
 				<tr>
                     <td style="border-color: transparent; text-align: left;" ><strong>Kurang</strong></td>
                     <td style="border-color: transparent; text-align: left;">:</td>
                     <td style="border-color: transparent; text-align: left;">{{ rupiahView($data->kurang_bayar) }}</td>
                 </tr>
+				@endif
 				
             </table>
         </div>
@@ -153,7 +163,7 @@
                    <td style="border-color: transparent; text-align: left; width: 50%;"></td>
                    <td style="border-color: transparent; text-align: left; width: 50%;">
                        <p align="right">
-                           {{ $data->linkToUsaha->getKabupaten->nama_kabupaten }}, {{ date('d-m-Y', strtotime($data->tgl_po)) }}
+                           {{ $data->linkToUsaha->getKabupaten->nama_kabupaten }}, {{ date('d-m-Y', strtotime($data->tgl_order)) }}
                        </p>
                    </td>
                </tr>

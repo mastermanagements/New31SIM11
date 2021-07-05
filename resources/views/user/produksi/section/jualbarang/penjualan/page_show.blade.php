@@ -11,7 +11,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Detail Penjualan barang
+                Rincian Penjualan Barang
             </h1>
         </section>
 
@@ -311,10 +311,10 @@
                                                 <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat
                                                     jurnal penjualan otomatis </label>
                                                 <label id="final_total" class="pull-right"></label>
+												<button type="submit" class="btn btn-primary">Simpan</button>
+												<a target="_blank" style="float: right;" href="{{ url('cetak-nota-penjualan/'.$data->id) }}" class="btn btn-success"> Cetak </a>
                                             </div>
-                                            <div class="col-md-12">
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                            </div>
+                                            
                                         </form>
                                     </div>
                                 </div>

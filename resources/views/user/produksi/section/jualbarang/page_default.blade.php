@@ -94,7 +94,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Tanggal</th>
-                                        <th>Nomor. Pesanan</th>
+                                        <th>Nomor Transaksi</th>
                                         <th>Klien</th>
                                         <th>Total</th>
                                         <th>Aksi</th>
@@ -121,9 +121,10 @@
                                                     <form action="{{ url('pesanan-penjualan/'.$data->id) }}" method="post" >
                                                         {{ csrf_field() }}
                                                         @method('delete')
-                                                        <a href="{{ url('detail-pSo/'.$data->id) }}" class="btn btn-primary">detail barang</a>
-                                                        <a href="{{ url('pesanan-penjualan/'.$data->id.'/edit') }}" class="btn btn-warning">ubah</a>
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data nota pesanan ini...?')">hapus</button>
+                                                        <a href="{{ url('detail-pSo/'.$data->id) }}" class="btn btn-primary">Rincian</a>
+                                                        <a href="{{ url('pesanan-penjualan/'.$data->id.'/edit') }}" class="btn btn-warning">Ubah</a>
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data nota pesanan ini...?')">Hapus</button>
+														<a target="_blank" href="{{ url('cetak-pesanan-penjualan/'.$data->id) }}" class="btn btn-success"> Cetak </a>
                                                     </form>
                                                 </th>
                                             </tr>
@@ -257,9 +258,9 @@
                                                 <form action="{{ url('penjualan-barang/'. $item_Psales->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     @method('delete')
-                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id) }}" class="btn btn-primary">Detail barang</a>
-                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/complain') }}" class="btn btn-primary">Complain</a>
-                                                    <a href="{{ url('cetak-nota-penjualan/'. $item_Psales->id) }}" class="btn btn-primary">Cetak Nota</a>
+                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id) }}" class="btn btn-primary">Rincian</a>
+                                                    <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/complain') }}" class="btn btn-warning">Complain</a>
+                                                    <a target="_blank" href="{{ url('cetak-nota-penjualan/'. $item_Psales->id) }}" class="btn btn-success">Cetak</a>
                                                     <a href="{{ url('penjualan-barang/'. $item_Psales->id.'/edit') }}" class="btn btn-warning">ubah</a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini...?')">Hapus</button>
                                                 </form>

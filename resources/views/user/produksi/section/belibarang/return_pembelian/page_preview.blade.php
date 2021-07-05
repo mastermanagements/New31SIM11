@@ -37,16 +37,16 @@
                                           <th>Bentuk Return</th>
                                           <th>:</th>
                                           <th>
-										  @if(!empty($data->linkToReturnBeli->jenis_return))
-                                            @php($jenis_return = $data->linkToReturnBeli->jenis_return)
-                                              @if($jenis_return == 0)
-                                                Return Barang
-                                              @elseif($jenis_return == 1)
-                                                Return Uang
-                                              @else
-                                                Potong Hutang
-                                              @endif
-										   @endif
+										
+											@php($bentuk_return = $data->linkToReturnBeli->jenis_return )
+												@if($bentuk_return == 0)
+													Return Barang
+												@elseif($bentuk_return == 1)
+													Return Uang/Refund 
+												@else 
+													Potong Hutang
+												@endif 
+									
 
                                           </th>
                                       </tr>
@@ -106,7 +106,7 @@
                                           @php($harga_jum_no_sesuai=0)
                                           @php($harga_kualitas_no_sesuai=0)
                                           @php($total_harga_return=0)
-                                              @foreach ($data->linkToCekBarangDetail->where('status_return','0') as $item)
+                                              @foreach ($data->linkToCekBarangDetail->where('status_return', 0) as $item)
                                                   <tr>
                                                       <td>{{ $no++ }}</td>
                                                       <td>{{ $item->linkToBarang->nm_barang }}</td>

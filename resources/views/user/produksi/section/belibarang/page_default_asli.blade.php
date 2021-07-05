@@ -83,7 +83,7 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Tanggal Pesanan</th>
-                                    <th>Nomor Pesananan</th>
+                                    <th>Nomor Penawaran</th>
                                     <th>Supplier</th>
                                     <th>Tanggal DiKirim</th>
                                     <th>Total Pesanan</th>
@@ -114,10 +114,11 @@
                                             <td>
                                                 <form action="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/hapus') }}" method="post">
                                                     {{ csrf_field() }}
-                                                    <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Rincian </a>                                                    
+                                                    <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Rincian </a>
+                                                    
                                                     <a href="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/edit') }}" class="btn btn-warning"> Ubah</a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus nota ini ...?')"> Hapus</button>
-													<a target="_blank" href="{{ url('cetak-pesanan-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-success"> Cetak </a>
+													<a href="{{ url('cetak-pesanan-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-success"> Cetak </a>
 
                                                 </form>
                                             </td>
@@ -149,9 +150,9 @@
                                     @php($no=1)
                                         @foreach ($data_pembelian as $item)
                                             <tr>
-                                                <td width="10">{{ $no++ }}</td>
-                                                <td width="20">{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
-                                                <td width="50">{{ $item->no_order }}</td>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
+                                                <td>{{ $item->no_order }}</td>
                                                 <td>{{ $item->linkToSuppliers->nama_suplier }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($item->tgl_tiba)) }}</td>
                                                 <td>{{ number_format($item->total,2,',','.') }}</td>
@@ -167,8 +168,7 @@
                                                             <li> <a href="{{  url('cek-barang/'.$item->id) }}">Cek barang</a></li>
                                                             <li> <a href="{{  url('status-return/'.$item->id) }}">Status return</a></li>
                                                             <li class="divider"></li>
-                                                            {{-- <li><a href="#">Cetak</a></li> --}}
-															
+                                                            <li><a href="#">Cetak</a></li>
                                                         </ul>
                                                     </div>
                                                     <form action="{{ url('Oder/'.$item->id) }}" method="post">
@@ -176,7 +176,6 @@
                                                         @method('delete')
                                                         <a href="{{  url('Oder/'.$item->id.'/edit') }}" class="btn btn-warning">ubah</a>
                                                         <button class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')">hapus</button>
-														<a target="_blank" href="{{ url('cetak-pembelian/'.$item->id) }}" class="btn btn-success"> Cetak </a>
 
                                                     </form>
                                                 </td>
@@ -270,18 +269,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                       
-                                            @php($no=1)
-                                            @php($jum_brg_no_sesuai=0)
-                                            @php($kualitas_brg_no_sesuai=0)
-                                            @php($nilai_diskon=0)
-                                            @php($nilai_diskon_b=0)
-                                            @php($total_beli=0)
-                                            @php($harga_jum_no_sesuai=0)
-                                            @php($harga_kualitas_no_sesuai=0)
-                                            @php($total_harga_return=0)
-
-                                           @if(!empty($detail_cek_brg) AND !empty($detail_cek_brg_group))
+                                        @if(!empty($detail_cek_brg) AND !empty($detail_cek_brg_group))
                                             @php($no=1)
                                             @php($jum_brg_no_sesuai=0)
                                             @php($kualitas_brg_no_sesuai=0)
@@ -326,7 +314,7 @@
                                                 </tr>
 
                                             @endforeach
-										 @endif
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>

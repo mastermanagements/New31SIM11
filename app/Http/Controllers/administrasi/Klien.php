@@ -63,7 +63,7 @@ class Klien extends Controller
         Session::flash('tab4',Session::get('tab4'));
     }
 
-        return view('user.administrasi.section.klien.page_default_lama', $data_klien);
+        return view('user.administrasi.section.klien.page_default', $data_klien);
     }
 
     /* public function cari_klien(Request $request)

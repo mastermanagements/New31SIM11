@@ -83,7 +83,7 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Tanggal Pesanan</th>
-                                    <th>Nomor Penawaran</th>
+                                    <th>Nomor Pesananan</th>
                                     <th>Supplier</th>
                                     <th>Tanggal DiKirim</th>
                                     <th>Total Pesanan</th>
@@ -114,11 +114,10 @@
                                             <td>
                                                 <form action="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/hapus') }}" method="post">
                                                     {{ csrf_field() }}
-                                                    <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Rincian </a>
-                                                    
+                                                    <a href="{{ url('show-barang-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-primary"> Rincian </a>                                                    
                                                     <a href="{{ url('pesanan-pembelian/'.$data_pesanan_pembelian->id.'/edit') }}" class="btn btn-warning"> Ubah</a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus nota ini ...?')"> Hapus</button>
-													<a href="{{ url('cetak-pesanan-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-success"> Cetak </a>
+													<a target="_blank" href="{{ url('cetak-pesanan-pembelian/'.$data_pesanan_pembelian->id) }}" class="btn btn-success"> Cetak </a>
 
                                                 </form>
                                             </td>
@@ -150,9 +149,9 @@
                                     @php($no=1)
                                         @foreach ($data_pembelian as $item)
                                             <tr>
-                                                <td>{{ $no++ }}</td>
-                                                <td>{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
-                                                <td>{{ $item->no_order }}</td>
+                                                <td width="10">{{ $no++ }}</td>
+                                                <td width="20">{{ date('d-m-Y', strtotime($item->tgl_order)) }}</td>
+                                                <td width="50">{{ $item->no_order }}</td>
                                                 <td>{{ $item->linkToSuppliers->nama_suplier }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($item->tgl_tiba)) }}</td>
                                                 <td>{{ number_format($item->total,2,',','.') }}</td>
@@ -168,7 +167,8 @@
                                                             <li> <a href="{{  url('cek-barang/'.$item->id) }}">Cek barang</a></li>
                                                             <li> <a href="{{  url('status-return/'.$item->id) }}">Status return</a></li>
                                                             <li class="divider"></li>
-                                                            <li><a href="#">Cetak</a></li>
+                                                            {{-- <li><a href="#">Cetak</a></li> --}}
+															
                                                         </ul>
                                                     </div>
                                                     <form action="{{ url('Oder/'.$item->id) }}" method="post">
@@ -176,6 +176,7 @@
                                                         @method('delete')
                                                         <a href="{{  url('Oder/'.$item->id.'/edit') }}" class="btn btn-warning">ubah</a>
                                                         <button class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini ... ?')">hapus</button>
+														<a target="_blank" href="{{ url('cetak-pembelian/'.$item->id) }}" class="btn btn-success"> Cetak </a>
 
                                                     </form>
                                                 </td>
@@ -269,7 +270,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @if(!empty($detail_cek_brg) AND !empty($detail_cek_brg_group))
+                                       
                                             @php($no=1)
                                             @php($jum_brg_no_sesuai=0)
                                             @php($kualitas_brg_no_sesuai=0)
@@ -280,24 +281,40 @@
                                             @php($harga_kualitas_no_sesuai=0)
                                             @php($total_harga_return=0)
 
-                                            @foreach ($detail_cek_brg_group as $group)
+                                           @if(!empty($detail_cek_brg))
+                                            @php($no=1)
+                                            @php($jum_brg_no_sesuai=0)
+                                            @php($kualitas_brg_no_sesuai=0)
+                                            @php($nilai_diskon=0)
+                                            @php($nilai_diskon_b=0)
+                                            @php($total_beli=0)
+                                            @php($harga_jum_no_sesuai=0)
+                                            @php($harga_kualitas_no_sesuai=0)
+                                            @php($total_harga_return=0)
+
+                                            @foreach ($sum_cek_brg as $group)
+												@if (($group->jns !==0) AND ($group->jkns !==0))
                                                 <tr>
+													
                                                     <td>{{ $no++ }}</td>
                                                     <td>{{ $group->linkToOrder->no_order }}</td>
                                                     <td>{{ $group->linkToOrder->linkToSuppliers->nama_suplier }}</td>
                                                     <td>{{ tanggalView($group->linkToOrder->tgl_order) }}</td>
                                                       @foreach($detail_cek_brg as $item)
                                                         @if($item->id_order == $group->id_order)
-                                                              @php($jum_brg_no_sesuai += $item->jum_no_sesuai)
-                                                              @php($kualitas_brg_no_sesuai += $item->jum_kualitas_no_sesuai)
+                                                              @php($jum_brg_no_sesuai = $group->jns)
+                                                              @php($kualitas_brg_no_sesuai = $group->jkns)
+															  
                                                                 <!-- harga brg jumlah kurng-->
-                                                              @php($total_beli_a = $item->jum_no_sesuai * $item->harga_beli)
-                                                              @php($nilai_diskon =$total_beli_a * $item->diskon_item/100)
-                                                              @php($harga_jum_no_sesuai += $total_beli_a - $nilai_diskon)
+                                                              @php($total_beli_a = $jum_brg_no_sesuai * $item->harga_beli)
+                                                              @php($nilai_diskon = $total_beli_a * $item->diskon_item/100)
+															  
+                                                              @php($harga_jum_no_sesuai = $total_beli_a - $nilai_diskon)
+															  
                                                               <!-- harga brg kualitas kurng-->
-                                                              @php($total_beli_b = $item->jum_kualitas_no_sesuai * $item->harga_beli)
+                                                              @php($total_beli_b = $kualitas_brg_no_sesuai * $item->harga_beli)
                                                               @php($nilai_diskon_b =$total_beli_b * $item->diskon_item/100)
-                                                              @php($harga_kualitas_no_sesuai += $total_beli_b - $nilai_diskon_b)
+                                                              @php($harga_kualitas_no_sesuai = $total_beli_b - $nilai_diskon_b)
                                                           @endif
                                                         @endforeach
                                                     <td align="center">{{ $jum_brg_no_sesuai  }}</td>
@@ -311,10 +328,11 @@
                                                         <a href="{{ url('preview-return-barang/'.$group->id_order) }}" class="btn btn-success"> Preview </a>
                                                         <!--<a href="#" class="btn btn-success"> konfirmasi </a>-->
                                                     </td>
+													
                                                 </tr>
-
+												@endif
                                             @endforeach
-                                        @endif
+										 @endif
                                         </tbody>
                                     </table>
                                 </div>

@@ -58,7 +58,7 @@
                                     <label style="color: red">Isi dulu data perusahaan Anda! <a href="{{ url('tambah-usaha') }}">Klik di sini</a></label>
                                    @endforelse
                                    <p></p>
-                               <small style="color: red">* Tidak Boleh Kosong</small>
+                               <small style="color: red">* Tidak Boleh Kosalesng</small>
                            </div>
 
                                <div class="form-group">
@@ -66,7 +66,7 @@
                                    <textarea class="form-control" placeholder="Masukan Misi usaha anda" name="misi" id="misi" required>
 
                                    </textarea>
-                                   <small style="color: red">* Tidak boleh kosong</small>
+                                   <small style="color: red">* Tidak boleh kosalesng</small>
                                </div>
 
                        </div>
