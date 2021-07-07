@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ $judul }}</h3>
+            <h3 class="box-title"><b>{{ $judul }}</b></h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body text-center">
@@ -43,7 +43,7 @@
                                     <th>No. Transaksi</th>
                                     <th>Tanggal</th>
                                     <th>Kode Akun</th>
-                                    <th>Nama Akun</th>
+                                    <th>Perkiraan</th>
                                     <th>Keterangan</th>
                                     <th>Debet</th>
                                     <th>Kredit</th>
@@ -56,10 +56,10 @@
                                         <td>{{ $data['no_transaksi'] }}</td>
                                         <td>{{ $data['tanggal'] }}</td>
                                         <td>{{ $data['kode_akun'] }}</td>
-                                        <td>{{ $data['nama_akun'] }}</td>
+                                        <td style="text-align:left">{{ ucfirst($data['nama_akun']) }}</td>
                                         <td>{{ $data['keterangan'] }}</td>
-                                        <td>{{ $data['debet'] }}</td>
-                                        <td>{{ $data['kredit'] }}</td>
+                                        <td style="text-align:right">{{ $data['debet'] }}</td>
+                                        <td style="text-align:right">{{ $data['kredit'] }}</td>
                                     </tr>
                                 @endforeach
                             @endif

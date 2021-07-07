@@ -8,27 +8,44 @@
     <title>Halaman Cetak Laporan Buku Besar</title>
     <style>
         #customers {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-		}
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-		#customers td, #customers th {
-			border: 1px solid black;
-			padding: 8px;
-		}
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
 
-		#customers tr:nth-child(even){background-color: #f2f2f2;}
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-		#customers tr:hover {background-color: #ddd;}
+        #customers tr:hover {
+            background-color: #ddd;
+        }
 
-		#customers th {
-			padding-top: 12px;
-			padding-bottom: 12px;
-			text-align: left;
-			background-color: #04AA6D;
-			color: black;
-		}
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        @media print {
+            tr.vendorListHeading {
+                background-color: #4CAF50 !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+
+        @media print {
+            .vendorListHeading th {
+                color: white !important;
+            }
+        }
     </style>
 </head>
 <body style="margin: 10px;padding: 20px">
@@ -48,27 +65,27 @@
     <tbody>
     @if(!empty($data_buku_besar))
         @foreach($data_buku_besar as $key=> $data)
-            <tr style="background-color: 9CE7E1; text-align: left; font-weight: bold">
-                <td colspan="6">{{ ucfirst($akun->where('id',$key)->first()->nm_akun_aktif) }}</td>
+            <tr style="background-color: lawngreen; text-align: left; font-weight: bold">
+                <td colspan="6">{{ $akun->where('id',$key)->first()->nm_akun_aktif }}</td>
             </tr>
             @foreach($data as $sub_key => $sub_data)
                 <tr style="background-color: white">
                     <td>{{ $sub_data['no_transaksi'] }}</td>
                     <td>{{ $sub_data['tanggal'] }}</td>
-                    <td style="text-align: left;">
+                    <td>
                         @if($sub_data['debet']==0)
-                            {{ ucfirst($sub_data['keterangan']) }}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $sub_data['keterangan'] }}
                         @else
-                            {{ ucfirst($sub_data['keterangan']) }}
+                            {{ $sub_data['keterangan'] }}
                         @endif
                     </td>
                     <td>{{ $sub_data['debet'] }}</td>
                     <td>{{ $sub_data['kredit'] }}</td>
                     <td>
                         @if($sub_data['saldo_debet']!=0)
-                            {{ rupiahView($sub_data['saldo_debet']) }}
+                            {{ $sub_data['saldo_debet'] }}
                         @else
-                            {{ rupiahView($sub_data['saldo_kredit']) }}
+                            {{ $sub_data['saldo_kredit'] }}
                         @endif
                     </td>
                 </tr>
@@ -79,6 +96,6 @@
 </table>
 </body>
 <script type="text/javascript">
-    window.onload = function() { window.print(); }
+    //window.onload = function() { window.print(); }
 </script>
 </html>

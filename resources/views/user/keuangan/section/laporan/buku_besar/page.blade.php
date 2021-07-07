@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ $judul }}</h3>
+            <h3 class="box-title"><b>{{ $judul }}</b></h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body text-center">
@@ -82,21 +82,21 @@
                               {{--@endforeach--}}
                               @if(!empty($data_buku_besar))
                                 @foreach($data_buku_besar as $key=> $data)
-                                    <tr style="background-color: lawngreen; text-align: left; font-weight: bold">
-                                        <td colspan="6">{{ $akun->where('id',$key)->first()->nm_akun_aktif }}</td>
+                                    <tr style="background-color: #9CE7E1; text-align: left; font-weight: bold">
+                                        <td colspan="6">{{ ucfirst($akun->where('id',$key)->first()->nm_akun_aktif) }}</td>
                                     </tr>
                                     @foreach($data as $sub_key => $sub_data)
                                         <tr>
                                             <td>{{ $sub_data['no_transaksi'] }}</td>
                                             <td>{{ $sub_data['tanggal'] }}</td>
-                                            <td>{{ $sub_data['keterangan'] }}</td>
+                                            <td style="text-align:left;">{{ ucfirst($sub_data['keterangan']) }}</td>
                                             <td>{{ $sub_data['debet'] }}</td>
                                             <td>{{ $sub_data['kredit'] }}</td>
                                             <td>
                                                 @if($sub_data['saldo_debet']!=0)
-                                                    {{ $sub_data['saldo_debet'] }}
+                                                    {{ rupiahView($sub_data['saldo_debet']) }}
                                                 @else
-                                                    {{ $sub_data['saldo_kredit'] }}
+                                                    {{ rupiahView($sub_data['saldo_kredit']) }}
                                                 @endif
                                             </td>
                                         </tr>
