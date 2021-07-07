@@ -43,28 +43,28 @@
                               <!--<div class="form-group">
                                   <label for="exampleInputEmail1">NIK</label>
                                   <input name="nik" class="form-control" placeholder="Nomor Induk Karyawan" value="{{ $data_karyawan->nik }}" required>
-                                  <small style="color: red">* Tidak boleh kosong</small>
+                                  <small style="color: red">* Tidak boleh kosalesng</small>
                               </div>-->
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Nama Karyawan</label>
                                   <input name="nama_ky" class="form-control" placeholder="Nama Karyawan" value="{{ $data_karyawan->nama_ky }}" required>
-                                  <small style="color: red">* Tidak boleh kosong</small>
+                                  <small style="color: red">* Tidak boleh kosalesng</small>
                               </div>
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Username</label>
                                   <input name="username" class="form-control" placeholder="Username" value="{{ $data_karyawan->username }}" required>
-                                  <small style="color: red">* Tidak boleh kosong</small>
+                                  <small style="color: red">* Tidak boleh kosalesng</small>
                               </div>
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Password</label>
                                   <input type="password" name="password" class="form-control" placeholder="Masukan Password Baru Anda" required>
-                                  <small style="color: red">* Tidak boleh kosong</small>
+                                  <small style="color: red">* Tidak boleh kosalesng</small>
                               </div>
 
                                     <!--  <div class="form-group">
                                           <label for="exampleInputEmail1">Nomor KTP</label>
                                           <input name="no_ktp" class="form-control" placeholder="Nomor KTP" value="{{ $data_karyawan->no_ktp }}" required>
-                                          <small style="color: red">* Tidak boleh kosong</small>
+                                          <small style="color: red">* Tidak boleh kosalesng</small>
                                       </div>
                                       <div class="form-group">
                                           <label for="exampleInputFile">File Scan KTP</label>
@@ -76,7 +76,7 @@
                                     <!--<div class="form-group">
                                           <label for="exampleInputEmail1">Tempat Lahir</label>
                                           <input type="text" name="tmp_lahir" class="form-control" placeholder="Tempat Lahir karyawan" value="{{ $data_karyawan->tmp_lahir }}" required>
-                                          <small style="color: red">* Tidak boleh kosong</small>
+                                          <small style="color: red">* Tidak boleh kosalesng</small>
                                       </div>
                                       <div class="form-group">
                                           <label>Tanggal Lahir</label>
@@ -88,7 +88,7 @@
                                               <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal Lahir Karyawan" name="tgl_lahir" value="{{ date('d-m-Y', strtotime($data_karyawan->tgl_lahir)) }}" required>
                                           </div>
                                           <!-- /.input group -->
-                                        <!--  <small style="color: red">* Tidak boleh kosong</small>
+                                        <!--  <small style="color: red">* Tidak boleh kosalesng</small>
                                       </div>
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">Jenis Kelamin</label>
@@ -100,7 +100,7 @@
                                                   </label>
                                               @endforeach
                                               <p></p>
-                                              <small style="color: red">* Tidak Boleh Kosong</small>
+                                              <small style="color: red">* Tidak Boleh Kosalesng</small>
                                           </div>
                                       </div>
                                       <div class="form-group">
@@ -113,7 +113,7 @@
                                                   </label>
                                               @endforeach
                                               <p></p>
-                                              <small style="color: red">* Tidak Boleh Kosong</small>
+                                              <small style="color: red">* Tidak Boleh Kosalesng</small>
                                           </div>
                                       </div>-->
                                       <div class="form-group">
@@ -126,7 +126,7 @@
                                                   </label>
                                               @endforeach
                                               <p></p>
-                                              <small style="color: red">* Tidak Boleh Kosong</small>
+                                              <small style="color: red">* Tidak Boleh Kosalesng</small>
                                           </div>
                                       </div>
 
@@ -143,7 +143,7 @@
                                                   </label>
                                               @endforeach
                                               <p></p>
-                                              <small style="color: red">* Tidak Boleh Kosong</small>
+                                              <small style="color: red">* Tidak Boleh Kosalesng</small>
                                           </div>
                                       </div>
                                       <div class="form-group">
@@ -163,12 +163,12 @@
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">Nama Bank</label>
                                           <input name="nm_bank" class="form-control" placeholder="Contoh: Mandiri, BCA, BRI, Dll." value="{{ $data_karyawan->nm_bank }}" required>
-                                          <small style="color: red">* Tidak boleh kosong</small>
+                                          <small style="color: red">* Tidak boleh kosalesng</small>
                                       </div>
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">No. Rek</label>
                                           <input name="no_rek" class="form-control" placeholder="Nomor Rekening Tabungan" value="{{ $data_karyawan->no_rek }}">
-                                          <small style="color: red">* Tidak boleh kosong</small>
+                                          <small style="color: red">* Tidak boleh kosalesng</small>
                                       </div>
 
                                       <div class="form-group">
@@ -196,7 +196,7 @@
                                               <input type="text" class="form-control pull-right" id="datepicker1" placeholder="Tanggal Masuk Kerja" name="tgl_masuk" value="{{ date('d-m-Y', strtotime($data_karyawan->tgl_lahir)) }}" required>
                                           </div>
 
-                                          <small style="color: red">* Tidak boleh kosong</small>
+                                          <small style="color: red">* Tidak boleh kosalesng</small>
                                       </div>
                                   </div>-->
                             </div>
@@ -204,7 +204,7 @@
                        {{csrf_field()}}
                        <input type="hidden" name="id_usaha" value="{{ $id_usaha }}">
                        <input type="hidden" name="_method" value="put">
-                       <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                       <button type="submit" class="btn btn-primary pull-left">Simpan</button>
                    </div>
                    </form>
                </div>

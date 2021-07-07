@@ -234,7 +234,7 @@ trait Transaksi
         $this->validate($req,[
             'id_ket_transaksi'=> 'required',
             'tgl_jurnal'=> 'required',
-            'no_transaksi'=> 'required',
+            //'no_transaksi'=> 'required',
             'jenis_jurnal'=> 'required',
             'id_akun_aktif'=> 'required',
             'debet_kredit'=> 'required',
@@ -250,9 +250,9 @@ trait Transaksi
 //            }
 //        }
 
-        if(!empty($cek_no_transaksi)){
+        /* if(!empty($cek_no_transaksi)){
             return array('message'=>'Nomor Transaksi Telah digunakan', 'id_transaksi'=> $cek_jenis_jurnal->id_ket_transaksi);
-        }
+        } */
 
         $id_ket_transaksi = "";
 

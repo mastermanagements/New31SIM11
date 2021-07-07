@@ -43,7 +43,7 @@
                                <label><input type="checkbox" name="sample" class="minimal selectall"/> Select all</label>
 
                                @php($id=0)
-                              @foreach($menu->sortBy('urutan') as $key=> $menus)
+                              @foreach($menu->salesrtBy('urutan') as $key=> $menus)
 								<div class="col-md-12">
 								   <div class="form-group">
 									   <label ><font color="#EE3723">{{ $menus->getMasterMenu->nm_menu }}</font></label>
@@ -142,8 +142,8 @@
                            '_token' : "{{ csrf_token() }}"
                        },
                        success:function (result) {
-                           console.log(result);
-                           console.log("Anda telah mengkatifkan menu ini")
+                           consalesle.log(result);
+                           consalesle.log("Anda telah mengkatifkan menu ini")
                        }
                    })
                });
@@ -159,8 +159,8 @@
                            '_token' : "{{ csrf_token() }}"
                        },
                        success:function (result) {
-                           console.log(result);
-                           console.log("Anda telah menontaktifkan menu ini")
+                           consalesle.log(result);
+                           consalesle.log("Anda telah menontaktifkan menu ini")
                        }
                    })
                })

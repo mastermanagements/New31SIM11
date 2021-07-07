@@ -18,7 +18,7 @@
 
             <div class="form-group">
               <input class="form-control input-sm" type="text" name="nama" value="{{ $data_user->nama }}" required>
-              <small style="color:red;">* Tidak boleh kosong</small>
+              <small style="color:red;">* Tidak boleh kosalesng</small>
             </div>
             <ul class="list-group list-group-unbordered">
                 <div class="form-group">
@@ -47,7 +47,7 @@
                                     @endforeach
                                 </select>
                         @endif
-                        <small style="color:red;">* Tidak boleh kosong</small>
+                        <small style="color:red;">* Tidak boleh kosalesng</small>
                 </div>
                 <div class="form-group">
                         @if(empty($profil_user_ukm))
@@ -62,7 +62,7 @@
                                 @endforeach
                             </select>
                        @endif
-                            <small style="color:red;">* Tidak boleh kosong</small>
+                            <small style="color:red;">* Tidak boleh kosalesng</small>
                 </div>
                 <div class="form-group">
                        @if(empty($profil_user_ukm))
@@ -70,7 +70,7 @@
                         @else
                             <a ><input type="text" class="form-control" style="width:100%" name="hp" value="{{ $profil_user_ukm->hp }}" placeholder="HP" required></a>
                         @endif
-                           <small style="color:red;">* Tidak boleh kosong</small>
+                           <small style="color:red;">* Tidak boleh kosalesng</small>
                 </div>
                 <div class="form-group">
                         @if(empty($profil_user_ukm))
@@ -78,7 +78,7 @@
                         @else
                             <a ><input type="text" class="form-control input-sm" name="wa" value="{{ $profil_user_ukm->wa }}" required></a>
                         @endif
-                            <small style="color:red;">* Tidak boleh kosong</small>
+                            <small style="color:red;">* Tidak boleh kosalesng</small>
 
                 </div>
                 <div class="form-group">
@@ -124,7 +124,7 @@
             @endif
                 {{ csrf_field() }}
                 <input hidden="hidden" name="_method" value="put">
-                <button type="submit" class="btn btn-success btn-block"><i class="fa fa-pencil"></i> <b>Submit</b></button>
+                <button type="submit" class="btn btn-success btn-block"><i class="fa fa-pencil"></i> <b>Simpan</b></button>
             </form>
         </div>
         <!-- /.box-body -->
@@ -138,7 +138,7 @@
             $('[name="id_provinsi"]').change(function () {
                 $.ajax({
                     url:"{{ url('getKabupaten') }}/" + $(this).val(),
-                    dataType: "json",
+                    dataType: "jsalesn",
                     success: function (result) {
                         var option="<option>Pilih Kabupaten</option>";
                         $.each(result, function (id, val) {

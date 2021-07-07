@@ -100,7 +100,7 @@
                                             <input type="radio" name="terima_bukti" value="1" @if(!empty($data->linkToTerimaBayar)) @if($data->linkToTerimaBayar->terima_bukti=='1') checked @endif @endif> Uang Sudah Masuk
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
                                         </div>
                                     </div>
                                 </div>

@@ -119,7 +119,7 @@
                     <p style="color: red">Lengkapi data profil anda ...!</p>
                 </div>
             @endif
-            <a href="{{ url('editprofile') }}" class="btn btn-primary btn-block"><i class="fa fa-pencil"></i> <b>Edit Profil</b></a></br>
+            <a href="{{ url('editprofile') }}" class="btn btn-primary btn-block"><i class="fa fa-pencil"></i> <b>Ubah Profil</b></a></br>
         </div>
         <!-- /.box-body -->
     </div>

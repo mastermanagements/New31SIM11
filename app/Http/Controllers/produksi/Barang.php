@@ -107,7 +107,7 @@ class Barang extends Controller
             'promo'=>Promo::where('id_perusahaan', $this->id_perusahaan)->where('jenis_promo','0')->get()
         ];
 
-        if(empty(Session::get('tab1')) && empty(Session::get('tab2')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6')) && empty(Session::get('tab7'))){
+        if(empty(Session::get('tab1')) && empty(Session::get('tab2')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6')) && empty(Session::get('tab7'))){
             Session::flash('tab1','tab1');
         }
 

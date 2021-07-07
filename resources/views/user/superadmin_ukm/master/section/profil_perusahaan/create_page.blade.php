@@ -188,7 +188,7 @@
                                 <label>
                                   <input type="radio" name="jenis_jasa" class="minimal" value="1">&nbsp;Jasa & barang&nbsp;
                                 </label><br>
-                                <strong style="color: green">*Jasa murni, misal: notaris, desain grafis. Jasa & barang misal: service komputer, jasa laundry. Jika Usaha Anda Perdagangan atau manufaktur, kosongkan saja</strong>
+                                <strong style="color: green">*Jasa murni, misal: notaris, desain grafis. Jasa & barang misal: service komputer, jasa laundry. Jika Usaha Anda Perdagangan atau manufaktur, kosalesngkan saja</strong>
                               </div>
                             </div>
 
@@ -205,7 +205,7 @@
                     </div>
                     <div class="box-footer">
                         {{csrf_field()}}
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                    </form>
                </div>
@@ -241,7 +241,7 @@
            $('[name="id_provinsi"]').change(function () {
                $.ajax({
                    url:"{{ url('getKabupaten') }}/" + $(this).val(),
-                   dataType: "json",
+                   dataType: "jsalesn",
                    success: function (result) {
                        var option="<option>Pilih Kabupaten</option>";
                        $.each(result, function (id, val) {

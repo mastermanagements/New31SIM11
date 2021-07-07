@@ -26,7 +26,18 @@
                         <span class="info-box-icon bg-blue"><i class="ion ion-ios-people-outline"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-number">{{ $perusahaans->nm_usaha  }}</span>
+                            <span class="info-box-number">
+							
+								@if($perusahaans->badan_usaha == '0') PT.
+								@elseif($perusahaans->badan_usaha == '1') CV.
+								@elseif($perusahaans->badan_usaha == '2') UD.
+								@elseif($perusahaans->badan_usaha == '3') Firma
+								@elseif($perusahaans->badan_usaha == '4') Koperasi
+								@elseif($perusahaans->badan_usaha == '5') Yayasan
+								@endif
+							
+													
+														{{ $perusahaans->nm_usaha  }}</span>
                             <span class="info-box-text">{{ $perusahaans->alamat  }}</span>
                         </div>
                         <!-- /.info-box-content -->

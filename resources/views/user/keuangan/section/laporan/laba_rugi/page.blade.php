@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ $judul }}</h3>
+            <h3 class="box-title"><b>{{ $judul }}</b></h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body text-center">
@@ -42,12 +42,12 @@
                                 @foreach($akun as $key=> $data_laba_rugi)
                                     @php($total_sub=0)
                                     @if(!empty($data[$key]))
-                                        <tr align="left" style="background-color: lightgrey">
+                                        <tr align="left" style="background-color: #00D8D8">
                                             <td colspan= "2">{{ $data_laba_rugi[0] }}</td>
                                         </tr>
                                        @foreach($data[$key] as $data_group)
                                           <tr>
-                                            <td>{{ $data_group['nama_akun'] }}</td>
+                                            <td style="text-align:left;">{{ $data_group['nama_akun'] }}</td>
                                             <td>
                                                 @if($data_group['posisi_saldo']=="K")
                                                     @php($total_sub+=$data_group['saldo_kredit'])
@@ -62,7 +62,7 @@
                                           </tr>
                                        @endforeach
                                         <tr>
-                                            <td>Total</td>
+                                            <td><b>Total</b></td>
                                             <td>{{ number_format($total_sub,2,',','.') }}</td>
                                         </tr>
                                     @endif

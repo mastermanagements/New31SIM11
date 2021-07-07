@@ -27,7 +27,7 @@
 
                                         <label>
                                             Nama Barang
-                                        </label><br>
+                                        </label>&nbsp;<strong style="color: red">*</strong><br>
                                         <select name="id_barang" class="form-control select2" required>
                                             <option>Pilihan Barang</option>
                                             @if(!empty($barang))
@@ -40,15 +40,20 @@
                                     <div class="form-group">
                                         <label>
                                             Jumlah Barang
-                                        </label>
+                                        </label>&nbsp;<strong style="color: red">*</strong>
                                         <input type="text" name="jumlah_brg" class="form-control" value="{{ $data_stok->jumlah_brg }}" required/>
                                     </div>
                                     <div class="form-group">
                                         <label>
                                             Tanggal Expired
                                         </label>
-                                        <input type="date" name="expired_date" class="form-control" value="{{ $data_stok->expired_date }}" required/>
+                                        <input type="date" name="expired_date" class="form-control" value="{{ $data_stok->expired_date }}"/>
                                     </div>
+
+										<div class="box-footer">
+										<p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+										</div>            					
+
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Simpan</button>
                                     </div>

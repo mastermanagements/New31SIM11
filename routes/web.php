@@ -812,7 +812,7 @@ Route::get('hapus-pembelian-penawaran-barang/{id_tb}', 'produksi\TawarBeli@delet
 Route::resource('pesanan-pembelian', 'produksi\PesananPembelian');
 Route::post('pesanan-pembelian/{id}/hapus', 'produksi\PesananPembelian@delete');
 Route::get('rincian-penawaran/{id}', 'produksi\PesananPembelian@RincianBarangPenawaran');
-Route::get('cetak-pesanan-pembelian/{id}', 'produksi\PesananPembelian@CetakPesananPembelian');
+Route::get('cetak-pesanan-pembelian/{id}', 'produksi\PesananPembelian@CetakPesananPembelian');Route::get('cetak-pesanan-pembelian/{id}', 'produksi\PesananPembelian@CetakPesananPembelian');
 
 # Todo Pembelian ---
 
@@ -827,6 +827,7 @@ Route::get('hapus-barang-pembelian/{id_pesanan_pembelian}', 'produksi\PesananPem
 Route::post('ubah-pesanan-pembelian/{id_pesanan_pembelian}', 'produksi\PesananPembelian@ubah_Pesanan_pembelian_po');
 Route::get('Order/pesanan_pembelian/{jenis_pembelian}', 'produksi\PesananPembelian@show_pesanan_pembelian');
 Route::get('rincian-pembayaran/{id}', 'produksi\Bayar@show_rincian');
+
 
 
 Route::resource('akun-pembelian', 'produksi\AkunPembelian');
@@ -868,16 +869,21 @@ Route::get('hapus-detail-order/{id_detail_order}', 'produksi\POrder@hapusDetailO
 
 Route::resource('cek-barang', 'produksi\CekBarang');
 
+Route::get('cetak-pembelian/{id}', 'produksi\POrder@CetakPembelian');
+
 //---- Penawaran --------
 Route::resource('penawaran-penjualan', 'produksi\TawarJual');
 
 Route::resource('detail-barang-Tpenjualan', 'produksi\DetailBarangTawar');
 Route::get('detail-barang-Tpenjualan/{id}/delete', 'produksi\DetailBarangTawar@delete');
 
+//--pesanan penjualan --
 Route::resource('pesanan-penjualan', 'produksi\PesananPenjualan');
 Route::post('pesanan-penjualan/{id_so}', 'produksi\PesananPenjualan@updateSO_BaseOnDetailSO');
 Route::resource('detail-pSo', 'produksi\DetailSo');
 Route::get('detail-pSo/{id_detail_pso}/delete', 'produksi\DetailSo@delete');
+Route::get('cetak-pesanan-penjualan/{id}', 'produksi\PesananPenjualan@CetakPesananPenjualan');
+
 //--- Penjualan ---
 
 Route::get('Penjualan', 'produksi\JualBarang@index');

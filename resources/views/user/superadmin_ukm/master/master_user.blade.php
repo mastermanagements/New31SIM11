@@ -11,8 +11,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ @asset('component/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ @asset('component/bower_components/font-awesome/css/font-awesome.min.css') }}">
+  <!-- Font Awesalesme -->
+  <link rel="stylesheet" href="{{ @asset('component/bower_components/font-awesalesme/css/font-awesalesme.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ @asset('component/bower_components/Ionicons/css/ionicons.min.css') }}">
   <!-- DataTables -->
@@ -23,7 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ @asset('component/dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect. -->
+        apply the skin class to the body tag sales the changes take effect. -->
   <link rel="stylesheet" href="{{ @asset('component/dist/css/skins/_all-skins.min.css') }}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

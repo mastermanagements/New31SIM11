@@ -11,7 +11,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Rincian Pesanan Pembelian Baranga
+                Rincian Pesanan Pembelian Barang
             </h1>
         </section>
 
@@ -23,13 +23,19 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Rincian Pesanan Pembelian dengan Nomor PO : <font color="#FF00GG">{{ $data->no_po }}</font> , Supplier : <font color="#FF00GG">{{ $data->linkToSupplier->nama_suplier }}</font> </h3>
+                            <h3 class="box-title">Rincian Pesanan Pembelian dengan No Transaksi : <font color="#FF00GG">{{ $data->no_po }}</font> , Supplier : <font color="#FF00GG">{{ $data->linkToSupplier->nama_suplier }}</font> </h3>
                              <h5 class="pull-right"><a href="{{ url('Pembelian')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
                         <div class="box-body">
                             <div class="col-md-12">
+								@if(!empty(session('message_success')))
+                                    <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+                                @elseif(!empty(session('message_fail')))
+                                    <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+                                @endif
+								<p></p>
                                 <form role="form" action="{{ url('tambah-barang-pembelian/'.$data->id) }}" method="post" >
                                 <div class="col-md-12 row" style="margin-top:10px">
 
@@ -38,12 +44,12 @@
                                             <tr>
                                                 <th>Nama Barang</th>
                                                 <th>Harga Beli</th>
-                                                <th>Banyaknya</th>
-                                                <th>Diskon (dalam %, misal: 10 %, tulis : 10)</td>
+                                                <th>Jumlah</th>
+                                                <th>Diskon (%)</td>
                                                 <th>Sub Total</th>
                                             </tr>
                                             <tr>
-                                                <td>
+                                                <td width="80">
                                                     @if(!empty($barang))
                                                         <select class="form-control select2" name="id_barang" style="width: 100%" required>
                                                             @foreach($barang as $datas)
@@ -52,27 +58,28 @@
                                                         </select>
                                                     @endif
                                                 </td>
-                                                <td>
+                                               <td width="80">
                                                     <input type="hidden" class="form-control" name="id_po" value="{{ $data->id }}"  required>
                                                     <input type="text" class="form-control" name="harga_beli" value="0" onkeyup="changer_format('harga_beli')" id="harga_beli" required>
                                                 </td>
 
-                                                <td>
+                                                <td width="50">
                                                     <input type="number" class="form-control" name="jumlah_beli" value="0"  required>
                                                 </td>
-                                                <td>
+                                                 <td width="40">
                                                     <input type="number" class="form-control" name="diskon" placeholder="diskon" value="0" required>
                                                 </td>
-                                                <td>
+                                                <td width="100">
 
                                                     <input type="text"  class="form-control" name="jumlah_total"  disabled required>
                                                     <input type="hidden" class="form-control" name="redirect" value="true">
                                                 </td>
+												 <td width="100">
+													<button class="btn btn-primary">Tambah</button>
+												</td>
                                             </tr>
                                         </table>
-                                        <div class="form-group">
-                                            <button class="btn btn-primary">Tambah barang</button>
-                                        </div>
+                                      
                                 </form>
 
                                     @php($total_qty=0)
@@ -88,7 +95,7 @@
                                                     <th>Diskon (%)</th>
                                                     <th>Nilai Diskon</th>
                                                     <th>Sub Total Diskon</th>
-                                                    <th>Sub Total PO</th>
+                                                    <th>Sub Total </th>
                                                     <th>Aksi</th>
                                                 </tr>
                                                 @foreach($data->linkToDetailPO as $keys=> $data_pesanan)
@@ -105,7 +112,7 @@
                                                                 </select>
                                                             @endif
                                                             </td>
-                                                            <td width="140">
+                                                            <td width="120">
                                                                 <input type="text" class="form-control" name="harga_beli" value="{{ rupiahView($data_pesanan->harga_beli) }}"  onkeyup="changer_format('harga_beli{{$keys}}')" id="harga_beli{{$keys}}" required>
                                                             </td>
                                                             <td width="80">
@@ -115,16 +122,16 @@
                                                             <td width="80">
                                                                 <input type="text" class="form-control" name="diskon_item" placeholder="diskon per item" value="{{ $data_pesanan->diskon_item }}" required>
                                                             </td>
-                                                            <td width="120">
+                                                            <td width="110">
                                                                 @php($diskon_item = $data_pesanan->harga_beli * $data_pesanan->diskon_item/100)
 
                                                                 <input type="text" readonly class="form-control"  placeholder="diskon per item" value="{{ rupiahView($diskon_item) }}" required>
                                                             </td>
-                                                            <td width="150">
+                                                            <td width="90">
                                                               @php($subtotal_diskon=(($data_pesanan->harga_beli * $data_pesanan->diskon_item/100) * $data_pesanan->jumlah_beli))
                                                                 <input type="text" class="form-control" readonly placeholder="diskon per item" value="{{ rupiahView($subtotal_diskon) }}" required>
                                                             </td>
-                                                            <td width="150">
+                                                            <td width="130">
                                                                 @php($sub_item+=$data_pesanan->jumlah_harga)
                                                                 <input type="text" class="form-control" name="jumlah" readonly value="{{ rupiahView($data_pesanan->jumlah_harga) }}" required>
                                                             </td>
@@ -166,7 +173,7 @@
                                              <div class="col-md-4">
                                                  <div class="form-group">
                                                          <label>Uang Muka</label>
-                                                         <input type="text"  id="rupiah" name="uang_muka" @if(!empty($data->dp_po)) value="{{ rupiahView($data->dp_po) }}" @else value="0" @endif class="form-control" required>
+                                                         <input type="text"  id="rupiah3" name="uang_muka" @if(!empty($data->dp_po)) value="{{ rupiahView($data->dp_po) }}" @else value="0" @endif class="form-control" required>
                                                  </div>
                                                  <div class="form-group">
                                                          <label>Kurang Bayar</label>
@@ -188,7 +195,9 @@
                                            </div>
                                        </div>
                                        <div class="col-md-12">
-                                           <label><input type="checkbox" value="on" name="jurnal_otomatis"> Buat jurnal otomatis </label>  <button class="btn btn-primary"> Simpan Pesanan pembelian </button>
+                                           <label><input type="checkbox" value="on" name="jurnal_otomatis"> Buat jurnal otomatis </label>  
+										   <button class="btn btn-primary"> Simpan </button>
+										    <a target="_blank" style="float: right;" href="{{ url('cetak-pesanan-pembelian/'.$data->id) }}" class="btn btn-success"> Cetak </a>
                                        </div>
                                 </form>
                         </div>
@@ -207,6 +216,7 @@
 @section('plugins')
     @include('user.global.rupiah_input')
     @include('user.global.rupiah_input2')
+	 @include('user.global.rupiah_input3')
     @include('user.global.CalculateJumlah')
     <script src="{{ asset('component/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- bootstrap datepicker -->

@@ -27,8 +27,9 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                   <ul class="nav nav-tabs">
-                      <li class="active"><a href="#tab_1" data-toggle="tab">Daftar Supplier</a></li>
-                      <li><a href="#tab_2" data-toggle="tab">Rekening Supplier</a></li>
+                     
+					  <li class="@if(Session::get('tab1') == 'tab1') active @else '' @endif"><a href="#tab_1" data-toggle="tab"><i class="fa fa-book"></i> Daftar Supplier  </a></li>
+                        <li class="@if(Session::get('tab2') == 'tab2') active @else '' @endif" ><a href="#tab_2" data-toggle="tab"><i class="fa fa-book"></i> Rekening Supplier </a></li>
                   </ul>
 
                     <div class="tab-content">
@@ -59,11 +60,11 @@
                                         <td>{{ $value->wa_suplier }}</td>
                                        <td>
                                             <form action="{{ url('hapus-supplier/'.$value->id) }}" method="post">
-                                                <a href="#" class="btn btn-primary" onclick="tambahRekSupplier({{ $value->id }})" title="Tambah Rekening"><i class="fa fa-plus"></i></a>
-                                                <a href="{{ url('ubah-supplier/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                                <a href="#" class="btn btn-primary" onclick="tambahRekSupplier({{ $value->id }})" title="Tambah Rekening">Tambah Rekening</i></a>
+                                                <a href="{{ url('ubah-supplier/'.$value->id) }}" class="btn btn-warning" title="Edit">Ubah</a>
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="put"/>
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus supplier ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus supplier ini ...?')" title="Hapus">Hapus</button>
                                             </form>
                                         </td>
                                         </tr>
@@ -79,6 +80,7 @@
                                 <thead>
                                   <tr>
                                       <th>No.</th>
+									  <th>Nama Supplier</th>
                                       <th>Nama Bank</th>
                                       <th>No Rekening</th>
                                       <th>Atas Nama</th>
@@ -91,18 +93,19 @@
                                   @foreach($rek_supplier as $value)
                                   <tr>
                                       <td>{{ $i++ }}</td>
+									  <td>{{ $value->linkToSupplier->nama_suplier }}</td>
                                       <td>{{ $value->nama_bank }}</td>
                                       <td>{{ $value->no_rek }}</td>
                                       <td>{{ $value->atas_nama }}</td>
                                       <td>{{ $value->kcp }}</td>
                                       <td>
-                                            <a href="{{ url('RekSupplier/'.$value->id.'/edit') }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ url('RekSupplier/'.$value->id.'/edit') }}" class="btn btn-warning" title="Edit">Edit</a>
 
                                             <form action="{{ url('RekSupplier/'.$value->id) }}" method="post">
                                               @method('delete')
                                               {{ csrf_field() }}
                                                   @if(empty($value->getBayarBeli->bank_tujuan))
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus supplier ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus supplier ini ...?')" title="Hapus">Hapus</button>
                                                 @endif
                                             </form>
 

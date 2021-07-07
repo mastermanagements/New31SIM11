@@ -33,9 +33,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nomor Transaksi</label>
-                                <input type="text" class="form-control " name="no_transaksi" required>
+                                <input type="text" class="form-control " name="no_transaksi">
                                 <input type="hidden" name="jenis_jurnal" value="1">
-                                <small style="color: red">* Tidak Boleh Kosong</small>
                             </div>
                         </div>
                     </div>

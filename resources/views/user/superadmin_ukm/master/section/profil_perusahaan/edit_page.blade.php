@@ -224,7 +224,7 @@
                        <div class="box-footer">
                            {{csrf_field()}}
                            <input type="hidden" name="_method" value="put"/>
-                           <button type="submit" class="btn btn-primary">Submit</button>
+                           <button type="submit" class="btn btn-primary">Simpan</button>
                        </div>
 
                    </form>
@@ -261,7 +261,7 @@
            $('[name="id_provinsi"]').change(function () {
                $.ajax({
                    url:"{{ url('getKabupaten') }}/" + $(this).val(),
-                   dataType: "json",
+                   dataType: "jsalesn",
                    success: function (result) {
                        var option="<option>Pilih Kabupaten</option>";
                        $.each(result, function (id, val) {

@@ -74,7 +74,7 @@
                                     @if(!empty($data))
 
                                     @foreach($data as $key => $data_sort)
-                                        <tr style="background-color: greenyellow">
+                                        <tr style="background-color: #00D8D8">
                                             <td colspan="2">{{ $key }}</td>
                                         </tr>
                                         @if(!empty($data_sort['data']))

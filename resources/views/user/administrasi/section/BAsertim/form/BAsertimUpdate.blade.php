@@ -37,7 +37,7 @@
                {{ csrf_field() }}
                <input type="hidden" name="id_spk" value="{{ $dataSertimById->id_spk }}">
                <input type="hidden" name="_method" value="put">
-               <button type="submit" class="btn btn-primary pull-right">Submit</button>
+               <button type="submit" class="btn btn-primary pull-right">Simpan</button>
            </div>
        </div>
 </div>

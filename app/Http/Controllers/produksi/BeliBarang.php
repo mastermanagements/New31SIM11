@@ -16,6 +16,7 @@ use App\Http\utils\SettingNoSurat;
 use App\Model\Produksi\AkunPembelian;
 use App\Http\utils\JenisAkunPembelian;
 use Session;
+use DB;
 
 class BeliBarang extends Controller
 {
@@ -62,9 +63,15 @@ class BeliBarang extends Controller
             'detail_cek'=> PesananPembelian::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'jenis_jurnal'=> JenisAkunPembelian::$jenis_akun,
             'detail_cek_brg'=>dcb::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
-            'detail_cek_brg_group'=>dcb::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->groupBy('id_order')->get()
+            'detail_cek_brg_group'=>dcb::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->groupBy('id_order')->get(),
+			'sum_cek_brg' =>dcb::select("*",
+							 DB::raw("(sum(jum_no_sesuai)) as jns"),
+							 DB::raw("(sum(jum_kualitas_no_sesuai)) as jkns"))
+							->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
+                            ->groupBy(DB::raw("id_order"))
+                            ->get() 
         ];
-        //dd($data['detail_cek_brg_group']);
+        //dd($data['sum_cek_brg']);
         //tab1 tawar beli di nonaktifkan
         if (empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6'))){
             Session::flash('tab2','tab2');

@@ -329,7 +329,7 @@
                             <div class="row">
                                 <div class="col-3">
                                     <div class="abt-icon">
-                                        <span class="fa fa-cubes"></span>
+                                        <span class="fa fa-group"></span>
                                     </div>
                                 </div>
                                 <div class="col-9">
@@ -382,7 +382,7 @@
                             <div class="row">
                                 <div class="col-3">
                                     <div class="abt-icon">
-                                        <span class="fa fa-money"></span>
+                                        <span class="fa fa-usd"></span>
                                     </div>
                                 </div>
                                 <div class="col-9">
@@ -489,45 +489,58 @@
                     <div class="col-lg-4">
                         <div class="abt-grid">
                             <div class="row">
-                               
+								<div class="col-3">
+                                    <div class="abt-icon">
+                                        <span class="fa fa-cubes"></span>
+                                    </div>
+								</div>
                                 <div class="col-9">
                                     <div class="abt-txt">
 									
                                         <h5>Manufaktur</h5>
-                                        <br>
+                                       
                                         	<p>Usaha Mengubah bahan mentah menjadi barang jadi seperti :</p>																														
 											<p><i class="fa fa-check-circle mr-1"></i></span>Pabrik Bahan Bangunan</p>
 											<p><i class="fa fa-check-circle mr-1"></i></span>Usaha Makanan</p>
-											<p><i class="fa fa-check-circle mr-1"></i></span>Dan Lain-lain</p> 
-											
+											<p><i class="fa fa-check-circle mr-1"></i></span>Dan Lain-lain</p> 											
+                                    </div><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><br>
+                    <div class="col-lg-4">
+                        <div class="abt-grid">
+                            <div class="row">
+								<div class="col-3">
+                                    <div class="abt-icon">
+                                        <span class="fa fa-money"></span>
                                     </div>
+								</div>
+                                <div class="col-9">
+                                    <div class="abt-txt">
+                                        <h5>Perdagangan</h5>
+                                        
+                                        <p>Usaha menjual barang seperti :</p>																															
+											<p><i class="fa fa-check-circle mr-1"></i></span>Toko bangunan </font></p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Toko Pakaian/fashion</p>
+											<p><i class="fa fa-check-circle mr-1"></i></span>Toko komputer, dll </p> 										
+                                    </div><br>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="abt-grid">
-                            <div class="row">
-                               
-                                <div class="col-9">
-                                    <div class="abt-txt">
-                                        <h5>Perdagangan</h5>
-                                        <br>
-                                        <p>Usaha menjual barang seperti :</p>																															
-											<p><i class="fa fa-check-circle mr-1"></i></span>Toko bangunan </font></p>
-											<p><i class="fa fa-check-circle mr-1"></i></span>Toko Pakaian/fashion</p>
-											<p><i class="fa fa-check-circle mr-1"></i></span>Toko komputer, dll </p> 										
+							<div class="row">
+								<div class="col-3">
+                                    <div class="abt-icon">
+                                        <span class="fa fa-handshake-o"></span>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="abt-grid">                               
+								</div>
                                 <div class="col-9">
                                     <div class="abt-txt">
                                         <h5>Jasa</h5>
-                                        <br>
+                                        
                                         <p>Usaha yang menyediakan layanan jasa seperti :</p>																															
 											<p><i class="fa fa-check-circle mr-1"></i></span>Service Elektornik</p>
 											<p><i class="fa fa-check-circle mr-1"></i></span>Laundry</p>
@@ -536,7 +549,7 @@
                                 </div>
                             </div>
                         </div>
-                </div>         
+					</div>         
             </div>
         </section><br><br>
 		<section>
@@ -549,7 +562,8 @@
                                 Tunggu apa lagi ? Saatnya kelola bisnis anda <br> secara terintegrasi agar bisnis anda <br> bisa  scale up lebih cepat,
 								saatnya naik kelas dari zona UMKM !
                             </h3><br>
-                            <a href="#regis" class="btn btn-primary"> <b> Daftar Gratis sekarang juga !!!</b> </a>
+                            <a href="#regis" class="blog_link regis"> <b> Daftar Gratis sekarang juga !!!</b> </a>
+							
                         </div>
                     </div>
                 </div>
