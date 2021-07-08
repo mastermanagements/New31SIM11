@@ -204,7 +204,7 @@ class Produksi
         $container = array();
         if (!empty($produksi->linkToMannyTenagaProduksi)) {
             foreach ($produksi->linkToMannyTenagaProduksi as $item) {
-                $container[] = $item->linkToPekerja->nama_ky;
+                $container[] = rupiahView($item->jumlah_upah);
             }
         }
         return $container;

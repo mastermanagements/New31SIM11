@@ -142,8 +142,8 @@
                            '_token' : "{{ csrf_token() }}"
                        },
                        success:function (result) {
-                           consalesle.log(result);
-                           consalesle.log("Anda telah mengkatifkan menu ini")
+                           console.log(result);
+                           console.log("Anda telah mengkatifkan menu ini")
                        }
                    })
                });
@@ -159,8 +159,8 @@
                            '_token' : "{{ csrf_token() }}"
                        },
                        success:function (result) {
-                           consalesle.log(result);
-                           consalesle.log("Anda telah menontaktifkan menu ini")
+                           console.log(result);
+                           console.log("Anda telah menontaktifkan menu ini")
                        }
                    })
                })

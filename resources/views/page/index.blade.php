@@ -182,7 +182,7 @@
                     <div class="col-md-12 wthree_pvt_title text-center">
                         <p class="mb-5"><b>Login Owner/Founder</b></p>
 						<form method="POST" action="{{ url('login-page') }}" id="appointment-form">
-                            <span id="notif_login_owner" style="color: red;"></span>
+                            <span id="notif_login_owner" style="color: red;"></span><br>
                             <input type="email" name="alamat_email" id="email" class="mx-auto nama" placeholder="Email" required />
                             <br/>
                             <input type="password" name="kata_kunci" id="name" class="mx-auto pass" placeholder="Password">
@@ -235,7 +235,7 @@
                     <div class="col-md-12 wthree_pvt_title text-center">
                         <p class="mb-5"><b>Login Karyawan</b></p>
                         <form action="{{ url('cek-karyawan') }}" method="post" id="login_karyawan">
-                            <span id="notif_login_karyawan" style="color: red;"></span>
+                            <span id="notif_login_karyawan" style="color: red;"></span><br>
                             <input type="text" class="mx-auto nama" placeholder="Username" name="user_nm" required>
                             <br/>
                             <input type="password" class="mx-auto pass" placeholder="password" name="pass" required>
@@ -263,6 +263,7 @@
                         <form method="POST" action="{{ url('registered') }}" id="form-regist">
                             <span style="color: green" id="notif_registered_success"></span>
                             <span style="color: red" id="notif_registered_fail"></span>
+							<p></p>
                             <input type="text" name="nama" id="title" class="mx-auto nama" placeholder="Nama" required>
                             <br/>
                             <input type="email" name="alamat_email" id="email_regist"class="mx-auto nama" placeholder="email" required>

@@ -52,7 +52,7 @@
                                                     <ol>
                                                         @if(!empty($produksi_harian))
                                                             @foreach($produksi_harian as $data)
-                                                                <li>{{ $data->linkToBarang->nm_barang }} {{ $data->jumlah_brg_jadi_bagus }}</li>
+                                                                <li>{{ $data->linkToBarang->nm_barang }} : {{ $data->jumlah_brg_jadi_bagus }}</li>
                                                             @endforeach
                                                         @endif
                                                     </ol>
@@ -66,7 +66,7 @@
                                                     <ol>
                                                         @if(!empty($produksi_bulanan))
                                                             @foreach($produksi_bulanan as $item_bulanan)
-                                                                <li>{{ $item_bulanan->nm_barang }} {{ $item_bulanan->total_produksi }} buah</li>
+                                                                <li>{{ $item_bulanan->nm_barang }} : {{ $item_bulanan->total_produksi }} buah</li>
                                                             @endforeach
                                                         @endif
                                                     </ol>
@@ -148,7 +148,7 @@
                                             <div class="box box-info">
                                                 <div class="box-body" style="background-color: deepskyblue">
                                                     <h4>Laba Rugi Hari ini : {{ date('d-m-Y') }}</h4>
-                                                    <p>Rp. {{ $laba_harian}}</p>
+                                                    <p>Rp. {{ rupiahView($laba_harian) }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -156,7 +156,7 @@
                                             <div class="box box-info">
                                                 <div class="box-body" style="background-color: deepskyblue">
                                                     <h4>Laba Rugi Bulan ini : {{ date('F Y') }}</h4>
-                                                    <p>Rp. {{ $laba_bulanan }}</p>
+                                                    <p>Rp. {{ rupiahView($laba_bulanan) }}</p>
                                                 </div>
                                             </div>
                                         </div>
