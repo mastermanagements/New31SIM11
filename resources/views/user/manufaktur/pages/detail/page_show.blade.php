@@ -19,7 +19,7 @@
                 <div class="box box-body box-primary">
                   <div class="row">
                       <div class="col-sm-12" style="padding: 20px">
-                            <a href="{{ url('detail-barang-selesai-produksi-cetak/'.$id) }}" class="btn btn-primary">Print</a>
+                            <a target="_blank" href="{{ url('detail-barang-selesai-produksi-cetak/'.$id) }}" class="btn btn-primary">Print</a>
                       </div>
                       <div class="col-sm-12" style="padding: 20px">
                           <p style='text-align: center; font-weight: bold;'><u>Detail Produksi</u></p>
@@ -141,11 +141,11 @@
                               <ol style="font-weight: bold">
                                 @foreach($hpp as $key=> $item)
                                     @foreach($item as $sub_item)
-                                        <li>{{ $sub_item['judul'] }} : Rp. {{ $sub_item['total'] }}
+                                        <li>{{ $sub_item['judul'] }} : Rp. {{ rupiahView($sub_item['total']) }}
                                             <ul>
                                                 @if(!empty($sub_item['data']))
                                                     @foreach($sub_item['data'] as $value)
-                                                        <li>{{ $value['judul'] }} : Rp.{{ $value['total'] }}</li>
+                                                        <li>{{ $value['judul'] }} : Rp.{{ rupiahView($value['total']) }}</li>
                                                     @endforeach
                                                 @endif
                                             </ul>

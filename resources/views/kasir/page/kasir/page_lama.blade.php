@@ -19,7 +19,7 @@
                     </div>
                 @endif
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-12">
                         <form action="{{ url('Kasir') }}" method="post" >
@@ -54,7 +54,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Barang </th>
-                                                <th>Qty</th>
+                                                <th>Jumlah Penjualan</th>
                                                 <th>Harga Satuan</th>
                                                 <th>Sub Total</th>
                                                 <th>Aksi</th>
@@ -87,7 +87,7 @@
 
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="box">
@@ -109,7 +109,7 @@
                     <div class="col-sm-12">
                         <div class="box">
                             <div class="box-header">
-                                <h4 class="box-title">Daftar Transaksi Terbaru</h4>
+                                <h4 class="box-title">Daftar Penjualan Hari Ini</h4>
                             </div>
                             <div class="box-body">
                                 <table class="table table-striped" >
@@ -133,10 +133,17 @@
                                                     <th>{{ $data->linkToDetailSales->count('id') }}</th>
                                                     <th>RP. {{ number_format($data->linkToDetailSales->sum('jumlah_harga'),2,',','.') }}</th>
                                                     <th>
-                                                        <div class="btn-group">															
-															<a href="{{ url('cetak-nota/'.$data->id) }}" target="_blank" class="btn btn-warning">Print</a>
-															<a href="#" onclick="cek_barang({{ $data->id }})" id="cek_barang_nota" class="btn btn-warning">Cek</a>
-															<a href="{{ url('hapus-nota-kasir/'.$data->id) }}" onclick="return confirm('Apakah anda akan menghapus nota ini ...? ')" class="btn btn-danger">Del</a>                                                                                                                
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-info btn-flat">Aksi</button>
+                                                            <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown">
+                                                                <span class="caret"></span>
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <ul class="dropdown-menu" role="menu">
+                                                                <li><a href="{{ url('cetak-nota/'.$data->id) }}" target="_blank">Print</a></li>
+                                                                <li><a href="#" onclick="cek_barang({{ $data->id }})" id="cek_barang_nota">Cek Barang</a></li>
+                                                                <li><a href="{{ url('hapus-nota-kasir/'.$data->id) }}" onclick="return confirm('Apakah anda akan menghapus nota ini ...? ')">hapus</a></li>
+                                                            </ul>
                                                         </div>
                                                     </th>
                                                 </tr>

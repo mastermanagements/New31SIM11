@@ -81,6 +81,7 @@
                                 @if(!empty($submenu=$menus->getSubmenu))
                                     @foreach($submenu as $sKey => $sum_menu)
 									<div class="col-md-4">
+									
 										{{-- tampilkan submenu untuk jenis perusahaan dagang & kelompok submenu perusahaan dagang --}}
 										@if (($usaha->jenis_usaha == '0') AND($sum_menu->kelompok_submenu =='0'))
                                         <div class="form-group" style="padding-left: 5%;">
@@ -117,7 +118,7 @@
                                         </div>
 										@endif
 										
-										{{-- tampilkan menu untuk jenis perusahaan dagang & jasa & kelompok menu perusahaan dagang & jasa --}}
+										{{-- tampilkan menu untuk jenis perusahaan dagang & jasa & kelompok submenu perusahaan dagang & jasa --}}
 										@if (($usaha->jenis_usaha == '2') AND($sum_menu->kelompok_submenu =='2'))
                                         <div class="form-group" style="padding-left: 5%;">
                                             <input type="checkbox" class="minimal status menu_sub_{{ $key }}"

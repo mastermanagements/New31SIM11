@@ -44,7 +44,7 @@
                 <tr>
                     <td style="border-color: transparent; text-align: left;" ><strong>Klien</strong></td>
                     <td style="border-color: transparent; text-align: left;">:</td>
-                    <td style="border-color: transparent; text-align: left;">{{ $data->linkToKlien->nm_klien }}</td>
+                    <td style="border-color: transparent; text-align: left;">@if(empty($data->linkToKlien->nm_klien)) Umum @else  {{ $data->linkToKlien->nm_klien }} @endif</td>
                 </tr>
 				<tr>
                     <td style="border-color: transparent; text-align: left;" width="100"><strong>No Pesanan Penjualan</strong></td>
