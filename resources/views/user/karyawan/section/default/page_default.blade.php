@@ -60,7 +60,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <div class="box box-warning">
+										{{--<div class="box box-warning">--}}
                                                 <div class="box-body" style="background-color: orange">
                                                     <h4>Produksi Bulanan : {{ date('F Y') }}</h4>
                                                     <ol>
@@ -71,7 +71,7 @@
                                                         @endif
                                                     </ol>
                                                 </div>
-                                            </div>
+												{{--</div>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -93,12 +93,12 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <div class="box box-info">
+										{{-- <div class="box box-info"> --}}
                                                 <div class="box-body" style="background-color: deepskyblue">
                                                     <h4>Pengeluaran Bulan ini : {{ date('F Y') }}</h4>
                                                     <p>Rp. @if(!empty($biaya_bulanan[0]->total)) {{ number_format($biaya_bulanan[0]->total,0,',','.') }} @else 0 @endif</p>
                                                 </div>
-                                            </div>
+												{{-- </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -126,12 +126,12 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <div class="box box-warning">
+										{{-- <div class="box box-warning"> --}}
                                                 <div class="box-body" style="background-color: orange">
                                                     <h4>Penjualan Bulan ini : {{ date('F Y') }}</h4>
                                                     <p>Rp. @if(!empty($pengeluaran_bulanan[0]->total_biaya)) {{ number_format($pengeluaran_bulanan[0]->total_biaya,0,',','.') }} @else 0 @endif</p>
                                                 </div>
-                                            </div>
+												{{-- </div> --}}
                                         </div>
                                     </div>
                                 </div>

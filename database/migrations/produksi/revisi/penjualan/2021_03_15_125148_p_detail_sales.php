@@ -26,7 +26,7 @@ class PDetailSales extends Migration
 
             $table->foreign('id_perusahaan')->references('id')->on('u_perusahaan');
             $table->foreign('id_karyawan')->references('id')->on('h_karyawan');
-            $table->foreign('id_sales')->references('id')->on('p_sales');
+            $table->foreign('id_sales')->references('id')->on('p_sales')->onDelete('cascade');
             $table->foreign('id_barang')->references('id')->on('p_barang');
             $table->timestamps();
         });

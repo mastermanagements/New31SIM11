@@ -105,9 +105,9 @@ class BarangProduksi extends Controller
 
         $model = P_tambah_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->update($data)){
-            return redirect('manufaktur')->with('message_success','Quality control telah disimpan');
+            return redirect('manufaktur')->with('message_success','Quality control telah disimpan')->with('tab3','tab3');
         }else{
-            return redirect('manufaktur')->with('message_fail','Quality control gagal disimpan');
+            return redirect('manufaktur')->with('message_fail','Quality control gagal disimpan')->with('tab3','tab3');
         }
     }
 

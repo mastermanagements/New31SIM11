@@ -116,7 +116,7 @@
                                                         Klien Umum
                                                     @endif
                                                 </td>
-                                                <td>{{ $data->total }}</td>
+                                                <td>{{ rupiahView($data->total) }}</td>
                                                 <td>
                                                     <form action="{{ url('pesanan-penjualan/'.$data->id) }}" method="post" >
                                                         {{ csrf_field() }}
@@ -252,7 +252,7 @@
                                                     Klien Umum
                                                 @endif
                                             </td>
-                                            <td>{{ date('d-m-Y', strtotime($item_Psales->tgl_kirim)) }}</td>
+                                            <td>@if(!empty($item_Psales->tgl_kirim)){{ date('d-m-Y', strtotime($item_Psales->tgl_kirim)) }}@endif</td>
                                             <td>{{ rupiahView($item_Psales->total) }}</td>
                                             <td>
                                                 <form action="{{ url('penjualan-barang/'. $item_Psales->id) }}" method="post">

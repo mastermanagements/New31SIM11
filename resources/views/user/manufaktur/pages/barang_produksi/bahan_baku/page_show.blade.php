@@ -43,7 +43,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Nama Barang &nbsp;<strong style="color: red">*</strong></th>
+                                                        <th>Bahan Baku &nbsp;<strong style="color: red">*</strong></th>
                                                         <th>Jumlah &nbsp;<strong style="color: red">*</strong></th>
                                                         <th>Aksi</th>
                                                     </tr>
@@ -56,15 +56,15 @@
                                                             <td>
                                                                 <select name="id_barang_mentah" class="form-control select2" style="width: 100%;" required>
                                                                     @if(!empty($barang))
-                                                                        <option value="">Pilih bahan baku</option>
+                                                                        <option disabled>Pilih bahan baku</option>
                                                                         @foreach($barang as $data_barang)
-                                                                            <option value="{{ $data_barang->id }}">{{ $data_barang->nm_barang }}</option>
+                                                                            <option value="{{ $data_barang->id }}">{{ $data_barang->nm_barang }}, {{ $data_barang->linkToSatuan->satuan }}, {{ $data_barang->merk_barang }} </option>
                                                                         @endforeach
                                                                     @endif
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="rupiah2" class="form-control" name="jumlah_bahan" required>
+                                                                <input type="text" class="form-control" name="jumlah_bahan" required>
                                                             </td>
                                                             <td><button type="submit" class="btn btn-primary">Simpan</button></td>
                                                         </form>
@@ -79,13 +79,13 @@
                                                                             @if(!empty($barang))
                                                                                 <option value="">Pilih bahan baku</option>
                                                                                 @foreach($barang as $data_barang)
-                                                                                    <option value="{{ $data_barang->id }}" @if($item_bahan_baku->id_barang_mentah==$data_barang->id) selected @endif>{{ $data_barang->nm_barang }}</option>
+                                                                                    <option value="{{ $data_barang->id }}" @if($item_bahan_baku->id_barang_mentah==$data_barang->id) selected @endif>{{ $data_barang->nm_barang }} , {{ $data_barang->linkToSatuan->satuan }}, {{ $data_barang->merk_barang }}</option>
                                                                                 @endforeach
                                                                             @endif
                                                                         </select>
                                                                     </td>
                                                                     <td>
-                                                                        <input type="text" class="form-control" name="jumlah_bahan" value="{{ rupiahView($item_bahan_baku->jumlah_bahan) }}" required>
+                                                                        <input type="text" class="form-control" name="jumlah_bahan" value="{{ $item_bahan_baku->jumlah_bahan }}" required>
                                                                     </td>
                                                                     <td>
                                                                         <button type="submit" class="btn btn-warning">ubah</button>

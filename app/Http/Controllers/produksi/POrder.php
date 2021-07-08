@@ -169,9 +169,9 @@ class POrder extends Controller
         # code...
         $model =p_order::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->delete()){
-            return redirect('Pembelian')->with('message_success','data pembelian telah dihapus');
+            return redirect('Pembelian')->with('message_success','data pembelian telah dihapus')->with('tab3','tab3');
         }else{
-            return redirect('Pembelian')->with('message_error','data pembelian gagal dishapus');
+            return redirect('Pembelian')->with('message_error','data pembelian gagal dishapus')->with('tab3','tab3');
         }
     }
 
