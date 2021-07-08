@@ -52,7 +52,7 @@ class UsahaController extends Controller
             'jenis_usaha' => 'required',
             'bidang_usaha' => 'required',
             'spesifik_usaha' => 'required',
-            'logo' => 'required|image|mimes:jpeg,png,gif,jpg|max:2048'
+            'logo' => '|image|mimes:jpeg,png,gif,jpg|max:2048'
         ]);
 
         $nama_usaha = $req->nm_usaha;
@@ -78,8 +78,11 @@ class UsahaController extends Controller
         $jenis_jasa = $req->jenis_jasa;
         $web = $req->web;
         $logo = $req->logo;
-
-        $image_name = time() . '.' . $logo->getClientOriginalExtension();
+		
+		if(!empty($logo)){
+			$image_name = time() . '.' . $logo->getClientOriginalExtension();
+		}
+        
 
         $model = new perusahaan;
 
@@ -105,17 +108,24 @@ class UsahaController extends Controller
         $model->spesifik_usaha = $spesifik_usaha;
         $model->jenis_jasa = $jenis_jasa;
         $model->web = $web;
-        $model->logo = $image_name;
+		if(!empty($logo)){
+			 $model->logo = $image_name;
+		}
+       		
         $model->id_user_ukm = $this->id_superadmin;
 
         if ($model->save()) {
-            if ($logo->move(public_path('logoUsaha'), $image_name)) {
-                return redirect('profil-perusahaan')->with('message_success', 'Berhasil menambahkan Data Usaha');
-            } else {
-                return redirect('profil-perusahaan')->with('message_error', 'Gagal menambahkan Data Usaha');
-            }
+			if(!empty($image_name)){							
+				if ($logo->move(public_path('logoUsaha'), $image_name)) {
+					return redirect('profil-perusahaan')->with('message_success', 'Berhasil menambahkan Data Usaha');
+				} else {
+					return redirect('profil-perusahaan')->with('message_fail', 'Gagal menambahkan Data Usaha');
+				}
+			}else {
+				return redirect('profil-perusahaan')->with('message_success', 'Berhasil menambahkan Data Usaha');
+			}
         }
-        return redirect('tambah-usaha')->with('message_error', 'Terjadi kesalahan, isi dengan benar');
+        return redirect('tambah-usaha')->with('message_fail', 'Terjadi kesalahan, isi dengan benar');
     }
 
     public function edit($id)

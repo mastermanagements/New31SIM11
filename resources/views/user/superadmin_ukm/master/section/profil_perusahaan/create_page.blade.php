@@ -58,7 +58,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputFile">Kabupaten</label>&nbsp;<strong style="color: red">*</strong>
+                                <label for="exampleInputFile">Kabupaten/Kota</label>&nbsp;<strong style="color: red">*</strong>
                                 <select class="form-control select2" style="width: 100%;" name="id_kabupaten" required>
                                     <option>Pilih Kabupaten</option>
                                 </select>
@@ -188,13 +188,13 @@
                                 <label>
                                   <input type="radio" name="jenis_jasa" class="minimal" value="1">&nbsp;Jasa & barang&nbsp;
                                 </label><br>
-                                <strong style="color: green">*Jasa murni, misal: notaris, desain grafis. Jasa & barang misal: service komputer, jasa laundry. Jika Usaha Anda Perdagangan atau manufaktur, kosalesngkan saja</strong>
+                                <strong style="color: green">*Jasa murni, misal: notaris, desain grafis. Jasa & barang misal: service komputer, jasa laundry. Jika Usaha Anda Perdagangan atau manufaktur, kosongkan saja</strong>
                               </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputFile">Logo Usaha</label>&nbsp;<strong style="color: red">*</strong>
-                                <input type="file" id="exampleInputFile" name="logo" required>
+                                <label for="exampleInputFile">Logo Usaha</label>
+                                <input type="file" id="exampleInputFile" name="logo">
                             </div>
                       </div>
 
@@ -241,7 +241,7 @@
            $('[name="id_provinsi"]').change(function () {
                $.ajax({
                    url:"{{ url('getKabupaten') }}/" + $(this).val(),
-                   dataType: "jsalesn",
+                   dataType: "json",
                    success: function (result) {
                        var option="<option>Pilih Kabupaten</option>";
                        $.each(result, function (id, val) {

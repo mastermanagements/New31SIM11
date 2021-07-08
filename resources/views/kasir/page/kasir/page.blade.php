@@ -100,7 +100,7 @@
                                       <h1 id="total_bayar">Bayar Rp: 0</h1>
                                   </div>
                                   <div class="col-md-12">
-                                      <h1 id="total_kembalian">Kembalian Rp: 0</h1>
+                                      <h1 id="total_kembalian">Kembali Rp: 0</h1>
                                   </div>
                               </div>
                             </div>

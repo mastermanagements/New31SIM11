@@ -42,23 +42,23 @@
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Nama Investor</label>
                                   <input name="nm_investor" class="form-control" placeholder="Nama Investor" required>
-                                  <small style="color: red">* Tidak boleh kosalesng</small>
+                                  <small style="color: red">* Tidak boleh kosong</small>
                               </div>
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Nomor.KTP</label>
                                   <input name="no_ktp" class="form-control" placeholder="Nomor. KTP" required>
-                                  <small style="color: red">* Tidak boleh kosalesng</small>
+                                  <small style="color: red">* Tidak boleh kosong</small>
                               </div>
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Password</label>
                                   <input type="password" name="password" class="form-control" placeholder="Password Minimal 6 karakter" required>
-                                  <small style="color: red">* Tidak boleh kosalesng</small>
+                                  <small style="color: red">* Tidak boleh kosong</small>
                               </div>
 
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">Alamat</label>
                                           <textarea name="alamat" class="form-control" placeholder="Nomor KTP" required></textarea>
-                                          <small style="color: red">* Tidak boleh kosalesng</small>
+                                          <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
 
                                       <div class="form-group">
@@ -69,19 +69,19 @@
                                                   <option value="{{ $value->id }}">{{ $value->nama_provinsi }}</option>
                                               @endforeach
                                           </select>
-                                          <small style="color: red">* Tidak boleh kosalesng</small>
+                                          <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
                                       <div class="form-group">
                                           <label for="exampleInputFile">Kabupaten</label>
                                           <select class="form-control select2" style="width: 100%;" name="id_kabupaten" required>
                                               <option>Pilih Kabupaten</option>
                                           </select>
-                                          <small style="color: red">* Tidak boleh kosalesng</small>
+                                          <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">Nomor. Handphone</label>
                                           <input name="hp" class="form-control" placeholder="Nomor. Handphone" required>
-                                          <small style="color: red">* Tidak boleh kosalesng</small>
+                                          <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
 
                         </div>
@@ -90,12 +90,12 @@
                            <div class="form-group">
                                <label for="exampleInputEmail1">Nomor. Whatshapp</label>
                                <input name="wa" class="form-control" placeholder="Nomor. Whatshapp" required>
-                               <small style="color: red">* Tidak boleh kosalesng</small>
+                               <small style="color: red">* Tidak boleh kosong</small>
                            </div>
                            <div class="form-group">
                                <label for="exampleInputEmail1">Jumlah Saham</label>
                                <input name="jum_saham" class="form-control" placeholder="Jumlah Saham Investor" required>
-                               <small style="color: red">* Tidak boleh kosalesng</small>
+                               <small style="color: red">* Tidak boleh kosong</small>
                            </div>
                            <div class="form-group">
                                <label for="exampleInputFile">File Scan KTP</label>
@@ -105,17 +105,17 @@
                            <div class="form-group">
                                <label for="exampleInputEmail1">Nama Ahli Waris</label>
                                <input name="nm_ahli_waris" class="form-control" placeholder="Nama Ahli Waris" required>
-                               <small style="color: red">* Tidak boleh kosalesng</small>
+                               <small style="color: red">* Tidak boleh kosong</small>
                            </div>
                            <div class="form-group">
                                <label for="exampleInputEmail1"> Nomor. Handphone Ahli Waris</label>
                                <input name="no_hp_aw" class="form-control" placeholder="Nama Ahli Waris" required>
-                               <small style="color: red">* Tidak boleh kosalesng</small>
+                               <small style="color: red">* Tidak boleh kosong</small>
                            </div>
                            <div class="form-group">
                                <label for="exampleInputEmail1">Alamat Ahli Waris</label>
                                <textarea name="alamat_aw" class="form-control" placeholder="Alamat ahli waris" required></textarea>
-                               <small style="color: red">* Tidak boleh kosalesng</small>
+                               <small style="color: red">* Tidak boleh kosong</small>
                            </div>
                        </div>
                    </div>
@@ -172,7 +172,7 @@
            $('[name="id_provinsi"]').change(function () {
                $.ajax({
                    url:"{{ url('getKabupaten') }}/" + $(this).val(),
-                   dataType: "jsalesn",
+                   dataType: "json",
                    success: function (result) {
                        var option="<option>Pilih Kabupaten</option>";
                        $.each(result, function (id, val) {

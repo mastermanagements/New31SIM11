@@ -43,28 +43,28 @@
                               <!--<div class="form-group">
                                   <label for="exampleInputEmail1">NIK</label>
                                   <input name="nik" class="form-control" placeholder="Nomor Induk Karyawan" required>
-                                  <small style="color: red">* Tidak boleh kosalesng</small>
+                                  <small style="color: red">* Tidak boleh kosong</small>
                               </div>-->
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Nama Karyawan</label>
                                   <input name="nama_ky" class="form-control" placeholder="Nama Karyawan" required>
-                                  <small style="color: red">* Tidak boleh kosalesng</small>
+                                  <small style="color: red">* Tidak boleh kosong</small>
                               </div>
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Username</label>
                                   <input name="username" class="form-control" placeholder="Username" required>
-                                  <small style="color: red">* Tidak boleh kosalesng</small>
+                                  <small style="color: red">* Tidak boleh kosong</small>
                               </div>
                               <div class="form-group">
                                   <label for="exampleInputEmail1">Password</label>
                                   <input type="password" name="password" class="form-control" placeholder="Password Minimal 6 karakter" required>
-                                  <small style="color: red">* Tidak boleh kosalesng</small>
+                                  <small style="color: red">* Tidak boleh kosong</small>
                               </div>
 
                                       <!--<div class="form-group">
                                           <label for="exampleInputEmail1">Nomor KTP</label>
                                           <input name="no_ktp" class="form-control" placeholder="Nomor KTP">
-                                          <small style="color: red">* Tidak boleh kosalesng</small>
+                                          <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
                                       <div class="form-group">
                                           <label for="exampleInputFile">File Scan KTP</label>
@@ -74,7 +74,7 @@
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">Tempat Lahir</label>
                                           <input type="text" name="tmp_lahir" class="form-control" placeholder="Tempat Lahir karyawan" required>
-                                          <small style="color: red">* Tidak boleh kosalesng</small>
+                                          <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
                                       <div class="form-group">
                                           <label>Tanggal Lahir</label>
@@ -86,7 +86,7 @@
                                               <input type="text" class="form-control pull-right" id="datepicker" placeholder="Tanggal Lahir Karyawan" name="tgl_lahir" required>
                                           </div>
 
-                                          <small style="color: red">* Tidak boleh kosalesng</small>
+                                          <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">Jenis Kelamin</label>
@@ -98,7 +98,7 @@
                                                   </label>
                                               @endforeach
                                               <p></p>
-                                              <small style="color: red">* Tidak Boleh Kosalesng</small>
+                                              <small style="color: red">* Tidak Boleh Kosong</small>
                                           </div>
                                       </div>
                                       <div class="form-group">
@@ -111,7 +111,7 @@
                                                   </label>
                                               @endforeach
                                               <p></p>
-                                              <small style="color: red">* Tidak Boleh Kosalesng</small>
+                                              <small style="color: red">* Tidak Boleh Kosong</small>
                                           </div>
                                       </div>-->
                                       <div class="form-group">
@@ -124,7 +124,7 @@
                                                   </label>
                                               @endforeach
                                               <p></p>
-                                              <small style="color: red">* Tidak Boleh Kosalesng</small>
+                                              <small style="color: red">* Tidak Boleh Kosong</small>
                                           </div>
                                       </div>
 
@@ -141,7 +141,7 @@
                                                   </label>
                                               @endforeach
                                               <p></p>
-                                              <small style="color: red">* Tidak Boleh Kosalesng</small>
+                                              <small style="color: red">* Tidak Boleh Kosong</small>
                                           </div>
                                       </div>
                                       <div class="form-group">
@@ -157,12 +157,12 @@
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">Nama Bank</label>
                                           <input name="nm_bank" class="form-control" placeholder="Contoh: Mandiri, BCA, BRI, Dll." required>
-                                          <small style="color: red">* Tidak boleh kosalesng</small>
+                                          <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
                                       <div class="form-group">
                                           <label for="exampleInputEmail1">No. Rek</label>
                                           <input name="no_rek" class="form-control" placeholder="Nomor Rekening Tabungan">
-                                          <small style="color: red">* Tidak boleh kosalesng</small>
+                                          <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
 
                                       <div class="form-group">
@@ -190,7 +190,7 @@
                                               <input type="text" class="form-control pull-right" id="datepicker1" placeholder="Tanggal Masuk Kerja" name="tgl_masuk" required>
                                           </div>
 
-                                          <small style="color: red">* Tidak boleh kosalesng</small>
+                                          <small style="color: red">* Tidak boleh kosong</small>
                                       </div>
                                   </div>
                    </div>-->

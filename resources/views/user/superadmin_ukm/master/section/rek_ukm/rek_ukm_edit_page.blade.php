@@ -49,7 +49,7 @@
                                            </label>
                                            @endforeach
                                            <p></p>
-                                       <small style="color: red">* Tidak Boleh Kosalesng</small>
+                                       <small style="color: red">* Tidak Boleh Kosong</small>
                                        </div>
                                </div>
                                <div class="form-group">

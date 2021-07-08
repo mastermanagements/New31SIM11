@@ -58,14 +58,14 @@
                                     <label style="color: red">Isi dulu data perusahaan Anda! <a href="{{ url('tambah-usaha') }}">Klik di sini</a></label>
                                    @endforelse
                                    <p></p>
-                               <small style="color: red">* Tidak Boleh Kosalesng</small>
+                               <small style="color: red">* Tidak Boleh Kosong</small>
                            </div>
                                <label for="exampleInputEmail1">Masukan Visi Anda</label>
                                <div class="form-group">
                                    <textarea class="form-control" placeholder="Masukan Visi usaha anda" name="visi" id="visi" required>
 
                                    </textarea>
-                                   <small style="color: red">* Tidak boleh kosalesng</small>
+                                   <small style="color: red">* Tidak boleh kosong</small>
                                </div>
 
                        </div>
