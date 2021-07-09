@@ -43,8 +43,8 @@
                                         <tr>
                                             <th>Nama Barang</th>
                                             <th>Harga Jual</th>
-                                            <th>Banyaknya</th>
-                                            <th>Diskon (misal: 10 %, tulis : 10)</td>
+                                            <th>Jumlah</th>
+                                            <th>Diskon (%)</td>
                                             <th>Sub Total</th>
                                         </tr>
                                         <tr>
@@ -67,14 +67,15 @@
                                             <td>
                                                 <input type="text" name="diskon_item" class="form-control" value="0">
                                             </td>
-                                            <td>
+                                            <td width="100">
                                                 <input type="text" name="jumlah_harga" id="jumlah_harga" class="form-control" value="0" readonly>
                                             </td>
+											<td width="100">
+													<button class="btn btn-primary">Tambah</button>
+											</td>
                                         </tr>
                                     </table>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary">Tambah Barang</button>
-                                    </div>
+                                   
                             </form>
 
                                     <h3>Daftar Pesanan Penjualan </h3>
@@ -122,11 +123,11 @@
                                                     <td width="50">
                                                         <input type="text" class="form-control" name="diskon_item"  value="{{ $n_data->diskon_item }}" required>
                                                     </td>
-                                                      <td width="130">
+                                                      <td width="100">
                                                       @php($diskon_item = $n_data->hpp * $n_data->diskon_item/100)
                                                         <input type="text"  class="form-control" readonly value="{{ rupiahView($diskon_item) }}">
                                                     </td>
-                                                    <td>
+                                                    <td  width="120">
                                                       @php($subtotal_diskon =(($n_data->hpp * $n_data->diskon_item/100) * $n_data->jumlah_jual))
                                                       @php($total_diskon += (($n_data->hpp * $n_data->diskon_item/100) * $n_data->jumlah_jual))
 
@@ -195,8 +196,10 @@
                                        </div>
                                    </div>
                                    <div class="col-md-12">
-                                       <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal pesanan penjualan otomatis  </label> <button type="submit" class="btn btn-primary"> Proses </button>
+                                       <label><input type="checkbox" name="jurnal_otomatis" value="on"> Buat jurnal pesanan penjualan otomatis  </label> 
+									   <button type="submit" class="btn btn-primary"> Simpan </button>
                                        <label id="final_total" class="pull-right"></label>
+									   <a target="_blank" style="float: right;" href="{{ url('cetak-pesanan-penjualan/'.$data->id) }}" class="btn btn-success"> Cetak </a>
                                    </div>
                             </form>
                     </div>

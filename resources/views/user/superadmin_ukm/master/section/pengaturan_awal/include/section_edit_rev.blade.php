@@ -98,7 +98,7 @@
                 {{ csrf_field() }}
                 <input hidden="hidden" name="_method" value="put">
 				<input type="text" class="form-control input-sm" name="id" value="{{ $data_user->id }}" readonly></a>
-                <button type="submit" class="btn btn-success btn-block"><i class="fa fa-pencil"></i> <b>Submit</b></button>
+                <button type="submit" class="btn btn-success btn-block"><i class="fa fa-pencil"></i> <b>Simpan</b></button>
             </form>
         </div>
         <!-- /.box-body -->

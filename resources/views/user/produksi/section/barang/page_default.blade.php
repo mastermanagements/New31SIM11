@@ -33,7 +33,7 @@
                         <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Harga Barang </a></li>
                         <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Konversi Satuan </a></li>
                         <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Daftar Konversi Barang</a></li>
-                        <li class="@if(Session::get('tab7') == 'tab4') active @else '' @endif"><a href="#tab_7" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
+                        <li class="@if(Session::get('tab7') == 'tab7') active @else '' @endif"><a href="#tab_7" data-toggle="tab"><i class="fa fa-book"></i> Transfer Data Barang </a></li>
 
                     </ul>
                     <div class="tab-content">
@@ -404,7 +404,7 @@
                               Misalnya: Pembelian Barang dari supplier berupa satuan Dos, kemudian dijual dalam satuan Dos dan Pcs. Setiap kali membuka
                               Barang dalam satuan Dos untuk dijual eceran, maka dilakukan konversi barang terlebih dahulu.
                           </div>
-                           <a href="{{ url('atur-konversi/create') }}" class="btn btn-flat btn-primary">Tambah Konversi Satuan Barang</a>
+                           <a href="{{ url('atur-konversi/create') }}" class="btn btn-flat btn-primary">Tambahkan Barang Yang akan dikonversi</a>
                            <!--<a href="{{ url('atur-konversi/history') }}" class="btn btn-flat btn-warning pull-right">History</a>-->
                             <table id="example1" class="table table-bordered table-striped" style="width: 100%">
                                 <thead>
@@ -435,7 +435,7 @@
                                                    <input type="hidden" name="_method" value="put">
                                                    <a href="{{ url('atur-konversi/'.$data_barang_konversi->id.'/edit') }}" class="btn btn-xs btn-warning">ubah</a>
                                                    <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda akan menghapus data ini .. ?')">hapus</button>
-                                                   <a href="{{ url('atur-konversi/'.$data_barang_konversi->id) }}" class="btn btn-xs btn-primary" onclick="return confirm('Apakah anda akan mengkonversi barang ini..?')">Konversi</a>
+                                                   <a href="{{ url('atur-konversi/'.$data_barang_konversi->id) }}" class="btn btn-xs btn-primary" onclick="return confirm('Apakah anda akan mengkonversi barang ini..?')">Lakukan Konversi</a>
                                                </form>
                                            </td>
                                        </tr>

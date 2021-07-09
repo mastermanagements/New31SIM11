@@ -21,7 +21,7 @@ class ProgressProyek extends Controller
             if(empty(Session::get('id_karyawan')) && empty(Session::get('id_perusahaan_karyawan')))
             {
                 Session::flush();
-                return redirect('login-karyawan')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
+                return redirect('/')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
             }
             $this->id_karyawan = Session::get('id_karyawan');
             $this->id_perusahaan = Session::get('id_perusahaan_karyawan');

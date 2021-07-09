@@ -22,4 +22,10 @@ class PesananPembelian extends Model
     public function linkToBayar(){
         return $this->hasOne('App\Model\Produksi\Bayar','id_po', 'id');
     }
+	public function linkToUsaha(){
+        return $this->belongsTo('App\Model\Superadmin_ukm\U_usaha', 'id_perusahaan');
+    }
+	public function linkToKaryawan(){
+        return $this->belongsTo('App\Model\Hrd\H_Karyawan', 'id_karyawan');
+    }
 }

@@ -21,7 +21,7 @@ class Supplier extends Controller
             if(empty(Session::get('id_karyawan')) && empty(Session::get('id_perusahaan_karyawan')))
             {
                 Session::flush();
-                return redirect('login-karyawan')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
+                return redirect('/')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
             }
             $this->id_karyawan = Session::get('id_karyawan');
             $this->id_perusahaan = Session::get('id_perusahaan_karyawan');
@@ -33,8 +33,15 @@ class Supplier extends Controller
     public function index(){
         $data=[
             'data_supplier'=> suppries::all()->where('id_perusahaan', $this->id_perusahaan)->sortByDesc('created_at'),
-            'rek_supplier'=> rek_sup::all()->where('id_perusahaan', $this->id_perusahaan)
+            'rek_supplier'=> rek_sup::where('id_perusahaan', $this->id_perusahaan)->orderBy('id_supplier')->get()
         ];
+		 if  (empty(Session::get('tab2'))){
+        Session::flash('tab1','tab1');
+		}
+
+		if(!empty(Session::get('tab2'))){
+			Session::flash('tab2',Session::get('tab2'));
+		}
         return view('user.produksi.section.supplier.page_default', $data);
     }
 

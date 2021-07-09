@@ -62,8 +62,8 @@
 
                                     </div>-->
                                         <div class="form-group">
-                                            <label>No Pesanan Pembelian</label>&nbsp;<strong style="color: red">*</strong>
-                                            <input type="text" class="form-control" name="no_po" required>
+                                            <label>No Pesanan Pembelian</label>
+                                            <input type="text" class="form-control" name="no_po">
                                         </div>
                                       </div>
                                       <div class="col-md-6">
@@ -81,12 +81,12 @@
 
                                         </div>
                                          <div class="form-group">
-                                            <label>Tanggal Barang Kirim</label>&nbsp;<strong style="color: red">*</strong>
+                                            <label>Tanggal Barang Kirim</label>
                                             <div class="input-group date">
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control pull-right" id="datepicker3" placeholder="Tanggal kirim sampai dengan" name="tgl_krm" required>
+                                                <input type="text" class="form-control pull-right" id="datepicker3" placeholder="Tanggal kirim sampai dengan" name="tgl_krm">
                                             </div>
                                             <!-- /.input group -->
 

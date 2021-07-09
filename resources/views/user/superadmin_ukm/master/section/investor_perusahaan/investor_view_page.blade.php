@@ -57,7 +57,7 @@
                                    <td>
                                        <form action="{{ url('delete-investor/'.$value->id) }}" method="post">
                                            <a href="{{ url('detail-investor/'.$id_usaha.'/'.$value->id) }}" class="btn btn-primary" title="Detail"><i class="fa  fa-sticky-note-o"></i></a>
-                                           <a href="{{ url('ubah-investor/'.$id_usaha.'/'.$value->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                           <a href="{{ url('ubah-investor/'.$id_usaha.'/'.$value->id) }}" class="btn btn-warning" title="Ubah"><i class="fa fa-edit"></i></a>
                                            {{ csrf_field() }}
                                            <input type="hidden" name="_method" value="put"/>
                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus data investor ini ini ...?')" title="Hapus"><i class="fa fa-eraser"></i></button>

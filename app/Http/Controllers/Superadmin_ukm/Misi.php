@@ -16,7 +16,7 @@ class Misi extends Controller
         $this->middleware(function ($req, $next){
             if(empty(Session::get('id_superadmin_ukm')))
             {
-                return redirect('login-page')->with('message_fail','Waktu masuk anda telah habis, Silahkan login Ulang..!');
+                return redirect('/')->with('message_fail','Waktu masuk anda telah habis, Silahkan login Ulang..!');
             }
             $this->id_superadmin = Session::get('id_superadmin_ukm');
             return $next($req);

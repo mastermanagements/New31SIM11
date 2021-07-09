@@ -58,7 +58,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputFile">Kabupaten</label>&nbsp;<strong style="color: red">*</strong>
+                                <label for="exampleInputFile">Kabupaten/Kota</label>&nbsp;<strong style="color: red">*</strong>
                                 <select class="form-control select2" style="width: 100%;" name="id_kabupaten" required>
                                     <option>Pilih Kabupaten</option>
                                 </select>
@@ -193,8 +193,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputFile">Logo Usaha</label>&nbsp;<strong style="color: red">*</strong>
-                                <input type="file" id="exampleInputFile" name="logo" required>
+                                <label for="exampleInputFile">Logo Usaha</label>
+                                <input type="file" id="exampleInputFile" name="logo">
                             </div>
                       </div>
 
@@ -205,7 +205,7 @@
                     </div>
                     <div class="box-footer">
                         {{csrf_field()}}
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                    </form>
                </div>

@@ -116,13 +116,13 @@
                           </div>
 						  
                         <div class="col-md-12">
-                          <div class="box-footer">
-                            <p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
-                          </div>
-            							<div class="box-footer">
-            								{{ csrf_field() }}
-            								<button type="submit" class="btn btn-primary">Submit</button>
-            							</div>
+							<div class="box-footer">
+								<p> <b>Tanda <strong style="color: red">*</strong> harus di isi!</b></p>
+							</div>
+            					<div class="box-footer">
+            						{{ csrf_field() }}
+            						<button type="submit" class="btn btn-primary">Simpan</button>
+            					</div>
                         </div>
                       </div>
                       <!-- /.box-body -->

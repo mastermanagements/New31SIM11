@@ -90,9 +90,7 @@
                                     <th rowspan="2">Nama Barang</th>
                                     <th colspan="2">Barang Jadi</th>
                                     <th colspan="2">Barang Dalam Proses</th>
-                                    <th colspan="3">Biaya Produksi</th>
-                                    <th rowspan="2">Hpp Per Barang</th>
-                                    <th rowspan="2">Hpp Total</th>
+                                    <th colspan="3">Biaya Produksi</th>                                   
                                     <th rowspan="2">Supervisor</th>
                                 </tr>
                                 <tr>
@@ -123,8 +121,6 @@
                                             <td>{{ $item[9][0] }}</td>
                                             <td>{{ $item[10][0] }}</td>
                                             <td>{{ $item[11][0] }}</td>
-                                            <td>{{ $item[12] }}</td>
-                                            <td>{{ $item[13] }}</td>
                                             <td>{{ $item[14] }}</td>
                                         </tr>
                                     @endforeach

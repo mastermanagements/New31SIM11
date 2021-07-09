@@ -44,7 +44,7 @@ class HargaJualBaseOnJumlah extends Controller
            $model->save();
         }
 
-        return redirect('Barang')->with('message_success','Data harga jual satuan telah ditambahkan')->with('tab','tab2');
+        return redirect('Barang')->with('message_success','Data harga jual satuan telah ditambahkan')->with('tab1','tab1');
     }
 
     public function show($id){

@@ -21,7 +21,7 @@ class LoginAndRegisterController extends Controller
         $password = $req->kata_kunci;
         $model = user_admin_ukm::where('email', $alamat_email)->first();
        if($model->status_verifikasi==0){
-//            return redirect('login-page')->with('message_fail','Maaf, Anda harus belum melakukan verifikasi ulang');
+//            return redirect('/')->with('message_fail','Maaf, Anda harus belum melakukan verifikasi ulang');
            return response()->json(['message'=> 'Maaf, Anda harus belum melakukan verifikasi ulang', 'status'=> false]);
        }else{
            if(Hash::check($password, $model->password))

@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ $judul }}</h3>
+            <h3 class="box-title"><b>{{ $judul }}</b></h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body text-center">
@@ -64,19 +64,19 @@
                             @if(!empty($data))
                             @foreach($data as $data)
                                 <tr>
-                                    <th>{{ $data['kode_akun'] }}</th>
-                                    <th>{{ $data['nama_akun'] }}</th>
-                                    <th>{{ number_format(abs($data['saldo_debet']),2,',','.') }}</th>
-                                    <th>{{ number_format(abs($data['saldo_kredit']),2,',','.') }}</th>
+                                    <td>{{ $data['kode_akun'] }}</td>
+                                    <td style="text-align:left;">{{ ucfirst($data['nama_akun']) }}</td>
+                                    <td style="text-align:right;">{{ number_format(abs($data['saldo_debet']),0,',','.') }}</td>
+                                    <td style="text-align:right;">{{ number_format(abs($data['saldo_kredit']),0,',','.') }}</td>
                                 </tr>
                                 @php($total_debet+=abs($data['saldo_debet']))
                                 @php($total_kredit+=abs($data['saldo_kredit']))
                             @endforeach
                             @endif
                             <tr>
-                                <td colspan="2">Total</td>
-                                <th>{{ number_format($total_debet,2,',','.') }}</th>
-                                <th>{{ number_format($total_kredit,2,',','.') }}</th>
+                                <td colspan="2"><b>Total</b></td>
+                                <td style="text-align:right;"><b>{{ number_format($total_debet,0,',','.') }}</b></td>
+                                <td style="text-align:right;"><b>{{ number_format($total_kredit,0,',','.') }}</b></td>
                             </tr>
                             </tbody>
                         </table>

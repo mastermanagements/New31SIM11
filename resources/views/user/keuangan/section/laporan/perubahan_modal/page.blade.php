@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ $judul }}</h3>
+            <h3 class="box-title"><b>{{ $judul }}</b></h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body text-center">
@@ -45,7 +45,7 @@
                                     @if($key!='laba_rugi')
                                         @foreach($data_ as $daftar_akun)
                                             <tr>
-                                                <td>{{ $daftar_akun['nama_akun'] }}</td>
+                                                <td style="text-align:left">{{ $daftar_akun['nama_akun'] }}</td>
                                                 <td>
                                                     @if($daftar_akun['posisi_saldo']=="D")
                                                         @php($saldo_debet+=abs($daftar_akun['saldo_debet']))
@@ -58,7 +58,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td>{{ $data_['nama_akun'] }}</td>
+                                            <td style="text-align:left">{{ $data_['nama_akun'] }}</td>
                                             <td>
                                                 @php($saldo_laba+=($data_['saldo_debet']+$data_['saldo_kredit']))
                                                 {{ number_format(($data_['saldo_debet']+$data_['saldo_kredit']),2,',','.') }}
@@ -67,11 +67,11 @@
                                     @endif
                                 @endforeach
                                 <tr>
-                                    <td>Penambahan Saldo</td>
+                                    <td style="text-align:left">Penambahan Saldo</td>
                                     <td>{{ number_format($saldo_laba-$saldo_debet,2,',','.') }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Modal Akhir</td>
+                                    <td style="text-align:left">Modal Akhir</td>
                                     <td>{{ number_format(($saldo_laba-$saldo_debet)+$saldo_kredit,2,',','.') }}</td>
                                 </tr>
                             </tbody>

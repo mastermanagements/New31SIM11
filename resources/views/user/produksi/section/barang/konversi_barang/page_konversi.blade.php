@@ -27,6 +27,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title"> Proses Konversi Barang</h3>
+						<h5 class="pull-right"><a href="{{ url('Barang')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -45,7 +46,7 @@
                             <div class="form-group">
                                 <label>Gudang/No Rak & Sisa Barang Asal</label> <br>
                                 <input type="text" class="form-control" value="{{ $data->linkToBarangAsal->no_rak }}, Sisa: {{ $data->linkToBarangAsal->stok_akhir}} {{ $data->linkToBarangAsal->linkToSatuan->satuan }}" readonly>
-
+								<input type="hidden" name="sisa_brg_asal" value="{{ $data->linkToBarangAsal->stok_akhir}}">
                             </div>
 
                             <div class="form-group">
@@ -66,7 +67,7 @@
                         <!-- /.box-body -->
                         <div class="box-footer">
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>

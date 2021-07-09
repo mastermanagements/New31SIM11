@@ -15,12 +15,11 @@
     <section class="content-header">
         <h1>
             Tambah Pembelian
-        </h1>
+        </h1> 
     </section>
 
     <!-- Main content -->
     <section class="content container-fluid">
-
         <p></p>
         <div class="row">
             <div class="col-md-12">
@@ -51,7 +50,7 @@
                                        </div>
                                    </div>
                                    <div class="form-group">
-                                       <label>No. Pesanan Pembelian</label>&nbsp;<strong style="color: red">*</strong>
+                                       <label>No. Pesanan Pembelian</label>
                                        <select class="form-control select2" name="id_po" style="width: 100%"
                                             {{-- onchange="if(confirm('Apakah anda akan mengambil data barang penawaran dari kode surat ini ... ?')){ return window.location.href='{{ url('rincian-penawaran') }}/'+$(this).val() }else{ alert('Data Barang tidak dapat diambil') }" --}}
                                             >

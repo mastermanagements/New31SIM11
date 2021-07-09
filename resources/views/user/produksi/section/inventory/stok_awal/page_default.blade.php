@@ -27,7 +27,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap;">
-                                <h4>Stok Awal Barang <a href="{{ url('inventory/create') }}" class="btn btn-success pull-right" style="margin-bottom: 10px">Tambah Stok Awal</a></h4><br>
+                                <h5 style="font-weight: bold">Stok Awal Barang <a href="{{ url('inventory/create') }}" class="btn btn-success pull-right" style="margin-bottom: 10px">Tambah Stok Awal</a></h5><br>
                                 <div class="alert alert-warning alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                     Tambah stok awal barang hanya dilakukan sekali saja, pertama kali menggunakan aplikasi ini!.
@@ -50,7 +50,7 @@
                                                     <td>{{ $no++ }}</td>
                                                     <td>{{ $data->linkToBarang->nm_barang }}</td>
                                                     <td>{{ $data->jumlah_brg }}</td>
-                                                    <td>{{ date('d-m-Y', strtotime($data->expired_date)) }}</td>
+                                                    <td>@if(!empty($data->expired_date)){{ date('d-m-Y', strtotime($data->expired_date)) }}@endif</td>
                                                     <td>
                                                         <form action="{{ url('inventory/'.$data->id.'/destroy') }}" method="post">
                                                             {{ csrf_field() }}

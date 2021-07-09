@@ -24,7 +24,7 @@
                         <div class="box-header with-border">
                             <h6 class="box-title">Penerimaan Complain Barang No Transaksi: <font color="#FF00GG">{{ $data->no_sales }}</font>, &nbsp;Klien: <font color="#FF00GG">{{ $data->linkToKlien->nm_klien }}
                             </font></h6>
-                             <h5 class="pull-right"><a href="{{ url('Penjualan')}}">Kembali ke Halaman utama</a></h5>
+                             <h5 class="pull-right"><a href="{{ url('Penjualan')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->

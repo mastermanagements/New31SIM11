@@ -34,7 +34,7 @@
                 <tr>
                     <td>{{ $no++ }}</td>
                     <td>{{ $data_item->linkToPekerja->nama_ky }}</td>
-                    <td>{{ $data_item->jumlah_upah }}</td>
+                    <td>{{ rupiahView($data_item->jumlah_upah) }}</td>
                     <td></td>
                 </tr>
             @endforeach
@@ -123,11 +123,11 @@
         <ol >
             @foreach($hpp as $key=> $item)
                 @foreach($item as $sub_item)
-                    <li style="font-weight: bold;">{{ $sub_item['judul'] }} : Rp. {{ $sub_item['total'] }}
+                    <li style="font-weight: bold;">{{ $sub_item['judul'] }} : Rp. {{ rupiahView($sub_item['total']) }}
                         <ul>
                             @if(!empty($sub_item['data']))
                                 @foreach($sub_item['data'] as $value)
-                                    <li>{{ $value['judul'] }} : Rp.{{ $value['total'] }}</li>
+                                    <li>{{ $value['judul'] }} : Rp.{{ rupiahView($value['total']) }}</li>
                                 @endforeach
                             @endif
                         </ul>
@@ -138,3 +138,8 @@
     @endif
 </body>
 </html>
+<script type="text/javascript">
+    window.onload = function () {
+        window.print();
+    }
+</script>

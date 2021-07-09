@@ -14,4 +14,8 @@ class RekKlien extends Model
   {
     return $this->hasMany('App\Model\Produksi\PTerimaBayar','bank_asal','id');
   }
+  public function linkToKlien()
+  {
+    return $this->belongsTo('App\Model\Administrasi\Klien','id_klien');
+  }
 }
