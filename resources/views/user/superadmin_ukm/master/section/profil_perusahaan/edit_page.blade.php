@@ -168,11 +168,7 @@
                                    <label>
                                        <input type="radio" name="jenis_usaha" @if($usaha->jenis_usaha==3) checked @endif class="minimal" value="3">
                                        Manufaktur
-                                   </label>
-                                   <label>
-                                       <input type="radio" name="jenis_usaha" @if($usaha->jenis_usaha==4) checked @endif class="minimal" value="4">
-                                       Pertanian
-                                   </label>
+                                   </label>                                 
                                </div>
 
                            </div>

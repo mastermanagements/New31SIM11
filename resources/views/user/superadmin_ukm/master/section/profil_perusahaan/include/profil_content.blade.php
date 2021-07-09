@@ -25,7 +25,7 @@
                 <div class="info-box bg-green">
                     <span class="info-box-icon">
 						<img class="profile-user-img img-responsive img-circle" src="
-                            @if(empty($profil_user_ukm->foto))
+                            @if(empty($perusahaan->logo))
 							                    {{ asset('image_superadmin_ukm/default.png') }}
 							@else
 							{{ asset('logoUsaha/'.$perusahaan->logo) }}
