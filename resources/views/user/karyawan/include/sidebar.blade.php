@@ -70,7 +70,8 @@
                                                         onclick="setSession('{{ url($sum_menu->getMasterSubMenuUKM->url) }}', '{{ $mKey }}','{{ $sKey }}')"
                                                     @endif
 
-                                            ><i class="fa fa-circle-o"></i> <span>{{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}</span></a></li>
+                                            ><i class="fa fa-circle-o"></i> <span style="font-weight: bold" style="color: blue"><font color="#0A24A1">{{ $sum_menu->getMasterSubMenuUKM->nm_submenu }}</font
+											></span></a></li>
                                     @endforeach
                                 @endif
                             @endforeach

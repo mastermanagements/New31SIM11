@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-    <title>aturusaha.com - ERP For UMKM -</title>
+    <title>aturusaha.com - Scale up UMKM -</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="ERP, Enterprice Resource Planning, UMKM, Usaha Mikro Kecil Menengah,
@@ -27,6 +27,7 @@
 	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ asset('frontend/images/favicon.png') }}" />
 </head>
 
 <body>
@@ -102,7 +103,7 @@
                     <div class="col-lg-4 col-md-6 mt-sm-0 mt-4">
                         <div class="card">
                             <div class="card-header p-0 position-relative">                                
-                                <img class="card-img-bottom" src="{{ asset('frontend/images/g1.jpg') }}" alt="Card image cap">
+                                <img class="card-img-bottom" src="{{ asset('frontend/images/g1.png') }}" alt="Card image cap">
                                     <span class="post-icon">Internal Manajemen UMKM</span>                                
                             </div>
                             <div class="card-body">                             
@@ -126,7 +127,7 @@
                         <div class="card">
                             <div class="card-header p-0 position-relative">
                                 <a href="#">
-                                    <img class="card-img-bottom" src="{{ asset('frontend/images/g2.jpg') }}" alt="Card image cap">
+                                    <img class="card-img-bottom" src="{{ asset('frontend/images/g2.png') }}" alt="Card image cap">
                                     <span class="post-icon">Mentoring/Coaching</span>
                                 </a>
                             </div>
@@ -422,7 +423,7 @@
                     <div class="col-lg-4 col-md-6 mt-sm-0 mt-4">
                         <div class="card">
                             <div class="card-header p-0 position-relative">                                
-                                <img class="card-img-bottom" src="{{ asset('frontend/images/banner-ukm.jpg') }}" alt="Card image cap">
+                                <img class="card-img-bottom" src="{{ asset('frontend/images/banner-ukm.png') }}" alt="Card image cap">
                                     <span class="post-icon">UMKM</span>                                
                             </div>
                             <div class="card-body">
@@ -441,7 +442,7 @@
                         <div class="card">
                             <div class="card-header p-0 position-relative">
                                 <a href="#">
-                                    <img class="card-img-bottom" src="{{ asset('frontend/images/coach.jpg') }}" alt="Card image cap">
+                                    <img class="card-img-bottom" src="{{ asset('frontend/images/coach.png') }}" alt="Card image cap">
                                     <span class="post-icon">Coach/Mentor</span>
                                 </a>
                             </div>
@@ -461,7 +462,7 @@
                         <div class="card">
                             <div class="card-header p-0  position-relative">
                                 <a href="#">
-                                    <img class="card-img-bottom" src="{{ asset('frontend/images/g5.jpg') }}" alt="Card image cap">
+                                    <img class="card-img-bottom" src="{{ asset('frontend/images/g5.png') }}" alt="Card image cap">
                                     <span class="post-icon">Investor</span>
                                 </a>
                             </div>

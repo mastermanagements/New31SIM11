@@ -816,7 +816,7 @@ h4.home-title {
 }
 
 .image-ads {
-    background: url(../images/trafic.jpg);
+    background: url(../images/trafic.png);
     background-size: cover;
     min-height: 445px;
     width: 100%;
@@ -838,7 +838,7 @@ h3.text-ads{
 .email{
     height: 350px;
     background-color: #343a40;
-    background-image: url(../images/trafic.jpg);
+    background-image: url(../images/trafic.png);
 }
 
 .system-email{

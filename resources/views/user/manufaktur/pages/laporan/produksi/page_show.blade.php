@@ -119,7 +119,7 @@
                                             <td>{{ $item[7] }}</td>
                                             <td>{{ $item[8] }}</td>
                                             <td>{{ $item[9][0] }}</td>
-                                            <td>{{ $item[10][0] }}</td>
+                                            <td>{{ rupiahView($item[10][0]) }}</td>
                                             <td>{{ $item[11][0] }}</td>
                                             <td>{{ $item[14] }}</td>
                                         </tr>
