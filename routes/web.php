@@ -2468,6 +2468,8 @@ Route::post('laporan-pesanan-pembelian','produksi\POrder@laporan_penasan_pembeli
 Route::get('laporan-pembelian-barang','produksi\POrder@laporan_pembelian_barang');
 Route::post('laporan-pembelian-barang','produksi\POrder@laporan_pembelian_barang');
 
+Route::get('laporan-pengecekan-barang','produksi\CekBarang@laporan_cek_pembelian_barang');
+Route::post('laporan-pengecekan-barang','produksi\CekBarang@laporan_cek_pembelian_barang');
 //======================================= Laporan Pembelian =======================================
 Route::get('laporan-pembelian', 'manufaktur\Manufaktur@laporan_pembelian');
 Route::post('laporan-pembelian', 'manufaktur\Manufaktur@laporan_pembelian_printOrView');
