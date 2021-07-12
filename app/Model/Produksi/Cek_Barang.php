@@ -16,6 +16,10 @@ class Cek_Barang extends Model
         return $this->belongsTo('App\Model\Produksi\POrder','id_order');
     }
 
+    public function linkToCekDetailBarang(){
+        return $this->hasMany('App\Model\Produksi\Detail_Cek_Barang','id_cek_barang','id');
+    }
+
     public function linkToReturnPembelian()
     {
         return $this->hasOne('App\Model\Produksi\ReturnPembelian','id_cek_barang','id');

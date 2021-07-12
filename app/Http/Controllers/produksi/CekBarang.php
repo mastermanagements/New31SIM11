@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\utils\data_pembelian\CekPembelianBarang;
+use App\Http\utils\HeaderReport;
 use App\Http\utils\StokGudang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -255,6 +257,20 @@ class CekBarang extends Controller
                     $stok_gudang->IOStok($array, 'masuk');
                 }
             }
+        }
+    }
+
+    public function laporan_cek_pembelian_barang(Request $req)
+    {
+        $pengecekan_pembelian_class = new CekPembelianBarang();
+        $data_pengecekan_barang = $pengecekan_pembelian_class->Data_pengecekanBarang($req);
+       if ($req->action == 'preview') {
+            return view('user.produksi.section.laporan.pengecekkan_barang.page_show', ['data' => $data_pengecekan_barang ]);
+        } elseif ($req->action == 'print') {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PENGECEKKAN BARANG');
+            return view('user.produksi.section.laporan.pengecekkan_barang.cetak', ['data' => $data_pengecekan_barang, 'header' => $header]);
+        } else {
+            return view('user.produksi.section.laporan.pengecekkan_barang.page_show', ['data' => $data_pengecekan_barang]);
         }
     }
 }
