@@ -27,9 +27,9 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap;">
-                                <h4>Stok Akhir
+                                <h5 style="font-weight: bold">Stok Akhir Barang
                                     {{--<a href="{{ url('inventory/create') }}" class="btn btn-success pull-right" style="margin-bottom: 10px">Tambah Stok Barang</a>--}}
-                                </h4>
+                                </h5><p></p>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>

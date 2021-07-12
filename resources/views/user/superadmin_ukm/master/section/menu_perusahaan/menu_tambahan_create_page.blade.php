@@ -13,7 +13,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Halaman Pengaturan Menu Perusahaan Jasa
+                Halaman Pengaturan Menu Perusahaan 
+				@if($usaha->jenis_usaha =='0')Dagang
+				@elseif($usaha->jenis_usaha =='1')Jasa
+				@elseif($usaha->jenis_usaha =='2')Dagang & Jasa
+				@else Manufaktur
+				@endif
             </h1>
         </section>
 
@@ -26,7 +31,7 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Daftar Menu</h3>
-                            <h5 class="pull-right"><a href="{{ url('menu-perusahaan')}}">Kembali ke Halaman utama</a>
+                            <h5 class="pull-right"><a href="{{ url('menu-perusahaan')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a>
                             </h5>
                         </div>
                         <!-- /.box-header -->
@@ -40,19 +45,22 @@
                             <h4><p><font color="#0E50EC">Pilihlah menu dan submenu dibawah ini sesuai <font color="#E14408">kebutuhan perusahaan anda</font>, Klik dikolom centang untuk mengaktifkannya.
 						   Anda dapat mengaktifkan atau menonaktifkan bebas kapan saja Anda mau. Untuk mengaktifkan/menonaktifkan semua menu dan sub menu, klik select all. </font></p></h4>
                             <label><input type="checkbox" name="sample" class="minimal selectall"/> Select all</label>
-                          
+
 							@foreach($menu as $key=> $menus)
 							<div class="col-md-12">
-								@if($menus->kelompok_menu =='1')
+								{{-- tampilkan menu untuk jenis perusahaan semua jenis perusahaan dan jenis_menu = menu tambahan --}}
+								@if (($menus->kelompok_menu == '4') AND ($menus->jenis_menu == '1'))
                                 <div class="form-group">
-                                    <label class="main-class"><font color="#EE3723">{{ $menus->nm_menu }}</font></label>																																				
-                                </div>
+                                    <label ><font color="#EE3723">{{ $menus->nm_menu }}</font></label>
+                                    <input type="hidden" class="main-class" value="{{ $key }}">
+                                </div>			
 								@endif
 							</div>
                                 @if(!empty($submenu=$menus->getSubmenu))
                                     @foreach($submenu as $sKey => $sum_menu)
 									<div class="col-md-4">
-										@if($sum_menu->kelompok_submenu =='1')
+										{{-- tampilkan submenu untuk jenis perusahaan semua jenis perusahaan dan jenis_submenu = menu tambahan --}}
+										@if (($sum_menu->kelompok_submenu == '4') AND ($sum_menu->jenis_submenu =='1'))
                                         <div class="form-group" style="padding-left: 5%;">
                                             <input type="checkbox" class="minimal status menu_sub_{{ $key }}"
                                                    value="{{ $sum_menu->id }}" id="menus_{{ $key }}"
@@ -63,13 +71,11 @@
 														@endif
                                                     @endforeach
                                                    @endif
-                                            > <label> 
-											
-											{{ $sum_menu->nm_submenu }}
-											
+                                            > <label> 											
+											{{ $sum_menu->nm_submenu }}											
                                             </label>
                                         </div>
-										@endif
+										@endif																			
 									</div>
                                     @endforeach
                                 @endif
@@ -123,11 +129,12 @@
             });
 
             $('.main-class').each(function (index) {
+                var n_val = $(this).val();
 //               $('#menu_'+index).on('ifChecked', function (event) {
 //                   $('.menu_sub_'+index).iCheck('check')
 //               })
 
-                $('.menu_sub_' + index).on('ifChecked', function (event) {
+                $('.menu_sub_' + n_val).on('ifChecked', function (event) {
                     //  $('#menu_'+index).iCheck('check')
                     // alert(""+ $(this).val());
                     $.ajax({
@@ -145,7 +152,7 @@
                     })
                 });
 
-                $('.menu_sub_' + index).on('ifUnchecked', function (event) {
+                $('.menu_sub_' + n_val).on('ifUnchecked', function (event) {
                     $.ajax({
                         url: "{{ url('delete_request_menu') }}",
                         type: "post",

@@ -20,6 +20,10 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12" style=" overflow-x: auto; white-space: nowrap;">
+								<div class="box-header with-border">
+									<h3 class="box-title"><b>Formulir Tambah Item Masuk Keluar Barang</b></h3>                       
+								</div>
+							<p></p>
                                 <form action="{{ url('itemIO') }}" method="post">
                                     {{ csrf_field() }}
 
@@ -44,7 +48,7 @@
                                             Nama Barang
                                         </label><br>
                                         <select name="id_barang" class="form-control select2" required>
-                                            <option>Pilihan Barang</option>
+                                            <option disabled>Pilihan Barang</option>
                                             @if(!empty($barang))
                                                 @foreach($barang as $data)
                                                     <option value="{{ $data->id }}">{{ $data->nm_barang }} {{ $data->linkToSatuan->satuan }}</option>
@@ -52,18 +56,19 @@
                                             @endif
                                         </select>
                                     </div>
+									<div class="form-group">
+                                        <label>
+                                            Jumlah Barang
+                                        </label>
+                                        <input type="text" name="jumlah_brg" class="form-control" required/>
+                                    </div>
                                     <div class="form-group">
                                         <label>
                                             Keterangan
                                         </label>
                                         <textarea name="ket" class="form-control" required></textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label>
-                                            Jumlah Barang
-                                        </label>
-                                        <input type="text" name="jumlah_brg" class="form-control" required/>
-                                    </div>
+                                    
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Simpan</button>

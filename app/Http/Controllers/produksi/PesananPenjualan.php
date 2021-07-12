@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\utils\HeaderReport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Administrasi\Klien as klien;
@@ -33,7 +34,7 @@ class PesananPenjualan extends Controller
            'tgl_so'=>'required',
            //'id_po'=>'required',
            'id_klien'=>'required',
-           'tgl_krm'=>'required',
+           //'tgl_krm'=>'required',
         ]);
         $model = new PSO();
         $model->tgl_so = date('Y-m-d', strtotime($req->tgl_so));
@@ -193,11 +194,18 @@ class PesananPenjualan extends Controller
         $model->id_perusahaan = Session::get('id_perusahaan_karyawan');
         $model->id_karyawan = Session::get('id_karyawan');
         if ($model->save()) {
-            return redirect('Penjualan')->with('message_success', 'berhasil memuat nota pesanan pembelian')->with('tab2','tab2');
+            return redirect()->back()->with('message_success', 'berhasil memuat nota pesanan pembelian')->with('tab2','tab2');
         } else {
-            return redirect('Penjualan')->with('message_error', 'gagal,membuat nota pesanan pembelian')->with('tab2','tab2');
+            return redirect()->back()->with('message_error', 'gagal,membuat nota pesanan pembelian')->with('tab2','tab2');
         }
 
       }
     }
+	
+	 public function CetakPesananPenjualan($id)
+    {
+        $model_pj = PSO::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id);
+        return view('user.produksi.section.jualbarang.pesanan_penjualan.cetak', ['data'=> $model_pj, 'header'=>HeaderReport::header_format_2('layouts.header_print.header_print1','PESANAN PENJUALAN')]);
+    }
+
 }

@@ -43,7 +43,7 @@
                             <div class="box-footer">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="put">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </form>
                     </div>

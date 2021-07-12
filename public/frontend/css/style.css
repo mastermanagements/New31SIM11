@@ -743,6 +743,7 @@ span.sub-title {
 
 .align-w3 {
     padding: 2em 0;
+	margin-bottom: 0em;
 }
 
 /* //title */
@@ -774,10 +775,12 @@ span.sub-title {
     text-transform: capitalize;
     font-size: 1em;
     margin-bottom: 0.5em;
+	
 }
 
 .abt-txt {
     margin-left: 1em;
+	margin-bottom: 1em;
 }
 
 /* //about */
@@ -813,7 +816,7 @@ h4.home-title {
 }
 
 .image-ads {
-    background: url(../images/trafic.jpg);
+    background: url(../images/trafic.png);
     background-size: cover;
     min-height: 445px;
     width: 100%;
@@ -835,7 +838,7 @@ h3.text-ads{
 .email{
     height: 350px;
     background-color: #343a40;
-    background-image: url(../images/trafic.jpg);
+    background-image: url(../images/trafic.png);
 }
 
 .system-email{
@@ -1683,6 +1686,7 @@ h4.w3f_titles {
 
     .align-w3-abt {
         padding: 7em 0 8em;
+		margin-top:0em;
     }
 
     h4.w3pvt-title {
@@ -1755,7 +1759,7 @@ h4.w3f_titles {
     }
 
     .align-w3-abt {
-        padding: 5em 0 2em;
+        padding: 0em 0 2em;
     }
 
     .abt-txt h4 {
@@ -1962,8 +1966,13 @@ h4.w3f_titles {
         margin-bottom: 2.5em;
     }
 
-    .align-w3-abt {
-        padding: 5em 0 3em;
+   /*  .align-w3-abt {
+        //padding: 5em 0 3em;
+		
+    } */
+	.align-w3-abt {
+      
+		padding: 2em 0;
     }
 
     .w3ls-btn {

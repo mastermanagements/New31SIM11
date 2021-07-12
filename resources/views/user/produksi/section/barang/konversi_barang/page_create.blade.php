@@ -27,6 +27,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title"> Tambah Konversi Barang</h3>
+						<h5 class="pull-right"><a href="{{ url('Barang')}}"><font color="#1052EE">Kembali ke Halaman Utama</font></a></h5>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -55,14 +56,14 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Jumlah Satuan Konversi</label> <br>
+                                <label>Jumlah Satuan Konversi (Misal 1 Lusin= 12 Pcs), Tulis : 12</label> <br>
                                 <input type="number" class="form-control" name="jumlah_konversi_satuan" value="0" required>
                             </div>
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>

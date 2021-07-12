@@ -53,7 +53,7 @@ class Barang extends Controller
             if(empty(Session::get('id_karyawan')) && empty(Session::get('id_perusahaan_karyawan')))
             {
                 Session::flush();
-                return redirect('login-karyawan')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
+                return redirect('/')->with('message_login_fail','Waktu masuk anda berakhir, Silahkan login Ulang...!!');
             }
             $this->id_karyawan = Session::get('id_karyawan');
             $this->id_perusahaan = Session::get('id_perusahaan_karyawan');
@@ -107,16 +107,24 @@ class Barang extends Controller
             'promo'=>Promo::where('id_perusahaan', $this->id_perusahaan)->where('jenis_promo','0')->get()
         ];
 
-        if(empty(Session::get('tab')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6')) && empty(Session::get('tab7'))){
+        if(empty(Session::get('tab1')) && empty(Session::get('tab2')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6')) && empty(Session::get('tab7'))){
             Session::flash('tab1','tab1');
         }
 
-        if(!empty(Session::get('tab'))){
-            Session::flash('tab2',Session::get('tab'));
+        if(!empty(Session::get('tab2'))){
+            Session::flash('tab2',Session::get('tab2'));
         }
 
         if(!empty(Session::get('tab3'))){
             Session::flash('tab3',Session::get('tab3'));
+        }
+		
+		if(!empty(Session::get('tab4'))){
+            Session::flash('tab4',Session::get('tab4'));
+        }
+		
+		if(!empty(Session::get('tab5'))){
+            Session::flash('tab5',Session::get('tab5'));
         }
 
         if(!empty(Session::get('tab6'))){
@@ -353,7 +361,7 @@ class Barang extends Controller
                 ]
             );
         }
-           return redirect('Barang')->with('message_success', 'Data barang telah berhasil ditransfer')->with('tab5','tab5');
+           return redirect('Barang')->with('message_success', 'Data barang telah berhasil ditransfer')->with('tab7','tab7');
     }
 
     # Todo: Stok Akhir

@@ -190,7 +190,7 @@
                             </div>
                             <div class="box-footer">
                                 {{csrf_field()}}
-                                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                <button type="submit" class="btn btn-primary pull-right">Simpan</button>
                             </div>
                         </form>
                     </div>

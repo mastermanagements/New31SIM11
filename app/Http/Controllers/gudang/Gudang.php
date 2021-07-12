@@ -41,7 +41,7 @@ class Gudang extends Controller
         if($req->jenis_gudang=='1'){
             if($this->check_gudang()==true)
             {
-                return redirect('gudang')->with('message_success', 'Gudang show room yang bisa disimpan 1 data saja');
+                return redirect('gudang')->with('message_fail', 'Gudang show room penjualan yang bisa disimpan 1 data saja');
             }
         }
         $data = $req->except(['_token']);
@@ -51,7 +51,7 @@ class Gudang extends Controller
         if ($gudang->save()) {
             return redirect('gudang')->with('message_success', 'Gudang telah ditambahkan');
         } else {
-            return redirect('gudang')->with('message_error', 'Data gudang gagal disimpan');
+            return redirect('gudang')->with('message_fail', 'Data gudang gagal disimpan');
         }
     }
 
@@ -69,6 +69,12 @@ class Gudang extends Controller
             'gudang' => 'required',
             'jenis_gudang' => 'required',
         ]);
+		if($req->jenis_gudang=='1'){
+            if($this->check_gudang()==true)
+            {
+                return redirect('gudang')->with('message_fail', 'Gudang show room penjualan yang bisa disimpan 1 data saja');
+            }
+        }
         $data = $req->except(['_token']);
         $data['id_perusahaan'] = Session::get('id_perusahaan_karyawan');
         $data['id_karyawan'] = Session::get('id_karyawan');
@@ -76,7 +82,7 @@ class Gudang extends Controller
         if ($gudang->update($data)) {
             return redirect('gudang')->with('message_success', 'Gudang telah diubah');
         } else {
-            return redirect('gudang')->with('message_error', 'Data gudang gagal diubah');
+            return redirect('gudang')->with('message_fail', 'Data gudang gagal diubah');
         }
     }
 
@@ -86,7 +92,7 @@ class Gudang extends Controller
         if ($gudang->delete()) {
             return redirect('gudang')->with('message_success', 'Gudang telah dihapus');
         } else {
-            return redirect('gudang')->with('message_error', 'Data gudang gagal dihapus');
+            return redirect('gudang')->with('message_fail', 'Data gudang gagal dihapus');
         }
     }
 

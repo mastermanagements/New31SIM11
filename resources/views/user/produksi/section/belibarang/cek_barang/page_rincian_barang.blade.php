@@ -38,8 +38,13 @@
                         <!-- form start -->
 
                         <div class="box-body">
+							@if(!empty(session('message_success')))
+                                    <p style="color: green; text-align: center">*{{ session('message_success')}}</p>
+                                @elseif(!empty(session('message_fail')))
+                                    <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
+                                @endif
 
-                            @if($data_order->status_cekbarang == '1')
+                            @if($data_order->status_cekbarang == '0')
 
                                 <form role="form" action="{{ url('cek-barang') }}" method="post">
 
@@ -70,21 +75,27 @@
 
                                                     <tr>
                                                         <td>{{ $no++ }}</td>
-                                                        <td>
+														<!--<td>
                                                             {{ csrf_field() }}
-                                                            <select name="id_barang[]" class="form-control">
+                                                            <select name="id_barang[]" class="form-control" >
                                                                 <option disabled>Pilih barang</option>
                                                                 @foreach ($barang as $item)
-                                                                    <option value="{{ $item->id }}"
+                                                                    <option value="{{ $item->id }}" 
                                                                             @if ($item->id == $data_tb->id_barang)
                                                                             selected
                                                                             @endif
                                                                     >{{ $item->nm_barang }}
-                                                                        , @if(!empty($item->linkToSatuan->satuan)){{ $item->linkToSatuan->satuan }} @endif</option>
+                                                                        , @if(!empty($item->linkToSatuan->satuan)){{ $item->linkToSatuan->satuan }} @endif </option>
                                                                 @endforeach
                                                             </select>
-                                                        </td>
-                                                        <td>
+                                                        </td>-->
+														<td width="130">
+															<input type="text" class="form-control" 
+                                                                   value="{{ $data_tb->linkToBarang->nm_barang }},@if(!empty($item->linkToSatuan->satuan)){{ $item->linkToSatuan->satuan }} @endif"
+                                                                   readonly>
+															<input type="hidden" name="id_barang[]" value="{{ $data_tb->id_barang}}"                                                                                                                           >
+														</td>
+                                                        <td width="30">
                                                             <input type="text" class="form-control" name="harga_beli[]"
                                                                    value="{{ rupiahView($data_tb->harga_beli) }}"
                                                                    readonly required>
@@ -100,7 +111,7 @@
                                                                    value="{{ $data_tb->diskon_item }}" readonly
                                                                    required>
                                                         </td>
-                                                        <td>
+                                                        <td width="80">
                                                             <input type="number" class="form-control"
                                                                    name="jumlah_beli[]"
                                                                    value="{{ $data_tb->jumlah_beli }}" readonly
@@ -117,19 +128,19 @@
 
                                                         <td>
                                                             <input type="number" class="form-control"
-                                                                   name="jum_sesuai[]" required>
+                                                                   name="jum_sesuai[]" value="0" required>
                                                         </td>
                                                         <td>
                                                             <input type="number" class="form-control"
-                                                                   name="jum_no_sesuai[]" required>
+                                                                   name="jum_no_sesuai[]" value="0" required>
                                                         </td>
                                                         <td>
                                                             <input type="number" class="form-control"
-                                                                   name="jum_kualitas_sesuai[]" required>
+                                                                   name="jum_kualitas_sesuai[]" value="0" required>
                                                         </td>
                                                         <td>
                                                             <input type="number" class="form-control"
-                                                                   name="jum_kualitas_no_sesuai[]" required>
+                                                                   name="jum_kualitas_no_sesuai[]" value="0"  required>
                                                         </td>
 
                                                         <td>
@@ -158,7 +169,7 @@
                                             <div class="form-group">
                                                 <label>Gudang</label>
                                                 <select class="form-control" name="id_gudang">
-                                                    <option value="">Data gudang</option>
+                                                    <option value="">Pilih gudang</option>
                                                     @if(!empty($gudang))
                                                         @foreach($gudang as $data_gudang)
                                                             <option value="{{ $data_gudang->id }}">{{ $data_gudang->gudang }}</option>

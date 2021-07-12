@@ -132,7 +132,7 @@ class CekBarang extends Controller
             $model_o->status_cekbarang = '1';
             $model_o->save();
         }
-        return redirect('Pembelian')->with('message_success', 'Proses Pengecekkan pembelian Barang berhasil')->with('tab3', 'tab3');
+        return redirect()->back()->with('message_success', 'Proses Pengecekkan pembelian Barang berhasil')->with('tab3', 'tab3');
     }
 
     //proses status return : update p_detail_cek_brg, update p_cek_brg.tgl_respon_supplier, p_order.respon_supplier =1

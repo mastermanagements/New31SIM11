@@ -32,7 +32,7 @@ class BahanBaku extends Controller
         $data = $req->except(['_token']);
         $data['id_perusahaan'] = Session::get('id_perusahaan_karyawan');
         $data['id_karyawan'] = Session::get('id_karyawan');
-        $data['jumlah_bahan'] = rupiahController($req->jumlah_bahan);
+        $data['jumlah_bahan'] = $req->jumlah_bahan;
 
         $model = new P_Bahan_produksi($data);
         if($model->save()){
@@ -52,7 +52,7 @@ class BahanBaku extends Controller
         $data = $req->except(['_token']);
         $data['id_perusahaan'] = Session::get('id_perusahaan_karyawan');
         $data['id_karyawan'] = Session::get('id_karyawan');
-        $data['jumlah_bahan'] = rupiahController($req->jumlah_bahan);
+        $data['jumlah_bahan'] = $req->jumlah_bahan;
         
         $model = P_Bahan_produksi::find($id);
         if($model->update($data)){

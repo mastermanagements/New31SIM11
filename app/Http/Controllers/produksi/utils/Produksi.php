@@ -204,7 +204,7 @@ class Produksi
         $container = array();
         if (!empty($produksi->linkToMannyTenagaProduksi)) {
             foreach ($produksi->linkToMannyTenagaProduksi as $item) {
-                $container[] = $item->linkToPekerja->nama_ky;
+                $container[] += $item->jumlah_upah;
             }
         }
         return $container;
@@ -215,7 +215,7 @@ class Produksi
         $container = array();
         if (!empty($produksi->linkToBiayaOverHead)) {
             foreach ($produksi->linkToBiayaOverHead as $item) {
-                $container[] = $item->linkToOverhead->item_overhead;
+                $container[] += $item->linkToBiayaOverHead->jumlah_biaya;
             }
         }
         return $container;

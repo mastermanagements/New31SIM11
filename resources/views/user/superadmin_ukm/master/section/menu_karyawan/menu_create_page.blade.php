@@ -43,7 +43,7 @@
                                <label><input type="checkbox" name="sample" class="minimal selectall"/> Select all</label>
 
                                @php($id=0)
-                              @foreach($menu as $key=> $menus)
+                              @foreach($menu->sortBy('urutan') as $key=> $menus)
 								<div class="col-md-12">
 								   <div class="form-group">
 									   <label ><font color="#EE3723">{{ $menus->getMasterMenu->nm_menu }}</font></label>
