@@ -48,6 +48,11 @@ class POrder extends Model
     {
         return $this->hasOne('App\Model\Produksi\ReturnPembelian','id_order');
     }
+
+    public function linkToMannyReturnBeli()
+    {
+        return $this->hasMany('App\Model\Produksi\ReturnPembelian','id_order','id');
+    }
 	
 	public function linkToUsaha(){
         return $this->belongsTo('App\Model\Superadmin_ukm\U_usaha', 'id_perusahaan');
