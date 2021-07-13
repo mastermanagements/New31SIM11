@@ -2468,9 +2468,15 @@ Route::post('laporan-pesanan-pembelian','produksi\POrder@laporan_penasan_pembeli
 Route::get('laporan-pembelian-barang','produksi\POrder@laporan_pembelian_barang');
 Route::post('laporan-pembelian-barang','produksi\POrder@laporan_pembelian_barang');
 
-//========================================= Laporan Pengecekkan Barang ============================
+//========================================= Laporan Return pembelian Barang =====================
 Route::get('laporan-pengecekan-barang','produksi\ReturnPembelian@laporan_return_pembelian_barang');
 Route::post('laporan-pengecekan-barang','produksi\ReturnPembelian@laporan_return_pembelian_barang');
+
+//========================================= Laporan Hutang Pembelian ==============================
+Route::get('laporan-hutang-pembelian','produksi\POrder@laporan_Hutang_Pembelian');
+Route::post('laporan-hutang-pembelian','produksi\POrder@laporan_Hutang_Pembelian');
+
+
 //======================================= Laporan Pembelian =======================================
 Route::get('laporan-pembelian', 'manufaktur\Manufaktur@laporan_pembelian');
 Route::post('laporan-pembelian', 'manufaktur\Manufaktur@laporan_pembelian_printOrView');
