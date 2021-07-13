@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\utils\data_pembelian\HutangPembelian;
 use App\Http\utils\HeaderReport;
 use App\Http\Controllers\keuangan\JurnalUmum;
 use Illuminate\Http\Request;
@@ -15,7 +16,6 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\Produksi\Barang;
 use App\Http\utils\SettingNoSurat;
 use Session;
-use App\Http\utils\HeaderReport;
 use App\Http\utils\JenisAkunPembelian;
 use App\Http\utils\Stok;
 use Illuminate\Support\Facades\DB;
@@ -27,6 +27,11 @@ class POrder extends Controller
     private $metode_bayar = [
         'Tunai',
         'Kredit'
+    ];
+
+    private $status_bayar = [
+        'Lunas',
+        'Belum lunas'
     ];
 
     public function index()
@@ -427,6 +432,21 @@ class POrder extends Controller
             return view('user.produksi.section.laporan.pembelian_barang.cetak', ['data' => $data_pembelian_barang, 'header' => $header]);
         } else {
             return view('user.produksi.section.laporan.pembelian_barang.page_show', ['data' => $data_pembelian_barang, 'supplier' => $supplier]);
+        }
+    }
+
+    public function laporan_Hutang_Pembelian(Request $req)
+    {
+        $pesanan_hutang_class= new HutangPembelian();
+        $data_hutang_pembelian_barang = $pesanan_hutang_class->data($req);
+        $supplier = Supplier::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        if ($req->action == 'preview') {
+            return view('user.produksi.section.laporan.hutang_pembelian.page_show', ['data' => $data_hutang_pembelian_barang, 'supplier' => $supplier, 'status_bayar'=> $this->status_bayar]);
+        } elseif ($req->action == 'print') {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN HUTANG PEMBELIAN BARANG');
+            return view('user.produksi.section.laporan.hutang_pembelian.cetak', ['data' => $data_hutang_pembelian_barang, 'header' => $header]);
+        } else {
+            return view('user.produksi.section.laporan.hutang_pembelian.page_show', ['data' => $data_hutang_pembelian_barang, 'supplier' => $supplier, 'status_bayar'=> $this->status_bayar]);
         }
     }
 }
