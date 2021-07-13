@@ -50,6 +50,7 @@ class Dashboard extends Controller
             'pengeluaran_bulanan' => $this->pengeluaran(null, $this->current_mont),
             'biaya_harian' => $this->biaya_pengeluaran($this->current_date, null),
             'biaya_bulanan' => $this->biaya_pengeluaran(null, $this->current_mont),
+			
             'laba_harian' => $this->laba_rugi($this->current_date),
             'laba_bulanan' => $this->laba_rugi(),
         ];
@@ -78,8 +79,8 @@ class Dashboard extends Controller
         return $query;
     }
 
-
-    private function biaya_pengeluaran($current_date = null, $current_month = null)
+	
+	/* private function biaya_pengeluaran($current_date = null, $current_month = null)
     {
 
         $query_plug = '';
@@ -97,6 +98,34 @@ class Dashboard extends Controller
                   GROUP by debet_kredit = 0';
         $data = DB::select($query);
         return $data;
+    } */
+	
+    private function biaya_pengeluaran($current_date = null, $current_month = null)
+    {
+
+        $query_plug = '';
+        if ($current_date != null) {
+            $query_plug = ' date(k_jurnal.tgl_jurnal)="' . $this->current_date . '"';
+        }
+
+        if ($current_month != null) {
+            $query_plug = ' month(k_jurnal.tgl_jurnal)="' . $this->current_date . '"';
+        }
+      
+   		  
+        $data = DB::table('k_jurnal')
+				->selectRaw('sum(k_jurnal.jumlah_transaksi) as total')
+				->join('k_ket_transaksi', 'k_jurnal.id_ket_transaksi', '=', 'k_ket_transaksi.id') 			
+				->where('k_ket_transaksi.jenis_transaksi', '=', '1')
+				->where('k_jurnal.debet_kredit', '=', '0')
+				//->where($query_plug)
+				->where('k_jurnal.id_perusahaan', '=', Session::get('id_perusahaan_karyawan'))
+				->get();  
+				
+				
+		//dd($plug_query);
+        return $data;
+		
     }
 
     private function laba_rugi($_current_date = null)

@@ -74,24 +74,31 @@
 
                                 </div>
 
-                                <div class="form-group">
+                                
+                              </div>
+								
+								<div class="col-md-3">
+									<div class="form-group">
                                     <label for="exampleInputEmail1">No Rak</label>
                                     <input type="number" min="0" name="no_rak" class="form-control" placeholder="Nomor Rak" value="{{ $data_barang->no_rak }}"/>
 
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                  <div class="form-group">
+									</div>
+									<div class="form-group">
                                       <label for="exampleInputEmail1">Stok Minimum</label>&nbsp;<strong style="color: red">*</strong>
                                       <input type="number" min="0" name="stok_minimum" class="form-control" value="{{ $data_barang->stok_minimum }}" placeholder="Stok Awal" required/>
 
-                                  </div>
-                                  <div class="form-group">
+									</div>
+									<div class="form-group">
                                       <label for="exampleInputEmail1">Hpp (Harga Pokok Penjualan)</label>&nbsp;<strong style="color: red">*</strong>
                                       <input type="text" min="0" name="hpp" id="rupiah2" value="{{ rupiahView($data_barang->hpp) }}" class="form-control" placeholder="Harga Pokok Penjualan" required/>
 
-                                  </div>
-                                  <div class="form-group">
+									</div>
+                                 
+                                  
+                                </div>
+
+								<div class="col-md-3">
+									 <div class="form-group">
                                       <label for="exampleInputEmail1">Metode Penjualan</label>
                                       <select class="form-control select2" style="width: 100%;" name="metode_jual" required>
                                           @foreach($metode_jual as $key=> $data)
@@ -100,7 +107,7 @@
                                       </select>
 
                                   </div>
-                                  <div class="form-group">
+									<div class="form-group">
                                       <label for="exampleInputEmail1">Jenis Barang</label>
                                       <select class="form-control select2" style="width: 100%;" name="jenis_barang" required>
                                           @foreach($jenis_barang as $key=> $data)
@@ -108,11 +115,8 @@
                                           @endforeach
                                       </select>
 
-                                  </div>
-                                </div>
-
-                              <div class="col-md-3">
-                                <div class="form-group">
+									</div>
+                                <!--<div class="form-group">
                                     <label for="exampleInputEmail1">Kategori Barang</label>&nbsp;<strong style="color: red">*</strong>
                                     <select class="form-control select2" style="width: 100%;" name="id_kategori" required>
                                         @if(empty($kategori_produk))
@@ -142,7 +146,7 @@
                                       @endforeach
                                     </select>
 
-                                </div>
+                                </div>-->
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Gambar Barang</label>
                                     <input type="file"  name="gambar" class="form-control" placeholder="Gambar" />

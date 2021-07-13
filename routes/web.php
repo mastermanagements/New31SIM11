@@ -473,10 +473,10 @@ Route::put('convert-leads/{id}', 'administrasi\Klien@convertLeads');
 Route::resource('RekKlien', 'administrasi\RekKlien');
 
 //------------------------------------Gudang -------------------------------------
-Route::resource('gudang', 'Gudang\Gudang');
-Route::get('stok-gudang', 'Gudang\Gudang@data_gudang');
-Route::resource('detail-barang-keluar-gudang', 'Gudang\DetailKeluarGudang');
-Route::get('detail-barang-keluar-gudang/{id_detail_keluar_gudang}/delete', 'Gudang\DetailKeluarGudang@destroy');
+Route::resource('gudang', 'gudang\Gudang');
+Route::get('stok-gudang', 'gudang\Gudang@data_gudang');
+Route::resource('detail-barang-keluar-gudang', 'gudang\DetailKeluarGudang');
+Route::get('detail-barang-keluar-gudang/{id_detail_keluar_gudang}/delete', 'gudang\DetailKeluarGudang@destroy');
 //--- Barang ---D
 Route::get('Barang', 'produksi\Barang@index');
 Route::post('getHargaBarang', 'produksi\Barang@respons_harga_barang');
