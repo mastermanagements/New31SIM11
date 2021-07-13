@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\utils\data_pembelian\ReturnPembelianbarang;
+use App\Http\utils\HeaderReport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Produksi\POrder;
 use App\Model\Produksi\Detail_Cek_Barang as dcb;
 use App\Model\Produksi\ReturnPembelian as return_pembelian;
+use App\Model\Produksi\Supplier;
 use Session;
 class ReturnPembelian extends Controller
 {
@@ -58,6 +61,21 @@ class ReturnPembelian extends Controller
 
         if($model){
             return redirect('Pembelian')->with('message_success','Data return telah disimpan')->with('tab5','tab5');
+        }
+    }
+
+    public function laporan_return_pembelian_barang(Request $req)
+    {
+        $pengecekan_pembelian_class = new ReturnPembelianbarang();
+        $data_pengecekan_barang = $pengecekan_pembelian_class->data_return_pembelian($req);
+        $supplier = Supplier::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        if ($req->action == 'preview') {
+            return view('user.produksi.section.laporan.return_barang.page_show', ['data' => $data_pengecekan_barang, 'supplier'=>$supplier]);
+        } elseif ($req->action == 'print') {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN RETURN PEMBELIAN BARANG');
+            return view('user.produksi.section.laporan.return_barang.cetak', ['data' => $data_pengecekan_barang, 'header' => $header]);
+        } else {
+            return view('user.produksi.section.laporan.return_barang.page_show', ['data' => $data_pengecekan_barang, 'supplier'=>$supplier]);
         }
     }
 }
