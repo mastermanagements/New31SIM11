@@ -14,7 +14,9 @@ class CekPembelianBarang
 {
     public function Data_pengecekanBarang($req){
         $model = Cek_Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
-
+        if(!empty($req->tgl_awal) && !empty($req->tgl_akhir)){
+            $model->whereBetween('tgl_tiba',[$req->tgl_awal, $req->tgl_akhir]);
+        }
         $container = [];
         $no = 1;
         foreach ($model->get() as $data_cek_pembelian){
