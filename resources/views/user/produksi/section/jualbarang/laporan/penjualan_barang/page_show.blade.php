@@ -16,7 +16,7 @@
                             <h4 class="box-title">Pengaturan Laporan</h4>
                         </div>
                         <div class="box-body">
-                            <form action="{{ url('laporan-hutang-pembelian') }}" method="post">
+                            <form action="{{ url('laporan-penjualan-barang') }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-4">
@@ -33,30 +33,18 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Supplier</label>
-                                            <select class="form-control" name="supplier">
-                                                <option value="">Pilih Supplier</option>
-                                                @if(!empty($supplier))
-                                                    @foreach($supplier as $value)
-                                                        <option value="{{ $value->id }}">{{ $value->nama_suplier }}</option>
+                                            <label>Customer</label>
+                                            <select class="form-control" name="id_klien">
+                                                <option value="">Pilih Customer</option>
+                                                @if(!empty($customer))
+                                                    @foreach($customer as $value)
+                                                        <option value="{{ $value->id }}">{{ $value->nm_klien }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Status Pembayaran</label>
-                                            <select class="form-control" name="status_bayar">
-                                                <option value="">Pilih Status Pembayaran</option>
-                                                @if(!empty($status_bayar))
-                                                    @foreach($status_bayar as $keys=> $value)
-                                                        <option value="{{ $keys }}">{{ $value }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
-                                        </div>
-                                    </div>
+
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label></label>
@@ -76,7 +64,7 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h4 class="box-title">Laporan Hutang Pembelian</h4>
+                            <h4 class="box-title">Laporan Pesanan Penjualan</h4>
                         </div>
                         <div class="box-body">
                             <div class="row">
@@ -86,35 +74,33 @@
                                             <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>No transaksi</th>
-                                                <th>Supplier</th>
-                                                <th>Tgl Order</th>
-                                                <th>Tgl Jatuh tempo</th>
-                                                <th>Status Pembayaran</th>
+                                                <th>Tgl Transaksi</th>
+                                                <th>No Transaksi</th>
+                                                <th>Customer</th>
+                                                <th>Tgl Dikirim</th>
+                                                <th>No Pesanan Penjaulan</th>
+                                                <th>Total Penjualan</th>
+                                                <th>Diskon</th>
+                                                <th>PPN</th>
+                                                <th>Ongkir</th>
+                                                <th>Jenis Penjualan</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @if(!empty($data))
-                                                @foreach($data as $data)
+                                                @foreach($data as $data_item)
                                                     <tr>
-                                                        <td>
-                                                            {{ $data['no'] }}
-                                                        </td>
-                                                        <td>
-                                                            {{ $data['no_transaksi'] }}
-                                                        </td>
-                                                        <td>
-                                                            {{ $data['supplier'] }}
-                                                        </td>
-                                                        <td>
-                                                            {{ $data['jumlah_hutang'] }}
-                                                        </td>
-                                                        <td>
-                                                            {{ $data['tgl_jatuh_tempo'] }}
-                                                        </td>
-                                                        <td>
-                                                            {{ $data['status_pembayaran'] }}
-                                                        </td>
+                                                        <td>{{ $data_item['no'] }}</td>
+                                                        <td>{{ $data_item['tgl_transaksi'] }}</td>
+                                                        <td>{{ $data_item['no_transaksi'] }}</td>
+                                                        <td>{{ $data_item['customer'] }}</td>
+                                                        <td>{{ $data_item['tgl_dikirim'] }}</td>
+                                                        <td>{{ $data_item['no_pesanan_penjualan'] }}</td>
+                                                        <td>{{ $data_item['total_penjualan'] }}</td>
+                                                        <td>{{ $data_item['diskon'] }}</td>
+                                                        <td>{{ $data_item['ppn'] }}</td>
+                                                        <td>{{ $data_item['ongkir'] }}</td>
+                                                        <td>{{ $data_item['jenis_penjualan'] }}</td>
                                                     </tr>
                                                 @endforeach
                                             @endif

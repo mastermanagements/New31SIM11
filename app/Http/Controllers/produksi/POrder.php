@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\produksi;
 
 use App\Http\utils\data_pembelian\HutangPembelian;
+use App\Http\utils\data_pembelian\Pembayaran_pembelian;
 use App\Http\utils\HeaderReport;
 use App\Http\Controllers\keuangan\JurnalUmum;
 use Illuminate\Http\Request;
@@ -32,6 +33,11 @@ class POrder extends Controller
     private $status_bayar = [
         'Lunas',
         'Belum lunas'
+    ];
+
+    private $status_pembelian= [
+        'Tunai',
+        'Kredit'
     ];
 
     public function index()
@@ -447,6 +453,21 @@ class POrder extends Controller
             return view('user.produksi.section.laporan.hutang_pembelian.cetak', ['data' => $data_hutang_pembelian_barang, 'header' => $header]);
         } else {
             return view('user.produksi.section.laporan.hutang_pembelian.page_show', ['data' => $data_hutang_pembelian_barang, 'supplier' => $supplier, 'status_bayar'=> $this->status_bayar]);
+        }
+    }
+
+    public function laporan_pembayaran_Pembelian(Request $req)
+    {
+        $pesanan_pembayaran_class= new Pembayaran_pembelian();
+        $data_pembayaran_pembelian_barang = $pesanan_pembayaran_class->data($req);
+        $supplier = Supplier::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        if ($req->action == 'preview') {
+            return view('user.produksi.section.laporan.pembayaran_pembelian.page_show', ['data' => $data_pembayaran_pembelian_barang, 'supplier' => $supplier, 'status_bayar'=> $this->status_pembelian]);
+        } elseif ($req->action == 'print') {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PEMBAYARAN PEMBELIAN BARANG');
+            return view('user.produksi.section.laporan.pembayaran_pembelian.cetak', ['data' => $data_pembayaran_pembelian_barang, 'header' => $header]);
+        } else {
+            return view('user.produksi.section.laporan.pembayaran_pembelian.page_show', ['data' => $data_pembayaran_pembelian_barang, 'supplier' => $supplier, 'status_bayar'=> $this->status_pembelian]);
         }
     }
 }
