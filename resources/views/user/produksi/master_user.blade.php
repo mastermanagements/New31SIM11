@@ -109,6 +109,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                          'number_call_function':functionNumber
                      },
                      success: function (result) {
+                         console.log(result);
                          if(segment == undefined && result.harga!=0){
                              var hpp = formatRupiah(result.harga.replace('.00',''));
                              console.log(hpp);

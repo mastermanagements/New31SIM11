@@ -2476,6 +2476,10 @@ Route::post('laporan-pengecekan-barang','produksi\ReturnPembelian@laporan_return
 Route::get('laporan-hutang-pembelian','produksi\POrder@laporan_Hutang_Pembelian');
 Route::post('laporan-hutang-pembelian','produksi\POrder@laporan_Hutang_Pembelian');
 
+/// ====================================== Laporan Pembayaran ====================================
+Route::get('laporan-pembayaran-pembelian','produksi\POrder@laporan_pembayaran_Pembelian');
+Route::post('laporan-pembayaran-pembelian','produksi\POrder@laporan_pembayaran_Pembelian');
+
 
 //======================================= Laporan Pembelian =======================================
 Route::get('laporan-pembelian', 'manufaktur\Manufaktur@laporan_pembelian');
@@ -2505,3 +2509,10 @@ Route::post('laporan-stok-gudang', 'manufaktur\Manufaktur@laporan_stok_gudang_Pr
 Route::get('ganti-password-karyawan', 'karyawan\Karyawan@ganti_password_karyawan');
 Route::post('ganti-password-karyawan-post', 'karyawan\Karyawan@ganti_password_karyawan_proses');
 
+// ========================================== Laporan Pesanan penjaualan ============================
+Route::get('laporan-pesanan-penjualan','produksi\PSales@laporan_pesanan_penjualan');
+Route::post('laporan-pesanan-penjualan','produksi\PSales@laporan_pesanan_penjualan');
+
+// ========================================== Laporan penjaualan Barang============================
+Route::get('laporan-penjualan-barang','produksi\PSales@laporan_penjualan_barang');
+Route::post('laporan-penjualan-barang','produksi\PSales@laporan_penjualan_barang');

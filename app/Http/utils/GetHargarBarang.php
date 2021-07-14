@@ -42,7 +42,7 @@ class GetHargarBarang
     public static function harga_penjualan_barang(){
         $model = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->orderBy('id','desc')->where('id',self::$id_barang)->first();
 
-        //dd($model);
+
 
         $hpp = 0;
         if(!empty($model)){
