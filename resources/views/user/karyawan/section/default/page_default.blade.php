@@ -48,7 +48,7 @@
                                         <div class="col-md-12">
                                             <div class="box box-warning">
                                                 <div class="box-body" style="background-color: orange">
-                                                    <h4><b>Produksi Harian :</b> {{ date('d-m-Y') }}</h4>
+                                                    <h4>Produksi Harian : {{ date('d-m-Y') }}</h4>
                                                     <ol>
                                                         @if(!empty($produksi_harian))
                                                             @foreach($produksi_harian as $data)
@@ -62,7 +62,7 @@
                                         <div class="col-md-12">
 										{{--<div class="box box-warning">--}}
                                                 <div class="box-body" style="background-color: orange">
-                                                    <h4><b>Produksi Bulanan :</b> {{ date('F Y') }}</h4>
+                                                    <h4>Produksi Bulanan : {{ date('F Y') }}</h4>
                                                     <ol>
                                                         @if(!empty($produksi_bulanan))
                                                             @foreach($produksi_bulanan as $item_bulanan)
@@ -87,7 +87,7 @@
                                         <div class="col-md-12">
                                             <div class="box box-info">
                                                 <div class="box-body" style="background-color: deepskyblue">
-                                                    <h4><b>Pengeluaran Hari ini : </b>{{ date('d-m-Y') }}</h4>
+                                                    <h4>Pengeluaran Hari ini : {{ date('d-m-Y') }}</h4>
                                                     <p>Rp. @if(!empty($biaya_harian[0]->total)) {{ number_format($biaya_harian[0]->total,0,',','.') }} @else 0 @endif</p>
                                                 </div>
                                             </div>
@@ -95,7 +95,7 @@
                                         <div class="col-md-12">
 										{{-- <div class="box box-info"> --}}
                                                 <div class="box-body" style="background-color: deepskyblue">
-                                                    <h4><b>Pengeluaran Bulan ini :</b> {{ date('F Y') }}</h4>
+                                                    <h4>Pengeluaran Bulan ini : {{ date('F Y') }}</h4>
                                                     <p>Rp. @if(!empty($biaya_bulanan[0]->total)) {{ number_format($biaya_bulanan[0]->total,0,',','.') }} @else 0 @endif</p>
                                                 </div>
 												{{-- </div> --}}
@@ -118,7 +118,7 @@
                                         <div class="col-md-12">
                                             <div class="box box-warning">
                                                 <div class="box-body" style="background-color: orange">
-                                                    <h4><b>Penjualan Harian : </b>{{ date('d-m-Y') }}</h4>
+                                                    <h4>Penjualan Harian : {{ date('d-m-Y') }}</h4>
                                                     <p></p>
                                                     <p>Rp @if(!empty($pengeluaran_harian[0]->total_biaya)) {{ number_format($pengeluaran_harian[0]->total_biaya,0,',','.') }} @else 0 @endif</p>
                                                     <p></p>
@@ -128,7 +128,7 @@
                                         <div class="col-md-12">
 										{{-- <div class="box box-warning"> --}}
                                                 <div class="box-body" style="background-color: orange">
-                                                    <h4><b>Penjualan Bulan ini : </b>{{ date('F Y') }}</h4>
+                                                    <h4>Penjualan Bulan ini : {{ date('F Y') }}</h4>
                                                     <p>Rp. @if(!empty($pengeluaran_bulanan[0]->total_biaya)) {{ number_format($pengeluaran_bulanan[0]->total_biaya,0,',','.') }} @else 0 @endif</p>
                                                 </div>
 												{{-- </div> --}}
@@ -147,7 +147,7 @@
                                         <div class="col-md-12">
                                             <div class="box box-info">
                                                 <div class="box-body" style="background-color: deepskyblue">
-                                                    <h4><b>Laba Rugi Hari ini :</b> {{ date('d-m-Y') }}</h4>
+                                                    <h4>Laba Rugi Hari ini : {{ date('d-m-Y') }}</h4>
                                                     <p>Rp. {{ rupiahView($laba_harian) }}</p>
                                                 </div>
                                             </div>
@@ -155,7 +155,7 @@
                                         <div class="col-md-12">
                                             <div class="box box-info">
                                                 <div class="box-body" style="background-color: deepskyblue">
-                                                    <h4><b>Laba Rugi Bulan ini :</b> {{ date('F Y') }}</h4>
+                                                    <h4>Laba Rugi Bulan ini : {{ date('F Y') }}</h4>
                                                     <p>Rp. {{ rupiahView($laba_bulanan) }}</p>
                                                 </div>
                                             </div>

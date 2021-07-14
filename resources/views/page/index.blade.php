@@ -86,16 +86,15 @@
     <!-- //header -->
     <div class="content">
         <!-- banner -->
-        <!-- banner -->
 		 <section class="blog_w3ls align-w3" id="posts">
             <div class="container">
 				<br><br>
                 <div class="wthree_pvt_title text-center">
-                    <h4 class="w3pvt-title">Apa itu Aturusaha.com ?</h4>
+                    <h4 class="w3pvt-title">Apa itu Aturusaha ?</h4>
                 </div>
 				<div class="card-body">                              
-					<h5><font color="#0B63E1">Aturusaha.com</font> adalah platform digital yang dapat digunakan oleh Usaha Mikro Kecil dan Menengah (UMKM) maupun perusahaan rintisan (start up) 
-						Untuk mengatur perusahaannya dan terhubung dengan mentor/coach dan investor dalam satu aplikasi.
+					<h5><font color="#0B63E1">Aturusaha </font> adalah platform digital yang dapat digunakan oleh Usaha Mikro Kecil dan Menengah (UMKM) 
+						Untuk mengatur usahanya, mengikuti pendampingan bisnis  dan mencari pendanaan dalam satu aplikasi.
 					</h5>
                 </div><br>
                 <div class="row space-sec">
@@ -108,11 +107,12 @@
                             </div>
                             <div class="card-body">                             
 								<h5 class="blog-title card-title font-weight-bold">
-                                    <a href="#"> Enterpice Resource Planning For UMKM</a>
+                                    <a href="#"> Mengatur Usaha secara Digital</a>
                                 </h5>
                                 <p><font color="#0B63E1">Aturusaha.com</font> adalah aplikasi satu pintu yang dapat digunakan oleh <font color="#E1120B">owner/founder</font> UMKM untuk menjalankan 
-								   bisnisnya mulai dari perencanaan sampai laporan bisnis.</p> <br><p><font color="#E1120B">Owner/founder</font> dapat mengontrol semua bagian dalam perusahaan 
-								   seperti administrasi, pembelian, penjualan, produksi, layanan jasa, marketing, keuangan, HRD, penggajian,dll.
+								   bisnisnya mulai dari perencanaan sampai laporan bisnis.</p> <br><p><font color="#E1120B">Owner</font> dapat mengontrol semua bagian dalam perusahaan 
+								   seperti administrasi, pembelian, penjualan, produksi, marketing, keuangan, dll. Aturusaha  menjembatani
+								   UMKM beralih dari pengelolaan usaha secara manual ke digital.
 								</p>
 								<div class="center">
 									<a href="#regis"  class="blog_link regis">Daftar Owner</a>
@@ -296,7 +296,7 @@
         <section class="blog_w3ls align-w3" id="posts">
             <div class="container">            				
                 <div class="wthree_pvt_title text-center">
-                    <h4 class="w3pvt-title">Siapa Pengguna Aturusaha.com <br>dan Bagaimana Cara Kerjanya ?</h4><br>
+                    <h4 class="w3pvt-title">Siapa Pengguna Aturusaha <br>dan Bagaimana Cara Kerjanya ?</h4><br>
                     <p class="sub-title"><h5>Pengguna Aturusaha.com terdiri dari 4 pengguna, yaitu:</h5></p>
 					
                 </div>
@@ -412,7 +412,7 @@
 		<section class="blog_w3ls align-w3" id="posts">
             <div class="container">
                 <div class="wthree_pvt_title text-center">
-                    <h4 class="w3pvt-title">Apa Keuntungan Menggunakan Aturusaha.com ?</h4>
+                    <h4 class="w3pvt-title">Apa Keuntungan Menggunakan Aturusaha ?</h4>
                 </div>
 				<div class="card-body">                              
 					<h5 align="center"><font color="#0B63E1">Aturusaha.com</font> memberikan keuntungan untuk:
@@ -483,7 +483,7 @@
 		<section class="blog_w3ls align-w3" id="posts">
             <div class="container">            				
                 <div class="wthree_pvt_title text-center">
-                    <h4 class="w3pvt-title">Bidang Usaha Apa Yang Dapat menggunakan Aturusaha.com?</h4><br>
+                    <h4 class="w3pvt-title">Bidang Usaha Apa Yang Dapat menggunakan Aturusaha ?</h4><br>
                     <p class="sub-title"><h5>Bidang Usaha UMKM yang dapat menggunakan aplikasi ini, yaitu:</h5></p>
 					
                 </div>
