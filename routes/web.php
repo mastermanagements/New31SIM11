@@ -2516,3 +2516,19 @@ Route::post('laporan-pesanan-penjualan','produksi\PSales@laporan_pesanan_penjual
 // ========================================== Laporan penjaualan Barang============================
 Route::get('laporan-penjualan-barang','produksi\PSales@laporan_penjualan_barang');
 Route::post('laporan-penjualan-barang','produksi\PSales@laporan_penjualan_barang');
+
+// ========================================== Laporan penjaualan Barang============================
+Route::get('laporan-complain-penjualan','produksi\PSales@laporan_complain_penjualan');
+Route::post('laporan-complain-penjualan','produksi\PSales@laporan_complain_penjualan');
+
+// ========================================== Laporan return penjualan============================
+Route::get('laporan-return-penjualan','produksi\PSales@laporan_return_penjualan');
+Route::post('laporan-return-penjualan','produksi\PSales@laporan_return_penjualan');
+
+// ========================================== Laporan piutang penjualan============================
+Route::get('laporan-piutang-penjualan','produksi\PSales@laporan_piutang_penjualan');
+Route::post('laporan-piutang-penjualan','produksi\PSales@laporan_piutang_penjualan');
+
+// ========================================== Laporan pembayaran penjualan============================
+Route::get('laporan-pembayaran-penjualan','produksi\PSales@laporan_pembayaran_penjualan');
+Route::post('laporan-pembayaran-penjualan','produksi\PSales@laporan_pembayaran_penjualan');

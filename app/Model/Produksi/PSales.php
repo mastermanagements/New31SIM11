@@ -62,6 +62,7 @@ class PSales extends Model
     public function linkToReturnBarangJual(){
         return $this->hasOne('App\Model\Produksi\ReturnBarangJual','id_complain_barang','id');
     }
+
 	public function linkToUsaha(){
         return $this->belongsTo('App\Model\Superadmin_ukm\U_usaha', 'id_perusahaan');
     }
