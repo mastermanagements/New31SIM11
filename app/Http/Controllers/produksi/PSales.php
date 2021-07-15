@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\utils\data_penjualan\ComplainPenjualan;
+use App\Http\utils\data_penjualan\PembayaranPenjualan;
 use App\Http\utils\data_penjualan\PenjualanBarang;
+use App\Http\utils\data_penjualan\PiutangPenjualan;
+use App\Http\utils\data_penjualan\ReturnPenjualan;
 use App\Http\utils\HeaderReport;
 use App\Model\Administrasi\Klien;
 use Illuminate\Http\Request;
@@ -314,6 +318,66 @@ class PSales extends Controller
             return view('user.produksi.section.jualbarang.laporan.penjualan_barang.cetak', ['data' => $data_penjualan_barang, 'header' => $header]);
         } else {
             return view('user.produksi.section.jualbarang.laporan.penjualan_barang.page_show', ['data' => $data_penjualan_barang, 'customer' => $cuttomer]);
+        }
+    }
+
+    public function laporan_complain_penjualan(Request $req)
+    {
+        $pesanan_complain_penjualan= new ComplainPenjualan();
+        $data_complain_penjualan = $pesanan_complain_penjualan->data($req);
+         $cuttomer = Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        if ($req->action == 'preview') {
+            return view('user.produksi.section.jualbarang.laporan.complain_barang.page_show', ['data' => $data_complain_penjualan, 'customer' => $cuttomer]);
+        } elseif ($req->action == 'print') {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN COMPLAIN PENJUALAN BARANG');
+            return view('user.produksi.section.jualbarang.laporan.complain_barang.cetak', ['data' => $data_complain_penjualan, 'header' => $header]);
+        } else {
+            return view('user.produksi.section.jualbarang.laporan.complain_barang.page_show', ['data' => $data_complain_penjualan, 'customer' => $cuttomer]);
+        }
+    }
+
+    public function laporan_return_penjualan(Request $req)
+    {
+        $pesanan_return_penjualan= new ReturnPenjualan();
+        $data_return_penjualan = $pesanan_return_penjualan->data($req);
+        $cuttomer = Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        if ($req->action == 'preview') {
+            return view('user.produksi.section.jualbarang.laporan.return_barang.page_show', ['data' => $data_return_penjualan, 'customer' => $cuttomer]);
+        } elseif ($req->action == 'print') {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN RETURN PENJUALAN BARANG');
+            return view('user.produksi.section.jualbarang.laporan.return_barang.cetak', ['data' => $data_return_penjualan, 'header' => $header]);
+        } else {
+            return view('user.produksi.section.jualbarang.laporan.return_barang.page_show', ['data' => $data_return_penjualan, 'customer' => $cuttomer]);
+        }
+    }
+
+    public function laporan_piutang_penjualan(Request $req)
+    {
+        $pesanan_piutang_penjualan= new PiutangPenjualan();
+        $data_piutang_penjualan = $pesanan_piutang_penjualan->data($req);
+        $cuttomer = Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        if ($req->action == 'preview') {
+            return view('user.produksi.section.jualbarang.laporan.piutang_penjualan.page_show', ['data' => $data_piutang_penjualan, 'customer' => $cuttomer]);
+        } elseif ($req->action == 'print') {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PIUTANG PENJUALAN BARANG');
+            return view('user.produksi.section.jualbarang.laporan.piutang_penjualan.cetak', ['data' => $data_piutang_penjualan, 'header' => $header]);
+        } else {
+            return view('user.produksi.section.jualbarang.laporan.piutang_penjualan.page_show', ['data' => $data_piutang_penjualan, 'customer' => $cuttomer]);
+        }
+    }
+
+    public function laporan_pembayaran_penjualan(Request $req)
+    {
+        $pesanan_pembayaran_penjualan= new PembayaranPenjualan();
+        $data_pembayaran_penjualan = $pesanan_pembayaran_penjualan->data($req);
+        $cuttomer = Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        if ($req->action == 'preview') {
+            return view('user.produksi.section.jualbarang.laporan.pembayaran_penjualan.page_show', ['data' => $data_pembayaran_penjualan, 'customer' => $cuttomer]);
+        } elseif ($req->action == 'print') {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PEMBAYARAN PENJUALAN BARANG');
+            return view('user.produksi.section.jualbarang.laporan.pembayaran_penjualan.cetak', ['data' => $data_pembayaran_penjualan, 'header' => $header]);
+        } else {
+            return view('user.produksi.section.jualbarang.laporan.pembayaran_penjualan.page_show', ['data' => $data_pembayaran_penjualan, 'customer' => $cuttomer]);
         }
     }
 }
