@@ -32,7 +32,7 @@
                           <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Pembayaran</a></li>
                           <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Return Penjualan</a></li>
                           <li class="@if(Session::get('tab7') == 'tab7') active @else '' @endif"><a href="#tab_7" data-toggle="tab"><i class="fa fa-book"></i> History Harga Penjualan</a></li>
-                          <li class="@if(Session::get('tab8') == 'tab8') active @else '' @endif"><a href="#tab_8" data-toggle="tab"><i class="fa fa-book"></i> Pengaturan Akun Penjualan</a></li>
+                          <li class="@if(Session::get('tab8') == 'tab8') active @else '' @endif"><a href="#tab_8" data-toggle="tab"><i class="fa fa-book"></i> Akun Penjualan</a></li>
                       </ul>
                     </ul>
                     <div class="tab-content">

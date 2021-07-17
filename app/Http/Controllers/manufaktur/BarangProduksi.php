@@ -202,7 +202,10 @@ class BarangProduksi extends Controller
     {
         $container=[];
         //1. total biaya mentah
+		//1. ambil biaya = p_bahan_produksi * p_barang.hpp
+		
         $a = $model_p_tambah_barang->linkToBahanProduksi->sum('jumlah_bahan');
+		
         //push total biaya bahan mentah ke container
         $container[]= [
             [

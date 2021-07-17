@@ -28,11 +28,11 @@
                         @php($total_kredit=0)
                         @foreach($data as $value)
                             <tr>
-                                <th>{{ $value['tanggal'] }}</th>
+                                <th>Tanggal: {{ $value['tanggal'] }}</th>
                                 <th>Nomor Transaksi: {{ $value['no_transaksi'] }}</th>
                                 <td>{{ $value['kode_akun'] }}</td>
                                 <td>{{ $value['nm_akun'] }}</td>
-                                <td>{{ $value['jenis_jurnal'] }}</td>
+								<td>{{ $value['jenis_jurnal'] }}</td>
                                 <td>{{ $value['nama_keterangan'] }}</td>
                                 <td>
                                     @php($total_debet+=$value['debet'])
@@ -60,6 +60,6 @@
             </div>
        </div>
   </div>
-    @include('user.keuangan.section.transaksi.daftar_jurnal.modal');
+    @include('user.keuangan.section.transaksi.daftar_jurnal.modal')
 </div>
 

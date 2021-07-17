@@ -393,7 +393,7 @@ class PesananPembelian extends Controller
                       'total'=> $total_po,
                       'tgl_order'=> $model->tgl_po,
                       'no_order'=>$model->no_po,
-                      'id_pesanan'=> $model->id
+                      'id_pesanan_pembelian'=> $model->id
                   ]);
                   JenisAkunPembelian::$new_request = $req;
                   $response =JenisAkunPembelian::get_akun_pembelian($jenis_akun_pembelian);

@@ -43,6 +43,7 @@ class DaftarJurnal extends Controller
             'data' => $data,
             'jenis_jurnal'=>$this->jenis_jurnal
         ];
+		//dd($data);
         return view('user.keuangan.section.transaksi.daftar_jurnal.page_default', $data_pass);
     }
 

@@ -27,15 +27,12 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                        <li @if(Session::get('menu_transaksi')=="daftar_jurnal") class="active" @else class="pull-right" @endif><a href="{{ url('Daftar-jurnal') }}" ><i class="fa fa-file-o"></i>  Daftar Jurnal</a></li>
+					   <li @if(Session::get('menu_transaksi')=="jurnal_umum") class="active pull-right" @else class="pull-right" @endif><a href="{{ url('Jurnal-Umum') }}" ><i class="fa fa-file-o"></i>&nbsp;<font color="#1052EE"><b>Jurnal Umum<b></font></a></li>
                     </ul>
                     <div class="tab-content">
-                        @if(Session::get('menu_transaksi')=="penerimaan")
-                            @include('user.keuangan.section.transaksi.penerimaan.page')
-                        @elseif(Session::get('menu_transaksi')=="daftar_jurnal")
+                       
                             @include('user.keuangan.section.transaksi.daftar_jurnal.page')
-                        @else
-                            @include('user.keuangan.section.transaksi.pengeluaran.page')
-                        @endif
+                      
                     </div>
                     <!-- /.tab-content -->
                 </div>
@@ -71,11 +68,7 @@
             radioClass   : 'iradio_minimal-red'
         })
     </script>
-    @if(Session::get('menu_transaksi')=="penerimaan")
-        @include('user.keuangan.section.transaksi.penerimaan.Js')
-    @elseif(Session::get('menu_transaksi')=="daftar_jurnal")
+   
         @include('user.keuangan.section.transaksi.daftar_jurnal.js')
-    @else
-        @include('user.keuangan.section.transaksi.pengeluaran.Js')
-    @endif
+  
 @stop

@@ -24,7 +24,7 @@ class JualBarang extends Controller
         'Pesanan Penjualan tunai',
         'Pesanan Penjualan transfer',
         'Pesanan Penjualan tunai dengan pajak',
-        'Pesanan Penjualan transfer dg pajak',
+       // 'Pesanan Penjualan transfer dg pajak',
         'Penjualan tunai tanpa pajak',
         'Penjualan tunai dengan pajak',
         'Penjualan kredit tanpa pajak',
@@ -68,7 +68,7 @@ class JualBarang extends Controller
             //'terima_bayar'=>terima_bayar::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get()
         ];
         //tab1 tawar jual  di nonaktifkan dl
-        if (empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6')) && empty(Session::get('tab6'))){
+        if (empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5')) && empty(Session::get('tab6')) && empty(Session::get('tab7')) && empty(Session::get('tab8'))){
             Session::flash('tab2','tab2');
         }
 
@@ -88,6 +88,9 @@ class JualBarang extends Controller
         }
         if(!empty(Session::get('tab7'))){
             Session::flash('tab7',Session::get('tab7'));
+        }
+		if(!empty(Session::get('tab8'))){
+            Session::flash('tab8',Session::get('tab8'));
         }
 
         return view('user.produksi.section.jualbarang.page_default', $data);

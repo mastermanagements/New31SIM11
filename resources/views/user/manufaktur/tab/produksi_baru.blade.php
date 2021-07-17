@@ -51,4 +51,6 @@
             </tbody>
         </table>
     </table>
+	<!---tambah bahan baku--->
+	
 </div>

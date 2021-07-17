@@ -26,7 +26,8 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li @if(Session::get('menu_transaksi')=="jurnal-umum") class="active" @endif ><a href="{{ url('Jurnal-Umum') }}" >Jurnal Umum</a></li>
+                        <li @if(Session::get('menu_transaksi')=="jurnal-umum") class="active" @endif ><a href="{{ url('Jurnal-Umum') }}" ></a></li>
+						<li @if(Session::get('menu_transaksi')=="daftar_jurnal") class="active pull-right" @else class="pull-right" @endif><a href="{{ url('Daftar-Jurnal') }}" ><i class="fa fa-file-o"></i>&nbsp;<font color="#1052EE"><b>Daftar Jurnal<b></font></a></li>
                     </ul>
                     <div class="tab-content">
                         @include('user.keuangan.section.transaksi.jurnal_umum.page')
@@ -65,5 +66,5 @@
             radioClass   : 'iradio_minimal-red'
         })
     </script>
-        @include('user.keuangan.section.transaksi.jurnal_umum.Js')
+        @include('user.keuangan.section.transaksi.jurnal_umum.js')
 @stop

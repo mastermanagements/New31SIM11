@@ -78,7 +78,7 @@ class StrategiPerusahaan extends Controller
       //dd($req->all());
         $this->validate($req,[
        'id_tjp'=> 'required',
-		   'isi'=> 'required'
+		'isi'=> 'required'
         ]);
         $id_tjp = $req->id_tjp;
         $isi= $req->isi;

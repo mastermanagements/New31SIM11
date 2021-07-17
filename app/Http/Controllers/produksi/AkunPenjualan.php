@@ -83,18 +83,18 @@ class AkunPenjualan extends Controller
 
 
         if(!empty($model->save())){
-            return redirect('Penjualan')->with('message_success','Akun penjualan telah diubah');
+            return redirect('Penjualan')->with('message_success','Akun penjualan telah diubah')->with('tab8','tab8');
         }else{
-            return redirect('Penjualan')->with('message_fail','Akun penjualan gagal disimpan');
+            return redirect('Penjualan')->with('message_fail','Akun penjualan gagal disimpan')->with('tab8','tab8');
         }
     }
 
     public function destroy($id){
         $model =AP::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if(!empty($model->delete())){
-            return redirect('Penjualan')->with('message_success','Akun penjualan telah dihapus');
+            return redirect('Penjualan')->with('message_success','Akun penjualan telah dihapus')->with('tab8','tab8');
         }else{
-            return redirect('Penjualan')->with('message_fail','Akun penjualan gagal dihapus');
+            return redirect('Penjualan')->with('message_fail','Akun penjualan gagal dihapus')->with('tab8','tab8');
         }
     }
 }

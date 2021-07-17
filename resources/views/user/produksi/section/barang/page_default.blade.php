@@ -311,7 +311,7 @@
                                            <th>HPP</th>
                                            <th>Harga Jual</th>
                                            <th>Keuntungan</th>
-                                           <th> Persen Untung</th>
+                                           <th> Persen Untung (%)</th>
                                            <th>Aksi</th>
                                        </tr>
                                        </thead>

@@ -57,9 +57,9 @@
                                         <td>{{ $data['tanggal'] }}</td>
                                         <td>{{ $data['kode_akun'] }}</td>
                                         <td style="text-align:left">{{ ucfirst($data['nama_akun']) }}</td>
-                                        <td>{{ $data['keterangan'] }}</td>
-                                        <td style="text-align:right">{{ $data['debet'] }}</td>
-                                        <td style="text-align:right">{{ $data['kredit'] }}</td>
+                                        <td style="text-align:left">{{ $data['keterangan'] }}</td>
+                                        <td style="text-align:right">{{ rupiahView($data['debet']) }}</td>
+                                        <td style="text-align:right">{{ rupiahView($data['kredit']) }}</td>
                                     </tr>
                                 @endforeach
                             @endif

@@ -31,7 +31,7 @@
                         <li class="@if(Session::get('tab3') == 'tab3') active @else '' @endif"><a href="#tab_3" data-toggle="tab"><i class="fa fa-book"></i> Pembelian</a></li>
                         <li class="@if(Session::get('tab4') == 'tab4') active @else '' @endif"><a href="#tab_4" data-toggle="tab"><i class="fa fa-book"></i> Pembayaran</a></li>
                         <li class="@if(Session::get('tab5') == 'tab5') active @else '' @endif"><a href="#tab_5" data-toggle="tab"><i class="fa fa-book"></i> Return pembelian</a></li>
-                        <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Jurnal Otomatis Pembelian</a></li>
+                        <li class="@if(Session::get('tab6') == 'tab6') active @else '' @endif"><a href="#tab_6" data-toggle="tab"><i class="fa fa-book"></i> Akun Pembelian</a></li>
 
                     </ul>
 
@@ -340,6 +340,7 @@
                         </div>
                           <div class="tab-pane @if(Session::get('tab6') == 'tab6') active @else '' @endif" id="tab_6">
                             <a href="{{ url('akun-pembelian/create') }}" class="btn btn-primary">Tambah Akun Pembelian</a>
+							<p></p>
                             <div class="row">
                                 <div class="col-md-12">
                                     <table class="table table-bordered " style="width: 100%;">

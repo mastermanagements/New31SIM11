@@ -505,23 +505,23 @@
                  })
           };
 
-          tambahSJP  = function (id) {
+			tambahSJP  = function (id) {
 				        $('[name="id_tjp"]').val(id);
-                $('#modal-tambah-strategi-jp').modal('show');
+						$('#modal-tambah-strategi-jp').modal('show');
             };
-         tambahSEks  = function (id) {
+			tambahSEks  = function (id) {
   				      $('[name="id_teks"]').val(id);
                 $('#modal-tambah-strategi-eks').modal('show');
             };
-         tambahSman  = function (id) {
+			tambahSman  = function (id) {
                $('[name="id_tman"]').val(id);
               $('#modal-tambah-strategi-man').modal('show');
-          };
-        tambahSsup  = function (id) {
+			};
+			tambahSsup  = function (id) {
               $('[name="id_tsup"]').val(id);
                $('#modal-tambah-strategi-sup').modal('show');
            };
-        tambahSstaf  = function (id) {
+			tambahSstaf  = function (id) {
                 $('[name="id_tstaf"]').val(id);
                 $('#modal-tambah-strategi-staf').modal('show');
             };

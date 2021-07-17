@@ -28,7 +28,7 @@
                     <ul class="nav nav-tabs">
                         <li @if(Session::get('menu_transaksi')=="penerimaan") class="active" @endif ><a href="{{ url('Transaksi') }}" >Penerimaan</a></li>
                         <li @if(Session::get('menu_transaksi')=="pengeluaran") class="active" @endif><a href="{{ url('Pengeluaran') }}" >Pengeluaran</a></li>
-                        <li @if(Session::get('menu_transaksi')=="daftar_jurnal") class="active pull-right" @else class="pull-right" @endif><a href="{{ url('Daftar-Jurnal') }}" ><i class="fa fa-file-o"></i>  Daftar Jurnal</a></li>
+                        <!--<li @if(Session::get('menu_transaksi')=="daftar_jurnal") class="active pull-right" @else class="pull-right" @endif><a href="{{ url('Daftar-Jurnal') }}" ><i class="fa fa-file-o"></i>  Daftar Jurnal</a></li>-->
                     </ul>
                     <div class="tab-content">
                         @if(Session::get('menu_transaksi')=="penerimaan")

@@ -71,7 +71,7 @@
                                             {{--@php($total_kredit  += $keterangan['kredit'])--}}
                                         {{--</tr>--}}
                                     {{--@endforeach--}}
-                                    {{--<tr style="background-color: greenyellow">--}}
+                                    {{--<tr style="background-color: #00D8D8">--}}
                                         {{--<td >Total</td>--}}
                                         {{--<td ></td>--}}
                                         {{--<td ></td>--}}
@@ -82,7 +82,7 @@
                               {{--@endforeach--}}
                               @if(!empty($data_buku_besar))
                                 @foreach($data_buku_besar as $key=> $data)
-                                    <tr style="background-color: #9CE7E1; text-align: left; font-weight: bold">
+                                    <tr style="background-color: #00D8D8; text-align: left; font-weight: bold">
                                         <td colspan="6">{{ ucfirst($akun->where('id',$key)->first()->nm_akun_aktif) }}</td>
                                     </tr>
                                     @foreach($data as $sub_key => $sub_data)
@@ -90,8 +90,8 @@
                                             <td>{{ $sub_data['no_transaksi'] }}</td>
                                             <td>{{ $sub_data['tanggal'] }}</td>
                                             <td style="text-align:left;">{{ ucfirst($sub_data['keterangan']) }}</td>
-                                            <td>{{ $sub_data['debet'] }}</td>
-                                            <td>{{ $sub_data['kredit'] }}</td>
+                                            <td>{{ rupiahView($sub_data['debet']) }}</td>
+                                            <td>{{ rupiahView($sub_data['kredit']) }}</td>
                                             <td>
                                                 @if($sub_data['saldo_debet']!=0)
                                                     {{ rupiahView($sub_data['saldo_debet']) }}

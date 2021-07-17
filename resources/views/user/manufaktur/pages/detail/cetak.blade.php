@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Detail Produksi</title>
     <link rel="stylesheet" href="{{ @asset('component/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
-
+	
 </head>
 <body style="margin: 20px;">
-    <h4 style="text-align: center">Detail Produksi</h4>
+    <h4 style="text-align: center">Hasil Produksi</h4>
     <p style="font-weight: bold;">
          Tim Produksi :
     </p>
@@ -18,13 +18,13 @@
         Supervisor : {{ $data->linkToSupervisor->nama_ky }}
     </p>
     <p style="font-weight: bold;">Anggota:</p>
-    <table class="table table-responsive">
+    <table class="table table-bordered table-striped">
         <thead>
         <tr>
             <th>No</th>
             <th>Nama</th>
             <th>Jumlah</th>
-            <th>Produksi</th>
+			{{-- <th>Produksi</th>--}}
         </tr>
         </thead>
         <tbody>
@@ -35,7 +35,7 @@
                     <td>{{ $no++ }}</td>
                     <td>{{ $data_item->linkToPekerja->nama_ky }}</td>
                     <td>{{ rupiahView($data_item->jumlah_upah) }}</td>
-                    <td></td>
+						{{--<td></td>--}}
                 </tr>
             @endforeach
         @endif
@@ -43,7 +43,7 @@
     </table>
 
     <p style="font-weight: bold;">Gambaran Umum:</p>
-    <table class="table table-responsive">
+    <table class="table table-bordered table-striped">
         <thead>
         <tr>
             <th>No</th>
@@ -67,34 +67,34 @@
     </table>
 
     <p style="font-weight: bold;">Quality Control & Hasil</p>
-    <table class="table table-responsive">
+    <table  class="table table-bordered table-striped" >
         <thead>
         <tr>
             <th rowspan="2">No</th>
             <th rowspan="2">Tgl diperiksa</th>
-            <th colspan="2">Barang Dalam Proses</th>
-            <th colspan="2">Barang jadi</th>
+            <th style="text-align:center" colspan="2">Barang Dalam Proses</th>
+            <th style="text-align:center" colspan="2">Barang jadi</th>
         </tr>
         <tr>
-            <th>Bagus</th>
-            <th>Rusak</th>
-            <th>Bagus</th>
-            <th>Rusak</th>
+            <th style="text-align:center">Bagus</th>
+            <th style="text-align:center">Rusak</th>
+            <th style="text-align:center">Bagus</th>
+            <th style="text-align:center">Rusak</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <th>1</th>
             <th>{{ date('d-m-Y', strtotime($data->tgl_mulai_qc)) }} s/d {{ date('d-m-Y', strtotime($data->tgl_selesai)) }}</th>
-            <th>{{ $data->jumlah_bdp_bagus }}</th>
-            <th>{{ $data->jumlah_bdp_rusak }}</th>
-            <th>{{ $data->jumlah_brg_jadi_bagus }}</th>
-            <th>{{ $data->jumlah_brg_jadi_rusan }}</th>
+            <th style="text-align:center">{{ $data->jumlah_bdp_bagus }}</th>
+            <th style="text-align:center">{{ $data->jumlah_bdp_rusak }}</th>
+            <th style="text-align:center">{{ $data->jumlah_brg_jadi_bagus }}</th>
+            <th style="text-align:center">{{ $data->jumlah_brg_jadi_rusan }}</th>
         </tr>
         </tbody>
     </table>
     <p style="font-weight: bold;">History Pelaksanaan</p>
-    <table class="table table-responsive">
+    <table class="table table-bordered table-striped">
         <thead>
         <tr>
             <th>No.</th>
