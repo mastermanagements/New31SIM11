@@ -8,6 +8,7 @@ use App\Model\Manufaktur\P_tambah_produksi;
 use Session;
 use App\Model\Produksi\Barang as barang;
 use App\Model\Manufaktur\P_Bahan_produksi;
+use App\Http\utils\Stok;
 class BahanBaku extends Controller
 {
     //
@@ -36,6 +37,7 @@ class BahanBaku extends Controller
 
         $model = new P_Bahan_produksi($data);
         if($model->save()){
+//            Stok::updateStokAkhirManufaktur($model);
             return redirect()->back()->with('message_success', 'Berhasil tambah bahan baku');
         }else{
             return redirect()->back()->with('message_fail', 'Bahan baku gagal disimpan');
@@ -65,6 +67,7 @@ class BahanBaku extends Controller
     public function delete(Request $req, $id){
         $model = P_Bahan_produksi::find($id);
         if($model->delete()){
+//            Stok::DeleteStokAkhirManufaktur($model);
             return redirect()->back()->with('message_success', 'Bahan baku telah hapus');
         }else{
             return redirect()->back()->with('message_fail', 'Bahan baku gagal hapus');
