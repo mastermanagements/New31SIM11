@@ -8,6 +8,7 @@ class AkunPenjualan extends Model
 {
     //
     protected $table = 'p_akun_penjualan';
+	
     protected $fillable = ['jenis_jurnal','id_ket_transaksi','jenis_transaksi','id_akun_aktif','posisi_akun','id_perusahaan','id_karyawan'];
 
     public function linkToOneKetTransaksi(){

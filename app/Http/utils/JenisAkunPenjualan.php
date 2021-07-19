@@ -22,9 +22,9 @@ class JenisAkunPenjualan
     # jenis Jurnal
     public static $jenis_jurnal = [
         'Pesanan Penjualan tunai',
-        'Pesanan Penjualan transfer',
+        //'Pesanan Penjualan transfer',
         'Pesanan Penjualan tunai dengan pajak',
-        'Pesanan Penjualan transfer dg pajak',
+        //'Pesanan Penjualan transfer dg pajak',
         'Penjualan tunai tanpa pajak',
         'Penjualan tunai dengan pajak',
         'Penjualan kredit tanpa pajak',
@@ -44,11 +44,12 @@ class JenisAkunPenjualan
         //'Transfer Bank',
     ];
 
-    # Check Akun pembelian
+    # Check Akun penjualan
     public static function CheckAkunPenjualan()
     {
         $data = AkunPenjualan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->count();
-        if (!empty($data)) {
+		//dd($data);
+	   if (!empty($data)) {
             return true;
         } else {
             return false;
@@ -221,6 +222,7 @@ class JenisAkunPenjualan
 
     public static function cek_akun_penjualan($index_jenis_barang){
         $model = AkunPenjualan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('jenis_jurnal',''.$index_jenis_barang)->first();
+		//dd($model);
         if(!empty($model)){
             return true;
         }else{

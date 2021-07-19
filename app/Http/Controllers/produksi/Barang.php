@@ -66,7 +66,7 @@ class Barang extends Controller
             ->findOrFail($req->id_barang);
        $data = [];
        $obj = new stdClass;
-       if($n_data=$model->linkToHargaBaseOnJumlah->where('jumlah_maks_brg','>',$req->jumlah)->first()){
+       if($n_data=$model->linkToHargaBaseOnJumlah->where('jumlah_maks_brg','>=',$req->jumlah)->first()){
            $obj->hpp = $n_data->harga_jual;
            $data[] = $obj;
        }else{

@@ -29,7 +29,7 @@ trait Transaksi
 
     public $jenis_jurnal=array(
         '0'=>'Saldo Awal',
-        '1'=>'Jurnal',
+        '1'=>'Jurnal Umum',
         '2'=>'Jurnal Penyesuaian');
 
     public $jenisjurnal=array(

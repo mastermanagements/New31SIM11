@@ -18,25 +18,25 @@
             <div class="col-md-12">
                 <div class="box box-body box-primary">
                   <div class="row">
+						<div class="box-header with-border ">
+							<h3 class="box-title">Hasil Produksi</h3>
+							<a  target="_blank" href="{{ url('detail-barang-selesai-produksi-cetak/'.$id) }}" class="btn btn-primary pull-right">Print</a>
+						</div>
+						<!-- /.box-header -->
+					
                       <div class="col-sm-12" style="padding: 20px">
-                            <a target="_blank" href="{{ url('detail-barang-selesai-produksi-cetak/'.$id) }}" class="btn btn-primary">Print</a>
-                      </div>
-                      <div class="col-sm-12" style="padding: 20px">
-                          <p style='text-align: center; font-weight: bold;'><u>Detail Produksi</u></p>
-                          <p></p>
-                          <p></p>
                           <p style="font-weight: bold;">Tim Produksi :</p>
                           <p><strong>Supervisor</strong> : {{ $data->linkToSupervisor->nama_ky }}</p>
                       </div>
-                      <div class="col-md-12">
+                      <div class="col-md-6">
                           <p><strong>Anggota:</strong></p>
-                          <table class="table table-responsive">
+                          <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Biaya Tenaga Kerja</th>
-                                    <th>Produksi</th>
+                                    {{--<th>Produksi</th>--}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,7 +47,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $data_item->linkToPekerja->nama_ky }}</td>
                                         <td>{{ rupiahView($data_item->jumlah_upah) }}</td>
-                                        <td></td>
+											{{--<td></td>--}}
                                     </tr>
                                   @endforeach
                               @endif
@@ -56,7 +56,7 @@
                       </div>
                       <div class="col-md-12">
                           <p><strong>Gambaran Umum:</strong></p>
-                          <table class="table table-responsive">
+                          <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -81,36 +81,36 @@
                       </div>
                       <div class="col-md-12">
                           <p><strong>Quality Control & Hasil</strong></p>
-                          <table class="table table-responsive">
+                          <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th rowspan="2">No</th>
                                     <th rowspan="2">Tgl diperiksa</th>
-                                    <th colspan="2">Barang Dalam Proses</th>
-                                    <th colspan="2">Barang jadi</th>
+                                    <th style="text-align:center" colspan="2">Barang Dalam Proses</th>
+                                    <th style="text-align:center" colspan="2">Barang jadi</th>
                                 </tr>
                                 <tr>
-                                    <th>Bagus</th>
-                                    <th>Rusak</th>
-                                    <th>Bagus</th>
-                                    <th>Rusak</th>
+                                    <th style="text-align:center">Bagus</th>
+                                    <th style="text-align:center">Rusak</th>
+                                    <th style="text-align:center">Bagus</th>
+                                    <th style="text-align:center">Rusak</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
                                     <td>{{ date('d-m-Y', strtotime($data->tgl_mulai_qc)) }} s/d {{ date('d-m-Y', strtotime($data->tgl_selesai)) }}</td>
-                                    <td>{{ $data->jumlah_bdp_bagus }}</td>
-                                    <td>{{ $data->jumlah_bdp_rusak }}</td>
-                                    <td>{{ $data->jumlah_brg_jadi_bagus }}</td>
-                                    <td>{{ $data->jumlah_brg_jadi_rusan }}</td>
+                                    <td style="text-align:center">{{ $data->jumlah_bdp_bagus }}</td>
+                                    <td style="text-align:center">{{ $data->jumlah_bdp_rusak }}</td>
+                                    <td style="text-align:center">{{ $data->jumlah_brg_jadi_bagus }}</td>
+                                    <td style="text-align:center">{{ $data->jumlah_brg_jadi_rusan }}</td>
                                 </tr>
                             </tbody>
                           </table>
                       </div>
                       <div class="col-md-12">
                           <p><strong>History Pelaksanaan</strong></p>
-                          <table class="table table-responsive">
+                          <table class="table table-bordered table-striped">
                               <thead>
                               <tr>
                                   <th>No.</th>

@@ -7,7 +7,8 @@
         rowGroup: {
             dataSrc: [0, 1],
             startRender: function ( rows, group ) {
-                return '<label>Tanggal :'+group+'</label>';
+                <!--return '<label>Tanggal :'+group+'</label>';-->
+				return '<label>'+group+'</label>';
             }
         },
 

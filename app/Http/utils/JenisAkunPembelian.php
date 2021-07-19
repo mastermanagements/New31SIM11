@@ -143,6 +143,13 @@ class JenisAkunPembelian
                 {
                     $total = $new_q['ongkir'];
                 }
+				
+				 if(self::$metode_transaksi==1){
+                    $metode_transaksi='Pesanan Pembelian';
+                }else if(self::$metode_transaksi==2){
+                    $metode_transaksi='Pembelian';
+                }
+
 
                 $njurnal = new Jurnal([
                     'jenis_jurnal'=>'1',
@@ -150,7 +157,8 @@ class JenisAkunPembelian
                     'id_ket_transaksi' => $akun['id_ket_transaksi'],
                     'id_akun_aktif'=> $akun['id_akun_aktif'],
                     'no_transaksi'=> $new_q->no_order,
-                    'ket'=>'Pembelian :'.$new_q->no_order,
+                   // 'ket'=>'Pembelian :'.$new_q->no_order,
+				    'ket'=>$metode_transaksi.'/'.$new_q->no_order,
                     'debet_kredit'=> $akun['posisi_akun'],
                     'jumlah_transaksi'=>$total,
                     'id_perusahaan'=> Session::get('id_perusahaan_karyawan'),
@@ -158,7 +166,7 @@ class JenisAkunPembelian
                 ]);
 
                 if(self::$metode_transaksi==1){
-                    $njurnal->id_pesanan = $new_q['id_pesanan'];
+                    $njurnal->id_pesanan_pembelian = $new_q['id_pesanan_pembelian'];
                 }else if(self::$metode_transaksi==2){
                     $njurnal->id_pembelian=$new_q['id_pembelian'];
                 }
@@ -184,7 +192,8 @@ class JenisAkunPembelian
 
     public static function cek_akun_pembelian($index_jenis_barang){
         $model = AkunPembelian::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('jenis_jurnal',$index_jenis_barang)->first();
-        if(!empty($model)){
+        //dd($model);
+		if(!empty($model)){
             return true;
         }else{
             return false;

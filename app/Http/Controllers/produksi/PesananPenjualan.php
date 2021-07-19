@@ -131,7 +131,7 @@ class PesananPenjualan extends Controller
         #check akun Penjualan kalau kosong == false
         if($check_akun_penjualan==false){
             //return redirect()->back()->with('message_fail','Isilah terlebih dahulu akun penjualan');
-            return redirect('Penjualan')->with('message_fail','Isilah terlebih dahulu akun penjualan')->with('tab2','tab2');
+            return redirect()->back()->with('message_fail','Isilah terlebih dahulu akun penjualan')->with('tab2','tab2');
         }
 
         # Set Rule
@@ -167,6 +167,7 @@ class PesananPenjualan extends Controller
                 ]);
                 JenisAkunPenjualan::$new_request = $req;
                 $response=JenisAkunPenjualan::get_akun_penjualan($jenis_akun_penjualan);
+				//dd($response);
                 if(!empty($response)){
                     if($response['status']==false){
                         return redirect()->back()->with('message_fail','Akun Pesanan Penjualan Belum dibuat');
