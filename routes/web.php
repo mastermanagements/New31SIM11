@@ -2459,7 +2459,8 @@ Route::get('laporan-produksi', 'manufaktur\Manufaktur@laporan_produksi');
 Route::post('laporan-produksi', 'manufaktur\Manufaktur@PrinView_OrCetak');
 Route::get('laporan-produksi-tahunan/{params}', 'manufaktur\Manufaktur@laporan_produksi_perbulan'); // karyawan
 Route::post('laporan-produksi-tahunan', 'manufaktur\Manufaktur@laporan_produksi_perbulan_printView'); // karyawan
-
+Route::get('laporan-produksi-per-ky', 'manufaktur\Manufaktur@laporan_produksi_karyawan');
+Route::post('laporan-produksi-per-ky', 'manufaktur\Manufaktur@PrinView_OrCetak_Karyawan');
 //======================================== Laporan Pesanan Barang =============================
 Route::get('laporan-pesanan-pembelian','produksi\POrder@laporan_penasan_pembelian');
 Route::post('laporan-pesanan-pembelian','produksi\POrder@laporan_penasan_pembelian');
