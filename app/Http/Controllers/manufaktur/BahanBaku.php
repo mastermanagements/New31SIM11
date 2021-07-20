@@ -12,7 +12,7 @@ use App\Http\utils\Stok;
 class BahanBaku extends Controller
 {
     //
-    public function show($id_tambah_produksi){
+   /*  public function show($id_tambah_produksi){
         $model = P_tambah_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrfail($id_tambah_produksi);
         $array = [
             'data'=> $model,
@@ -21,7 +21,7 @@ class BahanBaku extends Controller
             'barang' => barang::all()->where('jenis_barang','1')->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         return view('user.manufaktur.pages.barang_produksi.bahan_baku.page_show', $array);
-    }
+    } */
 
     public function store(Request $req){
         $this->validate($req,[
@@ -37,10 +37,11 @@ class BahanBaku extends Controller
 
         $model = new P_Bahan_produksi($data);
         if($model->save()){
+
 //            Stok::updateStokAkhirManufaktur($model);
-            return redirect()->back()->with('message_success', 'Berhasil tambah bahan baku');
+            return redirect()->back()->with('message_success', 'Berhasil tambah bahan baku')->with('tab2','tab2');
         }else{
-            return redirect()->back()->with('message_fail', 'Bahan baku gagal disimpan');
+            return redirect()->back()->with('message_fail', 'Bahan baku gagal disimpan')->with('tab2','tab2');
         }
     }
 
@@ -58,19 +59,19 @@ class BahanBaku extends Controller
         
         $model = P_Bahan_produksi::find($id);
         if($model->update($data)){
-            return redirect()->back()->with('message_success', 'Bahan baku telah diubah');
+            return redirect()->back()->with('message_success', 'Bahan baku telah diubah')->with('tab2','tab2');
         }else{
-            return redirect()->back()->with('message_fail', 'Bahan baku gagal diubah');
+            return redirect()->back()->with('message_fail', 'Bahan baku gagal diubah')->with('tab2','tab2');
         }
     }
 
     public function delete(Request $req, $id){
         $model = P_Bahan_produksi::find($id);
-        if($model->delete()){
+        if($model->delete()){			
 //            Stok::DeleteStokAkhirManufaktur($model);
-            return redirect()->back()->with('message_success', 'Bahan baku telah hapus');
+            return redirect()->back()->with('message_success', 'Bahan baku telah hapus')->with('tab2','tab2');
         }else{
-            return redirect()->back()->with('message_fail', 'Bahan baku gagal hapus');
+            return redirect()->back()->with('message_fail', 'Bahan baku gagal hapus')->with('tab2','tab2');
         }
     }
 }

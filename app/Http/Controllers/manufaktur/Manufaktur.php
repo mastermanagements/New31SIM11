@@ -13,6 +13,10 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Model\Manufaktur\P_SOP_Produksi;
 use App\Model\Manufaktur\P_tambah_produksi;
+use App\Model\Manufaktur\P_Bahan_produksi;
+use App\Model\Manufaktur\P_tenaga_produksi;
+use App\Model\Manufaktur\P_item_overhead;
+use App\Model\Manufaktur\P_biaya_overhead;
 use App\Model\Manufaktur\AkunManufaktur;
 use App\Http\Controllers\produksi\utils\Produksi;
 use App\Http\Controllers\produksi\utils\Pembelian;
@@ -45,7 +49,13 @@ class Manufaktur extends Controller
             'data_monitoring' => P_tambah_produksi::all()->where('status_produksi', '1')->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'selesai_produksi' => P_tambah_produksi::all()->where('status_produksi', '2')->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
             'akun_manufaktur' => AkunManufaktur::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
-            'jenis_jurnal' => $this->jenis_transaksi
+            'jenis_jurnal' => $this->jenis_transaksi,
+			'barang' => barang::all()->where('jenis_barang','1')->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+			'bahan_baku'=> P_Bahan_produksi::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+			'karyawan'=> H_Karyawan::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan')),
+            'tenaga_prod'=> P_tenaga_produksi::all()->where('id_perusahaan',Session::get('id_perusahaan_karyawan')),
+			'item_over_head'=>P_item_overhead::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan')),
+            'data_biaya_overhead'=> P_biaya_overhead::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         if (empty(Session::get('tab2')) && empty(Session::get('tab3')) && empty(Session::get('tab4')) && empty(Session::get('tab5'))) {
             Session::flash('tab1', 'tab1');

@@ -12,7 +12,7 @@ use App\Model\Hrd\H_Karyawan;
 class TenagaProduksi extends Controller
 {
     //
-    public function show($id_tambah_produksi){
+    /* public function show($id_tambah_produksi){
         $model = P_tambah_produksi::where('id_perusahaan',Session::get('id_perusahaan_karyawan'))->findOrFail($id_tambah_produksi);
         $array = [
             'data_tambah_produksi' =>$model,
@@ -21,7 +21,7 @@ class TenagaProduksi extends Controller
         ];
        return view('user.manufaktur.pages.barang_produksi.pekerja.page_show', $array);
     }
-
+ */
     public function store(Request $req){
         $this->validate($req,[
             'id_tambah_produksi'=> 'required',
@@ -36,9 +36,9 @@ class TenagaProduksi extends Controller
 
         $model = new P_tenaga_produksi($data);
         if($model->save()){
-            return redirect()->back()->with('message_success','Tenaga Produksi telah ditambahkan');
+            return redirect()->back()->with('message_success','Tenaga Produksi telah ditambahkan')->with('tab2','tab2');
         }else{
-            return redirect()->back()->with('message_fail','Tenaga Produksi gagal ditambahkan');
+            return redirect()->back()->with('message_fail','Tenaga Produksi gagal ditambahkan')->with('tab2','tab2');
         }
     }
 
@@ -56,18 +56,18 @@ class TenagaProduksi extends Controller
 
         $model = P_tenaga_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->update($data)){
-            return redirect()->back()->with('message_success','Tenaga Produksi telah diubah');
+            return redirect()->back()->with('message_success','Tenaga Produksi telah diubah')->with('tab2','tab2');
         }else{
-            return redirect()->back()->with('message_fail','Tenaga Produksi gagal diubah');
+            return redirect()->back()->with('message_fail','Tenaga Produksi gagal diubah')->with('tab2','tab2');
         }
     }
 
     public function destroy(Request $req, $id){
         $model = P_tenaga_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->delete()){
-            return redirect()->back()->with('message_success','Tenaga Produksi telah dihapus');
+            return redirect()->back()->with('message_success','Tenaga Produksi telah dihapus')->with('tab2','tab2');
         }else{
-            return redirect()->back()->with('message_fail','Tenaga Produksi gagal dihapus');
+            return redirect()->back()->with('message_fail','Tenaga Produksi gagal dihapus')->with('tab2','tab2');
         }
     }
 }

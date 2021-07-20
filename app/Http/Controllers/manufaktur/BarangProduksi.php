@@ -302,7 +302,7 @@ class BarangProduksi extends Controller
                         'data'=>null
                     ],
                     [
-                        'judul'=>'Saldo awal barang Jadi',
+                        'judul'=>'Saldo Akhir barang Jadi',
                         'total'=> $sak,
                         'data'=>null
                     ],
