@@ -12,7 +12,7 @@ use App\Model\Manufaktur\P_biaya_overhead;
 class BiayaOverhead extends Controller
 {
     //
-    public function show($id_tambah_produksi){
+    /* public function show($id_tambah_produksi){
         $model = P_tambah_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrfail($id_tambah_produksi);
         $array = [
             'data_tambah_produksi'=> $model,
@@ -20,7 +20,7 @@ class BiayaOverhead extends Controller
             'data_biaya_overhead'=> P_biaya_overhead::all()->where('id_tambah_produksi', $model->id)->where('id_perusahaan', Session::get('id_perusahaan_karyawan'))
         ];
         return view('user.manufaktur.pages.barang_produksi.biaya_overhead.page_show', $array);
-    }
+    } */
 
     public function store(Request $req){
        $this->validate($req,[
@@ -36,9 +36,9 @@ class BiayaOverhead extends Controller
 
         $model = new P_biaya_overhead($data);
         if($model->save()){
-            return redirect()->back()->with('message_success','Biaya overhead telah disimpan');
+            return redirect()->back()->with('message_success','Biaya overhead telah disimpan')->with('tab2','tab2');
         }else{
-            return redirect()->back()->with('message_success','Biaya overhead gagal disimpan');
+            return redirect()->back()->with('message_success','Biaya overhead gagal disimpan')->with('tab2','tab2');
         }
     }
 
@@ -56,18 +56,18 @@ class BiayaOverhead extends Controller
         
         $model = P_biaya_overhead::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->update($data)){
-            return redirect()->back()->with('message_success','Biaya overhead telah diubah');
+            return redirect()->back()->with('message_success','Biaya overhead telah diubah')->with('tab2','tab2');
         }else{
-            return redirect()->back()->with('message_success','Biaya overhead gagal diubah');
+            return redirect()->back()->with('message_success','Biaya overhead gagal diubah')->with('tab2','tab2');
         }
     }
 
     public function destroy(Request $req, $id){
         $model = P_biaya_overhead::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($id);
         if($model->delete()){
-            return redirect()->back()->with('message_success','Biaya overhead telah dihapus');
+            return redirect()->back()->with('message_success','Biaya overhead telah dihapus')->with('tab2','tab2');
         }else{
-            return redirect()->back()->with('message_success','Biaya overhead gagal dihapus');
+            return redirect()->back()->with('message_success','Biaya overhead gagal dihapus')->with('tab2','tab2');
         }
     }
 }

@@ -510,7 +510,7 @@
 						$('#modal-tambah-strategi-jp').modal('show');
             };
 			tambahSEks  = function (id) {
-  				      $('[name="id_teks"]').val(id);
+  				$('[name="id_teks"]').val(id);
                 $('#modal-tambah-strategi-eks').modal('show');
             };
 			tambahSman  = function (id) {
