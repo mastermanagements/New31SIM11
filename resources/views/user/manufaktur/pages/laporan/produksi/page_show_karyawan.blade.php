@@ -16,30 +16,22 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h4 class="box-title">Pengaturan Laporan @if($params=='karyawan') Karyawan @else Supervisor @endif</h4>
+                            <h4 class="box-title">Pengaturan Laporan</h4>
                         </div>
                         <div class="box-body">
-                            <form action="{{ url('laporan-produksi-tahunan') }}" method="post">
+                            <form action="{{ url('laporan-produksi-per-ky') }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Tahun</label>
-                                            <input type="number" class="form-control" name="year" required>
-                                            <input type="hidden" class="form-control" name="params" value="@if($params=='karyawan') karyawan @else supervisor @endif">
+                                            <label>Tanggal awal</label>
+                                            <input type="date" class="form-control" name="tgl_awal" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>@if($params=='karyawan') Karyawan @else Supervisor @endif</label>
-                                            <select class="form-control" name="@if($params=='karyawan') id_karyawan @else id_supervisor @endif">
-                                                @if(!empty($karyawan))
-                                                    <option value="">Pilih @if($params=='karyawan') Karyawan @else Supervisor @endif</option>
-                                                    @foreach($karyawan as $item_karyawan)
-                                                        <option value="{{ $item_karyawan->id }}">{{ $item_karyawan->nama_ky }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
+                                            <label>Tanggal Akhir</label>
+                                            <input type="date" class="form-control" name="tgl_akhir" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -55,7 +47,19 @@
                                             </select>
                                         </div>
                                     </div>
-
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Karyawan</label>
+                                            <select class="form-control" name="id_karyawan">
+                                                @if(!empty($supervisor))
+                                                    <option value="">Pilih Karyawan</option>
+                                                    @foreach($supervisor as $item_supervisor)
+                                                        <option value="{{ $item_supervisor->id }}">{{ $item_supervisor->nama_ky }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label></label>
@@ -75,49 +79,51 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h4 class="box-title">Laporan Produksi @if($params=='karyawan') Karyawan @else Supervisor @endif</h4>
+                            <h4 class="box-title">Laporan Produksi Karyawan</h4>
                         </div>
                         <div class="box-body">
                             <table class="table table-responsive table-striped">
                                 <thead>
-
                                 <tr>
-                                    <td rowspan="2">No</td>
-                                    <td rowspan="2">Bulan</td>
-                                    <td rowspan="2">Tgl produksi</td>
-                                    <td rowspan="2">Nama Barang</td>
-                                    <td colspan="2">Barang Jadi</td>
-                                    <td colspan="2">Barang Dalam Proses</td>
-                                    <td rowspan="2">Supervisor</td>
+                                    <th rowspan="2">No</th>
+                                    <th colspan="2">Tanggal</th>
+                                    <th rowspan="2">Lama Produksi</th>
+                                    <th rowspan="2">Nama Barang</th>
+                                    <th colspan="2">Barang Jadi</th>
+                                    <th colspan="2">Barang Dalam Proses</th>
+                                    <th colspan="3">Biaya Produksi</th>                                   
+                                    <th rowspan="2">Supervisor</th>
                                 </tr>
                                 <tr>
+                                    <th>Mulai</th>
+                                    <th>Selesai</th>
                                     <th>Bagus</th>
                                     <th>Rusak</th>
                                     <th>Bagus</th>
                                     <th>Rusak</th>
+                                    <th>Bahan Mentah</th>
+                                    <th>Tenaga Kerja</th>
+                                    <th>Overhead</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @if(!empty($data))
-                                    @php($no=1)
-                                    @foreach($bulan as $keys=> $item_bulan)
-                                        @if(!empty($data[$keys]))
-                                            <tr>
-                                                <td rowspan="{{ count($data[$keys])+1 }}">{{ $no++ }} </td>
-                                                <td rowspan="{{ count($data[$keys])+1 }}">{{ $item_bulan }} </td>
-                                            </tr>
-                                            @foreach($data[$keys] as $item_data)
-                                                <tr>
-                                                    <td>{{ $item_data['tgl_produksi'] }}</td>
-                                                    <td>{{ $item_data['barang'] }}</td>
-                                                    <td>{{ $item_data['bjb'] }}</td>
-                                                    <td>{{ $item_data['bjr'] }}</td>
-                                                    <td>{{ $item_data['bdp_b'] }}</td>
-                                                    <td>{{ $item_data['bdp_r'] }}</td>
-                                                    <td>{{ $item_data['supervisor'] }}</td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
+                                    @foreach($data as $item)
+                                        <tr>
+                                            <td>{{ $item[0] }}</td>
+                                            <td>{{ $item[1] }}</td>
+                                            <td>{{ $item[2] }}</td>
+                                            <td>{{ $item[3] }}</td>
+                                            <td>{{ $item[4] }}</td>
+                                            <td>{{ $item[5] }}</td>
+                                            <td>{{ $item[6] }}</td>
+                                            <td>{{ $item[7] }}</td>
+                                            <td>{{ $item[8] }}</td>
+                                            <td>{{ $item[9][0] }}</td>
+                                            <td>{{ rupiahView($item[10][0]) }}</td>
+                                            <td>{{ $item[11][0] }}</td>
+                                            <td>{{ $item[14] }}</td>
+                                        </tr>
                                     @endforeach
                                 @endif
                                 </tbody>

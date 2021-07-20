@@ -12,6 +12,7 @@
         <!-- Main content -->
         <section class="content container-fluid">
             <div class="row">
+                @include('user.manufaktur.menu')
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header">
@@ -48,7 +49,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Suppervisor</label>
+                                            <label>Supervisor</label>
                                             <select class="form-control" name="id_karyawan">
                                                 @if(!empty($supervisor))
                                                     <option value="">Pilih supervisor</option>
@@ -78,7 +79,7 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h4 class="box-title">Laporan Produksi</h4>
+                            <h4 class="box-title">Laporan Produksi Supervisor</h4>
                         </div>
                         <div class="box-body">
                             <table class="table table-responsive table-striped">

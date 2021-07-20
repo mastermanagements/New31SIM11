@@ -105,6 +105,33 @@ class Manufaktur extends Controller
         }
     }
 
+    public function laporan_produksi_karyawan()
+    {
+        Produksi::$month = $this->month;
+        Produksi::$year = $this->years;
+
+        $produksi = Produksi::DataProduksi();
+        $barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        $supervisor = H_Karyawan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        return view('user.manufaktur.pages.laporan.produksi.page_show_karyawan', ['data' => $produksi, 'barang' => $barang, 'supervisor' => $supervisor]);
+    }
+
+    public function PrinView_OrCetak_Karyawan(Request $req)
+    {
+        Produksi::$tanggal_awal = $req->tgl_awal;
+        Produksi::$tanggal_akhir = $req->tgl_akhir;
+        $produksi = Produksi::DataProduksi();
+        $barang = Barang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        $supervisor = H_Karyawan::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        $produksi = Produksi::DataProduksi();
+        $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN PRODUKSI');
+        if ($req->action == 'preview') {
+            return view('user.manufaktur.pages.laporan.produksi.page_show_karyawan', ['data' => $produksi, 'barang' => $barang, 'supervisor' => $supervisor]);
+        } else {
+            return view('user.manufaktur.pages.laporan.produksi.cetak_per_karyawan', ['data' => $produksi, 'header' => $header]);
+        }
+    }
+
     public function laporan_produksi_perbulan($params) // Karyawan
     {
         $data = Produksi::data_produksi_per_tahun();

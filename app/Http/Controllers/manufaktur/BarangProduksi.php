@@ -198,14 +198,28 @@ class BarangProduksi extends Controller
         return view('user.manufaktur.pages.detail.cetak', $array);
     }
 
+    private function check_jumlah_bahan_baku($link_To_bahan_baku){
+        $total = 0;
+        if(!empty($link_To_bahan_baku)){
+            foreach ($link_To_bahan_baku as $item_bahan_baku){
+                $total+= $item_bahan_baku->jumlah_bahan * $item_bahan_baku->linkToBarang->hpp;
+            }
+        }
+        return $total;
+    }
+
     private function set_hpp($model_p_tambah_barang)
     {
         $container=[];
         //1. total biaya mentah
+
+        $a = $this->check_jumlah_bahan_baku($model_p_tambah_barang->linkToBahanProduksi);
+
 		//1. ambil biaya = p_bahan_produksi * p_barang.hpp
 		
         $a = $model_p_tambah_barang->linkToBahanProduksi->sum('jumlah_bahan');
 		
+
         //push total biaya bahan mentah ke container
         $container[]= [
             [

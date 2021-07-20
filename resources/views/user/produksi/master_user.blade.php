@@ -94,6 +94,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
                  'info'        : true,
                  'autoWidth'   : false
              })
+
+
+             {{--get_harga = function(functionNumber,segment) {--}}
+                 {{--if(segment == undefined){--}}
+                     {{--var id_barang = $('[name="id_barang"]').val();--}}
+                 {{--}else{--}}
+                     {{--var id_barang = $('#id_barang'+segment).val();--}}
+                 {{--}--}}
+                 {{--$.ajax({--}}
+                     {{--url : "{{ url('getHargaBarang') }}",--}}
+                     {{--type : 'post',--}}
+                     {{--data : {--}}
+                         {{--'_token':'{{csrf_token()}}',--}}
+                         {{--'id_barang': id_barang,--}}
+                         {{--'number_call_function':functionNumber--}}
+                     {{--},--}}
+                     {{--success: function (result) {--}}
+                         {{--console.log(result);--}}
+                         {{--if(segment == undefined && result.harga!=0){--}}
+                             {{--var hpp = formatRupiah(result.harga.replace('.00',''));--}}
+                             {{--console.log(hpp);--}}
+                             {{--$('#show_harga').val(hpp);--}}
+                         {{--}else{--}}
+                             {{--if(result.harga!=0){--}}
+                                {{--var hpp = formatRupiah(result.harga.replace('.00',''));--}}
+                                {{--$('#show_harga'+segment).val(hpp);--}}
+                             {{--}--}}
+                         {{--}--}}
+                     {{--}--}}
+                 {{--});--}}
+             {{--}--}}
+
              get_harga = function(functionNumber,segment) {
                  if(segment == undefined){
                      var id_barang = $('[name="id_barang"]').val();
@@ -101,27 +133,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                      var id_barang = $('#id_barang'+segment).val();
                  }
                  $.ajax({
-                     url : "{{ url('getHargaBarang') }}",
-                     type : 'post',
-                     data : {
-                         '_token':'{{csrf_token()}}',
-                         'id_barang': id_barang,
-                         'number_call_function':functionNumber
-                     },
+                     url: '{{ url('response_json') }}/' + id_barang,
+                     dataType: 'json',
+                     type: 'post',
+                     data: {
+                       '_token':'{{csrf_token()}}',
+                      },
                      success: function (result) {
-                         console.log(result);
-                         if(segment == undefined && result.harga!=0){
-                             var hpp = formatRupiah(result.harga.replace('.00',''));
-                             console.log(hpp);
-                             $('#show_harga').val(hpp);
-                         }else{
-                             if(result.harga!=0){
-                                var hpp = formatRupiah(result.harga.replace('.00',''));
-                                $('#show_harga'+segment).val(hpp);
-                             }
-                         }
+                       var hpp = formatRupiah(result.hpp.replace('.00',''));
+                         $('#show_harga').val(hpp);
+                      },
+                     error: function (xhr, status, error) {
+                         var err = eval("(" + xhr.responseText + ")");
+                         alert(err.Message);
                      }
-                 });
+                 })
              }
          });
      </script>
