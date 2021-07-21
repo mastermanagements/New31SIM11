@@ -10,41 +10,30 @@
         <!-- Main content -->
         <section class="content container-fluid">
             <div class="row">
-                @include('user.produksi.section.laporan.menu')
+                @include('user.manufaktur.pages.laporan.menu')
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header">
                             <h4 class="box-title">Pengaturan Laporan</h4>
                         </div>
                         <div class="box-body">
-                            <form action="{{ url('laporan-pembelian-barang') }}" method="post">
+                            <form action="{{ url('laporan-brg-dan-harga-jual') }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Tanggal awal</label>
-                                            <input type="date" class="form-control" name="tgl_awal" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Tanggal Akhir</label>
-                                            <input type="date" class="form-control" name="tgl_akhir" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Supplier</label>
-                                            <select class="form-control" name="supplier">
-                                                <option value="">Pilih Supplier</option>
-                                                @if(!empty($supplier))
-                                                    @foreach($supplier as $value)
-                                                        <option value="{{ $value->id }}">{{ $value->nama_suplier }}</option>
+                                            <label>Metode Jual</label>
+                                            <select class="form-control" name="metode_jual">
+                                                <option value="">Pilih Jenis Bayar</option>
+                                                @if(!empty($metode_jual))
+                                                    @foreach($metode_jual as $key=> $value)
+                                                        <option value="{{ $key }}">{{ $value }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
                                         </div>
                                     </div>
+
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label></label>
@@ -64,7 +53,7 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h4 class="box-title">Laporan Pesanan pembelian</h4>
+                            <h4 class="box-title">Laporan Barang Dan Harga</h4>
                         </div>
                         <div class="box-body">
                             <div class="row">
@@ -74,33 +63,23 @@
                                             <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Tanggal Transaksi</th>
-                                                <th>No. Transaksi</th>
-                                                <th>Supplier</th>
-                                                <th>Tgl tiba</th>
-                                                <th>No. Pesanan Pembelian</th>
-                                                <th>Total belanja</th>
-                                                <th>Diskon</th>
-                                                <th>PPN</th>
-                                                <th>Ongkir</th>
-                                                <th>Metode Pembelian</th>
-                                             </tr>
+                                                <th>nm_barang</th>
+                                                <th>Spesifikasi</th>
+                                                <th>Merk</th>
+                                                <th>Satuan</th>
+                                                <th>Harga Jual</th>
+                                            </tr>
                                             </thead>
                                             <tbody>
                                             @if(!empty($data))
-                                                @foreach($data as $item)
+                                                @foreach( $data as $date_item)
                                                     <tr>
-                                                        <td>{{ $item['no'] }}</td>
-                                                        <th>{{ $item['transaksi'] }}</th>
-                                                        <th>{{ $item['no_transaksi'] }}</th>
-                                                        <th>{{ $item['supplier'] }}</th>
-                                                        <th>{{ $item['tgl_tiba'] }}</th>
-                                                        <th>{{ $item['no_pesananan'] }}</th>
-                                                        <th>{{ $item['total_belajan'] }}</th>
-                                                        <th>{{ $item['diskon_tambahan'] }}</th>
-                                                        <th>{{ $item['ppn'] }}</th>
-                                                        <th>{{ $item['ongkir'] }}</th>
-                                                        <th>{{ $item['metode_bayar'] }}</th>
+                                                        <th>{{ $date_item['no'] }}</th>
+                                                        <th>{{ $date_item['nm_barang'] }}</th>
+                                                        <th>{{ $date_item['spesifikasi'] }}</th>
+                                                        <th>{{ $date_item['merk'] }}</th>
+                                                        <th>{{ $date_item['satuan'] }}</th>
+                                                        <th>{{ $date_item['harga_jual'] }}</th>
                                                     </tr>
                                                 @endforeach
                                             @endif

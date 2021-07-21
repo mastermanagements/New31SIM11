@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\produksi;
 
+use App\Http\Controllers\manufaktur\util_brg_inventory\DaftarBrgDanHarga;
+use App\Http\utils\HeaderReport;
 use App\Imports\ImportBarang;
+use App\Model\Administrasi\Klien;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -402,5 +405,21 @@ class Barang extends Controller
     public function filterBarangByBarcode($kode_barcode){
         $model = barangs::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->where('barcode','like','%'.$kode_barcode.'%')->first();
          return response()->json(array('data'=>$model));
+    }
+
+
+    public function laporan_brg_dan_harga(Request $req)
+    {
+        $pesanan_barang_dan_harga = new DaftarBrgDanHarga();
+        $data_barang_dan_harga = $pesanan_barang_dan_harga->data($req);
+        $cuttomer = Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        if ($req->action == 'preview') {
+            return view('user.manufaktur.pages.laporan.daftar_brg.page_show', ['data' => $data_barang_dan_harga, 'customer' => $cuttomer,'metode_jual'=>$this->metode_penjualan]);
+        } elseif ($req->action == 'print') {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN BARANG DAN HARGA JUAL');
+            return view('user.manufaktur.pages.laporan.daftar_brg.cetak', ['data' => $data_barang_dan_harga, 'header' => $header]);
+        } else {
+            return view('user.manufaktur.pages.laporan.daftar_brg.page_show', ['data' => $data_barang_dan_harga, 'customer' => $cuttomer,'metode_jual'=>$this->metode_penjualan]);
+        }
     }
 }
