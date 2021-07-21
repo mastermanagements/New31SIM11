@@ -12,6 +12,7 @@
         <!-- Main content -->
         <section class="content container-fluid">
             <div class="row">
+                @include('user.manufaktur.pages.laporan.menu')
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header">

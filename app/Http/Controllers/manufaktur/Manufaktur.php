@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\manufaktur;
 
+use App\Http\Controllers\manufaktur\util_brg_inventory\MasukKeluarGudang;
 use App\Http\Controllers\produksi\utils\Penjualan;
 use App\Http\Controllers\produksi\utils\StokBarangOperation;
 use App\Http\utils\StokGudang;
 use App\Model\Administrasi\Klien;
+use App\Model\Gudang;
 use App\Model\Hrd\H_Karyawan;
 use App\Model\Produksi\Barang;
 use Illuminate\Http\Request;
@@ -36,6 +38,11 @@ class Manufaktur extends Controller
         $this->month = date('m');
         $this->years = date('Y');
     }
+
+    private $transaksi_gudang = [
+        'Masuk',
+        'Keluar'
+    ];
 
     public function index()
     {
@@ -351,6 +358,26 @@ class Manufaktur extends Controller
             return view('user.manufaktur.pages.laporan.StokGudang.page_show', $data);
         } else {
             return view('user.manufaktur.pages.laporan.StokGudang.cetak', $data);
+        }
+    }
+
+    public function laporan_masuk_keluar_gudang(Request $req)
+    {
+        $masuk_keluar_gudang = new MasukKeluarGudang();
+        $data_masuk_keluar_gudang = $masuk_keluar_gudang->data($req);
+        $metode_transaksi=0;
+        if(!empty($req->transaksi_gudang)){
+            $metode_transaksi = $req->transaksi_gudang;
+        }
+        $cuttomer = Klien::all()->where('id_perusahaan', Session::get('id_perusahaan_karyawan'));
+        $gudang = Gudang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+        if ($req->action == 'preview') {
+            return view('user.manufaktur.pages.laporan.keluar_masuk.page_show', ['data' => $data_masuk_keluar_gudang, 'customer' => $cuttomer,'transaksi_gudang'=>$this->transaksi_gudang, 'gudang'=>$gudang,'default_transaksi'=>$metode_transaksi]);
+        } elseif ($req->action == 'print') {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN KELUAR MASUK GUDANG');
+            return view('user.manufaktur.pages.laporan.keluar_masuk.cetak', ['data' => $data_masuk_keluar_gudang, 'header' => $header, 'transaksi_gudang'=>$this->transaksi_gudang,'default_transaksi'=>$metode_transaksi]);
+        } else {
+            return view('user.manufaktur.pages.laporan.keluar_masuk.page_show', ['data' => $data_masuk_keluar_gudang, 'customer' => $cuttomer,'transaksi_gudang'=>$this->transaksi_gudang,'gudang'=>$gudang,'default_transaksi'=>$metode_transaksi]);
         }
     }
 }

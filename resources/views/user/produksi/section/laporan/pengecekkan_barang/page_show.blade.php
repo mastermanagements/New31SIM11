@@ -10,13 +10,14 @@
         <!-- Main content -->
         <section class="content container-fluid">
             <div class="row">
+                @include('user.produksi.section.laporan.menu')
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header">
                             <h4 class="box-title">Pengaturan Laporan</h4>
                         </div>
                         <div class="box-body">
-                            <form action="{{ url('laporan-pengecekan-barang') }}" method="post">
+                            <form action="{{ url('laporan-pengecekan-barang-pembelian') }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-4">
