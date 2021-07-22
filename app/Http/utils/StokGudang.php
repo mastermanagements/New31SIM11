@@ -20,12 +20,16 @@ class StokGudang
         return $data;
     }
 
-    public function query_gudang($id_gudang = null)
+    public function query_gudang($id_gudang = null, $id_barang=null)
     {
         $plug_query = "";
 
         if($id_gudang != null){
-            $plug_query = "and p_masuk_gudang.id_gudang =".$id_gudang;
+            $plug_query .= " and p_masuk_gudang.id_gudang =".$id_gudang;
+        }
+
+        if($id_barang != null){
+            $plug_query .= " and p_detail_masuk_gudang.id_barang =".$id_barang;
         }
 
         $q_gudang = DB::select('SELECT p_gudang.id, p_barang.id as id_barang, p_barang.merk_barang,p_barang.spec_barang,p_satuan.satuan,p_gudang.gudang, p_barang.nm_barang, SUM(p_detail_masuk_gudang.jumlah) as jumlah

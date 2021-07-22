@@ -8,7 +8,7 @@ use App\Model\Produksi\Barang;
 use Session;
 use App\Model\Hrd\H_Karyawan;
 use App\Model\Manufaktur\P_tambah_produksi;
-
+use App\Http\utils\Stok;
 
 class BarangProduksi extends Controller
 {
@@ -142,7 +142,7 @@ class BarangProduksi extends Controller
         $data['id_karyawan'] = Session::get('id_karyawan');
         $model = P_tambah_produksi::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->findOrFail($req->id_quality_control);
         if($model->update($data)){
-
+            $stok = Stok::updateStokAkhirManufaktur($model);
             return redirect('manufaktur')->with('message_success','Quality control telah disimpan');
         }else{
             return redirect('manufaktur')->with('message_fail','Quality control gagal disimpan');

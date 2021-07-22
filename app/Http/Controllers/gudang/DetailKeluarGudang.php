@@ -8,6 +8,7 @@ use Session;
 use App\Model\KeluarGudang;
 use App\Model\DetailKeluarGudang as model_detail_keluar_gudang;
 use App\Http\utils\StokGudang;
+use App\Model\MasukGudang;
 
 class DetailKeluarGudang extends Controller
 {
@@ -15,12 +16,24 @@ class DetailKeluarGudang extends Controller
     public function show($id_keluar_gudang)
     {
         $stok_gudang = new StokGudang();
+        $masuk_gudang_id = MasukGudang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id_keluar_gudang);
         $data = [
             'masuk_gudang' => KeluarGudang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->find($id_keluar_gudang),
             'stok_gudang' => $stok_gudang->query_gudang(),
-            'id_keluar_gudang' => $id_keluar_gudang
+            'id_keluar_gudang' => $id_keluar_gudang,
+            'id_gudang'=> $masuk_gudang_id->id_gudang
         ];
         return view('user.produksi.section.gudang.keluarkan_gudang.detail_keluarkan_gudang', $data);
+    }
+
+    public function get_stok_per_gudang(Request $req){
+        $this->validate($req,[
+            'id_gudang'=> 'required',
+            'id_barang'=> 'required',
+        ]);
+        $stok_gudang = new StokGudang();
+        $data = $stok_gudang->query_gudang($req->id_gudang, $req->id_barang);
+        return response()->json($data);
     }
 
     public function store(Request $req)

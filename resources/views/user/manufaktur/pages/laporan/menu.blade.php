@@ -5,6 +5,6 @@
         <a href="{{ url('laporan-stok-barang') }}" class="btn btn-info">Stok Barang</a>
         <a href="{{ url('laporan-stok-gudang') }}" class="btn btn-info">Stok Barang per Gudang</a>
         <a href="{{ url('laporan-keluar-masuk-gudang') }}" class="btn btn-info">Masuk Keluar Gudang</a>
-        <a href="" class="btn btn-info">Stok Opname</a>
+        <a href="{{ url('laporan-stok-opname-barang') }}" class="btn btn-info">Stok Opname</a>
     </div>
 </div>

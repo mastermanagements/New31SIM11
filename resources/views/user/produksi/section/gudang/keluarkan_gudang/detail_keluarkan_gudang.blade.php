@@ -37,6 +37,7 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Nama Barang</th>
+                                                <th>Stok</th>
                                                 <th>Jumlah Keluar</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -45,9 +46,10 @@
                                             <tr>
                                                 <th># {{ csrf_field() }}<input type="hidden" name="id_keluar_gudang"
                                                                                value="{{ $id_keluar_gudang }}"></th>
+
                                                 <th>
                                                     @if(!empty($stok_gudang))
-                                                        <select class="form-control" name="id_barang">
+                                                        <select class="form-control" name="id_barang" id="id_barang_form">
                                                             <option>Piilih Stok Barang Yang Tersisa</option>
                                                             @foreach($stok_gudang as $item_stok_gudang)
                                                                 <option value="{{ $item_stok_gudang->id_barang }}">{{ $item_stok_gudang->nm_barang }}</option>
@@ -55,11 +57,12 @@
                                                         </select>
                                                     @endif
                                                 </th>
+                                                <th><input class="form-control" id="stok" readonly></th>
                                                 <th>
                                                     <input type="number" class="form-control" name="jumlah">
                                                 </th>
                                                 <th>
-                                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                                    <button class="btn btn-primary" type="submit" id="btn_simpan">Simpan</button>
                                                 </th>
                                             </tr>
                                             </tbody>
@@ -133,6 +136,32 @@
     <script src="{{ asset('component/plugins/iCheck/icheck.min.js') }}"></script>
     @include('user.administrasi.section.arsip.jenis_arsip.modal.JS')
     <script>
+        $('#id_barang_form').change(function (e) {
+            e.preventDefault();
+            $('#stok').val(0);
+            $.ajax({
+                url:'{{ url('get-stok-gudang') }}',
+                type: 'post',
+                data: {
+                  'id_gudang': '{{ $id_gudang }}',
+                  'id_barang': $(this).val(),
+                  '_token': '{{ csrf_token() }}'
+                },
+                success : function (result) {
+                    $('#stok').val(result[0].jumlah);
+                }
+            });
+        })
 
+        $('[name="jumlah"]').keyup(function () {
+            var input = $(this).val()
+            var stok = $('#stok').val();
+
+            if(input > stok){
+                $('#btn_simpan').prop('disabled',true);
+            }else{
+                $('#btn_simpan').prop('disabled',false);
+            }
+        })
     </script>
 @stop
