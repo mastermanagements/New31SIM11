@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Produksi;
 
+use App\Http\utils\HeaderReport;
+use App\Http\utils\StokGudang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Produksi\Barang;
 use App\Model\Superadmin_ukm\U_Usaha as ukm;
 use Session;
 use App\Model\Produksi\StokOpname as SO;
+use App\Http\Controllers\produksi\utils\StokOpname as data_stok_opname;
 
 class StokOpname extends Controller
 {
@@ -132,4 +135,20 @@ class StokOpname extends Controller
             return false;
         }
     }
+
+    public function laporan_stok_opname(Request $req)
+    {
+        $stok_opname = new data_stok_opname;
+        $data_stok_opname = $stok_opname->data($req);
+
+        if ($req->action == 'preview') {
+            return view('user.manufaktur.pages.laporan.stok_opname.page_show', ['data' => $data_stok_opname]);
+        } elseif ($req->action == 'print') {
+            $header = HeaderReport::header_format_2('layouts.header_print.header_print1', 'LAPORAN STOK OPNAME');
+            return view('user.manufaktur.pages.laporan.stok_opname.cetak', ['data' => $data_stok_opname, 'header' => $header]);
+        } else {
+            return view('user.manufaktur.pages.laporan.stok_opname.page_show', ['data' => $data_stok_opname]);
+        }
+    }
+
 }

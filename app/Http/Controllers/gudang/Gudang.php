@@ -32,6 +32,8 @@ class Gudang extends Controller
         }
      }
 
+
+
     public function store(Request $req)
     {
         $this->validate($req, [
@@ -96,10 +98,12 @@ class Gudang extends Controller
         }
     }
 
-    public function data_gudang()
+    public function data_gudang(Request $req)
     {
         $gudang =new StokGudang();
-        $data_gudang = $gudang->query_gudang();
-        return view('user.produksi.section.gudang.stok_gudang',['gudang'=> $data_gudang]);
+        $data_gudang = $gudang->query_gudang($req->gudang);
+        $daftar_gudang = model_gudang::where('id_perusahaan', Session::get('id_perusahaan_karyawan'))->get();
+
+        return view('user.produksi.section.gudang.stok_gudang',['gudang'=> $data_gudang, 'daftar_gudang'=> $daftar_gudang]);
     }
 }

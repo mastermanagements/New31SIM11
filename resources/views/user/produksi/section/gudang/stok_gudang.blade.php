@@ -22,10 +22,36 @@
                     <p style="color: red;text-align: center">*{{ session('message_fail') }}</p>
                 @endif
                 <p></p>
-
+                <div class="col-md-12">
+                    <form action="{{ url('stok-gudang') }}" method="post">
+                        {{ csrf_field() }}
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label>Gudang</label>
+                              <select class=" form-control select2" name="gudang" required>
+                                  @if(!empty($daftar_gudang))
+                                      <option value="">Pilih gudang</option>
+                                      @foreach($daftar_gudang as $item_gudang)
+                                          <option value="{{ $item_gudang->id }}">{{ $item_gudang->gudang }}</option>
+                                      @endforeach
+                                  @endif
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-md-2 m-2">
+                          <div class="form-group">
+                              <label></label>
+                              <button type="submit" class="form-control btn btn-primary">Lihat</button>
+                          </div>
+                      </div>
+                  </div>
+                    </form>
+                </div>
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-body">
+
                             <table class="table table-responsive table-striped" id="example1">
                                 <thead>
                                 <tr>
@@ -44,8 +70,12 @@
                                             <td>{{ $item_gudang->nm_barang }}</td>
                                             <td>{{ $item_gudang->jumlah }}</td>
                                             <td>
-                                                <a class="btn btn-primary" href="{{ url('keluarkan-barang-gudang/'.$item_gudang->id) }}">Nota Keluarkan Barang</a>
-                                                <a class="btn btn-primary" href="{{ url('daftar-nota-keluarkan-barang/'.$item_gudang->id) }}">Daftar Nota</a>
+                                                <a class="btn btn-primary"
+                                                   href="{{ url('keluarkan-barang-gudang/'.$item_gudang->id) }}">Nota
+                                                    Keluarkan Barang</a>
+                                                <a class="btn btn-primary"
+                                                   href="{{ url('daftar-nota-keluarkan-barang/'.$item_gudang->id) }}">Daftar
+                                                    Nota</a>
                                             </td>
                                         </tr>
                                     @endforeach

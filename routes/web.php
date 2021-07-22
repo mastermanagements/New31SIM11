@@ -475,7 +475,9 @@ Route::resource('RekKlien', 'administrasi\RekKlien');
 //------------------------------------Gudang -------------------------------------
 Route::resource('gudang', 'gudang\Gudang');
 Route::get('stok-gudang', 'gudang\Gudang@data_gudang');
+Route::post('stok-gudang', 'gudang\Gudang@data_gudang');
 Route::resource('detail-barang-keluar-gudang', 'gudang\DetailKeluarGudang');
+Route::post('get-stok-gudang', 'gudang\DetailKeluarGudang@get_stok_per_gudang');
 Route::get('detail-barang-keluar-gudang/{id_detail_keluar_gudang}/delete', 'gudang\DetailKeluarGudang@destroy');
 //--- Barang ---D
 Route::get('Barang', 'produksi\Barang@index');
@@ -2513,6 +2515,10 @@ Route::post('laporan-masuk-keluar-barang','manufaktur\Manufaktur@laporan_masuk_k
 //=============================================Masuk keluar gudang====================================
 Route::get('laporan-keluar-masuk-gudang','manufaktur\Manufaktur@laporan_masuk_keluar_gudang');
 Route::post('laporan-keluar-masuk-gudang','manufaktur\Manufaktur@laporan_masuk_keluar_gudang');
+
+//=============================================Stok Opname Barang====================================
+Route::get('laporan-stok-opname-barang','produksi\StokOpname@laporan_stok_opname');
+Route::post('laporan-stok-opname-barang','produksi\StokOpname@laporan_stok_opname');
 
 
 //============================================ Stok Barang ============================================
